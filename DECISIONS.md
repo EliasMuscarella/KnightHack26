@@ -291,3 +291,39 @@ Only a store that is already `ok` gets a 2 s wait for its very first remote resu
 - Potential→actual comes from the report's `potential_became_actual` highlights (verbatim sentences via
   `sentence_index`). The change mix comes from `summary.by_change_type`. The EDGAR primary-document URLs
   are stored so `/trends` can link quotes to the filing.
+
+## D-022 Design system session (UX1–UX12)
+- Tokens follow the brief's starting values with two contrast adjustments, both measured with the WCAG
+  formula: `ink-muted` #6B7A90 was 4.4:1 on white and 4.1:1 on the page color, below AA for 18px regular
+  text, so it is #627187 (5.0:1 / 4.6:1); the Scaled back text #B5541C was 4.3:1 on its tint #FBEDE3, so it
+  is #A64B18 (5.0:1). Everything else passes as given: ink on paper 14.9:1, secondary on paper 8.3:1, New
+  risk 7.2:1, Expanded 5.2:1, Dropped risk 5.5:1, Major update 13.1:1, Potential became actual 6.5:1,
+  signal 14.1:1, ink on the highlighter 11.7:1, white on accent 8.9:1. The strike color stays #B5541C
+  (a decoration, not text).
+- Type scale: Tailwind's `text-xs` is redefined as 14px (the floor), `text-sm` 15, `text-base` 17, `text-lg`
+  22, `text-xl` 32, `text-2xl` 44; `text-3xl`+ alias the page-title size so no legacy class can exceed it.
+  `font-semibold`/`font-bold` resolve to 500 and only `font-title` gives 600 (the home headline). Root font
+  size stays 16px so the scale is explicit rather than inherited.
+- Whole added sentences are drawn fully under the highlighter (every word is new, which is what the diff
+  says); removed sentences are struck whole. On long diffs this is a lot of yellow, accepted as honest.
+- When a report has no language-model short title (the fallback ends in "…"), the UI derives a display
+  title from the official heading: first clause (cut at the earliest of comma, semicolon, colon, "which",
+  "that", "may", "might", "could", "including" that keeps at least four words), trailing function words
+  dropped, capped at 12 words with a visible ellipsis. The full heading is always under the title on the
+  detail page. The published JSON is untouched.
+- Company display names: title-cased SEC conformed names with corporate suffixes dropped and an exceptions
+  map for acronyms and house styles (`web/src/lib/names.ts`); the official name moves to the audit trail.
+- The home hero is the top "Potential became actual" highlight across the local published reports, ties
+  broken by change score, ticker, then position; with none, the first highlight of the alphabetically
+  first company; fixture data is never used.
+- Heatmap direction: a company-by-category cell is blue when the net word change (added minus removed) is
+  at least 20% of the word turnover (added plus removed) in the positive direction, orange in the negative
+  direction, ink otherwise (rewritten); intensity is sentences touched relative to the busiest cell. Columns
+  are the ten most active categories, the rest grouped as Other. Every cell carries its numbers in a tooltip
+  and for screen readers; empty cells stay blank.
+- The AI summary's citations are footnote-style superscript numbers; the numbering is shared across the page
+  so one sentence always has one number.
+- Trends polls a same-origin Next route (`/api/trends`) every 2.5 s for up to 60 s while the store reports
+  `connecting`; "not connected" shows only for `disabled` or `offline` with nothing local.
+- The frontend's pure helpers (display names, hero pick, short titles, trends math) are unit-tested with
+  Node's built-in runner (`npm run test:unit`, also executed from pytest).

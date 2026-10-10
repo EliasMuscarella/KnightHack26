@@ -103,6 +103,22 @@ If one is missing, inspect `signals` of that change in the JSON and report.
 No Databricks credentials exist in this sandbox: everything was built and tested against a mocked SDK
 client; the one-time steps for the team are in REPORT.md §11 and README "Shared report library".
 
+## Design and Trends session (UX1–UX13, Oct 11)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| UX1 | DESIGN.md + tokens | done | Public Sans / Source Serif 4 via next/font, scale 14/15/17/22/32/44, direction colors, highlighter; CLAUDE.md points at DESIGN.md |
+| UX2 | Typography and helper-text purge | done | every page; sentence-case labels; no middle dots, arrows, uppercase tracking, glyphs; plain wordmark |
+| UX3 | ChangeBadge + ChangeLevel | done | one implementation (`ui.tsx`), direction tones in `vocabulary.ts`, one legend on the company page |
+| UX4 | Before/after card | done | `HighlightCard` + `MarkedText` + `Quote`: highlighter on diff spans, strikes on removed words, one column below 900px |
+| UX5 | Company page | done | clean names (`names.ts`), 22px summary statement, cards only for Biggest changes, rows for All changes, quiet audit trail |
+| UX6 | Change detail page | done | short title first, official heading under it, neutral AI panel with footnote citations, highlighter diff |
+| UX7 | Home page | done | deterministic hero (`hero.ts`), no feature cards, library cards with display names and short titles |
+| UX8 | Amazon 0 meaningful changes | blocked here (no AMZN report, no SEC access) | diagnostic recipe and decision criteria in REPORT.md §12 |
+| T9–T11 | Trends backend (subagent) | see its rows below / commits T9, T10, T11 | cold-start fix, derived facts, tables and serving |
+| UX12 | Trends page | done (UI) | headline, shared topics with quotes, blue-orange heatmap, potential→actual list, change mix, source line, skeleton + retry |
+| UX13 | Verification and outside review | in progress | screenshots at 1440×900 and 1280×720 after each task; reverse-squint and judge reviews recorded in REPORT.md §12 |
+
 ## What's next
 
 Team: run the NVDA command above, then `RISKDIFF_SHOW_FIXTURE= ./scripts/dev.sh` and walk the NVDA page as a judge.
