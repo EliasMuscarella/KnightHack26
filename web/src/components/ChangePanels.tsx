@@ -211,7 +211,7 @@ function RubricList({ interp, numberOf }: { interp: Interpretation; numberOf: (i
           <div className="flex items-start gap-2">
             <span className="text-ink-secondary">{r.question_id}</span>
             <p className="min-w-0 flex-1 leading-snug text-ink">{r.question}</p>
-            <span className={`shrink-0 rounded-sm px-1.5 py-px text-xs font-medium ${r.answer ? "bg-ink text-white" : "bg-signal-bg text-ink-secondary"}`}>
+            <span className={`shrink-0 rounded-sm px-1.5 py-px text-xs font-medium ${r.answer ? "bg-ink text-on-ink" : "bg-signal-bg text-ink-secondary"}`}>
               {r.answer ? "Yes" : "No"}
             </span>
           </div>
@@ -257,7 +257,7 @@ export function AnalystDetails({
         <span className="text-lg font-medium text-ink">{ANALYST_DETAILS}</span>
         <span className="text-sm text-ink-secondary">Rule-based signals, text measures, AI check answers, models</span>
       </summary>
-      <div className="mt-5 grid gap-x-10 gap-y-6 min-[900px]:grid-cols-2">
+      <div className="mt-6 grid gap-x-10 gap-y-6 min-[900px]:grid-cols-2">
         <div className="space-y-4">
           <h3 className="text-base font-medium text-ink">Deterministic signals (rule-based, no AI)</h3>
           <HitList title={SIGNAL_VOCAB.hypothetical_to_actual.label} hits={hedge} numberOf={numberOf} />

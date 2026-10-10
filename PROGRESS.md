@@ -119,6 +119,12 @@ client; the one-time steps for the team are in REPORT.md §11 and README "Shared
 | UX12 | Trends page | done (UI) | headline, shared topics with quotes, blue-orange heatmap, potential→actual list, change mix, source line, skeleton + retry |
 | UX13 | Verification and outside review | done | 204 pytest + 13 node tests, ruff, build/typecheck/lint, FIXTUR byte-identical cached vs `--no-cache`, code fingerprint unchanged (`e94330fb…`), no horizontal scroll and nothing under 14px at 1440 and 1280; two review rounds (reverse-squint 6/10 → 6/10, judge → 7/10) with verdicts and responses in REPORT.md §12 |
 
+## Performance session (P-tasks, Oct 10)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| P1 | Parallel LLM calls + per-stage timings | done, tested | `RISKDIFF_LLM_CONCURRENCY` (default 6); timing table on stderr after `python -m pipeline.run`; see D-024. Not timed on a real ticker here (no SEC/HF access) |
+
 ## What's next
 
 Team: run the NVDA command above (it also removes the "The following risk factors…" preamble from the

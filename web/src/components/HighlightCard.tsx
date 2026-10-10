@@ -148,14 +148,14 @@ export function HighlightCard({ change, facts, comparison, variant = "card", sou
           )}
         </p>
       )}
-      <div className="mt-5 space-y-6">
+      <div className="mt-6 space-y-6">
         {facts.map((h, i) => (
-          <div key={i} className={i > 0 ? "border-t border-line pt-5" : ""}>
+          <div key={i} className={i > 0 ? "border-t border-line pt-6" : ""}>
             <Fact h={h} change={change} comparison={comparison} withBadge={i > 0} />
           </div>
         ))}
       </div>
-      <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-1 text-sm">
+      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-1 text-sm">
         {linkText !== null ? (
           <FilingLink href={textFragmentUrl(filing.edgar_url, linkText)} isFixture={comparison.is_fixture === true}>
             Open in SEC filing

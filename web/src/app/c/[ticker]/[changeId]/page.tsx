@@ -119,7 +119,7 @@ export default async function ChangePage(props: PageProps<"/c/[ticker]/[changeId
               )}
             </div>
           ) : null}
-          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2">
             <ChangeBadge type={change.change_type} />
             <ChangeLevel score={change.score} changeType={change.change_type} />
             <span className="text-sm text-ink-secondary">
