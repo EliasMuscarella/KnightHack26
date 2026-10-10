@@ -10,7 +10,7 @@ import { cache } from "react";
 
 import type { Comparison } from "@/types/comparison";
 import { ApiUnreachableError, getComparisonFromApi, getCompaniesFromApi, looksLikeComparison } from "@/lib/api";
-import type { CompanyListing, RubricFile } from "@/lib/types";
+import type { CompanyCard, CompanyListing, RubricFile } from "@/lib/types";
 
 const FILE_RE = /^([A-Z.\-]{1,6})_(\d{4})_(\d{4})\.json$/;
 
@@ -132,6 +132,18 @@ function toListing(c: Comparison, file: string, source: CompanyListing["source"]
 }
 
 /** Listing for the home grid: published files (+ FIXTURE in dev) (+ API extras if it is up). */
+/** API company cards are untrusted input: require the fields the grid renders and never list fixtures. */
+function isUsableCard(card: Partial<CompanyCard> | null | undefined): card is CompanyCard {
+  if (!card || typeof card !== "object") return false;
+  if (card.is_fixture === true) return false;
+  if (typeof card.ticker !== "string" || !/^[A-Z.\-]{1,6}$/.test(card.ticker)) return false;
+  if (typeof card.name !== "string" || !card.name) return false;
+  if (!card.by_change_type || typeof card.by_change_type !== "object") return false;
+  if (typeof card.old_fiscal_year !== "number" || typeof card.new_fiscal_year !== "number") return false;
+  if (typeof card.total_changes !== "number") return false;
+  return true;
+}
+
 export const listCompanies = cache(async (): Promise<CompanyListing[]> => {
   const out: CompanyListing[] = [];
   const seen = new Set<string>();
@@ -143,7 +155,7 @@ export const listCompanies = cache(async (): Promise<CompanyListing[]> => {
   }
   try {
     for (const card of await getCompaniesFromApi()) {
-      if (seen.has(card.ticker)) continue;
+      if (!isUsableCard(card) || seen.has(card.ticker)) continue;
       out.push({ ...card, is_fixture: false, source: "api" });
       seen.add(card.ticker);
     }

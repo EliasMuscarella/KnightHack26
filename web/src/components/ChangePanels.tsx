@@ -118,6 +118,11 @@ const STATUS_TEXT: Record<string, string> = {
   empty: "No validated AI claims",
 };
 
+/** Defense in depth: never echo a quoted phrase from a validator reason into the UI. */
+function redactQuoted(reason: string): string {
+  return reason.replace(/\((['"\u2018\u2019\u201c\u201d])[^)]*\1\)/g, "(redacted)");
+}
+
 function Transparency({ interp }: { interp: Interpretation }) {
   const count = interp.dropped_claim_count ?? 0;
   const reasons = interp.dropped_reasons ?? [];
@@ -129,7 +134,7 @@ function Transparency({ interp }: { interp: Interpretation }) {
       {reasons.length > 0 ? (
         <ul className="mt-2 list-disc space-y-0.5 pl-5 text-ink-muted">
           {reasons.map((r, i) => (
-            <li key={i}>{r}</li>
+            <li key={i}>{redactQuoted(r)}</li>
           ))}
         </ul>
       ) : (
@@ -144,14 +149,17 @@ function Transparency({ interp }: { interp: Interpretation }) {
   );
 }
 
-export function AiInterpretationPanel({ interp }: { interp: Interpretation }) {
+export function AiInterpretationPanel({ interp, numberOf }: { interp: Interpretation; numberOf?: (id: string) => number }) {
   const claims = interp.claims ?? [];
   const rubric = interp.rubric ?? [];
-  // One number per unique cited sentence across the whole panel (claims, then rubric rows).
-  const citeNumber = numberCitations([
-    ...claims.map((c) => c.cited_sentence_ids),
-    ...rubric.map((r) => r.cited_sentence_ids ?? []),
-  ]);
+  // One number per unique cited sentence across the whole page when the parent passes one;
+  // otherwise across this panel (claims, then rubric rows).
+  const citeNumber =
+    numberOf ??
+    numberCitations([
+      ...claims.map((c) => c.cited_sentence_ids),
+      ...rubric.map((r) => r.cited_sentence_ids ?? []),
+    ]);
   // The validator disclosure only makes sense when the model actually produced output.
   const showTransparency = interp.status === "ok" || interp.status === "empty";
   return (
@@ -169,7 +177,9 @@ export function AiInterpretationPanel({ interp }: { interp: Interpretation }) {
           </span>
         ) : null}
       </div>
-      <p className="mt-2 text-xs leading-snug text-ai-fg">{AI_NOTE}</p>
+      <p className="mt-2 text-xs leading-snug text-ai-fg">
+        {showTransparency ? AI_NOTE : "No AI output for this change."}
+      </p>
 
       {interp.status !== "ok" ? (
         <div className="mt-3 rounded border border-ai-line/50 bg-surface p-3 text-sm">
@@ -233,7 +243,7 @@ export function AiInterpretationPanel({ interp }: { interp: Interpretation }) {
   );
 }
 
-function HitList({ title, hits }: { title: string; hits: SignalHit[] }) {
+function HitList({ title, hits, numberOf }: { title: string; hits: SignalHit[]; numberOf?: (id: string) => number }) {
   if (hits.length === 0) return null;
   return (
     <div>
@@ -247,7 +257,7 @@ function HitList({ title, hits }: { title: string; hits: SignalHit[] }) {
               <p className="font-semibold text-ink">{h.value}</p>
               {h.detail ? <p className="text-xs text-ink-muted">{h.detail}</p> : null}
               <div className="mt-1 flex flex-wrap items-center gap-1">
-                <CitationChips ids={[...oldIds, ...newIds]} withSide />
+                <CitationChips ids={[...oldIds, ...newIds]} withSide numberOf={numberOf} />
               </div>
             </li>
           );
@@ -257,7 +267,7 @@ function HitList({ title, hits }: { title: string; hits: SignalHit[] }) {
   );
 }
 
-export function SignalsPanel({ change }: { change: Change }) {
+export function SignalsPanel({ change, numberOf }: { change: Change; numberOf?: (id: string) => number }) {
   const s: Signals = change.signals;
   const hedge = s.hypothetical_to_actual ?? [];
   const ents = s.new_entities ?? [];
@@ -270,9 +280,9 @@ export function SignalsPanel({ change }: { change: Change }) {
         <span id="signals-heading">Deterministic signals</span>
       </PanelHeading>
       <div className="mt-3 space-y-4">
-        <HitList title="Hedged wording became actual wording" hits={hedge} />
-        <HitList title="New named entities" hits={ents} />
-        <HitList title="New quantities" hits={qty} />
+        <HitList title="Hedged wording became actual wording" hits={hedge} numberOf={numberOf} />
+        <HitList title="New named entities" hits={ents} numberOf={numberOf} />
+        <HitList title="New quantities" hits={qty} numberOf={numberOf} />
         {hedge.length + ents.length + qty.length === 0 ? (
           <p className="text-sm text-ink-muted">No hedge, entity or quantity signals detected.</p>
         ) : null}

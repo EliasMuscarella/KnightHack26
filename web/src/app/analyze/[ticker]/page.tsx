@@ -20,7 +20,8 @@ export default async function AnalyzePage(props: PageProps<"/analyze/[ticker]">)
 
   if (!ticker) {
     return (
-      <PageContainer className="max-w-[760px] py-20">
+      <PageContainer className="py-20">
+        <div className="mx-auto max-w-[760px]">
         <p className="font-mono text-sm font-semibold text-del-fg">
           <span aria-hidden="true">✕ </span>Invalid ticker
         </p>
@@ -29,6 +30,7 @@ export default async function AnalyzePage(props: PageProps<"/analyze/[ticker]">)
         <div className="mt-8 max-w-[560px]">
           <TickerSearch size="large" />
         </div>
+      </div>
       </PageContainer>
     );
   }

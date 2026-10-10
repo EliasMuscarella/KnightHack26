@@ -1456,8 +1456,8 @@
         "claims": [],
         "dropped_claim_count": 2,
         "dropped_reasons": [
-          "FIXTURE: claim 1 dropped: banned language ('likely')",
-          "FIXTURE: claim 2 dropped: no citations"
+          "FIXTURE: claim 1 dropped: banned language (predictive wording)",
+          "FIXTURE: claim 2 dropped: no citation"
         ],
         "model_id": "FIXTURE: fake/model-id",
         "reason": "FIXTURE: all 2 claims dropped by the citation validator",
