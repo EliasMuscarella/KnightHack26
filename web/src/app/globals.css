@@ -28,9 +28,11 @@
   --color-less-strong-fg: #96420f; /* Dropped risk */
   --color-less-strong-bg: #f8e3d6;
   --color-less-fg: #a64b18; /* Scaled back (5.0:1 on its tint; the brief's #B5541C was 4.3:1) */
+  --color-less-mid: #d08a5a; /* Scaled back FILLS only (bars, meters): keeps it apart from Dropped risk */
   --color-less-bg: #fbede3;
   --color-rewrite-fg: #14213d; /* Major update */
   --color-rewrite-bg: #e6e9ef;
+  --color-rewrite-mid: #8a95a8; /* Major update FILLS only (bars, meters, heatmap): apart from the blues */
 
   /* ---- signals ---- */
   --color-actual-fg: #7a4b00; /* Potential became actual */
@@ -439,7 +441,7 @@ summary {
 }
 .draw-marks .hl {
   background-repeat: no-repeat;
-  animation: rd-draw 650ms 300ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: rd-draw 450ms 120ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {

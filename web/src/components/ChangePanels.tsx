@@ -48,9 +48,7 @@ export function WhatChangedPanel({ interp, numberOf }: { interp: Interpretation;
               </li>
             ))}
           </ol>
-          <p className="mt-4 text-sm text-ink-secondary">
-            Every point cites the filing. A superscript number jumps to that sentence below.
-          </p>
+          <p className="mt-4 text-sm text-ink-secondary">Each number jumps to the cited filing sentence below.</p>
         </div>
       )}
     </section>
@@ -119,7 +117,7 @@ function ScoreRow({ line, changeType, figures }: { line: ScoreLine; changeType: 
           <span className="block font-medium leading-snug text-ink" title={helper || undefined}>
             {label}
           </span>
-          {detail ? <span className="mt-0.5 block text-sm leading-snug text-ink-secondary">{detail}</span> : null}
+          {detail ? <span className="mt-0.5 block text-sm leading-snug text-ink-secondary">{detail.replace(/ -> /g, " → ")}</span> : null}
           <span className="mt-1 block text-sm text-accent">
             {open ? "Hide" : "Show"} {n} cited {n === 1 ? "sentence" : "sentences"}
           </span>

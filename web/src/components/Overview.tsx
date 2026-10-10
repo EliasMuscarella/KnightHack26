@@ -34,11 +34,10 @@ export function OverviewHeader({ comparison }: { comparison: Comparison }) {
       <div className="flex items-center gap-4">
         <CompanyLogo ticker={company.ticker} name={name} size="md" />
         <div className="min-w-0">
-          <h1 className="text-xl font-medium leading-tight tracking-tight text-ink">{name}</h1>
-          <p className="mt-0.5 text-sm text-ink-secondary">
-            <span className="font-medium text-ink">{company.ticker}</span>, risk factors in the FY{old_filing.fiscal_year} and FY
-            {new_filing.fiscal_year} annual reports
+          <p className="text-sm text-ink-secondary">
+            <span className="font-medium text-ink">{company.ticker}</span>, annual reports FY{old_filing.fiscal_year} and FY{new_filing.fiscal_year}
           </p>
+          <h1 className="mt-1 text-2xl font-title leading-none tracking-tight text-ink">{name}</h1>
         </div>
       </div>
       <p className="mt-6 max-w-prose-72 text-lg font-medium leading-snug text-ink">
@@ -78,10 +77,10 @@ export function HighlightCards({ comparison }: { comparison: Comparison }) {
       {groups.length === 0 ? (
         <p className="text-base text-ink-secondary">No single sentence-level change stood out. Every change is listed below.</p>
       ) : (
-        <ol className="space-y-4">
+        <ol className="space-y-8">
           {groups.map((g, i) => (
             <li key={g.change.id} data-highlight-card={i === 0 ? "first" : undefined}>
-              <HighlightCard change={g.change} facts={g.facts} comparison={comparison} />
+              <HighlightCard change={g.change} facts={g.facts} comparison={comparison} source={null} />
             </li>
           ))}
         </ol>

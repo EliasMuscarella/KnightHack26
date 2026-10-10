@@ -12,7 +12,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 # Bump when derive.py changes what it produces; together with TOPICS_VERSION (topics.yml) it forms
 # `derivation`, which is stored in every file so stale files are re-derived instead of trusted.
-TRENDS_VERSION = "1.0.0"
+TRENDS_VERSION = "1.1.0"
 
 TopicSource = Literal["lexicon", "entity", "phrase"]
 MentionStatus = Literal["added", "modified"]
@@ -71,6 +71,12 @@ class PotentialToActual(_Strict):
     old_text: str
     new_text: str
     score: int
+    old_spans: list[tuple[int, int]] = Field(
+        default_factory=list, description="Character ranges of deleted words inside old_text."
+    )
+    new_spans: list[tuple[int, int]] = Field(
+        default_factory=list, description="Character ranges of inserted words inside new_text."
+    )
 
 
 class TrendFacts(_Strict):

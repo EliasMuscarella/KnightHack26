@@ -405,3 +405,162 @@ with the report (about five minutes):
 
 The home-page card already states the case plainly ("No meaningful changes this year, across N risk
 factors") instead of showing an error.
+
+### Files by task
+
+| Task | Files |
+|------|-------|
+| UX1 | `DESIGN.md`, `CLAUDE.md` (one line), `web/src/app/globals.css`, `web/src/app/layout.tsx`, `web/src/components/Wordmark.tsx` |
+| UX2 | every page and component under `web/src/` (helper purge, sentence case, no dots/arrows/glyphs), `web/src/lib/copy.ts` |
+| UX3 | `web/src/components/ui.tsx` (`ChangeBadge`, `ChangeLevel`, `Legend`), `web/src/lib/vocabulary.ts` (tones, `levelSegments`, `LEGEND`) |
+| UX4 | `web/src/components/HighlightCard.tsx`, `MarkedText.tsx`, `Quote.tsx`, `web/src/lib/diffDisplay.ts`, `web/src/lib/sentences.ts` |
+| UX5 | `web/src/components/Overview.tsx`, `ChangeList.tsx`, `web/src/lib/names.ts`, `web/src/lib/vocabulary.ts` (`displayTitle`, `shortTitleFromHeading`) |
+| UX6 | `web/src/app/c/[ticker]/[changeId]/page.tsx`, `web/src/components/ChangeDetail.tsx`, `ChangePanels.tsx`, `citations.tsx` |
+| UX7 | `web/src/app/(home)/page.tsx`, `web/src/components/CompanyGrid.tsx`, `web/src/lib/hero.ts`, `web/src/lib/data.ts` |
+| UX8 | `REPORT.md` §12 (diagnostic recipe; no code, see root causes) |
+| T9 | `api/main.py` (`StoreState`, `TrendsService`, `/store/health`, `/trends`), `pipeline/store/databricks.py`, `tests/test_api_store.py` |
+| T10 | `pipeline/trends/{derive,schema,aggregate}.py`, `pipeline/trends/topics.yml`, `data/derived/*.trends.json`, `tests/test_trends.py` |
+| T11 | `pipeline/store/tables.py` (`topic_mentions`, `category_activity`, trends queries, span columns), `pipeline/store/publisher.py`, `scripts/derive_trends.py`, `scripts/databricks_setup.py` |
+| UX12 | `web/src/app/trends/page.tsx`, `web/src/app/api/trends/route.ts`, `web/src/components/TrendsView.tsx`, `web/src/lib/trends.ts`, `web/src/lib/api.ts`, `web/src/lib/types.ts` |
+| UX13 | `web/src/lib/__tests__/*.test.ts`, `tests/test_web_units.py`, `web/package.json` (`test:unit`), screenshots in the session scratchpad, this section |
+
+### Root causes
+
+**Trends cold start (T9, reproduced by the subagent before fixing; details in DECISIONS.md D-021).**
+`/store/health` ran the first Databricks check synchronously under a 5 s wait and reported the timeout as
+`offline`, so while the client was still being built or the warehouse was starting, "not finished" was
+shown as "not connected"; `/trends` then had no result to fall back on. The fix separates `connecting`
+from `offline`, serves the last good result (memory, then `data/cache/trends/trends.json`) while a
+refresh runs in the background, and computes from local reports when there is no remote result yet. The
+page shows a skeleton and polls for `connecting`, and "not connected" only for `disabled` or `offline`
+with nothing local.
+
+**Amazon "0 meaningful changes" (UX8).** Not reproducible here: no AMZN report, no stage cache, no SEC
+access. The recipe above says how to settle it in five minutes with the report in hand and what each
+outcome means. Nothing was special-cased.
+
+### Design choices and token changes
+
+- Tokens are the brief's values except two contrast adjustments recorded in DESIGN.md: muted text
+  `#6B7A90` → `#627187` (was 4.1:1 on the page color) and Scaled back text `#B5541C` → `#A64B18`
+  (4.3:1 on its tint). A mid gray `#8A95A8` and a mid orange `#D08A5A` were added for fills only
+  (bars, meters, heatmap), because the strong orange and the ink fill made "Scaled back" and
+  "Major update" bars read as "Dropped risk" and "New risk".
+- The highlighter is a `linear-gradient(transparent 35%, #FFD95A 35%)` stroke on `<mark class="hl">`;
+  removed words are `<del class="strike">` in `#B5541C`. Both come from the diff spans; nothing else on
+  the site is yellow except the wordmark.
+- The home hero is the top Potential → Actual highlight across local reports, chosen by
+  `pickHero` (kind, then score, ticker, position); never a hardcoded company.
+- Company display names come from `names.ts` (title case, suffixes dropped, exceptions map); the official
+  SEC name stays in the audit trail.
+- Two deliberate departures from the brief after the reviews, with reasons in D-023: the wording-change
+  meter is ink only, and the amber badge carries a ring.
+
+### Invariants and the brief's additional rules
+
+Confirmed on the final build: every quote is verbatim (`sentence_index` text, visible ellipsis and
+"Show full sentence" when trimmed); the highlighter and strike are drawn only over diff-identified spans;
+no company, sentence or number is hardcoded (hero, topics and examples come from the reports); trend
+topics are deterministic (`topics.yml`, `TOPICS_VERSION`) and every mention keeps ticker, change id,
+sentence id and verbatim text with a link to the change; wording says "newly added" and "most widespread
+new disclosures", never "impact", "biggest risk" or "riskier"; all SQL is parameterized (the store tests
+assert no literal values); the published contract and `analysis_id` are unchanged (code fingerprint
+`e94330fb…` before and after; FIXTUR cached vs `--no-cache` byte-identical); nothing under 14px, no
+horizontal scroll at 1280 or 1440, visible focus rings, color never the only carrier (badges carry words,
+meters carry aria-labels, heatmap cells carry their numbers), reduced motion disables every animation.
+
+### Top shared topics (real data, two reports in the library)
+
+No topic was newly added by more than one company; the page says so. Ranked by companies, then new
+sentences:
+
+| Topic | Source | Companies | New sentences |
+|-------|--------|-----------|---------------|
+| Counterparty and credit risk | lexicon | 1 (NVDA) | 4 |
+| AI regulation | lexicon | 1 (SF) | 1 |
+| Biden Administration | name | 1 (NVDA) | 1 |
+| DOL | name | 1 (SF) | 1 |
+| Government shutdown | lexicon | 1 (SF) | 1 |
+
+One Potential → Actual pair in the library (NVDA export controls). Change mix: NVDA 2 new, 2 expanded,
+1 major update, 1 scaled back; SF 5 major updates.
+
+### Review round 1 (before fixes)
+
+**Reverse-squint (blind, screenshots only): 6/10 for "does not look templated".** Strongest idea: the
+highlighter on serif filing text against a sans UI, carried into the wordmark; "the home page leads with a
+real two-column diff specimen instead of feature cards. That is the best decision in the product."
+Tells: the same rounded white card for every highlight (boxes inside a box on the first card), pill tags on
+everything, signal-strength meter glyph, the same ▸ disclosure pattern three times, the lavender-free but
+still boxed AI summary, the four-column methodology, gray helper sentences, ten identical half-full bars on
+Trends, "Ink" in the legend while the swatch was gray, "See the change" vs "See the full change", ASCII
+"->" in score lines, Home active on company pages, the Trends potential-to-actual quote without marks.
+Typography: company H1 underweighted against its lede; last-year gray serif with thin strike close to
+illegible in long runs. Color: yellow collides with amber.
+
+**Judge (BNY MD, 90 seconds).** Understood the product and the NVIDIA story (export controls, the
+$4.5 billion H20 charge, counterparty risk, Groq). Confusion: the hero showed only "Export" highlighted so
+the "actual" event was invisible; the Trends potential-to-actual pair had no marks; badges differ between
+cards and list ("Potential → Actual" vs "Major update"); "Newly named" read as "renamed"; the preamble
+paragraph counted as a New risk; levels looked backwards relative to sentence counts; three yellows;
+unlabeled heatmap swatches; "Topics several companies newly added" followed by "No topic was…"; names
+mixed with themes; "Computed from reports on this computer". Nothing read as a rating or advice.
+
+**Fixed after round 1:** marks on the Trends potential-to-actual pair (spans carried through the trend
+facts and the store); hero and cards keep the marked words inside the trim window so "resulting in excess
+inventory… H20" shows; ruled sections instead of nested cards; change-type badge beside the fact badge on
+every card so cards and list agree; "Newly named: Groq" with the name; equal-square meter; legend swatches
+match the fills ("Gray: rewritten both ways") and include the amber tint and a highlighter sample;
+labeled heatmap legend with a note on double-tagged risk factors; section retitled "New topics in the
+library" with bars hidden when every count is one; "a name" / "a phrase" tags; "See the full change"
+everywhere; arrows in score lines; Home active only on "/"; 600-weight page titles; merged one-sided runs
+full width; the level note no longer speaks of "points"; fewer helper sentences.
+
+### Review round 2 (after fixes)
+
+**Reverse-squint: 6/10, unchanged.** "Mostly not" template-built; remaining tells: the stock hero shape
+with an empty right half, the two library cards with an empty third slot, the four-step and
+three-column methodology, helper sentences, repeated "Wording change" and "Edited" labels, the ▸ triangles,
+and three data glitches read as unfinished: "New risk" twice, the preamble as a top change, a removed
+fragment starting mid-word. The hero highlighter looked misaligned (the screenshot caught the 650 ms
+stroke animation half drawn). Ranked fixes 1–10: hero highlighter; keep the two-column grid for
+one-sided runs; group runs under one header; remove the doubled badge and the preamble; a distinct color
+for Potential → Actual; an ink-only meter; a column header for the level; drop the repeated source line
+and "Edited" labels; a dense list instead of library cards; one bold H1 style.
+
+**Judge: 7/10 for "would I trust this in front of a client".** "Verbatim quotes, footnoted AI points and
+the 'Open in SEC filing' link on every change make it defensible. But the doubled 'New risk' badge and
+the boilerplate intro ranked as a top NVIDIA change are exactly the kind of slip a client would catch."
+Praise: "the old and new sentence side by side with a highlighter, under 'Potential → Actual' and
+'$4.5 billion', gave me the H20 story in ten seconds, which is the whole pitch." Fixes asked: filter the
+boilerplate and the doubled badge; harmonize amber vs highlighter and label the meter as wording-only
+where it appears. Nothing read as a rating, prediction or advice.
+
+**Fixed after round 2 (verified on screenshots, not re-reviewed; the brief allows one re-run):** one
+badge per fact; a ring on the amber badge; ink-only meter; company title at 44px; the badge detail on
+library cards; no repeated source line under cards; quieter labels inside merged runs; "Source: the local
+report library"; "a name" tags; a line relating heatmap cells to the change-mix bars; a 450 ms stroke
+with a 120 ms delay, and the screenshot script now waits for animations.
+
+**Not fixable here, needs the team's NVDA re-run (data):** the preamble ranked as a New risk (the
+segmenter fix is in the pipeline already, `segment` 0.2.1), entity noise ("Biden Administration", "DOL",
+"AI Diffusion IFR in"), the "z ECCNs" fragment, and the LLM short titles ("Defects in our products have
+caused"). **Kept as the brief asked:** library cards, the orange family, "Major update", the methodology
+columns (D-023).
+
+### Commands (backfill, rebuild)
+
+```bash
+uv run python scripts/derive_trends.py --local-only   # data/derived/{analysis_id}.trends.json for every local report
+uv run python scripts/derive_trends.py                # same, plus MERGE into topic_mentions / category_activity when Databricks is configured
+uv run python scripts/databricks_setup.py             # tables, Volume; adds the highlights span columns to an existing table
+uv run python scripts/sync_to_databricks.py           # upload local reports (idempotent)
+rm -f data/cache/trends/trends.json                   # drop the /trends disk cache (it also invalidates itself on TRENDS_VERSION)
+cd web && npm run test:unit && npm run typecheck && npm run lint && npm run build
+```
+
+### Next smallest safe task
+
+Re-run NVDA on a machine with SEC access (`uv run python -m pipeline.run NVDA --force`), publish, and
+re-derive trends. That single run removes the three data findings both reviewers flagged (preamble as a
+New risk, entity noise, the mid-word fragment) without touching any code.
