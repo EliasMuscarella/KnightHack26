@@ -95,6 +95,27 @@ def wc(s: str) -> int:
     return len(s.split())
 
 
+# Hand-made short titles (labels, never claims), keyed by the official heading.
+SHORT_TITLES = {
+    F + "We depend on a limited number of third-party foundries to manufacture our widgets.": F
+    + "Reliance on outside foundries",
+    F + "Cybersecurity incidents, including ransomware, could materially disrupt our operations.": F
+    + "Cybersecurity and ransomware",
+    F
+    + "Our use of artificial intelligence may create legal, regulatory, and reputational exposure.": F
+    + "Artificial intelligence exposure",
+    F
+    + "The pending acquisition of Gadgetron Inc. may not be completed on the expected timeline.": F
+    + "Pending Gadgetron acquisition",
+    F + "Fluctuations in foreign currency exchange rates could adversely affect our results.": F
+    + "Currency exchange rates",
+    F
+    + "Changes in trade policy, including tariffs, have increased and could further increase our costs.": F
+    + "Trade policy and tariffs",
+    F + "The widget market is intensely competitive.": F + "Competition in the widget market",
+}
+
+
 def build_change(
     old_b: dict | None,
     new_b: dict | None,
@@ -108,6 +129,7 @@ def build_change(
     score_lines: list[dict],
     interpretation: dict,
 ) -> dict:
+    short_title = SHORT_TITLES[(new_b or old_b)["heading"]]
     sentences: list[dict] = []
     stats = dict(
         added=0, removed=0, modified=0, unchanged=0, added_word_count=0, removed_word_count=0
@@ -200,6 +222,7 @@ def build_change(
         id=cid,
         rank=0,
         title=title,
+        short_title=short_title,
         old_title=old_b["heading"] if old_b else None,
         new_title=new_b["heading"] if new_b else None,
         section_group=(new_b or old_b)["group"],
@@ -959,6 +982,17 @@ def main() -> int:
         ],
     )
     comp = Comparison.model_validate(doc)
+    from pipeline.highlights import select_highlights
+
+    comp = Comparison.model_validate(
+        {
+            **comp.model_dump(mode="json"),
+            "highlights": [
+                h.model_dump(mode="json")
+                for h in select_highlights(comp.changes, comp.sentence_index)
+            ],
+        }
+    )
     out = ROOT / "contract" / "fixtures" / "FIXTURE_comparison.json"
     out.write_text(canonical_json(comp))
     print(

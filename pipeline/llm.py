@@ -28,7 +28,7 @@ from pipeline.validate import ValidationResult, validate_llm_output
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.1.0"
+STAGE_VERSION = "0.2.0"
 MAX_ATTEMPTS = 3
 MAX_TOKENS = 1200
 
@@ -66,6 +66,49 @@ Respond with this JSON object and nothing else:
     ... at most 3 ...
   ]
 }}"""
+
+
+SHORT_TITLE_SYSTEM = """You write short labels for risk-factor headings from SEC annual reports, for a finance audience. For each heading, return a label of at most 8 plain-English words that names the topic neutrally (for example "Export controls on China sales" or "Dependence on TSMC manufacturing"). Labels describe the subject; they never say that something is likely, risky, good, or bad, and they never give advice. Respond with JSON only."""
+
+SHORT_TITLE_USER = """Return this JSON object and nothing else:
+{{"titles": [{{"change_id": "<id>", "short_title": "<at most 8 words>"}}, ...]}}
+
+HEADINGS:
+{items}"""
+
+
+def short_title_prompt_sha256() -> str:
+    return hashlib.sha256(
+        (SHORT_TITLE_SYSTEM + "\n" + SHORT_TITLE_USER).encode("utf-8")
+    ).hexdigest()
+
+
+class RawShortTitle(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    change_id: str
+    short_title: str
+
+
+class RawShortTitles(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    titles: list[RawShortTitle] = Field(default_factory=list)
+
+
+def short_titles_raw(client: LLMClient, items: list[tuple[str, str]]) -> dict | None:
+    """One temperature-0 call for every (change_id, heading). Returns the parsed raw JSON or None
+    after MAX_ATTEMPTS failures. Validation and fallbacks happen in stages_final (not here)."""
+    listing = "\n".join(f"{cid}\t{heading}" for cid, heading in items)
+    user = SHORT_TITLE_USER.format(items=listing)
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        try:
+            text = client.complete(SHORT_TITLE_SYSTEM, user)
+            parsed = RawShortTitles.model_validate(_extract_json(text))
+            return parsed.model_dump()
+        except (json.JSONDecodeError, ValidationError) as e:
+            log.warning("short titles: invalid JSON on attempt %d: %s", attempt, type(e).__name__)
+        except Exception as e:  # noqa: BLE001
+            log.warning("short titles: provider error on attempt %d: %s", attempt, type(e).__name__)
+    return None
 
 
 def prompt_sha256() -> str:

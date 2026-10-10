@@ -71,6 +71,10 @@ export interface Comparison {
    */
   filing_selection_note: string;
   /**
+   * At most 5 (at most 2 per change), ranked by pipeline.highlights.rank_key.
+   */
+  highlights?: Highlight[];
+  /**
    * True ONLY for the hand-made dev fixture. Published data must have False.
    */
   is_fixture?: boolean;
@@ -117,6 +121,10 @@ export interface Change {
   score_breakdown: ScoreLine[];
   section_group?: string | null;
   sentences: Sentence[];
+  /**
+   * At most 8 words, plain English, neutral; a label for lists and cards (never a claim). LLM-generated and validated, or a deterministic truncation of the heading.
+   */
+  short_title: string;
   signals: Signals;
   similarity?: number | null;
   stats: DiffStats;
@@ -259,6 +267,30 @@ export interface Company {
   cik: string;
   name: string;
   ticker: string;
+}
+/**
+ * One before/after moment a reader can take in at a glance. Quotes are always the verbatim
+ * sentences behind the ids (looked up in sentence_index); nothing is paraphrased.
+ */
+export interface Highlight {
+  change_id: string;
+  /**
+   * The deterministic signal value behind it, e.g. 'investigating -> published their preliminary finding'.
+   */
+  detail?: string | null;
+  kind: "potential_became_actual" | "new_figure" | "new_risk" | "removed_risk" | "new_named_party";
+  /**
+   * None for removed text.
+   */
+  new_sentence_id?: string | null;
+  /**
+   * None for new text.
+   */
+  old_sentence_id?: string | null;
+  /**
+   * The parent change's short_title.
+   */
+  short_title: string;
 }
 /**
  * Exact identifiers of every model/method that influenced the output.
