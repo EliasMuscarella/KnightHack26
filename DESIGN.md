@@ -57,7 +57,7 @@ heavy weights.
 |---|---|---|
 | `ink` | `#14213D` | text |
 | `ink-secondary` | `#3E4A5F` | the lightest allowed for anything people need to read |
-| `ink-muted` | `#6B7A90` | last-year text and disabled states only |
+| `ink-muted` | `#627187` | last-year text and disabled states only (adjusted from `#6B7A90`, which was 4.1:1 on the page color) |
 | `line` | `#D9DFE7` | rules and borders |
 | `paper` | `#F5F7FA` | page background |
 | `surface` | `#FFFFFF` | cards, header, footer |
@@ -71,7 +71,7 @@ heavy weights.
 | `more-strong-fg` / `more-strong-bg` | `#174A85` | `#DCE8F7` | New risk |
 | `more-fg` / `more-bg` | `#2C64A8` | `#E6EFFA` | Expanded |
 | `less-strong-fg` / `less-strong-bg` | `#96420F` | `#F8E3D6` | Dropped risk |
-| `less-fg` / `less-bg` | `#B5541C` | `#FBEDE3` | Scaled back |
+| `less-fg` / `less-bg` | `#A64B18` | `#FBEDE3` | Scaled back (text adjusted from `#B5541C`, which was 4.3:1 on its tint) |
 | `rewrite-fg` / `rewrite-bg` | `#14213D` | `#E6E9EF` | Major update |
 | `actual-fg` / `actual-bg` | `#7A4B00` | `#FCEFC7` | Potential became actual |
 | `signal-fg` / `signal-bg` | `#14213D` | `#EEF1F5` | Newly named, New figure disclosed |
@@ -84,7 +84,8 @@ Essentially unchanged uses `ink-secondary` on `surface` with a `line` border.
   over the lower part of the line, `linear-gradient(transparent 35%, #FFD95A 35%)`, with
   `box-decoration-break: clone`. Never a full box, never a border. Class: `.hl`.
 * Removed words in **last year's** quotes: struck through in `strike` `#B5541C` (`text-decoration:
-  line-through`, 1.5px), text stays readable. Class: `.strike`.
+  line-through`, 1.5px; a decoration, so the orange stays at the brief's value), text stays readable.
+  Class: `.strike`.
 * The highlighter only marks words the deterministic diff identified (`diff_spans`, or a whole
   sentence whose status is `added`). It never marks anything an LLM wrote.
 
@@ -139,7 +140,8 @@ is capped at about 72 characters (`max-w-prose-72`). Cards stack to one column b
 
 ## Accessibility
 
-WCAG AA contrast for all text (every token pair above is at least 4.5:1 at body size); visible keyboard
+WCAG AA contrast for all text (measured: ink on paper 14.9:1, secondary on paper 8.3:1, muted on paper
+4.6:1, badge text on its tint between 5.0:1 and 14.1:1, ink on the highlighter 11.7:1, white on accent 8.9:1); visible keyboard
 focus (3px `more-strong-fg` outline); color is never the only carrier of meaning (every colored element
 also has a word or a number); numbers in charts are available in tooltips and to screen readers;
 reduced motion is respected.

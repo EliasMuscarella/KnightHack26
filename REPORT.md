@@ -368,3 +368,40 @@ the token never appears in the log.
 **Next smallest safe task:** run the five steps above against a real workspace and record the output in this
 section; then add a nightly `scripts/sync_to_databricks.py` run (or a `--rebuild-tables` flag that re-derives the
 three tables from the Volume) so the tables can be regenerated after a schema change.
+
+## 12. Design system and Trends session (UX1–UX13)
+
+Goal: nothing looks templated, color means direction of disclosure change, the highlighter is the one
+visual idea, and Trends loads on the first visit with real cross-company content. Verdicts from the outside
+reviews are pasted at the end of this section.
+
+### Amazon: "0 meaningful changes" (Task 8)
+
+**Not verifiable in this sandbox.** There is no AMZN report in `data/published/`, no stage cache, and
+sec.gov is not reachable here, so neither the extracted Item 1A texts nor the block matches could be
+inspected, and nothing was special-cased. What the result would mean, and how to settle it on a machine
+with the report (about five minutes):
+
+1. Block counts. `uv run python -m pipeline.run AMZN --until-stage 2 -v` prints "old: N risk blocks, new: M
+   risk blocks". Amazon's Item 1A has roughly 30 bold-headed risks under three group headings
+   ("Business and Industry Risks", "Operating Risks", "Legal and Regulatory Risks"). Fewer than about 20
+   blocks on either side means the segmenter missed headings (Amazon's headings are bold lead sentences
+   that end in a period; `segment.split_lead_heading` handles that shape, so a miss would be a styling
+   variant worth a test). One or two blocks means extraction stopped early (check `END_RE` against the
+   filing's "Item 1B" heading).
+2. Extraction size. In the stage-1 cache (`data/cache/stages/extract/*.json`, field `text`), both years
+   should be about 9,000 to 12,000 words. A much smaller new-year text means a boundary problem.
+3. Matches. In the published JSON, `summary.matched_pairs` should be close to the block count, and the
+   per-change `similarity` values high (above 0.9) for a stable filing. Many unmatched blocks with
+   similar headings would point at the matcher, not at Amazon.
+4. The classification itself. With `pipeline/diff.py`'s rules a matched block is "largely unchanged" when
+   both the added-word share and the removed-word share are under 5%, or when the edits are small enough
+   not to reach the expanded (15% with a 10-point net), reduced, or reworded (30% total) thresholds.
+   Amazon edits its risk factors lightly most years, so every block landing under those thresholds is
+   plausible. To confirm it is real: sort the changes by `stats.added_word_count` and read the two largest;
+   if each shows a handful of inserted words in otherwise identical sentences, record those two sentence
+   pairs here as the evidence. If instead a block shows whole new paragraphs while its `change_type` is
+   `largely_unchanged`, that is a diff-stage bug: open an issue with the block id and the two texts.
+
+The home-page card already states the case plainly ("No meaningful changes this year, across N risk
+factors") instead of showing an error.

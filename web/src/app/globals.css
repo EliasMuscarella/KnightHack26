@@ -10,11 +10,11 @@
   /* ---- neutrals ---- */
   --color-ink: #14213d;
   --color-ink-secondary: #3e4a5f;
-  --color-ink-muted: #6b7a90; /* last-year text and disabled states only */
+  --color-ink-muted: #627187; /* last-year text and disabled states only (4.6:1 on paper; the brief's #6B7A90 was 4.1:1) */
   --color-ink-faint: #3e4a5f; /* legacy alias of ink-secondary; do not use in new code */
   --color-line: #d9dfe7;
   --color-line-strong: #b9c3d0; /* legacy; rules should use --color-line */
-  --color-line-input: #6b7a90; /* form-control borders, 3.9:1 on white (non-text contrast >= 3:1) */
+  --color-line-input: #627187; /* form-control borders (non-text contrast >= 3:1) */
   --color-paper: #f5f7fa;
   --color-surface: #ffffff;
   --color-sunken: #eef1f5;
@@ -27,7 +27,7 @@
   --color-more-bg: #e6effa;
   --color-less-strong-fg: #96420f; /* Dropped risk */
   --color-less-strong-bg: #f8e3d6;
-  --color-less-fg: #b5541c; /* Scaled back */
+  --color-less-fg: #a64b18; /* Scaled back (5.0:1 on its tint; the brief's #B5541C was 4.3:1) */
   --color-less-bg: #fbede3;
   --color-rewrite-fg: #14213d; /* Major update */
   --color-rewrite-bg: #e6e9ef;
