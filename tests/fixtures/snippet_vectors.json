@@ -1,0 +1,134 @@
+{
+ "rule": "snippet_window(text, evidence, max): a window of at most max characters containing the earliest evidence span, placed about a third of the way in, snapped to word boundaries (start at a word start; end right before a space, or at the span end when the span fills the window); a span longer than the window is shown from its start; callers add a visible ellipsis on each trimmed side. Reference: scripts/check_integrity.py snippet_window.",
+ "cases": [
+  {
+   "name": "short text is whole",
+   "text": "The company sells widgets in three regions and reports results each quarter.",
+   "evidence": [
+    [
+     4,
+     11
+    ]
+   ],
+   "max": 220,
+   "start": 0,
+   "end": 76
+  },
+  {
+   "name": "span deep in the text",
+   "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet.",
+   "evidence": [
+    [
+     359,
+     371
+    ]
+   ],
+   "max": 220,
+   "start": 287,
+   "end": 501
+  },
+  {
+   "name": "span at the start",
+   "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet.",
+   "evidence": [
+    [
+     0,
+     11
+    ]
+   ],
+   "max": 220,
+   "start": 0,
+   "end": 216
+  },
+  {
+   "name": "span at the very end",
+   "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet.",
+   "evidence": [
+    [
+     490,
+     495
+    ]
+   ],
+   "max": 220,
+   "start": 335,
+   "end": 551
+  },
+  {
+   "name": "no evidence falls back to a prefix",
+   "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet.",
+   "evidence": [],
+   "max": 220,
+   "start": 0,
+   "end": 216
+  },
+  {
+   "name": "span longer than the window starts at the span",
+   "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet.",
+   "evidence": [
+    [
+     39,
+     320
+    ]
+   ],
+   "max": 220,
+   "start": 39,
+   "end": 253
+  },
+  {
+   "name": "topic example budget",
+   "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet.",
+   "evidence": [
+    [
+     450,
+     462
+    ]
+   ],
+   "max": 320,
+   "start": 235,
+   "end": 551
+  },
+  {
+   "name": "two spans use the earliest",
+   "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet.",
+   "evidence": [
+    [
+     500,
+     510
+    ],
+    [
+     20,
+     30
+    ]
+   ],
+   "max": 220,
+   "start": 0,
+   "end": 216
+  },
+  {
+   "name": "span near the start with little left context",
+   "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet.",
+   "evidence": [
+    [
+     12,
+     19
+    ]
+   ],
+   "max": 220,
+   "start": 0,
+   "end": 216
+  },
+  {
+   "name": "span almost as long as the window near the end",
+   "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango alpha bravo charlie delta echo foxtrot golf hotel india juliet.",
+   "evidence": [
+    [
+     341,
+     558
+    ]
+   ],
+   "max": 220,
+   "start": 341,
+   "end": 558
+  }
+ ]
+}
