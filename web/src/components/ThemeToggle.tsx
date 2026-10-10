@@ -90,7 +90,7 @@ export function ThemeToggle() {
       onClick={cycle}
       aria-label={NEXT_LABEL[choice]}
       title={NEXT_LABEL[choice]}
-      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-ink-secondary hover:bg-sunken hover:text-ink"
+      className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-line text-ink-secondary hover:border-ink hover:text-ink"
     >
       <ThemeIcon choice={choice} />
     </button>

@@ -62,7 +62,7 @@ export default async function HomePage() {
             <p className="mt-2 font-mono text-sm text-ink">uv run python -m pipeline.run NVDA</p>
           </EmptyState>
         ) : (
-          <div className="mt-5">
+          <div className="mt-4">
             <CompanyGrid companies={companies} />
           </div>
         )}

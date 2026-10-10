@@ -325,7 +325,7 @@ function ActualItem({ a, company }: { a: TrendsActual; company: TrendsCompany | 
   const oldQ = a.old_text ? trimQuote(a.old_text, 200) : null;
   const newQ = a.new_text ? trimQuote(a.new_text, 200) : null;
   return (
-    <li className="border-t border-line py-5">
+    <li className="border-t border-line py-6">
       <div className="flex flex-wrap items-center gap-3">
         <ChangeBadge kind="potential_became_actual" size="sm" />
         <Link href={`/c/${encodeURIComponent(a.ticker)}`} className="text-sm text-ink-secondary underline-offset-2 hover:underline">
@@ -406,9 +406,9 @@ function ChangeMix({ data }: { data: TrendsPayload }) {
   return (
     <section aria-labelledby="mix-heading" className="space-y-4">
       <SectionTitle id="mix-heading">Change mix by company</SectionTitle>
-      <ul className="space-y-3">
+      <ul className="border-t border-line">
         {rows.map((r) => (
-          <li key={r.ticker} className="grid items-center gap-x-6 gap-y-1 min-[900px]:grid-cols-[160px_minmax(0,1fr)]">
+          <li key={r.ticker} className="grid items-center gap-x-6 gap-y-1 border-b border-line py-3 min-[900px]:grid-cols-[160px_minmax(0,1fr)]">
             <Link href={`/c/${encodeURIComponent(r.ticker)}`} className="text-base font-medium text-ink underline-offset-2 hover:underline">
               {names.get(r.ticker) ?? r.ticker}
             </Link>
