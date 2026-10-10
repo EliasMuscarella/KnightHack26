@@ -1,10 +1,12 @@
-"""D4/D6: the API against a fake shared store: library merge, read-through cache (local hit,
-remote hit, remote offline), integrity rejection, health and trends."""
+"""D4/D6/T9: the API against a fake shared store: library merge, read-through cache (local hit,
+remote hit, remote offline), integrity rejection, the four health states and stale-while-revalidate
+trends."""
 
 from __future__ import annotations
 
 import hashlib
 import json
+import threading
 import time
 from pathlib import Path
 
@@ -71,17 +73,28 @@ class FakeStore:
         self.rows = rows
         self.files = files
         self.offline = offline
+        self.gate: threading.Event | None = None  # when set, every call blocks until it opens
+        self.warehouse_state = "RUNNING"
+        self.warehouse_ready = threading.Event()  # statements block until the warehouse runs
+        self.warehouse_ready.set()
+        self.health_calls = 0
         self.downloads = 0
         self.list_calls = 0
         self.settings = type("S", (), {"table": lambda self, n: f"`riskdiff`.`main`.`{n}`"})()
         self.trend_rows: dict[str, list[dict]] = {}
 
     def _check(self):
+        if self.gate is not None:
+            self.gate.wait(10)
         if self.offline:
             raise StoreUnavailable("Databricks unreachable after 3 attempts (ConnectionError)")
 
-    def list_reports(self):
+    def _statement(self):
+        self.warehouse_ready.wait(10)
         self._check()
+
+    def list_reports(self):
+        self._statement()
         self.list_calls += 1
         return list(self.rows)
 
@@ -96,11 +109,12 @@ class FakeStore:
         return verify_report(data, analysis_id), data
 
     def health(self):
+        self.health_calls += 1
         self._check()
-        return {"remote": "ok"}
+        return {"remote": "ok", "warehouse_state": self.warehouse_state}
 
     def execute(self, sql, params=None):
-        self._check()
+        self._statement()
         if "COUNT(DISTINCT ticker)" in sql:
             return [{"companies": len({r["ticker"] for r in self.rows})}]
         if "LATERAL VIEW explode" in sql:
@@ -212,13 +226,15 @@ def test_offline_store_keeps_local_reports_and_reports_offline(tmp_path):
     store = FakeStore([], {}, offline=True)
     app = api_main.create_app(settings, store_factory=lambda: store)
     with TestClient(app) as client:
-        assert client.get("/store/health").json() == {"remote": "offline"}
+        assert client.get("/store/health").json() == {"remote": "offline", "warehouse_state": None}
         cards = client.get("/companies").json()["companies"]
         assert [c["ticker"] for c in cards] == ["TEST"] and cards[0]["published_by"] is None
         assert client.get("/comparison/TEST").status_code == 200
         assert client.get("/comparison/ACME").status_code == 404
         t = client.get("/trends").json()
-        assert t["available"] is False and t["remote"] == "offline"
+        # offline with no remote result: the local aggregate, labelled as such
+        assert t["status"] == "offline" and t["source"] == "local"
+        assert [c["ticker"] for c in t["companies"]] == ["TEST"]
 
 
 def test_disabled_store(tmp_path):
@@ -232,62 +248,44 @@ def test_disabled_store(tmp_path):
 
     app = api_main.create_app(settings, store_factory=factory)
     with TestClient(app) as client:
-        assert client.get("/store/health").json() == {"remote": "disabled"}
+        assert client.get("/store/health").json() == {
+            "remote": "disabled",
+            "warehouse_state": None,
+        }
         assert [c["ticker"] for c in client.get("/companies").json()["companies"]] == ["TEST"]
         assert client.get("/comparison/TEST").status_code == 200
         t = client.get("/trends").json()
-        assert t == {
-            "available": False,
-            "remote": "disabled",
-            "companies": 0,
-            "by_category": [],
-            "by_kind": [],
-        }
+        assert t["status"] == "disabled" and t["source"] == "local"
+        assert t["computed_at"].endswith("Z")
+        assert [c["ticker"] for c in t["companies"]] == ["TEST"]
 
 
 def test_health_ok_and_cached(world):
     client, store, _, _ = world
-    assert client.get("/store/health").json() == {"remote": "ok"}
+    for _ in range(50):  # the startup check runs in the background
+        if client.get("/store/health").json()["remote"] == "ok":
+            break
+        time.sleep(0.02)
+    assert client.get("/store/health").json() == {"remote": "ok", "warehouse_state": "RUNNING"}
     store.offline = True  # cached answer for HEALTH_TTL_SECONDS
-    assert client.get("/store/health").json() == {"remote": "ok"}
+    assert client.get("/store/health").json()["remote"] == "ok"
 
 
-def test_trends_returns_aggregates(world):
+def test_trends_from_the_store_once_refreshed(world):
     client, store, _, _ = world
-    store.trend_rows = {
-        "by_category": [
-            {"category": "geopolitical", "change_type": "new", "companies": 2},
-            {
-                "category": "geopolitical",
-                "change_type": "largely_unchanged",
-                "companies": 9,
-            },  # filtered by SQL; ignored if present
-            {"category": "credit", "change_type": "expanded", "companies": 1},
-        ],
-        "by_kind": [
-            {
-                "ticker": "ACME",
-                "company_name": "FIXTURE: Acme",
-                "kind": "new_risk",
-                "highlights": 1,
-            },
-            {
-                "ticker": "TEST",
-                "company_name": "FIXTURE: Test",
-                "kind": "potential_became_actual",
-                "highlights": 2,
-            },
-        ],
-    }
-    t = client.get("/trends").json()
-    assert t["available"] is True and t["remote"] == "ok" and t["companies"] == 2
-    assert {r["change_type"] for r in t["by_category"]} == {"new", "expanded", "largely_unchanged"}
-    assert t["by_kind"][1] == {
-        "ticker": "TEST",
-        "company_name": "FIXTURE: Test",
-        "kind": "potential_became_actual",
-        "highlights": 2,
-    }
+    t = wait_for_trends(client, lambda t: t["source"] == "databricks")
+    assert t["status"] == "ok" and t["computed_at"].endswith("Z")
+    assert [c["ticker"] for c in t["companies"]] == ["ACME", "TEST"]
+    assert t["headline"]["companies"] == 2
+
+
+def wait_for_trends(client, pred, timeout: float = 5.0) -> dict:
+    t0 = time.monotonic()
+    while True:
+        t = client.get("/trends").json()
+        if pred(t) or time.monotonic() - t0 > timeout:
+            return t
+        time.sleep(0.02)
 
 
 def test_merge_prefers_the_current_remote_analysis_for_the_same_filings():
@@ -333,3 +331,139 @@ def test_merge_prefers_the_current_remote_analysis_for_the_same_filings():
     older["old_fiscal_year"], older["new_fiscal_year"] = 2022, 2023
     cards, stale = api_main.merge_library(local, [older])
     assert cards[0]["analysis_id"] == local_comp.analysis_id and not stale
+
+
+# ---------- T9: health states and stale-while-revalidate trends ----------
+
+
+def gated_world(tmp_path, *, local: bool = True):
+    settings = settings_for(tmp_path)
+    settings.published_dir.mkdir(parents=True)
+    rows, files = [], {}
+    if local:
+        comp, data = make_doc("TEST")
+        (settings.published_dir / "TEST_2024_2025.json").write_bytes(data)
+    acme, acme_bytes = make_doc("ACME")
+    rows.append(row_for(acme, acme_bytes, by="bob"))
+    files[rows[0]["volume_path"]] = acme_bytes
+    store = FakeStore(rows, files)
+    store.gate = threading.Event()  # closed: the first check / client build is still pending
+    return settings, store
+
+
+def test_health_is_connecting_while_the_first_check_is_pending(tmp_path):
+    settings, store = gated_world(tmp_path)
+    app = api_main.create_app(settings, store_factory=lambda: store)
+    with TestClient(app) as client:
+        for _ in range(3):  # however often it is asked, a pending check is never "offline"
+            h = client.get("/store/health").json()
+            assert h == {"remote": "connecting", "warehouse_state": None}
+        store.gate.set()
+        for _ in range(100):
+            h = client.get("/store/health").json()
+            if h["remote"] != "connecting":
+                break
+            time.sleep(0.02)
+        assert h == {"remote": "ok", "warehouse_state": "RUNNING"}
+
+
+def test_health_connecting_while_the_warehouse_starts_then_offline_only_after_a_failure(tmp_path):
+    settings, store = gated_world(tmp_path)
+    store.gate = None
+    store.warehouse_state = "STARTING"
+    store.warehouse_ready.clear()
+    app = api_main.create_app(settings, store_factory=lambda: store)
+    with TestClient(app) as client:
+        for _ in range(5):
+            h = client.get("/store/health").json()
+            assert h["remote"] == "connecting"
+        assert h["warehouse_state"] == "STARTING"
+        # a real failure (after the store's retries) is what makes it offline
+        store.offline = True
+        lib = app.state.rd.remote
+        lib._check_health()
+        assert client.get("/store/health").json()["remote"] == "offline"
+        store.warehouse_ready.set()
+
+
+def test_trends_cold_start_serves_local_while_connecting(tmp_path):
+    """The reported bug: the first /trends after a restart must not say 'not connected'."""
+    settings, store = gated_world(tmp_path)
+    app = api_main.create_app(settings, store_factory=lambda: store)
+    with TestClient(app) as client:
+        t0 = time.monotonic()
+        t = client.get("/trends").json()
+        assert time.monotonic() - t0 < 2.0
+        assert t["status"] == "connecting" and t["source"] == "local"
+        assert [c["ticker"] for c in t["companies"]] == ["TEST"]
+        store.gate.set()  # the warehouse answers: the background refresh lands
+        t = wait_for_trends(client, lambda t: t["source"] == "databricks")
+        assert t["status"] == "ok" and [c["ticker"] for c in t["companies"]] == ["ACME"]
+
+
+def test_trends_connecting_with_nothing_local_is_an_empty_retryable_answer(tmp_path):
+    settings, store = gated_world(tmp_path, local=False)
+    app = api_main.create_app(settings, store_factory=lambda: store)
+    with TestClient(app) as client:
+        r = client.get("/trends")
+        assert r.status_code == 200
+        t = r.json()
+        assert t == {
+            "status": "connecting",
+            "source": None,
+            "computed_at": None,
+            "companies": [],
+            "headline": {"companies": 0, "meaningful_changes": 0, "top_topic": None},
+            "topics": [],
+            "category_activity": [],
+            "potential_to_actual": [],
+            "change_mix": [],
+        }
+        store.gate.set()
+
+
+def test_trends_stale_while_revalidate_and_disk_cache_survives_restart(tmp_path):
+    settings, store = gated_world(tmp_path)
+    store.gate.set()
+    app = api_main.create_app(settings, store_factory=lambda: store)
+    with TestClient(app) as client:
+        first = wait_for_trends(client, lambda t: t["source"] == "databricks")
+        assert first["source"] == "databricks"
+    cache = settings.cache_dir / "trends" / "trends.json"
+    assert cache.exists()
+
+    # a new app instance (API restart) with a store that hangs: the disk result is served at once
+    store.gate = threading.Event()
+    app2 = api_main.create_app(settings, store_factory=lambda: store)
+    with TestClient(app2) as client:
+        t0 = time.monotonic()
+        t = client.get("/trends").json()
+        assert time.monotonic() - t0 < 0.3
+        assert t["source"] == "databricks" and t["computed_at"] == first["computed_at"]
+        assert t["status"] == "connecting"  # the store state now, not when it was computed
+        # make the cached result stale: the next call still answers instantly and refreshes behind
+        svc = app2.state.rd.trends
+        svc._remote_entry["epoch"] = 0.0
+        t0 = time.monotonic()
+        t = client.get("/trends").json()
+        assert time.monotonic() - t0 < 0.3 and t["computed_at"] == first["computed_at"]
+        assert svc._thread is not None and svc._thread.is_alive()  # revalidating
+        store.gate.set()
+        svc._thread.join(5)
+        t = client.get("/trends").json()
+        assert t["source"] == "databricks" and t["computed_at"] >= first["computed_at"]
+
+
+def test_trends_never_5xx(tmp_path, monkeypatch):
+    settings, store = gated_world(tmp_path)
+    store.gate.set()
+    app = api_main.create_app(settings, store_factory=lambda: store)
+
+    def boom():
+        raise RuntimeError("secret-ish detail that must not leak")
+
+    with TestClient(app) as client:
+        monkeypatch.setattr(app.state.rd.trends, "get", boom)
+        r = client.get("/trends")
+        assert r.status_code == 200 and "secret" not in r.text and "Traceback" not in r.text
+        assert r.json()["source"] is None and r.json()["companies"] == []

@@ -5,8 +5,9 @@ GET  /companies              report library: local published files merged with t
                              reports of the shared Databricks store (deduplicated by analysis_id)
 GET  /comparison/{ticker}    the published Comparison JSON (read-through cache: local file first,
                              else fetched from the shared store, verified, saved locally, served)
-GET  /store/health           {"remote": "ok" | "offline" | "disabled"}
-GET  /trends                 cross-company aggregates from the shared store's tables
+GET  /store/health           {"remote": "disabled" | "connecting" | "ok" | "offline", "warehouse_state"}
+GET  /trends                 cross-company trends (stale-while-revalidate: the shared store's
+                             aggregates when available, else the local derived facts)
 POST /analyze {"ticker"}     runs the pipeline, streaming StageEvents over SSE; serves a cached
                              result (all stages reported as "cached") when one is published
 
@@ -20,6 +21,7 @@ never leave the Python process.
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import json
 import logging
 import os
@@ -27,6 +29,7 @@ import threading
 import time
 from collections.abc import Callable
 from contextlib import asynccontextmanager
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -48,7 +51,8 @@ from pipeline.errors import InvalidTicker, PipelineError
 from pipeline.publish import load_published
 from pipeline.run import FIXTURE_TICKER, STAGE_LABELS, run_pipeline
 from pipeline.schema import CHANGE_TYPES, CompanyCard, Comparison, StageEvent
-from pipeline.store import DatabricksStore, StoreDisabled, StoreError, tables
+from pipeline.store import DatabricksStore, StoreDisabled, StoreError, StoreUnavailable
+from pipeline.trends import aggregate
 
 log = logging.getLogger("api")
 
@@ -63,9 +67,15 @@ REMOTE_LIST_TTL_SECONDS = 60.0  # how long the shared store's report list is reu
 REMOTE_FAIL_TTL_SECONDS = 20.0  # how long an "offline" answer is reused before retrying
 REMOTE_WAIT_SECONDS = 1.0  # how long /companies waits for a cold list refresh before serving
 REMOTE_MISS_WAIT_SECONDS = 20.0  # on a local miss, how long /comparison may wait for the store
-HEALTH_TTL_SECONDS = 15.0
-HEALTH_TIMEOUT_SECONDS = 5.0
-TRENDS_TTL_SECONDS = 60.0
+HEALTH_TTL_SECONDS = 15.0  # how long a completed health check answers before a recheck
+HEALTH_NOT_READY_TTL_SECONDS = 3.0  # recheck sooner while the warehouse is starting
+HEALTH_WAIT_SECONDS = 0.25  # /store/health waits at most this long for an in-flight check
+WAREHOUSE_NOT_READY = frozenset({"STARTING", "STOPPED", "STOPPING"})
+TRENDS_TTL_SECONDS = 60.0  # a remote trends result older than this is refreshed in the background
+TRENDS_FAIL_RETRY_SECONDS = 20.0  # after a failed refresh, wait this long before the next one
+TRENDS_COLD_WAIT_SECONDS = 2.0  # store ok + nothing cached: wait this long for the first result
+REMOTE_REFRESH_WAIT_SECONDS = 200.0  # background only: a cold warehouse may take minutes
+TRENDS_CACHE_VERSION = 1
 
 FRIENDLY: dict[str, str] = {
     "invalid_ticker": "That does not look like a ticker. Use 1-6 letters, '.', or '-'.",
@@ -95,9 +105,16 @@ def default_store_factory() -> DatabricksStore:
 
 class RemoteLibrary:
     """The API's view of the shared store: a TTL-cached list of current reports (refreshed in a
-    background thread; requests never wait longer than a short bound), a health probe with its
-    own TTL, the read-through pull of a report that is not on disk, and the trends aggregates.
-    Every failure degrades to "offline": local reports are always served."""
+    background thread; requests never wait longer than a short bound), a non-blocking health
+    state machine, and the read-through pull of a report that is not on disk. Every failure
+    degrades to "offline": local reports are always served.
+
+    Health has four states. `disabled`: no DATABRICKS_* variables. `connecting`: the first check
+    has not finished (the SDK client is being built, the first round trip is pending) or the
+    warehouse is not running yet (STARTING/STOPPED/STOPPING; a statement starts it). `ok`: the
+    last check succeeded with a running warehouse. `offline`: a check or a statement failed after
+    the store's retries, or the configuration is unusable. A check that has not finished is never
+    reported as offline: requests read the last known state and checks run in the background."""
 
     def __init__(self, store_factory: Callable[[], Any] | None):
         self._factory = store_factory or default_store_factory
@@ -109,15 +126,18 @@ class RemoteLibrary:
         self.reports_at = 0.0
         self.reports_ok: bool | None = None  # None = never refreshed
         self._refresh_thread: threading.Thread | None = None
-        self._health: tuple[float, str] | None = None
-        self._trends: tuple[float, dict] | None = None
         self._pulling: set[str] = set()
+        # health state machine (see class docstring)
+        self._health_state = "connecting"
+        self._warehouse_state: str | None = None
+        self._health_at: float | None = None  # monotonic time of the last completed check
+        self._health_thread: threading.Thread | None = None
 
     # -- store handle --
 
     def store(self) -> Any | None:
         with self.lock:
-            if self.disabled or self._store is not None:
+            if self.disabled or self._store_failed or self._store is not None:
                 return self._store
             try:
                 self._store = self._factory()
@@ -125,8 +145,8 @@ class RemoteLibrary:
                 self.disabled = True
             except PipelineError as e:  # bad host / identifiers: configured but unusable
                 self._store_failed = e.code
+                self._health_state = "offline"
                 log.warning("shared store not usable: %s", e.code)
-                self.disabled = True
             return self._store
 
     # -- report list --
@@ -140,20 +160,15 @@ class RemoteLibrary:
             with self.lock:
                 self.reports, self.reports_ok = rows, True
                 self.reports_at = time.monotonic()
-        except StoreError as e:
-            log.warning("shared store list failed [%s]", e.code)
+            self.note_success()
+        except Exception as e:  # noqa: BLE001  (StoreError or anything unexpected)
+            log.warning("shared store list failed [%s]", getattr(e, "code", type(e).__name__))
             with self.lock:
                 self.reports_ok = False
                 self.reports_at = time.monotonic() - (
                     REMOTE_LIST_TTL_SECONDS - REMOTE_FAIL_TTL_SECONDS
                 )
-        except Exception as e:  # noqa: BLE001
-            log.warning("shared store list failed: %s", type(e).__name__)
-            with self.lock:
-                self.reports_ok = False
-                self.reports_at = time.monotonic() - (
-                    REMOTE_LIST_TTL_SECONDS - REMOTE_FAIL_TTL_SECONDS
-                )
+            self.note_failure()
 
     def ensure_fresh(self, wait: float) -> None:
         """Start a background refresh when the list is stale; wait at most `wait` seconds for it."""
@@ -177,7 +192,6 @@ class RemoteLibrary:
     def invalidate(self) -> None:
         with self.lock:
             self.reports_at = 0.0
-            self._trends = None
 
     def recently_offline(self) -> bool:
         """The last list refresh failed and that answer is still within its TTL: do not make a
@@ -205,24 +219,73 @@ class RemoteLibrary:
 
     # -- health --
 
-    def health(self) -> str:
+    def _check_health(self) -> None:
         store = self.store()
         if store is None:
-            return "disabled"
-        with self.lock:
-            if self._health and time.monotonic() - self._health[0] < HEALTH_TTL_SECONDS:
-                return self._health[1]
+            return
+        warehouse: str | None = None
         try:
-            store.health()
-            status = "ok"
-        except (StoreError, PipelineError):
-            status = "offline"
-        except Exception as e:  # noqa: BLE001
-            log.warning("store health failed: %s", type(e).__name__)
-            status = "offline"
+            info = store.health() or {}
+            warehouse = info.get("warehouse_state")
+            state = "connecting" if warehouse in WAREHOUSE_NOT_READY else "ok"
+        except Exception as e:  # noqa: BLE001  (StoreError after retries, or unexpected)
+            log.warning("store health failed [%s]", getattr(e, "code", type(e).__name__))
+            state = "offline"
         with self.lock:
-            self._health = (time.monotonic(), status)
-        return status
+            self._health_state, self._warehouse_state = state, warehouse
+            self._health_at = time.monotonic()
+
+    def note_success(self) -> None:
+        """A statement just succeeded: the store is reachable and the warehouse is running."""
+        with self.lock:
+            if self._store_failed:
+                return
+            self._health_state = "ok"
+            self._warehouse_state = "RUNNING"  # a statement just ran on it
+            self._health_at = time.monotonic()
+
+    def note_failure(self) -> None:
+        """A statement failed after the store's retries: report offline until the next check."""
+        with self.lock:
+            self._health_state = "offline"
+            self._health_at = time.monotonic()
+
+    def health_state(self, wait: float = 0.0) -> tuple[str, str | None]:
+        """(state, warehouse_state) right now. Never blocks longer than `wait`: a stale or missing
+        answer starts a background check and the last known state is returned ("connecting"
+        until the first check completes)."""
+        store = self.store()
+        with self.lock:
+            if self.disabled:
+                return "disabled", None
+            if store is None:  # configured but unusable (bad host/identifiers)
+                return "offline", None
+            ttl = (
+                HEALTH_NOT_READY_TTL_SECONDS
+                if self._health_state == "connecting"
+                else HEALTH_TTL_SECONDS
+            )
+            stale = self._health_at is None or time.monotonic() - self._health_at >= ttl
+            th = self._health_thread
+            if stale and (th is None or not th.is_alive()):
+                th = threading.Thread(target=self._check_health, name="store-health", daemon=True)
+                self._health_thread = th
+                th.start()
+        if wait > 0 and th is not None and th.is_alive():
+            th.join(timeout=wait)
+        with self.lock:
+            return self._health_state, self._warehouse_state
+
+    def settings_key(self) -> str | None:
+        """A short, non-secret key of the configured workspace + catalog + schema (cache scope)."""
+        store = self.store()
+        s = getattr(store, "settings", None)
+        if s is None:
+            return None
+        raw = "|".join(
+            str(getattr(s, a, "") or "") for a in ("host", "catalog", "schema", "warehouse_id")
+        )
+        return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:16]
 
     # -- read-through pull --
 
@@ -272,73 +335,194 @@ class RemoteLibrary:
 
         threading.Thread(target=work, name=f"store-pull-{t}", daemon=True).start()
 
-    # -- trends --
 
-    def trends(self) -> dict:
-        store = self.store()
-        if store is None:
-            return {
-                "available": False,
-                "remote": "disabled",
-                "companies": 0,
-                "by_category": [],
-                "by_kind": [],
-            }
+def _utc_now_iso() -> str:
+    return datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+class TrendsService:
+    """/trends with stale-while-revalidate.
+
+    * Databricks disabled: computed from LOCAL reports (memoized by a fingerprint of the files it
+      reads, in memory and on disk), always `source: "local"`.
+    * Databricks configured: the last good remote result is returned immediately (memory, else
+      the disk cache `data/cache/trends/trends.json`, which survives restarts) and refreshed in a
+      background thread when older than TRENDS_TTL_SECONDS. With no remote result yet, the local
+      aggregate is returned (`source: "local"`) while the first refresh runs; when there is
+      nothing local either, the lists are empty and `source` is null (the page retries).
+    A request never waits on a cold warehouse; only a store that is already `ok` gets a short
+    TRENDS_COLD_WAIT_SECONDS for the very first remote result."""
+
+    def __init__(
+        self,
+        settings: Settings,
+        remote: RemoteLibrary,
+        local_fn: Callable[[], tuple[str, dict]],
+        remote_fn: Callable[[Any, list[dict]], dict],
+    ):
+        self.settings = settings
+        self.remote = remote
+        self._local_fn = local_fn  # () -> (fingerprint, body); body computed only when needed
+        self._remote_fn = remote_fn  # (store, current report rows) -> body
+        self.lock = threading.Lock()
+        self._local_lock = threading.Lock()
+        self._disk_loaded = False
+        self._remote_entry: dict | None = None  # {"store_key", "computed_at", "epoch", "body"}
+        self._local_entry: dict | None = None  # {"fingerprint", "computed_at", "body"}
+        self._thread: threading.Thread | None = None
+        self._failed_at: float | None = None
+
+    @property
+    def cache_path(self) -> Path:
+        return self.settings.cache_dir / "trends" / "trends.json"
+
+    # -- disk cache --
+
+    def _load_disk(self) -> None:
         with self.lock:
-            if self._trends and time.monotonic() - self._trends[0] < TRENDS_TTL_SECONDS:
-                return self._trends[1]
-        if self.recently_offline():
-            return {
-                "available": False,
-                "remote": "offline",
-                "companies": 0,
-                "by_category": [],
-                "by_kind": [],
+            if self._disk_loaded:
+                return
+            self._disk_loaded = True
+            try:
+                doc = json.loads(self.cache_path.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                return
+            if not isinstance(doc, dict) or doc.get("version") != TRENDS_CACHE_VERSION:
+                return
+            if isinstance(doc.get("databricks"), dict) and self._remote_entry is None:
+                self._remote_entry = doc["databricks"]
+            if isinstance(doc.get("local"), dict) and self._local_entry is None:
+                self._local_entry = doc["local"]
+
+    def _save_disk(self) -> None:
+        with self.lock:
+            doc = {
+                "version": TRENDS_CACHE_VERSION,
+                "databricks": self._remote_entry,
+                "local": self._local_entry,
             }
-        s = store.settings
         try:
-            count = store.execute(tables.company_count_sql(s), {"current": True})
-            by_cat = store.execute(
-                tables.trends_by_category_sql(s),
-                {"current": True, "unchanged": "largely_unchanged"},
-            )
-            by_kind = store.execute(tables.trends_by_kind_sql(s), {"current": True})
-        except (StoreError, PipelineError) as e:
-            log.warning("trends unavailable [%s]", e.code)
-            return {
-                "available": False,
-                "remote": "offline",
-                "companies": 0,
-                "by_category": [],
-                "by_kind": [],
-            }
-        companies = int((count[0].get("companies") if count else 0) or 0)
-        out = {
-            "available": True,
-            "remote": "ok",
-            "companies": companies,
-            "by_category": [
-                {
-                    "category": str(r.get("category")),
-                    "change_type": str(r.get("change_type")),
-                    "companies": int(r.get("companies") or 0),
-                }
-                for r in by_cat
-                if r.get("change_type") in CHANGE_TYPES
-            ],
-            "by_kind": [
-                {
-                    "ticker": str(r.get("ticker")),
-                    "company_name": str(r.get("company_name") or ""),
-                    "kind": str(r.get("kind")),
-                    "highlights": int(r.get("highlights") or 0),
-                }
-                for r in by_kind
-            ],
-        }
+            self.cache_path.parent.mkdir(parents=True, exist_ok=True)
+            tmp = self.cache_path.with_suffix(f".{threading.get_ident()}.tmp")
+            tmp.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+            tmp.replace(self.cache_path)
+        except OSError as e:
+            log.warning("could not write the trends cache: %s", type(e).__name__)
+
+    # -- local --
+
+    def local(self) -> tuple[str | None, dict]:
+        """(computed_at, body) of the local aggregate, recomputed only when its inputs changed."""
+        self._load_disk()
+        with self._local_lock:
+            fingerprint, compute = self._local_fn()
+            with self.lock:
+                entry = self._local_entry
+            if entry is not None and entry.get("fingerprint") == fingerprint:
+                return entry.get("computed_at"), entry["body"]
+            body = compute()
+            entry = {"fingerprint": fingerprint, "computed_at": _utc_now_iso(), "body": body}
+            with self.lock:
+                self._local_entry = entry
+            self._save_disk()
+            return entry["computed_at"], body
+
+    # -- remote --
+
+    def _remote_cached(self) -> dict | None:
+        key = self.remote.settings_key()
         with self.lock:
-            self._trends = (time.monotonic(), out)
-        return out
+            e = self._remote_entry
+        if e is None or key is None or e.get("store_key") != key:
+            return None
+        return e
+
+    def _refresh_remote(self) -> None:
+        try:
+            store = self.remote.store()
+            if store is None:
+                return
+            self.remote.ensure_fresh(wait=REMOTE_REFRESH_WAIT_SECONDS)
+            if self.remote.reports_ok is not True:
+                raise StoreUnavailable("report list unavailable")
+            body = self._remote_fn(store, self.remote.current_rows())
+            self.remote.note_success()
+            entry = {
+                "store_key": self.remote.settings_key(),
+                "computed_at": _utc_now_iso(),
+                "epoch": time.time(),
+                "body": body,
+            }
+            with self.lock:
+                self._remote_entry = entry
+                self._failed_at = None
+            self._save_disk()
+        except Exception as e:  # noqa: BLE001
+            log.warning("trends refresh failed [%s]", getattr(e, "code", type(e).__name__))
+            if isinstance(e, StoreError) or not isinstance(e, PipelineError):
+                self.remote.note_failure()
+            with self.lock:
+                self._failed_at = time.monotonic()
+
+    def kick_remote(self) -> threading.Thread | None:
+        """Start a background refresh unless one is running or the last one failed recently."""
+        with self.lock:
+            th = self._thread
+            if th is not None and th.is_alive():
+                return th
+            if (
+                self._failed_at is not None
+                and time.monotonic() - self._failed_at < TRENDS_FAIL_RETRY_SECONDS
+            ):
+                return None
+            th = threading.Thread(target=self._refresh_remote, name="trends-refresh", daemon=True)
+            self._thread = th
+            th.start()
+            return th
+
+    def invalidate(self) -> None:
+        """A new report was published here: refresh the remote result soon (served until then)."""
+        with self.lock:
+            if self._remote_entry is not None:
+                self._remote_entry = {**self._remote_entry, "epoch": 0.0}
+
+    # -- the endpoint --
+
+    def get(self) -> dict[str, Any]:
+        status, _ = self.remote.health_state()
+        if status == "disabled":
+            computed_at, body = self.local()
+            return {"status": status, "source": "local", "computed_at": computed_at, **body}
+        self._load_disk()
+        entry = self._remote_cached()
+        if entry is None or time.time() - float(entry.get("epoch") or 0) >= TRENDS_TTL_SECONDS:
+            th = self.kick_remote()
+            if entry is None and status == "ok" and th is not None:
+                th.join(timeout=TRENDS_COLD_WAIT_SECONDS)
+                entry = self._remote_cached()
+                status, _ = self.remote.health_state()
+        if entry is not None:
+            return {
+                "status": status,
+                "source": "databricks",
+                "computed_at": entry.get("computed_at"),
+                **entry["body"],
+            }
+        computed_at, body = self.local()
+        if not body["companies"] and status in ("connecting", "ok"):
+            return {"status": status, "source": None, "computed_at": None, **body}
+        return {"status": status, "source": "local", "computed_at": computed_at, **body}
+
+    def warm(self) -> None:
+        """Startup: compute (or load) the local aggregate and start the first remote refresh."""
+        status, _ = self.remote.health_state()
+        try:
+            self.local()
+        except Exception as e:  # noqa: BLE001
+            log.warning("local trends warm-up failed: %s", type(e).__name__)
+        if status != "disabled":
+            self._load_disk()
+            self.kick_remote()
 
 
 class AppState:
@@ -352,6 +536,9 @@ class AppState:
         self.busy = threading.Lock()
         self._cards_cache: dict[str, tuple[float, CompanyCard, str, str, str]] = {}
         self.remote = RemoteLibrary(store_factory)
+        self.trends = TrendsService(
+            settings, self.remote, lambda: local_trends_inputs(self), remote_trends_body
+        )
 
 
 def create_app(
@@ -374,10 +561,12 @@ def create_app(
                 state.warm = True
 
         threading.Thread(target=load, name="embed-warmup", daemon=True).start()
-        # warm the shared-store list in the background so the first page load already has it
+        # warm the shared-store list, the health state and the trends in the background so the
+        # first page load already has them (requests never wait on these threads)
         threading.Thread(
             target=lambda: state.remote.ensure_fresh(0), name="store-warmup", daemon=True
         ).start()
+        threading.Thread(target=state.trends.warm, name="trends-warmup", daemon=True).start()
         yield
 
     app = FastAPI(
@@ -456,29 +645,21 @@ def create_app(
         return JSONResponse(content=comp)
 
     @app.get("/store/health")
-    async def store_health() -> dict[str, str]:
-        try:
-            status = await asyncio.wait_for(
-                asyncio.to_thread(state.remote.health), timeout=HEALTH_TIMEOUT_SECONDS
-            )
-        except TimeoutError:
-            status = "offline"
-        return {"remote": status}
+    async def store_health() -> dict[str, str | None]:
+        status, warehouse = await asyncio.to_thread(state.remote.health_state, HEALTH_WAIT_SECONDS)
+        return {"remote": status, "warehouse_state": warehouse}
 
     @app.get("/trends")
     async def trends() -> dict[str, Any]:
         try:
-            return await asyncio.wait_for(
-                asyncio.to_thread(state.remote.trends), timeout=REMOTE_MISS_WAIT_SECONDS
-            )
-        except TimeoutError:
-            return {
-                "available": False,
-                "remote": "offline",
-                "companies": 0,
-                "by_category": [],
-                "by_kind": [],
-            }
+            return await asyncio.to_thread(state.trends.get)
+        except Exception as e:  # noqa: BLE001  (never a 5xx: an empty, retryable answer)
+            log.warning("trends failed: %s", type(e).__name__)
+            try:
+                status, _ = state.remote.health_state()
+            except Exception:  # noqa: BLE001
+                status = "offline"
+            return {"status": status, "source": None, "computed_at": None, **aggregate.empty_body()}
 
     @app.post("/analyze")
     async def analyze(req: AnalyzeRequest, request: Request):
@@ -589,6 +770,58 @@ def list_local(state: AppState) -> list[dict]:
         except Exception as e:  # noqa: BLE001
             log.warning("skipping unreadable published file %s: %s", p.name, type(e).__name__)
     return sorted(out, key=lambda c: c["ticker"])
+
+
+def local_trends_inputs(state: AppState) -> tuple[str, Callable[[], dict]]:
+    """(fingerprint, compute) for the local trends aggregate over the current local reports
+    (newest filing pair per ticker, the same rule as /companies)."""
+    cards = list_local(state)
+    pdir = state.settings.published_dir
+    parts = []
+    for c in cards:
+        try:
+            st = (pdir / c["file"]).stat()
+            parts.append(f"{c['file']}|{c['analysis_id']}|{st.st_mtime_ns}|{st.st_size}")
+        except OSError:
+            parts.append(f"{c['file']}|{c['analysis_id']}|missing")
+    fingerprint = hashlib.sha256("\n".join(parts).encode("utf-8")).hexdigest()
+
+    def compute() -> dict:
+        return aggregate.build_body(
+            aggregate.company_entry(
+                ticker=c["ticker"],
+                name=c["name"],
+                analysis_id=c["analysis_id"],
+                old_fiscal_year=c["old_fiscal_year"],
+                new_fiscal_year=c["new_fiscal_year"],
+                total_changes=c["total_changes"],
+                by_change_type=c["by_change_type"],
+            )
+            for c in cards
+        )
+
+    return fingerprint, compute
+
+
+def remote_trends_body(store: Any, rows: list[dict]) -> dict:
+    """The trends body from the shared store's current reports (one row per ticker)."""
+    companies = []
+    for r in rows:
+        try:
+            companies.append(
+                aggregate.company_entry(
+                    ticker=normalize_ticker(str(r.get("ticker"))),
+                    name=str(r.get("company_name") or ""),
+                    analysis_id=str(r["analysis_id"]),
+                    old_fiscal_year=int(r.get("old_fiscal_year") or 0),
+                    new_fiscal_year=int(r.get("new_fiscal_year") or 0),
+                    total_changes=int(r.get("total_changes") or 0),
+                    by_change_type={ct: int(r.get(f"n_{ct}") or 0) for ct in CHANGE_TYPES},
+                )
+            )
+        except Exception as e:  # noqa: BLE001
+            log.warning("skipping unusable reports row: %s", type(e).__name__)
+    return aggregate.build_body(companies)
 
 
 def card_from_row(row: dict) -> dict | None:
@@ -733,6 +966,7 @@ async def _run_live(state: AppState, ticker: str, request: Request):
                 "remote": ctx.outputs.get("remote_publish"),
             }
             state.remote.invalidate()
+            state.trends.invalidate()
             loop.call_soon_threadsafe(queue.put_nowait, ("complete", result))
         except PipelineError as e:
             if e.code != "cancelled":

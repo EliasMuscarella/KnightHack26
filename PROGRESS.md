@@ -111,3 +111,9 @@ Team: run the NVDA command above, then `RISKDIFF_SHOW_FIXTURE= ./scripts/dev.sh`
 
 `uv run pytest` (all green), `uv run python -m pipeline.run FIXTUR` (synthetic end-to-end, writes data/scratch/),
 `uv run uvicorn api.main:app --port 8000`, `cd web && npm run dev`.
+
+## Trends backend session (T-tasks, Oct 10 night)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| T9 | Trends cold-start bug | done, tested | root cause in DECISIONS D-021; four health states, SWR `/trends` with disk cache, local fallback |
