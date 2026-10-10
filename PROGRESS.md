@@ -51,8 +51,8 @@ NVDA re-run + judge verification must be done on the team's machine (commands be
 | J3 | In-progress → concluded detector | done, tested | `signals.status_change`; the quoted NVDA antitrust pair fires (aligned and unaligned); stage 6 → 0.2.0 |
 | J4 | `highlights[]` + `short_title` | done, tested | `pipeline/highlights.py` ranking; LLM short-title batch (cached, validated) with heading-truncation fallback; contract + TS types regenerated |
 | J5 | Hide FIXTURE by default | done | flag documented in `.env.example`, README, `web/.env.development` |
-| J6–J10 | Finance-audience frontend | in progress (Opus subagent, `web/` only) | overview/detail/home/methodology/vocabulary/projector layout |
-| J11 | Judge review + verification | pending | fixture-only here; NVDA screens need the team's machine |
+| J6–J10 | Finance-audience frontend | done (Opus subagent, `web/` only; verified by me) | overview leads with summary + highlight cards; detail leads with short title + AI summary + changed sentences only; vocabulary module; audit trail / analyst details collapsed; static methodology; no horizontal scroll at 1024/1280/1440 |
+| J11 | Judge review + verification | done on the fixture | 131 tests, build/lint/typecheck clean, byte-identical reruns, copy greps clean; judge subagent reviewed screenshots (see REPORT.md); NVDA screens need the team's machine |
 
 ### NVDA re-run on the team's machine (required to verify J1–J4 on real data)
 
