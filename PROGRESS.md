@@ -36,10 +36,42 @@ the pipeline with network access and `.env`. Nothing fake is ever published.
 | 13 | Demo dataset | blocked (SEC access) | `scripts/build_demo.py` + `eval/citation_audit.py` ready; UI screenshots done on the fixture |
 | 14 | Hardening + REPORT.md | two review rounds done | round 1: 4 HIGH + 12 MEDIUM (pipeline) and 3 MEDIUM + 14 LOW (frontend) fixed; round 2: 0 HIGH, 8 MEDIUM (pipeline) + 3 MEDIUM (frontend) fixed with tests; a third pass was not run (time), so "two consecutive clean passes" is NOT claimed |
 
+## Judge-ready session (J-tasks, Oct 10 evening)
+
+Context given by the team: NVDA was published on their machine and a finance-judge walkthrough found the
+screens too technical. **That NVDA data is not in this repository or this sandbox** (no commits, no
+`data/published/NVDA_*.json`, no stage caches, sec.gov/huggingface.co still blocked, no `.env`), so every
+J-task was built and tested on synthetic cases that mirror the NVDA patterns quoted in the brief, and the
+NVDA re-run + judge verification must be done on the team's machine (commands below).
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| J1 | Skip Risk Factors Summary + intro paragraphs | done, tested | `segment.summary_skip_range`, intro/boilerplate never becomes a block; stage 2 → 0.2.0 |
+| J2 | Entity post-filters | done, tested | `signals.clean_entity` + `merge_near_duplicates` ("D:4" dropped, trailing "in" stripped, Ruritania/Ruritanian merged) |
+| J3 | In-progress → concluded detector | done, tested | `signals.status_change`; the quoted NVDA antitrust pair fires (aligned and unaligned); stage 6 → 0.2.0 |
+| J4 | `highlights[]` + `short_title` | done, tested | `pipeline/highlights.py` ranking; LLM short-title batch (cached, validated) with heading-truncation fallback; contract + TS types regenerated |
+| J5 | Hide FIXTURE by default | done | flag documented in `.env.example`, README, `web/.env.development` |
+| J6–J10 | Finance-audience frontend | in progress (Opus subagent, `web/` only) | overview/detail/home/methodology/vocabulary/projector layout |
+| J11 | Judge review + verification | pending | fixture-only here; NVDA screens need the team's machine |
+
+### NVDA re-run on the team's machine (required to verify J1–J4 on real data)
+
+```bash
+uv run python -m pipeline.run NVDA --from-stage 2 --force   # --force: the analysis_id changes (new stage versions)
+uv run python - <<'EOF'
+import json; d=json.load(open(sorted(__import__('glob').glob('data/published/NVDA_*.json'))[-1]))
+print(d['summary']['by_change_type'], len(d['changes']))
+for h in d['highlights']: print(h['kind'], '|', h['short_title'], '|', h['detail'])
+EOF
+```
+Expected (not hardcoded): no duplicate titles, no intro row, ~23/24 blocks, "Commercial arrangements expose us to
+counterparty risks." the only new risk; top highlights should include the China antitrust "preliminary finding"
+pair (potential_became_actual), the $4.5 billion H20 charge (new_figure) and the counterparty risk (new_risk).
+If one is missing, inspect `signals` of that change in the JSON and report.
+
 ## What's next
 
-For the team: `.env` + a machine with SEC/HF access → `uv run python scripts/build_demo.py` → spot-check
-Item 1A boundaries → `uv run python -m eval.eval --write` → citation audit (`eval/README.md`).
+Team: run the NVDA command above, then `RISKDIFF_SHOW_FIXTURE= ./scripts/dev.sh` and walk the NVDA page as a judge.
 
 ## How to resume
 
