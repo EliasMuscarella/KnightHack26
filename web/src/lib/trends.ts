@@ -135,7 +135,7 @@ export function sourceLine(p: Pick<TrendsPayload, "source" | "computed_at">, now
     const rel = relativeTime(p.computed_at, now);
     return rel ? `Computed in Databricks, updated ${rel}` : "Computed in Databricks";
   }
-  return "Computed from reports on this computer";
+  return "Source: the local report library";
 }
 
 /** Order and labels of the change-mix segments (direction colors, meaningful types only). */

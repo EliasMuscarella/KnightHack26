@@ -17,7 +17,7 @@ import { trimQuote } from "@/lib/quote";
 import { buildHeatmap, cellDescription, cellIntensity, cellTone, headlineTopic, type HeatCell, MIX_TYPES, mixTotal, OTHER_CATEGORY, rankTopics, sourceLine, TOP_TOPICS } from "@/lib/trends";
 import type { TrendsActual, TrendsCompany, TrendsPayload, TrendsTopic, TrendsTopicExample } from "@/lib/types";
 
-const SOURCE_TAG: Record<TrendsTopic["source"], string | null> = { lexicon: null, entity: "named party", phrase: "phrase" };
+const SOURCE_TAG: Record<TrendsTopic["source"], string | null> = { lexicon: null, entity: "a name", phrase: "a phrase" };
 import { CHANGE_TONE, changeTypeVocab, countedLabel, displayTitle } from "@/lib/vocabulary";
 
 const RETRY_MS = 2500;
@@ -250,7 +250,8 @@ function HeatmapLegend() {
       </ul>
       <p>
         Orange: more language removed than added in that area. Blue: more added. Gray: rewritten both ways. Darker means more sentences changed. The number in a
-        cell is sentences changed. A risk factor tagged with two areas counts under both.
+        cell is sentences changed. A risk factor tagged with two areas counts under both. The Change mix bars below count whole risk factors by kind of change, so one
+        rewritten risk factor can add words in one area and remove them in another.
       </p>
     </div>
   );

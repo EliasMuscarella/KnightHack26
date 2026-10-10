@@ -46,5 +46,5 @@ test("source line and relative time", () => {
   assert.equal(relativeTime("2026-10-11T09:00:00Z", now), "3 hours ago");
   assert.equal(relativeTime(null, now), null);
   assert.equal(sourceLine({ source: "databricks", computed_at: "2026-10-11T11:58:00Z" }, now), "Computed in Databricks, updated 2 min ago");
-  assert.equal(sourceLine({ source: "local", computed_at: null }, now), "Computed from reports on this computer");
+  assert.equal(sourceLine({ source: "local", computed_at: null }, now), "Source: the local report library");
 });

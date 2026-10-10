@@ -19,7 +19,7 @@ import {
   looksLikeComparison,
 } from "@/lib/api";
 import type { CompanyCard, CompanyListing, LibraryStatus, RubricFile, TrendsPayload } from "@/lib/types";
-import { isFigureChanged } from "@/lib/vocabulary";
+import { factDetail, isFigureChanged } from "@/lib/vocabulary";
 
 const FILE_RE = /^([A-Z.\-]{1,6})_(\d{4})_(\d{4})\.json$/;
 
@@ -125,7 +125,7 @@ async function readPublishedFile(entry: PublishedEntry): Promise<Comparison | nu
 function topHighlight(c: Comparison): CompanyListing["top_highlight"] {
   for (const h of c.highlights ?? []) {
     const change = c.changes.find((ch) => ch.id === h.change_id);
-    if (change) return { kind: h.kind, short_title: h.short_title, title: change.title, figure_changed: isFigureChanged(h) };
+    if (change) return { kind: h.kind, short_title: h.short_title, title: change.title, figure_changed: isFigureChanged(h), detail: factDetail(h) };
   }
   return null;
 }
