@@ -708,7 +708,11 @@ def check_titles(r: Report) -> list[Violation]:
             current = fallback(c.title)
         except Exception:  # noqa: BLE001
             current = c.short_title
-        is_fallback = c.short_title == hl_mod.truncate_heading(c.title)
+        # the old deterministic fallback was the first words of the heading plus an ellipsis
+        is_fallback = c.short_title == hl_mod.truncate_heading(c.title) or (
+            c.short_title.endswith(("…", "..."))
+            and c.title.replace("\n", " ").startswith(c.short_title.rstrip("….").rstrip(",.;:"))
+        )
         current_ok = not title_problems(current, name_keys)
         stale = is_fallback and current != c.short_title and current_ok
         out.append(
@@ -1052,6 +1056,21 @@ def check_topics(r: Report, facts, served_examples: list[dict], profile: str) ->
                     note="derived with the current code",
                 )
             )
+        if m.source == "entity":
+            problems = entity_problems(m.topic, comp)
+            if problems:
+                out.append(
+                    Violation(
+                        check="ENTITY",
+                        ticker=r.ticker,
+                        analysis_id=r.analysis_id,
+                        change_id=m.change_id,
+                        sentence_ids=[m.sentence_id],
+                        evidence=f"trends topic {m.topic!r}: {'; '.join(problems)}",
+                        classification="code",
+                        note="derived with the current code (pipeline/trends/derive.py stoplist)",
+                    )
+                )
         if c.change_type == "largely_unchanged" or meaningful == 0:
             out.append(
                 Violation(

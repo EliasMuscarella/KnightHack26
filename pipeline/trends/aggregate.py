@@ -37,6 +37,7 @@ def empty_body() -> dict[str, Any]:
         "category_activity": [],
         "potential_to_actual": [],
         "change_mix": [],
+        "warnings": [],
     }
 
 
@@ -219,7 +220,10 @@ def build_body(
     topics: list[dict[str, Any]] | None = None,
     category_activity: list[dict[str, Any]] | None = None,
     potential_to_actual: list[dict[str, Any]] | None = None,
+    warnings: Iterable[str] | None = None,
 ) -> dict[str, Any]:
+    """`companies` is the full current set (the same as /companies); a company without trend facts
+    is still listed (it simply contributes no topics or activity) and `warnings` names it."""
     comps = sorted((dict(c) for c in companies), key=lambda c: c["ticker"])
     topics = topics or []
     top = topics[0] if topics else None
@@ -238,12 +242,47 @@ def build_body(
         "change_mix": [
             {"ticker": c["ticker"], "by_change_type": dict(c["by_change_type"])} for c in comps
         ],
+        "warnings": sorted(set(warnings or [])),
     }
 
 
-def body_from_facts(facts: Iterable[TrendFacts]) -> dict[str, Any]:
-    """The local path: derived files of the current local reports -> the /trends body."""
-    facts = list(facts)
+def company_from_facts(f: TrendFacts) -> dict[str, Any]:
+    return company_entry(
+        ticker=f.ticker,
+        name=f.company_name,
+        analysis_id=f.analysis_id,
+        old_fiscal_year=f.old_fiscal_year,
+        new_fiscal_year=f.new_fiscal_year,
+        total_changes=f.total_changes,
+        by_change_type=f.by_change_type,
+        cik=f.cik,
+        old_accession=f.old_accession,
+        new_accession=f.new_accession,
+        edgar_url_old=f.old_edgar_url,
+        edgar_url_new=f.new_edgar_url,
+    )
+
+
+def company_from_card(card: Mapping[str, Any]) -> dict[str, Any]:
+    """A library card (/companies, with its accession pair) -> a company entry. No EDGAR URLs:
+    cards and store rows do not carry them."""
+    return company_entry(
+        ticker=str(card["ticker"]),
+        name=str(card.get("name") or ""),
+        analysis_id=str(card["analysis_id"]),
+        old_fiscal_year=int(card.get("old_fiscal_year") or 0),
+        new_fiscal_year=int(card.get("new_fiscal_year") or 0),
+        total_changes=int(card.get("total_changes") or 0),
+        by_change_type=card.get("by_change_type") or {},
+        cik=card.get("cik"),
+        old_accession=card.get("old_accession"),
+        new_accession=card.get("new_accession"),
+    )
+
+
+def facts_rows(facts: Iterable[TrendFacts]) -> tuple[list[dict], list[dict], list[dict]]:
+    """(mention rows, activity rows, potential->actual rows) of derived facts, in the shapes
+    `topics`, `category_activity` and `potential_to_actual` take."""
     mentions, activity, p2a = [], [], []
     for f in facts:
         titles = {a.change_id: a.short_title for a in f.category_activity}
@@ -266,28 +305,28 @@ def body_from_facts(facts: Iterable[TrendFacts]) -> dict[str, Any]:
             for cat in a.categories:
                 activity.append({"ticker": f.ticker, "category": cat, **a.model_dump()})
         p2a.extend(p.model_dump() for p in f.potential_to_actual)
-    companies = [
-        company_entry(
-            ticker=f.ticker,
-            name=f.company_name,
-            analysis_id=f.analysis_id,
-            old_fiscal_year=f.old_fiscal_year,
-            new_fiscal_year=f.new_fiscal_year,
-            total_changes=f.total_changes,
-            by_change_type=f.by_change_type,
-            cik=f.cik,
-            old_accession=f.old_accession,
-            new_accession=f.new_accession,
-            edgar_url_old=f.old_edgar_url,
-            edgar_url_new=f.new_edgar_url,
-        )
-        for f in facts
-    ]
+    return mentions, activity, p2a
+
+
+def body_from_facts(
+    facts: Iterable[TrendFacts],
+    *,
+    companies: Iterable[Mapping[str, Any]] | None = None,
+    warnings: Iterable[str] | None = None,
+) -> dict[str, Any]:
+    """The local path: derived files of the current reports -> the /trends body. `companies`
+    (default: one entry per facts file) is the full company set when some companies have no
+    facts."""
+    facts = list(facts)
+    mentions, activity, p2a = facts_rows(facts)
+    if companies is None:
+        companies = [company_from_facts(f) for f in facts]
     return build_body(
         companies,
         topics=topics(mentions),
         category_activity=category_activity(activity),
         potential_to_actual=potential_to_actual(p2a),
+        warnings=warnings,
     )
 
 
@@ -303,11 +342,9 @@ def _json_list(v: Any) -> list:
     return []
 
 
-def body_from_rows(
-    companies: list[dict], topic_rows: list[dict], activity_rows: list[dict], p2a_rows: list[dict]
-) -> dict[str, Any]:
-    """The Databricks path: rows of the three queries (tables.trends_*_sql) -> the /trends body."""
-    mentions = [
+def mention_rows_from_store(topic_rows: Iterable[Mapping[str, Any]]) -> list[dict]:
+    """Rows of tables.trends_topics_sql -> the mention rows `topics` takes."""
+    return [
         {
             "ticker": r["ticker"],
             "change_id": r["change_id"],
@@ -324,9 +361,24 @@ def body_from_rows(
         for r in topic_rows
         if r.get("topic_source") in ("lexicon", "entity", "phrase")
     ]
+
+
+def body_from_rows(
+    companies: list[dict],
+    topic_rows: list[dict],
+    activity_rows: list[dict],
+    p2a_rows: list[dict],
+    *,
+    local_facts: Iterable[TrendFacts] = (),
+    warnings: Iterable[str] | None = None,
+) -> dict[str, Any]:
+    """The Databricks path: rows of the three queries (tables.trends_*_sql), plus the local derived
+    facts of companies whose facts are not in the store -> the /trends body."""
+    l_mentions, l_activity, l_p2a = facts_rows(local_facts)
     return build_body(
         companies,
-        topics=topics(mentions),
-        category_activity=category_activity(activity_rows),
-        potential_to_actual=potential_to_actual(p2a_rows),
+        topics=topics(mention_rows_from_store(topic_rows) + l_mentions),
+        category_activity=category_activity(list(activity_rows) + l_activity),
+        potential_to_actual=potential_to_actual(list(p2a_rows) + l_p2a),
+        warnings=warnings,
     )

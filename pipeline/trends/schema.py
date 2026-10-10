@@ -12,7 +12,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 # Bump when derive.py changes what it produces; together with TOPICS_VERSION (topics.yml) it forms
 # `derivation`, which is stored in every file so stale files are re-derived instead of trusted.
-TRENDS_VERSION = "1.1.0"
+TRENDS_VERSION = "1.2.1"
 
 TopicSource = Literal["lexicon", "entity", "phrase"]
 MentionStatus = Literal["added", "modified"]

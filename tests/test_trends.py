@@ -201,13 +201,31 @@ def test_entity_normalization_alias_and_stoplist():
     assert not is_stop_entity("financial industry regulatory authority", sf_ident, sf_toks)
 
 
+def set_sentence_text(d: dict, sid: str, text: str) -> None:
+    """Synthetic test data only: replace a sentence's text in the change and the index."""
+    for c in d["changes"]:
+        for s in c["sentences"]:
+            if s["id"] == sid:
+                s["text"] = text
+    d["sentence_index"][sid]["text"] = text
+
+
 def test_new_entities_become_topics_or_reinforce_lexicon_topics():
+    values = ("SEC", "PRC", "Acme Rocket Works", "the Entity List", "Q3 fiscal 2025")
+
     def add_entities(d):
         c = change(d, EXPORT_CHANGE)
         sid = "0000000000-25-000001:0:3"
+        # the entities must be words of the (wholly added) sentence to count
+        set_sentence_text(
+            d,
+            sid,
+            d["sentence_index"][sid]["text"].rstrip(".")
+            + ", as noted by the SEC, the PRC, Acme Rocket Works, the Entity List and Q3 fiscal 2025.",
+        )
         c["signals"]["new_entities"] = [
             {"value": v, "detail": None, "old_sentence_ids": [], "new_sentence_ids": [sid]}
-            for v in ("SEC", "PRC", "Acme Rocket Works", "the Entity List", "Q3 fiscal 2025")
+            for v in values
         ]
 
     facts = derive_trend_facts(doc_comp(add_entities))
@@ -220,8 +238,10 @@ def test_new_entities_become_topics_or_reinforce_lexicon_topics():
         for m in facts.topic_mentions
         if m.topic == "Export controls" and m.change_id == EXPORT_CHANGE
     )
+    # the lexicon match ("Entity List") and the entity value ("the Entity List") both reinforce it
     assert exp.source == "lexicon" and exp.matched_terms == [
         "export restrictions",
+        "Entity List",
         "the Entity List",
     ]
 
@@ -545,7 +565,8 @@ def test_local_body_on_the_real_reports():
 class TrendsStore:
     """Duck-typed store for the API whose SQL is answered from TableSim rows (the publisher's
     real MERGEs filled them). Evaluates the three trends queries in Python with the semantics the
-    SQL states (current ids, phrase rule, one example per topic+source+ticker)."""
+    SQL states (current ids, current derivation, phrase rule, one example per
+    topic+source+ticker)."""
 
     def __init__(self, sim):
         self.sim = sim
@@ -576,7 +597,12 @@ class TrendsStore:
         changes = self.sim.rows["changes"]
         if sql.startswith("WITH m AS"):
             assert params["phrase"] == "phrase" and params["current"] is True
-            ms = [r for r in self.sim.rows["topic_mentions"].values() if r["analysis_id"] in cur]
+            assert "tm.derivation = :derivation" in sql
+            ms = [
+                r
+                for r in self.sim.rows["topic_mentions"].values()
+                if r["analysis_id"] in cur and r.get("derivation") == params["derivation"]
+            ]
             share: dict[str, set] = {}
             for r in ms:
                 if r["topic_source"] == "phrase":
@@ -612,11 +638,12 @@ class TrendsStore:
                     }
                 )
             return out
-        if sql.startswith("SELECT ca.ticker"):
+        if sql.startswith("SELECT ca.analysis_id"):
+            assert "ca.derivation = :derivation" in sql
             return [
                 r
                 for r in self.sim.rows["category_activity"].values()
-                if r["analysis_id"] in cur and r["change_type"] != params["unchanged"]
+                if r["analysis_id"] in cur and r.get("derivation") == params["derivation"]
             ]
         if sql.startswith("SELECT h.ticker"):
             reports = self.sim.rows["reports"]
@@ -660,12 +687,24 @@ def test_databricks_trends_match_the_local_aggregate(tmp_path, monkeypatch):
     assert len(store.statements) == 3  # at most three small queries
     for sql, params in store.statements:
         assert ":ids" in sql and ":current" in sql and "NVDA" not in sql
+        assert "1.2.0" not in sql and "topics" not in sql.split("FROM", 1)[0]  # values as params
         assert sorted(json.loads(params["ids"])) == sorted(
             c["analysis_id"] for c in remote["companies"]
         )
+        if ":derivation" in sql:
+            assert params["derivation"] == derive.derivation_id()
+    assert sum(":derivation" in sql for sql, _ in store.statements) == 2
     local = local_body()
-    for key in ("headline", "topics", "category_activity", "potential_to_actual", "change_mix"):
+    for key in (
+        "headline",
+        "topics",
+        "category_activity",
+        "potential_to_actual",
+        "change_mix",
+        "warnings",
+    ):
         assert remote[key] == local[key], key
+    assert remote["warnings"] == []
     for rc, lc in zip(remote["companies"], local["companies"], strict=True):
         assert rc["edgar_url_old"] is None and rc["edgar_url_new"] is None  # not in the table
         assert {k: v for k, v in rc.items() if not k.startswith("edgar")} == {
