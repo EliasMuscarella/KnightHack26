@@ -32,7 +32,10 @@ Without Databricks every report lives in `data/published/` on the laptop that ra
 With it, every teammate's pipeline run publishes to one shared place and every running copy of
 the app (each laptop, a future deploy) reads all reports from there. The published JSON stays the
 source of truth: it is uploaded byte-for-byte to a Unity Catalog Volume, and three Delta tables
-(`reports`, `changes`, `highlights`) are derived from it for cross-company questions in SQL.
+(`reports`, `changes`, `highlights`) are derived from it for cross-company questions in SQL
+(`highlights` also carries `old_spans_json` / `new_spans_json`, the removed and added word ranges
+of each highlight's two sentences, so the Trends page can draw the same strike and highlighter
+from the shared store as from a local file).
 
 **One-time setup (one person, about ten minutes)**
 
@@ -42,7 +45,11 @@ source of truth: it is uploaded byte-for-byte to a Unity Catalog Volume, and thr
 3. In `.env`: `DATABRICKS_HOST`, `DATABRICKS_TOKEN`, `DATABRICKS_WAREHOUSE_ID` (optional
    `DATABRICKS_CATALOG`, `DATABRICKS_SCHEMA`, `DATABRICKS_VOLUME`; see `.env.example`).
 4. `uv run python scripts/databricks_setup.py` creates the schema, the Volume and the tables
-   (`CREATE … IF NOT EXISTS`; running it again changes nothing).
+   (`CREATE … IF NOT EXISTS`; running it again changes nothing). On a workspace set up before
+   the span columns existed it adds them to `highlights` with `ALTER TABLE … ADD COLUMNS`, only
+   when `DESCRIBE TABLE` shows them missing; then `uv run python scripts/sync_to_databricks.py`
+   re-publishes nothing (same analysis ids) and `uv run python scripts/derive_trends.py`
+   backfills the trend tables.
 5. `uv run python scripts/sync_to_databricks.py` uploads the reports already in `data/published/`.
 
 Every other teammate only needs steps 2–3 with their own token.

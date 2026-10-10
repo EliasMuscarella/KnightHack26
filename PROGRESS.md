@@ -117,11 +117,13 @@ client; the one-time steps for the team are in REPORT.md §11 and README "Shared
 | UX8 | Amazon 0 meaningful changes | blocked here (no AMZN report, no SEC access) | diagnostic recipe and decision criteria in REPORT.md §12 |
 | T9–T11 | Trends backend (subagent) | see its rows below / commits T9, T10, T11 | cold-start fix, derived facts, tables and serving |
 | UX12 | Trends page | done (UI) | headline, shared topics with quotes, blue-orange heatmap, potential→actual list, change mix, source line, skeleton + retry |
-| UX13 | Verification and outside review | in progress | screenshots at 1440×900 and 1280×720 after each task; reverse-squint and judge reviews recorded in REPORT.md §12 |
+| UX13 | Verification and outside review | done | 204 pytest + 13 node tests, ruff, build/typecheck/lint, FIXTUR byte-identical cached vs `--no-cache`, code fingerprint unchanged (`e94330fb…`), no horizontal scroll and nothing under 14px at 1440 and 1280; two review rounds (reverse-squint 6/10 → 6/10, judge → 7/10) with verdicts and responses in REPORT.md §12 |
 
 ## What's next
 
-Team: run the NVDA command above, then `RISKDIFF_SHOW_FIXTURE= ./scripts/dev.sh` and walk the NVDA page as a judge.
+Team: run the NVDA command above (it also removes the "The following risk factors…" preamble from the
+highlights and cleans the entity noise the reviewers saw), then `RISKDIFF_SHOW_FIXTURE= ./scripts/dev.sh`
+and walk the NVDA page as a judge. Smallest safe next task: REPORT.md §12, "Next smallest safe task".
 
 ## How to resume
 
