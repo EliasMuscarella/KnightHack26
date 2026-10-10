@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ChangeList, type ChangeRow } from "@/components/ChangeList";
 import { AuditTrail, HighlightCards, OverviewHeader, SummaryLine } from "@/components/Overview";
 import { FixtureBanner, InfoBox, PageContainer } from "@/components/ui";
-import { getComparison } from "@/lib/data";
+import { getComparison, getLibraryStatus } from "@/lib/data";
 import { normalizeTicker } from "@/lib/ticker";
 
 export const dynamic = "force-dynamic";
@@ -19,7 +19,7 @@ export default async function ComparisonPage(props: PageProps<"/c/[ticker]">) {
   const { ticker: raw } = await props.params;
   const ticker = normalizeTicker(raw);
   if (!ticker) notFound();
-  const result = await getComparison(ticker);
+  const [result, libraryStatus] = await Promise.all([getComparison(ticker), getLibraryStatus()]);
   if (!result) notFound();
   const { comparison, source } = result;
 
@@ -54,7 +54,7 @@ export default async function ComparisonPage(props: PageProps<"/c/[ticker]">) {
             <ChangeList ticker={comparison.company.ticker} rows={rows} />
           </>
         )}
-        <AuditTrail comparison={comparison} source={source} />
+        <AuditTrail comparison={comparison} source={source} libraryStatus={libraryStatus} />
       </PageContainer>
     </>
   );

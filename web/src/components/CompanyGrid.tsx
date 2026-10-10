@@ -5,6 +5,16 @@ import { formatDate } from "@/lib/format";
 import type { CompanyListing } from "@/lib/types";
 import { displayTitle, meaningfulCount } from "@/lib/vocabulary";
 
+/** "Published by {who} · {date}", "Published {date}", or nothing (date only, no time). */
+function PublishedLine({ company }: { company: CompanyListing }) {
+  const by = typeof company.published_by === "string" ? company.published_by.trim() : "";
+  const date = typeof company.published_at === "string" && company.published_at ? formatDate(company.published_at) : "";
+  if (!date) {
+    return by ? <p className="-mt-1 text-sm text-ink-faint">Published by {by}</p> : null;
+  }
+  return <p className="-mt-1 text-sm text-ink-faint">{by ? `Published by ${by} · ${date}` : `Published ${date}`}</p>;
+}
+
 export function CompanyCardView({ company }: { company: CompanyListing }) {
   const { meaningful, total: summed } = meaningfulCount(company.by_change_type);
   const total = company.total_changes || summed;
@@ -44,6 +54,7 @@ export function CompanyCardView({ company }: { company: CompanyListing }) {
           </>
         ) : null}
       </p>
+      <PublishedLine company={company} />
       {top ? (
         <div className="mt-auto border-t border-line pt-3">
           <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Top change</p>

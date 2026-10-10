@@ -9,8 +9,15 @@ import path from "node:path";
 import { cache } from "react";
 
 import type { Comparison } from "@/types/comparison";
-import { ApiUnreachableError, getComparisonFromApi, getCompaniesFromApi, looksLikeComparison } from "@/lib/api";
-import type { CompanyCard, CompanyListing, RubricFile } from "@/lib/types";
+import {
+  ApiUnreachableError,
+  getComparisonFromApi,
+  getCompaniesFromApi,
+  getLibraryStatusFromApi,
+  getTrendsFromApi,
+  looksLikeComparison,
+} from "@/lib/api";
+import type { CompanyCard, CompanyListing, LibraryStatus, RubricFile, TrendsPayload } from "@/lib/types";
 import { isFigureChanged } from "@/lib/vocabulary";
 
 const FILE_RE = /^([A-Z.\-]{1,6})_(\d{4})_(\d{4})\.json$/;
@@ -138,6 +145,7 @@ function toListing(c: Comparison, file: string, source: CompanyListing["source"]
     is_fixture: c.is_fixture === true,
     source,
     top_highlight: topHighlight(c),
+    analysis_id: c.analysis_id,
   };
 }
 
@@ -154,6 +162,22 @@ function isUsableCard(card: Partial<CompanyCard> | null | undefined): card is Co
   return true;
 }
 
+type LibraryFields = Pick<CompanyListing, "analysis_id" | "published_by" | "published_at" | "library_source">;
+
+/**
+ * Shared-library fields of an API card, read defensively (the card is untrusted input and
+ * older API versions do not send them). Only well-formed values are kept.
+ */
+function libraryFields(card: CompanyCard): LibraryFields {
+  const raw = card as unknown as Record<string, unknown>;
+  const out: LibraryFields = {};
+  if (typeof raw.analysis_id === "string" && /^[0-9a-f]{16,128}$/i.test(raw.analysis_id)) out.analysis_id = raw.analysis_id;
+  if (typeof raw.published_by === "string" && raw.published_by.trim()) out.published_by = raw.published_by.trim().slice(0, 80);
+  if (typeof raw.published_at === "string" && /^\d{4}-\d{2}-\d{2}/.test(raw.published_at)) out.published_at = raw.published_at;
+  if (raw.source === "local" || raw.source === "remote") out.library_source = raw.source;
+  return out;
+}
+
 export const listCompanies = cache(async (): Promise<CompanyListing[]> => {
   const out: CompanyListing[] = [];
   const seen = new Set<string>();
@@ -165,8 +189,38 @@ export const listCompanies = cache(async (): Promise<CompanyListing[]> => {
   }
   try {
     for (const card of await getCompaniesFromApi()) {
-      if (!isUsableCard(card) || seen.has(card.ticker)) continue;
-      out.push({ ...card, is_fixture: false, source: "api" });
+      if (!isUsableCard(card)) continue;
+      const lib = libraryFields(card);
+      if (seen.has(card.ticker)) {
+        // Local file already listed: attach the API's library metadata, but only when the
+        // card describes the same comparison (same fiscal-year pair and, when both carry
+        // one, the same analysis id), so "Published by" never labels a different report.
+        const i = out.findIndex((l) => l.ticker === card.ticker);
+        if (i < 0) continue;
+        const local = out[i];
+        const sameReport =
+          local.old_fiscal_year === card.old_fiscal_year &&
+          local.new_fiscal_year === card.new_fiscal_year &&
+          (!lib.analysis_id || !local.analysis_id || lib.analysis_id === local.analysis_id);
+        if (sameReport) out[i] = { ...local, ...lib };
+        continue;
+      }
+      out.push({
+        ticker: card.ticker,
+        name: card.name,
+        cik: card.cik,
+        old_fiscal_year: card.old_fiscal_year,
+        new_fiscal_year: card.new_fiscal_year,
+        old_filing_date: card.old_filing_date,
+        new_filing_date: card.new_filing_date,
+        total_changes: card.total_changes,
+        by_change_type: card.by_change_type,
+        max_score: card.max_score,
+        file: card.file,
+        is_fixture: false,
+        source: "api",
+        ...lib,
+      });
       seen.add(card.ticker);
     }
   } catch {
@@ -201,6 +255,12 @@ export async function listKnownTickers(): Promise<string[]> {
   }
   return [...new Set(tickers)];
 }
+
+/** Shared-library connection state for the footer and audit trail (request-cached, never throws). */
+export const getLibraryStatus = cache(async (): Promise<LibraryStatus> => getLibraryStatusFromApi(1500));
+
+/** Cross-company trends from the shared library, or null when the API cannot provide them. */
+export const getTrends = cache(async (): Promise<TrendsPayload | null> => getTrendsFromApi(1500));
 
 export interface ComparisonResult {
   comparison: Comparison;
