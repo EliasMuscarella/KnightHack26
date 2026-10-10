@@ -9,7 +9,10 @@ Every highlight points at verbatim sentence ids; the UI quotes them from sentenc
 
 Ranking (see rank_key): kind priority potential_became_actual > new_figure > new_risk >
 new_named_party > removed_risk, then parent change score (desc), then change id, then the
-candidate's position within its change. At most MAX_PER_CHANGE per change and MAX_TOTAL overall.
+candidate's position within its change. At most MAX_PER_CHANGE per change (and only one per
+change per kind, so two cards never say the same thing) and MAX_TOTAL overall.
+A potential_became_actual highlight must carry BOTH a last-year and a this-year sentence: the
+before/after is the point of that card, so rubric-only candidates with one side are dropped.
 """
 
 from __future__ import annotations
@@ -48,6 +51,8 @@ def candidate_highlights(change: Change, index: dict[str, SentenceLocation]) -> 
             new = None
         if old is None and new is None:
             return
+        if kind == "potential_became_actual" and (old is None or new is None):
+            return  # a before/after card needs both sides
         key = (kind, old, new)
         if key in seen:
             return
@@ -105,10 +110,12 @@ def select_highlights(changes: list[Change], index: dict[str, SentenceLocation])
     ranked.sort(key=lambda x: x[0])
     chosen: list[Highlight] = []
     per_change: dict[str, int] = {}
+    seen_kind: set[tuple[str, str]] = set()
     for _, h in ranked:
-        if per_change.get(h.change_id, 0) >= MAX_PER_CHANGE:
+        if per_change.get(h.change_id, 0) >= MAX_PER_CHANGE or (h.change_id, h.kind) in seen_kind:
             continue
         chosen.append(h)
+        seen_kind.add((h.change_id, h.kind))
         per_change[h.change_id] = per_change.get(h.change_id, 0) + 1
         if len(chosen) >= MAX_TOTAL:
             break

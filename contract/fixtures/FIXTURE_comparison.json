@@ -1812,20 +1812,20 @@
       "short_title": "FIXTURE: Reliance on outside foundries"
     },
     {
-      "change_id": "d434664e80f07fbb",
-      "detail": null,
-      "kind": "potential_became_actual",
-      "new_sentence_id": "0000000000-25-000001:0:3",
-      "old_sentence_id": null,
-      "short_title": "FIXTURE: Reliance on outside foundries"
-    },
-    {
       "change_id": "530f7128dc266e93",
       "detail": "FIXTURE: could increase -> have increased",
       "kind": "potential_became_actual",
       "new_sentence_id": "0000000000-25-000001:5:0",
       "old_sentence_id": "0000000000-24-000001:5:0",
       "short_title": "FIXTURE: Trade policy and tariffs"
+    },
+    {
+      "change_id": "d434664e80f07fbb",
+      "detail": "FIXTURE: $1.2 billion",
+      "kind": "new_figure",
+      "new_sentence_id": "0000000000-25-000001:0:3",
+      "old_sentence_id": null,
+      "short_title": "FIXTURE: Reliance on outside foundries"
     },
     {
       "change_id": "530f7128dc266e93",
