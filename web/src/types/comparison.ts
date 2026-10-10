@@ -91,6 +91,12 @@ export interface Comparison {
   sentence_index: {
     [k: string]: SentenceLocation;
   };
+  /**
+   * STAGE_VERSION of each stage that produced this report, keyed by stage name (fetch, extract, segment, embed, match, diff, signals, llm), so a checker can name the earliest stage a re-run must start from. Absent in reports published before it was recorded.
+   */
+  stage_versions?: {
+    [k: string]: string;
+  } | null;
   summary: Summary;
   thresholds: Thresholds;
 }
