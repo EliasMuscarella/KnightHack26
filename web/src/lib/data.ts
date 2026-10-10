@@ -261,7 +261,7 @@ export async function listKnownTickers(): Promise<string[]> {
 export const getLibraryStatus = cache(async (): Promise<LibraryStatus> => getLibraryStatusFromApi(1500));
 
 /** Cross-company trends from the shared library, or null when the API cannot provide them. */
-export const getTrends = cache(async (): Promise<TrendsPayload | null> => getTrendsFromApi(1500));
+export const getTrends = cache(async (): Promise<TrendsPayload | null> => getTrendsFromApi(4000));
 
 export interface ComparisonResult {
   comparison: Comparison;

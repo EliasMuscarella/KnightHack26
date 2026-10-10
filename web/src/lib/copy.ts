@@ -7,5 +7,6 @@ export const FIXTURE_BANNER = "FIXTURE DATA — synthetic, not from any SEC fili
 /** Shared-library status lines (footer and audit trail). "disabled"/unknown show nothing. */
 export const LIBRARY_STATUS_COPY: Partial<Record<string, string>> = {
   ok: "Shared library: connected",
+  connecting: "Shared library: connecting",
   offline: "Shared library: offline, showing reports on this computer",
 };

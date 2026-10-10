@@ -78,9 +78,9 @@ function Row({ ticker, r }: { ticker: string; r: ChangeRow }) {
   );
 }
 
-export function ChangeList({ ticker, rows }: { ticker: string; rows: ChangeRow[] }) {
+export function ChangeList({ ticker, rows, initialTopic = "" }: { ticker: string; rows: ChangeRow[]; initialTopic?: string }) {
   const [type, setType] = useState<string | null>(null);
-  const [topic, setTopic] = useState<string>("");
+  const [topic, setTopic] = useState<string>(() => (rows.some((r) => r.categories.includes(initialTopic)) ? initialTopic : ""));
   const [showUnchanged, setShowUnchanged] = useState(false);
 
   const typeCounts = useMemo(() => {

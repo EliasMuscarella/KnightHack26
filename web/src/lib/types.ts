@@ -47,31 +47,86 @@ export interface CompanyListing extends CompanyCard {
   library_source?: "local" | "remote";
 }
 
-/** GET /store/health → remote; "unknown" when the API is down, slow, or lacks the endpoint. */
-export type LibraryStatus = "ok" | "offline" | "disabled" | "unknown";
+/** GET /store/health: remote state; "unknown" when the API is down, slow, or lacks the endpoint. */
+export type LibraryStatus = "ok" | "connecting" | "offline" | "disabled" | "unknown";
 
-/** GET /trends row: companies with at least one change of `change_type` in `category`. */
-export interface TrendsCategoryRow {
-  category: string;
-  change_type: string;
-  companies: number;
+/** Shared-store state as the trends endpoint reports it. */
+export type StoreState = "ok" | "connecting" | "disabled" | "offline";
+
+export interface TrendsCompany {
+  ticker: string;
+  name: string;
+  analysis_id: string;
+  old_fiscal_year: number;
+  new_fiscal_year: number;
+  total_changes: number;
+  meaningful_changes: number;
+  by_change_type: Record<string, number>;
+  cik?: string | null;
+  old_accession?: string | null;
+  new_accession?: string | null;
+  edgar_url_old?: string | null;
+  edgar_url_new?: string | null;
 }
 
-/** GET /trends row: number of highlights of `kind` in one company's report. */
-export interface TrendsKindRow {
+export interface TrendsTopicExample {
+  ticker: string;
+  change_id: string;
+  sentence_id: string;
+  short_title: string;
+  status: "added" | "modified";
+  text: string;
+  /** Character offsets inside `text` of the words the deterministic diff marked as new. */
+  added_spans: [number, number][];
+  matched_terms: string[];
+}
+
+export interface TrendsTopic {
+  topic: string;
+  source: "lexicon" | "entity" | "phrase";
+  company_count: number;
+  sentence_count: number;
+  companies: string[];
+  examples: TrendsTopicExample[];
+}
+
+export interface TrendsCategoryActivity {
+  ticker: string;
+  category: string;
+  risk_factors: number;
+  change_ids: string[];
+  added_sentences: number;
+  removed_sentences: number;
+  modified_sentences: number;
+  added_words: number;
+  removed_words: number;
+  modified_words: number;
+  max_score: number;
+}
+
+export interface TrendsActual {
   ticker: string;
   company_name: string;
-  kind: string;
-  highlights: number;
+  change_id: string;
+  short_title: string;
+  old_sentence_id: string | null;
+  new_sentence_id: string | null;
+  old_text: string | null;
+  new_text: string | null;
+  score: number;
 }
 
 /** GET /trends payload (validated in api.ts before use). */
 export interface TrendsPayload {
-  available: boolean;
-  remote: Exclude<LibraryStatus, "unknown">;
-  companies: number;
-  by_category: TrendsCategoryRow[];
-  by_kind: TrendsKindRow[];
+  status: StoreState;
+  source: "databricks" | "local" | null;
+  computed_at: string | null;
+  companies: TrendsCompany[];
+  headline: { companies: number; meaningful_changes: number; top_topic: { topic: string; company_count: number } | null };
+  topics: TrendsTopic[];
+  category_activity: TrendsCategoryActivity[];
+  potential_to_actual: TrendsActual[];
+  change_mix: { ticker: string; by_change_type: Record<string, number> }[];
 }
 
 /** contract/rubric.json (produced by the pipeline). */

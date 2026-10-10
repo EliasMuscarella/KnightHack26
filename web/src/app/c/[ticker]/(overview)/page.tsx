@@ -17,6 +17,9 @@ export async function generateMetadata(props: PageProps<"/c/[ticker]">): Promise
 
 export default async function ComparisonPage(props: PageProps<"/c/[ticker]">) {
   const { ticker: raw } = await props.params;
+  const search = await props.searchParams;
+  const rawTopic = Array.isArray(search?.topic) ? search?.topic[0] : search?.topic;
+  const initialTopic = typeof rawTopic === "string" && /^[a-z_]{1,40}$/.test(rawTopic) ? rawTopic : "";
   const ticker = normalizeTicker(raw);
   if (!ticker) notFound();
   const [result, libraryStatus] = await Promise.all([getComparison(ticker), getLibraryStatus()]);
@@ -48,7 +51,7 @@ export default async function ComparisonPage(props: PageProps<"/c/[ticker]">) {
         ) : (
           <>
             <HighlightCards comparison={comparison} />
-            <ChangeList ticker={comparison.company.ticker} rows={rows} />
+            <ChangeList ticker={comparison.company.ticker} rows={rows} initialTopic={initialTopic} />
           </>
         )}
         <AuditTrail comparison={comparison} source={source} libraryStatus={libraryStatus} />
