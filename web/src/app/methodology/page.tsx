@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Markdown } from "@/components/Markdown";
 import { PipelineDiagram } from "@/components/PipelineDiagram";
 import { EmptyState, PageContainer } from "@/components/ui";
-import { DISCLAIMER } from "@/lib/copy";
 import { getEvalMarkdown, getRubric } from "@/lib/data";
 import { STAGES } from "@/lib/stages";
 import { CHANGE_LEVEL, LEVEL_HIGH_MIN, LEVEL_MEDIUM_MIN, scoreLineLabel } from "@/lib/vocabulary";
@@ -88,7 +87,7 @@ export default async function MethodologyPage() {
   return (
     <PageContainer className="space-y-12 py-10">
       <header className="max-w-prose-72">
-        <h1 className="text-xl font-medium tracking-tight text-ink">How RiskDiff works</h1>
+        <h1 className="text-xl font-title tracking-tight text-ink">How RiskDiff works</h1>
         <p className="mt-4 text-base leading-relaxed text-ink-secondary">
           Every year a public company lists the risks it faces in the Risk Factors section of its annual report (10-K).
           RiskDiff lines up this year&apos;s list against last year&apos;s and shows exactly which sentences changed. The
@@ -97,7 +96,7 @@ export default async function MethodologyPage() {
         </p>
       </header>
 
-      <Section id="how" title="How it works">
+      <Section id="how" title="Four steps">
         <ol className="grid gap-x-10 gap-y-6 min-[900px]:grid-cols-4" aria-label="Four steps">
           {PLAIN_STEPS.map((step, i) => (
             <li key={step.title} className="min-w-0 border-t border-ink pt-3">
@@ -129,9 +128,7 @@ export default async function MethodologyPage() {
             </li>
           ))}
         </ul>
-        <p role="note" className="max-w-prose-72 border-l-2 border-ink pl-4 text-base text-ink">
-          {DISCLAIMER}
-        </p>
+
       </Section>
 
       <details className="group border-t border-line pt-6" id="technical-detail">

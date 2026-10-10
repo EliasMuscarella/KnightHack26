@@ -14,6 +14,7 @@ from datetime import datetime
 
 from pipeline.config import DatabricksSettings
 from pipeline.schema import CHANGE_TYPES, Comparison
+from pipeline.trends.derive import added_spans, removed_spans
 from pipeline.trends.schema import TrendFacts
 
 REPORTS = "reports"
@@ -73,6 +74,8 @@ HIGHLIGHT_COLUMNS: tuple[tuple[str, str], ...] = (
     ("new_sentence_id", "STRING"),
     ("old_text", "STRING"),
     ("new_text", "STRING"),
+    ("old_spans_json", "STRING"),  # [[start, end], ...] of removed words inside old_text
+    ("new_spans_json", "STRING"),  # [[start, end], ...] of added words inside new_text
 )
 TOPIC_MENTION_COLUMNS: tuple[tuple[str, str], ...] = (
     ("analysis_id", "STRING"),
@@ -136,6 +139,23 @@ def ddl(s: DatabricksSettings) -> list[tuple[str, str]]:
     return out
 
 
+# Columns added after a table first shipped: (table, column, type). `databricks_setup.py` adds
+# them to an existing table with ALTER TABLE ... ADD COLUMNS when DESCRIBE shows they are missing.
+ADDED_COLUMNS: tuple[tuple[str, str, str], ...] = (
+    (HIGHLIGHTS, "old_spans_json", "STRING"),
+    (HIGHLIGHTS, "new_spans_json", "STRING"),
+)
+
+
+def describe_sql(s: DatabricksSettings, table: str) -> str:
+    return f"DESCRIBE TABLE {s.table(table)}"
+
+
+def add_columns_sql(s: DatabricksSettings, table: str, cols: list[tuple[str, str]]) -> str:
+    col_sql = ", ".join(f"`{name}` {typ}" for name, typ in cols)
+    return f"ALTER TABLE {s.table(table)} ADD COLUMNS ({col_sql})"
+
+
 # ---------- rows ----------
 
 
@@ -194,6 +214,7 @@ def change_rows(comp: Comparison) -> list[dict]:
 
 def highlight_rows(comp: Comparison) -> list[dict]:
     idx = comp.sentence_index
+    sentences = {s.id: s for c in comp.changes for s in c.sentences}  # carry the diff marks
     out = []
     for i, h in enumerate(comp.highlights):
         out.append(
@@ -208,6 +229,16 @@ def highlight_rows(comp: Comparison) -> list[dict]:
                 "new_sentence_id": h.new_sentence_id,
                 "old_text": idx[h.old_sentence_id].text if h.old_sentence_id in idx else None,
                 "new_text": idx[h.new_sentence_id].text if h.new_sentence_id in idx else None,
+                "old_spans_json": json.dumps(
+                    [list(sp) for sp in removed_spans(sentences[h.old_sentence_id])]
+                    if h.old_sentence_id in sentences
+                    else []
+                ),
+                "new_spans_json": json.dumps(
+                    [list(sp) for sp in added_spans(sentences[h.new_sentence_id])]
+                    if h.new_sentence_id in sentences
+                    else []
+                ),
             }
         )
     return out
@@ -370,7 +401,7 @@ def trends_potential_to_actual_sql(s: DatabricksSettings) -> str:
     cur = _current_ids("h").format(reports=s.table(REPORTS))
     return (
         f"SELECT h.ticker, r.company_name, h.change_id, h.short_title, h.old_sentence_id,\n"
-        f"  h.new_sentence_id, h.old_text, h.new_text, c.score\n"
+        f"  h.new_sentence_id, h.old_text, h.new_text, h.old_spans_json, h.new_spans_json, c.score\n"
         f"FROM {s.table(HIGHLIGHTS)} h\n"
         f"JOIN {s.table(REPORTS)} r ON r.analysis_id = h.analysis_id\n"
         f"LEFT JOIN {s.table(CHANGES)} c ON c.analysis_id = h.analysis_id AND c.change_id = h.change_id\n"

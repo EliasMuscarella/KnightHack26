@@ -451,7 +451,7 @@
   ],
   "cik": "0001045810",
   "company_name": "NVIDIA CORP",
-  "derivation": "1.0.0+topics1",
+  "derivation": "1.1.0+topics1",
   "new_accession": "0001045810-26-000021",
   "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
   "new_fiscal_year": 2026,
@@ -464,8 +464,24 @@
       "change_id": "a4156a06454f6dfd",
       "company_name": "NVIDIA CORP",
       "new_sentence_id": "0001045810-26-000021:21:94",
+      "new_spans": [
+        [
+          0,
+          6
+        ],
+        [
+          215,
+          311
+        ]
+      ],
       "new_text": "Export controls increase the risk of investing in U.S. advanced semiconductor products, because by the time a new product is ready for market, it may be subject to new unilateral export controls restricting its sale, resulting in excess inventory and purchase obligations as we recently experienced with the H20.",
       "old_sentence_id": "0001045810-25-000023:19:98",
+      "old_spans": [
+        [
+          0,
+          28
+        ]
+      ],
       "old_text": "Excessive or shifting export controls increase the risk of investing in U.S. advanced semiconductor products, because by the time a new product is ready for market, it may be subject to new unilateral export controls restricting its sale.",
       "score": 100,
       "short_title": "We are subject to complex laws, rules…",

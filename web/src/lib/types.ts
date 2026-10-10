@@ -114,6 +114,8 @@ export interface TrendsActual {
   old_text: string | null;
   new_text: string | null;
   score: number;
+  old_spans: [number, number][];
+  new_spans: [number, number][];
 }
 
 /** GET /trends payload (validated in api.ts before use). */
