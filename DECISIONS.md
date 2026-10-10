@@ -470,3 +470,59 @@ code and on NVDA/SF, and the live instance is named as "not inspected here".
 - **Stage versions are now recorded in each report** (`stage_versions`, optional in the contract),
   so STALE can name the earliest stage exactly for every report published from now on; for the two
   existing reports the earliest stage is inferred from the findings (NVDA: 2, the intro paragraph).
+
+## D-025 Integrity session: rules adopted while fixing (I2–I4)
+
+Amends D-021: topic mentions are no longer derived for `largely_unchanged` changes, and a term counts
+only when it lies wholly inside inserted text (see D-024 for the proofs).
+
+Pipeline (stage versions: diff 0.1.3, signals 0.2.2, segment 0.2.2, sec_fetch 0.1.1; PIPELINE_VERSION 0.2.0):
+- **Potential → actual only from aligned pairs.** A hedge-to-actual or status-change signal needs a
+  `modified` new sentence whose `counterpart_id` is the old sentence. The lexical pairing of added
+  sentences with hedged old sentences (ratio ≥ 0.25 over all words) and the (removed, added) pairing
+  are gone. A concluded marker must also be new on the new side (NVDA `…19:30/…21:30` carried "have been
+  imposed" in both years and fired before).
+- **Word diff compares casefolded tokens** and folds whitespace- and punctuation-only changes into
+  equal; the content-word anchoring of D-018 stays, chosen only when it marks fewer content words than
+  the plain alignment. The checker's CASE rule therefore ignores function words (and, or, to, we, is…),
+  which the anchoring may re-mark around a changed content word; they are never evidence.
+- **Short titles** (pipeline `highlights.short_title_from_heading`, frontend `shortTitleFromHeading`,
+  same spec, parity on all 57 published headings): the longest clause of 4–10 words ending at a natural
+  boundary, trailing dangling words removed, and, when the cut lands right before a conjunction, a
+  trailing "<conjunction> <word>" pair removed too ("…regulations, and political | and other actions"
+  → "…regulations"; "incidents or breaches," stays). Never an ellipsis, never the bare company name. The
+  LLM title is accepted only when `title_problems` is empty; the schema allows ten words.
+- **Entity stoplist** lives in `signals` (regulators, legislatures, courts, generic government, U.S.
+  aliases, one-name administrations) and the trends derivation applies the same `is_generic_entity`
+  on top of its own list, so the company page and Trends agree. An agency ("Federal Aviation
+  Administration") is not a bare administration; a state name is kept.
+- **Item 1A introduction**: a heading-like unit before the first real risk heading whose text or first
+  body paragraph matches the intro patterns is skipped (test built from NVDA's real intro). The
+  "Risk Factors Summary" skip is unchanged.
+- **Fiscal year** comes from the `dei:DocumentFiscalYearFocus` fact whose context matches the
+  document's own period, else a single distinct value, else the period year; a prior-year comparative
+  fact listed first no longer wins. No defect explaining CrowdStrike's "FY2024 and FY2026" was found
+  in selection or labeling on synthetic January fiscal-year cases; that case needs its submissions
+  JSON and both filings (not available here).
+
+Trends (TRENDS_VERSION 1.2.2):
+- Topics: inserted-span containment, meaningful changes only, last year's text from the old-side
+  sentences when `old_text` is absent; potential-to-actual rows keep aligned pairs only.
+- One company set: `/companies` and `/trends` are built from the same merged current library; a
+  company without facts stays listed and is named in `warnings`.
+- Delta rows carry their `derivation`; the queries read only the current derivation, so rows of an
+  older derivation are never served (`databricks_setup.py` adds the column to existing tables).
+
+Data and process:
+- The two local reports were refreshed with `scripts/migrate_published.py` (titles and highlights:
+  presentation fields derived from the file's own content, as in D-018; a title that is an exact
+  prefix of its heading is a truncation by construction and follows the current rule). Their
+  analysis, scores, sentences and analysis ids are unchanged; `scripts/refresh_stale.py` performs the
+  real re-run from the earliest changed stage on a machine with SEC and Hugging Face access.
+- `stage_versions` is recorded in every report published from now on (optional contract field), so
+  STALE names the earliest stage exactly; for the two existing reports it is inferred from findings
+  (NVDA: 2, the intro paragraph; SF: 5, case-only spans).
+- The checker evaluates display rules through the frontend's own functions when Node is available
+  (`snippetWindow`, `heatmapColumns`) and through Python ports otherwise, with shared vectors.
+- `@playwright/test` 1.63.0 was added as a pinned dev dependency so the required smoke test can run;
+  it uses the Chromium already in the environment (no download).
