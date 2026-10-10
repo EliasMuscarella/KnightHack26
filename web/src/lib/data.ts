@@ -9,6 +9,7 @@ import path from "node:path";
 import { cache } from "react";
 
 import type { Comparison } from "@/types/comparison";
+import { pickHero, type HeroPick } from "@/lib/hero";
 import {
   ApiUnreachableError,
   getComparisonFromApi,
@@ -330,3 +331,17 @@ export async function getEvalMarkdown(): Promise<string | null> {
     return null;
   }
 }
+
+
+/**
+ * The home hero's before/after: the top "Potential became actual" highlight across the local
+ * published reports (lib/hero.ts). Fixture data is never used, even when it is listed.
+ */
+export const getHero = cache(async (): Promise<HeroPick | null> => {
+  const comparisons: Comparison[] = [];
+  for (const entry of await listPublishedEntries()) {
+    const c = await readPublishedFile(entry);
+    if (c) comparisons.push(c);
+  }
+  return pickHero(comparisons);
+});
