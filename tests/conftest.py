@@ -1,10 +1,15 @@
 from __future__ import annotations
 
+import os
 import warnings
 
 import pytest
 
 warnings.filterwarnings("ignore", category=SyntaxWarning)
+
+# The suite is offline and deterministic: the dense embedder path is exercised with fakes
+# (tests/test_embed_match.py); everything that runs the pipeline uses the lexical embedder.
+os.environ.setdefault("RISKDIFF_EMBED_BACKEND", "lexical")
 
 
 @pytest.fixture()

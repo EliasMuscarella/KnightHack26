@@ -9,6 +9,10 @@ with every claim cited to the original filing text.
 See `CLAUDE.md` for architecture and run commands, `REPORT.md` for the demo script and current
 status, `EVAL.md` for evaluation numbers, and `DEMO.md` for the demo dataset.
 
+Status after the overnight build: the full pipeline, API and UI work end to end on a synthetic
+fixture; real filings could not be fetched in the build sandbox (no `.env`, sec.gov and
+huggingface.co blocked). See `REPORT.md` for exactly what to run next.
+
 Quick start:
 
 ```bash
