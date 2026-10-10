@@ -175,3 +175,39 @@ decision, alternatives considered, how to reverse.
 - Not fixable here (old-pipeline data in the published NVDA file; re-run required): the Item 1A preamble shown
   as a new risk, duplicate summary titles, "AI Diffusion IFR in"/"D:4" entities, the split ".z ECCNs"
   sentences, the double-counted rubric lines in `score_breakdown`, the LLM's choice of summary bullets.
+
+## D-020 Shared report library (Databricks session)
+- The published JSON remains the only source of truth; the Volume holds it byte-for-byte and the three Delta
+  tables are a projection rebuilt at any time by `scripts/sync_to_databricks.py`.
+- `analysis_id` hashes the analysis INPUTS (accessions, versions, code fingerprint, model ids, prompt), not the
+  bytes, so "verify the analysis_id recomputes" is done from the file's own recorded fields (a file produced by
+  an older code version still verifies; a forged provenance does not). Because that cannot detect an edit to
+  the content, the `reports` row also stores `content_sha256` of the uploaded bytes and a download is rejected
+  when the bytes do not match it.
+- MERGEs are insert-if-absent only (rows of an analysis never change), rows travel as ONE JSON-text parameter
+  decoded with `from_json`/`inline`, and `is_current` flips only the first time an analysis is seen. Re-publishing
+  is a no-op, and syncing an older local file after a teammate published a newer analysis never flips current
+  back. Flipping is per (ticker, old accession, new accession); the API shows the newest filing pair per ticker.
+- The SDK's `Config` probes `<host>/.well-known/databricks-config` on construction (best-effort OAuth
+  discovery a PAT never needs). Subclassing Config to skip it broke credential resolution (the SDK collects its
+  attributes from the class itself), so the plain Config is used and the probe is bounded by the short SDK
+  timeouts (15 s per request, 5 s retry budget); the client is built lazily, once, on first use in a background
+  thread, so no request blocks on it. Measured against an unreachable host: `/store/health` answers "offline"
+  within its 5 s cap, `/companies` in about 1 s with local reports, a local `/comparison` in under 50 ms, and a
+  miss or `/trends` in milliseconds once the background refresh has recorded the failure.
+- API read path: a local file is always served without consulting the store. The store's report list is
+  refreshed in a background thread with a 60 s TTL (20 s after a failure); `/companies` waits at most 1 s for a
+  cold refresh and the list is warmed at startup. When the store's current report for a ticker is a different
+  analysis of the same (or newer) filing pair than the local file, the card shows the current one and the file
+  is pulled to disk in the background, so the two converge within seconds; the local file is overwritten
+  (that is what "becomes the new current report" means on every machine).
+- `CompanyCard` in the contract is unchanged (the brief forbids contract changes); `/companies` adds
+  `analysis_id`, `published_by`, `published_at` and `source` as extra keys and the web listing type declares
+  them optionally.
+- Host validation accepts `https://` URLs with no path on `.cloud.databricks.com`, `.gcp.databricks.com`,
+  `.azuredatabricks.net`, `.databricks.azure.us`, `.databricks.azure.cn`; only that one hostname joins the
+  allowlist. Catalog/schema/volume names must match `^[A-Za-z_][A-Za-z0-9_]{0,127}$` and are quoted.
+- `published_by` is `git config user.name` of the publishing machine (fixed arguments, 3 s timeout) or
+  "unknown". `published_at` is set at publish time in the table only; the JSON stays timestamp-free (D-012).
+- No real workspace was available in this sandbox: everything ran against a fake SDK client and simulated
+  tables; the real-workspace checklist is in REPORT.md.
