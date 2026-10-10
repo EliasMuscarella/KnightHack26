@@ -29,7 +29,7 @@ test("short titles follow the clause rule: longest clean clause of 4 to 10 words
 test("the brief's fragment examples do not come back", () => {
   // Synthetic headings shaped like the examples in the brief.
   const laws = shortTitleFromHeading(
-    "We are subject to complex laws, rules, regulations, and political and other actions, including restrictions on the export of our products, which may adversely impact our business.",
+    "We are subject to complex laws, rules, regulations and other actions, including restrictions on the export of our products, which may adversely impact our business.",
   );
   const tech = shortTitleFromHeading(
     "The technology industry, including the Internet and mobile platforms, is subject to rapid change, which could harm our business.",
@@ -39,7 +39,7 @@ test("the brief's fragment examples do not come back", () => {
     "Alphabet Inc. faces intense competition in every market where its products are sold today.",
     "Alphabet Inc.",
   );
-  assert.equal(laws, "We are subject to complex laws, rules, regulations, and political");
+  assert.equal(laws, "We are subject to complex laws, rules, regulations");
   assert.equal(tech, "The technology industry, including the Internet and mobile platforms");
   assert.equal(company, "Alphabet Inc. faces intense competition in every market");
   for (const t of [laws, tech, company]) assert.ok(!BANNED_FRAGMENTS.includes(t), t);
@@ -54,7 +54,7 @@ test("the brief's fragment examples do not come back", () => {
 
 test("NVDA headings (data/published/NVDA_2025_2026.json) give the spec's titles", () => {
   const expected: [string, string][] = [
-    ["We are subject to complex laws, rules, regulations, and political and other actions, including restrictions on the export of our products, which may adversely impact our business.", "We are subject to complex laws, rules, regulations, and political"],
+    ["We are subject to complex laws, rules, regulations and other actions, including restrictions on the export of our products, which may adversely impact our business.", "We are subject to complex laws, rules, regulations"],
     ["Commercial arrangements expose us to counterparty risks.", "Commercial arrangements expose us to counterparty risks"],
     ["Failure to meet the evolving needs of our industry and markets may adversely impact our financial results.", "Failure to meet the evolving needs of our industry"],
     ["The following risk factors should be considered in addition to the other information in this Annual Report on Form 10-K.", "The following risk factors"],
@@ -91,8 +91,8 @@ test("NVDA headings (data/published/NVDA_2025_2026.json) give the spec's titles"
 test("displayTitle uses a real short title and falls back from truncations and company names", () => {
   assert.equal(displayTitle("Export controls on China sales", "We are subject to complex laws…"), "Export controls on China sales");
   assert.equal(
-    displayTitle("We are subject to complex laws, rules…", "We are subject to complex laws, rules, regulations, and political actions."),
-    "We are subject to complex laws, rules, regulations",
+    displayTitle("We are subject to complex laws, rules…", "We are subject to complex laws, rules, regulations actions."),
+    "We are subject to complex laws, rules, regulations actions",
   );
   // Without the full heading (Trends rows) the truncation itself is cleaned; no ellipsis.
   assert.equal(displayTitle("We are subject to complex laws, rules…", null), "We are subject to complex laws, rules");

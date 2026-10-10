@@ -1,4 +1,4 @@
-"""Trend-derivation rules (TRENDS_VERSION 1.2.0) and the Trends/companies serving path, proved on
+"""Trend-derivation rules (TRENDS_VERSION 1.2.x) and the Trends/companies serving path, proved on
 the real published reports (sentences are loaded from data/published/, never copied by hand).
 
 TOPIC-NEW         a topic counts only when its matched term lies wholly inside inserted text and
@@ -253,7 +253,8 @@ def test_trend_rows_are_keyed_by_derivation_and_queries_read_only_the_current_on
     from tests.test_store import settings
 
     facts = derive_trend_facts(doc_comp())
-    assert facts.derivation == derive.derivation_id() and facts.derivation.startswith("1.2.0+")
+    assert facts.derivation == derive.derivation_id()
+    assert facts.derivation.startswith(f"{derive.TRENDS_VERSION}+")
     for rows, table in (
         (tables.topic_mention_rows(facts), tables.TOPIC_MENTIONS),
         (tables.category_activity_rows(facts), tables.CATEGORY_ACTIVITY),

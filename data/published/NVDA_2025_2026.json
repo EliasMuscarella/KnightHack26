@@ -4281,7 +4281,7 @@
           "text": "Any new restrictions that negatively impact our ability to receive supply of components, parts, or services from Taiwan and South Korea, would negatively impact our business and financial results."
         }
       ],
-      "short_title": "We are subject to complex laws, rules, regulations, and political",
+      "short_title": "We are subject to complex laws, rules, regulations",
       "signals": {
         "added_text_ratio": 0.2953,
         "category_scores": {
@@ -12729,7 +12729,7 @@
           "text": "Delaware law, provisions in our governing documents and our agreement with Microsoft could delay or prevent a change in control."
         }
       ],
-      "short_title": "We are subject to complex laws, rules, regulations, and political",
+      "short_title": "We are subject to complex laws, rules, regulations",
       "signals": {
         "added_text_ratio": 0.0052,
         "category_scores": {
@@ -17482,7 +17482,7 @@
       "kind": "potential_became_actual",
       "new_sentence_id": "0001045810-26-000021:21:94",
       "old_sentence_id": "0001045810-25-000023:19:98",
-      "short_title": "We are subject to complex laws, rules, regulations, and political"
+      "short_title": "We are subject to complex laws, rules, regulations"
     },
     {
       "change_id": "b6d73c522e0cfea2",
@@ -17514,7 +17514,7 @@
       "kind": "new_figure",
       "new_sentence_id": "0001045810-26-000021:21:50",
       "old_sentence_id": null,
-      "short_title": "We are subject to complex laws, rules, regulations, and political"
+      "short_title": "We are subject to complex laws, rules, regulations"
     }
   ],
   "is_fixture": false,

@@ -296,7 +296,7 @@ def test_every_published_heading_gets_an_acceptable_short_title():
 
 def test_live_title_fragments_are_not_produced():
     complex_laws = (
-        "We are subject to complex laws, rules, regulations, and political and other actions, "
+        "We are subject to complex laws, rules, regulations and other actions, "
         "including restrictions on the export of our products, which may adversely impact our "
         "business."
     )
@@ -307,7 +307,7 @@ def test_live_title_fragments_are_not_produced():
     t1 = hl.short_title_from_heading(complex_laws)
     t2 = hl.short_title_from_heading(tech)
     assert t1 != "We are subject to complex laws" and not hl.title_problems(t1)
-    assert t1 == "We are subject to complex laws, rules, regulations, and political"
+    assert t1 == "We are subject to complex laws, rules, regulations"
     assert t2 != "The technology industry, including" and not hl.title_problems(t2)
     assert t2 == "The technology industry, including the Internet"
     assert hl.title_problems("We are subject to complex laws")

@@ -267,9 +267,11 @@ def _bare(word: str) -> str:
     return re.sub(r"^[^\w]+|[^\w'\u2019]+$", "", word).casefold()
 
 
-def _trim_candidate(tokens: list[str]) -> list[str]:
-    """Strip trailing punctuation from the last token, then drop trailing DANGLING words while at
-    least MIN_TITLE_WORDS words would remain."""
+CONJUNCTIONS = frozenset({"and", "or", "but"})
+
+
+def _strip_trailing(tokens: list[str]) -> list[str]:
+    """Strip trailing punctuation from the last token, dropping tokens that were only punctuation."""
     words = list(tokens)
     while words:
         last = words[-1].rstrip(_TRAILING_PUNCT)
@@ -277,12 +279,28 @@ def _trim_candidate(tokens: list[str]) -> list[str]:
             words[-1] = last
             break
         words.pop()  # a standalone "-" or dash
-    while len(words) > MIN_TITLE_WORDS and _bare(words[-1]) in DANGLING_WORDS:
-        words.pop()
-        while words and not words[-1].rstrip(_TRAILING_PUNCT):
-            words.pop()
-        if words:
-            words[-1] = words[-1].rstrip(_TRAILING_PUNCT)
+    return words
+
+
+def _trim_candidate(tokens: list[str], cut_before_conjunction: bool = False) -> list[str]:
+    """Strip trailing punctuation from the last token, then drop trailing DANGLING words while at
+    least MIN_TITLE_WORDS words would remain. When the candidate was cut right before a
+    conjunction and itself ends in "<conjunction> <word>", the coordination continues past the cut
+    ("…regulations, and political | and other actions"), so that trailing pair goes too."""
+    words = _strip_trailing(tokens)
+    while True:
+        if len(words) > MIN_TITLE_WORDS and _bare(words[-1]) in DANGLING_WORDS:
+            words = _strip_trailing(words[:-1])
+            continue
+        if (
+            cut_before_conjunction
+            and len(words) >= MIN_TITLE_WORDS + 2
+            and _bare(words[-2]) in CONJUNCTIONS
+        ):
+            words = _strip_trailing(words[:-2])
+            cut_before_conjunction = False
+            continue
+        break
     return words
 
 
@@ -327,7 +345,9 @@ def short_title_from_heading(
     3. Clause boundaries lie AFTER a token ending with , ; : \u2014 \u2013 (or a standalone "-"),
        and BEFORE a token whose casefolded form is in CLAUSE_START_WORDS. Each boundary gives a
        candidate: the tokens before it, trailing punctuation stripped from its last token, then
-       trailing DANGLING_WORDS removed while at least 4 words remain. A candidate qualifies with
+       trailing DANGLING_WORDS removed while at least 4 words remain; a candidate cut right before
+       a conjunction that itself ends in "<conjunction> <word>" also loses that pair
+       ("…regulations, and political | and other actions" -> "…regulations"). A candidate qualifies with
        4..max_words words and a last word that is not DANGLING. The LONGEST qualifying one wins.
     4. Otherwise: the first `max_words` tokens, trimmed the same way.
     5. Never an ellipsis. A result equal to the company name (with or without a corporate
@@ -351,7 +371,12 @@ def short_title_from_heading(
         if tok.endswith(CLAUSE_END_CHARS) or tok == "-":
             cuts.append(k + 1)  # boundary after token k
         for cut in cuts:
-            cand = _trim_candidate(tokens[:cut])
+            cand = _trim_candidate(
+                tokens[:cut],
+                cut_before_conjunction=_bare(tokens[cut]) in CONJUNCTIONS
+                if cut < len(tokens)
+                else False,
+            )
             if not (MIN_TITLE_WORDS <= len(cand) <= max_words):
                 continue
             if _bare(cand[-1]) in DANGLING_WORDS:
