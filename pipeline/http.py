@@ -1,7 +1,9 @@
 """Allowlisted, rate-limited HTTP client.
 
 Every outbound request the pipeline makes itself (SEC JSON + filings) goes through
-`AllowlistClient`, which refuses any host outside the allowlist (SSRF guard). The Hugging Face and
+`AllowlistClient`, which refuses any host outside the allowlist (SSRF guard). The Databricks
+SDK (pipeline/store) uses its own client, but only against the one workspace host that
+`check_host` admits (see `databricks_hosts`). The Hugging Face and
 Gemini SDKs and the sentence-transformers download use their own clients against fixed hosts
 (model ids are validated to never be URLs), sends the SEC User-Agent on sec.gov requests, enforces a
 minimum interval between requests (SEC fair access: stay well under 5 requests/second), and
@@ -26,6 +28,26 @@ HF_HOSTS = frozenset({"huggingface.co", "router.huggingface.co", "api-inference.
 GEMINI_HOSTS = frozenset({"generativelanguage.googleapis.com"})
 ALLOWED_HOSTS = SEC_HOSTS | HF_HOSTS | GEMINI_HOSTS
 
+
+def databricks_hosts() -> frozenset[str]:
+    """The ONE extra host the allowlist admits: the configured Databricks workspace, and only when
+    DATABRICKS_HOST is set and validates as an https URL on a known Databricks domain."""
+    from pipeline.config import get_databricks_settings
+    from pipeline.errors import ConfigError
+
+    try:
+        host = get_databricks_settings().host
+    except ConfigError:
+        return frozenset()
+    if not host:
+        return frozenset()
+    return frozenset({urlsplit(host).hostname or ""}) - {""}
+
+
+def allowed_hosts() -> frozenset[str]:
+    return ALLOWED_HOSTS | databricks_hosts()
+
+
 MIN_INTERVAL_SECONDS = 0.34  # ~3 requests/second, under the SEC's 10/s and our own 5/s cap
 MAX_RETRIES = 3
 TIMEOUT = httpx.Timeout(connect=10.0, read=60.0, write=10.0, pool=10.0)
@@ -36,7 +58,7 @@ def check_host(url: str) -> str:
     if parts.scheme != "https":
         raise DisallowedHost(f"Only https URLs are allowed, got {parts.scheme!r}")
     host = (parts.hostname or "").lower()
-    if host not in ALLOWED_HOSTS:
+    if host not in allowed_hosts():
         raise DisallowedHost(f"Host {host!r} is not on the outbound allowlist")
     return host
 
