@@ -188,6 +188,12 @@
           "title": "Sentences",
           "type": "array"
         },
+        "short_title": {
+          "description": "At most 8 words, plain English, neutral; a label for lists and cards (never a claim). LLM-generated and validated, or a deterministic truncation of the heading.",
+          "minLength": 1,
+          "title": "Short Title",
+          "type": "string"
+        },
         "signals": {
           "$ref": "#/$defs/Signals"
         },
@@ -218,6 +224,7 @@
         "id",
         "rank",
         "title",
+        "short_title",
         "change_type",
         "categories",
         "score",
@@ -566,6 +573,81 @@
       ],
       "title": "FilingSide",
       "type": "string"
+    },
+    "Highlight": {
+      "additionalProperties": false,
+      "description": "One before/after moment a reader can take in at a glance. Quotes are always the verbatim\nsentences behind the ids (looked up in sentence_index); nothing is paraphrased.",
+      "properties": {
+        "change_id": {
+          "pattern": "^[0-9a-f]{16}$",
+          "title": "Change Id",
+          "type": "string"
+        },
+        "detail": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The deterministic signal value behind it, e.g. 'investigating -> published their preliminary finding'.",
+          "title": "Detail"
+        },
+        "kind": {
+          "enum": [
+            "potential_became_actual",
+            "new_figure",
+            "new_risk",
+            "removed_risk",
+            "new_named_party"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "new_sentence_id": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{10}-\\d{2}-\\d{6}:\\d+:\\d+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "None for removed text.",
+          "title": "New Sentence Id"
+        },
+        "old_sentence_id": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{10}-\\d{2}-\\d{6}:\\d+:\\d+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "None for new text.",
+          "title": "Old Sentence Id"
+        },
+        "short_title": {
+          "description": "The parent change's short_title.",
+          "title": "Short Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "change_id",
+        "kind",
+        "short_title"
+      ],
+      "title": "Highlight",
+      "type": "object"
     },
     "Interpretation": {
       "additionalProperties": false,
@@ -1292,6 +1374,15 @@
       "description": "How the two filings were chosen (e.g. 'two most recent original 10-Ks; amendments excluded').",
       "title": "Filing Selection Note",
       "type": "string"
+    },
+    "highlights": {
+      "description": "At most 5 (at most 2 per change), ranked by pipeline.highlights.rank_key.",
+      "items": {
+        "$ref": "#/$defs/Highlight"
+      },
+      "maxItems": 5,
+      "title": "Highlights",
+      "type": "array"
     },
     "is_fixture": {
       "default": false,

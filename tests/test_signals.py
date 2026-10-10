@@ -323,3 +323,127 @@ def test_modal_before_actual_marker_is_not_a_hit():
         ["Trade restrictions have affected and may continue to affect our suppliers."],
     )
     assert len(hypothetical_to_actual(ctx_for(old2, new2))) == 1
+
+
+# ---- Task 2: entity post-filters ----
+
+
+def test_clean_entity_rules():
+    from pipeline.signals import clean_entity
+
+    assert clean_entity("D:4") is None
+    assert clean_entity("Q3") is None
+    assert clean_entity("AI Diffusion IFR in") == "AI Diffusion IFR"
+    assert clean_entity("the GAIN AI Act") == "GAIN AI Act"
+    assert clean_entity("Japan") == "Japan"
+    assert clean_entity("§ 232") is None
+    assert clean_entity("12,000") is None
+    assert clean_entity("of the") is None
+    assert clean_entity("U.S. Department of Commerce,") == "U.S. Department of Commerce"
+
+
+def test_near_duplicate_entities_are_merged():
+    from pipeline.schema import SignalHit
+    from pipeline.signals import merge_near_duplicates
+
+    hits = [
+        SignalHit(value="Ruritania", new_sentence_ids=[f"{NEW}:1:1"]),
+        SignalHit(value="Ruritanian", new_sentence_ids=[f"{NEW}:1:3"]),
+        SignalHit(value="GAIN AI Act", new_sentence_ids=[f"{NEW}:1:2"]),
+        SignalHit(value="GAIN AI Act's", new_sentence_ids=[f"{NEW}:1:4"]),
+        SignalHit(value="Japan", new_sentence_ids=[f"{NEW}:1:5"]),
+    ]
+    out = merge_near_duplicates(hits)
+    assert [h.value for h in out] == ["Ruritania", "GAIN AI Act", "Japan"]
+    assert out[0].new_sentence_ids == [f"{NEW}:1:1", f"{NEW}:1:3"]
+    assert out[1].new_sentence_ids == [f"{NEW}:1:2", f"{NEW}:1:4"]
+
+
+def test_new_entities_drop_codes_and_trailing_prepositions():
+    old = block(OLD, 1, "Export controls.", ["New export controls may affect our business."])
+    new = block(
+        NEW,
+        1,
+        "Export controls.",
+        [
+            "The AI Diffusion IFR in January added licensing requirements, and the GAIN AI Act was proposed in Japan; product D:4 is covered."
+        ],
+    )
+    values = [h.value for h in new_entities(ctx_for(old, new))]
+    assert not any(v.endswith(" in") for v in values)
+    assert "D:4" not in values
+    assert any("Japan" in v for v in values)
+
+
+# ---- Task 3: in progress -> concluded ----
+
+OLD_ANTITRUST = (
+    "Regulators in China are investigating whether our business practices violate antitrust law."
+)
+NEW_ANTITRUST = "China's antitrust regulators published their preliminary finding that our business practices violated antitrust law."
+
+
+def test_status_change_detected_on_aligned_pair():
+    old = block(OLD, 1, "Regulation.", [OLD_ANTITRUST])
+    new = block(NEW, 1, "Regulation.", [NEW_ANTITRUST])
+    hits = hypothetical_to_actual(ctx_for(old, new))
+    assert len(hits) == 1
+    assert hits[0].value == "investigating -> published their preliminary finding"
+    assert hits[0].old_sentence_ids == [f"{OLD}:1:1"] and hits[0].new_sentence_ids == [f"{NEW}:1:1"]
+
+
+def test_status_change_detected_on_removed_added_pair():
+    old = block(OLD, 1, "Regulation.", ["We sell products worldwide.", OLD_ANTITRUST])
+    new = block(
+        NEW,
+        1,
+        "Regulation.",
+        [
+            "We sell products worldwide.",
+            "Additional language about unrelated topics appears here for context.",
+            NEW_ANTITRUST,
+        ],
+    )
+    hits = hypothetical_to_actual(ctx_for(old, new))
+    assert any(
+        h.value.startswith("investigating ->") and h.old_sentence_ids == [f"{OLD}:1:2"]
+        for h in hits
+    ), hits
+
+
+def test_status_change_requires_concluded_and_less_tentative_wording():
+    from pipeline.signals import status_change
+
+    assert (
+        status_change(
+            "Regulators are investigating our practices.",
+            "Regulators are still investigating our practices and may impose remedies.",
+        )
+        is None
+    )
+    assert (
+        status_change(
+            "Regulators are investigating our practices.", "Regulators could have fined us."
+        )
+        is None
+    )
+    assert status_change("We may incur costs.", "We incurred costs of $4.5 billion.") == (
+        "may",
+        "incurred",
+    )
+    assert (
+        status_change(
+            "The proposed rule may apply to us.", "The final rule was adopted and applies to us."
+        )
+        is not None
+    )
+    assert (
+        status_change("Our products were widely available.", "We found new customers.") is None
+    )  # no in-progress marker in old
+
+
+def test_modal_pattern_still_detected():
+    old = block(OLD, 1, "Costs.", ["Tariffs may increase our costs."])
+    new = block(NEW, 1, "Costs.", ["Tariffs have increased our costs."])
+    hits = hypothetical_to_actual(ctx_for(old, new))
+    assert hits and hits[0].value == "may -> have increased"

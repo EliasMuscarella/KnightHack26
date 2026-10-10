@@ -8,7 +8,11 @@ Heuristics (all deterministic, documented here):
   Group headers are stored as `section_group` on the blocks that follow them.
 - A paragraph that starts with an emphasized lead sentence followed by plain text (Apple style)
   is split: the lead becomes the heading, the remainder starts the body.
-- Text before the first heading becomes a preamble block whose heading is its first sentence.
+- The "Risk Factors Summary" bullet list that opens many Item 1A sections (a summary heading
+  followed by short bullets, often repeating the group headers) is skipped entirely: it ends at
+  the first *real* risk block (a heading followed by a plain paragraph of >= MIN_REAL_BODY_WORDS).
+- Intro and boilerplate paragraphs that appear before any risk heading (or between a group
+  header and its first risk heading) are skipped, never turned into blocks.
 - Sentences are split with pysbd (legal-text aware: "U.S.", "Inc.", "e.g."). Sentence 0 of every
   block is the heading. Ids are "{accession}:{block_index}:{sentence_index}" and char offsets
   index into `SegmentedFiling.text` (= extracted unit texts joined with "\\n").
@@ -28,7 +32,7 @@ from pipeline.types import ExtractedSection, RiskBlock, SegmentedFiling, Sentenc
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.1.2"
+STAGE_VERSION = "0.2.0"
 MAX_HEADING_WORDS = 60
 MAX_GROUP_WORDS = 15
 MIN_BLOCKS = 3
@@ -45,6 +49,12 @@ GROUP_RE = re.compile(
 # "Summary of Risk Factors" / "Risk Factors Summary" is a real block (its bullets are its body), not a
 # group header, so it is matched as one block across years instead of leaking bullets into a preamble.
 BULLET_RE = re.compile(r"^[•●▪■◦‣⁃·\-–—*]\s*")
+SUMMARY_RE = re.compile(
+    r"^(summary of (the |our )?(principal |material |key |significant )?risk factors?|"
+    r"risk factors? summary|summary risk factors?|summary of risks?)\s*[:.]?$",
+    re.I,
+)
+MIN_REAL_BODY_WORDS = 40
 TERMINAL = (".", "!", "?", ":", ";")
 
 _segmenter = pysbd.Segmenter(language="en", clean=False, char_span=True)
@@ -109,6 +119,52 @@ def split_lead_heading(u: Unit) -> tuple[str, str] | None:
     return p, r
 
 
+def _is_real_risk_start(units: list[Unit], j: int) -> bool:
+    """A heading-like unit followed by a plain, non-bullet paragraph of real length, or an
+    Apple-style unit whose emphasized lead is followed by such a body."""
+    u = units[j]
+    if is_heading_like(u):
+        if is_group_header(u):
+            return False
+        k = j + 1
+        if k < len(units):
+            nxt = units[k]
+            return (
+                not is_heading_like(nxt)
+                and not BULLET_RE.match(nxt.text)
+                and nxt.word_count >= MIN_REAL_BODY_WORDS
+            )
+        return False
+    lead = split_lead_heading(u)
+    return lead is not None and len(lead[1].split()) >= MIN_REAL_BODY_WORDS
+
+
+def summary_skip_range(units: list[Unit]) -> tuple[int, int] | None:
+    """Return [start, end) of the Risk Factors Summary section to skip, or None.
+
+    The summary starts at a unit whose whole text matches SUMMARY_RE and ends right before the
+    first real risk block that follows (see _is_real_risk_start); a group header immediately
+    before that block is kept so the block gets its section_group."""
+    for i, u in enumerate(units):
+        if u.word_count <= 8 and SUMMARY_RE.match(BULLET_RE.sub("", u.text).strip()):
+            for j in range(i + 1, len(units)):
+                if _is_real_risk_start(units, j):
+                    end = j
+                    if (
+                        end - 1 > i
+                        and is_heading_like(units[end - 1])
+                        and is_group_header(units[end - 1])
+                    ):
+                        end -= 1
+                    return (i, end)
+            log.warning(
+                "summary heading found at unit %d but no real risk block after it; nothing skipped",
+                i,
+            )
+            return None
+    return None
+
+
 def segment(section: ExtractedSection) -> SegmentedFiling:
     acc = section.accession_number
     units = [Unit.from_dict(d, i) for i, d in enumerate(section.units)]
@@ -128,25 +184,11 @@ def segment(section: ExtractedSection) -> SegmentedFiling:
 
     def flush() -> None:
         nonlocal pending, body
-        if pending is None and not body:
-            return
         if pending is None:
-            # preamble: first sentence is the heading
-            first_text, first_start = body[0]
-            sents = split_sentences(first_text)
-            if not sents:
-                body = []
-                return
-            h, a, b = sents[0]
-            heading, h_start = h, first_start + a
-            rest_first = first_text[b:].strip()
-            new_body = []
-            if rest_first:
-                new_body.append((rest_first, first_start + first_text.index(rest_first, b)))
-            new_body.extend(body[1:])
-            body = new_body
-        else:
-            heading, h_start = pending
+            # body text with no heading (intro/boilerplate): never a block
+            body = []
+            return
+        heading, h_start = pending
         if not body:
             log.debug("dropping heading without body: %r", heading[:80])
             pending, body = None, []
@@ -198,7 +240,12 @@ def segment(section: ExtractedSection) -> SegmentedFiling:
         if name not in groups:
             groups.append(name)
 
+    skip = summary_skip_range(units)
+    skipped_units = 0
     for u in units:
+        if skip is not None and skip[0] <= u.index < skip[1]:
+            skipped_units += 1
+            continue
         raw = u.text
         stripped = BULLET_RE.sub("", raw)
         u_start = offsets[u.index] + (len(raw) - len(stripped))
@@ -225,6 +272,9 @@ def segment(section: ExtractedSection) -> SegmentedFiling:
             pending = (heading, u_start + h_off)
             body = [(remainder, u_start + stripped.index(remainder, h_off + len(heading)))]
             continue
+        if pending is None:
+            skipped_units += 1  # intro / boilerplate paragraph before any risk heading
+            continue
         body.append((stripped, u_start))
     flush()
 
@@ -241,11 +291,12 @@ def segment(section: ExtractedSection) -> SegmentedFiling:
                 s.text[:60],
             )
     log.info(
-        "stage2 %s: blocks=%d groups=%d sentences=%d",
+        "stage2 %s: blocks=%d groups=%d sentences=%d skipped_units=%d (summary/intro)",
         acc,
         len(blocks),
         len(groups),
         sum(len(b.sentences) for b in blocks),
+        skipped_units,
     )
     return SegmentedFiling(
         accession_number=acc,
@@ -255,4 +306,5 @@ def segment(section: ExtractedSection) -> SegmentedFiling:
         word_count=section.word_count,
         char_count=len(text),
         splitter=SENTENCE_SPLITTER_ID,
+        skipped_units=skipped_units,
     )
