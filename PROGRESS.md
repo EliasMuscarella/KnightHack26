@@ -158,3 +158,15 @@ instances named in the brief are proven as mechanisms in code and on NVDA/SF, ne
 | T9 | Trends cold-start bug | done, tested | root cause in DECISIONS D-021; four health states, SWR `/trends` with disk cache, local fallback |
 | T10 | Derive trend facts at publish time | done, tested | `pipeline/trends/derive.py` + `topics.yml` (31 topics); `data/derived/*.trends.json` committed for NVDA + SF; hook in the publisher (run.py untouched: it feeds analysis_id) |
 | T11 | Store and serve trend facts | done, tested (fake SDK + simulated tables) | `topic_mentions` + `category_activity` tables and MERGEs, three parameterized `/trends` queries, shared `pipeline/trends/aggregate.py`, `scripts/derive_trends.py`; Databricks body == local body on NVDA + SF (simulated); never run against a real warehouse |
+
+## Ticker tape session (branch `slider`, Oct 10)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| K1 | Finnhub quote service + `GET /ticker-tape` | done, tested | `api/ticker_tape.py` (50 symbols, throttled background poller, backoff, disk cache), 28 tests with fake fetch/clock; conftest strips `FINNHUB_API_KEY` so tests never poll; D-026 |
+| K2 | Home-page tape | done, tested | `web/src/components/TickerTape.tsx`, `lib/tickerTape.ts` (+8 node tests), same-origin proxy `/api/ticker-tape`; home page only |
+| K3 | Verify | done | pytest (all pass except `test_trends.py::test_databricks_trends_match_the_local_aggregate`, a pre-existing timing flake that also fails 2/8 on unchanged main), ruff, typecheck, lint, 37 node tests, build; live smoke: API + production web, unreachable Finnhub → tape hidden, page 200, key never logged; restart with cached quotes → 50 items shown as "last updated" |
+
+Blocker: this sandbox's network policy denies `finnhub.io`, so real quotes were never fetched here.
+To see live prices: put `FINNHUB_API_KEY` (free at finnhub.io) in `.env` and run `./scripts/dev.sh`.
+
