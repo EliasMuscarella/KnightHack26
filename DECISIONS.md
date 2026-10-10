@@ -396,3 +396,19 @@ Only a store that is already `ok` gets a 2 s wait for its very first remote resu
   risk factors should be considered…") ranked as a New risk, entity topics such as "Biden Administration"
   and "DOL", and a removed sentence starting mid-word ("z ECCNs"). All three come from the published NVDA
   file, which this environment cannot regenerate (no SEC access).
+
+## D-024 Parallel LLM calls and stage timings (P1)
+
+- Stage 7 sends the per-change LLM calls concurrently (`RISKDIFF_LLM_CONCURRENCY`, default 6, clamped
+  1–16) instead of one at a time. Cache lookups and cache writes stay on the calling thread and every
+  result keeps its record's slot, so the published JSON is byte-identical to a sequential run (tested
+  with a fake client whose latency varies per prompt). No stage version bump: output is unchanged.
+- Provider errors now back off 2s then 4s between the three attempts; parallel calls are more likely to
+  hit Hugging Face rate limits. JSON-parse retries stay immediate.
+- Cancel is checked every 0.5s while calls are in flight; on cancel, queued calls are dropped and the
+  run does not wait for in-flight ones.
+- Per-stage wall time (started → done) is logged on each stage's "done" line and printed as a table on
+  stderr at the end of a CLI run. It is never written to published output or to `StageEvent` (contract
+  unchanged).
+- Embeddings on a GPU (remote Hugging Face endpoint) was discussed and deferred until the timings show
+  stage 3 is the bottleneck.
