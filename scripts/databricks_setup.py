@@ -4,7 +4,8 @@
 
 Creates, if missing, the schema, the Volume and the Delta tables (`reports`, `changes`,
 `highlights`, and the derived trend facts `topic_mentions`, `category_activity`) under
-DATABRICKS_CATALOG.DATABRICKS_SCHEMA. Existing workspaces just re-run it to get the two new tables,
+DATABRICKS_CATALOG.DATABRICKS_SCHEMA. Existing workspaces just re-run it to get the two new tables
+and the span columns on `highlights` (added with ALTER TABLE only when DESCRIBE shows them missing),
 then `scripts/derive_trends.py` backfills them. Every statement is CREATE ... IF NOT
 EXISTS, so a second run changes nothing. It needs no permission beyond creating objects in the
 configured catalog and schema (the catalog itself must already exist). Never prints secrets.
@@ -27,6 +28,20 @@ from pipeline.store import (  # noqa: E402
     StoreError,
     tables,  # noqa: E402
 )
+
+
+def missing_columns(store: DatabricksStore, settings) -> dict[str, list[tuple[str, str]]]:
+    """Columns from tables.ADDED_COLUMNS that an existing table does not have yet."""
+    out: dict[str, list[tuple[str, str]]] = {}
+    for table in sorted({t for t, _, _ in tables.ADDED_COLUMNS}):
+        have = {
+            str(r.get("col_name") or "")
+            for r in store.execute(tables.describe_sql(settings, table))
+        }
+        need = [(c, typ) for t, c, typ in tables.ADDED_COLUMNS if t == table and c not in have]
+        if need:
+            out[table] = need
+    return out
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -57,6 +72,9 @@ def main(argv: list[str] | None = None) -> int:
         for label, sql in statements:
             store.execute(sql)
             print(f"ok  {label}")
+        for table, cols in missing_columns(store, settings).items():
+            store.execute(tables.add_columns_sql(settings, table, cols))
+            print(f"ok  {table}: added {', '.join(c for c, _ in cols)}")
         store.health()
     except StoreError as e:
         print(f"ERROR [{e.code}]: {e.message}", file=sys.stderr)

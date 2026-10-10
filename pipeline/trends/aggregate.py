@@ -183,9 +183,26 @@ _P2A_KEYS = (
 )
 
 
+def _spans(x: Any) -> list[list[int]]:
+    """Spans as [[start, end], ...] from a list (local) or a JSON string (Delta column)."""
+    if isinstance(x, str):
+        try:
+            x = json.loads(x)
+        except ValueError:
+            return []
+    try:
+        return [[int(a), int(b)] for a, b in (x or []) if int(b) > int(a) >= 0]
+    except (TypeError, ValueError):
+        return []
+
+
 def potential_to_actual(rows: Iterable[Mapping[str, Any]]) -> list[dict]:
     out = [
-        {k: (int(r[k] or 0) if k == "score" else (r[k] or "")) for k in _P2A_KEYS}
+        {
+            **{k: (int(r[k] or 0) if k == "score" else (r[k] or "")) for k in _P2A_KEYS},
+            "old_spans": _spans(r.get("old_spans", r.get("old_spans_json"))),
+            "new_spans": _spans(r.get("new_spans", r.get("new_spans_json"))),
+        }
         for r in rows
         if r.get("old_text") and r.get("new_text")
     ]

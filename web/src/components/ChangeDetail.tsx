@@ -415,6 +415,22 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
   const renderRow = (r: Row) => {
     if (r.kind !== "split") return renderSentence(r.s, view === "inline", r.alias?.id);
     const merged = r.merged ? { status: r.merged, count: r.merged === "added" ? r.new.length : r.old.length } : undefined;
+    if (merged) {
+      // A run of sentences that exist on one side only: full width, with one line saying so,
+      // instead of a column of text beside a column of nothing.
+      const list = merged.status === "added" ? r.new : r.old;
+      const noun = merged.count === 1 ? "sentence" : "sentences";
+      const note =
+        merged.status === "added"
+          ? `${merged.count} ${noun} added this year. Nothing to compare in last year's filing.`
+          : `${merged.count} ${noun} removed this year. Nothing to compare in this year's filing.`;
+      return (
+        <div key={r.key} className="border-y border-line py-2" data-merged-run={r.merged}>
+          <p className="mb-1 font-sans text-sm text-ink-secondary">{note}</p>
+          <div className="space-y-1">{list.map((s) => renderSentence(s, false))}</div>
+        </div>
+      );
+    }
     return (
       <div key={r.key} className="grid grid-cols-2 gap-5" data-merged-run={r.merged}>
         <div className="space-y-1">{r.old.length ? r.old.map((s) => renderSentence(s, false)) : emptyCell("old", merged)}</div>

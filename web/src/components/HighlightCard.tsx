@@ -66,6 +66,12 @@ export function BeforeAfter({
   );
 }
 
+/** The named party or figure a highlight is about; a hedge pair is explained by its quotes. */
+export function factDetail(h: Pick<Highlight, "kind" | "detail">): string | null {
+  if (h.kind === "new_named_party" || h.kind === "new_figure") return h.detail ?? null;
+  return null;
+}
+
 export function Fact({ h, change, comparison, withBadge = true }: FactProps) {
   const oldQ = quoteSource(comparison, change, h.old_sentence_id);
   const newQ = quoteSource(comparison, change, h.new_sentence_id);
@@ -74,7 +80,7 @@ export function Fact({ h, change, comparison, withBadge = true }: FactProps) {
     <div>
       {withBadge ? (
         <div className="mb-3">
-          <ChangeBadge kind={h.kind} figureChanged={isFigureChanged(h)} />
+          <ChangeBadge kind={h.kind} figureChanged={isFigureChanged(h)} detail={factDetail(h)} />
         </div>
       ) : null}
       <BeforeAfter
@@ -113,9 +119,10 @@ export function HighlightCard({ change, facts, comparison, variant = "card", sou
   const title = displayTitle(change.short_title, change.title);
   const company = displayName(comparison.company.name);
   return (
-    <article id={id} className={variant === "card" ? "rounded-lg border border-line bg-surface p-6" : ""}>
+    <article id={id} className={variant === "card" ? "border-t border-line pt-6" : ""}>
       <div className="flex flex-wrap items-center gap-3">
-        {first ? <ChangeBadge kind={first.kind} figureChanged={isFigureChanged(first)} /> : <ChangeBadge type={change.change_type} />}
+        <ChangeBadge type={change.change_type} />
+        {first ? <ChangeBadge kind={first.kind} figureChanged={isFigureChanged(first)} detail={factDetail(first)} /> : null}
         {showCompany ? (
           <Link href={`/c/${encodeURIComponent(ticker)}`} className="text-sm text-ink-secondary underline-offset-2 hover:underline">
             {company}

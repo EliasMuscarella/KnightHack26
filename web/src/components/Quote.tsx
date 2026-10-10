@@ -5,7 +5,11 @@ import { useId, useState } from "react";
 import type { DiffSpan } from "@/types/comparison";
 
 import { MarkedText, type MarkStatus } from "@/components/MarkedText";
+import { lastMarkedOffset } from "@/lib/diffDisplay";
 import { QUOTE_MAX_CHARS, trimQuote } from "@/lib/quote";
+
+/** A trimmed quote may grow up to this many characters so that its marked words stay visible. */
+export const QUOTE_MARKS_VISIBLE_MAX = 600;
 
 export interface QuoteProps {
   text: string;
@@ -25,7 +29,10 @@ export interface QuoteProps {
 export function Quote({ text, side, status = "unchanged", spans, max = QUOTE_MAX_CHARS, className = "" }: QuoteProps) {
   const [open, setOpen] = useState(false);
   const id = useId();
-  const { head, trimmed } = trimQuote(text, max);
+  // Never trim away the words the diff marked: extend the window to the last marked span.
+  const marked = status === "modified" ? lastMarkedOffset(spans) : 0;
+  const budget = marked > max ? Math.min(QUOTE_MARKS_VISIBLE_MAX, marked + 40) : max;
+  const { head, trimmed } = trimQuote(text, budget);
   const limit = open || !trimmed ? undefined : head.length;
   return (
     <blockquote className={`quote ${side === "old" ? "is-old" : "is-new"} ${className}`}>

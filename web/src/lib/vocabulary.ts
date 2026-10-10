@@ -56,8 +56,8 @@ export const CHANGE_TONE: Record<ChangeType, Tone> = {
   new: { text: "text-more-strong-fg", bg: "bg-more-strong-bg", fill: "bg-more-strong-fg" },
   expanded: { text: "text-more-fg", bg: "bg-more-bg", fill: "bg-more-fg" },
   removed: { text: "text-less-strong-fg", bg: "bg-less-strong-bg", fill: "bg-less-strong-fg" },
-  reduced: { text: "text-less-fg", bg: "bg-less-bg", fill: "bg-less-fg" },
-  materially_reworded: { text: "text-rewrite-fg", bg: "bg-rewrite-bg", fill: "bg-rewrite-fg" },
+  reduced: { text: "text-less-fg", bg: "bg-less-bg", fill: "bg-less-mid" },
+  materially_reworded: { text: "text-rewrite-fg", bg: "bg-rewrite-bg", fill: "bg-rewrite-mid" },
   largely_unchanged: { text: "text-ink-secondary", bg: "bg-surface ring-1 ring-inset ring-line", fill: "bg-line" },
 };
 
@@ -165,12 +165,26 @@ export const SHORT_TITLE_MAX_WORDS = 12;
 export function shortTitleFromHeading(heading: string): string {
   const text = heading.trim().replace(/\s+/g, " ").replace(/[.;:]+$/, "");
   if (!text) return "";
-  let cut = -1;
+  // Every clause boundary, in text order; the first one that leaves a clean head wins.
+  const cuts: number[] = [];
   for (const brk of CLAUSE_BREAKS) {
-    const i = text.indexOf(brk);
-    if (i > 0 && text.slice(0, i).split(" ").length >= 4 && (cut === -1 || i < cut)) cut = i;
+    let from = 0;
+    for (;;) {
+      const i = text.indexOf(brk, from);
+      if (i < 0) break;
+      cuts.push(i);
+      from = i + brk.length;
+    }
   }
-  let head = cut > 0 ? text.slice(0, cut) : text;
+  cuts.sort((a, b) => a - b);
+  let head = text;
+  for (const i of cuts) {
+    const candidate = text.slice(0, i).trim();
+    if (candidate.split(" ").length < 4) continue;
+    if (TRAILING_FUNCTION_WORDS.test(candidate)) continue; // "...have caused and" is not a title
+    head = candidate;
+    break;
+  }
   head = head.replace(TRAILING_FUNCTION_WORDS, "").trim();
   const words = head.split(" ");
   if (words.length > SHORT_TITLE_MAX_WORDS) return words.slice(0, SHORT_TITLE_MAX_WORDS).join(" ").replace(TRAILING_FUNCTION_WORDS, "") + "…";
@@ -366,7 +380,8 @@ export const CHANGE_LEVEL = {
   prefix: "Wording change",
   helper: "How much the language changed, not how risky the company is.",
   /** One-line note at the top of the "All changes" table. */
-  tableNote: "Wording change level measures how much the language changed. It is not a risk rating.",
+  tableNote:
+    "Wording change level adds fixed, published points per kind of change (a new or dropped risk factor counts more than an expanded one). It measures wording, not risk.",
 } as const;
 
 /** Filled segments of the 3-segment level meter. */
@@ -379,7 +394,7 @@ export function levelSegments(score: number): 1 | 2 | 3 {
 export const LEGEND = {
   more: "more disclosure language",
   less: "less disclosure language",
-  rewrite: "rewritten",
+  rewrite: "rewritten both ways",
   actual: "potential became actual",
 } as const;
 

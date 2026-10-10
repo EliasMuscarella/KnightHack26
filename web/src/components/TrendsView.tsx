@@ -16,6 +16,8 @@ import { displayName } from "@/lib/names";
 import { trimQuote } from "@/lib/quote";
 import { buildHeatmap, cellDescription, cellIntensity, cellTone, headlineTopic, type HeatCell, MIX_TYPES, mixTotal, OTHER_CATEGORY, rankTopics, sourceLine, TOP_TOPICS } from "@/lib/trends";
 import type { TrendsActual, TrendsCompany, TrendsPayload, TrendsTopic, TrendsTopicExample } from "@/lib/types";
+
+const SOURCE_TAG: Record<TrendsTopic["source"], string | null> = { lexicon: null, entity: "named party", phrase: "phrase" };
 import { CHANGE_TONE, changeTypeVocab, countedLabel, displayTitle } from "@/lib/vocabulary";
 
 const RETRY_MS = 2500;
@@ -25,8 +27,8 @@ const RETRY_FOR_MS = 60_000;
 // Small pieces
 // ---------------------------------------------------------------------------------------
 
-/** A verbatim sentence with the highlighter over the character ranges the diff marked as new. */
-function SpanMarked({ text, spans, limit }: { text: string; spans: [number, number][]; limit?: number }) {
+/** A verbatim sentence with the highlighter (or the strike) over the character ranges the diff marked. */
+function SpanMarked({ text, spans, limit, mode = "hl" }: { text: string; spans: [number, number][]; limit?: number; mode?: "hl" | "strike" }) {
   const shown = limit !== undefined && limit < text.length ? text.slice(0, limit) : text;
   const parts: { t: string; hl: boolean }[] = [];
   let pos = 0;
@@ -42,10 +44,17 @@ function SpanMarked({ text, spans, limit }: { text: string; spans: [number, numb
     <>
       {parts.map((p, i) =>
         p.hl ? (
-          <mark key={i} className="hl">
-            <span className="sr-only">new: </span>
-            {p.t}
-          </mark>
+          mode === "hl" ? (
+            <mark key={i} className="hl">
+              <span className="sr-only">new: </span>
+              {p.t}
+            </mark>
+          ) : (
+            <del key={i} className="strike">
+              <span className="sr-only">removed: </span>
+              {p.t}
+            </del>
+          )
         ) : (
           <span key={i}>{p.t}</span>
         ),
@@ -132,15 +141,17 @@ function TopicExample({ ex, company }: { ex: TrendsTopicExample; company: Trends
           </FilingLink>
         ) : null}
         <Link href={`/c/${encodeURIComponent(ex.ticker)}/${encodeURIComponent(ex.change_id)}`} className="text-accent underline underline-offset-2">
-          See the change
+          See the full change
         </Link>
       </p>
     </li>
   );
 }
 
-function TopicRow({ t, total, companies, open }: { t: TrendsTopic; total: number; companies: Map<string, TrendsCompany>; open?: boolean }) {
+function TopicRow({ t, total, companies, open, withBar }: { t: TrendsTopic; total: number; companies: Map<string, TrendsCompany>; open?: boolean; withBar: boolean }) {
   const byTicker = new Map(t.examples.map((e) => [e.ticker, e] as const));
+  const tag = SOURCE_TAG[t.source];
+  const countLabel = `${t.company_count} of ${total} ${total === 1 ? "company" : "companies"}`;
   return (
     <details className="group border-b border-line py-3" open={open}>
       <summary className="grid cursor-pointer list-none items-center gap-x-6 gap-y-2 min-[900px]:grid-cols-[minmax(0,1.2fr)_minmax(0,1.4fr)_minmax(0,1.4fr)]">
@@ -149,8 +160,9 @@ function TopicRow({ t, total, companies, open }: { t: TrendsTopic; total: number
             ▸
           </span>
           <span className="text-base font-medium text-ink">{t.topic}</span>
+          {tag ? <span className="text-sm text-ink-secondary">{tag}</span> : null}
         </span>
-        <Bar fraction={total ? t.company_count / total : 0} label={`${t.company_count} of ${total} ${total === 1 ? "company" : "companies"}`} />
+        {withBar ? <Bar fraction={total ? t.company_count / total : 0} label={countLabel} /> : <span className="text-sm text-ink">{countLabel}</span>}
         <span className="flex flex-wrap gap-1.5">
           {t.companies.map((ticker) => (
             <span key={ticker} className="rounded-sm bg-signal-bg px-2 py-0.5 text-xs text-ink-secondary">
@@ -176,21 +188,22 @@ function SharedTopics({ data }: { data: TrendsPayload }) {
   const total = data.headline.companies || data.companies.length;
   const list = shared.length > 0 ? shared : single;
   const shown = all ? list : list.slice(0, TOP_TOPICS);
+  const withBar = list.some((t) => t.company_count !== list[0]?.company_count) || (list[0]?.company_count ?? 0) > 1;
   return (
     <section aria-labelledby="topics-heading" className="space-y-4">
-      <SectionTitle id="topics-heading" aside={<span>Ranked by how many companies newly added the topic, then by new sentences</span>}>
-        Topics several companies newly added
+      <SectionTitle
+        id="topics-heading"
+        aside={<span>{shared.length > 0 ? "Ranked by companies, then by new sentences" : "Each newly added by one company so far"}</span>}
+      >
+        {shared.length > 0 ? "Topics several companies newly added" : "New topics in the library"}
       </SectionTitle>
       {list.length === 0 ? (
         <p className="text-base text-ink-secondary">No topic was newly added this year by any company in the library.</p>
       ) : (
         <>
-          {shared.length === 0 ? (
-            <p className="text-base text-ink-secondary">No topic was newly added by more than one company yet. The topics below were each newly added by a single company.</p>
-          ) : null}
           <div className="border-t border-line">
             {shown.map((t, i) => (
-              <TopicRow key={t.topic} t={t} total={total} companies={companies} open={i === 0} />
+              <TopicRow key={t.topic} t={t} total={total} companies={companies} open={i === 0} withBar={withBar} />
             ))}
           </div>
           {list.length > TOP_TOPICS ? (
@@ -208,7 +221,7 @@ function SharedTopics({ data }: { data: TrendsPayload }) {
 // 3. Heatmap
 // ---------------------------------------------------------------------------------------
 
-const TONE_RGB = { more: "44, 100, 168", less: "181, 84, 28", rewrite: "20, 33, 61" } as const;
+const TONE_RGB = { more: "44, 100, 168", less: "181, 84, 28", rewrite: "138, 149, 168" } as const;
 
 function cellStyle(cell: HeatCell | undefined, maxActivity: number): { background: string; color: string } {
   const tone = cellTone(cell);
@@ -219,20 +232,26 @@ function cellStyle(cell: HeatCell | undefined, maxActivity: number): { backgroun
 
 function HeatmapLegend() {
   const steps: { tone: "less" | "rewrite" | "more"; a: number; label: string }[] = [
-    { tone: "less", a: 0.9, label: "far more words removed" },
-    { tone: "less", a: 0.35, label: "more removed" },
-    { tone: "rewrite", a: 0.3, label: "rewritten, balanced" },
-    { tone: "more", a: 0.35, label: "more added" },
-    { tone: "more", a: 0.9, label: "far more words added" },
+    { tone: "less", a: 0.9, label: "Far more removed" },
+    { tone: "less", a: 0.4, label: "More removed" },
+    { tone: "rewrite", a: 0.6, label: "Rewritten both ways" },
+    { tone: "more", a: 0.4, label: "More added" },
+    { tone: "more", a: 0.9, label: "Far more added" },
   ];
   return (
-    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-secondary">
-      <span className="flex items-center gap-1.5">
+    <div className="space-y-2 text-sm text-ink-secondary">
+      <ul className="flex flex-wrap gap-x-5 gap-y-2" aria-label="Heatmap legend">
         {steps.map((s) => (
-          <span key={s.label} title={s.label} aria-label={s.label} className="inline-block h-4 w-7 rounded-xs" style={{ background: `rgba(${TONE_RGB[s.tone]}, ${s.a})` }} />
+          <li key={s.label} className="flex items-center gap-2">
+            <span aria-hidden="true" className="inline-block h-4 w-7 rounded-xs" style={{ background: `rgba(${TONE_RGB[s.tone]}, ${s.a})` }} />
+            {s.label}
+          </li>
         ))}
-      </span>
-      <span>Orange: more language removed than added. Blue: more added. Ink: rewritten both ways. Darker means more sentences changed.</span>
+      </ul>
+      <p>
+        Orange: more language removed than added in that area. Blue: more added. Gray: rewritten both ways. Darker means more sentences changed. The number in a
+        cell is sentences changed. A risk factor tagged with two areas counts under both.
+      </p>
     </div>
   );
 }
@@ -251,7 +270,7 @@ function Heatmap({ data }: { data: TrendsPayload }) {
   }
   return (
     <section aria-labelledby="heatmap-heading" className="space-y-4">
-      <SectionTitle id="heatmap-heading" aside={<span>Companies by risk area. Hover or focus a cell for the numbers; click to open that company filtered to the area.</span>}>
+      <SectionTitle id="heatmap-heading" aside={<span>Companies by risk area; a cell opens that company filtered to the area</span>}>
         How each risk area changed
       </SectionTitle>
       <div className="overflow-x-auto">
@@ -320,8 +339,10 @@ function Heatmap({ data }: { data: TrendsPayload }) {
 
 function ActualItem({ a, company }: { a: TrendsActual; company: TrendsCompany | undefined }) {
   const name = displayName(company?.name || a.company_name) || a.ticker;
-  const oldQ = a.old_text ? trimQuote(a.old_text, 200) : null;
-  const newQ = a.new_text ? trimQuote(a.new_text, 200) : null;
+  // Keep the marked words inside the window: extend the trim to the last marked span.
+  const lastEnd = (spans: [number, number][]) => spans.reduce((m, [, b]) => Math.max(m, b), 0);
+  const oldQ = a.old_text ? trimQuote(a.old_text, Math.max(200, Math.min(600, lastEnd(a.old_spans) + 40))) : null;
+  const newQ = a.new_text ? trimQuote(a.new_text, Math.max(200, Math.min(600, lastEnd(a.new_spans) + 40))) : null;
   return (
     <li className="border-t border-line py-5">
       <div className="flex flex-wrap items-center gap-3">
@@ -341,7 +362,7 @@ function ActualItem({ a, company }: { a: TrendsActual; company: TrendsCompany | 
           {oldQ ? (
             <blockquote className="quote is-old text-base">
               <p>
-                {oldQ.head}
+                <SpanMarked text={a.old_text ?? ""} spans={a.old_spans} limit={oldQ.trimmed ? oldQ.head.length : undefined} mode="strike" />
                 {oldQ.trimmed ? " …" : ""}
               </p>
             </blockquote>
@@ -354,7 +375,7 @@ function ActualItem({ a, company }: { a: TrendsActual; company: TrendsCompany | 
           {newQ ? (
             <blockquote className="quote is-new text-base">
               <p>
-                {newQ.head}
+                <SpanMarked text={a.new_text ?? ""} spans={a.new_spans} limit={newQ.trimmed ? newQ.head.length : undefined} />
                 {newQ.trimmed ? " …" : ""}
               </p>
             </blockquote>

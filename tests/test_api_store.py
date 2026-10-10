@@ -564,7 +564,11 @@ def test_trends_local_fallback_shape_and_timing(tmp_path):
             "old_text",
             "new_text",
             "score",
+            "old_spans",
+            "new_spans",
         }
+        assert all(0 <= a < b <= len(row["old_text"]) for a, b in row["old_spans"])
+        assert all(0 <= a < b <= len(row["new_text"]) for a, b in row["new_spans"])
     assert [m["ticker"] for m in t["change_mix"]] == ["NVDA", "SF"]
     # the disk cache survives a new app instance
     app2 = api_main.create_app(settings, store_factory=disabled)

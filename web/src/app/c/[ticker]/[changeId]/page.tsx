@@ -106,7 +106,7 @@ export default async function ChangePage(props: PageProps<"/c/[ticker]/[changeId
         </nav>
 
         <header className="max-w-[90ch]">
-          <h1 className="text-xl font-medium leading-tight tracking-tight text-ink">{heading}</h1>
+          <h1 className="text-xl font-title leading-tight tracking-tight text-ink">{heading}</h1>
           {titlesDiffer || showFullTitle ? (
             <div className="mt-3 space-y-1 text-base leading-snug text-ink-secondary">
               {titlesDiffer ? (
