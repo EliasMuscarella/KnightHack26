@@ -176,3 +176,28 @@ published JSON; 10-Q monitoring (quarterly Item 1A updates); human-in-the-loop g
   sec.gov-only filing links, API card validation).
 - Known soft spots a third pass would probably raise: cross-machine float drift in dense
   similarities; the extraction heuristics have still never met a real filing.
+
+## 10. Judge-ready session (J1–J11)
+
+Goal: a BNY finance judge understands a company page in five seconds. Status at the end of the session:
+
+| Task | Status |
+|---|---|
+| J1 skip Risk Factors Summary + intro | done, unit-tested on an NVDA-shaped synthetic layout |
+| J2 entity post-filters ("D:4", trailing "in", near-duplicates) | done, unit-tested |
+| J3 in-progress → concluded detector (the China antitrust pair) | done, unit-tested on the quoted sentence pair |
+| J4 `highlights[]` + `short_title` in the contract, ranked deterministically | done; fixture carries 5 highlights |
+| J5 FIXTURE hidden unless `RISKDIFF_SHOW_FIXTURE=1` | done |
+| J6–J10 finance-audience frontend | see below |
+| J11 verification + judge review | see below |
+
+**Important:** the NVDA data the brief describes exists only on the team's machine (this sandbox still has
+no SEC/HF access, no `.env`, and the repository holds no published NVDA file). The pipeline changes were
+therefore verified on synthetic cases that reproduce the quoted NVDA patterns, and the frontend on the
+fixture. Run this on the team's machine to verify on real data (the analysis id changes because stage
+versions changed, hence `--force`):
+
+```bash
+uv run python -m pipeline.run NVDA --from-stage 2 --force
+./scripts/dev.sh            # then open http://localhost:3000/c/NVDA
+```
