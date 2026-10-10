@@ -98,7 +98,7 @@ If one is missing, inspect `signals` of that change in the JSON and report.
 | D4 | API reads from the store | done, tested | library merge, read-through pull with verification, `/store/health`, `/trends` |
 | D5 | Frontend library awareness | done (Opus subagent, `web/` only; verified) | footer + audit-trail indicator, "Report library" with "Published by X · date" |
 | D6 | Trends | done | two parameterized aggregates in `tables.py`, `/trends` (TTL 60 s), Trends page with empty states |
-| D7 | Tests, docs, verification | done (mocks only) | 186 tests, ruff clean, web build/typecheck/lint clean, FIXTUR determinism unchanged, offline path measured with the real SDK against an unreachable host; README section, `.env.example`, DECISIONS D-020, REPORT §11 |
+| D7 | Tests, docs, verification | done (mocks only) | 170 tests, ruff clean, web build/typecheck/lint clean, FIXTUR determinism unchanged, offline path measured with the real SDK against an unreachable host; README section, `.env.example`, DECISIONS D-020, REPORT §11 |
 
 No Databricks credentials exist in this sandbox: everything was built and tested against a mocked SDK
 client; the one-time steps for the team are in REPORT.md §11 and README "Shared report library".
