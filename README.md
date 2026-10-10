@@ -21,3 +21,7 @@ uv sync
 uv run python -m pipeline.run NVDA
 cd web && npm install && npm run dev
 ```
+
+Development data: the synthetic FIXTURE company (`contract/fixtures/`) is hidden in normal use.
+Set `RISKDIFF_SHOW_FIXTURE=1` (frontend) and `RISKDIFF_ALLOW_FIXTURE=1` (API) to work on the
+screens without real filings; a "FIXTURE DATA" banner is shown whenever it is listed.
