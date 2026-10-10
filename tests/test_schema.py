@@ -26,7 +26,19 @@ def test_fixture_validates_and_is_canonical(fixture_doc: dict) -> None:
 
 
 def test_every_fixture_string_is_labeled(fixture_doc: dict) -> None:
-    free_text_keys = {"title", "old_title", "new_title", "text", "label", "detail", "value", "reason", "name", "question", "rationale"}
+    free_text_keys = {
+        "title",
+        "old_title",
+        "new_title",
+        "text",
+        "label",
+        "detail",
+        "value",
+        "reason",
+        "name",
+        "question",
+        "rationale",
+    }
 
     def walk(node, path=""):
         if isinstance(node, dict):

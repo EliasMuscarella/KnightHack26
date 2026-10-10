@@ -190,7 +190,9 @@ class DiffStats(Strict):
 class SignalHit(Strict):
     """One concrete, cited detection by a deterministic signal."""
 
-    value: str = Field(description="What was detected, e.g. 'may -> has', 'Taiwan', '$1.2 billion'.")
+    value: str = Field(
+        description="What was detected, e.g. 'may -> has', 'Taiwan', '$1.2 billion'."
+    )
     detail: str | None = Field(default=None, description="Plain-English explanation.")
     old_sentence_ids: list[str] = Field(default_factory=list)
     new_sentence_ids: list[str] = Field(default_factory=list)
@@ -202,7 +204,9 @@ class Signals(Strict):
     new_quantities: list[SignalHit] = Field(default_factory=list)
     added_text_ratio: float = Field(ge=0.0, le=1.0)
     removed_text_ratio: float = Field(ge=0.0, le=1.0)
-    semantic_shift: float = Field(ge=0.0, le=1.0, description="1 - pair similarity (0 for new/removed).")
+    semantic_shift: float = Field(
+        ge=0.0, le=1.0, description="1 - pair similarity (0 for new/removed)."
+    )
     category_scores: dict[str, float] = Field(
         default_factory=dict, description="Per-category similarity used to pick `categories`."
     )
@@ -221,7 +225,9 @@ class ScoreLine(Strict):
 class RubricAnswer(Strict):
     question_id: str = Field(pattern=r"^Q[1-9]$")
     question: str
-    answer: bool = Field(description="After citation validation: a 'yes' without a valid citation becomes False.")
+    answer: bool = Field(
+        description="After citation validation: a 'yes' without a valid citation becomes False."
+    )
     cited_sentence_ids: list[str] = Field(default_factory=list)
     rationale: str | None = Field(default=None, description="Short LLM rationale (display only).")
     raw_answer: bool | None = Field(
@@ -248,7 +254,9 @@ class Interpretation(Strict):
 
 
 class Change(Strict):
-    id: str = Field(pattern=r"^[0-9a-f]{16}$", description="Stable hash of (old_block_id, new_block_id).")
+    id: str = Field(
+        pattern=r"^[0-9a-f]{16}$", description="Stable hash of (old_block_id, new_block_id)."
+    )
     rank: int = Field(ge=1)
     title: str = Field(description="Risk heading (new side if present, else old).")
     old_title: str | None = None
@@ -276,7 +284,9 @@ class Change(Strict):
             raise ValueError("change_type 'new' must not have an old block")
         if self.change_type == "removed" and (self.new_block_id or self.new_text):
             raise ValueError("change_type 'removed' must not have a new block")
-        if self.change_type not in ("new", "removed") and not (self.old_block_id and self.new_block_id):
+        if self.change_type not in ("new", "removed") and not (
+            self.old_block_id and self.new_block_id
+        ):
             raise ValueError(f"change_type '{self.change_type}' requires both blocks")
         for line in self.score_breakdown:
             if line.points != 0 and not line.cited_sentence_ids:
@@ -295,8 +305,12 @@ class Change(Strict):
 
 class Summary(Strict):
     total_changes: int = Field(ge=0)
-    by_change_type: dict[str, int] = Field(description="Counts keyed by every ChangeType (zeros included).")
-    by_category: dict[str, int] = Field(description="Counts keyed by every Category (zeros included).")
+    by_change_type: dict[str, int] = Field(
+        description="Counts keyed by every ChangeType (zeros included)."
+    )
+    by_category: dict[str, int] = Field(
+        description="Counts keyed by every Category (zeros included)."
+    )
     old_block_count: int = Field(ge=0)
     new_block_count: int = Field(ge=0)
     matched_pairs: int = Field(ge=0)
@@ -317,12 +331,20 @@ class Summary(Strict):
 class Thresholds(Strict):
     """Matching + diff parameters in force for this run (transparency; recalibrated in eval)."""
 
-    match_threshold: float = Field(ge=0.0, le=1.0, description="Min combined similarity to accept a match.")
+    match_threshold: float = Field(
+        ge=0.0, le=1.0, description="Min combined similarity to accept a match."
+    )
     heading_weight: float = Field(ge=0.0, le=1.0)
     body_weight: float = Field(ge=0.0, le=1.0)
-    sentence_match_threshold: float = Field(ge=0.0, le=1.0, description="Min similarity to align two sentences.")
-    sentence_unchanged_threshold: float = Field(ge=0.0, le=1.0, description="At/above this an aligned pair is 'unchanged'.")
-    expanded_ratio: float = Field(description="added/removed ratio rules; see diff.classify_change_type.")
+    sentence_match_threshold: float = Field(
+        ge=0.0, le=1.0, description="Min similarity to align two sentences."
+    )
+    sentence_unchanged_threshold: float = Field(
+        ge=0.0, le=1.0, description="At/above this an aligned pair is 'unchanged'."
+    )
+    expanded_ratio: float = Field(
+        description="added/removed ratio rules; see diff.classify_change_type."
+    )
     reworded_similarity: float = Field(ge=0.0, le=1.0)
 
 
@@ -386,7 +408,11 @@ class Comparison(Strict):
                 for sid in claim.cited_sentence_ids:
                     if sid not in idx:
                         raise ValueError(f"claim cites unknown sentence {sid}")
-            for hits in (c.signals.hypothetical_to_actual, c.signals.new_entities, c.signals.new_quantities):
+            for hits in (
+                c.signals.hypothetical_to_actual,
+                c.signals.new_entities,
+                c.signals.new_quantities,
+            ):
                 for h in hits:
                     for sid in h.old_sentence_ids + h.new_sentence_ids:
                         if sid not in idx:
@@ -426,10 +452,13 @@ def canonical_json(model: BaseModel) -> str:
     """Deterministic serialization used for publishing and hashing."""
     import json
 
-    return json.dumps(
-        model.model_dump(mode="json"),
-        ensure_ascii=False,
-        sort_keys=True,
-        indent=2,
-        separators=(",", ": "),
-    ) + "\n"
+    return (
+        json.dumps(
+            model.model_dump(mode="json"),
+            ensure_ascii=False,
+            sort_keys=True,
+            indent=2,
+            separators=(",", ": "),
+        )
+        + "\n"
+    )

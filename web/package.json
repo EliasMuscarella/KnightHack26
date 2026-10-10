@@ -13,7 +13,9 @@
   "dependencies": {
     "next": "16.4.0",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "4.0.1"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
@@ -22,8 +24,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
+    "json-schema-to-typescript": "16.0.0",
     "tailwindcss": "^4",
-    "typescript": "^5",
-    "json-schema-to-typescript": "16.0.0"
+    "typescript": "^5"
   }
 }

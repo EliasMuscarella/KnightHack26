@@ -1,69 +1,89 @@
-import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+import { CompanyGrid } from "@/components/CompanyGrid";
+import { TickerSearch } from "@/components/TickerSearch";
+import { EmptyState, FixtureBanner, PageContainer } from "@/components/ui";
+import { listCompanies } from "@/lib/data";
+
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const companies = await listCompanies();
+  const hasFixture = companies.some((c) => c.is_fixture);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {hasFixture ? <FixtureBanner /> : null}
+      <section className="border-b border-line bg-surface">
+        <PageContainer className="grid grid-cols-[minmax(0,1fr)_420px] items-center gap-16 py-14">
+          <div>
+            <p className="font-mono text-sm font-semibold uppercase tracking-widest text-ink-faint">
+              10-K · Item 1A · Risk Factors
+            </p>
+            <h1 className="mt-3 text-4xl font-bold leading-tight tracking-tight text-ink">
+              GitHub Diff for SEC filings.
+            </h1>
+            <p className="mt-4 max-w-[62ch] text-lg leading-relaxed text-ink-muted">
+              RiskDiff compares the Risk Factors section of a company&apos;s two most recent 10-K filings and shows
+              exactly what management added, removed, expanded, or reworded, with every claim cited to the original
+              filing text.
+            </p>
+            <div className="mt-8 max-w-[640px]">
+              <TickerSearch size="large" knownTickers={companies.map((c) => c.ticker)} />
+              <p className="mt-2 text-sm text-ink-faint">
+                Published comparisons open instantly. Other tickers start a live analysis.
+              </p>
+            </div>
+          </div>
+          <ol className="space-y-3 rounded-lg border border-line bg-paper p-6 text-sm">
+            <li className="flex gap-3">
+              <span className="font-mono font-bold text-ink-faint">1</span>
+              <span>
+                <strong>Deterministic diff.</strong> Code, not a language model, decides what changed, sentence by
+                sentence and word by word.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="font-mono font-bold text-ink-faint">2</span>
+              <span>
+                <strong>Cited, always.</strong> Every score point and every AI sentence links to the filing sentences
+                behind it.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="font-mono font-bold text-ink-faint">3</span>
+              <span>
+                <strong>Reproducible.</strong> Same filings and same versions give the same output and the same
+                analysis id.{" "}
+                <Link href="/methodology" className="text-accent underline">
+                  Methodology
+                </Link>
+              </span>
+            </li>
+          </ol>
+        </PageContainer>
+      </section>
+
+      <PageContainer className="py-10">
+        <div className="mb-5 flex items-baseline justify-between">
+          <h2 className="text-xl font-bold text-ink">Published comparisons</h2>
+          {companies.length > 0 ? (
+            <p className="text-sm text-ink-faint">
+              {companies.length} {companies.length === 1 ? "company" : "companies"}
+            </p>
+          ) : null}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        {companies.length === 0 ? (
+          <EmptyState title="No published comparisons yet.">
+            <p>
+              Run <code className="rounded bg-sunken px-1.5 py-0.5 font-mono text-sm text-ink">uv run python -m pipeline.run NVDA</code>{" "}
+              or analyze a ticker live with the search box above.
+            </p>
+          </EmptyState>
+        ) : (
+          <CompanyGrid companies={companies} />
+        )}
+      </PageContainer>
+    </>
   );
 }
