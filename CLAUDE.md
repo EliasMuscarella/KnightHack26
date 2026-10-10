@@ -82,7 +82,7 @@ the version. Published `analysis_id` = sha256(old accession, new accession,
 * same inputs + same versions → byte-identical published JSON and identical `analysis_id`
 * the contract (`pipeline/schema.py`) is the single source of truth for data shape; regenerate TS types after any change
 * SEC fair access: send `SEC_USER_AGENT` on every request, stay under 5 requests/second, cache everything, never re-download a cached filing
-* outbound HTTP only to an allowlist: `www.sec.gov`, `data.sec.gov`, Hugging Face endpoints, and (if used) the Gemini API — no user-controlled URLs (no SSRF)
+* outbound HTTP only to an allowlist: `www.sec.gov`, `data.sec.gov`, Hugging Face endpoints, (if used) the Gemini API, and `finnhub.io` for the home-page ticker tape only (API process, fixed symbol list, never part of an analysis) — no user-controlled URLs (no SSRF)
 * validate ticker input with a strict pattern (`^[A-Z.\-]{1,6}$` after uppercasing) on both client and server
 * render filing text as text, never via `dangerouslySetInnerHTML` or raw HTML injection
 * secrets only via environment variables, never in code, logs, frontend bundles, or git
@@ -130,7 +130,8 @@ cd web && npm run build && npm run lint && npm run typecheck
 
 Environment: `.env` in the repo root (see `.env.example`). `SEC_USER_AGENT` is required for
 stage 0; `HF_TOKEN` for the embedding model download and the LLM stage; `GEMINI_API_KEY` is
-an optional LLM fallback. Missing `SEC_USER_AGENT` → stage 0 refuses to run (no invented email).
+an optional LLM fallback; `FINNHUB_API_KEY` is optional and only feeds the home-page ticker tape
+(without it the tape is hidden). Missing `SEC_USER_AGENT` → stage 0 refuses to run (no invented email).
 If the embedding model cannot load, a non-fixture run FAILS unless `RISKDIFF_ALLOW_LEXICAL=1`
 (or `RISKDIFF_EMBED_BACKEND=lexical`) explicitly accepts the deterministic lexical fallback,
 which is recorded in `model_ids` and changes `analysis_id`. The LLM stage is skipped (marked

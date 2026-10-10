@@ -526,3 +526,23 @@ Data and process:
   (`snippetWindow`, `heatmapColumns`) and through Python ports otherwise, with shared vectors.
 - `@playwright/test` 1.63.0 was added as a pinned dev dependency so the required smoke test can run;
   it uses the Chromium already in the environment (no download).
+
+## D-026 Home-page market ticker tape (Finnhub)
+- Context: the team asked for a scrolling stock tape (about 50 popular stocks, current price, up/down)
+  on the home page only, using Finnhub if it can be made reliable.
+- Decisions (confirmed with the team): Finnhub free tier via the API process; top 50 US-listed
+  companies by market cap as a fixed, hand-refreshed list (`api/ticker_tape.py`); up/down use the
+  existing blue/orange direction tokens with ▲/▼ and a sign, not green/red (DESIGN.md); branch `slider`.
+- Reliability: the browser never calls Finnhub. One background thread refreshes one symbol about every
+  1.2 s (about 50 calls/min, under the free limit of 60/min), backs off on 429 and on repeated failures,
+  stops on a rejected key, keeps the last good quote per symbol, and persists the snapshot to
+  `data/cache/ticker_tape.json` so a restart shows last prices (marked stale) immediately.
+  `GET /ticker-tape` reads the in-memory snapshot and never fails; the tape hides itself when there is
+  no data, so the home page never depends on Finnhub.
+- Scope: market prices are display context only. They never enter a comparison, a score or an
+  `analysis_id`, and the tape carries no advice or risk language.
+- Security: `finnhub.io` added to the outbound allowlist in CLAUDE.md; key only from `FINNHUB_API_KEY`,
+  sent in the `X-Finnhub-Token` header (not the URL), never logged or returned; symbols come only from
+  the fixed list (no user input, no SSRF).
+- Reverse: unset `FINNHUB_API_KEY` (the tape disappears), or remove `<TickerTape>` from the home page.
+
