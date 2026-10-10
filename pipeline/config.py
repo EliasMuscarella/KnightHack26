@@ -84,6 +84,92 @@ def get_settings() -> Settings:
     )
 
 
+# ---- Databricks shared report store (optional; see pipeline/store/databricks.py) ----
+
+DATABRICKS_HOST_SUFFIXES = (
+    ".cloud.databricks.com",
+    ".gcp.databricks.com",
+    ".azuredatabricks.net",
+    ".databricks.azure.us",
+    ".databricks.azure.cn",
+)
+IDENT_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]{0,127}$")
+
+
+@dataclass(frozen=True)
+class DatabricksSettings:
+    """All six variables come from the environment. `enabled` is True only when host, token and
+    warehouse id are all present; nothing in the app requires them."""
+
+    host: str | None
+    token: str | None = field(repr=False)
+    warehouse_id: str | None
+    catalog: str = "riskdiff"
+    schema: str = "main"
+    volume: str = "reports"
+
+    @property
+    def enabled(self) -> bool:
+        return bool(self.host and self.token and self.warehouse_id)
+
+    @property
+    def volume_root(self) -> str:
+        return f"/Volumes/{self.catalog}/{self.schema}/{self.volume}"
+
+    def table(self, name: str) -> str:
+        return f"`{self.catalog}`.`{self.schema}`.`{name}`"
+
+    def redacted(self) -> dict:
+        return {
+            "host": self.host or "MISSING",
+            "token": "set" if self.token else "MISSING",
+            "warehouse_id": "set" if self.warehouse_id else "MISSING",
+            "catalog": self.catalog,
+            "schema": self.schema,
+            "volume": self.volume,
+            "enabled": self.enabled,
+        }
+
+
+def validate_databricks_host(raw: str) -> str:
+    """`https://<workspace>` on a known Databricks domain. Returns the normalized origin."""
+    from urllib.parse import urlsplit
+
+    from pipeline.errors import ConfigError
+
+    parts = urlsplit((raw or "").strip())
+    host = (parts.hostname or "").lower()
+    if parts.scheme != "https" or not host or parts.path not in ("", "/") or parts.query:
+        raise ConfigError("DATABRICKS_HOST must be an https:// workspace URL with no path")
+    if not host.endswith(DATABRICKS_HOST_SUFFIXES):
+        raise ConfigError("DATABRICKS_HOST is not on a known Databricks domain")
+    return f"https://{host}"
+
+
+def _ident(name: str, default: str, var: str) -> str:
+    from pipeline.errors import ConfigError
+
+    v = (os.environ.get(var) or "").strip() or default
+    if not IDENT_RE.match(v):
+        raise ConfigError(f"{var} must be a plain SQL identifier (letters, digits, underscore)")
+    return v
+
+
+def get_databricks_settings() -> DatabricksSettings:
+    _load_env()
+    host = (os.environ.get("DATABRICKS_HOST") or "").strip() or None
+    if host:
+        host = validate_databricks_host(host)
+    return DatabricksSettings(
+        host=host,
+        token=(os.environ.get("DATABRICKS_TOKEN") or "").strip() or None,
+        warehouse_id=(os.environ.get("DATABRICKS_WAREHOUSE_ID") or "").strip() or None,
+        catalog=_ident("", "riskdiff", "DATABRICKS_CATALOG"),
+        schema=_ident("", "main", "DATABRICKS_SCHEMA"),
+        volume=_ident("", "reports", "DATABRICKS_VOLUME"),
+    )
+
+
 def normalize_ticker(raw: str) -> str:
     """Uppercase and validate. Raises InvalidTicker on anything outside ^[A-Z.\\-]{1,6}$."""
     from pipeline.errors import InvalidTicker
