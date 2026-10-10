@@ -83,9 +83,17 @@ def params_for(backend: str, override: MatchParams | None = None) -> MatchParams
     return override or DEFAULT_PARAMS.get(backend, DEFAULT_PARAMS["sentence-transformers"])
 
 
-def similarity_matrices(emb: BlockEmbeddings, params: MatchParams) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    ho, hn = np.asarray(emb.heading["old"], dtype=np.float64), np.asarray(emb.heading["new"], dtype=np.float64)
-    bo, bn = np.asarray(emb.body["old"], dtype=np.float64), np.asarray(emb.body["new"], dtype=np.float64)
+def similarity_matrices(
+    emb: BlockEmbeddings, params: MatchParams
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    ho, hn = (
+        np.asarray(emb.heading["old"], dtype=np.float64),
+        np.asarray(emb.heading["new"], dtype=np.float64),
+    )
+    bo, bn = (
+        np.asarray(emb.body["old"], dtype=np.float64),
+        np.asarray(emb.body["new"], dtype=np.float64),
+    )
     if ho.size == 0 or hn.size == 0:
         z = np.zeros((ho.shape[0], hn.shape[0]))
         return z, z, z
@@ -104,7 +112,9 @@ def match_blocks(emb: BlockEmbeddings, params: MatchParams | None = None) -> Mat
     if n_old and n_new:
         rows, cols = linear_sum_assignment(1.0 - s)
         for i, j in zip(rows.tolist(), cols.tolist(), strict=True):
-            pair = Pair(i, j, round(float(s[i, j]), 4), round(float(h[i, j]), 4), round(float(b[i, j]), 4))
+            pair = Pair(
+                i, j, round(float(s[i, j]), 4), round(float(h[i, j]), 4), round(float(b[i, j]), 4)
+            )
             (pairs if s[i, j] >= p.match_threshold else rejected).append(pair)
     matched_old = {q.old_index for q in pairs}
     matched_new = {q.new_index for q in pairs}
@@ -118,6 +128,10 @@ def match_blocks(emb: BlockEmbeddings, params: MatchParams | None = None) -> Mat
     )
     log.info(
         "stage4: %d matched pairs, %d removed (old-only), %d new (new-only), %d assignments rejected below %.2f",
-        len(res.pairs), len(res.unmatched_old), len(res.unmatched_new), len(rejected), p.match_threshold,
+        len(res.pairs),
+        len(res.unmatched_old),
+        len(res.unmatched_new),
+        len(rejected),
+        p.match_threshold,
     )
     return res

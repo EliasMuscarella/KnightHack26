@@ -107,7 +107,13 @@ class SentenceTransformerEmbedder:
                 owner.append(i)
                 weights.append(max(1, len(c.split())))
         with torch.inference_mode():
-            vecs = self._model.encode(pieces, batch_size=8, normalize_embeddings=True, convert_to_numpy=True, show_progress_bar=False)
+            vecs = self._model.encode(
+                pieces,
+                batch_size=8,
+                normalize_embeddings=True,
+                convert_to_numpy=True,
+                show_progress_bar=False,
+            )
         vecs = np.asarray(vecs, dtype=np.float32)
         dim = vecs.shape[1]
         out = np.zeros((len(texts), dim), dtype=np.float32)
@@ -172,7 +178,9 @@ class LexicalEmbedder:
 def load_embedder(settings: Settings) -> Embedder:
     forced = os.environ.get("RISKDIFF_EMBED_BACKEND", "").strip().lower()
     if forced == "lexical":
-        log.warning("RISKDIFF_EMBED_BACKEND=lexical: using the deterministic lexical fallback embedder")
+        log.warning(
+            "RISKDIFF_EMBED_BACKEND=lexical: using the deterministic lexical fallback embedder"
+        )
         return LexicalEmbedder()
     try:
         return SentenceTransformerEmbedder.load(settings.embed_model, settings.hf_token)
@@ -180,7 +188,9 @@ def load_embedder(settings: Settings) -> Embedder:
         log.warning(
             "Could not load embedding model %s (%s: %s). Falling back to the lexical TF-IDF embedder. "
             "Matching quality is lower; this is recorded in model_ids.",
-            settings.embed_model, type(e).__name__, str(e)[:160],
+            settings.embed_model,
+            type(e).__name__,
+            str(e)[:160],
         )
         return LexicalEmbedder()
 
@@ -229,9 +239,17 @@ def embed_segments(segs: dict[str, SegmentedFiling], embedder: Embedder) -> Bloc
         full[side] = _round(embedder.embed([b.full_text for b in blocks]))
     truncated = embedder.truncation_count - before
     if truncated:
-        log.warning("stage3: %d block texts exceeded max_seq_length=%s and were chunked + mean-pooled", truncated, embedder.max_seq_length)
+        log.warning(
+            "stage3: %d block texts exceeded max_seq_length=%s and were chunked + mean-pooled",
+            truncated,
+            embedder.max_seq_length,
+        )
     else:
-        log.info("stage3: no block exceeded max_seq_length=%s (backend=%s)", embedder.max_seq_length, embedder.backend)
+        log.info(
+            "stage3: no block exceeded max_seq_length=%s (backend=%s)",
+            embedder.max_seq_length,
+            embedder.backend,
+        )
     return BlockEmbeddings(
         model_id=embedder.model_id,
         backend=embedder.backend,

@@ -302,17 +302,38 @@
           "title": "By Change Type",
           "type": "object"
         },
+        "cik": {
+          "title": "Cik",
+          "type": "string"
+        },
         "file": {
           "title": "File",
           "type": "string"
+        },
+        "is_fixture": {
+          "default": false,
+          "title": "Is Fixture",
+          "type": "boolean"
+        },
+        "max_score": {
+          "title": "Max Score",
+          "type": "integer"
         },
         "name": {
           "title": "Name",
           "type": "string"
         },
+        "new_filing_date": {
+          "title": "New Filing Date",
+          "type": "string"
+        },
         "new_fiscal_year": {
           "title": "New Fiscal Year",
           "type": "integer"
+        },
+        "old_filing_date": {
+          "title": "Old Filing Date",
+          "type": "string"
         },
         "old_fiscal_year": {
           "title": "Old Fiscal Year",
@@ -330,10 +351,14 @@
       "required": [
         "ticker",
         "name",
+        "cik",
         "old_fiscal_year",
         "new_fiscal_year",
+        "old_filing_date",
+        "new_filing_date",
         "total_changes",
         "by_change_type",
+        "max_score",
         "file"
       ],
       "title": "CompanyCard",

@@ -1,0 +1,154 @@
+{
+  "banned_phrases": [
+    "likely",
+    "unlikely",
+    "probability",
+    "probable",
+    "will happen",
+    "riskier",
+    "buy",
+    "sell",
+    "invest",
+    "recommend",
+    "guarantee"
+  ],
+  "caps": {
+    "hypothetical_to_actual": 30,
+    "hypothetical_to_actual_extra": 5,
+    "new_entities": 12,
+    "new_quantities": 15,
+    "score": 100
+  },
+  "pipeline_version": "0.1.0",
+  "questions": [
+    {
+      "id": "Q1",
+      "points": 10,
+      "text": "Does the new text describe an event or condition that has already occurred, where the old text described it as a possibility?"
+    },
+    {
+      "id": "Q2",
+      "points": 8,
+      "text": "Does the new text name a specific geography, government, regulation, or counterparty not named in the old text?"
+    },
+    {
+      "id": "Q3",
+      "points": 10,
+      "text": "Does the new text state or quantify a financial or operational impact not stated in the old text?"
+    },
+    {
+      "id": "Q4",
+      "points": 6,
+      "text": "Does the change narrow or remove a previously disclosed exposure?"
+    }
+  ],
+  "rubric_version": "1.0.0",
+  "thresholds": {
+    "diff.both_sides_ratio": 0.25,
+    "diff.expanded_ratio": 0.15,
+    "diff.minor_ratio": 0.05,
+    "diff.reworded_similarity": 0.8,
+    "diff.reworded_total_ratio": 0.3,
+    "diff.sentence_match_threshold": 0.45,
+    "diff.sentence_unchanged_threshold": 1.0,
+    "match.lexical-fallback.body_weight": 0.6,
+    "match.lexical-fallback.heading_weight": 0.4,
+    "match.lexical-fallback.match_threshold": 0.2,
+    "match.sentence-transformers.body_weight": 0.6,
+    "match.sentence-transformers.heading_weight": 0.4,
+    "match.sentence-transformers.match_threshold": 0.62,
+    "score.added_text_ratio_min": 0.4
+  },
+  "weights": [
+    {
+      "description": "The risk has no counterpart in the prior filing.",
+      "label": "New risk factor",
+      "points": 30,
+      "signal": "change_type:new"
+    },
+    {
+      "description": "The prior filing's risk has no counterpart in the new filing.",
+      "label": "Risk factor removed",
+      "points": 20,
+      "signal": "change_type:removed"
+    },
+    {
+      "description": "Substantial wording changes in both directions.",
+      "label": "Risk was materially reworded",
+      "points": 20,
+      "signal": "change_type:materially_reworded"
+    },
+    {
+      "description": "Net addition of at least 15% of the text.",
+      "label": "Risk was expanded",
+      "points": 15,
+      "signal": "change_type:expanded"
+    },
+    {
+      "description": "Net removal of at least 15% of the text.",
+      "label": "Risk was reduced",
+      "points": 10,
+      "signal": "change_type:reduced"
+    },
+    {
+      "description": "Only minor edits.",
+      "label": "Largely unchanged",
+      "points": 0,
+      "signal": "change_type:largely_unchanged"
+    },
+    {
+      "description": "A 'may/could/might' statement became 'has/have/resulted in' wording for the same content (first hit; +5 per additional hit, max 30).",
+      "label": "Hedged language became actual language",
+      "points": 20,
+      "signal": "hypothetical_to_actual"
+    },
+    {
+      "description": "Per newly named entity (spaCy NER), max 12.",
+      "label": "New named geography, organization, or law",
+      "points": 4,
+      "signal": "new_entities"
+    },
+    {
+      "description": "Per new dollar amount, percentage, or counted unit, max 15.",
+      "label": "New quantified amount or percentage",
+      "points": 5,
+      "signal": "new_quantities"
+    },
+    {
+      "description": "Added text is at least 40% of the new block (not for 'new' blocks).",
+      "label": "Large share of new text",
+      "points": 5,
+      "signal": "added_text_ratio"
+    },
+    {
+      "description": "Pair similarity below the reworded threshold.",
+      "label": "Meaning shifted noticeably",
+      "points": 5,
+      "signal": "semantic_shift"
+    },
+    {
+      "description": "Validated 'yes' to Q1 with citations.",
+      "label": "AI rubric: a possibility became an occurred event",
+      "points": 10,
+      "signal": "rubric_q1"
+    },
+    {
+      "description": "Validated 'yes' to Q2 with citations.",
+      "label": "AI rubric: new specific geography, government, regulation, or counterparty",
+      "points": 8,
+      "signal": "rubric_q2"
+    },
+    {
+      "description": "Validated 'yes' to Q3 with citations.",
+      "label": "AI rubric: newly stated or quantified impact",
+      "points": 10,
+      "signal": "rubric_q3"
+    },
+    {
+      "description": "Validated 'yes' to Q4 with citations.",
+      "label": "AI rubric: a previously disclosed exposure was narrowed or removed",
+      "points": 6,
+      "signal": "rubric_q4"
+    }
+  ]
+}

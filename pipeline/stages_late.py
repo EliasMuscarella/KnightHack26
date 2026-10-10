@@ -28,7 +28,9 @@ def _blocks_hash(segs: dict[str, SegmentedFiling]) -> str:
 
 
 def _sentences_hash(segs: dict[str, SegmentedFiling]) -> str:
-    payload = {side: [[s.text for s in b.sentences] for b in segs[side].blocks] for side in ("old", "new")}
+    payload = {
+        side: [[s.text for s in b.sentences] for b in segs[side].blocks] for side in ("old", "new")
+    }
     return hashlib.sha256(json.dumps(payload, ensure_ascii=False).encode()).hexdigest()
 
 
@@ -67,21 +69,30 @@ def stage4_match(ctx: RunContext, emb: BlockEmbeddings) -> MatchResult:
     return ctx.cached(
         4,
         match_mod.STAGE_VERSION,
-        {"heading": emb.heading, "body": emb.body, "params": params.to_dict(), "backend": emb.backend},
+        {
+            "heading": emb.heading,
+            "body": emb.body,
+            "params": params.to_dict(),
+            "backend": emb.backend,
+        },
         lambda: match_mod.match_blocks(emb, params),
         load=MatchResult.from_dict,
         dump=lambda v: v.to_dict(),
     )
 
 
-def sentence_vectors(ctx: RunContext, segs: dict[str, SegmentedFiling], emb: BlockEmbeddings) -> dict[str, dict[str, list[list[float]]]]:
+def sentence_vectors(
+    ctx: RunContext, segs: dict[str, SegmentedFiling], emb: BlockEmbeddings
+) -> dict[str, dict[str, list[list[float]]]]:
     """Embed every sentence of every block (both sides) with the active embedder; cached."""
 
     def compute() -> dict:
         embedder = get_embedder(ctx)
         if isinstance(embedder, LexicalEmbedder):
             embedder = LexicalEmbedder()  # separate fit on the sentence corpus
-            embedder.fit([s.text for side in ("old", "new") for b in segs[side].blocks for s in b.sentences])
+            embedder.fit(
+                [s.text for side in ("old", "new") for b in segs[side].blocks for s in b.sentences]
+            )
         out: dict[str, dict[str, list[list[float]]]] = {"old": {}, "new": {}}
         for side in ("old", "new"):
             blocks = segs[side].blocks
@@ -102,7 +113,9 @@ def sentence_vectors(ctx: RunContext, segs: dict[str, SegmentedFiling], emb: Blo
     )
 
 
-def stage5_diff(ctx: RunContext, segs: dict[str, SegmentedFiling], emb: BlockEmbeddings, matches: MatchResult) -> list[dict]:
+def stage5_diff(
+    ctx: RunContext, segs: dict[str, SegmentedFiling], emb: BlockEmbeddings, matches: MatchResult
+) -> list[dict]:
     """Return a list of change records (dicts) with sentences/stats/change_type per pair."""
     params = diff_mod.DEFAULT_DIFF_PARAMS
 
@@ -114,7 +127,14 @@ def stage5_diff(ctx: RunContext, segs: dict[str, SegmentedFiling], emb: BlockEmb
         def rec(old: RiskBlock | None, new: RiskBlock | None, pair) -> dict:
             ov = np.asarray(svecs["old"][old.id]) if old else None
             nv = np.asarray(svecs["new"][new.id]) if new else None
-            d = diff_mod.diff_pair(old, new, similarity=pair.similarity if pair else None, old_vecs=ov, new_vecs=nv, params=params)
+            d = diff_mod.diff_pair(
+                old,
+                new,
+                similarity=pair.similarity if pair else None,
+                old_vecs=ov,
+                new_vecs=nv,
+                params=params,
+            )
             return {
                 "old_block_id": old.id if old else None,
                 "new_block_id": new.id if new else None,
@@ -139,7 +159,12 @@ def stage5_diff(ctx: RunContext, segs: dict[str, SegmentedFiling], emb: BlockEmb
     return ctx.cached(
         5,
         diff_mod.STAGE_VERSION,
-        {"sentences": _sentences_hash(segs), "matches": matches.to_dict(), "params": params.to_dict(), "model_id": emb.model_id},
+        {
+            "sentences": _sentences_hash(segs),
+            "matches": matches.to_dict(),
+            "params": params.to_dict(),
+            "model_id": emb.model_id,
+        },
         compute,
     )
 
@@ -150,14 +175,25 @@ def run_late_stages(ctx: RunContext, ticker: str):
     ctx.emit(3, "started", ticker=ticker)
     emb = stage3_embed(ctx, segs)
     ctx.outputs["embeddings"] = emb
-    ctx.emit(3, "done", f"{emb.backend}: {emb.model_id}" + (f"; {emb.truncation_count} blocks chunked" if emb.truncation_count else ""), ticker=ticker)
+    ctx.emit(
+        3,
+        "done",
+        f"{emb.backend}: {emb.model_id}"
+        + (f"; {emb.truncation_count} blocks chunked" if emb.truncation_count else ""),
+        ticker=ticker,
+    )
     if ctx.until_stage <= 3:
         return ctx
 
     ctx.emit(4, "started", ticker=ticker)
     matches = stage4_match(ctx, emb)
     ctx.outputs["matches"] = matches
-    ctx.emit(4, "done", f"{len(matches.pairs)} matched, {len(matches.unmatched_old)} removed, {len(matches.unmatched_new)} new", ticker=ticker)
+    ctx.emit(
+        4,
+        "done",
+        f"{len(matches.pairs)} matched, {len(matches.unmatched_old)} removed, {len(matches.unmatched_new)} new",
+        ticker=ticker,
+    )
     if ctx.until_stage <= 4:
         return ctx
 

@@ -6,7 +6,12 @@ from pathlib import Path
 
 import numpy as np
 
-from pipeline.embed import BlockEmbeddings, LexicalEmbedder, SentenceTransformerEmbedder, embed_segments
+from pipeline.embed import (
+    BlockEmbeddings,
+    LexicalEmbedder,
+    SentenceTransformerEmbedder,
+    embed_segments,
+)
 from pipeline.extract import extract_item_1a
 from pipeline.match import MatchParams, match_blocks
 from pipeline.segment import segment
@@ -51,7 +56,9 @@ class FakeModel:
 
 
 def test_chunking_and_mean_pooling_counts_truncations():
-    emb = SentenceTransformerEmbedder(model_id="fake/model", _model=FakeModel(), max_seq_length=10, chunk_overlap=0)
+    emb = SentenceTransformerEmbedder(
+        model_id="fake/model", _model=FakeModel(), max_seq_length=10, chunk_overlap=0
+    )
     short = "one two three"
     long = " ".join(f"w{i}" for i in range(25))  # 25 tokens > budget of 8
     vecs = emb.embed([short, long])
@@ -65,7 +72,10 @@ def test_chunking_and_mean_pooling_counts_truncations():
 
 def segs():
     out = {}
-    for side, name, acc in (("old", "FIXTURE_10K_FY2024.htm", "0000000000-24-000001"), ("new", "FIXTURE_10K_FY2025.htm", "0000000000-25-000001")):
+    for side, name, acc in (
+        ("old", "FIXTURE_10K_FY2024.htm", "0000000000-24-000001"),
+        ("new", "FIXTURE_10K_FY2025.htm", "0000000000-25-000001"),
+    ):
         out[side] = segment(extract_item_1a((FIX / name).read_bytes(), acc))
     return out
 
@@ -83,8 +93,12 @@ def test_lexical_matching_on_fixture_pair():
     assert i in by_old and heads_new[by_old[i].new_index] == heads_old[i]
     assert by_old[i].similarity > 0.95
     # removed risk (acquisition) and new risk (AI) are detected
-    acq = heads_old.index("FIXTURE: The pending acquisition of Gadgetron Inc. may not be completed on the expected timeline.")
-    ai = heads_new.index("FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure.")
+    acq = heads_old.index(
+        "FIXTURE: The pending acquisition of Gadgetron Inc. may not be completed on the expected timeline."
+    )
+    ai = heads_new.index(
+        "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure."
+    )
     assert acq in res.unmatched_old
     assert ai in res.unmatched_new
     # reworded security heading still matches its counterpart
@@ -97,7 +111,10 @@ def test_lexical_matching_on_fixture_pair():
 
 def test_threshold_rejects_weak_assignments():
     emb = BlockEmbeddings(
-        model_id="x", backend="sentence-transformers", max_seq_length=10, truncation_count=0,
+        model_id="x",
+        backend="sentence-transformers",
+        max_seq_length=10,
+        truncation_count=0,
         heading={"old": [[1, 0], [0, 1]], "new": [[1, 0], [0.2, 0.98]]},
         body={"old": [[1, 0], [0, 1]], "new": [[1, 0], [0.9, 0.1]]},
         full={"old": [[1, 0], [0, 1]], "new": [[1, 0], [0.9, 0.1]]},

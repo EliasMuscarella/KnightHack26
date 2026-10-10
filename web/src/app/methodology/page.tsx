@@ -15,7 +15,7 @@ const NEVER = [
   "Never decides what changed with a language model. Diffs, change types and scores are deterministic code.",
   "Never shows an AI claim without a valid citation to filing sentences. Uncited or invalid claims are dropped before publishing.",
   "Never says a company became more or less risky, and never turns a disclosure change into a risk percentage.",
-  "Never gives investment advice or suggests trading on a disclosure change.",
+  "Never gives trading or portfolio advice, and never suggests acting on a disclosure change.",
   "Never fabricates filings, sentences or numbers. The development fixture is labeled on every screen and is never published.",
   "Never renders filing text as HTML. Filing text is displayed as plain text only.",
   "Never re-downloads a cached filing, and stays within SEC fair-access limits.",
