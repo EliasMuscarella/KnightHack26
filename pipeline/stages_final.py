@@ -13,11 +13,13 @@ from pipeline import signals as signals_mod
 from pipeline.config import NER_MODEL_ID, PIPELINE_VERSION, SENTENCE_SPLITTER_ID
 from pipeline.diff import diff_params_for
 from pipeline.errors import PipelineError
+from pipeline.highlights import select_highlights, truncate_heading
 from pipeline.publish import publish
 from pipeline.rubric import RUBRIC_VERSION
 from pipeline.schema import (
     CATEGORIES,
     CHANGE_TYPES,
+    MAX_SHORT_TITLE_WORDS,
     SCHEMA_VERSION,
     Change,
     Comparison,
@@ -33,7 +35,7 @@ from pipeline.schema import (
 from pipeline.score import analysis_id, change_id, code_fingerprint, score_change
 from pipeline.stages_late import get_embedder
 from pipeline.types import FilingRecord, RiskBlock, SegmentedFiling
-from pipeline.validate import validate_llm_output
+from pipeline.validate import banned_language, validate_llm_output
 
 if TYPE_CHECKING:
     from pipeline.run import RunContext
@@ -307,6 +309,58 @@ def _filing_meta(rec: FilingRecord, section, seg: SegmentedFiling) -> FilingMeta
     )
 
 
+def short_titles_for(
+    ctx: RunContext, records: list[dict], segs: dict[str, SegmentedFiling], llm_info: dict
+) -> dict[str, str]:
+    """change_id -> LLM short title (raw, cached); empty when no provider. One batch call."""
+    from pipeline.score import change_id
+
+    client = ctx.outputs.get("llm_client")
+    if client is None:
+        return {}
+    items = []
+    for r in records:
+        old, new = _blocks(segs, r)
+        items.append((change_id(r["old_block_id"], r["new_block_id"]), (new or old).heading))
+    items.sort()
+    key = ctx.cache.key(
+        "llm",
+        llm_mod.STAGE_VERSION,
+        {
+            "kind": "short_titles",
+            "prompt_sha256": llm_mod.short_title_prompt_sha256(),
+            "model_id": client.model_id,
+            "items": items,
+        },
+    )
+    raw = None if ctx.refresh_llm else ctx.cache.get("llm", key)
+    if raw is None:
+        raw = llm_mod.short_titles_raw(client, items)
+        if raw is None:
+            return {}
+        ctx.cache.put("llm", key, raw)
+    return {t["change_id"]: t["short_title"] for t in raw.get("titles", []) if isinstance(t, dict)}
+
+
+_STOP = frozenset(
+    "a an the of to and or in on for with by our we us its their is are may could might".split()
+)
+
+
+def validated_short_title(heading: str, proposed: str | None) -> str:
+    """Accept the LLM label only if it is short, neutral and anchored to the heading; otherwise
+    fall back to a deterministic truncation of the real heading."""
+    if proposed:
+        t = " ".join(str(proposed).split()).strip().strip('"\u201c\u201d.')
+        words = t.split()
+        if 1 <= len(words) <= MAX_SHORT_TITLE_WORDS and banned_language(t) is None:
+            hw = {w.strip(".,;:()\u2019'\"").lower() for w in heading.split()} - _STOP
+            tw = {w.strip(".,;:()\u2019'\"").lower() for w in words} - _STOP
+            if hw & tw:
+                return t
+    return truncate_heading(heading, MAX_SHORT_TITLE_WORDS)
+
+
 def assemble(
     ctx: RunContext,
     ticker: str,
@@ -315,6 +369,7 @@ def assemble(
     llm_rows: list[dict | None],
     llm_info: dict,
 ) -> Comparison:
+    llm_titles = short_titles_for(ctx, records, ctx.outputs["segments"], llm_info)
     fetch = ctx.outputs["fetch"]
     segs = ctx.outputs["segments"]
     sections = ctx.outputs["sections"]
@@ -373,11 +428,13 @@ def assemble(
             r["similarity"],
             diff_params.reworded_similarity,
         )
+        cid = change_id(r["old_block_id"], r["new_block_id"])
         changes.append(
             Change(
-                id=change_id(r["old_block_id"], r["new_block_id"]),
+                id=cid,
                 rank=1,
                 title=(new or old).heading,
+                short_title=validated_short_title((new or old).heading, llm_titles.get(cid)),
                 old_title=old.heading if old else None,
                 new_title=new.heading if new else None,
                 section_group=(new or old).section_group,
@@ -463,6 +520,7 @@ def assemble(
         ),
         thresholds=thresholds,
         changes=changes,
+        highlights=select_highlights(changes, sentence_index),
         sentence_index=sentence_index,
         notes=notes,
     )

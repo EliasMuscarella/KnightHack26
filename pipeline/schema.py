@@ -83,6 +83,22 @@ CATEGORIES: tuple[str, ...] = (
 
 InterpretationStatus = Literal["ok", "unavailable", "skipped", "empty"]
 
+HighlightKind = Literal[
+    "potential_became_actual",
+    "new_figure",
+    "new_risk",
+    "removed_risk",
+    "new_named_party",
+]
+HIGHLIGHT_KINDS: tuple[str, ...] = (
+    "potential_became_actual",
+    "new_figure",
+    "new_risk",
+    "removed_risk",
+    "new_named_party",
+)
+MAX_SHORT_TITLE_WORDS = 8
+
 SENTENCE_ID_RE = re.compile(r"^\d{10}-\d{2}-\d{6}:\d+:\d+$")
 BLOCK_ID_RE = re.compile(r"^\d{10}-\d{2}-\d{6}:\d+$")
 TICKER_RE = re.compile(r"^[A-Z.\-]{1,6}$")
@@ -259,6 +275,11 @@ class Change(Strict):
     )
     rank: int = Field(ge=1)
     title: str = Field(description="Risk heading (new side if present, else old).")
+    short_title: str = Field(
+        min_length=1,
+        description="At most 8 words, plain English, neutral; a label for lists and cards (never a claim). "
+        "LLM-generated and validated, or a deterministic truncation of the heading.",
+    )
     old_title: str | None = None
     new_title: str | None = None
     section_group: str | None = None
@@ -300,6 +321,33 @@ class Change(Strict):
                 bad = {"insert"} if s.side == "old" else {"delete"}
                 if any(sp.op in bad for sp in s.diff_spans):
                     raise ValueError(f"diff_spans of {s.id} contain ops for the other side")
+        return self
+
+
+class Highlight(Strict):
+    """One before/after moment a reader can take in at a glance. Quotes are always the verbatim
+    sentences behind the ids (looked up in sentence_index); nothing is paraphrased."""
+
+    change_id: str = Field(pattern=r"^[0-9a-f]{16}$")
+    kind: HighlightKind
+    old_sentence_id: str | None = Field(
+        default=None, pattern=r"^\d{10}-\d{2}-\d{6}:\d+:\d+$", description="None for new text."
+    )
+    new_sentence_id: str | None = Field(
+        default=None, pattern=r"^\d{10}-\d{2}-\d{6}:\d+:\d+$", description="None for removed text."
+    )
+    short_title: str = Field(description="The parent change's short_title.")
+    detail: str | None = Field(
+        default=None,
+        description="The deterministic signal value behind it, e.g. 'investigating -> published their preliminary finding'.",
+    )
+
+    @model_validator(mode="after")
+    def _has_a_side(self) -> Highlight:
+        if not (self.old_sentence_id or self.new_sentence_id):
+            raise ValueError("a highlight needs an old or a new sentence id")
+        if len(self.short_title.split()) > MAX_SHORT_TITLE_WORDS:
+            raise ValueError("highlight short_title exceeds the word limit")
         return self
 
 
@@ -382,6 +430,11 @@ class Comparison(Strict):
     summary: Summary
     thresholds: Thresholds
     changes: list[Change] = Field(description="Ranked by score desc, then stable id.")
+    highlights: list[Highlight] = Field(
+        default_factory=list,
+        max_length=5,
+        description="At most 5 (at most 2 per change), ranked by pipeline.highlights.rank_key.",
+    )
     sentence_index: dict[str, SentenceLocation]
     notes: list[str] = Field(
         default_factory=list,
@@ -426,6 +479,22 @@ class Comparison(Strict):
                     raise ValueError(f"change sentence {s.id} missing from sentence_index")
         if self.summary.total_changes != len(self.changes):
             raise ValueError("summary.total_changes != len(changes)")
+        change_ids = {c.id for c in self.changes}
+        per_change: dict[str, int] = {}
+        for h in self.highlights:
+            if h.change_id not in change_ids:
+                raise ValueError(f"highlight refers to unknown change {h.change_id}")
+            for sid in (h.old_sentence_id, h.new_sentence_id):
+                if sid is not None and sid not in idx:
+                    raise ValueError(f"highlight cites unknown sentence {sid}")
+            per_change[h.change_id] = per_change.get(h.change_id, 0) + 1
+            if per_change[h.change_id] > 2:
+                raise ValueError(f"more than 2 highlights for change {h.change_id}")
+        for c in self.changes:
+            if len(c.short_title.split()) > MAX_SHORT_TITLE_WORDS:
+                raise ValueError(
+                    f"short_title of change {c.id} exceeds {MAX_SHORT_TITLE_WORDS} words"
+                )
         return self
 
 
