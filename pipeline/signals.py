@@ -32,7 +32,7 @@ from pipeline.types import RiskBlock
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.1.2"
+STAGE_VERSION = "0.2.0"
 LEXICON_METHOD_ID = "keyword-lexicon-v1"
 
 HEDGE_RE = re.compile(
@@ -50,6 +50,25 @@ PAST_EVENT_RE = re.compile(
     r"reduced|increased|decreased|disrupted|delayed|suspended|terminated|recorded|recognized)\b",
     re.I,
 )
+# "in progress / possible" wording in the old sentence ...
+IN_PROGRESS_RE = re.compile(
+    r"\b(investigat\w*|reviewing|under review|considering|consideration|proposed|proposals?|"
+    r"evaluat\w*|assess\w*|pending|contemplat\w*|explor\w*|seeking|inquir\w*|examin\w*|"
+    r"may|might|could|would|potential\w*|possib\w*)\b",
+    re.I,
+)
+# ... that became concluded wording in the new sentence
+CONCLUDED_RE = re.compile(
+    r"\b(found that|found|concluded|published (?:its|their|a|the) (?:preliminary |final |initial )?"
+    r"(?:finding|findings|decision|determination|report|rule|order)|preliminary finding|"
+    r"final (?:rule|decision|order|determination)|determined|imposed|fined|adopted|enacted|incurred|"
+    r"(?:was|were) foreclosed|finalized|issued (?:a|an|its|their) (?:final |preliminary )?"
+    r"(?:rule|decision|order|determination|finding)|ruled|ordered|settled|resolved|"
+    r"recorded a charge|took a charge|charged)\b",
+    re.I,
+)
+STATUS_PAIR_MIN_OVERLAP = 0.25  # lexical ratio needed to pair an unaligned old/new sentence
+
 YEAR_RE = re.compile(
     r"\b(?:fiscal|calendar|in|during|since)\s+(?:year\s+)?(?:19|20)\d{2}\b|\b(?:19|20)\d{2}\b"
 )
@@ -283,6 +302,24 @@ def hypothetical_to_actual(ctx: SignalContext) -> list[SignalHit]:
                         new_sentence_ids=[s.id],
                     )
                 )
+    # (c) in-progress / possible wording became concluded wording ("investigating" ->
+    #     "published their preliminary finding"), over aligned pairs and over unaligned
+    #     removed/added pairs that overlap lexically
+    for old_s, new_s in _candidate_pairs(ctx):
+        key = (old_s.id, new_s.id)
+        if key in seen:
+            continue
+        hit = status_change(old_s.text, new_s.text)
+        if hit is not None:
+            seen.add(key)
+            hits.append(
+                SignalHit(
+                    value=f"{hit[0]} -> {hit[1]}",
+                    detail="In-progress or possible wording in the prior filing became concluded wording in the new filing.",
+                    old_sentence_ids=[old_s.id],
+                    new_sentence_ids=[new_s.id],
+                )
+            )
     # (b) added sentence reporting a past event, overlapping a hedged old sentence
     old_hedged = [s for s in ctx.old.sentences if HEDGE_RE.search(s.text)]
     for s in ctx.sentences:
@@ -309,6 +346,51 @@ def hypothetical_to_actual(ctx: SignalContext) -> list[SignalHit]:
                     )
                 )
     return hits
+
+
+def status_change(old_text: str, new_text: str) -> tuple[str, str] | None:
+    """Deterministic 'in progress -> concluded' check for one old/new sentence pair.
+
+    Fires when the old sentence carries an in-progress/possible marker (IN_PROGRESS_RE), the new
+    sentence carries a concluded marker (CONCLUDED_RE) that is not preceded by a modal verb, and
+    the new sentence is less tentative than the old one (fewer in-progress markers). Returns
+    (old_marker, new_marker) or None."""
+    old_markers = [m.group(0).lower() for m in IN_PROGRESS_RE.finditer(old_text)]
+    if not old_markers:
+        return None
+    new_markers = [m.group(0).lower() for m in IN_PROGRESS_RE.finditer(new_text)]
+    if len(new_markers) >= len(old_markers):
+        return None
+    for m in CONCLUDED_RE.finditer(new_text):
+        marker = m.group(0)
+        if _modal_before(new_text, marker):
+            continue
+        # prefer the most specific old marker (a verb such as "investigating" over a bare modal)
+        specific = [o for o in old_markers if o not in ("may", "might", "could", "would")]
+        return ((specific or old_markers)[0], marker.lower())
+    return None
+
+
+def _candidate_pairs(ctx: SignalContext) -> list[tuple[Sentence, Sentence]]:
+    """Aligned modified pairs, plus (removed old, added new) pairs that overlap lexically.
+    Each added sentence is paired with at most one removed sentence (its best overlap)."""
+    by_id = {s.id: s for s in ctx.sentences}
+    pairs: list[tuple[Sentence, Sentence]] = []
+    for s in ctx.sentences:
+        if s.side == "new" and s.status == "modified" and s.counterpart_id in by_id:
+            pairs.append((by_id[s.counterpart_id], s))
+    removed = [s for s in ctx.sentences if s.side == "old" and s.status == "removed"]
+    for s in ctx.sentences:
+        if s.side != "new" or s.status != "added":
+            continue
+        best, best_r = None, 0.0
+        for o in removed:
+            r = lexical_ratio(o.text, s.text)
+            if r > best_r:
+                best, best_r = o, r
+        if best is not None and best_r >= STATUS_PAIR_MIN_OVERLAP:
+            pairs.append((best, s))
+    return pairs
 
 
 _MODAL_RE = re.compile(r"\b(may|might|could|would|should|can)\b", re.I)
@@ -338,6 +420,84 @@ def get_nlp():
     return _nlp
 
 
+_ENTITY_STOPWORDS = frozenset(
+    "in of the a an and for to on at by with from or as its their our his her this that these those "
+    "which who whose into over under than".split()
+)
+_ENTITY_CODE_RE = re.compile(r"^[A-Za-z]{1,2}:?\d+$")
+_ENTITY_STRIP = " .,;:'\"\u201c\u201d\u2018\u2019()[]{}-\u2013\u2014/&"
+
+
+def clean_entity(text: str) -> str | None:
+    """Deterministic post-filter for NER output (all entity rules live here).
+
+    1. Collapse whitespace; strip leading/trailing punctuation and quotes.
+    2. Strip leading and trailing stopwords ("AI Diffusion IFR in" -> "AI Diffusion IFR").
+    3. Drop short codes such as "D:4", "Q3", "A1" (letters then digits).
+    4. Drop entities with fewer than 3 letters, or whose non-space characters are mostly
+       digits/punctuation (less than half letters).
+    Returns the cleaned display text or None when the entity is dropped."""
+    t = re.sub(r"\s+", " ", text).strip(_ENTITY_STRIP)
+    words = t.split(" ")
+    while words and words[0].lower() in _ENTITY_STOPWORDS:
+        words.pop(0)
+    while words and words[-1].lower() in _ENTITY_STOPWORDS:
+        words.pop()
+    t = " ".join(words).strip(_ENTITY_STRIP)
+    if not t or _ENTITY_CODE_RE.match(t):
+        return None
+    compact = t.replace(" ", "")
+    letters = sum(c.isalpha() for c in compact)
+    if letters < 3 or letters / max(1, len(compact)) < 0.5:
+        return None
+    return t
+
+
+def _entity_key(text: str) -> str:
+    """Normalization key for duplicate detection: lowercase, no leading article, no possessive,
+    no trailing plural 's', letters and digits only."""
+    t = _norm_entity(text)
+    t = re.sub(r"s$", "", t) if len(t) > 4 else t
+    return re.sub(r"[^a-z0-9]+", "", t)
+
+
+def near_duplicate_keys(a: str, b: str) -> bool:
+    """Two entity keys are near-duplicates when one is a prefix of the other and the shorter
+    is at least 5 characters ("ruritania" / "ruritanian", "gain ai act" / "gain ai acts")."""
+    if a == b:
+        return True
+    short, long_ = (a, b) if len(a) <= len(b) else (b, a)
+    return len(short) >= 5 and long_.startswith(short)
+
+
+def merge_near_duplicates(hits: list[SignalHit]) -> list[SignalHit]:
+    """Merge hits whose keys are near-duplicates; keeps the shorter display form and the union
+    of cited sentence ids (first-seen order)."""
+    merged: list[tuple[str, SignalHit]] = []
+    for h in hits:
+        k = _entity_key(h.value)
+        for i, (mk, mh) in enumerate(merged):
+            if near_duplicate_keys(mk, k):
+                keep, other = (mh, h) if len(mh.value) <= len(h.value) else (h, mh)
+                ids = list(keep.new_sentence_ids)
+                for sid in other.new_sentence_ids:
+                    if sid not in ids:
+                        ids.append(sid)
+                merged[i] = (
+                    min(mk, k, key=len),
+                    SignalHit(
+                        value=keep.value,
+                        detail=keep.detail,
+                        old_sentence_ids=keep.old_sentence_ids,
+                        new_sentence_ids=ids,
+                    ),
+                )
+                break
+        else:
+            merged.append((k, h))
+    return [h for _, h in merged]
+
+
 def _norm_entity(text: str) -> str:
     t = re.sub(r"^(the|a|an)\s+", "", text.strip(), flags=re.I)
     t = re.sub(r"['’]s$", "", t)
@@ -354,7 +514,10 @@ def entities_by_sentence(block: RiskBlock, nlp=None) -> dict[str, list[tuple[str
         ents = []
         for e in doc.ents:
             if e.label_ in ENTITY_LABELS:
-                n = _norm_entity(e.text)
+                cleaned = clean_entity(e.text)
+                if cleaned is None:
+                    continue
+                n = _norm_entity(cleaned)
                 if len(n) >= 3 and any(c.isalpha() for c in n) and not n.isdigit():
                     ents.append((n, e.label_))
         if ents:
@@ -399,7 +562,7 @@ def new_entities(ctx: SignalContext, nlp=None) -> list[SignalHit]:
                 new_sentence_ids=sids,
             )
         )
-    return hits
+    return merge_near_duplicates(hits)
 
 
 def _display_entity(block: RiskBlock, sid: str, norm: str) -> str:
