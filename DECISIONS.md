@@ -397,6 +397,27 @@ Only a store that is already `ok` gets a 2 s wait for its very first remote resu
   and "DOL", and a removed sentence starting mid-word ("z ECCNs"). All three come from the published NVDA
   file, which this environment cannot regenerate (no SEC access).
 
+## D-024 Company logos
+
+- Logos for the published tickers (AAPL, AMZN, NVDA, CRWD, SF) are genuine Wikimedia Commons SVGs, downloaded
+  once, sanitized, and served from `web/public/logos/` (sources in `web/public/logos/SOURCES.md`). Tickers not
+  in the manifest `web/src/lib/logos.ts` get a token-colored monogram and never request an image. The logo
+  tile is white in every theme (brand marks are drawn for a light background); the monogram uses tokens only.
+
+## D-025 Dark mode
+
+- Dark mode is class-based: `data-theme="light" | "dark"` on `<html>`, set before paint by a fixed inline script
+  in `web/src/app/layout.tsx` (stored choice in localStorage `riskdiff-theme`, else `prefers-color-scheme`).
+  Default is "system"; "system" is stored as no key. Every storage read/write is in try/catch; if storage is
+  blocked the choice lasts for the page only. No-JS visitors get the light theme.
+- The dark palette redefines the existing token names (DESIGN.md "Dark mode"); every text/background pair was
+  measured with a WCAG script, all >= 4.5:1. New tokens: `on-accent`, `on-ink` (replace `text-white` on filled
+  controls) and `heat-*` (Trends heatmap tones and cell text, read via `var()`).
+- The highlighter in dark mode is a deep amber (`#5E4B12`) under light ink, not the bright yellow: a bright
+  marker would need dark text, and the glyph tops above the stroke would then sit dark on dark.
+- Known pre-existing light-mode gaps left unchanged (out of scope, not a dark-mode need): heatmap cell text
+  near the 0.55 intensity flip drops to about 2.3 to 3.8:1, and `ink-muted` on `sunken` is 4.4:1.
+
 ## D-024 Parallel LLM calls and stage timings (P1)
 
 - Stage 7 sends the per-change LLM calls concurrently (`RISKDIFF_LLM_CONCURRENCY`, default 6, clamped

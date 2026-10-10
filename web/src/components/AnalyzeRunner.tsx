@@ -220,7 +220,7 @@ export function AnalyzeRunner({ ticker }: { ticker: string }) {
                 <button
                   type="button"
                   onClick={retry}
-                  className="rounded-md bg-accent px-4 py-1.5 text-sm font-semibold text-white hover:bg-accent-strong"
+                  className="rounded-md bg-accent px-4 py-1.5 text-sm font-semibold text-on-accent hover:bg-accent-strong"
                 >
                   Retry
                 </button>

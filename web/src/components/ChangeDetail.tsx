@@ -537,7 +537,7 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
                   type="button"
                   aria-pressed={view === mode}
                   onClick={() => setChosenView(mode)}
-                  className={`rounded-sm px-3 py-1 text-sm ${view === mode ? "bg-ink text-white" : "text-ink-secondary hover:text-ink"}`}
+                  className={`rounded-sm px-3 py-1 text-sm ${view === mode ? "bg-ink text-on-ink" : "text-ink-secondary hover:text-ink"}`}
                 >
                   {label}
                 </button>
