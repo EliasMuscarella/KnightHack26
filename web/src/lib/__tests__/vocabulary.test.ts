@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { changeLevel, directionOf, displayTitle, levelSegments, shortTitleFromHeading } from "../vocabulary.ts";
+import { changeLevel, countedLabel, directionOf, displayTitle, levelSegments, shortTitleFromHeading } from "../vocabulary.ts";
 
 test("short titles cut at the first clause and never end in a function word", () => {
   assert.equal(
@@ -17,6 +17,14 @@ test("short titles cut at the first clause and never end in a function word", ()
 test("displayTitle uses a real short title and falls back from truncations", () => {
   assert.equal(displayTitle("Export controls on China sales", "We are subject to complex laws…"), "Export controls on China sales");
   assert.equal(displayTitle("We are subject to complex laws, rules…", "We are subject to complex laws, rules, regulations, and political actions."), "We are subject to complex laws");
+  assert.equal(displayTitle("We are subject to complex laws, rules…", null), "We are subject to complex laws");
+});
+
+test("counted labels pluralize nouns only", () => {
+  assert.equal(countedLabel(2, "new"), "2 new risks");
+  assert.equal(countedLabel(1, "materially_reworded"), "1 major update");
+  assert.equal(countedLabel(5, "materially_reworded"), "5 major updates");
+  assert.equal(countedLabel(3, "expanded"), "3 expanded");
 });
 
 test("direction and level mapping", () => {

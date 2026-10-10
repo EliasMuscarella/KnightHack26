@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { buildHeatmap, cellIntensity, cellTone, rankTopics, relativeTime, sourceLine } from "../trends.ts";
+import { buildHeatmap, cellIntensity, cellTone, headlineTopic, rankTopics, relativeTime, sourceLine } from "../trends.ts";
 
 const topic = (name: string, companies: string[], sentences: number, source: "lexicon" | "entity" | "phrase" = "lexicon") => ({
   topic: name,
@@ -32,6 +32,12 @@ test("heatmap caps columns at ten plus Other and sorts rows by activity", () => 
   assert.equal(cellTone(undefined), "empty");
   assert.ok(cellIntensity(bbb, hm.maxActivity) > 0.15 && cellIntensity(bbb, hm.maxActivity) <= 1);
   assert.equal(cellIntensity(undefined, hm.maxActivity), 0);
+});
+
+test("the headline names a most widespread topic only when two or more companies share it", () => {
+  assert.equal(headlineTopic({ topic: "Tariffs", company_count: 1 }), null);
+  assert.deepEqual(headlineTopic({ topic: "Tariffs", company_count: 3 }), { topic: "Tariffs", company_count: 3 });
+  assert.equal(headlineTopic(null), null);
 });
 
 test("source line and relative time", () => {

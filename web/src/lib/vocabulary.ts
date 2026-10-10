@@ -134,8 +134,19 @@ export function displayTitle(shortTitle: string | null | undefined, fullTitle: s
   const short = (shortTitle ?? "").trim();
   const full = (fullTitle ?? "").trim();
   if (!short) return shortTitleFromHeading(full);
-  if ((short.endsWith("…") || short.endsWith("...")) && full) return shortTitleFromHeading(full);
+  if (short.endsWith("…") || short.endsWith("...")) {
+    // A truncation fallback: cut the full heading at a clause, or the truncation itself when the
+    // full heading is not at hand (e.g. Trends rows), so "…laws, rules…" becomes "…laws".
+    return shortTitleFromHeading(full || short.replace(/(…|\.\.\.)$/, ""));
+  }
   return short;
+}
+
+/** "2 new risks", "1 major update", "3 expanded": a count with the change label. */
+export function countedLabel(n: number, changeType: string): string {
+  const label = changeTypeVocab(changeType).label.toLowerCase();
+  const plural = n === 1 ? label : /\b(risk|update)$/.test(label) ? `${label}s` : label;
+  return `${n} ${plural}`;
 }
 
 /** Clause boundaries where a legal heading can be cut without losing its subject. */
