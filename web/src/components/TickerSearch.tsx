@@ -98,7 +98,7 @@ export function TickerSearch({ size = "large", knownTickers, autoFocus }: Props)
         className={
           error
             ? compact
-              ? "absolute mt-1 w-[340px] rounded-md border border-less-fg bg-less-bg px-2 py-1 text-xs text-less-strong-fg"
+              ? "absolute mt-1 w-[300px] rounded-md border border-less-fg bg-less-bg px-2 py-1 text-xs text-less-strong-fg"
               : "mt-2 text-sm font-medium text-less-strong-fg"
             : "sr-only"
         }

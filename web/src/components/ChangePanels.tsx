@@ -259,7 +259,7 @@ export function AnalystDetails({
         <span className="text-lg font-medium text-ink">{ANALYST_DETAILS}</span>
         <span className="text-sm text-ink-secondary">Rule-based signals, text measures, AI check answers, models</span>
       </summary>
-      <div className="mt-5 grid gap-x-10 gap-y-6 min-[900px]:grid-cols-2">
+      <div className="mt-6 grid gap-x-10 gap-y-6 min-[900px]:grid-cols-2">
         <div className="space-y-4">
           <h3 className="text-base font-medium text-ink">Deterministic signals (rule-based, no AI)</h3>
           <HitList title={SIGNAL_VOCAB.hypothetical_to_actual.label} hits={hedge} numberOf={numberOf} />

@@ -63,8 +63,11 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <div className="mx-auto flex h-14 max-w-[1280px] items-center gap-8 px-8">
             <Wordmark />
             <NavLinks />
-            <HeaderSearch />
-            <ThemeToggle />
+            {/* Search and theme sit together at the right edge; the search is absent on the home page. */}
+            <div className="ml-auto flex items-center gap-2">
+              <HeaderSearch />
+              <ThemeToggle />
+            </div>
           </div>
         </header>
         <main id="main" className="flex-1">
