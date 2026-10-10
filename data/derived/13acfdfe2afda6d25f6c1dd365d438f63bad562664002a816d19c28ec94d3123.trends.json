@@ -1,0 +1,2594 @@
+{
+  "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+  "by_change_type": {
+    "expanded": 2,
+    "largely_unchanged": 23,
+    "materially_reworded": 1,
+    "new": 2,
+    "reduced": 1,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 31,
+      "added_words": 907,
+      "categories": [
+        "geopolitical",
+        "regulation"
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "change_type": "materially_reworded",
+      "modified_sentences": 34,
+      "modified_words": 531,
+      "removed_sentences": 32,
+      "removed_words": 905,
+      "score": 100,
+      "short_title": "We are subject to complex laws, rules…"
+    },
+    {
+      "added_sentences": 5,
+      "added_words": 134,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 40,
+      "short_title": "Commercial arrangements expose us to counterparty risks"
+    },
+    {
+      "added_sentences": 5,
+      "added_words": 125,
+      "categories": [
+        "intellectual_property",
+        "regulation"
+      ],
+      "change_id": "32866661d1b11115",
+      "change_type": "expanded",
+      "modified_sentences": 4,
+      "modified_words": 37,
+      "removed_sentences": 2,
+      "removed_words": 36,
+      "score": 31,
+      "short_title": "Failure to meet the evolving needs of…"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 71,
+      "categories": [
+        "other"
+      ],
+      "change_id": "692187bd48c050c3",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 30,
+      "short_title": "The following risk factors should be considered…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "geopolitical",
+        "supply_chain"
+      ],
+      "change_id": "f7a8d95bf7b51298",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 21,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 25,
+      "short_title": "Business disruptions could harm our operations, lead…"
+    },
+    {
+      "added_sentences": 12,
+      "added_words": 264,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "change_type": "expanded",
+      "modified_sentences": 8,
+      "modified_words": 63,
+      "removed_sentences": 1,
+      "removed_words": 12,
+      "score": 23,
+      "short_title": "Long manufacturing lead times and uncertain supply…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "76929d4c94edf687",
+      "change_type": "reduced",
+      "modified_sentences": 1,
+      "modified_words": 27,
+      "removed_sentences": 5,
+      "removed_words": 96,
+      "score": 20,
+      "short_title": "Defects in our products have caused and…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "customer_concentration"
+      ],
+      "change_id": "b7c169267209801d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 84,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 10,
+      "short_title": "We receive a significant amount of our…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "geopolitical"
+      ],
+      "change_id": "1c8be25adeb58b98",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "International sales and operations are a significant…"
+    },
+    {
+      "added_sentences": 5,
+      "added_words": 95,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "472606c9d458f2e9",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 6,
+      "modified_words": 61,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "We may not be able to realize…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "10122333e29876b3",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Actions to adequately protect our IP rights…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "137f1a4271b5ccb8",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Risks Related to Our Industry and Markets"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "35fd73210c2228c8",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our operating results have in the past…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "39ad1b38b2b34469",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business is dependent upon the proper…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "3efe394c13cfbc9c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business is exposed to the burden…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 43,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "514830a330b756d7",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 53,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Adverse economic conditions may harm our business"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "56b14b486f546efd",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Long manufacturing lead times and uncertain supply…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "5f11cecb0925b7ee",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are subject to complex laws, rules…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate",
+        "regulation"
+      ],
+      "change_id": "6827ebf0162cb806",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Scrutiny from shareholders, regulators and others regarding…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "6d0df517b10be912",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Delaware law and our certificate of incorporation…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "6ef9abded50fdc62",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we are unable to attract, retain…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "8789091d41a73853",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 29,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may have exposure to additional tax…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 19,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "8910beb6333642bd",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 15,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Adverse economic conditions may harm our business"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "96dc984e6bfa0fbe",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are subject to stringent and changing…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "ad4f3805e248f79e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 6,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Climate change may have a long-term impact…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "c19cbbb3b2e9dc2c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Dependency on third-party suppliers and their technology…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "cce082e1f3b27e76",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Product, system security, and data protection incidents…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "df98eb8f5ae3787c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 11,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Competition could adversely impact our market share…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "e0d772dcef65caf2",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Issues relating to the responsible use of…"
+    }
+  ],
+  "cik": "0001045810",
+  "company_name": "NVIDIA CORP",
+  "derivation": "1.0.0+topics1",
+  "new_accession": "0001045810-26-000021",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+  "new_fiscal_year": 2026,
+  "old_accession": "0001045810-25-000023",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm",
+  "old_fiscal_year": 2025,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [
+    {
+      "change_id": "a4156a06454f6dfd",
+      "company_name": "NVIDIA CORP",
+      "new_sentence_id": "0001045810-26-000021:21:94",
+      "new_text": "Export controls increase the risk of investing in U.S. advanced semiconductor products, because by the time a new product is ready for market, it may be subject to new unilateral export controls restricting its sale, resulting in excess inventory and purchase obligations as we recently experienced with the H20.",
+      "old_sentence_id": "0001045810-25-000023:19:98",
+      "old_text": "Excessive or shifting export controls increase the risk of investing in U.S. advanced semiconductor products, because by the time a new product is ready for market, it may be subject to new unilateral export controls restricting its sale.",
+      "score": 100,
+      "short_title": "We are subject to complex laws, rules…",
+      "ticker": "NVDA"
+    }
+  ],
+  "ticker": "NVDA",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          192,
+          200
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "Japan"
+      ],
+      "position": 13,
+      "sentence_id": "0001045810-26-000021:21:6",
+      "source": "entity",
+      "status": "modified",
+      "text": "Our position in markets relating to AI has led to increased interest in our business from regulators worldwide, including the European Union, the United States, the United Kingdom, South Korea, Japan, and China.",
+      "ticker": "NVDA",
+      "topic": "Japan"
+    },
+    {
+      "added_spans": [
+        [
+          140,
+          143
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "CSP market"
+      ],
+      "position": 15,
+      "sentence_id": "0001045810-26-000021:21:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For example, the French Competition Authority collected information from us regarding our business and competition in the graphics card and CSP market as part of an ongoing inquiry into competition in those markets.",
+      "ticker": "NVDA",
+      "topic": "csp market"
+    },
+    {
+      "added_spans": [
+        [
+          102,
+          159
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "state laws"
+      ],
+      "position": 29,
+      "sentence_id": "0001045810-26-000021:21:14",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Several states are considering enacting or have already enacted regulations concerning AI technologies, with new state laws that took effect on January 1, 2026, which may impact our ability to train, deploy, or release AI models, and increase our compliance costs.",
+      "ticker": "NVDA",
+      "topic": "state law"
+    },
+    {
+      "added_spans": [
+        [
+          16,
+          24
+        ],
+        [
+          31,
+          44
+        ],
+        [
+          194,
+          209
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "non-data center products"
+      ],
+      "position": 67,
+      "sentence_id": "0001045810-26-000021:21:33",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Export controls have and could in the future disrupt our supply chain and distribution channels, negatively impacting our ability to serve demand, including in markets outside China and for our non-data center products.",
+      "ticker": "NVDA",
+      "topic": "non data center product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          15
+        ],
+        [
+          17,
+          40
+        ],
+        [
+          52,
+          107
+        ],
+        [
+          144,
+          227
+        ],
+        [
+          275,
+          355
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "degraded products"
+      ],
+      "position": 83,
+      "sentence_id": "0001045810-26-000021:21:41",
+      "source": "phrase",
+      "status": "modified",
+      "text": "On September 15, 2025, China’s antitrust regulators published their preliminary finding that our compliance with applicable U.S. export controls, which required us to offer degraded products to the Chinese market, discriminated unfairly against customers in the China market and therefore violated the terms of China’s approval of our Mellanox acquisition.",
+      "ticker": "NVDA",
+      "topic": "degraded product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          15
+        ],
+        [
+          17,
+          40
+        ],
+        [
+          52,
+          107
+        ],
+        [
+          144,
+          227
+        ],
+        [
+          275,
+          355
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "preliminary finding"
+      ],
+      "position": 83,
+      "sentence_id": "0001045810-26-000021:21:41",
+      "source": "phrase",
+      "status": "modified",
+      "text": "On September 15, 2025, China’s antitrust regulators published their preliminary finding that our compliance with applicable U.S. export controls, which required us to offer degraded products to the Chinese market, discriminated unfairly against customers in the China market and therefore violated the terms of China’s approval of our Mellanox acquisition.",
+      "ticker": "NVDA",
+      "topic": "preliminary finding"
+    },
+    {
+      "added_spans": [
+        [
+          54,
+          91
+        ],
+        [
+          251,
+          266
+        ],
+        [
+          292,
+          301
+        ],
+        [
+          310,
+          311
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "networking business"
+      ],
+      "position": 85,
+      "sentence_id": "0001045810-26-000021:21:42",
+      "source": "phrase",
+      "status": "modified",
+      "text": "If regulators conclude that we have failed to fulfill the terms of our Mellanox acquisition or we have violated any applicable law in China, we could be subject to financial penalties, restrictions on our ability to conduct our business, restrictions or other orders regarding our networking business, products, and services, or otherwise impact our operations in China, any of which could have a material and adverse impact on our business, operating results and financial condition.",
+      "ticker": "NVDA",
+      "topic": "networking business"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "licensed sales"
+      ],
+      "position": 106,
+      "sentence_id": "0001045810-26-000021:21:53",
+      "source": "phrase",
+      "status": "added",
+      "text": "USG officials expressed an expectation that the USG will receive 15% or more of the revenue generated from licensed sales of our products, but the USG did not publish a regulation codifying such requirement.",
+      "ticker": "NVDA",
+      "topic": "licensed sale"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "USG officials"
+      ],
+      "position": 106,
+      "sentence_id": "0001045810-26-000021:21:53",
+      "source": "phrase",
+      "status": "added",
+      "text": "USG officials expressed an expectation that the USG will receive 15% or more of the revenue generated from licensed sales of our products, but the USG did not publish a regulation codifying such requirement.",
+      "ticker": "NVDA",
+      "topic": "usg official"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          137
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "small amounts"
+      ],
+      "position": 107,
+      "sentence_id": "0001045810-26-000021:21:54",
+      "source": "phrase",
+      "status": "added",
+      "text": "In February 2026, the USG granted a license that would allow us to ship small amounts of H200 products to specific China-based customers.",
+      "ticker": "NVDA",
+      "topic": "small amount"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "inspection process"
+      ],
+      "position": 110,
+      "sentence_id": "0001045810-26-000021:21:56",
+      "source": "phrase",
+      "status": "added",
+      "text": "The license requires that the H200s go through an inspection process in the United States prior to any shipment to the customer.",
+      "ticker": "NVDA",
+      "topic": "inspection process"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          134
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "licensing program"
+      ],
+      "position": 111,
+      "sentence_id": "0001045810-26-000021:21:57",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result, any H200 shipped under the new licensing program will be subject to a 25% tariff upon importation into the United States.",
+      "ticker": "NVDA",
+      "topic": "licensing program"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "harmed competitive position"
+      ],
+      "position": 112,
+      "sentence_id": "0001045810-26-000021:21:58",
+      "source": "phrase",
+      "status": "added",
+      "text": "In the event that we are able to sell licensed products into the China market, we may not be able to pass along all or any of the tariff to our customers, and may be subject to litigation, increased costs, and a harmed competitive position.",
+      "ticker": "NVDA",
+      "topic": "harmed competitive position"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "increased costs"
+      ],
+      "position": 112,
+      "sentence_id": "0001045810-26-000021:21:58",
+      "source": "phrase",
+      "status": "added",
+      "text": "In the event that we are able to sell licensed products into the China market, we may not be able to pass along all or any of the tariff to our customers, and may be subject to litigation, increased costs, and a harmed competitive position.",
+      "ticker": "NVDA",
+      "topic": "increased cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "licensed products"
+      ],
+      "position": 112,
+      "sentence_id": "0001045810-26-000021:21:58",
+      "source": "phrase",
+      "status": "added",
+      "text": "In the event that we are able to sell licensed products into the China market, we may not be able to pass along all or any of the tariff to our customers, and may be subject to litigation, increased costs, and a harmed competitive position.",
+      "ticker": "NVDA",
+      "topic": "licensed product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          209
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "competitive product"
+      ],
+      "position": 114,
+      "sentence_id": "0001045810-26-000021:21:60",
+      "source": "phrase",
+      "status": "added",
+      "text": "Under the current rules and geopolitical landscape, we are unable to create and deliver a competitive product for China’s data center market that receives approval from both the USG and the Chinese government.",
+      "ticker": "NVDA",
+      "topic": "competitive product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          209
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "geopolitical landscape"
+      ],
+      "position": 114,
+      "sentence_id": "0001045810-26-000021:21:60",
+      "source": "phrase",
+      "status": "added",
+      "text": "Under the current rules and geopolitical landscape, we are unable to create and deliver a competitive product for China’s data center market that receives approval from both the USG and the Chinese government.",
+      "ticker": "NVDA",
+      "topic": "geopolitical landscape"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          278
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "customer ecosystems"
+      ],
+      "position": 115,
+      "sentence_id": "0001045810-26-000021:21:61",
+      "source": "phrase",
+      "status": "added",
+      "text": "As of the end of fiscal year 2026, we were effectively foreclosed from competing in China's data center computing/compute market, and our effective foreclosure from the China market helped our competitors build larger developer and customer ecosystems to challenge us worldwide.",
+      "ticker": "NVDA",
+      "topic": "customer ecosystem"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          278
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "effective foreclosure"
+      ],
+      "position": 115,
+      "sentence_id": "0001045810-26-000021:21:61",
+      "source": "phrase",
+      "status": "added",
+      "text": "As of the end of fiscal year 2026, we were effectively foreclosed from competing in China's data center computing/compute market, and our effective foreclosure from the China market helped our competitors build larger developer and customer ecosystems to challenge us worldwide.",
+      "ticker": "NVDA",
+      "topic": "effective foreclosure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          278
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "larger developer"
+      ],
+      "position": 115,
+      "sentence_id": "0001045810-26-000021:21:61",
+      "source": "phrase",
+      "status": "added",
+      "text": "As of the end of fiscal year 2026, we were effectively foreclosed from competing in China's data center computing/compute market, and our effective foreclosure from the China market helped our competitors build larger developer and customer ecosystems to challenge us worldwide.",
+      "ticker": "NVDA",
+      "topic": "larger developer"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          268
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "lost opportunity"
+      ],
+      "position": 116,
+      "sentence_id": "0001045810-26-000021:21:62",
+      "source": "phrase",
+      "status": "added",
+      "text": "Unless we are able to return with a product that meets the approval of both the USG and the Chinese government, our lost opportunity and the benefit to our competitors will have a material and adverse impact on our business, operating results, and financial condition.",
+      "ticker": "NVDA",
+      "topic": "lost opportunity"
+    },
+    {
+      "added_spans": [
+        [
+          27,
+          39
+        ],
+        [
+          112,
+          192
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "complex and burdensome scheme"
+      ],
+      "position": 128,
+      "sentence_id": "0001045810-26-000021:21:66",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The AI Diffusion IFR would have divided the world into three tiers, relegating most countries to “Tier 2” status, and would have created a complex and burdensome scheme for licensing approvals.",
+      "ticker": "NVDA",
+      "topic": "complex and burdensome scheme"
+    },
+    {
+      "added_spans": [
+        [
+          27,
+          39
+        ],
+        [
+          112,
+          192
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "licensing approvals"
+      ],
+      "position": 128,
+      "sentence_id": "0001045810-26-000021:21:66",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The AI Diffusion IFR would have divided the world into three tiers, relegating most countries to “Tier 2” status, and would have created a complex and burdensome scheme for licensing approvals.",
+      "ticker": "NVDA",
+      "topic": "licensing approval"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          107
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "replacement rule"
+      ],
+      "position": 150,
+      "sentence_id": "0001045810-26-000021:21:67",
+      "source": "phrase",
+      "status": "added",
+      "text": "In May 2025, the USG announced that it would rescind the AI Diffusion IFR and implement a replacement rule.",
+      "ticker": "NVDA",
+      "topic": "replacement rule"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          77
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "forthcoming rule"
+      ],
+      "position": 151,
+      "sentence_id": "0001045810-26-000021:21:68",
+      "source": "phrase",
+      "status": "added",
+      "text": "The scope, timing, and requirements of the forthcoming rule remain uncertain.",
+      "ticker": "NVDA",
+      "topic": "forthcoming rule"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          205
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "license requirements"
+      ],
+      "position": 152,
+      "sentence_id": "0001045810-26-000021:21:69",
+      "source": "phrase",
+      "status": "added",
+      "text": "The replacement rule may impose new restrictions on our products or operations and/or add license requirements that could have a material impact on our business, operating results, and financial condition.",
+      "ticker": "NVDA",
+      "topic": "license requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          205
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "replacement rule"
+      ],
+      "position": 152,
+      "sentence_id": "0001045810-26-000021:21:69",
+      "source": "phrase",
+      "status": "added",
+      "text": "The replacement rule may impose new restrictions on our products or operations and/or add license requirements that could have a material impact on our business, operating results, and financial condition.",
+      "ticker": "NVDA",
+      "topic": "replacement rule"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          78
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "NDAA"
+      ],
+      "position": 153,
+      "sentence_id": "0001045810-26-000021:21:70",
+      "source": "entity",
+      "status": "added",
+      "text": "For example, in October 2025, the Senate passed the “GAIN AI Act” in the NDAA.",
+      "ticker": "NVDA",
+      "topic": "NDAA"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          78
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "Senate"
+      ],
+      "position": 153,
+      "sentence_id": "0001045810-26-000021:21:70",
+      "source": "entity",
+      "status": "added",
+      "text": "For example, in October 2025, the Senate passed the “GAIN AI Act” in the NDAA.",
+      "ticker": "NVDA",
+      "topic": "Senate"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "Biden Administration"
+      ],
+      "position": 154,
+      "sentence_id": "0001045810-26-000021:21:71",
+      "source": "entity",
+      "status": "added",
+      "text": "The GAIN AI Act would restrict the Trump Administration’s ability to adapt the Biden Administration’s export control rules, and could also allow private U.S. persons to review and overturn licensing and foreign policy decisions made by the Trump Administration.",
+      "ticker": "NVDA",
+      "topic": "Biden Administration"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "Trump Administration"
+      ],
+      "position": 154,
+      "sentence_id": "0001045810-26-000021:21:71",
+      "source": "entity",
+      "status": "added",
+      "text": "The GAIN AI Act would restrict the Trump Administration’s ability to adapt the Biden Administration’s export control rules, and could also allow private U.S. persons to review and overturn licensing and foreign policy decisions made by the Trump Administration.",
+      "ticker": "NVDA",
+      "topic": "Trump Administration"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "foreign policy decisions"
+      ],
+      "position": 154,
+      "sentence_id": "0001045810-26-000021:21:71",
+      "source": "phrase",
+      "status": "added",
+      "text": "The GAIN AI Act would restrict the Trump Administration’s ability to adapt the Biden Administration’s export control rules, and could also allow private U.S. persons to review and overturn licensing and foreign policy decisions made by the Trump Administration.",
+      "ticker": "NVDA",
+      "topic": "foreign policy decision"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          94
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "business opportunities"
+      ],
+      "position": 157,
+      "sentence_id": "0001045810-26-000021:21:73",
+      "source": "phrase",
+      "status": "added",
+      "text": "The licensing process may not be resolved before significant business opportunities evaporate.",
+      "ticker": "NVDA",
+      "topic": "business opportunity"
+    },
+    {
+      "added_spans": [
+        [
+          60,
+          76
+        ],
+        [
+          81,
+          94
+        ],
+        [
+          107,
+          108
+        ],
+        [
+          138,
+          250
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "economic requirements"
+      ],
+      "position": 159,
+      "sentence_id": "0001045810-26-000021:21:74",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Even if the USG grants any requested licenses, the licenses have already and may in the future be temporary, impose burdensome conditions regarding the installation, maintenance, and use of such products, or include financial or economic requirements that we or our customers or end users cannot or choose not to fulfill.",
+      "ticker": "NVDA",
+      "topic": "economic requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          275
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "chip designs"
+      ],
+      "position": 168,
+      "sentence_id": "0001045810-26-000021:21:79",
+      "source": "phrase",
+      "status": "added",
+      "text": "Such government mandates in chip designs could introduce system vulnerabilities and expose us to significant risk and potential liability, negatively impact demand for our products, and could have a material impact on our business, operating results, and financial condition.",
+      "ticker": "NVDA",
+      "topic": "chip design"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          275
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "system vulnerabilities"
+      ],
+      "position": 168,
+      "sentence_id": "0001045810-26-000021:21:79",
+      "source": "phrase",
+      "status": "added",
+      "text": "Such government mandates in chip designs could introduce system vulnerabilities and expose us to significant risk and potential liability, negatively impact demand for our products, and could have a material impact on our business, operating results, and financial condition.",
+      "ticker": "NVDA",
+      "topic": "system vulnerability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          125
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "binding legislation"
+      ],
+      "position": 169,
+      "sentence_id": "0001045810-26-000021:21:80",
+      "source": "phrase",
+      "status": "added",
+      "text": "Even if not enacted into binding legislation, draft bills have impacted and may in the future negatively impact our business.",
+      "ticker": "NVDA",
+      "topic": "binding legislation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          125
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "draft bills"
+      ],
+      "position": 169,
+      "sentence_id": "0001045810-26-000021:21:80",
+      "source": "phrase",
+      "status": "added",
+      "text": "Even if not enacted into binding legislation, draft bills have impacted and may in the future negatively impact our business.",
+      "ticker": "NVDA",
+      "topic": "draft bill"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          242
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "mandatory features"
+      ],
+      "position": 170,
+      "sentence_id": "0001045810-26-000021:21:81",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, following U.S. legislative proposals calling for mandatory features in our chips, China’s government publicly questioned whether our H20 products have built-in vulnerabilities, discouraging customers from purchasing our products.",
+      "ticker": "NVDA",
+      "topic": "mandatory feature"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          172
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "built-in vulnerabilities"
+      ],
+      "position": 171,
+      "sentence_id": "0001045810-26-000021:21:82",
+      "source": "phrase",
+      "status": "added",
+      "text": "We provided a public response explaining that our GPUs, including H20, do not include such built-in vulnerabilities, and will respond to any follow-up questions we receive.",
+      "ticker": "NVDA",
+      "topic": "built in vulnerability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          172
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "follow-up questions"
+      ],
+      "position": 171,
+      "sentence_id": "0001045810-26-000021:21:82",
+      "source": "phrase",
+      "status": "added",
+      "text": "We provided a public response explaining that our GPUs, including H20, do not include such built-in vulnerabilities, and will respond to any follow-up questions we receive.",
+      "ticker": "NVDA",
+      "topic": "follow up question"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          172
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "public response"
+      ],
+      "position": 171,
+      "sentence_id": "0001045810-26-000021:21:82",
+      "source": "phrase",
+      "status": "added",
+      "text": "We provided a public response explaining that our GPUs, including H20, do not include such built-in vulnerabilities, and will respond to any follow-up questions we receive.",
+      "ticker": "NVDA",
+      "topic": "public response"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          345
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "regulatory control"
+      ],
+      "position": 173,
+      "sentence_id": "0001045810-26-000021:21:84",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any regulatory control or other restriction that limits our ability to provide products and services that support third-party applications and models, including applications built on foundation models originating in China such as DeepSeek, Qwen, or KIMMI, could have a material impact on our business, operating results, and financial condition.",
+      "ticker": "NVDA",
+      "topic": "regulatory control"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "controlled products"
+      ],
+      "position": 198,
+      "sentence_id": "0001045810-26-000021:21:97",
+      "source": "phrase",
+      "status": "added",
+      "text": "While we seek to strictly comply with all applicable export control regulators, reports of diversion of controlled products, even when unsubstantiated and untrue, may negatively impact our business, relationships with partners and customers, and our reputation.",
+      "ticker": "NVDA",
+      "topic": "controlled product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          346
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "compliance efforts"
+      ],
+      "position": 199,
+      "sentence_id": "0001045810-26-000021:21:98",
+      "source": "phrase",
+      "status": "added",
+      "text": "Incorrect allegations that our compliance efforts satisfy the letter but not the “spirit” of the applicable regulations, as well as incorrect allegations that legitimate and appropriate business is using supposed “loopholes” in the export controls may negatively impact our business, relationships with partners and customers, and our reputation.",
+      "ticker": "NVDA",
+      "topic": "compliance effort"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          346
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "Incorrect allegations"
+      ],
+      "position": 199,
+      "sentence_id": "0001045810-26-000021:21:98",
+      "source": "phrase",
+      "status": "added",
+      "text": "Incorrect allegations that our compliance efforts satisfy the letter but not the “spirit” of the applicable regulations, as well as incorrect allegations that legitimate and appropriate business is using supposed “loopholes” in the export controls may negatively impact our business, relationships with partners and customers, and our reputation.",
+      "ticker": "NVDA",
+      "topic": "incorrect allegation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          346
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "supposed “loopholes"
+      ],
+      "position": 199,
+      "sentence_id": "0001045810-26-000021:21:98",
+      "source": "phrase",
+      "status": "added",
+      "text": "Incorrect allegations that our compliance efforts satisfy the letter but not the “spirit” of the applicable regulations, as well as incorrect allegations that legitimate and appropriate business is using supposed “loopholes” in the export controls may negatively impact our business, relationships with partners and customers, and our reputation.",
+      "ticker": "NVDA",
+      "topic": "supposed loophole"
+    },
+    {
+      "added_spans": [
+        [
+          21,
+          48
+        ]
+      ],
+      "change_id": "a4156a06454f6dfd",
+      "matched_terms": [
+        "Connected Vehicle” restrictions"
+      ],
+      "position": 203,
+      "sentence_id": "0001045810-26-000021:21:100",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For example, the USG adopted “Connected Vehicle” restrictions on the import and sale of certain automotive products in the United States, which if adopted and interpreted broadly, could impact our ability to develop and supply solutions for our automotive customers.",
+      "ticker": "NVDA",
+      "topic": "connected vehicle restriction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          56
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "counterparty risks"
+      ],
+      "position": 0,
+      "sentence_id": "0001045810-26-000021:17:0",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Commercial arrangements expose us to counterparty risks.",
+      "ticker": "NVDA",
+      "topic": "Counterparty and credit risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          56
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "Commercial arrangements"
+      ],
+      "position": 0,
+      "sentence_id": "0001045810-26-000021:17:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Commercial arrangements expose us to counterparty risks.",
+      "ticker": "NVDA",
+      "topic": "commercial arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          280
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "commercial arrangements"
+      ],
+      "position": 1,
+      "sentence_id": "0001045810-26-000021:17:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have entered and may in the future enter into commercial arrangements, including long-term capacity purchase obligations and financial guarantees, and have been asked to offer financing arrangements to support our customers’ and partners’ buildout of datacenter infrastructure.",
+      "ticker": "NVDA",
+      "topic": "commercial arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          280
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "datacenter infrastructure"
+      ],
+      "position": 1,
+      "sentence_id": "0001045810-26-000021:17:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have entered and may in the future enter into commercial arrangements, including long-term capacity purchase obligations and financial guarantees, and have been asked to offer financing arrangements to support our customers’ and partners’ buildout of datacenter infrastructure.",
+      "ticker": "NVDA",
+      "topic": "datacenter infrastructure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          280
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "financing arrangements"
+      ],
+      "position": 1,
+      "sentence_id": "0001045810-26-000021:17:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have entered and may in the future enter into commercial arrangements, including long-term capacity purchase obligations and financial guarantees, and have been asked to offer financing arrangements to support our customers’ and partners’ buildout of datacenter infrastructure.",
+      "ticker": "NVDA",
+      "topic": "financing arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          52
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "financing arrangements"
+      ],
+      "position": 2,
+      "sentence_id": "0001045810-26-000021:17:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have not entered into any financing arrangements.",
+      "ticker": "NVDA",
+      "topic": "financing arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          381
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "counterparty risk",
+        "counterparty"
+      ],
+      "position": 3,
+      "sentence_id": "0001045810-26-000021:17:3",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Commercial arrangements expose us to counterparty risk, including customers' or partners' inability to fulfill their financial commitments and secure necessary financing or infrastructure, the occurrence of significant project delays, and counterparty financial distress or insolvency, all of which may negatively impact our business, financial condition, or results of operations.",
+      "ticker": "NVDA",
+      "topic": "Counterparty and credit risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          381
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "Commercial arrangements"
+      ],
+      "position": 3,
+      "sentence_id": "0001045810-26-000021:17:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Commercial arrangements expose us to counterparty risk, including customers' or partners' inability to fulfill their financial commitments and secure necessary financing or infrastructure, the occurrence of significant project delays, and counterparty financial distress or insolvency, all of which may negatively impact our business, financial condition, or results of operations.",
+      "ticker": "NVDA",
+      "topic": "commercial arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          381
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "customers' or partners' inability"
+      ],
+      "position": 3,
+      "sentence_id": "0001045810-26-000021:17:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Commercial arrangements expose us to counterparty risk, including customers' or partners' inability to fulfill their financial commitments and secure necessary financing or infrastructure, the occurrence of significant project delays, and counterparty financial distress or insolvency, all of which may negatively impact our business, financial condition, or results of operations.",
+      "ticker": "NVDA",
+      "topic": "customer or partner inability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          381
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "project delays"
+      ],
+      "position": 3,
+      "sentence_id": "0001045810-26-000021:17:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Commercial arrangements expose us to counterparty risk, including customers' or partners' inability to fulfill their financial commitments and secure necessary financing or infrastructure, the occurrence of significant project delays, and counterparty financial distress or insolvency, all of which may negatively impact our business, financial condition, or results of operations.",
+      "ticker": "NVDA",
+      "topic": "project delay"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          213
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "credit risk"
+      ],
+      "position": 4,
+      "sentence_id": "0001045810-26-000021:17:4",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Financing arrangements, if undertaken, may in some circumstances result in lower upfront cash flows associated with extended payment terms or payment terms made over a multi-year term and may increase credit risk.",
+      "ticker": "NVDA",
+      "topic": "Counterparty and credit risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          213
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "extended payment terms"
+      ],
+      "position": 4,
+      "sentence_id": "0001045810-26-000021:17:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Financing arrangements, if undertaken, may in some circumstances result in lower upfront cash flows associated with extended payment terms or payment terms made over a multi-year term and may increase credit risk.",
+      "ticker": "NVDA",
+      "topic": "extended payment term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          213
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "Financing arrangements"
+      ],
+      "position": 4,
+      "sentence_id": "0001045810-26-000021:17:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Financing arrangements, if undertaken, may in some circumstances result in lower upfront cash flows associated with extended payment terms or payment terms made over a multi-year term and may increase credit risk.",
+      "ticker": "NVDA",
+      "topic": "financing arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          213
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "lower upfront cash flows"
+      ],
+      "position": 4,
+      "sentence_id": "0001045810-26-000021:17:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Financing arrangements, if undertaken, may in some circumstances result in lower upfront cash flows associated with extended payment terms or payment terms made over a multi-year term and may increase credit risk.",
+      "ticker": "NVDA",
+      "topic": "lower upfront cash flow"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          213
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "multi-year term"
+      ],
+      "position": 4,
+      "sentence_id": "0001045810-26-000021:17:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Financing arrangements, if undertaken, may in some circumstances result in lower upfront cash flows associated with extended payment terms or payment terms made over a multi-year term and may increase credit risk.",
+      "ticker": "NVDA",
+      "topic": "multi year term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          213
+        ]
+      ],
+      "change_id": "b6d73c522e0cfea2",
+      "matched_terms": [
+        "payment terms"
+      ],
+      "position": 4,
+      "sentence_id": "0001045810-26-000021:17:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Financing arrangements, if undertaken, may in some circumstances result in lower upfront cash flows associated with extended payment terms or payment terms made over a multi-year term and may increase credit risk.",
+      "ticker": "NVDA",
+      "topic": "payment term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          142
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "Groq",
+        "Groq, Inc"
+      ],
+      "position": 35,
+      "sentence_id": "0001045810-26-000021:5:17",
+      "source": "entity",
+      "status": "added",
+      "text": "We have entered into an intellectual property license arrangement with Groq, Inc., or Groq, that required significant, nonrefundable payments.",
+      "ticker": "NVDA",
+      "topic": "Groq"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          142
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "intellectual property license arrangement"
+      ],
+      "position": 35,
+      "sentence_id": "0001045810-26-000021:5:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have entered into an intellectual property license arrangement with Groq, Inc., or Groq, that required significant, nonrefundable payments.",
+      "ticker": "NVDA",
+      "topic": "intellectual property license arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          142
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "nonrefundable payments"
+      ],
+      "position": 35,
+      "sentence_id": "0001045810-26-000021:5:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have entered into an intellectual property license arrangement with Groq, Inc., or Groq, that required significant, nonrefundable payments.",
+      "ticker": "NVDA",
+      "topic": "nonrefundable payment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "engineering effort"
+      ],
+      "position": 36,
+      "sentence_id": "0001045810-26-000021:5:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "Successfully incorporating the licensed technology into our architectures and product roadmaps requires significant engineering effort and may not occur on expected timelines or at all.",
+      "ticker": "NVDA",
+      "topic": "engineering effort"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "expected timelines"
+      ],
+      "position": 36,
+      "sentence_id": "0001045810-26-000021:5:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "Successfully incorporating the licensed technology into our architectures and product roadmaps requires significant engineering effort and may not occur on expected timelines or at all.",
+      "ticker": "NVDA",
+      "topic": "expected timeline"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "licensed technology"
+      ],
+      "position": 36,
+      "sentence_id": "0001045810-26-000021:5:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "Successfully incorporating the licensed technology into our architectures and product roadmaps requires significant engineering effort and may not occur on expected timelines or at all.",
+      "ticker": "NVDA",
+      "topic": "licensed technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "product roadmaps"
+      ],
+      "position": 36,
+      "sentence_id": "0001045810-26-000021:5:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "Successfully incorporating the licensed technology into our architectures and product roadmaps requires significant engineering effort and may not occur on expected timelines or at all.",
+      "ticker": "NVDA",
+      "topic": "product roadmap"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          114
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "ecosystem adoption"
+      ],
+      "position": 37,
+      "sentence_id": "0001045810-26-000021:5:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "The licensed technology may not achieve the desired results as designed or achieve customer or ecosystem adoption.",
+      "ticker": "NVDA",
+      "topic": "ecosystem adoption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          114
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "licensed technology"
+      ],
+      "position": 37,
+      "sentence_id": "0001045810-26-000021:5:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "The licensed technology may not achieve the desired results as designed or achieve customer or ecosystem adoption.",
+      "ticker": "NVDA",
+      "topic": "licensed technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          256
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "associated costs"
+      ],
+      "position": 38,
+      "sentence_id": "0001045810-26-000021:5:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "The economic outcomes of this arrangement depend on our ability to translate the licensed technology into commercially viable products and services over time, and we may be unable to recover the associated costs or realize an adequate return on this spend.",
+      "ticker": "NVDA",
+      "topic": "associated cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          256
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "commercially viable products"
+      ],
+      "position": 38,
+      "sentence_id": "0001045810-26-000021:5:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "The economic outcomes of this arrangement depend on our ability to translate the licensed technology into commercially viable products and services over time, and we may be unable to recover the associated costs or realize an adequate return on this spend.",
+      "ticker": "NVDA",
+      "topic": "commercially viable product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          256
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "economic outcomes"
+      ],
+      "position": 38,
+      "sentence_id": "0001045810-26-000021:5:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "The economic outcomes of this arrangement depend on our ability to translate the licensed technology into commercially viable products and services over time, and we may be unable to recover the associated costs or realize an adequate return on this spend.",
+      "ticker": "NVDA",
+      "topic": "economic outcome"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          256
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "licensed technology"
+      ],
+      "position": 38,
+      "sentence_id": "0001045810-26-000021:5:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "The economic outcomes of this arrangement depend on our ability to translate the licensed technology into commercially viable products and services over time, and we may be unable to recover the associated costs or realize an adequate return on this spend.",
+      "ticker": "NVDA",
+      "topic": "licensed technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          161
+        ]
+      ],
+      "change_id": "32866661d1b11115",
+      "matched_terms": [
+        "licensed technology"
+      ],
+      "position": 39,
+      "sentence_id": "0001045810-26-000021:5:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "If our efforts to use the licensed technology are delayed or unsuccessful, our business, operating results, and financial condition could be negatively impacted.",
+      "ticker": "NVDA",
+      "topic": "licensed technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "complex datacenter infrastructure"
+      ],
+      "position": 67,
+      "sentence_id": "0001045810-26-000021:7:33",
+      "source": "phrase",
+      "status": "added",
+      "text": "our customers’ and partners’ ability to secure capital and energy and to build complex datacenter infrastructure timely; and •the availability of third-party content on our platforms, such as GeForce NOW.",
+      "ticker": "NVDA",
+      "topic": "complex datacenter infrastructure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          147
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "complex, multi-year process"
+      ],
+      "position": 69,
+      "sentence_id": "0001045810-26-000021:7:35",
+      "source": "phrase",
+      "status": "added",
+      "text": "Expanding energy capacity to meet demand is a complex, multi-year process involving significant regulatory, technical, and construction challenges.",
+      "ticker": "NVDA",
+      "topic": "complex multi year process"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          147
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "energy capacity"
+      ],
+      "position": 69,
+      "sentence_id": "0001045810-26-000021:7:35",
+      "source": "phrase",
+      "status": "added",
+      "text": "Expanding energy capacity to meet demand is a complex, multi-year process involving significant regulatory, technical, and construction challenges.",
+      "ticker": "NVDA",
+      "topic": "energy capacity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          182
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "large-scale infrastructure projects"
+      ],
+      "position": 70,
+      "sentence_id": "0001045810-26-000021:7:36",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, access to capital can be particularly constrained for less-capitalized companies, which may face difficulties securing financing for large-scale infrastructure projects.",
+      "ticker": "NVDA",
+      "topic": "large scale infrastructure project"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          124
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "AI adoption"
+      ],
+      "position": 71,
+      "sentence_id": "0001045810-26-000021:7:37",
+      "source": "phrase",
+      "status": "added",
+      "text": "These limitations could delay customer and partner deployments or reduce the scale of accelerated computing and AI adoption.",
+      "ticker": "NVDA",
+      "topic": "ai adoption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          124
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "customer and partner deployments"
+      ],
+      "position": 71,
+      "sentence_id": "0001045810-26-000021:7:37",
+      "source": "phrase",
+      "status": "added",
+      "text": "These limitations could delay customer and partner deployments or reduce the scale of accelerated computing and AI adoption.",
+      "ticker": "NVDA",
+      "topic": "customer and partner deployment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          218
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "committed volumes"
+      ],
+      "position": 78,
+      "sentence_id": "0001045810-26-000021:7:41",
+      "source": "phrase",
+      "status": "added",
+      "text": "Publicly announced intentions by governments or other companies to purchase our products can further complicate our demand estimates, as such announcements are often non-binding and may not result in committed volumes.",
+      "ticker": "NVDA",
+      "topic": "committed volume"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          131
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "domestic production"
+      ],
+      "position": 90,
+      "sentence_id": "0001045810-26-000021:7:48",
+      "source": "phrase",
+      "status": "added",
+      "text": "We are increasing our U.S.-based manufacturing and investing in specialized equipment and processes to support domestic production.",
+      "ticker": "NVDA",
+      "topic": "domestic production"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          131
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "specialized equipment"
+      ],
+      "position": 90,
+      "sentence_id": "0001045810-26-000021:7:48",
+      "source": "phrase",
+      "status": "added",
+      "text": "We are increasing our U.S.-based manufacturing and investing in specialized equipment and processes to support domestic production.",
+      "ticker": "NVDA",
+      "topic": "specialized equipment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          170
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "manufacturing capabilities"
+      ],
+      "position": 92,
+      "sentence_id": "0001045810-26-000021:7:50",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to increase manufacturing capabilities will depend on the domestic manufacturing ecosystem's capacity to ramp production supply to the required volume timely.",
+      "ticker": "NVDA",
+      "topic": "manufacturing capability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          170
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "production supply"
+      ],
+      "position": 92,
+      "sentence_id": "0001045810-26-000021:7:50",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to increase manufacturing capabilities will depend on the domestic manufacturing ecosystem's capacity to ramp production supply to the required volume timely.",
+      "ticker": "NVDA",
+      "topic": "production supply"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          170
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "required volume"
+      ],
+      "position": 92,
+      "sentence_id": "0001045810-26-000021:7:50",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to increase manufacturing capabilities will depend on the domestic manufacturing ecosystem's capacity to ramp production supply to the required volume timely.",
+      "ticker": "NVDA",
+      "topic": "required volume"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          142
+        ]
+      ],
+      "change_id": "dfe9c44ef07b2d30",
+      "matched_terms": [
+        "data center infrastructure"
+      ],
+      "position": 106,
+      "sentence_id": "0001045810-26-000021:7:58",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers may delay adopting new architectures if their data center infrastructure is not ready, which could affect the timing of our revenue.",
+      "ticker": "NVDA",
+      "topic": "data center infrastructure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          27
+        ],
+        [
+          31,
+          34
+        ],
+        [
+          42,
+          50
+        ],
+        [
+          63,
+          65
+        ],
+        [
+          84,
+          153
+        ]
+      ],
+      "change_id": "b7c169267209801d",
+      "matched_terms": [
+        "direct customer"
+      ],
+      "position": 5,
+      "sentence_id": "0001045810-26-000021:16:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute & Networking segment.",
+      "ticker": "NVDA",
+      "topic": "direct customer"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          70
+        ]
+      ],
+      "change_id": "472606c9d458f2e9",
+      "matched_terms": [
+        "OpenAI"
+      ],
+      "position": 27,
+      "sentence_id": "0001045810-26-000021:15:15",
+      "source": "entity",
+      "status": "added",
+      "text": "We are finalizing an investment and partnership agreement with OpenAI.",
+      "ticker": "NVDA",
+      "topic": "OpenAI"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          70
+        ]
+      ],
+      "change_id": "472606c9d458f2e9",
+      "matched_terms": [
+        "investment and partnership agreement"
+      ],
+      "position": 27,
+      "sentence_id": "0001045810-26-000021:15:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "We are finalizing an investment and partnership agreement with OpenAI.",
+      "ticker": "NVDA",
+      "topic": "investment and partnership agreement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          138
+        ]
+      ],
+      "change_id": "472606c9d458f2e9",
+      "matched_terms": [
+        "investment and partnership agreement"
+      ],
+      "position": 28,
+      "sentence_id": "0001045810-26-000021:15:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "There is no assurance that we will enter into an investment and partnership agreement with OpenAI or that a transaction will be completed.",
+      "ticker": "NVDA",
+      "topic": "investment and partnership agreement"
+    },
+    {
+      "added_spans": [
+        [
+          178,
+          201
+        ]
+      ],
+      "change_id": "3efe394c13cfbc9c",
+      "matched_terms": [
+        "intellectual property"
+      ],
+      "position": 3,
+      "sentence_id": "0001045810-26-000021:27:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We currently and will likely continue to face legal, administrative and regulatory proceedings, claims, demands and/or investigations involving shareholder, consumer, competition, intellectual property and/or other issues relating to our business.",
+      "ticker": "NVDA",
+      "topic": "intellectual property"
+    },
+    {
+      "added_spans": [
+        [
+          26,
+          27
+        ],
+        [
+          41,
+          99
+        ]
+      ],
+      "change_id": "514830a330b756d7",
+      "matched_terms": [
+        "cash management purposes"
+      ],
+      "position": 22,
+      "sentence_id": "0001045810-26-000021:10:11",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Additionally, we maintain a portfolio of liquid investments for cash management purposes, including various holdings, types, and maturities.",
+      "ticker": "NVDA",
+      "topic": "cash management purpose"
+    },
+    {
+      "added_spans": [
+        [
+          26,
+          27
+        ],
+        [
+          41,
+          99
+        ]
+      ],
+      "change_id": "514830a330b756d7",
+      "matched_terms": [
+        "liquid investments"
+      ],
+      "position": 22,
+      "sentence_id": "0001045810-26-000021:10:11",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Additionally, we maintain a portfolio of liquid investments for cash management purposes, including various holdings, types, and maturities.",
+      "ticker": "NVDA",
+      "topic": "liquid investment"
+    },
+    {
+      "added_spans": [],
+      "change_id": "6ef9abded50fdc62",
+      "matched_terms": [
+        "exceptional talent"
+      ],
+      "position": 3,
+      "sentence_id": "0001045810-26-000021:18:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "To remain competitive and successfully execute our business strategy, we must attract, retain, and motivate our executives and key employees, as well as recruit and develop exceptional talent.",
+      "ticker": "NVDA",
+      "topic": "exceptional talent"
+    },
+    {
+      "added_spans": [
+        [
+          34,
+          39
+        ]
+      ],
+      "change_id": "8789091d41a73853",
+      "matched_terms": [
+        "FDDEI deduction"
+      ],
+      "position": 15,
+      "sentence_id": "0001045810-26-000021:26:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "If U.S. tax rates increase or the FDDEI deduction is reduced, our provision for income taxes, results of operations, net income, and cash flows would be adversely affected.",
+      "ticker": "NVDA",
+      "topic": "fddei deduction"
+    },
+    {
+      "added_spans": [
+        [
+          132,
+          266
+        ]
+      ],
+      "change_id": "8789091d41a73853",
+      "matched_terms": [
+        "coordination mechanisms"
+      ],
+      "position": 19,
+      "sentence_id": "0001045810-26-000021:26:9",
+      "source": "phrase",
+      "status": "modified",
+      "text": "A number of countries in which we conduct business have enacted, or are in the process of enacting, elements of the Pillar Two rules, including the recently released \"side-by-side\" framework, which provides certain additional safe harbors and coordination mechanisms.",
+      "ticker": "NVDA",
+      "topic": "coordination mechanism"
+    },
+    {
+      "added_spans": [
+        [
+          132,
+          266
+        ]
+      ],
+      "change_id": "8789091d41a73853",
+      "matched_terms": [
+        "safe harbors"
+      ],
+      "position": 19,
+      "sentence_id": "0001045810-26-000021:26:9",
+      "source": "phrase",
+      "status": "modified",
+      "text": "A number of countries in which we conduct business have enacted, or are in the process of enacting, elements of the Pillar Two rules, including the recently released \"side-by-side\" framework, which provides certain additional safe harbors and coordination mechanisms.",
+      "ticker": "NVDA",
+      "topic": "safe harbor"
+    },
+    {
+      "added_spans": [
+        [
+          34,
+          57
+        ],
+        [
+          66,
+          78
+        ]
+      ],
+      "change_id": "8910beb6333642bd",
+      "matched_terms": [
+        "data protection incidents"
+      ],
+      "position": 5,
+      "sentence_id": "0001045810-26-000021:3:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Product, system security and data protection incidents or breaches, as well as cyber-attacks could disrupt our operations and adversely affect our financial condition, stock price and reputation.",
+      "ticker": "NVDA",
+      "topic": "data protection incident"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          145
+        ]
+      ],
+      "change_id": "8910beb6333642bd",
+      "matched_terms": [
+        "counterparty risks"
+      ],
+      "position": 14,
+      "sentence_id": "0001045810-26-000021:3:7",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Commercial arrangements expose us to counterparty risks, which may negatively impact our business, financial condition, or results of operations.",
+      "ticker": "NVDA",
+      "topic": "Counterparty and credit risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          145
+        ]
+      ],
+      "change_id": "8910beb6333642bd",
+      "matched_terms": [
+        "Commercial arrangements"
+      ],
+      "position": 14,
+      "sentence_id": "0001045810-26-000021:3:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Commercial arrangements expose us to counterparty risks, which may negatively impact our business, financial condition, or results of operations.",
+      "ticker": "NVDA",
+      "topic": "commercial arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          54,
+          56
+        ],
+        [
+          68,
+          90
+        ]
+      ],
+      "change_id": "ad4f3805e248f79e",
+      "matched_terms": [
+        "sustainability-related laws"
+      ],
+      "position": 17,
+      "sentence_id": "0001045810-26-000021:14:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our business and those of our suppliers and customers is subject to sustainability-related laws, regulations and lawsuits.",
+      "ticker": "NVDA",
+      "topic": "sustainability related law"
+    }
+  ],
+  "total_changes": 29
+}

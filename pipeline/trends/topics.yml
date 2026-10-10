@@ -1,0 +1,109 @@
+# RiskDiff curated topic lexicon (used by pipeline/trends/derive.py).
+#
+# Matching rules (applied by code, not by this file):
+#   * case-insensitive, whole words only: a synonym never matches inside a longer word
+#     ("tariff" does not match "tariffs", "China" does not match "Chinatown"), so plurals are
+#     listed explicitly where they are wanted;
+#   * multi-word synonyms match across any run of whitespace;
+#   * a topic counts for a risk factor only when one of its synonyms appears in THIS year's added
+#     or modified sentences and NONE of its synonyms appears anywhere in last year's text of that
+#     risk factor ("newly added language", never a claim about risk levels).
+# Synonyms are deliberately precise: no single generic words that match boilerplate
+# (e.g. "duties" alone would match "fiduciary duties"; "visa" alone would match the card network).
+# Bump TOPICS_VERSION whenever a topic or synonym changes: it is part of every derived file.
+
+TOPICS_VERSION: 1
+
+topics:
+  - topic: Tariffs
+    synonyms: [tariff, tariffs, trade war, trade wars, reciprocal tariffs, retaliatory tariffs,
+               import duties, customs duties, countervailing duties, anti-dumping duties,
+               Section 232, Section 301]
+  - topic: Export controls
+    synonyms: [export control, export controls, Entity List, export license, export licenses,
+               export licensing, export restrictions, export regulations,
+               Export Administration Regulations, AI Diffusion, Foreign Direct Product Rule]
+  - topic: AI regulation
+    synonyms: [EU AI Act, AI Act, AI regulation, AI regulations, AI laws, AI legislation,
+               state AI laws, AI governance, regulation of artificial intelligence,
+               artificial intelligence regulation]
+  - topic: Generative AI
+    synonyms: [generative AI, generative artificial intelligence, GenAI, large language model,
+               large language models, LLM, LLMs, foundation model, foundation models, agentic AI,
+               AI agents]
+  - topic: Cybersecurity incidents
+    synonyms: [ransomware, cyberattack, cyberattacks, cyber-attack, cyber-attacks, cyber attack,
+               cyber attacks, data breach, data breaches, security incident, security incidents,
+               security breach, security breaches, cybersecurity incident, cybersecurity incidents,
+               cyber incident, cyber incidents]
+  - topic: Interest rates
+    synonyms: [interest rate, interest rates, federal funds rate, rate hikes, rate cuts]
+  - topic: Inflation
+    synonyms: [inflation, inflationary]
+  - topic: China
+    synonyms: [China, Chinese, PRC, People's Republic of China, mainland China]
+  - topic: Taiwan
+    synonyms: [Taiwan, Taiwanese, cross-strait]
+  - topic: Russia / Ukraine
+    synonyms: [Russia, Russian, Ukraine, Ukrainian]
+  - topic: Middle East
+    synonyms: [Middle East, Israel, Israeli, Gaza, Hamas, Red Sea, Houthi, Houthis, Iran, Iranian]
+  - topic: Supply chain disruption
+    synonyms: [supply chain disruption, supply chain disruptions, supply chain constraints,
+               supply constraints, supply shortages, component shortages, supply chain shortages]
+  - topic: Climate
+    synonyms: [climate change, climate-related, extreme weather, greenhouse gas, greenhouse gases,
+               GHG, emissions, carbon emissions, net zero, net-zero]
+  - topic: Data privacy laws
+    synonyms: [GDPR, General Data Protection Regulation, CCPA, CPRA, California Consumer Privacy Act,
+               privacy law, privacy laws, data protection law, data protection laws,
+               data privacy laws]
+  - topic: Antitrust
+    synonyms: [antitrust, anti-trust, anti-monopoly, Anti-Monopoly Law, competition authority,
+               competition authorities, competition law, competition laws, SAMR,
+               State Administration for Market Regulation, DOJ investigation]
+  - topic: Government shutdown
+    synonyms: [government shutdown, government shutdowns, federal government shutdown]
+  - topic: Immigration policy
+    synonyms: [immigration, H-1B, work visa, work visas, visa restrictions, visa programs,
+               visa policies]
+  - topic: Energy and power for data centers
+    synonyms: [power availability, electricity, energy costs, data center capacity,
+               power constraints, power grid, energy supply, power supply constraints]
+  - topic: Semiconductor supply
+    synonyms: [semiconductor shortage, semiconductor shortages, chip shortage, chip shortages,
+               semiconductor supply, wafer supply, foundry capacity]
+  - topic: Pandemic
+    synonyms: [pandemic, pandemics, COVID-19, COVID, coronavirus, epidemic, epidemics,
+               public health crisis, public health crises]
+  - topic: Labor
+    synonyms: [strikes, labor strike, labor strikes, work stoppage, work stoppages, unionization,
+               union organizing, labor shortage, labor shortages, collective bargaining]
+  - topic: Litigation
+    synonyms: [class action, class actions, securities litigation, shareholder litigation,
+               derivative lawsuit, derivative lawsuits, securities class action]
+  - topic: Sanctions
+    synonyms: [sanctions, economic sanctions, OFAC, sanctioned]
+  - topic: Debt and credit markets
+    synonyms: [credit market, credit markets, debt market, debt markets, credit spreads,
+               borrowing costs, cost of borrowing, refinancing risk]
+  - topic: Counterparty and credit risk
+    synonyms: [counterparty, counterparties, counterparty risk, counterparty risks, credit risk,
+               credit losses, counterparty default]
+  - topic: Foreign exchange
+    synonyms: [foreign exchange, foreign currency, foreign currencies, exchange rate,
+               exchange rates, currency fluctuations, currency exchange]
+  - topic: Taxes
+    synonyms: [Pillar Two, global minimum tax, minimum tax, tax legislation, tax reform,
+               One Big Beautiful Bill Act, OBBBA]
+  - topic: Government contracts
+    synonyms: [government contract, government contracts, government contracting,
+               federal contracts, Federal Acquisition Regulation]
+  - topic: Natural disasters
+    synonyms: [natural disaster, natural disasters, earthquake, earthquakes, hurricane, hurricanes,
+               wildfire, wildfires, flooding, typhoon, typhoons]
+  - topic: Digital assets
+    synonyms: [digital asset, digital assets, cryptocurrency, cryptocurrencies, crypto assets,
+               stablecoin, stablecoins, blockchain]
+  - topic: Bank capital rules
+    synonyms: [Basel III, Basel III endgame, capital surcharge, stress capital buffer]
