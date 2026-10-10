@@ -24,9 +24,9 @@ export function NotFoundPanel({ kind = "page" }: { kind?: "page" | "comparison" 
 
   return (
     <div className="mx-auto max-w-[760px] px-8 py-20">
-      <p className="font-mono text-sm font-semibold text-ink-faint">404</p>
+      <p className="text-sm text-ink-secondary">404</p>
       <h1 className="mt-2 text-3xl font-bold text-ink">{title}</h1>
-      <div className="mt-4 space-y-3 text-ink-muted">
+      <div className="mt-4 space-y-3 text-ink-secondary">
         {kind === "change" && ticker ? (
           <p>
             The change id may come from a different analysis version.{" "}
@@ -57,7 +57,7 @@ export function NotFoundPanel({ kind = "page" }: { kind?: "page" | "comparison" 
       </div>
       <p className="mt-6 text-sm">
         <Link href="/" className="text-accent underline">
-          ← Home
+          Home
         </Link>
       </p>
     </div>
@@ -71,16 +71,16 @@ export function ErrorPanel({ error, retry, context }: { error: Error & { digest?
   }, [error]);
   return (
     <div className="mx-auto max-w-[760px] px-8 py-20" role="alert">
-      <p className="font-mono text-sm font-semibold text-del-fg">
-        <span aria-hidden="true">✕ </span>Error
+      <p className="text-sm font-medium text-less-strong-fg">
+        Error
       </p>
       <h1 className="mt-2 text-3xl font-bold text-ink">Something went wrong while loading {context}.</h1>
-      <p className="mt-4 text-ink-muted">
+      <p className="mt-4 text-ink-secondary">
         The published comparison files may be unreadable, or the server hit an unexpected problem. Nothing about the
         filings themselves is affected.
       </p>
       {error.digest ? (
-        <p className="mt-2 text-sm text-ink-faint">
+        <p className="mt-2 text-sm text-ink-secondary">
           Reference: <span className="font-mono">{error.digest}</span>
         </p>
       ) : null}
@@ -92,7 +92,7 @@ export function ErrorPanel({ error, retry, context }: { error: Error & { digest?
         >
           Try again
         </button>
-        <Link href="/" className="rounded-md border border-line-strong bg-surface px-5 py-2 font-semibold text-ink hover:border-ink">
+        <Link href="/" className="rounded-md border border-line bg-surface px-5 py-2 font-semibold text-ink hover:border-ink">
           Home
         </Link>
       </div>

@@ -36,9 +36,9 @@ export function CopyId({ value, label = "analysis id", visibleChars = 16 }: { va
       <button
         type="button"
         onClick={copy}
-        className="shrink-0 rounded border border-line-strong bg-surface px-2 py-0.5 text-xs font-medium text-ink-muted hover:border-accent hover:text-ink"
+        className="shrink-0 rounded border border-line bg-surface px-2 py-0.5 text-xs font-medium text-ink-secondary hover:border-accent hover:text-ink"
       >
-        {copied === "ok" ? "✓ Copied" : copied === "fail" ? "Select to copy" : "Copy"}
+        {copied === "ok" ? "Copied" : copied === "fail" ? "Select to copy" : "Copy"}
       </button>
     </span>
   );

@@ -97,22 +97,22 @@ const STATE_LABEL: Record<StepState, string> = {
 };
 
 function StepIcon({ state }: { state: StepState }) {
-  const base = "flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2 font-mono text-sm font-bold";
+  const base = "flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-xs font-medium";
   switch (state) {
     case "running":
       return (
         <span className={`${base} border-accent bg-surface`}>
-          <span className="rd-spin block h-4 w-4 rounded-full border-2 border-line-strong border-t-accent" aria-hidden="true" />
+          <span className="rd-spin block h-4 w-4 rounded-full border-2 border-line border-t-accent" aria-hidden="true" />
         </span>
       );
     case "done":
-      return <span className={`${base} border-add-line bg-add-bg text-add-fg`} aria-hidden="true">✓</span>;
+      return <span className={`${base} border-more-fg bg-more-bg text-more-strong-fg`} aria-hidden="true">done</span>;
     case "cached":
       return <span className={`${base} border-exp-line bg-exp-bg text-exp-fg`} aria-hidden="true">↺</span>;
     case "error":
-      return <span className={`${base} border-del-line bg-del-bg text-del-fg`} aria-hidden="true">✕</span>;
+      return <span className={`${base} border-less-fg bg-less-bg text-less-strong-fg`} aria-hidden="true">failed</span>;
     default:
-      return <span className={`${base} border-line-strong bg-surface text-ink-faint`} aria-hidden="true">·</span>;
+      return <span className={`${base} border-line bg-surface text-ink-secondary`} aria-hidden="true"></span>;
   }
 }
 
@@ -194,7 +194,7 @@ export function AnalyzeRunner({ ticker }: { ticker: string }) {
           <h2 id="progress-heading" className="text-lg font-bold text-ink">
             Pipeline progress
           </h2>
-          <p className="text-sm text-ink-faint" aria-live="polite">
+          <p className="text-sm text-ink-secondary" aria-live="polite">
             {phase === "connecting"
               ? "Connecting to the API…"
               : phase === "streaming"
@@ -206,9 +206,9 @@ export function AnalyzeRunner({ ticker }: { ticker: string }) {
         </div>
 
         {failure ? (
-          <div role="alert" className="mt-4 rounded-md border-l-4 border-del-line bg-del-bg p-4 text-del-fg">
+          <div role="alert" className="mt-4 rounded-md border-l-4 border-less-fg bg-less-bg p-4 text-less-strong-fg">
             <p className="font-bold">
-              <span aria-hidden="true">✕ </span>
+              
               {failure.title}
             </p>
             <p className="mt-1 text-sm">{failure.body}</p>
@@ -225,7 +225,7 @@ export function AnalyzeRunner({ ticker }: { ticker: string }) {
                   Retry
                 </button>
               ) : null}
-              <Link href="/" className="rounded-md border border-line-strong bg-surface px-4 py-1.5 text-sm font-semibold text-ink hover:border-ink">
+              <Link href="/" className="rounded-md border border-line bg-surface px-4 py-1.5 text-sm font-semibold text-ink hover:border-ink">
                 Browse published comparisons
               </Link>
             </div>
@@ -249,29 +249,29 @@ export function AnalyzeRunner({ ticker }: { ticker: string }) {
                 <StepIcon state={step.state} />
                 <div className="min-w-0 flex-1 pt-0.5">
                   <p className="flex items-baseline gap-3">
-                    <span className={`font-semibold ${step.state === "pending" ? "text-ink-muted" : "text-ink"}`}>
-                      <span className="font-mono text-ink-faint">{stage.stage}</span> {stage.label}
+                    <span className={`font-semibold ${step.state === "pending" ? "text-ink-secondary" : "text-ink"}`}>
+                      <span className="font-mono text-ink-secondary">{stage.stage}</span> {stage.label}
                     </span>
                     <span
                       className={`rounded px-1.5 py-px text-xs font-semibold ${
                         step.state === "error"
-                          ? "bg-del-bg text-del-fg"
+                          ? "bg-less-bg text-less-strong-fg"
                           : step.state === "running"
                             ? "bg-accent-bg text-accent-strong"
                             : step.state === "pending"
-                              ? "text-ink-faint"
-                              : "bg-sunken text-ink-muted"
+                              ? "text-ink-secondary"
+                              : "bg-sunken text-ink-secondary"
                       }`}
                     >
                       {STATE_LABEL[step.state]}
                     </span>
                     {stage.kind === "ai" ? (
-                      <span className="text-xs font-semibold text-ai-fg">
-                        <span aria-hidden="true">✦ </span>AI-assisted
+                      <span className="text-xs font-semibold text-ink-secondary">
+                        AI-assisted
                       </span>
                     ) : null}
                   </p>
-                  {step.message ? <p className="mt-0.5 text-sm text-ink-muted">{step.message}</p> : null}
+                  {step.message ? <p className="mt-0.5 text-sm text-ink-secondary">{step.message}</p> : null}
                 </div>
               </li>
             );
@@ -283,7 +283,7 @@ export function AnalyzeRunner({ ticker }: { ticker: string }) {
         <h2 id="explainer-heading" className="text-lg font-bold text-ink">
           What is happening
         </h2>
-        <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+        <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
           RiskDiff downloads {ticker}&apos;s two most recent 10-K filings from SEC EDGAR and compares their Risk
           Factors sections. What changed is computed by deterministic code. AI is used in two places only: to recognize
           the same risk across years (embeddings) and to answer narrow rubric questions with citations.
@@ -291,16 +291,16 @@ export function AnalyzeRunner({ ticker }: { ticker: string }) {
         <ol className="mt-4 space-y-3 text-sm">
           {STAGES.map((s) => (
             <li key={s.stage} className="flex gap-3">
-              <span className="w-4 shrink-0 font-mono font-bold text-ink-faint">{s.stage}</span>
+              <span className="w-4 shrink-0 font-mono font-bold text-ink-secondary">{s.stage}</span>
               <span>
                 <span className="font-semibold text-ink">{s.label}</span>
-                {s.kind === "ai" ? <span className="text-xs font-semibold text-ai-fg"> · AI-assisted</span> : null}
-                <span className="block leading-snug text-ink-muted">{s.description}</span>
+                {s.kind === "ai" ? <span className="text-xs font-semibold text-ink-secondary">, AI-assisted</span> : null}
+                <span className="block leading-snug text-ink-secondary">{s.description}</span>
               </span>
             </li>
           ))}
         </ol>
-        <p className="mt-4 text-xs text-ink-faint">
+        <p className="mt-4 text-xs text-ink-secondary">
           Stages already computed for these filings are reused from the cache, so a repeated analysis finishes quickly
           and returns the same result.
         </p>

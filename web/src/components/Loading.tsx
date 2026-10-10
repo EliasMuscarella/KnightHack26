@@ -3,8 +3,8 @@ import { PageContainer, Skeleton } from "@/components/ui";
 export function PageLoading({ label, variant = "list" }: { label: string; variant?: "list" | "detail" | "grid" | "text" }) {
   return (
     <PageContainer className="py-10">
-      <p role="status" className="mb-6 flex items-center gap-2 text-sm text-ink-muted">
-        <span aria-hidden="true" className="rd-spin inline-block h-4 w-4 rounded-full border-2 border-line-strong border-t-ink" />
+      <p role="status" className="mb-6 flex items-center gap-2 text-sm text-ink-secondary">
+        <span aria-hidden="true" className="rd-spin inline-block h-4 w-4 rounded-full border-2 border-line border-t-ink" />
         {label}
       </p>
       <Skeleton className="h-4 w-24" />

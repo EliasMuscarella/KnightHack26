@@ -22,11 +22,11 @@ export default async function AnalyzePage(props: PageProps<"/analyze/[ticker]">)
     return (
       <PageContainer className="py-20">
         <div className="mx-auto max-w-[760px]">
-        <p className="font-mono text-sm font-semibold text-del-fg">
-          <span aria-hidden="true">✕ </span>Invalid ticker
+        <p className="text-sm font-medium text-less-strong-fg">
+          Invalid ticker
         </p>
         <h1 className="mt-2 text-3xl font-bold text-ink">That is not a valid ticker symbol.</h1>
-        <p className="mt-3 text-ink-muted">{TICKER_HELP}</p>
+        <p className="mt-3 text-ink-secondary">{TICKER_HELP}</p>
         <div className="mt-8 max-w-[560px]">
           <TickerSearch size="large" />
         </div>
@@ -37,16 +37,16 @@ export default async function AnalyzePage(props: PageProps<"/analyze/[ticker]">)
 
   return (
     <PageContainer className="space-y-6 py-8">
-      <nav aria-label="Breadcrumb" className="text-sm text-ink-faint">
+      <nav aria-label="Breadcrumb" className="text-sm text-ink-secondary">
         <Link href="/" className="underline hover:text-ink">
           Home
         </Link>{" "}
         <span aria-hidden="true">/</span> <span className="text-ink">Live analysis</span>
       </nav>
       <div>
-        <p className="font-mono text-sm font-bold tracking-wide text-accent">{ticker}</p>
+        <p className="text-sm text-ink-secondary">{ticker}</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-ink">Live analysis</h1>
-        <p className="mt-1 max-w-[70ch] text-ink-muted">
+        <p className="mt-1 max-w-[70ch] text-ink-secondary">
           Comparing the Risk Factors section of {ticker}&apos;s two most recent 10-K filings. You will be taken to the
           comparison when it is published.
         </p>
