@@ -1,8 +1,9 @@
 """Stage 6: deterministic, cited signals per change.
 
 - hypothetical_to_actual: hedged wording in the old text ("may", "could", "might", "potential")
-  that became actual/past-tense wording in the corresponding new text ("has", "have", "resulted
-  in", "currently", ...). Detected (a) inside aligned modified sentence pairs via the word-level
+  that became actual/past-tense wording in the corresponding new text ("has/have + participle",
+  "resulted in", "experienced", "incurred"); a modal right before the marker ("could have
+  disrupted") does not count. Detected (a) inside aligned modified sentence pairs via the word-level
   diff (deleted hedge + inserted actual marker) and (b) for added sentences that report an event
   with a year/past-tense marker and overlap lexically with a hedged old sentence.
 - new_entities: spaCy NER (en_core_web_sm) entities of type GPE/NORP/ORG/LAW/LOC/EVENT/FAC in the
@@ -31,7 +32,7 @@ from pipeline.types import RiskBlock
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.1.1"
+STAGE_VERSION = "0.1.2"
 LEXICON_METHOD_ID = "keyword-lexicon-v1"
 
 HEDGE_RE = re.compile(
@@ -262,6 +263,8 @@ def hypothetical_to_actual(ctx: SignalContext) -> list[SignalHit]:
         if not old_h:
             continue
         a = _actuals(inserted)
+        if a and _modal_before(s.text, a[0]):
+            a = []  # "could have disrupted" / "may have been subject": still hypothetical
         if not a:
             del_h = _hedges(deleted)
             past = PAST_EVENT_RE.search(inserted)
@@ -306,6 +309,19 @@ def hypothetical_to_actual(ctx: SignalContext) -> list[SignalHit]:
                     )
                 )
     return hits
+
+
+_MODAL_RE = re.compile(r"\b(may|might|could|would|should|can)\b", re.I)
+
+
+def _modal_before(sentence: str, marker: str, window: int = 3) -> bool:
+    """True when a modal verb sits within `window` tokens before `marker` in `sentence`."""
+    low = sentence.lower()
+    idx = low.find(marker.lower())
+    if idx < 0:
+        return False
+    before = low[:idx].split()[-window:]
+    return any(_MODAL_RE.fullmatch(t.strip(",;:()")) for t in before)
 
 
 # ---------- entities ----------

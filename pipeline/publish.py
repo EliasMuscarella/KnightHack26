@@ -49,6 +49,12 @@ def publish(
                 "The inputs or versions differ; rerun with --force to replace it.",
                 code="publish_conflict",
             )
+        if target_dir == published_dir and old_id == comp.analysis_id and not force:
+            raise PipelineError(
+                f"{path.name} already exists for the same analysis_id but with different bytes. The LLM output "
+                "probably changed (e.g. --refresh-llm); rerun with --force to replace it deliberately.",
+                code="publish_conflict",
+            )
         if target_dir == published_dir and old_id == comp.analysis_id:
             log.warning(
                 "published JSON for the same analysis_id differs from the existing file (nondeterminism?): %s",

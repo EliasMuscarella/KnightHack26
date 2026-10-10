@@ -24,7 +24,7 @@ from dataclasses import dataclass, field
 from pipeline.rubric import BANNED_PHRASES, QUESTIONS
 from pipeline.schema import Claim, RubricAnswer
 
-VALIDATOR_VERSION = "1.1.0"
+VALIDATOR_VERSION = "1.2.0"
 MAX_CLAIM_CHARS = 400
 MAX_CLAIMS = 3
 
@@ -49,10 +49,35 @@ assert all(re.search(_BANNED_RE, p) for p in BANNED_PHRASES if p != "will happen
 
 
 _CATEGORY_RES: tuple[tuple[str, re.Pattern[str]], ...] = (
-    ("advice wording", re.compile(r"\b(buy(?:s|ing)?|bought|sell(?:s|ing)?|sold|invest(?!igat)\w*|recommend\w*)\b", re.I)),
-    ("comparative risk/safety wording", re.compile(r"\b(riskier|riskiest|more risky|less risky|safer|safest|less safe|more safe)\b", re.I)),
+    (
+        "advice wording",
+        re.compile(
+            r"\b(buy(?:s|ing)?|bought|sell(?:s|ing)?|sold|invest(?!igat)\w*|recommend\w*)\b", re.I
+        ),
+    ),
+    (
+        "comparative risk/safety wording",
+        re.compile(
+            r"\b(riskier|riskiest|more risky|less risky|safer|safest|less safe|more safe|"
+            r"(?:higher|greater|increased|elevated|heightened|lower|reduced|decreased|more|less)\s+(?:levels?\s+of\s+)?risks?|"
+            r"(?:more|less)\s+(?:vulnerable|exposed|likely|dangerous))\b",
+            re.I,
+        ),
+    ),
+    (
+        "advice wording",
+        re.compile(
+            r"\b(?:investors?|holders?|shareholders?|you)\s+should\b|\bshould\s+(?:consider\s+)?(?:exit|avoid|hold|reduce|increase)\w*\b",
+            re.I,
+        ),
+    ),
     ("guarantee wording", re.compile(r"\b(guarantee\w*)\b", re.I)),
-    ("predictive wording", re.compile(r"\b(probabilit\w*|probabl[ey]|likely|unlikely|chances?|odds|will happen)\b", re.I)),
+    (
+        "predictive wording",
+        re.compile(
+            r"\b(probabilit\w*|probabl[ey]|likely|unlikely|chances?|odds|will happen)\b", re.I
+        ),
+    ),
 )
 
 

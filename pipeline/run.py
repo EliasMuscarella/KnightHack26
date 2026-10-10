@@ -62,6 +62,7 @@ class RunContext:
     timings: dict[str, float] = field(default_factory=dict)
     cancel: threading.Event | None = None
     force_publish: bool = False
+    refresh_llm: bool = False
 
     def check_cancelled(self) -> None:
         if self.cancel is not None and self.cancel.is_set():
@@ -73,6 +74,8 @@ class RunContext:
     def emit(
         self, idx: int, status: str, message: str | None = None, ticker: str | None = None
     ) -> None:
+        if status == "started":
+            self.check_cancelled()
         ev = StageEvent(
             stage=idx, name=STAGE_LABELS[idx], status=status, message=message, ticker=ticker
         )
@@ -147,6 +150,7 @@ def run_pipeline(
     preloaded: dict[str, Any] | None = None,
     cancel: threading.Event | None = None,
     force_publish: bool = False,
+    refresh_llm: bool = False,
 ) -> RunContext:
     """`preloaded` may carry a warm `embedder` (and `llm_client`/`llm_reason`) from a long-lived process.
     `cancel` is checked between stages. `force_publish` allows replacing a published file whose analysis_id differs."""
@@ -164,6 +168,7 @@ def run_pipeline(
         progress=progress,
         cancel=cancel,
         force_publish=force_publish,
+        refresh_llm=refresh_llm,
     )
     if preloaded:
         ctx.outputs.update(preloaded)
@@ -248,7 +253,22 @@ def main(argv: list[str] | None = None) -> int:
         "--from-stage", type=int, default=None, help="Recompute from this stage even if cached"
     )
     ap.add_argument("--until-stage", type=int, default=8, help="Stop after this stage (0-8)")
-    ap.add_argument("--no-cache", action="store_true", help="Ignore all stage caches")
+    ap.add_argument(
+        "--no-cache",
+        action="store_true",
+        help="Ignore all stage caches (raw SEC downloads and raw LLM outputs are still reused; see --refresh-llm)",
+    )
+    ap.add_argument(
+        "--refresh-llm",
+        action="store_true",
+        help="Re-query the LLM provider for every change instead of reusing cached raw model output "
+        "(changes the published file under the same analysis_id; use deliberately)",
+    )
+    ap.add_argument(
+        "--force",
+        action="store_true",
+        help="Replace an existing published file even if its analysis_id or bytes differ",
+    )
     ap.add_argument(
         "--fixture", action="store_true", help="Run on the synthetic FIXTURE filing pair"
     )
@@ -266,6 +286,8 @@ def main(argv: list[str] | None = None) -> int:
             until_stage=args.until_stage,
             use_cache=not args.no_cache,
             fixture=args.fixture,
+            force_publish=args.force,
+            refresh_llm=args.refresh_llm,
         )
     except PipelineError as e:
         print(f"ERROR [{e.code}]: {e.message}", file=sys.stderr)

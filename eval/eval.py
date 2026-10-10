@@ -182,7 +182,7 @@ def eval_consistency(ticker: str, runs: int, settings, n_changes: int = 10) -> d
     per_q_agree: dict[str, list[float]] = {}
     score_ranges: list[int] = []
     claim_counts: list[list[int]] = []
-    from pipeline.diff import DEFAULT_DIFF_PARAMS
+    from pipeline.diff import diff_params_for
     from pipeline.schema import Interpretation, Signals
     from pipeline.score import score_change
 
@@ -227,7 +227,7 @@ def eval_consistency(ticker: str, runs: int, settings, n_changes: int = 10) -> d
                 sig,
                 interp,
                 r["similarity"],
-                DEFAULT_DIFF_PARAMS.reworded_similarity,
+                diff_params_for(ctx.outputs["embeddings"].backend).reworded_similarity,
             )
             scores.append(score)
             n_claims.append(len(res.validation.claims))

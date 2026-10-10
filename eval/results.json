@@ -10,8 +10,8 @@
     "ticker": "FIXTUR",
     "byte_identical": true,
     "analysis_id_identical": true,
-    "analysis_id": "f551f065a90e02194bf320c1aa4f7e0685702cc19935a7f9c3d62cadf8baaa47",
-    "bytes": 165893,
+    "analysis_id": "2bd78cac721633abd75276fa2fce238863e06e31e3755776be63a6d11e890e67",
+    "bytes": 165641,
     "second_run_cache_misses": [],
     "is_fixture": true
   },

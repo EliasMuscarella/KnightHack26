@@ -5,8 +5,7 @@ Primary backend: a local open-source Hugging Face model via sentence-transformer
 programmatically; texts longer than that are split into token chunks and mean-pooled
 (weighted by chunk length) instead of being silently truncated. Truncation counts are logged.
 
-Fallback backend (used automatically when the model cannot be loaded, e.g. no network and no
-local cache): a deterministic lexical TF-IDF embedder fitted on the two filings being compared.
+Fallback backend (used only when explicitly allowed, see `load_embedder`): a deterministic lexical TF-IDF embedder fitted on the two filings being compared.
 The backend in use is recorded in `model_ids` and therefore in `analysis_id`.
 """
 

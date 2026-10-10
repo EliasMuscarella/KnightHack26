@@ -160,11 +160,20 @@ def _extract_json(text: str) -> dict:
         return json.loads(m.group(0))
 
 
+_MODEL_ID_RE = re.compile(r"^[A-Za-z0-9_.\-]+(/[A-Za-z0-9_.\-]+)?$")
+
+
+def _check_model_id(model: str) -> str:
+    if not _MODEL_ID_RE.match(model or ""):
+        raise ProviderError(f"Model id must look like 'org/name', got {model!r}")
+    return model
+
+
 def make_hf_client(settings: Settings) -> LLMClient:
     from huggingface_hub import InferenceClient
 
     client = InferenceClient(token=settings.hf_token, timeout=90)
-    model = settings.llm_model
+    model = _check_model_id(settings.llm_model)
 
     def complete(system: str, user: str) -> str:
         resp = client.chat_completion(

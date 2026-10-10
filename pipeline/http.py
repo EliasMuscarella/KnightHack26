@@ -1,7 +1,9 @@
 """Allowlisted, rate-limited HTTP client.
 
-Every outbound request in the pipeline goes through `AllowlistClient`, which refuses any host
-outside the allowlist (SSRF guard), sends the SEC User-Agent on sec.gov requests, enforces a
+Every outbound request the pipeline makes itself (SEC JSON + filings) goes through
+`AllowlistClient`, which refuses any host outside the allowlist (SSRF guard). The Hugging Face and
+Gemini SDKs and the sentence-transformers download use their own clients against fixed hosts
+(model ids are validated to never be URLs), sends the SEC User-Agent on sec.gov requests, enforces a
 minimum interval between requests (SEC fair access: stay well under 5 requests/second), and
 retries transient failures with backoff.
 """

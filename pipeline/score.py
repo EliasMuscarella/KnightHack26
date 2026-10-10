@@ -196,6 +196,19 @@ def change_id(old_block_id: str | None, new_block_id: str | None) -> str:
     return hashlib.sha256(f"{old_block_id or ''}|{new_block_id or ''}".encode()).hexdigest()[:16]
 
 
+def _pipeline_source_hash() -> str:
+    """sha256 over every pipeline/*.py file, so a code change without a version bump still
+    changes the fingerprint (and therefore analysis_id)."""
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parent
+    h = hashlib.sha256()
+    for p in sorted(root.glob("*.py")):
+        h.update(p.name.encode())
+        h.update(p.read_bytes())
+    return h.hexdigest()
+
+
 def code_fingerprint() -> str:
     """Everything in the code that changes the output besides PIPELINE_VERSION/RUBRIC_VERSION."""
     from pipeline import diff, embed, extract, llm, match, segment, signals
@@ -218,6 +231,7 @@ def code_fingerprint() -> str:
         "diff_params_by_backend": {k: v.to_dict() for k, v in diff.DIFF_PARAMS_BY_BACKEND.items()},
         "match_params_by_backend": {k: v.to_dict() for k, v in match.DEFAULT_PARAMS.items()},
         "questions_rendered": [q.text for q in QUESTIONS],
+        "source_sha256": _pipeline_source_hash(),
     }
     return hashlib.sha256(
         json.dumps(payload, sort_keys=True, ensure_ascii=False).encode("utf-8")
