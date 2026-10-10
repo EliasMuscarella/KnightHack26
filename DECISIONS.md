@@ -211,3 +211,34 @@ decision, alternatives considered, how to reverse.
   "unknown". `published_at` is set at publish time in the table only; the JSON stays timestamp-free (D-012).
 - No real workspace was available in this sandbox: everything ran against a fake SDK client and simulated
   tables; the real-workspace checklist is in REPORT.md.
+
+## D-021 Trends backend (T9–T11)
+
+**T9 cold-start root cause (observed, not assumed).** Reproduced against the pre-T9 code with the real
+`DatabricksStore` and a fake SDK client that takes 1.5 s to build (the SDK's `Config` probe) and a
+warehouse that is STARTING for 4 s (timeouts scaled 5x down): right after startup `/store/health` answered
+`offline` and `/trends` answered `available: false, remote: offline`; a second call a few seconds later said
+`ok` with data. Three mechanisms, all in `api/main.py`:
+1. `/store/health` ran the check synchronously under a 5 s `wait_for` and mapped the TIMEOUT to "offline":
+   while the first check was still building the client / waiting on the workspace, "not finished" was
+   reported as "offline".
+2. `/trends` computed three warehouse statements synchronously under a 20 s `wait_for`, with no previous
+   result to fall back on; a cold warehouse (serverless start, or the startup list refresh queued ahead)
+   exceeded it and the timeout was rendered as `available: false` ("not connected").
+3. The abandoned worker thread kept running and cached its result when the warehouse came up, which is
+   why a refresh "fixed" it. Nothing survived an API restart, so every restart repeated it.
+
+**T9 fix.** Health is a non-blocking state machine with four states (`disabled` = no env vars;
+`connecting` = first check pending / client being built / warehouse STARTING, STOPPED or STOPPING;
+`ok`; `offline` = a check or statement failed after the store's retries, or the config is unusable).
+Requests read the last known state and start a background check when it is older than 15 s (3 s while
+connecting); `/store/health` waits at most 0.25 s for an in-flight check and returns
+`{"remote", "warehouse_state"}`. A successful statement marks the store `ok`/RUNNING; a failed one marks
+it `offline`. `/trends` is stale-while-revalidate: the last good remote result is served from memory or
+`data/cache/trends/trends.json` (scoped by a hash of host+catalog+schema+warehouse, so another workspace's
+cache is never shown), refreshed in the background after 60 s (20 s back-off after a failure), with
+`computed_at` and `source`. With no remote result yet, the local aggregate is served (`source: "local"`);
+with nothing local either and the store connecting, empty lists and `source: null` (the page retries).
+Only a store that is already `ok` gets a 2 s wait for its very first remote result. A bad
+`DATABRICKS_HOST` is now `offline` (it was `disabled`; "disabled" now strictly means "not configured").
+`/trends` never returns 5xx: any unexpected error becomes an empty answer with `source: null`.
