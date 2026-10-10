@@ -146,6 +146,11 @@ needed); the legend says "stronger color" rather than "darker" so it reads in bo
   serif, thin muted left rule, removed words struck) and "This year" (ink serif, ink left rule,
   highlighter on changed words); "Open in SEC filing" and "See the full change" in the footer.
 * Legend: one line near the top of the company page explains blue, orange and amber once.
+* `TickerTape` (home page only): a full-width surface band under the header with a bottom rule. Delayed
+  market quotes scroll in a CSS marquee (pause on hover, focus and the Pause button; a still,
+  scrollable row under reduced motion). Price direction reuses the blue/orange families with ▲/▼ and
+  a sign (up `more-fg`, down `less-fg`, flat `ink-secondary`), never green/red. Without data it renders
+  nothing.
 
 ## Copy
 
