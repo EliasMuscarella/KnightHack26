@@ -15,3 +15,6 @@ export function normalizeTicker(raw: string | null | undefined): string | null {
 }
 
 export const TICKER_HELP = "1 to 6 characters: letters, '.' or '-' (for example NVDA or BRK.B).";
+
+/** Change ids as produced by the pipeline (also the route segment under /c/{TICKER}/). */
+export const CHANGE_ID_RE = /^[A-Za-z0-9_\-]{1,128}$/;

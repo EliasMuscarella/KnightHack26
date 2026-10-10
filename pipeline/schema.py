@@ -364,6 +364,10 @@ class Comparison(Strict):
     analysis_id: str = Field(pattern=r"^[0-9a-f]{64}$")
     pipeline_version: str
     rubric_version: str
+    code_fingerprint: str = Field(
+        pattern=r"^[0-9a-f]{64}$",
+        description="sha256 over every stage version, the rubric export (weights, questions, thresholds) and the validator version; part of analysis_id.",
+    )
     model_ids: ModelIds
     is_fixture: bool = Field(
         default=False,

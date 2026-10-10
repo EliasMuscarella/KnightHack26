@@ -109,6 +109,8 @@ uv run python -m pipeline.run NVDA        # full pipeline → data/published/NVD
 uv run python -m pipeline.run NVDA --until-stage 0     # fetch + cache the two 10-Ks only
 uv run python -m pipeline.run NVDA --from-stage 5      # recompute from the diff stage on
 uv run python -m pipeline.run NVDA --no-cache          # ignore stage caches (raw filings still cached)
+uv run python -m pipeline.run NVDA --force             # replace a published file whose analysis_id differs
+uv run python -m pipeline.run FIXTUR                   # synthetic fixture pair → data/scratch/ (never published)
 uv run python scripts/regen_contract.py   # schema.py → contract/comparison.schema.json → web/src/types/comparison.ts
 uv run pytest                             # unit tests
 uv run ruff check .                       # lint
@@ -128,3 +130,7 @@ cd web && npm run build && npm run lint && npm run typecheck
 Environment: `.env` in the repo root (see `.env.example`). `SEC_USER_AGENT` is required for
 stage 0; `HF_TOKEN` for the embedding model download and the LLM stage; `GEMINI_API_KEY` is
 an optional LLM fallback. Missing `SEC_USER_AGENT` → stage 0 refuses to run (no invented email).
+If the embedding model cannot load, a non-fixture run FAILS unless `RISKDIFF_ALLOW_LEXICAL=1`
+(or `RISKDIFF_EMBED_BACKEND=lexical`) explicitly accepts the deterministic lexical fallback,
+which is recorded in `model_ids` and changes `analysis_id`. The LLM stage is skipped (marked
+`unavailable`) when no provider responds; it is never faked.

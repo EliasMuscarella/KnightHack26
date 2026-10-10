@@ -30,6 +30,7 @@ from sse_starlette.sse import EventSourceResponse
 
 from pipeline.config import PIPELINE_VERSION, Settings, get_settings, normalize_ticker
 from pipeline.errors import InvalidTicker, PipelineError
+from pipeline.publish import load_published
 from pipeline.run import FIXTURE_TICKER, STAGE_LABELS, run_pipeline
 from pipeline.schema import CompanyCard, Comparison, StageEvent
 
@@ -48,6 +49,9 @@ FRIENDLY: dict[str, str] = {
     "segmentation_failed": "The Risk Factors section could not be split into individual risks.",
     "busy": "Another analysis is running. Only one runs at a time; try again shortly.",
     "timeout": "The analysis took too long and was stopped.",
+    "cancelled": "The analysis was cancelled.",
+    "publish_conflict": "A published comparison for this ticker already exists with a different analysis id.",
+    "embedding_unavailable": "The embedding model is not available on the server; live analysis is disabled.",
     "internal": "Something went wrong on the server.",
 }
 
@@ -62,7 +66,9 @@ class AppState:
         self.embedder = None
         self.embedder_error: str | None = None
         self.warm = False
-        self.lock = asyncio.Lock()
+        # Held by the worker THREAD for the whole pipeline run, so "one analysis at a time" is
+        # enforced even if the SSE client disconnects or the request times out.
+        self.busy = threading.Lock()
         self._cards_cache: dict[str, tuple[float, CompanyCard]] = {}
 
 
@@ -78,7 +84,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
                 state.embedder = load_embedder(settings)
             except Exception as e:  # noqa: BLE001
-                state.embedder_error = f"{type(e).__name__}"
+                state.embedder_error = f"{type(e).__name__}: {str(e)[:200]}"
                 log.warning("embedding warm-up failed: %s", e)
             finally:
                 state.warm = True
@@ -125,6 +131,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "model_warm": state.warm and emb is not None,
             "embedding_backend": getattr(emb, "backend", None),
             "embedding_model": getattr(emb, "model_id", None),
+            "embedding_error": state.embedder_error,
+            "busy": state.busy.locked(),
             "pipeline_version": PIPELINE_VERSION,
             "sec_configured": bool(settings.sec_user_agent),
         }
@@ -138,12 +146,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def comparison(ticker: str) -> Any:
         t = normalize_ticker(ticker)
         path = await asyncio.to_thread(find_published, settings.published_dir, t)
-        if path is None:
+        comp = await asyncio.to_thread(_safe_load, path) if path else None
+        if comp is None:
             raise HTTPException(
                 status_code=404,
                 detail=f"No published comparison for {t}. Use POST /analyze to run one.",
             )
-        return JSONResponse(content=json.loads(path.read_text(encoding="utf-8")))
+        return JSONResponse(content=comp)
 
     @app.post("/analyze")
     async def analyze(req: AnalyzeRequest, request: Request):
@@ -157,12 +166,16 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 detail="FIXTUR is development data; set RISKDIFF_ALLOW_FIXTURE=1 to analyze it.",
             )
         cached = await asyncio.to_thread(find_published, settings.published_dir, t)
-        if cached is not None:
-            return EventSourceResponse(_replay_cached(t, cached), ping=15)
+        cached_doc = await asyncio.to_thread(_safe_load, cached) if cached else None
+        if cached_doc is not None:
+            return EventSourceResponse(_replay_cached(t, cached.name, cached_doc), ping=15)
         if not settings.sec_user_agent and t != FIXTURE_TICKER:
             raise HTTPException(status_code=503, detail=FRIENDLY["config"])
-        if state.lock.locked():
+        if t != FIXTURE_TICKER and state.warm and state.embedder is None:
+            raise HTTPException(status_code=503, detail=FRIENDLY["embedding_unavailable"])
+        if not state.busy.acquire(blocking=False):
             raise HTTPException(status_code=409, detail=FRIENDLY["busy"])
+        # the lock is now owned by this request and released by the worker thread when it finishes
         return EventSourceResponse(_run_live(state, t, request), ping=15)
 
     return app
@@ -228,64 +241,75 @@ def list_cards(state: AppState) -> list[CompanyCard]:
     return sorted(out, key=lambda c: c.ticker)
 
 
+def _safe_load(path: Path) -> dict | None:
+    """Load a published file through the contract; fixture data or invalid files are treated as absent."""
+    try:
+        return json.loads(load_published(path).model_dump_json())
+    except Exception as e:  # noqa: BLE001
+        log.warning("refusing to serve %s: %s", path.name, type(e).__name__)
+        return None
+
+
 def _sse(event: str, data: dict) -> dict:
     return {"event": event, "data": json.dumps(data, ensure_ascii=False)}
 
 
-async def _replay_cached(ticker: str, path: Path):
+async def _replay_cached(ticker: str, filename: str, comp: dict):
     for i, label in enumerate(STAGE_LABELS):
         yield _sse(
             "stage",
             StageEvent(stage=i, name=label, status="cached", ticker=ticker).model_dump(mode="json"),
         )
         await asyncio.sleep(0.05)
-    comp = json.loads(path.read_text(encoding="utf-8"))
     yield _sse(
         "complete",
         {
             "ticker": ticker,
             "analysis_id": comp.get("analysis_id"),
-            "file": path.name,
+            "file": filename,
             "cached": True,
         },
     )
 
 
 async def _run_live(state: AppState, ticker: str, request: Request):
-    async with state.lock:
-        loop = asyncio.get_running_loop()
-        queue: asyncio.Queue[Any] = asyncio.Queue()
-        done = object()
+    """Caller already holds state.busy; the worker thread releases it when the pipeline ends."""
+    loop = asyncio.get_running_loop()
+    queue: asyncio.Queue[Any] = asyncio.Queue()
+    done = object()
+    cancel = threading.Event()
 
-        def progress(ev: StageEvent) -> None:
-            loop.call_soon_threadsafe(queue.put_nowait, ev)
+    def progress(ev: StageEvent) -> None:
+        loop.call_soon_threadsafe(queue.put_nowait, ev)
 
-        def work() -> dict:
-            preloaded = {"embedder": state.embedder} if state.embedder is not None else None
+    def work() -> None:
+        try:
+            emb = state.embedder
+            preloaded = (
+                {"embedder": emb}
+                if emb is not None and getattr(emb, "backend", "") == "sentence-transformers"
+                else None
+            )
             ctx = run_pipeline(
                 ticker,
                 state.settings,
                 progress=progress,
                 fixture=ticker == FIXTURE_TICKER,
                 preloaded=preloaded,
+                cancel=cancel,
             )
             comp = ctx.outputs["comparison"]
-            return {
+            result = {
                 "ticker": ticker,
                 "analysis_id": comp.analysis_id,
                 "file": Path(ctx.outputs["published_path"]).name,
                 "cached": False,
             }
-
-        task = loop.run_in_executor(None, work)
-        started = time.monotonic()
-
-        async def finish() -> None:
-            try:
-                result = await task
-                queue.put_nowait(("complete", result))
-            except PipelineError as e:
-                queue.put_nowait(
+            loop.call_soon_threadsafe(queue.put_nowait, ("complete", result))
+        except PipelineError as e:
+            if e.code != "cancelled":
+                loop.call_soon_threadsafe(
+                    queue.put_nowait,
                     (
                         "error",
                         {
@@ -293,37 +317,42 @@ async def _run_live(state: AppState, ticker: str, request: Request):
                             "message": FRIENDLY.get(e.code, e.message),
                             "detail": e.message,
                         },
-                    )
+                    ),
                 )
-            except Exception as e:  # noqa: BLE001
-                log.exception("analysis failed: %s", type(e).__name__)
-                queue.put_nowait(("error", {"code": "internal", "message": FRIENDLY["internal"]}))
-            finally:
-                queue.put_nowait(done)
-
-        finisher = asyncio.ensure_future(finish())
-        try:
-            while True:
-                remaining = ANALYZE_TIMEOUT_SECONDS - (time.monotonic() - started)
-                if remaining <= 0:
-                    yield _sse("error", {"code": "timeout", "message": FRIENDLY["timeout"]})
-                    break
-                try:
-                    item = await asyncio.wait_for(queue.get(), timeout=min(remaining, 5.0))
-                except TimeoutError:
-                    if await request.is_disconnected():
-                        break
-                    continue
-                if item is done:
-                    break
-                if isinstance(item, StageEvent):
-                    yield _sse("stage", item.model_dump(mode="json"))
-                else:
-                    kind, payload = item
-                    yield _sse(kind, payload)
+        except Exception as e:  # noqa: BLE001
+            log.exception("analysis failed: %s", type(e).__name__)
+            loop.call_soon_threadsafe(
+                queue.put_nowait, ("error", {"code": "internal", "message": FRIENDLY["internal"]})
+            )
         finally:
-            if not finisher.done():
-                finisher.cancel()
+            state.busy.release()
+            loop.call_soon_threadsafe(queue.put_nowait, done)
+
+    threading.Thread(target=work, name=f"analyze-{ticker}", daemon=True).start()
+    started = time.monotonic()
+    try:
+        while True:
+            remaining = ANALYZE_TIMEOUT_SECONDS - (time.monotonic() - started)
+            if remaining <= 0:
+                cancel.set()
+                yield _sse("error", {"code": "timeout", "message": FRIENDLY["timeout"]})
+                break
+            try:
+                item = await asyncio.wait_for(queue.get(), timeout=min(remaining, 5.0))
+            except TimeoutError:
+                if await request.is_disconnected():
+                    cancel.set()
+                    break
+                continue
+            if item is done:
+                break
+            if isinstance(item, StageEvent):
+                yield _sse("stage", item.model_dump(mode="json"))
+            else:
+                kind, payload = item
+                yield _sse(kind, payload)
+    finally:
+        cancel.set()  # a client that went away must not keep a pipeline running past the next stage
 
 
 app = create_app()

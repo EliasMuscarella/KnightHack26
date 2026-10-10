@@ -76,7 +76,27 @@ export async function getCompaniesFromApi(timeoutMs = 1500): Promise<CompanyCard
   return Array.isArray(body.companies) ? body.companies : [];
 }
 
-/** Returns null on 404. Throws ApiUnreachableError / ApiHttpError otherwise. */
+/** Minimal structural check before treating untrusted JSON as a Comparison. */
+export function looksLikeComparison(x: unknown): x is Comparison {
+  if (!x || typeof x !== "object") return false;
+  const c = x as Partial<Comparison>;
+  return (
+    typeof c.analysis_id === "string" &&
+    !!c.company &&
+    typeof c.company.ticker === "string" &&
+    Array.isArray(c.changes) &&
+    !!c.sentence_index &&
+    typeof c.sentence_index === "object" &&
+    !!c.old_filing &&
+    !!c.new_filing &&
+    !!c.summary
+  );
+}
+
+/**
+ * Returns null on 404, on a response that is not shaped like a Comparison, or on a
+ * comparison for a different ticker. Throws ApiUnreachableError / ApiHttpError otherwise.
+ */
 export async function getComparisonFromApi(ticker: string): Promise<Comparison | null> {
   const res = await fetchWithTimeout(`${API_BASE}/comparison/${encodeURIComponent(ticker)}`, {
     cache: "no-store",
@@ -84,7 +104,14 @@ export async function getComparisonFromApi(ticker: string): Promise<Comparison |
   });
   if (res.status === 404) return null;
   if (!res.ok) throw new ApiHttpError(res.status, await readDetail(res));
-  return (await res.json()) as Comparison;
+  let body: unknown;
+  try {
+    body = await res.json();
+  } catch {
+    return null;
+  }
+  if (!looksLikeComparison(body) || body.company.ticker !== ticker) return null;
+  return body;
 }
 
 // ---------------------------------------------------------------------------------------

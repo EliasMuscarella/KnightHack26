@@ -173,7 +173,10 @@ def make_hf_client(settings: Settings) -> LLMClient:
             temperature=0.0,
             max_tokens=MAX_TOKENS,
             seed=0,
-            response_format={"type": "json_schema", "value": JSON_SCHEMA},
+            response_format={
+                "type": "json_schema",
+                "json_schema": {"name": "riskdiff_rubric", "schema": JSON_SCHEMA, "strict": True},
+            },
         )
         return resp.choices[0].message.content or ""
 
@@ -184,7 +187,9 @@ def make_gemini_client(settings: Settings) -> LLMClient:
     from google import genai
     from google.genai import types
 
-    client = genai.Client(api_key=settings.gemini_api_key)
+    client = genai.Client(
+        api_key=settings.gemini_api_key, http_options=types.HttpOptions(timeout=90_000)
+    )
     model = settings.gemini_model
 
     def complete(system: str, user: str) -> str:
@@ -196,7 +201,7 @@ def make_gemini_client(settings: Settings) -> LLMClient:
                 temperature=0.0,
                 max_output_tokens=MAX_TOKENS,
                 response_mime_type="application/json",
-                response_schema=JSON_SCHEMA,
+                response_schema=RawLLMOutput,
                 seed=0,
             ),
         )
@@ -263,6 +268,12 @@ class LLMResult:
     raw: dict | None = None
 
 
+def allowed_sentences(old: RiskBlock | None, new: RiskBlock | None) -> dict[str, str]:
+    out = {s.id: s.text for s in (old.sentences if old else [])}
+    out.update({s.id: s.text for s in (new.sentences if new else [])})
+    return out
+
+
 def interpret_change(
     client: LLMClient,
     title: str,
@@ -272,9 +283,7 @@ def interpret_change(
     old_fy: int,
     new_fy: int,
 ) -> LLMResult:
-    allowed = {s.id for s in (old.sentences if old else [])} | {
-        s.id for s in (new.sentences if new else [])
-    }
+    allowed = allowed_sentences(old, new)
     user = build_user_prompt(title, old, new, sentences, old_fy, new_fy)
     last_err: str | None = None
     for attempt in range(1, MAX_ATTEMPTS + 1):

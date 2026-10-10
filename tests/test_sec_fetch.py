@@ -163,3 +163,33 @@ def test_sec_cache_files_written(settings, sec_mock):
         json.loads((root / "submissions" / "CIK0001045810.json").read_text())["name"]
         == "NVIDIA CORP"
     )
+
+
+def test_original_preferred_over_amendment_for_same_period():
+    filings = [
+        {
+            "accessionNumber": "0000000000-25-000003",
+            "filingDate": "2025-03-30",
+            "reportDate": "2024-12-31",
+            "form": "10-K/A",
+            "primaryDocument": "a3.htm",
+        },
+        {
+            "accessionNumber": "0000000000-25-000002",
+            "filingDate": "2025-02-20",
+            "reportDate": "2024-12-31",
+            "form": "10-K",
+            "primaryDocument": "a2.htm",
+        },
+        {
+            "accessionNumber": "0000000000-24-000001",
+            "filingDate": "2024-02-20",
+            "reportDate": "2023-12-31",
+            "form": "10-K/A",
+            "primaryDocument": "a1.htm",
+        },
+    ]
+    old, new, note, _ = select_two_latest(filings)
+    assert new["accessionNumber"] == "0000000000-25-000002"  # original wins over the later 10-K/A
+    assert old["accessionNumber"] == "0000000000-24-000001"
+    assert "amendments were included" in note

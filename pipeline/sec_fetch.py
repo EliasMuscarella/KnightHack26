@@ -50,10 +50,12 @@ def _write_atomic(path: Path, data: bytes) -> None:
     tmp.replace(path)
 
 
-def _get_json(client: AllowlistClient, url: str) -> dict:
+def _get_json(
+    client: AllowlistClient, url: str, *, not_found: type[Exception] = TickerNotFound
+) -> dict:
     resp = client.get(url)
     if resp.status_code == 404:
-        raise TickerNotFound(f"SEC returned 404 for {url}")
+        raise not_found(f"SEC returned 404 for {url}")
     if resp.status_code >= 400:
         raise SecUnavailable(f"SEC returned HTTP {resp.status_code} for {url}")
     try:
@@ -121,9 +123,23 @@ def _iter_filings(client: AllowlistClient, cik: str, cache_dir: Path, subs: dict
         if path.exists():
             block = json.loads(path.read_text(encoding="utf-8"))
         else:
-            block = _get_json(client, SUBMISSIONS_URL.format(name=name))
+            block = _get_json(client, SUBMISSIONS_URL.format(name=name), not_found=SecUnavailable)
             _write_atomic(path, json.dumps(block).encode("utf-8"))
         yield from rows(block)
+
+
+def _collect_filings(client: AllowlistClient, cik: str, cache_dir: Path, subs: dict) -> list[dict]:
+    """Walk the history newest-first and stop as soon as two original 10-Ks with distinct periods
+    are in hand (big filers have many paginated history files)."""
+    out: list[dict] = []
+    periods: set[str] = set()
+    for f in _iter_filings(client, cik, cache_dir, subs):
+        out.append(f)
+        if f.get("form") in ORIGINAL_FORMS and f.get("primaryDocument"):
+            periods.add(f.get("reportDate") or f.get("filingDate") or "")
+            if len(periods) >= 2:
+                break
+    return out
 
 
 def select_two_latest(filings: list[dict]) -> tuple[dict, dict, str, list[str]]:
@@ -137,7 +153,17 @@ def select_two_latest(filings: list[dict]) -> tuple[dict, dict, str, list[str]]:
     amendments = [f for f in usable if f.get("form") in AMENDMENT_FORMS]
 
     def dedupe_by_period(rows: list[dict]) -> list[dict]:
-        rows = sorted(rows, key=lambda f: (f["filingDate"], f["accessionNumber"]), reverse=True)
+        # newest period first; within a period prefer an original 10-K over a 10-K/A, then the latest filing
+        rows = sorted(
+            rows,
+            key=lambda f: (
+                f.get("reportDate") or f["filingDate"],
+                f.get("form") in ORIGINAL_FORMS,
+                f["filingDate"],
+                f["accessionNumber"],
+            ),
+            reverse=True,
+        )
         seen: set[str] = set()
         out = []
         for f in rows:
@@ -237,7 +263,7 @@ def run_stage0(
         subs = fetch_submissions(client, company.cik, cache_dir)
         name = (subs.get("name") or company.name).strip()
         company = Company(ticker=company.ticker, name=name or company.name, cik=company.cik)
-        filings = list(_iter_filings(client, company.cik, cache_dir, subs))
+        filings = _collect_filings(client, company.cik, cache_dir, subs)
         old, new, note, considered = select_two_latest(filings)
         old_path = download_primary(client, company.cik, old, cache_dir)
         new_path = download_primary(client, company.cik, new, cache_dir)

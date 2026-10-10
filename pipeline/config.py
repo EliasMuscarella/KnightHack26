@@ -37,8 +37,8 @@ def _load_env() -> None:
 @dataclass(frozen=True)
 class Settings:
     sec_user_agent: str | None
-    hf_token: str | None
-    gemini_api_key: str | None
+    hf_token: str | None = field(repr=False)
+    gemini_api_key: str | None = field(repr=False)
     data_dir: Path
     embed_model: str
     llm_model: str

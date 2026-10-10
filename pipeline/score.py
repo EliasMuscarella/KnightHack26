@@ -7,6 +7,7 @@ sentence ids that justify it. Weights live in rubric.py; nothing here is hidden.
 from __future__ import annotations
 
 import hashlib
+import json
 
 from pipeline.config import PIPELINE_VERSION
 from pipeline.rubric import ADDED_TEXT_RATIO_MIN, CAPS, QUESTIONS, RUBRIC_VERSION, WEIGHT_BY_SIGNAL
@@ -195,13 +196,44 @@ def change_id(old_block_id: str | None, new_block_id: str | None) -> str:
     return hashlib.sha256(f"{old_block_id or ''}|{new_block_id or ''}".encode()).hexdigest()[:16]
 
 
-def analysis_id(old_accession: str, new_accession: str, model_ids: ModelIds) -> str:
+def code_fingerprint() -> str:
+    """Everything in the code that changes the output besides PIPELINE_VERSION/RUBRIC_VERSION."""
+    from pipeline import diff, embed, extract, llm, match, segment, signals
+    from pipeline.rubric import export
+    from pipeline.validate import VALIDATOR_VERSION
+
+    payload = {
+        "pipeline_version": PIPELINE_VERSION,
+        "stage_versions": {
+            "extract": extract.STAGE_VERSION,
+            "segment": segment.STAGE_VERSION,
+            "embed": embed.STAGE_VERSION,
+            "match": match.STAGE_VERSION,
+            "diff": diff.STAGE_VERSION,
+            "signals": signals.STAGE_VERSION,
+            "llm": llm.STAGE_VERSION,
+        },
+        "validator_version": VALIDATOR_VERSION,
+        "rubric": export(),
+        "diff_params_by_backend": {k: v.to_dict() for k, v in diff.DIFF_PARAMS_BY_BACKEND.items()},
+        "match_params_by_backend": {k: v.to_dict() for k, v in match.DEFAULT_PARAMS.items()},
+        "questions_rendered": [q.text for q in QUESTIONS],
+    }
+    return hashlib.sha256(
+        json.dumps(payload, sort_keys=True, ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
+
+
+def analysis_id(
+    old_accession: str, new_accession: str, model_ids: ModelIds, fingerprint: str | None = None
+) -> str:
     payload = "|".join(
         [
             old_accession,
             new_accession,
             PIPELINE_VERSION,
             RUBRIC_VERSION,
+            fingerprint or code_fingerprint(),
             model_ids.embedding_model,
             model_ids.embedding_backend,
             model_ids.ner_model,

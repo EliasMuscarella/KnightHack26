@@ -48,7 +48,7 @@ BLOCK_TAGS = frozenset(
         "nav",
     }
 )
-SKIP_TAGS = frozenset({"script", "style", "head", "title", "meta", "link", "noscript"})
+SKIP_TAGS = frozenset({"script", "style", "head", "title", "meta", "link", "noscript", "ix:header"})
 EMPH_TAGS = frozenset({"b", "strong", "i", "em", "u", "h1", "h2", "h3", "h4", "h5", "h6"})
 _STYLE_BOLD = re.compile(r"font-weight\s*:\s*(bold|bolder|[6-9]00)", re.I)
 _STYLE_ITALIC = re.compile(r"font-style\s*:\s*italic", re.I)
@@ -206,10 +206,13 @@ def _collect_inline(el, emph: bool, col: _Collector) -> None:
 
 def linearize(doc_html: str | bytes) -> list[Unit]:
     """Parse HTML and return leaf-block units in document order."""
-    if isinstance(doc_html, str):
-        doc_html = doc_html.encode("utf-8", errors="replace")
+    if isinstance(doc_html, bytes):
+        try:
+            doc_html = doc_html.decode("utf-8")
+        except UnicodeDecodeError:
+            doc_html = doc_html.decode("cp1252", errors="replace")  # legacy filings
     parser = lxml_html.HTMLParser(encoding="utf-8", remove_comments=True, huge_tree=True)
-    root = lxml_html.document_fromstring(doc_html, parser=parser)
+    root = lxml_html.document_fromstring(doc_html.encode("utf-8"), parser=parser)
 
     # has_block[el] = element has a descendant block element with text (so el is not a leaf block)
     has_block: dict = {}
@@ -275,6 +278,7 @@ def linearize(doc_html: str | bytes) -> list[Unit]:
                 continue
             ct = _tag(child)
             if ct in SKIP_TAGS or _is_hidden(child):
+                col.add(child.tail or "", e)
                 continue
             if ct in BLOCK_TAGS or has_block.get(child):
                 emit(col, t, it)

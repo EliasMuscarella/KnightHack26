@@ -16,6 +16,7 @@ import hashlib
 import json
 import logging
 import sys
+import threading
 import time
 from collections.abc import Callable
 from dataclasses import dataclass, field
@@ -59,6 +60,12 @@ class RunContext:
     progress: ProgressFn | None = None
     outputs: dict[str, Any] = field(default_factory=dict)
     timings: dict[str, float] = field(default_factory=dict)
+    cancel: threading.Event | None = None
+    force_publish: bool = False
+
+    def check_cancelled(self) -> None:
+        if self.cancel is not None and self.cancel.is_set():
+            raise PipelineError("The analysis was cancelled.", code="cancelled")
 
     def force(self, idx: int) -> bool:
         return (not self.cache.enabled) or (self.from_stage is not None and idx >= self.from_stage)
@@ -138,8 +145,11 @@ def run_pipeline(
     progress: ProgressFn | None = None,
     fixture: bool = False,
     preloaded: dict[str, Any] | None = None,
+    cancel: threading.Event | None = None,
+    force_publish: bool = False,
 ) -> RunContext:
-    """`preloaded` may carry a warm `embedder` (and `llm_client`/`llm_reason`) from a long-lived process."""
+    """`preloaded` may carry a warm `embedder` (and `llm_client`/`llm_reason`) from a long-lived process.
+    `cancel` is checked between stages. `force_publish` allows replacing a published file whose analysis_id differs."""
     settings = settings or get_settings()
     ticker = normalize_ticker(ticker)
     fixture = fixture or ticker == FIXTURE_TICKER
@@ -152,6 +162,8 @@ def run_pipeline(
         until_stage=until_stage,
         fixture=fixture,
         progress=progress,
+        cancel=cancel,
+        force_publish=force_publish,
     )
     if preloaded:
         ctx.outputs.update(preloaded)

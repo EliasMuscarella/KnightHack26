@@ -28,7 +28,7 @@ from pipeline.types import ExtractedSection, RiskBlock, SegmentedFiling, Sentenc
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.1.0"
+STAGE_VERSION = "0.1.1"
 MAX_HEADING_WORDS = 60
 MAX_GROUP_WORDS = 15
 MIN_BLOCKS = 3
@@ -91,6 +91,9 @@ def split_lead_heading(u: Unit) -> tuple[str, str] | None:
         return None
     prefix = ""
     i = 0
+    # a plain bullet glyph before the emphasized lead ("• **Heading.** body") is skipped
+    if i < len(u.runs) and not u.runs[i].emph and BULLET_RE.fullmatch(u.runs[i].text or ""):
+        i += 1
     while i < len(u.runs) and (u.runs[i].emph or not u.runs[i].text.strip()):
         prefix += u.runs[i].text
         i += 1
@@ -217,8 +220,9 @@ def segment(section: ExtractedSection) -> SegmentedFiling:
                 set_group(pending[0])
             else:
                 flush()
-            pending = (heading, u_start + raw.index(heading))
-            body = [(remainder, u_start + raw.index(remainder, raw.index(heading) + len(heading)))]
+            h_off = stripped.index(heading)
+            pending = (heading, u_start + h_off)
+            body = [(remainder, u_start + stripped.index(remainder, h_off + len(heading)))]
             continue
         body.append((stripped, u_start))
     flush()

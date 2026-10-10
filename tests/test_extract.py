@@ -134,3 +134,84 @@ def test_fixture_filings_extract():
         assert "Our headquarters" not in sec.text
         assert "FIXTURE Example Widgets Corp | " not in sec.text  # running header dropped
         assert sec.start_heading == "Item 1A. Risk Factors"
+
+
+def test_running_footer_with_page_numbers_removed():
+    body = "".join(
+        f"<p>{LOREM}</p><div>Acme Corp | 2025 Form 10-K | {i + 10}</div>" for i in range(12)
+    )
+    html = (
+        "<html><body><p><b>Item 1A. Risk Factors</b></p>"
+        + body
+        + "<p><b>Item 1B. Unresolved Staff Comments</b></p><p>None.</p></body></html>"
+    )
+    sec = extract_item_1a(html, "0000000000-25-000001")
+    assert "Acme Corp | 2025 Form 10-K" not in sec.text
+    assert sec.dropped_units >= 12
+
+
+def test_inline_xbrl_wrappers_and_table_layout():
+    """Workiva-style nesting: ix:nonNumeric wrapping whole sections, and an old-style layout table."""
+    paras = "".join(f"<div><span>{LOREM}</span></div>" for _ in range(12))
+    html = (
+        "<html><body><div style='display:none'><ix:header><ix:hidden>2025 FY</ix:hidden></ix:header></div>"
+        "<ix:nonNumeric name='x:Foo' contextRef='c'>"
+        "<div><span style='font-weight:700'>Item&#160;1A.</span></div><div><span style='font-weight:700'>Risk Factors</span></div>"
+        "<div><span style='font-weight:700;font-style:italic'>Risks Related to Our Business</span></div>"
+        "<div><span style='font-weight:700'>Our business could be harmed by a shortage of widgets.</span></div>"
+        + paras
+        + "</ix:nonNumeric>"
+        "<table><tr><td><span style='font-weight:700'>Item 1B. Unresolved Staff Comments</span></td></tr><tr><td>None.</td></tr></table>"
+        "</body></html>"
+    )
+    sec = extract_item_1a(html, "0000000000-25-000001")
+    assert sec.start_heading == "Item 1A. Risk Factors"
+    assert sec.end_heading.startswith("Item 1B")
+    assert sec.units[0]["text"] == "Risks Related to Our Business"
+    assert "2025 FY" not in sec.text
+
+
+def test_page_split_paragraph_is_rejoined_and_continued_headers_dropped():
+    first = "Our results could vary because of factors tha"
+    html = (
+        "<html><body><p><b>Item 1A. Risk Factors</b></p>"
+        + "".join(f"<p>{LOREM}</p>" for _ in range(6))
+        + f"<p>{first}</p>"
+        + "<hr style='page-break-after:always'/><div>14</div><div>Acme Corp | 2025 Form 10-K</div>"
+        + "<p><b>Risk Factors (continued)</b></p>"
+        + "<p>t we do not control, including demand.</p>"
+        + "".join(f"<p>{LOREM}</p>" for _ in range(6))
+        + "<p><b>Item 1B. Unresolved Staff Comments</b></p><p>None.</p></body></html>"
+    )
+    sec = extract_item_1a(html, "0000000000-25-000001")
+    assert "(continued)" not in sec.text
+    assert "Acme Corp" not in sec.text
+    joined = next(u for u in sec.units if u["text"].startswith("Our results could vary"))
+    assert (
+        joined["text"]
+        == "Our results could vary because of factors tha t we do not control, including demand."
+    )
+
+
+def test_heading_sharing_paragraph_with_first_sentence():
+    html = (
+        "<html><body><p><span style='font-weight:700'>Item 1A. Risk Factors.</span> "
+        + LOREM
+        + "</p>"
+        + "".join(f"<p>{LOREM}</p>" for _ in range(12))
+        + "<p><span style='font-weight:700'>Item 1B. Unresolved Staff Comments.</span> None.</p></body></html>"
+    )
+    sec = extract_item_1a(html, "0000000000-25-000001")
+    assert sec.start_heading == "Item 1A. Risk Factors."
+    assert sec.units[0]["text"].startswith("The company faces risks")
+    assert sec.end_heading.startswith("Item 1B. Unresolved Staff Comments.")
+
+
+def test_oversized_candidate_fails_loudly():
+    html = (
+        "<html><body><p><b>Item 1A. Risk Factors</b></p>"
+        + "".join(f"<p>{LOREM}</p>" for _ in range(500))
+        + "<p><b>Item 2. Properties</b></p></body></html>"
+    )
+    with pytest.raises(ExtractionFailed, match="over"):
+        extract_item_1a(html, "0000000000-25-000001")

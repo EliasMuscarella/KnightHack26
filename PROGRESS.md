@@ -31,14 +31,14 @@ the pipeline with network access and `.env`. Nothing fake is ever published.
 | 8 | LLM rubric + interpretation (stage 7) | done (code) / unavailable at runtime | HF + Gemini clients written; no key and HF blocked, so every interpretation is `unavailable`. Validator unit-tested |
 | 9 | Scoring + publish (stage 8) | done | byte-identical output verified (cached vs --no-cache); fixture → data/scratch only |
 | 10 | Evaluation | todo | golden set needs real filings → blocked |
-| 11 | Frontend | built by subagent; integration + my verification pending | build/lint/typecheck green per subagent report |
-| 12 | API + live mode | in progress | `api/main.py` written; tests pending |
-| 13 | Demo dataset | todo | blocked: needs SEC access |
-| 14 | Hardening + REPORT.md | todo | |
+| 11 | Frontend | done + reviewed + fixed | build/lint/typecheck green; screenshots at 1440×900 reviewed; live SSE verified against the real API |
+| 12 | API + live mode | done + reviewed + fixed | thread-held single-analysis lock, cancel between stages, fixture never served, SSE tested |
+| 13 | Demo dataset | blocked (SEC access) | `scripts/build_demo.py` + `eval/citation_audit.py` ready; UI screenshots done on the fixture |
+| 14 | Hardening + REPORT.md | round 1 done (4 HIGH + 12 MEDIUM pipeline findings fixed; 3 MEDIUM + 14 LOW frontend findings fixed); round 2 in progress | |
 
 ## What's next
 
-API tests → frontend integration + visual check → eval harness (what can run without real filings) → reviews → REPORT.md.
+Review round 2 (pipeline/API + frontend, security included) → fix → REPORT.md.
 
 ## How to resume
 

@@ -137,7 +137,7 @@ export function ChangeList({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="e.g. tariffs"
-              className="h-8 w-56 rounded border border-line-strong bg-surface px-2 text-sm focus:border-accent focus:outline-none"
+              className="h-8 w-56 rounded border border-line-input bg-surface px-2 text-sm focus:border-accent focus:outline-none"
             />
           </label>
           <label className="flex items-center gap-2 text-sm">
@@ -145,7 +145,7 @@ export function ChangeList({
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
-              className="h-8 rounded border border-line-strong bg-surface px-2 text-sm focus:border-accent focus:outline-none"
+              className="h-8 rounded border border-line-input bg-surface px-2 text-sm focus:border-accent focus:outline-none"
             >
               <option value="score">Change score (high to low)</option>
               <option value="title">Title (A to Z)</option>

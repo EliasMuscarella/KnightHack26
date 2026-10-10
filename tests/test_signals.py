@@ -263,3 +263,35 @@ def test_compute_signals_is_complete_and_cited():
     for hits in (sig.hypothetical_to_actual, sig.new_entities, sig.new_quantities):
         for h in hits:
             assert h.old_sentence_ids or h.new_sentence_ids
+
+
+def test_bare_past_tense_insertions_are_not_hedge_to_actual_hits():
+    old = block(
+        OLD,
+        1,
+        "Demand.",
+        [
+            "Our business could be harmed if customers delay orders.",
+            "We may be unable to obtain components.",
+        ],
+    )
+    new = block(
+        NEW,
+        1,
+        "Demand.",
+        [
+            "Our business could be harmed if customers, which were affected by tariffs, delay orders.",
+            "We may be unable to obtain components that are currently sourced from Asia.",
+        ],
+    )
+    assert hypothetical_to_actual(ctx_for(old, new)) == []
+
+
+def test_money_regex_has_no_trailing_comma():
+    from pipeline.signals import _quantities
+
+    assert _quantities("We paid $5, and later $1,250.50 million, plus $3 billion.") == [
+        "$5",
+        "$1,250.50 million",
+        "$3 billion",
+    ]

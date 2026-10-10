@@ -156,3 +156,20 @@ def test_fixture_pair_segments_plausibly():
         assert len(seg.section_groups) == 3
         assert all(b.heading.startswith("FIXTURE:") for b in seg.blocks[1:])
         assert all(len(b.sentences) >= 3 for b in seg.blocks)
+
+
+def test_bullet_before_bold_lead_heading_does_not_crash():
+    lead = "Our factory may flood during the rainy season."
+    rest = "We have one factory in a low-lying area and it has flooded twice before. Repairs take months."
+    units = [
+        U("• " + lead + " " + rest, runs=[["• ", False], [lead, True], [" " + rest, False]]),
+        U("Second heading here.", emph=True),
+        U(BODY),
+        U("Third heading here.", emph=True),
+        U(BODY),
+    ]
+    seg = segment(section_from_units(units))
+    assert seg.blocks[0].heading == lead
+    for blk in seg.blocks:
+        for s in blk.sentences:
+            assert seg.text[s.char_start : s.char_end] == s.text

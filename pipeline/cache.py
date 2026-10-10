@@ -36,6 +36,13 @@ class StageCache:
     def path(self, stage: str, key: str) -> Path:
         return self.root / "stages" / stage / f"{key}.json"
 
+    def peek(self, stage: str, key: str) -> Any | None:
+        """Like get() but does not count as a hit or miss (used to decide whether a probe is needed)."""
+        p = self.path(stage, key)
+        if self.enabled and p.exists():
+            return json.loads(p.read_text(encoding="utf-8"))
+        return None
+
     def get(self, stage: str, key: str) -> Any | None:
         p = self.path(stage, key)
         if self.enabled and p.exists():

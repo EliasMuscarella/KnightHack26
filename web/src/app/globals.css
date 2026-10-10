@@ -10,6 +10,8 @@
   --color-sunken: #efeee9;
   --color-line: #dfddd6;
   --color-line-strong: #b9b6ac;
+  /* Form-control borders: #8f8b80 on white is 3.5:1 (WCAG 1.4.11 non-text contrast >= 3:1). */
+  --color-line-input: #8f8b80;
   --color-ink: #1b1d21;
   --color-ink-muted: #4b4f57;
   --color-ink-faint: #61656d;
@@ -106,10 +108,15 @@ body {
   text-underline-offset: 3px;
 }
 
+/*
+ * Whole removed sentences: a thin, light line-through keeps a non-color cue without making
+ * long paragraphs hard to read (the "− Removed" label, left border and tint carry the rest).
+ * Word-level deletions (del.span-del) keep the full strikethrough.
+ */
 .filing-text .removed-text {
   text-decoration: line-through;
-  text-decoration-color: var(--color-del-line);
-  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(180, 35, 24, 0.45);
+  text-decoration-thickness: 1px;
 }
 
 /* Word-level spans inside modified sentences. */
