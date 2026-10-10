@@ -105,3 +105,25 @@ def test_published_fixture_has_short_titles_and_highlights():
     d = json.loads((ROOT / "contract" / "fixtures" / "FIXTURE_comparison.json").read_text())
     assert all(1 <= len(c["short_title"].split()) <= 8 for c in d["changes"])
     assert 1 <= len(d["highlights"]) <= 5
+
+
+def test_short_titles_batch_is_one_call_and_parsed():
+    from pipeline.llm import LLMClient, short_titles_raw
+
+    calls = []
+
+    def complete(system: str, user: str) -> str:
+        calls.append(user)
+        return '{"titles": [{"change_id": "aaaaaaaaaaaaaaaa", "short_title": "Export controls on China sales"}, {"change_id": "bbbbbbbbbbbbbbbb", "short_title": "x"}]}'
+
+    client = LLMClient(provider="huggingface", model_id="hf:test", _complete=complete)
+    raw = short_titles_raw(client, [("aaaaaaaaaaaaaaaa", "Export controls could restrict sales."), ("bbbbbbbbbbbbbbbb", "Other heading.")])
+    assert len(calls) == 1 and "aaaaaaaaaaaaaaaa\tExport controls could restrict sales." in calls[0]
+    assert {t["change_id"]: t["short_title"] for t in raw["titles"]}["aaaaaaaaaaaaaaaa"] == "Export controls on China sales"
+
+
+def test_short_titles_batch_returns_none_after_bad_json():
+    from pipeline.llm import LLMClient, short_titles_raw
+
+    client = LLMClient(provider="huggingface", model_id="hf:test", _complete=lambda s, u: "not json")
+    assert short_titles_raw(client, [("aaaaaaaaaaaaaaaa", "H.")]) is None

@@ -108,3 +108,22 @@ decision, alternatives considered, how to reverse.
   interpretation reasons never contain exception text; SEC-provided path segments are validated.
 - Not done (documented): per-process SEC rate limiter, paginated-history cache without refresh,
   unpinned default embedding revision (`RISKDIFF_EMBED_REVISION`), worded numbers in the validator.
+
+## D-017 Judge-ready session: pipeline decisions (J1–J5)
+- The NVDA data referenced by the brief is not in the repo or the sandbox; all J-work is verified on synthetic
+  cases that reproduce the quoted NVDA patterns, and the NVDA re-run is documented for the team's machine.
+- J1: the Risk Factors Summary is skipped from its heading to the first *real* risk block (heading followed by a
+  plain paragraph of >= 40 words); a group header right before that block is kept. Intro/boilerplate paragraphs
+  with no pending heading are skipped instead of becoming "preamble" blocks. Filings with no emphasized headings
+  therefore fail loudly (as before, they produced one useless block).
+- J2: entity rules live in `signals.clean_entity` (strip stopwords/punctuation, drop codes like "D:4", drop
+  mostly-numeric strings) and `merge_near_duplicates` (prefix match with >= 5 chars, shorter form kept).
+- J3: `status_change` fires only when the old sentence has an in-progress/possible marker, the new sentence has a
+  concluded marker not preceded by a modal, and the new sentence has fewer tentative markers than the old one.
+  Unaligned removed/added sentences are paired by best lexical overlap (>= 0.25).
+- J4: highlight ranking is kind priority > parent score > change id > position, max 2 per change, max 5 total;
+  candidates come only from signals, change type and validated rubric "yes" answers. Short titles come from one
+  temperature-0 batch call (raw output cached like other LLM output); a title is accepted only if it is <= 8
+  words, passes the banned-language check and shares a content word with the heading, else the heading is
+  truncated deterministically with a visible ellipsis. Without a provider every short title is the fallback.
+- J5: `web/.env.development` no longer sets RISKDIFF_SHOW_FIXTURE; the fixture is opt-in everywhere.
