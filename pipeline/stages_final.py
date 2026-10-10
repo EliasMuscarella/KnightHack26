@@ -8,7 +8,13 @@ import logging
 import os
 from typing import TYPE_CHECKING
 
+from pipeline import diff as diff_mod
+from pipeline import embed as embed_mod
+from pipeline import extract as extract_mod
 from pipeline import llm as llm_mod
+from pipeline import match as match_mod
+from pipeline import sec_fetch as fetch_mod
+from pipeline import segment as segment_mod
 from pipeline import signals as signals_mod
 from pipeline.config import NER_MODEL_ID, PIPELINE_VERSION, SENTENCE_SPLITTER_ID
 from pipeline.diff import diff_params_for
@@ -347,6 +353,22 @@ _STOP = frozenset(
 )
 
 
+def stage_versions() -> dict[str, str]:
+    """STAGE_VERSION of every stage, keyed by stage name, recorded in each published report so the
+    integrity checker (scripts/check_integrity.py) can name the earliest stage a re-run must start
+    from."""
+    return {
+        "fetch": fetch_mod.STAGE_VERSION,
+        "extract": extract_mod.STAGE_VERSION,
+        "segment": segment_mod.STAGE_VERSION,
+        "embed": embed_mod.STAGE_VERSION,
+        "match": match_mod.STAGE_VERSION,
+        "diff": diff_mod.STAGE_VERSION,
+        "signals": signals_mod.STAGE_VERSION,
+        "llm": llm_mod.STAGE_VERSION,
+    }
+
+
 def validated_short_title(heading: str, proposed: str | None) -> str:
     """Accept the LLM label only if it is short, neutral and anchored to the heading; otherwise
     fall back to a deterministic truncation of the real heading."""
@@ -502,6 +524,7 @@ def assemble(
         pipeline_version=PIPELINE_VERSION,
         rubric_version=RUBRIC_VERSION,
         code_fingerprint=fingerprint,
+        stage_versions=stage_versions(),
         model_ids=model_ids,
         is_fixture=ctx.fixture,
         company=fetch.company,
