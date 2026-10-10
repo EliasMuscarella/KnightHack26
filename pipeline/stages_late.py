@@ -37,7 +37,7 @@ def _sentences_hash(segs: dict[str, SegmentedFiling]) -> str:
 def get_embedder(ctx: RunContext) -> Embedder:
     emb = ctx.outputs.get("embedder")
     if emb is None:
-        emb = embed_mod.load_embedder(ctx.settings)
+        emb = embed_mod.load_embedder(ctx.settings, allow_lexical=ctx.fixture)
         ctx.outputs["embedder"] = emb
     return emb
 
@@ -117,7 +117,7 @@ def stage5_diff(
     ctx: RunContext, segs: dict[str, SegmentedFiling], emb: BlockEmbeddings, matches: MatchResult
 ) -> list[dict]:
     """Return a list of change records (dicts) with sentences/stats/change_type per pair."""
-    params = diff_mod.DEFAULT_DIFF_PARAMS
+    params = diff_mod.diff_params_for(emb.backend)
 
     def compute() -> list[dict]:
         svecs = sentence_vectors(ctx, segs, emb)

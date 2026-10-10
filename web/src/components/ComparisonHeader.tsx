@@ -1,10 +1,10 @@
-import type { Comparison, FilingMeta } from "@/types/comparison";
+import type { Comparison, FilingMeta, InterpretationStatus } from "@/types/comparison";
 
 import { CopyId } from "@/components/CopyId";
-import { ExternalLink, InfoBox } from "@/components/ui";
+import { FilingLink, InfoBox } from "@/components/ui";
 import { formatDate } from "@/lib/format";
 
-function FilingCard({ filing, role }: { filing: FilingMeta; role: "Older" | "Newer" }) {
+function FilingCard({ filing, role, isFixture }: { filing: FilingMeta; role: "Older" | "Newer"; isFixture: boolean }) {
   return (
     <section
       aria-label={`${role} filing`}
@@ -30,15 +30,41 @@ function FilingCard({ filing, role }: { filing: FilingMeta; role: "Older" | "New
         </dd>
       </dl>
       <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm font-medium">
-        <ExternalLink href={filing.edgar_url}>Filing document on EDGAR</ExternalLink>
-        <ExternalLink href={filing.edgar_index_url}>Filing index</ExternalLink>
+        <FilingLink href={filing.edgar_url} isFixture={isFixture}>
+          Filing document on EDGAR
+        </FilingLink>
+        <FilingLink href={filing.edgar_index_url} isFixture={isFixture}>
+          Filing index
+        </FilingLink>
       </div>
     </section>
   );
 }
 
+const INTERPRETATION_STATUS_COPY: Partial<Record<InterpretationStatus, { title: string; body: string }>> = {
+  unavailable: {
+    title: "AI interpretation unavailable",
+    body: "The AI rubric and interpretation stage did not run for this comparison (the reason is in the notes, when recorded). Diffs, signals and scores are deterministic and unaffected; AI rubric points are absent.",
+  },
+  skipped: {
+    title: "AI interpretation skipped",
+    body: "No change in this comparison needed the AI rubric and interpretation stage, so it was not run. Diffs, signals and scores are deterministic and unaffected.",
+  },
+  empty: {
+    title: "No validated AI claims",
+    body: "The language model ran, but the citation validator dropped every interpretation claim it produced (uncited, invalid or disallowed wording). Rubric answers may still be shown on individual changes. Diffs, signals and scores are deterministic and unaffected.",
+  },
+};
+
 export function ComparisonHeader({ comparison }: { comparison: Comparison }) {
   const { company, old_filing, new_filing, model_ids, summary } = comparison;
+  const isFixture = comparison.is_fixture === true;
+  // Provenance fallback: the top-level llm_model can be null while individual changes
+  // still record the model that produced their interpretation.
+  const changeModelIds = [
+    ...new Set(comparison.changes.map((c) => c.interpretation.model_id).filter((m): m is string => !!m)),
+  ];
+  const interpretationStatus = summary.interpretation_status;
   return (
     <div className="space-y-6">
       <div>
@@ -52,11 +78,11 @@ export function ComparisonHeader({ comparison }: { comparison: Comparison }) {
       </div>
 
       <div className="flex items-stretch gap-4">
-        <FilingCard filing={old_filing} role="Older" />
+        <FilingCard filing={old_filing} role="Older" isFixture={isFixture} />
         <div aria-hidden="true" className="flex items-center font-mono text-2xl text-ink-faint">
           →
         </div>
-        <FilingCard filing={new_filing} role="Newer" />
+        <FilingCard filing={new_filing} role="Newer" isFixture={isFixture} />
       </div>
 
       <details open className="group rounded-lg border border-line bg-surface">
@@ -74,6 +100,14 @@ export function ComparisonHeader({ comparison }: { comparison: Comparison }) {
             <dd className="min-w-0">
               <CopyId value={comparison.analysis_id} />
             </dd>
+            {comparison.code_fingerprint ? (
+              <>
+                <dt className="text-ink-faint">Code fingerprint</dt>
+                <dd className="min-w-0">
+                  <CopyId value={comparison.code_fingerprint} label="code fingerprint" />
+                </dd>
+              </>
+            ) : null}
             <dt className="text-ink-faint">Pipeline version</dt>
             <dd className="font-mono text-ink">{comparison.pipeline_version}</dd>
             <dt className="text-ink-faint">Rubric version</dt>
@@ -98,6 +132,13 @@ export function ComparisonHeader({ comparison }: { comparison: Comparison }) {
                   {model_ids.llm_model}
                   {model_ids.llm_provider ? <span className="font-sans text-ink-faint"> via {model_ids.llm_provider}</span> : null}
                 </>
+              ) : changeModelIds.length > 0 ? (
+                <>
+                  {changeModelIds.join(", ")}
+                  <span className="block font-sans text-xs text-ink-faint">
+                    Not recorded at the comparison level; taken from the per-change interpretation records.
+                  </span>
+                </>
               ) : (
                 <span className="font-sans text-ink-faint">not used</span>
               )}
@@ -120,7 +161,7 @@ export function ComparisonHeader({ comparison }: { comparison: Comparison }) {
         </div>
       </details>
 
-      {model_ids.embedding_backend === "lexical-fallback" || summary.interpretation_status !== "ok" ? (
+      {model_ids.embedding_backend === "lexical-fallback" || interpretationStatus !== "ok" ? (
         <div className="grid grid-cols-2 gap-4">
           {model_ids.embedding_backend === "lexical-fallback" ? (
             <InfoBox title="Lexical fallback embedder" tone="warn">
@@ -129,10 +170,10 @@ export function ComparisonHeader({ comparison }: { comparison: Comparison }) {
               be less accurate.
             </InfoBox>
           ) : null}
-          {summary.interpretation_status !== "ok" ? (
-            <InfoBox title={`AI interpretation: ${summary.interpretation_status}`} tone="warn">
-              The AI rubric and interpretation stage did not produce output for this comparison. Diffs, signals and
-              scores are deterministic and unaffected; AI rubric points are absent.
+          {interpretationStatus !== "ok" ? (
+            <InfoBox title={INTERPRETATION_STATUS_COPY[interpretationStatus]?.title ?? "AI interpretation incomplete"} tone="warn">
+              {INTERPRETATION_STATUS_COPY[interpretationStatus]?.body ??
+                "The AI rubric and interpretation stage did not complete for this comparison. Diffs, signals and scores are deterministic and unaffected."}
             </InfoBox>
           ) : null}
         </div>

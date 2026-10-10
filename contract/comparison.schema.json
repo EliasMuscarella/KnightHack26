@@ -1279,6 +1279,12 @@
       "title": "Changes",
       "type": "array"
     },
+    "code_fingerprint": {
+      "description": "sha256 over every stage version, the rubric export (weights, questions, thresholds) and the validator version; part of analysis_id.",
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Code Fingerprint",
+      "type": "string"
+    },
     "company": {
       "$ref": "#/$defs/Company"
     },
@@ -1341,6 +1347,7 @@
     "analysis_id",
     "pipeline_version",
     "rubric_version",
+    "code_fingerprint",
     "model_ids",
     "company",
     "old_filing",

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import type { Change, Interpretation, ScoreLine, SignalHit, Signals } from "@/types/comparison";
 
-import { CitationChips, useCitations } from "@/components/citations";
+import { CitationChips, numberCitations, useCitations } from "@/components/citations";
 import { ScoreBar } from "@/components/ui";
 import { AI_NOTE, SCORE_EXPLAINER } from "@/lib/copy";
 import { categoryLabel, formatRatio, formatShare } from "@/lib/format";
@@ -147,17 +147,24 @@ function Transparency({ interp }: { interp: Interpretation }) {
 export function AiInterpretationPanel({ interp }: { interp: Interpretation }) {
   const claims = interp.claims ?? [];
   const rubric = interp.rubric ?? [];
+  // One number per unique cited sentence across the whole panel (claims, then rubric rows).
+  const citeNumber = numberCitations([
+    ...claims.map((c) => c.cited_sentence_ids),
+    ...rubric.map((r) => r.cited_sentence_ids ?? []),
+  ]);
+  // The validator disclosure only makes sense when the model actually produced output.
+  const showTransparency = interp.status === "ok" || interp.status === "empty";
   return (
     <section
       aria-labelledby="ai-heading"
       className="rounded-lg border-2 border-dashed border-ai-line bg-ai-bg p-4"
     >
       <div className="flex items-center justify-between gap-2">
-        <h2 id="ai-heading" className="inline-flex items-center gap-1.5 rounded bg-ai-fg px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-white">
+        <h2 id="ai-heading" className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded bg-ai-fg px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-white">
           <span aria-hidden="true">✦</span> AI interpretation
         </h2>
         {interp.status === "ok" && interp.model_id ? (
-          <span className="truncate font-mono text-xs text-ai-fg" title={interp.model_id}>
+          <span className="min-w-0 truncate font-mono text-xs text-ai-fg" title={interp.model_id}>
             {interp.model_id}
           </span>
         ) : null}
@@ -179,7 +186,7 @@ export function AiInterpretationPanel({ interp }: { interp: Interpretation }) {
               <li key={i} className="text-sm leading-relaxed text-ink">
                 <p>{c.text}</p>
                 <div className="mt-1">
-                  <CitationChips ids={c.cited_sentence_ids} />
+                  <CitationChips ids={c.cited_sentence_ids} numberOf={citeNumber} withSide />
                 </div>
               </li>
             ))}
@@ -212,7 +219,7 @@ export function AiInterpretationPanel({ interp }: { interp: Interpretation }) {
                 {r.rationale ? <p className="mt-1 text-xs text-ink-muted">{r.rationale}</p> : null}
                 {(r.cited_sentence_ids ?? []).length > 0 ? (
                   <div className="mt-1.5">
-                    <CitationChips ids={r.cited_sentence_ids ?? []} />
+                    <CitationChips ids={r.cited_sentence_ids ?? []} numberOf={citeNumber} withSide />
                   </div>
                 ) : null}
               </li>
@@ -221,7 +228,7 @@ export function AiInterpretationPanel({ interp }: { interp: Interpretation }) {
         </div>
       ) : null}
 
-      <Transparency interp={interp} />
+      {showTransparency ? <Transparency interp={interp} /> : null}
     </section>
   );
 }

@@ -76,8 +76,8 @@ export function TickerSearch({ size = "large", knownTickers, autoFocus }: Props)
           aria-describedby={error ? errorId : undefined}
           className={
             compact
-              ? "h-9 w-full rounded-md border border-line-strong bg-surface pl-3 pr-20 font-mono text-sm uppercase placeholder:font-sans placeholder:normal-case placeholder:text-ink-faint focus:border-accent focus:outline-none"
-              : "h-14 w-full rounded-lg border border-line-strong bg-surface px-5 font-mono text-xl uppercase tracking-wide shadow-sm placeholder:font-sans placeholder:text-lg placeholder:normal-case placeholder:tracking-normal placeholder:text-ink-faint focus:border-accent focus:outline-none"
+              ? "h-9 w-full rounded-md border border-line-input bg-surface pl-3 pr-20 font-mono text-sm uppercase placeholder:font-sans placeholder:normal-case placeholder:text-ink-faint focus:border-accent focus:outline-none"
+              : "h-14 w-full rounded-lg border border-line-input bg-surface px-5 font-mono text-xl uppercase tracking-wide shadow-sm placeholder:font-sans placeholder:text-lg placeholder:normal-case placeholder:tracking-normal placeholder:text-ink-faint focus:border-accent focus:outline-none"
           }
         />
         <button

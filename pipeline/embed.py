@@ -56,15 +56,17 @@ class SentenceTransformerEmbedder:
     _model: object = field(default=None, repr=False)
 
     @classmethod
-    def load(cls, model_id: str, hf_token: str | None) -> SentenceTransformerEmbedder:
+    def load(
+        cls, model_id: str, hf_token: str | None, revision: str | None = None
+    ) -> SentenceTransformerEmbedder:
         import torch
         from sentence_transformers import SentenceTransformer
 
         torch.manual_seed(0)
         torch.set_num_threads(max(1, min(8, os.cpu_count() or 1)))
-        model = SentenceTransformer(model_id, token=hf_token, device="cpu")
+        model = SentenceTransformer(model_id, token=hf_token, device="cpu", revision=revision)
         model.eval()
-        inst = cls(model_id=model_id, _model=model)
+        inst = cls(model_id=f"{model_id}@{revision}" if revision else model_id, _model=model)
         inst.max_seq_length = int(model.max_seq_length)
         log.info("embedding model %s loaded; max_seq_length=%d", model_id, inst.max_seq_length)
         return inst
@@ -175,23 +177,42 @@ class LexicalEmbedder:
         return _l2norm(m)
 
 
-def load_embedder(settings: Settings) -> Embedder:
+def lexical_allowed() -> bool:
+    return (
+        os.environ.get("RISKDIFF_ALLOW_LEXICAL", "") == "1"
+        or os.environ.get("RISKDIFF_EMBED_BACKEND", "").strip().lower() == "lexical"
+    )
+
+
+def load_embedder(settings: Settings, *, allow_lexical: bool | None = None) -> Embedder:
+    """Load the dense model. Falls back to the lexical embedder ONLY when allowed explicitly
+    (RISKDIFF_ALLOW_LEXICAL=1 / RISKDIFF_EMBED_BACKEND=lexical, or a fixture run); otherwise a
+    failure to load is a loud ConfigError, so a published dense analysis is never silently
+    replaced by a lexical one."""
+    from pipeline.errors import ConfigError
+
     forced = os.environ.get("RISKDIFF_EMBED_BACKEND", "").strip().lower()
     if forced == "lexical":
         log.warning(
             "RISKDIFF_EMBED_BACKEND=lexical: using the deterministic lexical fallback embedder"
         )
         return LexicalEmbedder()
+    allow = lexical_allowed() if allow_lexical is None else (allow_lexical or lexical_allowed())
     try:
-        return SentenceTransformerEmbedder.load(settings.embed_model, settings.hf_token)
-    except Exception as e:  # network blocked, no cache, missing deps
-        log.warning(
-            "Could not load embedding model %s (%s: %s). Falling back to the lexical TF-IDF embedder. "
-            "Matching quality is lower; this is recorded in model_ids.",
+        return SentenceTransformerEmbedder.load(
             settings.embed_model,
-            type(e).__name__,
-            str(e)[:160],
+            settings.hf_token,
+            revision=os.environ.get("RISKDIFF_EMBED_REVISION") or None,
         )
+    except Exception as e:  # network blocked, no cache, missing deps
+        msg = f"Could not load embedding model {settings.embed_model} ({type(e).__name__}: {str(e)[:160]})."
+        if not allow:
+            raise ConfigError(
+                msg
+                + " Set HF_TOKEN / allow network access to huggingface.co, or set RISKDIFF_ALLOW_LEXICAL=1 "
+                "to accept the lower-quality deterministic lexical embedder (recorded in model_ids)."
+            ) from e
+        log.warning("%s Falling back to the lexical TF-IDF embedder; recorded in model_ids.", msg)
         return LexicalEmbedder()
 
 
@@ -221,11 +242,20 @@ class BlockEmbeddings:
         return BlockEmbeddings(**d)
 
 
+def _needs_chunking(embedder: Embedder, text: str) -> bool:
+    tok = getattr(getattr(embedder, "_model", None), "tokenizer", None)
+    if tok is None or not embedder.max_seq_length:
+        return False
+    return len(tok.encode(text, add_special_tokens=False)) > embedder.max_seq_length - 2
+
+
 def _round(m: np.ndarray) -> list[list[float]]:
     return [[round(float(x), 6) for x in row] for row in m]
 
 
 def embed_segments(segs: dict[str, SegmentedFiling], embedder: Embedder) -> BlockEmbeddings:
+    if isinstance(embedder, LexicalEmbedder):
+        embedder = LexicalEmbedder()  # never share a fitted lexical embedder between runs
     corpus = [b.full_text for side in ("old", "new") for b in segs[side].blocks]
     embedder.fit(corpus)
     heading: dict[str, list[list[float]]] = {}
@@ -236,8 +266,21 @@ def embed_segments(segs: dict[str, SegmentedFiling], embedder: Embedder) -> Bloc
         blocks = segs[side].blocks
         heading[side] = _round(embedder.embed([b.heading for b in blocks]))
         body[side] = _round(embedder.embed([b.body or b.heading for b in blocks]))
+        full_start = embedder.truncation_count
         full[side] = _round(embedder.embed([b.full_text for b in blocks]))
-    truncated = embedder.truncation_count - before
+        # count each block once: the full-text pass is the superset of what got chunked
+        embedder.truncation_count = full_start + (embedder.truncation_count - full_start)
+    truncated = (
+        sum(
+            1
+            for side in ("old", "new")
+            for b in segs[side].blocks
+            if _needs_chunking(embedder, b.full_text)
+        )
+        if embedder.max_seq_length
+        else 0
+    )
+    embedder.truncation_count = before + truncated
     if truncated:
         log.warning(
             "stage3: %d block texts exceeded max_seq_length=%s and were chunked + mean-pooled",

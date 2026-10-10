@@ -24,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
-        <header className="sticky top-0 z-40 border-b border-line bg-surface/95 backdrop-blur">
+        <header className="sticky top-0 z-40 border-b border-line bg-surface">
           <div className="mx-auto flex h-14 max-w-[1400px] items-center gap-8 px-8">
             <Link href="/" className="flex items-baseline gap-1.5 text-lg font-bold tracking-tight text-ink">
               <span aria-hidden="true" className="font-mono text-base text-add-fg">

@@ -43,4 +43,6 @@ export interface RubricFile {
   weights: { signal: string; label: string; points: number; description: string }[];
   banned_phrases: string[];
   thresholds: Record<string, number>;
+  /** Score caps (per-signal limits and the overall score cap). */
+  caps: Record<string, number>;
 }

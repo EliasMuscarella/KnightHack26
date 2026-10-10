@@ -141,3 +141,13 @@ def test_analyze_live_fixture_streams_stages(client):
         Path(client.app.state.rd.settings.data_dir) / "scratch" / "FIXTUR_2024_2025.json"
     ).exists()
     assert not (Path(client.app.state.rd.settings.published_dir) / "FIXTUR_2024_2025.json").exists()
+
+
+def test_fixture_file_in_published_dir_is_never_served(client):
+    # the fixture was written into the published dir by the test setup; the API must refuse it
+    assert client.get("/comparison/FIXTUR").status_code == 404
+    assert "FIXTUR" not in [c["ticker"] for c in client.get("/companies").json()["companies"]]
+
+
+def test_busy_lock_released_after_run(client):
+    assert client.get("/health").json()["busy"] is False

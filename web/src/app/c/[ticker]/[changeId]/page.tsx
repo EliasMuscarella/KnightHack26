@@ -9,11 +9,9 @@ import type { SentenceRef } from "@/components/citations";
 import { CategoryChip, ChangeTypeBadge, FixtureBanner, PageContainer, ScoreBar } from "@/components/ui";
 import { getComparison } from "@/lib/data";
 import { formatRatio } from "@/lib/format";
-import { normalizeTicker } from "@/lib/ticker";
+import { CHANGE_ID_RE, normalizeTicker } from "@/lib/ticker";
 
 export const dynamic = "force-dynamic";
-
-const CHANGE_ID_RE = /^[A-Za-z0-9_\-]{1,128}$/;
 
 async function load(props: PageProps<"/c/[ticker]/[changeId]">) {
   const { ticker: rawTicker, changeId } = await props.params;

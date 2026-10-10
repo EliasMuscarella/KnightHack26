@@ -61,6 +61,10 @@ export interface Comparison {
    * Ranked by score desc, then stable id.
    */
   changes: Change[];
+  /**
+   * sha256 over every stage version, the rubric export (weights, questions, thresholds) and the validator version; part of analysis_id.
+   */
+  code_fingerprint: string;
   company: Company;
   /**
    * How the two filings were chosen (e.g. 'two most recent original 10-Ks; amendments excluded').

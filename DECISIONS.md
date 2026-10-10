@@ -65,3 +65,26 @@ decision, alternatives considered, how to reverse.
 ## D-014 Fiscal year from inline XBRL
 - `fiscal_year` is read from `dei:DocumentFiscalYearFocus` in the primary document, falling back to the
   period-of-report year. Recorded per filing as `fiscal_year_source` in the stage-0 record.
+
+## D-015 Review round 1 (pipeline): stricter invariants
+- Lexical fallback is no longer silent: a non-fixture run fails with a clear ConfigError unless
+  `RISKDIFF_ALLOW_LEXICAL=1` (or `RISKDIFF_EMBED_BACKEND=lexical`). Reason: a machine without
+  Hugging Face access must not quietly replace a committed dense analysis with a lexical one.
+- The citation validator drops a claim if ANY cited id is invalid (no silent repair), discards the
+  rationale of every "no" answer (uncited free text), and drops claims whose numbers do not appear
+  in the cited sentences. Banned stems now include more/less risky, safer, chance, odds, percent-of-risk.
+- Stage 7 caches only the RAW model JSON; the validator runs on every load. Provider errors are not cached.
+  When every change is cached for the configured model, the provider is not probed (offline replay).
+- `analysis_id` now also hashes `code_fingerprint` (all stage versions, rubric export incl. weights
+  and thresholds, validator version, diff/match params, rendered questions). The fingerprint is published.
+- `publish` refuses to overwrite a published file whose `analysis_id` differs unless `--force`.
+- API: the single-analysis lock is a threading.Lock held by the worker thread until the pipeline
+  ends; timeouts/disconnects set a cancel event checked between stages; `/comparison` and the cached
+  replay go through `load_published` (fixture data is never served).
+- Extraction: footers with page numbers ("Acme | 2025 Form 10-K | 17"), "(continued)" headers and
+  page-split paragraphs are handled; sections over 60k words fail loudly; headings sharing a
+  paragraph with their first sentence are split off.
+- Hedge→actual no longer fires on bare was/were/did/currently insertions.
+- 10-K/A vs 10-K for the same period: the original wins.
+- Known, not fixed: cross-machine floating-point differences in dense similarities (4-decimal
+  rounding) are possible; byte-identity is guaranteed on one machine + one lockfile. Documented in REPORT.md.

@@ -10,7 +10,7 @@ from typing import TYPE_CHECKING
 from pipeline import llm as llm_mod
 from pipeline import signals as signals_mod
 from pipeline.config import NER_MODEL_ID, PIPELINE_VERSION, SENTENCE_SPLITTER_ID
-from pipeline.diff import DEFAULT_DIFF_PARAMS
+from pipeline.diff import diff_params_for
 from pipeline.publish import publish
 from pipeline.rubric import RUBRIC_VERSION
 from pipeline.schema import (
@@ -18,21 +18,20 @@ from pipeline.schema import (
     CHANGE_TYPES,
     SCHEMA_VERSION,
     Change,
-    Claim,
     Comparison,
     FilingMeta,
     Interpretation,
     ModelIds,
-    RubricAnswer,
     Sentence,
     SentenceLocation,
     Signals,
     Summary,
     Thresholds,
 )
-from pipeline.score import analysis_id, change_id, score_change
+from pipeline.score import analysis_id, change_id, code_fingerprint, score_change
 from pipeline.stages_late import get_embedder
 from pipeline.types import FilingRecord, RiskBlock, SegmentedFiling
+from pipeline.validate import validate_llm_output
 
 if TYPE_CHECKING:
     from pipeline.run import RunContext
@@ -104,102 +103,174 @@ def stage6_signals(
 # ---------- stage 7 ----------
 
 
+def _llm_key_inputs(
+    prompt_hash: str,
+    model_id: str,
+    old: RiskBlock | None,
+    new: RiskBlock | None,
+    sentences: list[Sentence],
+    fetch,
+) -> dict:
+    return {
+        "prompt_sha256": prompt_hash,
+        "model_id": model_id,
+        "old": [[s.id, s.text] for s in old.sentences] if old else None,
+        "new": [[s.id, s.text] for s in new.sentences] if new else None,
+        "diff": [(s.id, s.status) for s in sentences],
+        "fy": [fetch.old.fiscal_year, fetch.new.fiscal_year],
+    }
+
+
 def stage7_llm(
     ctx: RunContext, segs: dict[str, SegmentedFiling], records: list[dict], fetch
 ) -> tuple[list[dict | None], dict]:
-    """Returns (per-record result dicts or None, provider info)."""
+    """Returns (per-record raw LLM results or None, provider info).
+
+    Only the RAW parsed model output is cached (never validated claims), so the citation validator
+    runs on every load. Provider errors are never cached. When every change is already cached for
+    a configured model, the provider is not probed at all (offline replay stays deterministic)."""
+    settings = ctx.settings
+    prompt_hash = llm_mod.prompt_sha256()
+    candidates = [(i, r) for i, r in enumerate(records) if r["change_type"] != "largely_unchanged"]
+    prepared = []
+    for i, r in candidates:
+        old, new = _blocks(segs, r)
+        prepared.append(
+            (
+                i,
+                r,
+                old,
+                new,
+                (new or old).heading,
+                [Sentence.model_validate(s) for s in r["sentences"]],
+            )
+        )
+
+    def cached_rows(model_id: str) -> list[dict | None] | None:
+        rows: list[dict | None] = [None] * len(records)
+        for i, r, old, new, _title, sentences in prepared:
+            key = ctx.cache.key(
+                "llm",
+                llm_mod.STAGE_VERSION,
+                _llm_key_inputs(prompt_hash, model_id, old, new, sentences, fetch),
+            )
+            hit = ctx.cache.peek("llm", key)
+            if hit is None:
+                return None
+            rows[i] = hit
+        return rows
+
     client = ctx.outputs.get("llm_client")
     reason = ctx.outputs.get("llm_reason")
-    if client is None and reason is None:
-        client, reason = llm_mod.select_client(ctx.settings)
-        ctx.outputs["llm_client"] = client
-        ctx.outputs["llm_reason"] = reason
-        if client is None:
-            log.warning("%s", reason)
-        else:
-            log.info("LLM provider: %s (%s)", client.provider, client.model_id)
-    info = {
-        "provider": client.provider if client else None,
-        "model_id": client.model_id if client else None,
-        "prompt_sha256": llm_mod.prompt_sha256() if client else None,
-        "reason": reason if client is None else None,
-    }
-    results: list[dict | None] = []
-    calls = 0
-    for r in records:
-        if client is None or r["change_type"] == "largely_unchanged":
-            results.append(None)
-            continue
-        old, new = _blocks(segs, r)
-        title = (new or old).heading
-        sentences = [Sentence.model_validate(s) for s in r["sentences"]]
-        key_inputs = {
-            "prompt_sha256": info["prompt_sha256"],
-            "model_id": client.model_id,
-            "old": [s.text for s in old.sentences] if old else None,
-            "new": [s.text for s in new.sentences] if new else None,
-            "diff": [(s.id, s.status) for s in sentences],
-            "fy": [fetch.old.fiscal_year, fetch.new.fiscal_year],
+    results: list[dict | None] | None = None
+    info: dict = {"provider": None, "model_id": None, "prompt_sha256": None, "reason": None}
+    if client is None and reason is None and prepared and not ctx.force(7):
+        for provider, model_id in (
+            ("huggingface", f"hf:{settings.llm_model}"),
+            ("gemini", f"gemini:{settings.gemini_model}"),
+        ):
+            rows = cached_rows(model_id)
+            if rows is not None:
+                results = rows
+                info = {
+                    "provider": provider,
+                    "model_id": model_id,
+                    "prompt_sha256": prompt_hash,
+                    "reason": None,
+                }
+                log.info(
+                    "LLM stage: all %d changes served from cache for %s (no provider probe)",
+                    len(prepared),
+                    model_id,
+                )
+                break
+    if results is None:
+        if client is None and reason is None:
+            client, reason = llm_mod.select_client(settings)
+            ctx.outputs["llm_client"] = client
+            ctx.outputs["llm_reason"] = reason
+            if client is None:
+                log.warning("%s", reason)
+            else:
+                log.info("LLM provider: %s (%s)", client.provider, client.model_id)
+        info = {
+            "provider": client.provider if client else None,
+            "model_id": client.model_id if client else None,
+            "prompt_sha256": prompt_hash if client else None,
+            "reason": reason if client is None else None,
         }
-
-        def compute(title=title, old=old, new=new, sentences=sentences) -> dict:
-            nonlocal calls
-            calls += 1
-            res = llm_mod.interpret_change(
-                client, title, old, new, sentences, fetch.old.fiscal_year, fetch.new.fiscal_year
-            )
-            return {
-                "status": res.status,
-                "model_id": res.model_id,
-                "attempts": res.attempts,
-                "error": res.error,
-                "raw": res.raw,
-                "rubric": [a.model_dump(mode="json") for a in res.validation.rubric]
-                if res.validation
-                else [],
-                "claims": [c.model_dump(mode="json") for c in res.validation.claims]
-                if res.validation
-                else [],
-                "dropped_claim_count": res.validation.dropped_claim_count if res.validation else 0,
-                "dropped_reasons": res.validation.dropped_reasons if res.validation else [],
-            }
-
-        results.append(ctx.cached(7, llm_mod.STAGE_VERSION, key_inputs, compute))
-    ctx.outputs["llm_calls"] = calls
+        results = [None] * len(records)
+        calls = 0
+        if client is not None:
+            for i, r, old, new, title, sentences in prepared:
+                key = ctx.cache.key(
+                    "llm",
+                    llm_mod.STAGE_VERSION,
+                    _llm_key_inputs(prompt_hash, client.model_id, old, new, sentences, fetch),
+                )
+                hit = None if ctx.force(7) else ctx.cache.get("llm", key)
+                if hit is not None:
+                    results[i] = hit
+                    continue
+                calls += 1
+                res = llm_mod.interpret_change(
+                    client, title, old, new, sentences, fetch.old.fiscal_year, fetch.new.fiscal_year
+                )
+                row = {
+                    "status": res.status,
+                    "model_id": res.model_id,
+                    "provider": client.provider,
+                    "attempts": res.attempts,
+                    "error": res.error,
+                    "raw": res.raw,
+                }
+                if res.status != "error":
+                    ctx.cache.put("llm", key, row)
+                results[i] = row
+        ctx.outputs["llm_calls"] = calls
     return results, info
 
 
-def build_interpretation(r: dict, llm_res: dict | None, info: dict) -> Interpretation:
+def build_interpretation(
+    r: dict, llm_res: dict | None, info: dict, allowed: dict[str, str]
+) -> Interpretation:
     if r["change_type"] == "largely_unchanged":
         return Interpretation(
             status="skipped", reason="Not run for largely unchanged risks.", model_id=None
         )
     if info["provider"] is None:
         return Interpretation(status="unavailable", reason=info["reason"], model_id=None)
-    if llm_res is None or llm_res["status"] == "error":
+    if (
+        llm_res is None
+        or llm_res.get("status") == "error"
+        or not isinstance(llm_res.get("raw"), dict)
+    ):
         return Interpretation(
             status="unavailable",
             reason=f"The model did not return valid output after {llm_mod.MAX_ATTEMPTS} attempts ({(llm_res or {}).get('error') or 'unknown error'}).",
             model_id=info["model_id"],
         )
-    rubric = [RubricAnswer.model_validate(a) for a in llm_res["rubric"]]
-    claims = [Claim.model_validate(c) for c in llm_res["claims"]]
-    status = "ok" if claims else "empty"
+    v = validate_llm_output(
+        llm_res["raw"], allowed
+    )  # the validator runs on EVERY load, cached or not
+    status = "ok" if v.claims else "empty"
     reason = (
         None
-        if claims
-        else f"All {llm_res['dropped_claim_count']} interpretation claims were dropped by the citation validator."
-        if llm_res["dropped_claim_count"]
-        else "The model returned no interpretation claims."
+        if v.claims
+        else (
+            f"All {v.dropped_claim_count} interpretation claims were dropped by the citation validator."
+            if v.dropped_claim_count
+            else "The model returned no interpretation claims."
+        )
     )
     return Interpretation(
         status=status,
         reason=reason,
         model_id=llm_res["model_id"],
-        rubric=rubric,
-        claims=claims,
-        dropped_claim_count=llm_res["dropped_claim_count"],
-        dropped_reasons=llm_res["dropped_reasons"],
+        rubric=v.rubric,
+        claims=v.claims,
+        dropped_claim_count=v.dropped_claim_count,
+        dropped_reasons=v.dropped_reasons,
     )
 
 
@@ -248,15 +319,17 @@ def assemble(
         llm_model=llm_info["model_id"],
         prompt_sha256=llm_info["prompt_sha256"],
     )
+    diff_params = diff_params_for(emb.backend)
     thresholds = Thresholds(
         match_threshold=matches.params.match_threshold,
         heading_weight=matches.params.heading_weight,
         body_weight=matches.params.body_weight,
-        sentence_match_threshold=DEFAULT_DIFF_PARAMS.sentence_match_threshold,
-        sentence_unchanged_threshold=DEFAULT_DIFF_PARAMS.sentence_unchanged_threshold,
-        expanded_ratio=DEFAULT_DIFF_PARAMS.expanded_ratio,
-        reworded_similarity=DEFAULT_DIFF_PARAMS.reworded_similarity,
+        sentence_match_threshold=diff_params.sentence_match_threshold,
+        sentence_unchanged_threshold=diff_params.sentence_unchanged_threshold,
+        expanded_ratio=diff_params.expanded_ratio,
+        reworded_similarity=diff_params.reworded_similarity,
     )
+    fingerprint = code_fingerprint()
 
     sentence_index: dict[str, SentenceLocation] = {}
     for side in ("old", "new"):
@@ -279,14 +352,14 @@ def assemble(
         old, new = _blocks(segs, r)
         sentences = [Sentence.model_validate(s) for s in r["sentences"]]
         signals = Signals.model_validate(sg["signals"])
-        interpretation = build_interpretation(r, lr, llm_info)
+        interpretation = build_interpretation(r, lr, llm_info, llm_mod.allowed_sentences(old, new))
         score, breakdown = score_change(
             r["change_type"],
             sentences,
             signals,
             interpretation,
             r["similarity"],
-            DEFAULT_DIFF_PARAMS.reworded_similarity,
+            diff_params.reworded_similarity,
         )
         changes.append(
             Change(
@@ -347,9 +420,12 @@ def assemble(
 
     comp = Comparison(
         schema_version=SCHEMA_VERSION,
-        analysis_id=analysis_id(fetch.old.accession_number, fetch.new.accession_number, model_ids),
-        pipeline_version=PIPELINE_VERSION if not ctx.fixture else PIPELINE_VERSION,
+        analysis_id=analysis_id(
+            fetch.old.accession_number, fetch.new.accession_number, model_ids, fingerprint
+        ),
+        pipeline_version=PIPELINE_VERSION,
         rubric_version=RUBRIC_VERSION,
+        code_fingerprint=fingerprint,
         model_ids=model_ids,
         is_fixture=ctx.fixture,
         company=fetch.company,
@@ -413,7 +489,9 @@ def run_final_stages(ctx: RunContext, ticker: str):
 
     ctx.emit(8, "started", ticker=ticker)
     comp = assemble(ctx, ticker, records, sig_rows, llm_rows, llm_info)
-    path = publish(comp, ctx.settings.published_dir, ctx.settings.data_dir / "scratch")
+    path = publish(
+        comp, ctx.settings.published_dir, ctx.settings.data_dir / "scratch", force=ctx.force_publish
+    )
     ctx.outputs["comparison"] = comp
     ctx.outputs["published_path"] = str(path)
     ctx.emit(

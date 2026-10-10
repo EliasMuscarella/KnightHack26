@@ -113,7 +113,7 @@ def eval_matcher(golden: dict, settings) -> dict:
         gold_old = {o for o, _ in gold if o is not None}
         gold_new = {n for _, n in gold if n is not None}
 
-        def restrict(pairs: set) -> set:
+        def restrict(pairs: set, gold_old=gold_old, gold_new=gold_new) -> set:
             return {(o, n) for o, n in pairs if (o in gold_old) or (n in gold_new)}
 
         cur = restrict(_predicted_pairs(ctx.outputs["matches"]))

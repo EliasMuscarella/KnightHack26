@@ -31,7 +31,7 @@ from pipeline.types import RiskBlock
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.1.0"
+STAGE_VERSION = "0.1.1"
 LEXICON_METHOD_ID = "keyword-lexicon-v1"
 
 HEDGE_RE = re.compile(
@@ -41,7 +41,7 @@ ACTUAL_RE = re.compile(
     r"\b(has|have|had)\s+(?:\w+\s+){0,2}?(been|resulted|experienced|incurred|caused|led|affected|impacted|"
     r"increased|decreased|reduced|disrupted|delayed|suspended|terminated|recorded|recognized|imposed|"
     r"announced|filed|adopted|enacted|occurred|materially)\b|"
-    r"\b(resulted in|experienced|incurred|currently|is currently|are currently|was|were|did)\b",
+    r"\b(resulted in|experienced|incurred|has occurred|have occurred)\b",
     re.I,
 )
 PAST_EVENT_RE = re.compile(
@@ -53,7 +53,9 @@ YEAR_RE = re.compile(
     r"\b(?:fiscal|calendar|in|during|since)\s+(?:year\s+)?(?:19|20)\d{2}\b|\b(?:19|20)\d{2}\b"
 )
 
-MONEY_RE = re.compile(r"\$\s?\d[\d,]*(?:\.\d+)?\s*(?:thousand|million|billion|trillion)?", re.I)
+MONEY_RE = re.compile(
+    r"\$\s?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*(?:thousand|million|billion|trillion))?", re.I
+)
 PERCENT_RE = re.compile(r"\b\d+(?:\.\d+)?\s?(?:%|percent)", re.I)
 UNIT_RE = re.compile(
     r"\b\d[\d,]*(?:\.\d+)?\s+(?:employees|customers|countries|days|months|years|patents|facilities|"

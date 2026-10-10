@@ -46,6 +46,15 @@ class DiffParams:
 
 
 DEFAULT_DIFF_PARAMS = DiffParams()
+# TF-IDF cosine lives on a lower scale than dense cosine, so rule 8's similarity floor differs.
+DIFF_PARAMS_BY_BACKEND = {
+    "sentence-transformers": DEFAULT_DIFF_PARAMS,
+    "lexical-fallback": DiffParams(reworded_similarity=0.45),
+}
+
+
+def diff_params_for(backend: str) -> DiffParams:
+    return DIFF_PARAMS_BY_BACKEND.get(backend, DEFAULT_DIFF_PARAMS)
 
 
 def normalize_sentence(s: str) -> str:

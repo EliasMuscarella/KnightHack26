@@ -60,13 +60,38 @@ export function CitationChip({ n, id, withSide = false }: { n: number; id: strin
   );
 }
 
-export function CitationChips({ ids, withSide = false, start = 1 }: { ids: string[]; withSide?: boolean; start?: number }) {
+/**
+ * Chips for a list of cited sentence ids. By default they are numbered from `start`; pass
+ * `numberOf` to number by unique sentence id across a whole panel, so one sentence always
+ * has the same number and two different sentences never share one.
+ */
+export function CitationChips({
+  ids,
+  withSide = false,
+  start = 1,
+  numberOf,
+}: {
+  ids: string[];
+  withSide?: boolean;
+  start?: number;
+  numberOf?: (id: string) => number;
+}) {
   if (ids.length === 0) return <span className="text-xs text-ink-faint">no citation</span>;
+  const unique = [...new Set(ids)];
   return (
     <span className="inline-flex flex-wrap gap-1">
-      {ids.map((id, i) => (
-        <CitationChip key={`${id}-${i}`} n={start + i} id={id} withSide={withSide} />
+      {unique.map((id, i) => (
+        <CitationChip key={id} n={numberOf ? numberOf(id) : start + i} id={id} withSide={withSide} />
       ))}
     </span>
   );
+}
+
+/** Assigns 1-based numbers to sentence ids in first-seen order. */
+export function numberCitations(idLists: string[][]): (id: string) => number {
+  const numbers = new Map<string, number>();
+  for (const list of idLists) {
+    for (const id of list) if (!numbers.has(id)) numbers.set(id, numbers.size + 1);
+  }
+  return (id) => numbers.get(id) ?? 0;
 }

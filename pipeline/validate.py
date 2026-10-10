@@ -1,36 +1,50 @@
 """Citation validator for every LLM output (mandatory, deterministic).
 
 Rules
-- Every rubric "yes" must cite >= 1 sentence id that exists in the sentence index AND belongs
-  to this change's blocks; otherwise the answer becomes "no" (raw_answer keeps what the model said).
-- Every interpretation claim must cite >= 1 valid sentence id, else it is dropped.
-- Claims or rationales containing banned language (see rubric.BANNED_PHRASES, matched as whole
-  words, case-insensitive) or a percentage attached to the word "risk" are dropped.
-- Claims longer than MAX_CLAIM_CHARS are dropped (keeps interpretations short and checkable).
+- Every rubric "yes" must cite >= 1 sentence id, and EVERY cited id must exist in the allowed set
+  (the sentences of this change's two blocks); otherwise the answer becomes "no" (raw_answer keeps
+  what the model said) and its rationale is discarded. Rationales of "no" answers are never kept:
+  they would be uncited free text.
+- Every interpretation claim must cite >= 1 sentence id and every cited id must be valid; a claim
+  with ANY invalid or fabricated id is dropped (not repaired).
+- Claims containing banned language (rubric.BANNED_PHRASES, matched as word stems, case-insensitive)
+  or a percentage attached to the word "risk" are dropped.
+- Every number, dollar amount, or percentage mentioned in a claim must appear in the cited
+  sentences; otherwise the claim is dropped (guards against invented figures).
+- Claims longer than MAX_CLAIM_CHARS are dropped; at most MAX_CLAIMS claims are kept.
 Dropped items are counted and their reasons recorded for transparency.
 """
 
 from __future__ import annotations
 
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 
-from pipeline.rubric import QUESTIONS
+from pipeline.rubric import BANNED_PHRASES, QUESTIONS
 from pipeline.schema import Claim, RubricAnswer
 
+VALIDATOR_VERSION = "1.1.0"
 MAX_CLAIM_CHARS = 400
 MAX_CLAIMS = 3
 
-# Stems: "buy/buying/bought", "sell/selling/sold", "invest/investing/investor(s)/investment(s)"
-# (but not "investigation"), "recommend/recommendation(s)", "guarantee(s/d)", "probabilit(y|ies)".
+# Stems: buy/buying/bought, sell/selling/sold, invest/investing/investor(s)/investment(s) (but not
+# "investigation"), recommend*, guarantee*, probabilit*, probable/probably, likely/unlikely,
+# riskier/riskiest/more risky/less risky/safer/safest/less safe, chance(s), odds, "will happen".
 _STEMS = (
     r"buy(?:s|ing)?|bought|sell(?:s|ing)?|sold|invest(?!igat)\w*|recommend\w*|guarantee\w*|"
-    r"probabilit\w*|probabl[ey]|likely|unlikely|riskier|will happen"
+    r"probabilit\w*|probabl[ey]|likely|unlikely|riskier|riskiest|more risky|less risky|safer|safest|"
+    r"less safe|more safe|chances?|odds|will happen"
 )
 _BANNED_RE = re.compile(r"\b(" + _STEMS + r")\b", re.I)
 _RISK_PERCENT_RE = re.compile(
-    r"(\d+(?:\.\d+)?\s?%\s*(?:of\s+)?(?:\w+\s+){0,3}risk)|(risk\w*\s+(?:\w+\s+){0,3}\d+(?:\.\d+)?\s?%)",
+    r"(\d+(?:\.\d+)?\s?(?:%|percent)\s*(?:of\s+)?(?:\w+\s+){0,3}risk)|(risk\w*\s+(?:\w+\s+){0,3}\d+(?:\.\d+)?\s?(?:%|percent))",
     re.I,
+)
+_NUMBER_RE = re.compile(r"\$?\d[\d,]*(?:\.\d+)?%?")
+
+assert all(re.search(_BANNED_RE, p) for p in BANNED_PHRASES if p != "will happen"), (
+    "rubric.BANNED_PHRASES drifted from the validator"
 )
 
 
@@ -43,6 +57,22 @@ def banned_language(text: str) -> str | None:
     return None
 
 
+def _numbers(text: str) -> set[str]:
+    return {
+        n.strip("$%,.").replace(",", "")
+        for n in _NUMBER_RE.findall(text)
+        if any(ch.isdigit() for ch in n)
+    }
+
+
+def unsupported_numbers(claim: str, cited_texts: list[str]) -> set[str]:
+    """Numbers in the claim that do not occur in any cited sentence (ignoring $, %, commas)."""
+    have = set()
+    for t in cited_texts:
+        have |= _numbers(t)
+    return {n for n in _numbers(claim) if n not in have}
+
+
 @dataclass
 class ValidationResult:
     rubric: list[RubricAnswer]
@@ -51,17 +81,22 @@ class ValidationResult:
     dropped_reasons: list[str] = field(default_factory=list)
 
 
-def _valid_ids(ids: list, allowed: set[str]) -> list[str]:
-    out: list[str] = []
-    for sid in ids or []:
-        if isinstance(sid, str) and sid in allowed and sid not in out:
-            out.append(sid)
-    return out
+def _check_ids(ids: object, allowed: Mapping[str, str]) -> tuple[list[str], list[str]]:
+    """Return (valid unique ids in order, invalid ids)."""
+    valid: list[str] = []
+    invalid: list[str] = []
+    for sid in ids if isinstance(ids, list) else []:
+        if isinstance(sid, str) and sid in allowed:
+            if sid not in valid:
+                valid.append(sid)
+        else:
+            invalid.append(str(sid))
+    return valid, invalid
 
 
-def validate_llm_output(raw: dict, allowed_sentence_ids: set[str]) -> ValidationResult:
-    """`raw` is the parsed model JSON: {"rubric": [{"question_id","answer","cited_sentence_ids","rationale"}],
-    "claims": [{"text","cited_sentence_ids"}]}. Unknown question ids are ignored; missing ones become "no"."""
+def validate_llm_output(raw: dict, allowed_sentences: Mapping[str, str]) -> ValidationResult:
+    """`raw` is the parsed model JSON; `allowed_sentences` maps the sentence ids of this change's
+    blocks to their exact text."""
     reasons: list[str] = []
     answers: dict[str, RubricAnswer] = {}
     for item in raw.get("rubric", []) or []:
@@ -72,23 +107,32 @@ def validate_llm_output(raw: dict, allowed_sentence_ids: set[str]) -> Validation
         if q is None:
             continue
         raw_answer = bool(item.get("answer"))
-        cited = _valid_ids(item.get("cited_sentence_ids") or [], allowed_sentence_ids)
+        cited, invalid = _check_ids(item.get("cited_sentence_ids") or [], allowed_sentences)
         rationale = item.get("rationale")
         rationale = str(rationale).strip()[:MAX_CLAIM_CHARS] if rationale else None
-        if rationale and banned_language(rationale):
+        answer = raw_answer
+        if raw_answer and (not cited or invalid):
+            answer = False
+            reasons.append(
+                f"{qid} 'yes' downgraded to 'no': "
+                + ("invalid citation(s) " + ", ".join(invalid) if invalid else "no valid citation")
+            )
+        if not answer:
+            rationale = None
+            cited = []
+        elif rationale and banned_language(rationale):
             reasons.append(
                 f"{qid} rationale removed: banned language ({banned_language(rationale)})"
             )
             rationale = None
-        answer = raw_answer
-        if raw_answer and not cited:
-            answer = False
-            reasons.append(f"{qid} 'yes' downgraded to 'no': no valid citation")
+        elif rationale and unsupported_numbers(rationale, [allowed_sentences[s] for s in cited]):
+            reasons.append(f"{qid} rationale removed: mentions a number not in the cited sentences")
+            rationale = None
         answers[qid] = RubricAnswer(
             question_id=qid,
             question=q.text,
             answer=answer,
-            cited_sentence_ids=cited if answer else cited,
+            cited_sentence_ids=cited,
             rationale=rationale,
             raw_answer=raw_answer,
         )
@@ -112,7 +156,7 @@ def validate_llm_output(raw: dict, allowed_sentence_ids: set[str]) -> Validation
             reasons.append(f"claim {i} dropped: malformed")
             continue
         text = str(item.get("text", "")).strip()
-        cited = _valid_ids(item.get("cited_sentence_ids") or [], allowed_sentence_ids)
+        cited, invalid = _check_ids(item.get("cited_sentence_ids") or [], allowed_sentences)
         if not text:
             dropped += 1
             reasons.append(f"claim {i} dropped: empty")
@@ -126,9 +170,20 @@ def validate_llm_output(raw: dict, allowed_sentence_ids: set[str]) -> Validation
             dropped += 1
             reasons.append(f"claim {i} dropped: banned language ({bad})")
             continue
+        if invalid:
+            dropped += 1
+            reasons.append(f"claim {i} dropped: invalid citation(s) {', '.join(invalid)}")
+            continue
         if not cited:
             dropped += 1
-            reasons.append(f"claim {i} dropped: no valid citation")
+            reasons.append(f"claim {i} dropped: no citation")
+            continue
+        missing = unsupported_numbers(text, [allowed_sentences[s] for s in cited])
+        if missing:
+            dropped += 1
+            reasons.append(
+                f"claim {i} dropped: number(s) not in cited sentences: {', '.join(sorted(missing))}"
+            )
             continue
         if len(claims) >= MAX_CLAIMS:
             dropped += 1

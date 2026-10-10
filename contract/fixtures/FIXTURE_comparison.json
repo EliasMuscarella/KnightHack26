@@ -1788,6 +1788,7 @@
       "title": "FIXTURE: The widget market is intensely competitive."
     }
   ],
+  "code_fingerprint": "16537ec61d588f8c4e1cec6c92b46f230ec1fa009b944d47badc256361f3203a",
   "company": {
     "cik": "0000000000",
     "name": "FIXTURE: Example Widgets Corp (synthetic, not a real company)",
@@ -1799,10 +1800,10 @@
     "category_method": "FIXTURE: fake-method",
     "embedding_backend": "lexical-fallback",
     "embedding_model": "FIXTURE: fake/embedding-model",
-    "llm_model": null,
-    "llm_provider": null,
+    "llm_model": "FIXTURE: fake/model-id",
+    "llm_provider": "huggingface",
     "ner_model": "FIXTURE: fake/ner-model",
-    "prompt_sha256": null,
+    "prompt_sha256": "f134eaf8a68c0d71229975d8c1042be3b2b3d4116c9cf56e7f27023f1eb97872",
     "sentence_splitter": "FIXTURE: fake-splitter"
   },
   "new_filing": {

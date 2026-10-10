@@ -118,3 +118,34 @@ export function ExternalLink({ href, children, className = "" }: { href: string;
     </a>
   );
 }
+
+export const FIXTURE_LINK_NOTE = "(fixture: no real filing)";
+
+/**
+ * Link to an SEC document. For FIXTURE comparisons the URL is invented, so it renders as
+ * disabled text instead of a link to sec.gov.
+ */
+export function FilingLink({
+  href,
+  isFixture,
+  children,
+  className = "",
+}: {
+  href: string;
+  isFixture: boolean;
+  children: ReactNode;
+  className?: string;
+}) {
+  if (isFixture) {
+    return (
+      <span aria-disabled="true" className={`cursor-not-allowed text-ink-faint ${className}`}>
+        {children} <span className="font-normal italic">{FIXTURE_LINK_NOTE}</span>
+      </span>
+    );
+  }
+  return (
+    <ExternalLink href={href} className={className}>
+      {children}
+    </ExternalLink>
+  );
+}

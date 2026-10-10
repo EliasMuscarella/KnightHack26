@@ -21,6 +21,14 @@ const NEVER = [
   "Never re-downloads a cached filing, and stays within SEC fair-access limits.",
 ];
 
+/** Neutral descriptions of the blocked-wording groups (the phrases themselves are not shown). */
+const BLOCKED_CATEGORIES = [
+  "predictive wording about whether or when an event occurs",
+  "advice wording about trading or allocating money",
+  "comparative wording about a company's overall level of risk or safety",
+  "guarantees and promises about outcomes",
+];
+
 function Section({ id, title, children, lead }: { id: string; title: string; lead?: string; children: React.ReactNode }) {
   return (
     <section aria-labelledby={id} className="space-y-4">
@@ -130,7 +138,7 @@ export default async function MethodologyPage() {
                 </table>
               </div>
             ) : null}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-3 gap-6">
               {Object.keys(rubric.thresholds).length > 0 ? (
                 <div className="rounded-lg border border-line bg-surface p-4">
                   <h3 className="text-sm font-bold text-ink">Thresholds</h3>
@@ -144,22 +152,40 @@ export default async function MethodologyPage() {
                   </dl>
                 </div>
               ) : null}
-              {rubric.banned_phrases.length > 0 ? (
-                <details className="rounded-lg border border-line bg-surface p-4 text-sm">
-                  <summary className="cursor-pointer font-bold text-ink">
-                    Phrases the citation validator blocks ({rubric.banned_phrases.length})
-                  </summary>
-                  <p className="mt-2 text-ink-muted">
-                    Any AI claim containing one of these phrases is removed before publishing.
+              {Object.keys(rubric.caps).length > 0 ? (
+                <div className="rounded-lg border border-line bg-surface p-4">
+                  <h3 className="text-sm font-bold text-ink">Score caps</h3>
+                  <p className="mt-1 text-xs leading-snug text-ink-faint">
+                    Upper limits applied while adding up points, so repeated hits of one signal cannot dominate a
+                    change score.
                   </p>
-                  <ul className="mt-2 flex flex-wrap gap-1.5">
-                    {rubric.banned_phrases.map((p) => (
-                      <li key={p} className="rounded bg-sunken px-1.5 py-px font-mono text-xs text-ink-muted line-through">
-                        {p}
-                      </li>
+                  <dl className="mt-2 grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 text-sm">
+                    {Object.entries(rubric.caps).map(([k, v]) => (
+                      <div key={k} className="contents">
+                        <dt className="font-mono text-xs text-ink-muted">{k}</dt>
+                        <dd className="text-right font-mono tabular-nums text-ink">{v}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              ) : null}
+              {rubric.banned_phrases.length > 0 ? (
+                <div className="rounded-lg border border-line bg-surface p-4 text-sm">
+                  <h3 className="font-bold text-ink">Wording the citation validator blocks</h3>
+                  <p className="mt-2 text-ink-muted">
+                    The validator checks every AI claim against a list of {rubric.banned_phrases.length} blocked phrases
+                    and removes any claim that uses one before publishing. The list covers:
+                  </p>
+                  <ul className="mt-2 list-disc space-y-0.5 pl-5 text-ink-muted">
+                    {BLOCKED_CATEGORIES.map((c) => (
+                      <li key={c}>{c}</li>
                     ))}
                   </ul>
-                </details>
+                  <p className="mt-2 text-xs text-ink-faint">
+                    The exact list is in <span className="font-mono">contract/rubric.json</span>; it is not repeated here
+                    so this page itself stays free of that wording.
+                  </p>
+                </div>
               ) : null}
             </div>
           </div>
