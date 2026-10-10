@@ -14,7 +14,7 @@ export const metadata: Metadata = { title: "Methodology" };
 const NEVER = [
   "Never decides what changed with a language model. Diffs, change types and scores are deterministic code.",
   "Never shows an AI claim without a valid citation to filing sentences. Uncited or invalid claims are dropped before publishing.",
-  "Never says a company became more or less risky, and never turns a disclosure change into a risk percentage.",
+  "Never characterizes a company's overall risk level, and never turns a disclosure change into a risk percentage.",
   "Never gives trading or portfolio advice, and never suggests acting on a disclosure change.",
   "Never fabricates filings, sentences or numbers. The development fixture is labeled on every screen and is never published.",
   "Never renders filing text as HTML. Filing text is displayed as plain text only.",
@@ -26,7 +26,7 @@ const BLOCKED_CATEGORIES = [
   "predictive wording about whether or when an event occurs",
   "advice wording about trading or allocating money",
   "comparative wording about a company's overall level of risk or safety",
-  "guarantees and promises about outcomes",
+  "assurances about outcomes",
 ];
 
 function Section({ id, title, children, lead }: { id: string; title: string; lead?: string; children: React.ReactNode }) {
@@ -182,8 +182,7 @@ export default async function MethodologyPage() {
                     ))}
                   </ul>
                   <p className="mt-2 text-xs text-ink-faint">
-                    The exact list is in <span className="font-mono">contract/rubric.json</span>; it is not repeated here
-                    so this page itself stays free of that wording.
+                    The exact list is in <span className="font-mono">contract/rubric.json</span>; it is not repeated here.
                   </p>
                 </div>
               ) : null}

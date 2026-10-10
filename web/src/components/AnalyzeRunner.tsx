@@ -168,7 +168,7 @@ export function AnalyzeRunner({ ticker }: { ticker: string }) {
       }
       setPhase("failed");
       setFailure(failureFor(outcome));
-      setSteps((prev) => prev.map((s) => (s.state === "running" ? { ...s, state: "error" } : s)));
+      setSteps((prev) => prev.map((s) => (s.state === "running" ? { ...s, state: "error", message: null } : s)));
     });
 
     return () => {

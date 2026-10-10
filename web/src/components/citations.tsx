@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from "react";
 
-import type { FilingSide } from "@/types/comparison";
+import type { FilingSide, Change } from "@/types/comparison";
 
 export interface SentenceRef {
   id: string;
@@ -85,6 +85,23 @@ export function CitationChips({
       ))}
     </span>
   );
+}
+
+/**
+ * One numbering for a whole change: AI claims, then rubric answers, then deterministic signals,
+ * so a number means the same sentence in every panel of the page.
+ */
+export function changeCitationNumbering(change: Change): (id: string) => number {
+  const interp = change.interpretation;
+  const s = change.signals;
+  return numberCitations([
+    ...(interp.claims ?? []).map((c) => c.cited_sentence_ids),
+    ...(interp.rubric ?? []).map((r) => r.cited_sentence_ids ?? []),
+    ...[...(s.hypothetical_to_actual ?? []), ...(s.new_entities ?? []), ...(s.new_quantities ?? [])].map((h) => [
+      ...(h.old_sentence_ids ?? []),
+      ...(h.new_sentence_ids ?? []),
+    ]),
+  ]);
 }
 
 /** Assigns 1-based numbers to sentence ids in first-seen order. */

@@ -89,13 +89,13 @@ def test_banned_phrases_are_dropped():
 
 def test_banned_matching_is_whole_word_and_case_insensitive():
     assert banned_language("The seller delivered.") is None  # 'sell' inside 'seller' is fine
-    assert banned_language("LIKELY outcomes") == "likely"
+    assert banned_language("LIKELY outcomes") == "predictive wording"
     assert banned_language("The buyout closed.") is None
     assert (
         banned_language("A government investigation began.") is None
     )  # 'investigation' is allowed
-    assert banned_language("The investment thesis.") == "investment"  # invest* stems are banned
-    assert banned_language("Do not invest.") == "invest"
+    assert banned_language("The investment thesis.") == "advice wording"  # invest* stems are banned
+    assert banned_language("Do not invest.") == "advice wording"
 
 
 def test_claim_limits():
@@ -237,3 +237,11 @@ def test_hf_payload_shape(monkeypatch):
     )
 
     ChatCompletionInputResponseFormatJSONSchema(type="json_schema", json_schema=rf["json_schema"])
+
+
+def test_dropped_reasons_never_contain_the_banned_word():
+    r = validate_llm_output(raw([{"text": "This is likely to recur and investors should sell.", "cited_sentence_ids": ["0000000000-25-000001:1:1"]}]), ALLOWED)
+    joined = " ".join(r.dropped_reasons).lower()
+    for w in ("likely", "sell", "invest"):
+        assert w not in joined
+    assert "banned language" in joined

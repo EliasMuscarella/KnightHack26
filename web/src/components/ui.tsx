@@ -143,6 +143,14 @@ export function FilingLink({
       </span>
     );
   }
+  // Filing links may only point at sec.gov; anything else (from an untrusted API payload) is not linked.
+  if (!/^https:\/\/www\.sec\.gov\//.test(href)) {
+    return (
+      <span aria-disabled="true" className={`cursor-not-allowed text-ink-faint ${className}`}>
+        {children} <span className="font-normal italic">(link outside sec.gov not shown)</span>
+      </span>
+    );
+  }
   return (
     <ExternalLink href={href} className={className}>
       {children}

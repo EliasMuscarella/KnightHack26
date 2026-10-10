@@ -6,7 +6,7 @@ import { flushSync } from "react-dom";
 import type { Change, Sentence } from "@/types/comparison";
 
 import { AiInterpretationPanel, ScoreBreakdownPanel, SignalsPanel } from "@/components/ChangePanels";
-import { CitationContext, type CitationApi, type FilingRef, type SentenceRef } from "@/components/citations";
+import { CitationContext, changeCitationNumbering, type CitationApi, type FilingRef, type SentenceRef } from "@/components/citations";
 import { FilingLink } from "@/components/ui";
 import { textFragmentUrl } from "@/lib/format";
 
@@ -229,6 +229,7 @@ interface DetailProps {
 }
 
 export function ChangeDetail({ change, index, filings, isFixture }: DetailProps) {
+  const numberOf = changeCitationNumbering(change);
   const [view, setView] = useState<ViewMode>("split");
   const [showUnchanged, setShowUnchanged] = useState(true);
   const [highlightId, setHighlightId] = useState<string | null>(null);
@@ -537,8 +538,8 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
             </div>
           ) : null}
           <ScoreBreakdownPanel change={change} />
-          <AiInterpretationPanel interp={change.interpretation} />
-          <SignalsPanel change={change} />
+          <AiInterpretationPanel interp={change.interpretation} numberOf={numberOf} />
+          <SignalsPanel change={change} numberOf={numberOf} />
         </aside>
       </div>
     </CitationContext.Provider>

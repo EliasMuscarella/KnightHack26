@@ -766,8 +766,8 @@ def main() -> int:
                 claims=[],
                 dropped_claim_count=2,
                 dropped_reasons=[
-                    F + "claim 1 dropped: banned language ('likely')",
-                    F + "claim 2 dropped: no citations",
+                    F + "claim 1 dropped: banned language (predictive wording)",
+                    F + "claim 2 dropped: no citation",
                 ],
             ),
         )

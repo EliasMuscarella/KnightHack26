@@ -48,12 +48,22 @@ assert all(re.search(_BANNED_RE, p) for p in BANNED_PHRASES if p != "will happen
 )
 
 
+_CATEGORY_RES: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("advice wording", re.compile(r"\b(buy(?:s|ing)?|bought|sell(?:s|ing)?|sold|invest(?!igat)\w*|recommend\w*)\b", re.I)),
+    ("comparative risk/safety wording", re.compile(r"\b(riskier|riskiest|more risky|less risky|safer|safest|less safe|more safe)\b", re.I)),
+    ("guarantee wording", re.compile(r"\b(guarantee\w*)\b", re.I)),
+    ("predictive wording", re.compile(r"\b(probabilit\w*|probabl[ey]|likely|unlikely|chances?|odds|will happen)\b", re.I)),
+)
+
+
 def banned_language(text: str) -> str | None:
-    m = _BANNED_RE.search(text)
-    if m:
-        return m.group(1).lower()
+    """Return a NEUTRAL category label when the text contains banned language, else None.
+    The offending word itself is never returned: these labels are shown in the UI."""
+    for label, rx in _CATEGORY_RES:
+        if rx.search(text):
+            return label
     if _RISK_PERCENT_RE.search(text):
-        return "% attached to risk"
+        return "risk-percentage wording"
     return None
 
 
