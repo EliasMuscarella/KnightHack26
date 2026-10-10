@@ -66,3 +66,17 @@ parameterized with table names from code constants; re-publishing the same analy
 (rows are keyed by `analysis_id`, writes are `MERGE`s); a new analysis for the same filings
 becomes the new current report and the old rows are kept; the tables can always be rebuilt from
 the Volume with the sync script.
+
+## Design system and frontend checks
+
+`DESIGN.md` is binding for everything under `web/`: fonts (Public Sans, Source Serif 4 for filing text), the
+14/15/17/22/32/44 type scale, neutrals, the direction-of-change colors (blue = more disclosure language,
+orange = less, ink = rewritten, amber = potential became actual), the highlighter for new words, and a
+checkable list of don'ts. Frontend checks:
+
+```bash
+cd web && npm run typecheck && npm run lint && npm run build
+cd web && npm run test:unit        # display-name cleaner, deterministic hero pick, short titles, trends math (node --test)
+```
+
+`uv run pytest` runs the same unit tests through `tests/test_web_units.py`.
