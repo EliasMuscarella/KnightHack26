@@ -1,0 +1,38 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# data: cache is regenerable; published output is committed on purpose
+data/cache/
+data/scratch/
+
+# model weights
+*.safetensors
+*.bin
+*.onnx
+*.pt
+.hf_cache/
+models/
+
+# node / next
+node_modules/
+web/.next/
+web/out/
+web/next-env.d.ts
+web/*.tsbuildinfo
+web/screenshots/
+
+# misc
+.DS_Store
+*.log
