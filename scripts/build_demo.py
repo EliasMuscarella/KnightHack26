@@ -91,7 +91,7 @@ def main() -> int:
         return 0
     scratch = settings.data_dir / "scratch"
     scratch.mkdir(parents=True, exist_ok=True)
-    for t, _, path in dropped:
+    for _ticker, _, path in dropped:
         shutil.move(str(path), str(scratch / path.name))
     lines = [
         "# DEMO",
