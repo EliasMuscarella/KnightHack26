@@ -153,3 +153,25 @@ decision, alternatives considered, how to reverse.
   and validated rubric answers; a note records the migration. Scores, sentences, citations and `analysis_id`
   are untouched, so the file still describes exactly the analysis that produced it. Segmentation, entity and
   status-change improvements (J1–J3) cannot be migrated; they need the documented re-run.
+
+## D-019 Judge round 2 follow-ups
+- `segment.split_sentences` merges a fragment that starts with a lowercase letter into the previous sentence
+  (no sentence starts lowercase; pysbd broke "3A090.a, or .z ECCNs" at ".z"). Segment stage 0.2.0 → 0.2.1.
+- `signals._quantities` ignores a number glued to a letter code ("D:5 countries" is an export-control country
+  group, not a count). Signals stage 0.2.0 → 0.2.1.
+- A new or dropped risk's highlight cites the first body sentence of the block (the card already shows the
+  heading as its title; quoting the heading again told the reader nothing). Falls back to the heading sentence.
+- Among hedge→actual candidates of one change, sentences that open with "Such", "This", "As a result"… rank
+  after self-contained ones (they make poor standalone quotes). Among figures, dollar amounts come first and
+  larger figures before smaller ones (the new value for "X -> Y" pairs).
+- Frontend: one card per risk factor on "Biggest changes" (the contract's `highlights[]` is unchanged; the UI
+  groups entries by change); a truncated fallback short title (ends with "…") is never shown when the full
+  heading can be: the UI shows the heading instead. Change-type labels are neutral (no green/red, no arrows);
+  only the inline diff keeps added/removed colors. The methodology page now names the yes/no rubric as the
+  third place where AI is used and states the no-double-counting rule.
+- Not changed on purpose: rubric points stay part of the score (the judge suggested removing them); they are
+  deterministic given validated, cited answers, published in the weights table, and no longer overlap with the
+  rule-based signals. The "Wording change: Medium 40" level stays on new risks so the ranking is one scale.
+- Not fixable here (old-pipeline data in the published NVDA file; re-run required): the Item 1A preamble shown
+  as a new risk, duplicate summary titles, "AI Diffusion IFR in"/"D:4" entities, the split ".z ECCNs"
+  sentences, the double-counted rubric lines in `score_breakdown`, the LLM's choice of summary bullets.

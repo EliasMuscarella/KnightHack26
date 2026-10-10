@@ -32,7 +32,7 @@ from pipeline.types import ExtractedSection, RiskBlock, SegmentedFiling, Sentenc
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.2.0"
+STAGE_VERSION = "0.2.1"
 MAX_HEADING_WORDS = 60
 MAX_GROUP_WORDS = 15
 MIN_BLOCKS = 3
@@ -71,10 +71,14 @@ def split_sentences(text: str) -> list[tuple[str, int, int]]:
         if not s2:
             continue
         out.append((s2, start + lead, end - trail))
-    # merge fragments that are too short to be sentences (e.g. "No." split artifacts)
+    # merge fragments that are too short to be sentences (e.g. "No." split artifacts) and
+    # fragments that start with a lowercase letter: no sentence does, so the splitter broke
+    # inside a code such as "3A090.a, or .z ECCNs"
     merged: list[tuple[str, int, int]] = []
     for s, a, b in out:
-        if merged and len(s.split()) <= 1 and not merged[-1][0].endswith(TERMINAL):
+        if merged and (
+            (len(s.split()) <= 1 and not merged[-1][0].endswith(TERMINAL)) or s[0].islower()
+        ):
             ps, pa, _ = merged[-1]
             merged[-1] = (text[pa:b].strip(), pa, b)
             continue

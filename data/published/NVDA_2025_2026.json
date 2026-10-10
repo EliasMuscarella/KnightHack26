@@ -17478,17 +17478,17 @@
   "highlights": [
     {
       "change_id": "a4156a06454f6dfd",
-      "detail": "may -> have been",
+      "detail": "may -> experienced",
       "kind": "potential_became_actual",
-      "new_sentence_id": "0001045810-26-000021:21:10",
-      "old_sentence_id": "0001045810-25-000023:19:10",
+      "new_sentence_id": "0001045810-26-000021:21:94",
+      "old_sentence_id": "0001045810-25-000023:19:98",
       "short_title": "We are subject to complex laws, rules…"
     },
     {
       "change_id": "b6d73c522e0cfea2",
       "detail": null,
       "kind": "new_risk",
-      "new_sentence_id": "0001045810-26-000021:17:0",
+      "new_sentence_id": "0001045810-26-000021:17:1",
       "old_sentence_id": null,
       "short_title": "Commercial arrangements expose us to counterparty risks"
     },
@@ -17504,7 +17504,7 @@
       "change_id": "692187bd48c050c3",
       "detail": null,
       "kind": "new_risk",
-      "new_sentence_id": "0001045810-26-000021:0:0",
+      "new_sentence_id": "0001045810-26-000021:0:1",
       "old_sentence_id": null,
       "short_title": "The following risk factors should be considered…"
     },

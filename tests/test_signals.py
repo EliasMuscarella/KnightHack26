@@ -447,3 +447,11 @@ def test_modal_pattern_still_detected():
     new = block(NEW, 1, "Costs.", ["Tariffs have increased our costs."])
     hits = hypothetical_to_actual(ctx_for(old, new))
     assert hits and hits[0].value == "may -> have increased"
+
+
+def test_letter_code_numbers_are_not_quantities():
+    from pipeline.signals import _quantities
+
+    qs = _quantities("a license for export to China and D:5 countries, and a $4.5 billion charge")
+    assert "$4.5 billion" in qs
+    assert not any(q.startswith("5 ") for q in qs), qs

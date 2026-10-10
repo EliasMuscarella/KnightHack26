@@ -70,7 +70,8 @@ def test_candidates_come_only_from_existing_evidence():
         rubric_ids = {
             sid for a in c.interpretation.rubric if a.answer for sid in a.cited_sentence_ids
         }
-        heading_ids = {f"{b}:0" for b in (c.old_block_id, c.new_block_id) if b}
+        # a new/dropped risk cites its heading or first body sentence
+        heading_ids = {f"{b}:{n}" for b in (c.old_block_id, c.new_block_id) if b for n in (0, 1)}
         for h, rule_based in cands:
             for sid in (h.old_sentence_id, h.new_sentence_id):
                 assert sid is None or sid in sig_ids | rubric_ids | heading_ids
@@ -167,4 +168,27 @@ def test_figures_prefer_dollar_amounts_then_percentages():
     from pipeline.highlights import _figure_order
 
     assert _figure_order("$4.5 billion") < _figure_order("15%") < _figure_order("5 countries")
-    assert _figure_order("12% -> 22%") == _figure_order("25%")
+    assert _figure_order("$4.5 billion") < _figure_order("$60 million")  # larger first
+    assert _figure_order("12% -> 22%") < _figure_order("12%")  # the new value counts
+    from pipeline.highlights import _magnitude
+
+    assert _magnitude("$4.5 billion") == 4.5e9 and _magnitude("$750 million -> $1.0 billion") == 1e9
+
+
+def test_quote_order_prefers_self_contained_sentences():
+    from pipeline.highlights import _quote_order
+
+    assert _quote_order("Such requests have been expensive.") == 1
+    assert _quote_order("Export controls increase the cost of compliance.") == 0
+    assert _quote_order(None) == 0
+
+
+def test_new_risk_card_quotes_the_first_body_sentence():
+    comp = fixture()
+    hl = select_highlights(comp.changes, comp.sentence_index)
+    new_ids = {c.new_block_id for c in comp.changes if c.change_type == "new"}
+    for h in hl:
+        if h.kind == "new_risk":
+            block, _, n = h.new_sentence_id.rpartition(":")
+            assert block in new_ids
+            assert n == "1" or f"{block}:1" not in comp.sentence_index

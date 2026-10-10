@@ -227,6 +227,10 @@ Migrated NVDA highlights, in order (no special-casing; `select_highlights` over 
    that J1 removes on re-run.
 5. New figure disclosed, "We are subject to complex laws, rules…" (100): the $4.5 billion H20 charge.
 
+(After the round-2 ranking changes the first card quotes "Export controls increase the risk of investing in U.S.
+advanced semiconductor products…" instead of "Such requests…", and the counterparty card quotes the
+financial-guarantee sentence instead of the heading.)
+
 So of the three facts the brief asked about: the **$4.5 billion H20 charge** and the **counterparty risk** appear;
 the **China antitrust pair** (investigating → published preliminary finding) does not, because the file was
 produced before the `status_change` detector existed. It fires on the quoted sentence pair in the unit tests.
@@ -254,4 +258,37 @@ Points raised and what was done:
 
 ### Judge round 2 (real NVDA screenshots)
 
-JUDGE_ROUND_2_PLACEHOLDER
+Verdict: **6.5 / 10** (round 1 was 6/10 on fixture screens). The judge's 5-second read of the NVIDIA page:
+"NVIDIA changed a handful of its risk factors, and a regulatory one moved from 'could happen' to 'has
+happened'"; what was missing above the fold was the word "export", China and the $4.5 billion charge, because
+the headline was truncated and the lead quote began "Such requests". No buy/sell language, probabilities or
+"riskier" anywhere; the "Wording change: High 100" pills still read like a score to the judge.
+
+Status of the round-1 points as the judge saw them: fixed: counts agree, "!" glyph, methodology collapsed, one
+search box, "N" circle gone; partly: level pill wording, "New figure disclosed" ("5 countries" came from "D:5"),
+citation chips (FY tag still monospace), hatched boxes (labelled but a wall of them on long changes); not fixed
+in the data: double counting (the file's `score_breakdown` was computed by rubric 1.0.0) and two cards for one
+risk; cannot tell: fixture weights, "Eastland".
+
+New points and responses:
+
+| Judge's point | Response |
+|---|---|
+| Preamble "The following risk factors should be considered…" shown as a new risk and a top change | old-pipeline data; J1 (segment 0.2.x) drops it on re-run. Not special-cased |
+| One risk factor takes two of five cards | UI groups highlights by risk factor: one card, several facts (contract unchanged) |
+| Headlines cut to five words lose the meaning | a truncated fallback title is never shown when the full heading fits: the UI shows the heading (two lines) until the LLM titles arrive with the re-run |
+| Methodology says AI is used in "two narrow places" while AI checks add points | copy now names three places and states the no-double-counting rule; the rubric points stay (deterministic, published, cited) |
+| "Not in last year's filing" on a new sentence inside an existing risk | kind-aware captions ("This figure did not appear in last year's version", "No matching sentence last year") |
+| Broken sentences ("… or ." + "z ECCNs"); "AI Diffusion IFR in", "D:4"; "5 countries" from "D:5" | splitter never starts a sentence with a lowercase letter (segment 0.2.1); letter-code numbers are not quantities (signals 0.2.1); entity cleanup was J2. All need the re-run to reach the file |
+| Counterparty card quotes only the heading; summary leads with the reassuring sentence | new-risk cards now quote the first body sentence ("We have entered … financial guarantees … asked to offer financing arrangements"); the AI bullets are the model's validated output and are regenerated on re-run |
+| Lead Potential → Actual example is the weakest one | self-contained sentences rank before "Such…/This…" openers; the SAMR "preliminary finding" pair needs the status-change detector (J3) on re-run |
+| 13,000 px page with a wall of striped boxes | side-by-side view collapses a run of one-sided sentences into one row with a single placeholder |
+| Green "New risk" / red "Scaled back" with arrows read as good/bad | change-type labels are neutral and glyph-free; the inline diff keeps its colors |
+| "Change level" vs "Wording change"; "This is the first risk factor"; "(for technical judges)"; level on a new risk | first three reworded; the level stays on new risks (one ranking scale) |
+| Total "lands on exactly 100, nothing says whether that is a cap" | total line says "capped at 100 (points add to N)" when it is |
+| Companies below the fold at 1280×720 on home | left as is (the judge called it acceptable) |
+
+Demo advice recorded from the judge: open with the counterparty new risk (card → detail → the financial-guarantee
+sentence), then the export-controls China section with the $4.5 billion line and a citation click; do not
+scroll "How this was scored" on the old file until the re-run replaces it.
+
