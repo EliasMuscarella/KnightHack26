@@ -13,7 +13,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-PIPELINE_VERSION = "0.1.0"
+PIPELINE_VERSION = "0.2.0"
 
 ROOT = Path(__file__).resolve().parents[1]
 TICKER_RE = re.compile(r"^[A-Z.\-]{1,6}$")

@@ -21,7 +21,7 @@ from pipeline import signals as signals_mod
 from pipeline.config import NER_MODEL_ID, PIPELINE_VERSION, SENTENCE_SPLITTER_ID
 from pipeline.diff import diff_params_for
 from pipeline.errors import PipelineError
-from pipeline.highlights import select_highlights, truncate_heading
+from pipeline.highlights import select_highlights, short_title_from_heading, title_problems
 from pipeline.publish import publish
 from pipeline.rubric import RUBRIC_VERSION
 from pipeline.schema import (
@@ -409,18 +409,25 @@ def stage_versions() -> dict[str, str]:
     }
 
 
-def validated_short_title(heading: str, proposed: str | None) -> str:
-    """Accept the LLM label only if it is short, neutral and anchored to the heading; otherwise
-    fall back to a deterministic truncation of the real heading."""
+def validated_short_title(
+    heading: str, proposed: str | None, company_name: str | None = None
+) -> str:
+    """Accept the LLM label only if it is short, neutral, anchored to the heading and not a fragment
+    (`highlights.title_problems`: no ellipsis, no dangling last word, not the bare company name);
+    otherwise fall back to the deterministic first clause of the real heading."""
     if proposed:
         t = " ".join(str(proposed).split()).strip().strip('"\u201c\u201d.')
         words = t.split()
-        if 1 <= len(words) <= MAX_SHORT_TITLE_WORDS and banned_language(t) is None:
+        if (
+            1 <= len(words) <= MAX_SHORT_TITLE_WORDS
+            and banned_language(t) is None
+            and not title_problems(t, company_name)
+        ):
             hw = {w.strip(".,;:()\u2019'\"").lower() for w in heading.split()} - _STOP
             tw = {w.strip(".,;:()\u2019'\"").lower() for w in words} - _STOP
             if hw & tw:
                 return t
-    return truncate_heading(heading, MAX_SHORT_TITLE_WORDS)
+    return short_title_from_heading(heading, MAX_SHORT_TITLE_WORDS, company_name=company_name)
 
 
 def assemble(
@@ -496,7 +503,9 @@ def assemble(
                 id=cid,
                 rank=1,
                 title=(new or old).heading,
-                short_title=validated_short_title((new or old).heading, llm_titles.get(cid)),
+                short_title=validated_short_title(
+                    (new or old).heading, llm_titles.get(cid), fetch.company.name
+                ),
                 old_title=old.heading if old else None,
                 new_title=new.heading if new else None,
                 section_group=(new or old).section_group,
