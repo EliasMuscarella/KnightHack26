@@ -1,0 +1,1837 @@
+{
+ "generated_at": "2026-10-10T21:11:29Z",
+ "duration_seconds": 7.3,
+ "sources": {
+  "local published": "2 files, 2 current (NVDA, SF) in /home/user/KnightHack26/data/published",
+  "API": "http://127.0.0.1:8001 (store health {'remote': 'disabled', 'warehouse_state': None})",
+  "/trends": "status disabled, source local, 2 companies",
+  "Databricks": "not configured (DATABRICKS_HOST / TOKEN / WAREHOUSE_ID unset)",
+  "derived trend facts": "2 of 2 current reports have a current file in /home/user/KnightHack26/data/derived; all re-derived in memory with the current code"
+ },
+ "display_profile": "legacy",
+ "current_versions": {
+  "pipeline_version": "0.1.0",
+  "rubric_version": "1.1.0",
+  "code_fingerprint": "e94330fbe528408767f8dc9fe90adec64d8feefce9ee3e83668731f2a763d806",
+  "stage_versions": {
+   "0": "0.1.0",
+   "1": "0.2.1",
+   "2": "0.2.1",
+   "3": "0.1.0",
+   "4": "0.1.0",
+   "5": "0.1.2",
+   "6": "0.2.1"
+  }
+ },
+ "reports": [
+  {
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "pipeline_version": "0.1.0",
+   "rubric_version": "1.0.0",
+   "code_fingerprint": "f7ef0450bbe6096ee062057a784ef87595d2f0318e667b5269b79d7a1bb86ebd",
+   "current_code": false,
+   "stage_versions_recorded": false,
+   "earliest_stage": 2
+  },
+  {
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "pipeline_version": "0.1.0",
+   "rubric_version": "1.0.0",
+   "code_fingerprint": "f7ef0450bbe6096ee062057a784ef87595d2f0318e667b5269b79d7a1bb86ebd",
+   "current_code": false,
+   "stage_versions_recorded": false,
+   "earliest_stage": 5
+  }
+ ],
+ "counts": {
+  "SNIP-TOPIC": {
+   "total": 1,
+   "stale": 0,
+   "code": 1,
+   "data": 0,
+   "accepted": 0
+  },
+  "SNIP-CHANGE": {
+   "total": 0,
+   "stale": 0,
+   "code": 0,
+   "data": 0,
+   "accepted": 0
+  },
+  "TOPIC-NEW": {
+   "total": 20,
+   "stale": 0,
+   "code": 20,
+   "data": 0,
+   "accepted": 0
+  },
+  "TOPIC-MEANINGFUL": {
+   "total": 25,
+   "stale": 0,
+   "code": 25,
+   "data": 0,
+   "accepted": 0
+  },
+  "PAIR": {
+   "total": 0,
+   "stale": 0,
+   "code": 0,
+   "data": 0,
+   "accepted": 0
+  },
+  "CASE": {
+   "total": 31,
+   "stale": 1,
+   "code": 30,
+   "data": 0,
+   "accepted": 0
+  },
+  "YEARS": {
+   "total": 0,
+   "stale": 0,
+   "code": 0,
+   "data": 0,
+   "accepted": 0
+  },
+  "COUNTS": {
+   "total": 0,
+   "stale": 0,
+   "code": 0,
+   "data": 0,
+   "accepted": 0
+  },
+  "TITLES": {
+   "total": 50,
+   "stale": 0,
+   "code": 50,
+   "data": 0,
+   "accepted": 0
+  },
+  "PREAMBLE": {
+   "total": 1,
+   "stale": 1,
+   "code": 0,
+   "data": 0,
+   "accepted": 0
+  },
+  "ENTITY": {
+   "total": 5,
+   "stale": 2,
+   "code": 3,
+   "data": 0,
+   "accepted": 0
+  },
+  "STALE": {
+   "total": 2,
+   "stale": 2,
+   "code": 0,
+   "data": 0,
+   "accepted": 0
+  },
+  "HEATMAP": {
+   "total": 0,
+   "stale": 0,
+   "code": 0,
+   "data": 0,
+   "accepted": 0
+  },
+  "TOTAL": {
+   "total": 135,
+   "stale": 6,
+   "code": 129,
+   "data": 0,
+   "accepted": 0
+  }
+ },
+ "violations": [
+  {
+   "check": "STALE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": null,
+   "sentence_ids": [],
+   "evidence": "rubric 1.0.0 != 1.1.0; code fingerprint f7ef0450bbe6 != current e94330fbe528",
+   "classification": "stale",
+   "note": "stage versions are not recorded in this report; the earliest stage is inferred from the other findings",
+   "stage": 2
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-25-000023:19:55",
+    "0001045810-26-000021:21:65"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: the",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-25-000023:19:95",
+    "0001045810-26-000021:21:91"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: export",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-25-000023:19:96",
+    "0001045810-26-000021:21:92"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: export",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-25-000023:19:98",
+    "0001045810-26-000021:21:94"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: export",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-25-000023:19:104",
+    "0001045810-26-000021:21:104"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: to",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-25-000023:19:107",
+    "0001045810-26-000021:21:106"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: if",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "f7a8d95bf7b51298",
+   "sentence_ids": [
+    "0001045810-25-000023:12:14",
+    "0001045810-26-000021:13:14"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: some",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "dfe9c44ef07b2d30",
+   "sentence_ids": [
+    "0001045810-25-000023:6:14",
+    "0001045810-26-000021:7:14"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: these",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "dfe9c44ef07b2d30",
+   "sentence_ids": [
+    "0001045810-25-000023:6:15",
+    "0001045810-26-000021:7:15"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: these",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "dfe9c44ef07b2d30",
+   "sentence_ids": [
+    "0001045810-25-000023:6:36",
+    "0001045810-26-000021:7:40"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: geopolitical",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "dfe9c44ef07b2d30",
+   "sentence_ids": [
+    "0001045810-25-000023:6:38",
+    "0001045810-26-000021:7:44"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: we",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "76929d4c94edf687",
+   "sentence_ids": [
+    "0001045810-25-000023:8:9",
+    "0001045810-26-000021:9:9"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: such",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "b7c169267209801d",
+   "sentence_ids": [
+    "0001045810-25-000023:15:2",
+    "0001045810-26-000021:16:2"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: sales",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "472606c9d458f2e9",
+   "sentence_ids": [
+    "0001045810-25-000023:14:7",
+    "0001045810-26-000021:15:7"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: our",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "472606c9d458f2e9",
+   "sentence_ids": [
+    "0001045810-25-000023:14:8",
+    "0001045810-26-000021:15:11"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: we",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "5f11cecb0925b7ee",
+   "sentence_ids": [
+    "0001045810-25-000023:3:1",
+    "0001045810-26-000021:4:1"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: scrutiny",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "6827ebf0162cb806",
+   "sentence_ids": [
+    "0001045810-25-000023:20:0",
+    "0001045810-26-000021:22:0"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: scrutiny",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [],
+   "evidence": "'We are subject to complex laws, rules…': ends with an ellipsis (truncated heading) (heading: 'We are subject to complex laws, rules, regulations, and political and other actions, including rest…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'We are subject to complex laws, rules…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "32866661d1b11115",
+   "sentence_ids": [],
+   "evidence": "'Failure to meet the evolving needs of…': ends with an ellipsis (truncated heading); ends mid-clause on 'of' (heading: 'Failure to meet the evolving needs of our industry and markets may adversely impact our financial r…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Failure to meet the evolving needs of…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "692187bd48c050c3",
+   "sentence_ids": [],
+   "evidence": "'The following risk factors should be considered…': ends with an ellipsis (truncated heading) (heading: 'The following risk factors should be considered in addition to the other information in this Annual…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'The following risk factors should be considered…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "f7a8d95bf7b51298",
+   "sentence_ids": [],
+   "evidence": "'Business disruptions could harm our operations, lead…': ends with an ellipsis (truncated heading) (heading: 'Business disruptions could harm our operations, lead to a decline in revenue and increase our costs.')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Business disruptions could harm our operations, lead…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "dfe9c44ef07b2d30",
+   "sentence_ids": [],
+   "evidence": "'Long manufacturing lead times and uncertain supply…': ends with an ellipsis (truncated heading) (heading: 'Long manufacturing lead times and uncertain supply and capacity availability, combined with a failu…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Long manufacturing lead times and uncertain supply…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "76929d4c94edf687",
+   "sentence_ids": [],
+   "evidence": "'Defects in our products have caused and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'Defects in our products have caused and could cause us to incur significant expenses to remediate,…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Defects in our products have caused and…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "b7c169267209801d",
+   "sentence_ids": [],
+   "evidence": "'We receive a significant amount of our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'We receive a significant amount of our revenue from a limited number of partners and distributors a…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'We receive a significant amount of our…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "1c8be25adeb58b98",
+   "sentence_ids": [],
+   "evidence": "'International sales and operations are a significant…': ends with an ellipsis (truncated heading) (heading: 'International sales and operations are a significant part of our business, which exposes us to risk…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'International sales and operations are a significant…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "472606c9d458f2e9",
+   "sentence_ids": [],
+   "evidence": "'We may not be able to realize…': ends with an ellipsis (truncated heading) (heading: 'We may not be able to realize the potential benefits of business investments or acquisitions, and w…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'We may not be able to realize…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "10122333e29876b3",
+   "sentence_ids": [],
+   "evidence": "'Actions to adequately protect our IP rights…': ends with an ellipsis (truncated heading) (heading: 'Actions to adequately protect our IP rights could result in substantial costs to us and our ability…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Actions to adequately protect our IP rights…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "35fd73210c2228c8",
+   "sentence_ids": [],
+   "evidence": "'Our operating results have in the past…': ends with an ellipsis (truncated heading) (heading: 'Our operating results have in the past fluctuated and may in the future fluctuate, and if our opera…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Our operating results have in the past…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "39ad1b38b2b34469",
+   "sentence_ids": [],
+   "evidence": "'Our business is dependent upon the proper…': ends with an ellipsis (truncated heading) (heading: 'Our business is dependent upon the proper functioning of our business processes and information sys…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Our business is dependent upon the proper…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "3efe394c13cfbc9c",
+   "sentence_ids": [],
+   "evidence": "'Our business is exposed to the burden…': ends with an ellipsis (truncated heading) (heading: 'Our business is exposed to the burden and risks associated with litigation, investigations and regu…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Our business is exposed to the burden…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "56b14b486f546efd",
+   "sentence_ids": [],
+   "evidence": "'Long manufacturing lead times and uncertain supply…': ends with an ellipsis (truncated heading) (heading: 'Long manufacturing lead times and uncertain supply and capacity availability, combined with a failu…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Long manufacturing lead times and uncertain supply…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "5f11cecb0925b7ee",
+   "sentence_ids": [],
+   "evidence": "'We are subject to complex laws, rules…': ends with an ellipsis (truncated heading) (heading: 'We are subject to complex laws, rules, regulations, and political and other actions, including rest…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'We are subject to complex laws, rules…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "6827ebf0162cb806",
+   "sentence_ids": [],
+   "evidence": "'Scrutiny from shareholders, regulators and others regarding…': ends with an ellipsis (truncated heading) (heading: 'Scrutiny from shareholders, regulators and others regarding our corporate sustainability practices…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Scrutiny from shareholders, regulators and others regarding…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "6d0df517b10be912",
+   "sentence_ids": [],
+   "evidence": "'Delaware law and our certificate of incorporation…': ends with an ellipsis (truncated heading) (heading: 'Delaware law and our certificate of incorporation, bylaws and agreement with Microsoft could delay…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Delaware law and our certificate of incorporation…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "6ef9abded50fdc62",
+   "sentence_ids": [],
+   "evidence": "'If we are unable to attract, retain…': ends with an ellipsis (truncated heading) (heading: 'If we are unable to attract, retain and motivate our executives and key employees, our business may…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'If we are unable to attract, retain…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "8789091d41a73853",
+   "sentence_ids": [],
+   "evidence": "'We may have exposure to additional tax…': ends with an ellipsis (truncated heading) (heading: 'We may have exposure to additional tax liabilities and our operating results may be adversely impac…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'We may have exposure to additional tax…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "96dc984e6bfa0fbe",
+   "sentence_ids": [],
+   "evidence": "'We are subject to stringent and changing…': ends with an ellipsis (truncated heading) (heading: 'We are subject to stringent and changing data privacy and security laws, rules, regulations and oth…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'We are subject to stringent and changing…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "ad4f3805e248f79e",
+   "sentence_ids": [],
+   "evidence": "'Climate change may have a long-term impact…': ends with an ellipsis (truncated heading) (heading: 'Climate change may have a long-term impact on our business.')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Climate change may have a long-term impact…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "c19cbbb3b2e9dc2c",
+   "sentence_ids": [],
+   "evidence": "'Dependency on third-party suppliers and their technology…': ends with an ellipsis (truncated heading) (heading: 'Dependency on third-party suppliers and their technology to manufacture, assemble, test, or package…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Dependency on third-party suppliers and their technology…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "cce082e1f3b27e76",
+   "sentence_ids": [],
+   "evidence": "'Product, system security, and data protection incidents…': ends with an ellipsis (truncated heading) (heading: 'Product, system security, and data protection incidents or breaches, as well as cyber-attacks, coul…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Product, system security, and data protection incidents…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "df98eb8f5ae3787c",
+   "sentence_ids": [],
+   "evidence": "'Competition could adversely impact our market share…': ends with an ellipsis (truncated heading) (heading: 'Competition could adversely impact our market share and financial results.')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Competition could adversely impact our market share…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "e0d772dcef65caf2",
+   "sentence_ids": [],
+   "evidence": "'Issues relating to the responsible use of…': ends with an ellipsis (truncated heading); ends mid-clause on 'of' (heading: 'Issues relating to the responsible use of our technologies, including AI in our offerings, may resu…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Issues relating to the responsible use of…'",
+   "stage": null
+  },
+  {
+   "check": "PREAMBLE",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "692187bd48c050c3",
+   "sentence_ids": [
+    "0001045810-26-000021:0:0"
+   ],
+   "evidence": "'The following risk factors should be considered in addition to the other information in this Annual Report on Form 10-K.': heading is the Item 1A introduction",
+   "classification": "stale",
+   "note": "segment 0.2.1 skips intro and summary units; confirmed only by a re-run from stage 2",
+   "stage": 2
+  },
+  {
+   "check": "ENTITY",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-26-000021:21:64"
+   ],
+   "evidence": "'AI Diffusion IFR in': post-filter changes it to 'AI Diffusion IFR' (trailing/leading stopword); trailing preposition",
+   "classification": "stale",
+   "note": "current entity code no longer emits it",
+   "stage": 6
+  },
+  {
+   "check": "ENTITY",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-26-000021:21:71"
+   ],
+   "evidence": "'Biden Administration': bare government administration",
+   "classification": "code",
+   "note": "current entity code still emits it",
+   "stage": null
+  },
+  {
+   "check": "ENTITY",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-26-000021:21:47",
+    "0001045810-26-000021:21:63"
+   ],
+   "evidence": "'D:4': dropped by the entity post-filter (code or too short); short code; on the trends entity stoplist",
+   "classification": "stale",
+   "note": "current entity code no longer emits it",
+   "stage": 6
+  },
+  {
+   "check": "ENTITY",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-26-000021:21:71"
+   ],
+   "evidence": "'Trump Administration': bare government administration",
+   "classification": "code",
+   "note": "current entity code still emits it",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-26-000021:21:7"
+   ],
+   "evidence": "'csp market' via 'CSP market' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'For example, the French Competition Authority collected information from us regarding our business and competition in the graphics card and…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-26-000021:21:33"
+   ],
+   "evidence": "'non data center product' via 'non-data center products' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'Export controls have and could in the future disrupt our supply chain and distribution channels, negatively impacting our ability to serve…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-26-000021:21:42"
+   ],
+   "evidence": "'networking business' via 'networking business' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'If regulators conclude that we have failed to fulfill the terms of our Mellanox acquisition or we have violated any applicable law in China…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "a4156a06454f6dfd",
+   "sentence_ids": [
+    "0001045810-26-000021:21:100"
+   ],
+   "evidence": "'connected vehicle restriction' via 'Connected Vehicle” restrictions' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'For example, the USG adopted “Connected Vehicle” restrictions on the import and sale of certain automotive products in the United States, w…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "b7c169267209801d",
+   "sentence_ids": [
+    "0001045810-26-000021:16:2"
+   ],
+   "evidence": "'direct customer' counted on an essentially unchanged risk factor: 'For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct custome…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "472606c9d458f2e9",
+   "sentence_ids": [
+    "0001045810-26-000021:15:15"
+   ],
+   "evidence": "'OpenAI' counted on an essentially unchanged risk factor: 'We are finalizing an investment and partnership agreement with OpenAI.'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "472606c9d458f2e9",
+   "sentence_ids": [
+    "0001045810-26-000021:15:15"
+   ],
+   "evidence": "'investment and partnership agreement' counted on an essentially unchanged risk factor: 'We are finalizing an investment and partnership agreement with OpenAI.'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "472606c9d458f2e9",
+   "sentence_ids": [
+    "0001045810-26-000021:15:16"
+   ],
+   "evidence": "'investment and partnership agreement' counted on an essentially unchanged risk factor: 'There is no assurance that we will enter into an investment and partnership agreement with OpenAI or that a transaction…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "3efe394c13cfbc9c",
+   "sentence_ids": [
+    "0001045810-26-000021:27:1"
+   ],
+   "evidence": "'intellectual property' counted on an essentially unchanged risk factor: 'We currently and will likely continue to face legal, administrative and regulatory proceedings, claims, demands and/or…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "514830a330b756d7",
+   "sentence_ids": [
+    "0001045810-26-000021:10:11"
+   ],
+   "evidence": "'cash management purpose' counted on an essentially unchanged risk factor: 'Additionally, we maintain a portfolio of liquid investments for cash management purposes, including various holdings, t…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "514830a330b756d7",
+   "sentence_ids": [
+    "0001045810-26-000021:10:11"
+   ],
+   "evidence": "'liquid investment' counted on an essentially unchanged risk factor: 'Additionally, we maintain a portfolio of liquid investments for cash management purposes, including various holdings, t…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "6ef9abded50fdc62",
+   "sentence_ids": [
+    "0001045810-26-000021:18:1"
+   ],
+   "evidence": "'exceptional talent' via 'exceptional talent' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'To remain competitive and successfully execute our business strategy, we must attract, retain, and motivate our executives and key employee…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "6ef9abded50fdc62",
+   "sentence_ids": [
+    "0001045810-26-000021:18:1"
+   ],
+   "evidence": "'exceptional talent' counted on an essentially unchanged risk factor: 'To remain competitive and successfully execute our business strategy, we must attract, retain, and motivate our executi…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "8789091d41a73853",
+   "sentence_ids": [
+    "0001045810-26-000021:26:7"
+   ],
+   "evidence": "'fddei deduction' via 'FDDEI deduction' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'If U.S. tax rates increase or the FDDEI deduction is reduced, our provision for income taxes, results of operations, net income, and cash f…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "8789091d41a73853",
+   "sentence_ids": [
+    "0001045810-26-000021:26:7"
+   ],
+   "evidence": "'fddei deduction' counted on an essentially unchanged risk factor: 'If U.S. tax rates increase or the FDDEI deduction is reduced, our provision for income taxes, results of operations, ne…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "8789091d41a73853",
+   "sentence_ids": [
+    "0001045810-26-000021:26:9"
+   ],
+   "evidence": "'coordination mechanism' counted on an essentially unchanged risk factor: 'A number of countries in which we conduct business have enacted, or are in the process of enacting, elements of the Pil…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "8789091d41a73853",
+   "sentence_ids": [
+    "0001045810-26-000021:26:9"
+   ],
+   "evidence": "'safe harbor' counted on an essentially unchanged risk factor: 'A number of countries in which we conduct business have enacted, or are in the process of enacting, elements of the Pil…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "8910beb6333642bd",
+   "sentence_ids": [
+    "0001045810-26-000021:3:2"
+   ],
+   "evidence": "'data protection incident' via 'data protection incidents' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'Product, system security and data protection incidents or breaches, as well as cyber-attacks could disrupt our operations and adversely aff…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "8910beb6333642bd",
+   "sentence_ids": [
+    "0001045810-26-000021:3:2"
+   ],
+   "evidence": "'data protection incident' counted on an essentially unchanged risk factor: 'Product, system security and data protection incidents or breaches, as well as cyber-attacks could disrupt our operatio…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "8910beb6333642bd",
+   "sentence_ids": [
+    "0001045810-26-000021:3:7"
+   ],
+   "evidence": "'Counterparty and credit risk' counted on an essentially unchanged risk factor: 'Commercial arrangements expose us to counterparty risks, which may negatively impact our business, financial condition,…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "8910beb6333642bd",
+   "sentence_ids": [
+    "0001045810-26-000021:3:7"
+   ],
+   "evidence": "'commercial arrangement' counted on an essentially unchanged risk factor: 'Commercial arrangements expose us to counterparty risks, which may negatively impact our business, financial condition,…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "ad4f3805e248f79e",
+   "sentence_ids": [
+    "0001045810-26-000021:14:8"
+   ],
+   "evidence": "'sustainability related law' via 'sustainability-related laws' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'Our business and those of our suppliers and customers is subject to sustainability-related laws, regulations and lawsuits.'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "NVDA",
+   "analysis_id": "13acfdfe2afda6d25f6c1dd365d438f63bad562664002a816d19c28ec94d3123",
+   "change_id": "ad4f3805e248f79e",
+   "sentence_ids": [
+    "0001045810-26-000021:14:8"
+   ],
+   "evidence": "'sustainability related law' counted on an essentially unchanged risk factor: 'Our business and those of our suppliers and customers is subject to sustainability-related laws, regulations and lawsui…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "STALE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": null,
+   "sentence_ids": [],
+   "evidence": "rubric 1.0.0 != 1.1.0; code fingerprint f7ef0450bbe6 != current e94330fbe528",
+   "classification": "stale",
+   "note": "stage versions are not recorded in this report; the earliest stage is inferred from the other findings",
+   "stage": 5
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0000950170-25-027702:14:17",
+    "0001193125-26-067130:14:19"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: we",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0000950170-25-027702:14:24",
+    "0001193125-26-067130:14:23"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: maintain",
+   "classification": "stale",
+   "note": "current diff no longer marks these words",
+   "stage": 5
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0000950170-25-027702:14:29",
+    "0001193125-26-067130:14:29"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: such",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0000950170-25-027702:14:30",
+    "0001193125-26-067130:14:30"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: substantial, time",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0000950170-25-027702:14:37",
+    "0001193125-26-067130:14:37"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: unauthorized",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0000950170-25-027702:14:40",
+    "0001193125-26-067130:14:39"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: lapses",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "61ffb76925cf3bc2",
+   "sentence_ids": [
+    "0000950170-25-027702:20:2",
+    "0001193125-26-067130:20:1"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: we",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "61ffb76925cf3bc2",
+   "sentence_ids": [
+    "0000950170-25-027702:20:9",
+    "0001193125-26-067130:20:4"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: frameworks",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "6a8ab8f8ba0b3e6e",
+   "sentence_ids": [
+    "0000950170-25-027702:11:17",
+    "0001193125-26-067130:11:21"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: we",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "faa01310d8a450a6",
+   "sentence_ids": [
+    "0000950170-25-027702:5:5",
+    "0001193125-26-067130:5:5"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: in",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "faa01310d8a450a6",
+   "sentence_ids": [
+    "0000950170-25-027702:5:7",
+    "0001193125-26-067130:5:6"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: changes",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "db2dc1bfc373add1",
+   "sentence_ids": [
+    "0000950170-25-027702:18:4",
+    "0001193125-26-067130:18:3"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: own, policies",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "db2dc1bfc373add1",
+   "sentence_ids": [
+    "0000950170-25-027702:18:9",
+    "0001193125-26-067130:18:5"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: associate",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "CASE",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "a3f929046016c860",
+   "sentence_ids": [
+    "0000950170-25-027702:17:7",
+    "0001193125-26-067130:17:7"
+   ],
+   "evidence": "highlighted though only case/space/punctuation differ: our",
+   "classification": "code",
+   "note": "current diff reproduces it",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [],
+   "evidence": "'Cyber attack or other security breach of…': ends with an ellipsis (truncated heading); ends mid-clause on 'of' (heading: 'Cyber attack or other security breach of our technology systems, or those of other third parties we…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Cyber attack or other security breach of…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "61ffb76925cf3bc2",
+   "sentence_ids": [],
+   "evidence": "'We are subject to risks relating to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'We are subject to risks relating to environmental, social, and governance matters that could advers…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'We are subject to risks relating to…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "6a8ab8f8ba0b3e6e",
+   "sentence_ids": [],
+   "evidence": "'We face intense competition and pricing pressures…': ends with an ellipsis (truncated heading) (heading: 'We face intense competition and pricing pressures and may not be able to keep pace with technologic…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'We face intense competition and pricing pressures…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "faa01310d8a450a6",
+   "sentence_ids": [],
+   "evidence": "'Our business is sensitive to domestic and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'Our business is sensitive to domestic and international macroeconomic conditions caused by politica…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Our business is sensitive to domestic and…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "db2dc1bfc373add1",
+   "sentence_ids": [],
+   "evidence": "'Associate misconduct, which is difficult to detect…': ends with an ellipsis (truncated heading) (heading: 'Associate misconduct, which is difficult to detect and deter, could harm us by impairing our abilit…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Associate misconduct, which is difficult to detect…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "c9c637a7b6f09af9",
+   "sentence_ids": [],
+   "evidence": "'A downgrade in our credit ratings could…': ends with an ellipsis (truncated heading); ends mid-clause on 'could' (heading: 'A downgrade in our credit ratings could have a material adverse effect on our operations, earnings,…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'A downgrade in our credit ratings could…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "cdde20b394f48139",
+   "sentence_ids": [],
+   "evidence": "'Financial services firms are highly regulated and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'Financial services firms are highly regulated and are subject to new and proposed regulations, all…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Financial services firms are highly regulated and…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "004fde9f3c9e2280",
+   "sentence_ids": [],
+   "evidence": "'We are exposed to litigation and regulatory…': ends with an ellipsis (truncated heading) (heading: 'We are exposed to litigation and regulatory investigations and proceedings, which could materially…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'We are exposed to litigation and regulatory…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "01c4bf9a6fdd34a1",
+   "sentence_ids": [],
+   "evidence": "'Numerous regulatory changes and enhanced regulatory and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'Numerous regulatory changes and enhanced regulatory and enforcement activity relating to our asset…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Numerous regulatory changes and enhanced regulatory and…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "110fd3809db62155",
+   "sentence_ids": [],
+   "evidence": "'As a financial holding company, our company’s…': ends with an ellipsis (truncated heading) (heading: 'As a financial holding company, our company’s liquidity depends on payments from its subsidiaries,…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'As a financial holding company, our company’s…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "1860d97fe1f9183e",
+   "sentence_ids": [],
+   "evidence": "'A continued interruption to our telecommunications or…': ends with an ellipsis (truncated heading); ends mid-clause on 'or' (heading: 'A continued interruption to our telecommunications or data processing systems, or the failure to ef…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'A continued interruption to our telecommunications or…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "1d17926540b996ca",
+   "sentence_ids": [],
+   "evidence": "'The soundness of other financial institutions and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'The soundness of other financial institutions and intermediaries affects us.')",
+   "classification": "code",
+   "note": "the current fallback still gives 'The soundness of other financial institutions and…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "5b166d3768038548",
+   "sentence_ids": [],
+   "evidence": "'The development and use of artificial intelligence…': ends with an ellipsis (truncated heading) (heading: 'The development and use of artificial intelligence presents risks and challenges that could adverse…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'The development and use of artificial intelligence…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "6273be7b6d05488d",
+   "sentence_ids": [],
+   "evidence": "'Failure to comply with regulatory capital requirements…': ends with an ellipsis (truncated heading) (heading: 'Failure to comply with regulatory capital requirements primarily applicable to our company, our ban…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Failure to comply with regulatory capital requirements…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "688d9a8f3df31b31",
+   "sentence_ids": [],
+   "evidence": "'Business growth, including through acquisitions, could increase…': ends with an ellipsis (truncated heading) (heading: 'Business growth, including through acquisitions, could increase costs and regulatory and integratio…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Business growth, including through acquisitions, could increase…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "6e2490b399eb9eb4",
+   "sentence_ids": [],
+   "evidence": "'Changes in requirements relating to the standard…': ends with an ellipsis (truncated heading) (heading: 'Changes in requirements relating to the standard of care for broker-dealers have increased, and may…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Changes in requirements relating to the standard…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "9544e9cba9256740",
+   "sentence_ids": [],
+   "evidence": "'Our operations and financial results are subject…': ends with an ellipsis (truncated heading) (heading: 'Our operations and financial results are subject to various risks and uncertainties, including thos…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Our operations and financial results are subject…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "9fa16d1123110dd3",
+   "sentence_ids": [],
+   "evidence": "'Our business depends on fees earned from…': ends with an ellipsis (truncated heading); ends mid-clause on 'from' (heading: 'Our business depends on fees earned from the management of client accounts and asset management fee…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Our business depends on fees earned from…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "a3f929046016c860",
+   "sentence_ids": [],
+   "evidence": "'Our risk management and conflicts of interest…': ends with an ellipsis (truncated heading) (heading: 'Our risk management and conflicts of interest policies and procedures may leave us exposed to unide…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Our risk management and conflicts of interest…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "b5a154b2ec7f44e6",
+   "sentence_ids": [],
+   "evidence": "'We are exposed to market risk, including…': ends with an ellipsis (truncated heading); ends mid-clause on 'including' (heading: 'We are exposed to market risk, including interest rate risk.')",
+   "classification": "code",
+   "note": "the current fallback still gives 'We are exposed to market risk, including…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "c092b5083dee157f",
+   "sentence_ids": [],
+   "evidence": "'The preparation of the consolidated financial statements…': ends with an ellipsis (truncated heading) (heading: 'The preparation of the consolidated financial statements requires the use of estimates that may var…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'The preparation of the consolidated financial statements…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "da70c265a7c8e9a9",
+   "sentence_ids": [],
+   "evidence": "'The Basel III regulatory capital standards impose…': ends with an ellipsis (truncated heading) (heading: 'The Basel III regulatory capital standards impose capital and other requirements on us that could n…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'The Basel III regulatory capital standards impose…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "e05b4ea6d5ef463f",
+   "sentence_ids": [],
+   "evidence": "'Our underwriting, market-making, trading, and other business…': ends with an ellipsis (truncated heading) (heading: 'Our underwriting, market-making, trading, and other business activities place our capital at risk.')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Our underwriting, market-making, trading, and other business…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "fa831ff1fb46062f",
+   "sentence_ids": [],
+   "evidence": "'Lack of funding, liquidity, or access to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'Lack of funding, liquidity, or access to capital could impair our business and financial condition.')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Lack of funding, liquidity, or access to…'",
+   "stage": null
+  },
+  {
+   "check": "TITLES",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "fee898b2afc93812",
+   "sentence_ids": [],
+   "evidence": "'Our ability to attract and retain senior…': ends with an ellipsis (truncated heading) (heading: 'Our ability to attract and retain senior professionals, qualified financial advisors, and other ass…')",
+   "classification": "code",
+   "note": "the current fallback still gives 'Our ability to attract and retain senior…'",
+   "stage": null
+  },
+  {
+   "check": "ENTITY",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "61ffb76925cf3bc2",
+   "sentence_ids": [
+    "0001193125-26-067130:20:2",
+    "0001193125-26-067130:20:11"
+   ],
+   "evidence": "'SEC': on the trends entity stoplist",
+   "classification": "code",
+   "note": "current entity code still emits it",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0001193125-26-067130:14:21"
+   ],
+   "evidence": "'supply chain attack' via 'supply-chain attacks' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'Despite our implementation of protective measures and our efforts to modify them as circumstances warrant, our computer systems, software,…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0001193125-26-067130:14:22"
+   ],
+   "evidence": "'cybersecurity insurance' via 'cybersecurity insurance' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'In addition, although we maintain cybersecurity insurance as one component of our broader risk-mitigation strategy, coverage is subject to…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0001193125-26-067130:14:22"
+   ],
+   "evidence": "'policy term' via 'policy terms' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'In addition, although we maintain cybersecurity insurance as one component of our broader risk-mitigation strategy, coverage is subject to…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0001193125-26-067130:14:28"
+   ],
+   "evidence": "'high transaction volume' via 'high transaction volumes' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'Given our high transaction volumes, remote-work environment, and the large number of clients, partners, and counterparties we serve, a cybe…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0001193125-26-067130:14:30"
+   ],
+   "evidence": "'complete and reliable information' via 'complete and reliable information' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'Investigations can require substantial time and resources, and there may be significant delays before we obtain complete and reliable infor…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0001193125-26-067130:14:31"
+   ],
+   "evidence": "'malicious action' via 'malicious actions' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'During an extended investigation, we may not know the full extent of the harm or the optimal remediation path, and certain errors or malici…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0001193125-26-067130:14:36"
+   ],
+   "evidence": "'criminal penalty' via 'criminal penalties' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'If any person, including an associate or a third-party service provider, negligently disregards or intentionally breaches our controls or o…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "61ffb76925cf3bc2",
+   "sentence_ids": [
+    "0001193125-26-067130:20:1"
+   ],
+   "evidence": "'foreign regulatory authority' via 'foreign regulatory authorities' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'We have multiple stakeholders, including our shareholders, clients, associates, federal, state, and foreign regulatory authorities, and the…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "faa01310d8a450a6",
+   "sentence_ids": [
+    "0001193125-26-067130:5:5"
+   ],
+   "evidence": "'governmental policy change' via 'governmental policy changes' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'In addition, our results of operations may be impacted by governmental policy changes and/or regulatory reform in multiple areas, including…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "db2dc1bfc373add1",
+   "sentence_ids": [
+    "0001193125-26-067130:18:2"
+   ],
+   "evidence": "'non public confidential information' via 'non-public, confidential information' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'For example, our investment banking business often requires that we appropriately manage the use of our institutional clients’ non-public,…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "db2dc1bfc373add1",
+   "sentence_ids": [
+    "0001193125-26-067130:18:3"
+   ],
+   "evidence": "'client confidential information' via 'clients’ confidential information' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'Similarly, many of our associates interact routinely with clients and counterparties and are expected to comply with our policies and proce…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-NEW",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "db2dc1bfc373add1",
+   "sentence_ids": [
+    "0001193125-26-067130:18:4"
+   ],
+   "evidence": "'regulatory action' via 'regulatory action' (phrase): term is outside the inserted spans (it was already in the sentence last year). 'If confidential information, for example, is improperly used or disclosed by any associate, we could be subject to regulatory action and su…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "cdde20b394f48139",
+   "sentence_ids": [
+    "0001193125-26-067130:21:3"
+   ],
+   "evidence": "'DOL' counted on an essentially unchanged risk factor: 'The financial services industry has experienced an extended period of significant change in laws and regulations, as we…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "cdde20b394f48139",
+   "sentence_ids": [
+    "0001193125-26-067130:21:18"
+   ],
+   "evidence": "'banking regulator' counted on an essentially unchanged risk factor: 'In particular, the banking regulators have broad enforcement power over bank holding companies and banks, including wit…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "cdde20b394f48139",
+   "sentence_ids": [
+    "0001193125-26-067130:21:18"
+   ],
+   "evidence": "'enforcement power' counted on an essentially unchanged risk factor: 'In particular, the banking regulators have broad enforcement power over bank holding companies and banks, including wit…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "cdde20b394f48139",
+   "sentence_ids": [
+    "0001193125-26-067130:21:18"
+   ],
+   "evidence": "'unsafe or unsound practice' counted on an essentially unchanged risk factor: 'In particular, the banking regulators have broad enforcement power over bank holding companies and banks, including wit…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "004fde9f3c9e2280",
+   "sentence_ids": [
+    "0001193125-26-067130:22:6"
+   ],
+   "evidence": "'firm policy' counted on an essentially unchanged risk factor: 'Unauthorized or illegal acts or noncompliance with firm policies by our associates could also result in substantial lia…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "004fde9f3c9e2280",
+   "sentence_ids": [
+    "0001193125-26-067130:22:6"
+   ],
+   "evidence": "'substantial liability' counted on an essentially unchanged risk factor: 'Unauthorized or illegal acts or noncompliance with firm policies by our associates could also result in substantial lia…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "004fde9f3c9e2280",
+   "sentence_ids": [
+    "0001193125-26-067130:22:6"
+   ],
+   "evidence": "'unauthorized or illegal act' counted on an essentially unchanged risk factor: 'Unauthorized or illegal acts or noncompliance with firm policies by our associates could also result in substantial lia…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "1860d97fe1f9183e",
+   "sentence_ids": [
+    "0001193125-26-067130:13:1"
+   ],
+   "evidence": "'technology solution' counted on an essentially unchanged risk factor: 'Our businesses rely extensively on data processing and communications systems, including both third-party and internall…'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "fa831ff1fb46062f",
+   "sentence_ids": [
+    "0001193125-26-067130:1:13"
+   ],
+   "evidence": "'fund banking client' counted on an essentially unchanged risk factor: 'During 2025, we have seen an increase in deposits from our commercial, venture banking, and fund banking clients.'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "TOPIC-MEANINGFUL",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "fa831ff1fb46062f",
+   "sentence_ids": [
+    "0001193125-26-067130:1:13"
+   ],
+   "evidence": "'venture banking' counted on an essentially unchanged risk factor: 'During 2025, we have seen an increase in deposits from our commercial, venture banking, and fund banking clients.'",
+   "classification": "code",
+   "note": "derived with the current code",
+   "stage": null
+  },
+  {
+   "check": "SNIP-TOPIC",
+   "ticker": "SF",
+   "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+   "change_id": "3b93c57e20a358e4",
+   "sentence_ids": [
+    "0001193125-26-067130:14:34"
+   ],
+   "evidence": "topic 'Gramm-Leach-Bliley Act': displayed 'In providing services to clients, we collect, use, store, and transmit sensitive client and associa…' lacks ['Gramm-Leach-Bliley Act']",
+   "classification": "code",
+   "note": "display rule: legacy",
+   "stage": null
+  }
+ ],
+ "accepted": [],
+ "errors": [],
+ "exit_code": 1
+}
