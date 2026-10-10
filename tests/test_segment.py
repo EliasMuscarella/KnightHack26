@@ -173,3 +173,20 @@ def test_bullet_before_bold_lead_heading_does_not_crash():
     for blk in seg.blocks:
         for s in blk.sentences:
             assert seg.text[s.char_start : s.char_end] == s.text
+
+
+def test_risk_factor_summary_is_a_block_not_a_group():
+    units = [
+        U("Summary of Risk Factors", emph=True),
+        U("• Our supply chain depends on a few foundries."),
+        U("• Our products may contain defects."),
+        U("Risks Related to Our Business", emph=True),
+        U("We depend on suppliers.", emph=True),
+        U(BODY),
+        U("Our products may have defects.", emph=True),
+        U(BODY),
+    ]
+    seg = segment(section_from_units(units))
+    assert seg.blocks[0].heading == "Summary of Risk Factors"
+    assert len(seg.blocks[0].sentences) == 3
+    assert seg.section_groups == ["Risks Related to Our Business"]

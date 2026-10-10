@@ -28,14 +28,13 @@ from pipeline.types import ExtractedSection, RiskBlock, SegmentedFiling, Sentenc
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.1.1"
+STAGE_VERSION = "0.1.2"
 MAX_HEADING_WORDS = 60
 MAX_GROUP_WORDS = 15
 MIN_BLOCKS = 3
 
 GROUP_RE = re.compile(
-    r"^(summary of risk factors|risk factors? summary|"
-    r"risks?\s+(related|relating|pertaining)\s+to\b|"
+    r"^(risks?\s+(related|relating|pertaining)\s+to\b|"
     r"risks?\s+(associated|connected)\s+with\b|"
     r"risks?\s+(of|from|arising from)\b|"
     r"(general|other|additional|legal|regulatory|financial|operational|strategic|economic|industry|"
@@ -43,6 +42,8 @@ GROUP_RE = re.compile(
     r"intellectual property|liquidity|governance|compliance)[\w\s,&/-]*\brisks?( factors?)?$)",
     re.I,
 )
+# "Summary of Risk Factors" / "Risk Factors Summary" is a real block (its bullets are its body), not a
+# group header, so it is matched as one block across years instead of leaking bullets into a preamble.
 BULLET_RE = re.compile(r"^[•●▪■◦‣⁃·\-–—*]\s*")
 TERMINAL = (".", "!", "?", ":", ";")
 
