@@ -8,5 +8,5 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Trends" };
 
 export default async function TrendsPage() {
-  return <TrendsView trends={await getTrends()} />;
+  return <TrendsView initial={await getTrends()} />;
 }

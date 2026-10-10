@@ -9,9 +9,13 @@ import type {
   CompanyCard,
   LibraryStatus,
   StageEvent,
-  TrendsCategoryRow,
-  TrendsKindRow,
+  StoreState,
+  TrendsActual,
+  TrendsCategoryActivity,
+  TrendsCompany,
   TrendsPayload,
+  TrendsTopic,
+  TrendsTopicExample,
 } from "@/lib/types";
 
 export const API_BASE = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(
@@ -80,18 +84,11 @@ export async function getCompaniesFromApi(timeoutMs = 1500): Promise<CompanyCard
   return Array.isArray(body.companies) ? body.companies : [];
 }
 
-const REMOTE_STATES = ["ok", "offline", "disabled"] as const;
 
-function asRemoteState(x: unknown): Exclude<LibraryStatus, "unknown"> | null {
-  return typeof x === "string" && (REMOTE_STATES as readonly string[]).includes(x)
-    ? (x as Exclude<LibraryStatus, "unknown">)
-    : null;
+function asRemoteState(x: unknown): StoreState | null {
+  return x === "ok" || x === "offline" || x === "disabled" || x === "connecting" ? x : null;
 }
 
-/**
- * GET /store/health. Never throws: a network error, a timeout, a non-2xx response (the
- * endpoint may not exist yet) or an unexpected body all read as "unknown".
- */
 export async function getLibraryStatusFromApi(timeoutMs = 1500): Promise<LibraryStatus> {
   try {
     const res = await fetchWithTimeout(`${API_BASE}/store/health`, { cache: "no-store", timeoutMs });
@@ -103,51 +100,172 @@ export async function getLibraryStatusFromApi(timeoutMs = 1500): Promise<Library
   }
 }
 
-function isCount(x: unknown): x is number {
-  return typeof x === "number" && Number.isFinite(x) && x >= 0;
-}
 
 /**
  * GET /trends, validated row by row (malformed rows are dropped). Never throws: returns
  * null when the API is down, slow, lacks the endpoint, or answers with an unexpected body.
  */
-export async function getTrendsFromApi(timeoutMs = 1500): Promise<TrendsPayload | null> {
-  let body: unknown;
+const TICKER = /^[A-Z.\-]{1,6}$/;
+
+function str(x: unknown, max = 2000): string | null {
+  return typeof x === "string" && x.length <= max ? x : null;
+}
+function num(x: unknown): number {
+  return typeof x === "number" && Number.isFinite(x) && x >= 0 ? x : 0;
+}
+function counts(x: unknown): Record<string, number> {
+  if (!x || typeof x !== "object") return {};
+  return Object.fromEntries(Object.entries(x as Record<string, unknown>).filter(([, v]) => typeof v === "number" && Number.isFinite(v))) as Record<string, number>;
+}
+function spans(x: unknown, len: number): [number, number][] {
+  if (!Array.isArray(x)) return [];
+  const out: [number, number][] = [];
+  for (const p of x) {
+    if (!Array.isArray(p) || p.length !== 2) continue;
+    const [a, b] = p;
+    if (typeof a !== "number" || typeof b !== "number" || a < 0 || b > len || a >= b) continue;
+    out.push([Math.floor(a), Math.floor(b)]);
+  }
+  return out.sort((p, q) => p[0] - q[0]);
+}
+
+function company(x: unknown): TrendsCompany | null {
+  if (!x || typeof x !== "object") return null;
+  const r = x as Record<string, unknown>;
+  const ticker = str(r.ticker, 6);
+  if (!ticker || !TICKER.test(ticker)) return null;
+  return {
+    ticker,
+    name: str(r.name, 200) ?? ticker,
+    analysis_id: str(r.analysis_id, 64) ?? "",
+    old_fiscal_year: num(r.old_fiscal_year),
+    new_fiscal_year: num(r.new_fiscal_year),
+    total_changes: num(r.total_changes),
+    meaningful_changes: num(r.meaningful_changes),
+    by_change_type: counts(r.by_change_type),
+    cik: str(r.cik, 10),
+    old_accession: str(r.old_accession, 32),
+    new_accession: str(r.new_accession, 32),
+    edgar_url_old: str(r.edgar_url_old, 500),
+    edgar_url_new: str(r.edgar_url_new, 500),
+  };
+}
+
+function example(x: unknown): TrendsTopicExample | null {
+  if (!x || typeof x !== "object") return null;
+  const r = x as Record<string, unknown>;
+  const ticker = str(r.ticker, 6);
+  const text = str(r.text, 5000);
+  const changeId = str(r.change_id, 64);
+  if (!ticker || !TICKER.test(ticker) || !text || !changeId || !/^[0-9a-f]{8,64}$/.test(changeId)) return null;
+  return {
+    ticker,
+    change_id: changeId,
+    sentence_id: str(r.sentence_id, 80) ?? "",
+    short_title: str(r.short_title, 300) ?? "",
+    status: r.status === "modified" ? "modified" : "added",
+    text,
+    added_spans: spans(r.added_spans, text.length),
+    matched_terms: Array.isArray(r.matched_terms) ? r.matched_terms.filter((t): t is string => typeof t === "string").slice(0, 10) : [],
+  };
+}
+
+function topic(x: unknown): TrendsTopic | null {
+  if (!x || typeof x !== "object") return null;
+  const r = x as Record<string, unknown>;
+  const name = str(r.topic, 120);
+  if (!name) return null;
+  const companies = Array.isArray(r.companies) ? r.companies.filter((t): t is string => typeof t === "string" && TICKER.test(t)) : [];
+  return {
+    topic: name,
+    source: r.source === "entity" || r.source === "phrase" ? r.source : "lexicon",
+    company_count: Math.max(num(r.company_count), companies.length),
+    sentence_count: num(r.sentence_count),
+    companies,
+    examples: Array.isArray(r.examples) ? r.examples.map(example).filter((e): e is TrendsTopicExample => e !== null) : [],
+  };
+}
+
+function activity(x: unknown): TrendsCategoryActivity | null {
+  if (!x || typeof x !== "object") return null;
+  const r = x as Record<string, unknown>;
+  const ticker = str(r.ticker, 6);
+  const category = str(r.category, 80);
+  if (!ticker || !TICKER.test(ticker) || !category) return null;
+  return {
+    ticker,
+    category,
+    risk_factors: num(r.risk_factors),
+    change_ids: Array.isArray(r.change_ids) ? r.change_ids.filter((c): c is string => typeof c === "string") : [],
+    added_sentences: num(r.added_sentences),
+    removed_sentences: num(r.removed_sentences),
+    modified_sentences: num(r.modified_sentences),
+    added_words: num(r.added_words),
+    removed_words: num(r.removed_words),
+    modified_words: num(r.modified_words),
+    max_score: num(r.max_score),
+  };
+}
+
+function actual(x: unknown): TrendsActual | null {
+  if (!x || typeof x !== "object") return null;
+  const r = x as Record<string, unknown>;
+  const ticker = str(r.ticker, 6);
+  const changeId = str(r.change_id, 64);
+  if (!ticker || !TICKER.test(ticker) || !changeId) return null;
+  return {
+    ticker,
+    company_name: str(r.company_name, 200) ?? ticker,
+    change_id: changeId,
+    short_title: str(r.short_title, 300) ?? "",
+    old_sentence_id: str(r.old_sentence_id, 80),
+    new_sentence_id: str(r.new_sentence_id, 80),
+    old_text: str(r.old_text, 5000),
+    new_text: str(r.new_text, 5000),
+    score: num(r.score),
+  };
+}
+
+/** Validates the /trends payload field by field; anything malformed is dropped, never rendered. */
+export function parseTrends(body: unknown): TrendsPayload | null {
+  if (!body || typeof body !== "object") return null;
+  const b = body as Record<string, unknown>;
+  const status = asRemoteState(b.status);
+  if (!status) return null;
+  const headline = (b.headline && typeof b.headline === "object" ? b.headline : {}) as Record<string, unknown>;
+  const top = headline.top_topic && typeof headline.top_topic === "object" ? (headline.top_topic as Record<string, unknown>) : null;
+  const companies = Array.isArray(b.companies) ? b.companies.map(company).filter((c): c is TrendsCompany => c !== null) : [];
+  return {
+    status,
+    source: b.source === "databricks" || b.source === "local" ? b.source : null,
+    computed_at: str(b.computed_at, 40),
+    companies,
+    headline: {
+      companies: Math.max(num(headline.companies), companies.length),
+      meaningful_changes: num(headline.meaningful_changes),
+      top_topic: top && typeof top.topic === "string" ? { topic: top.topic, company_count: num(top.company_count) } : null,
+    },
+    topics: Array.isArray(b.topics) ? b.topics.map(topic).filter((t): t is TrendsTopic => t !== null) : [],
+    category_activity: Array.isArray(b.category_activity) ? b.category_activity.map(activity).filter((a): a is TrendsCategoryActivity => a !== null) : [],
+    potential_to_actual: Array.isArray(b.potential_to_actual) ? b.potential_to_actual.map(actual).filter((a): a is TrendsActual => a !== null) : [],
+    change_mix: Array.isArray(b.change_mix)
+      ? b.change_mix
+          .map((m) => (m && typeof m === "object" ? (m as Record<string, unknown>) : null))
+          .filter((m): m is Record<string, unknown> => !!m && typeof m.ticker === "string" && TICKER.test(m.ticker))
+          .map((m) => ({ ticker: m.ticker as string, by_change_type: counts(m.by_change_type) }))
+      : [],
+  };
+}
+
+/** GET /trends; null when the API is down, slow, or the payload is malformed. */
+export async function getTrendsFromApi(timeoutMs = 4000): Promise<TrendsPayload | null> {
   try {
     const res = await fetchWithTimeout(`${API_BASE}/trends`, { cache: "no-store", timeoutMs });
     if (!res.ok) return null;
-    body = await res.json();
+    return parseTrends(await res.json());
   } catch {
     return null;
   }
-  if (!body || typeof body !== "object") return null;
-  const b = body as Record<string, unknown>;
-  if (typeof b.available !== "boolean") return null;
-  const byCategory: TrendsCategoryRow[] = (Array.isArray(b.by_category) ? b.by_category : []).filter(
-    (r): r is TrendsCategoryRow =>
-      !!r &&
-      typeof r === "object" &&
-      typeof (r as TrendsCategoryRow).category === "string" &&
-      typeof (r as TrendsCategoryRow).change_type === "string" &&
-      isCount((r as TrendsCategoryRow).companies),
-  );
-  const byKind: TrendsKindRow[] = (Array.isArray(b.by_kind) ? b.by_kind : []).filter(
-    (r): r is TrendsKindRow =>
-      !!r &&
-      typeof r === "object" &&
-      typeof (r as TrendsKindRow).ticker === "string" &&
-      /^[A-Z.\-]{1,6}$/.test((r as TrendsKindRow).ticker) &&
-      typeof (r as TrendsKindRow).company_name === "string" &&
-      typeof (r as TrendsKindRow).kind === "string" &&
-      isCount((r as TrendsKindRow).highlights),
-  );
-  return {
-    available: b.available,
-    remote: asRemoteState(b.remote) ?? "disabled",
-    companies: isCount(b.companies) ? Math.floor(b.companies) : 0,
-    by_category: byCategory,
-    by_kind: byKind,
-  };
 }
 
 /** Minimal structural check before treating untrusted JSON as a Comparison. */
