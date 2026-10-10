@@ -31,11 +31,49 @@ export const CHANGE_TYPE_ORDER: ChangeType[] = [
 ];
 
 /**
- * One neutral outlined style for every change type: no fill colors and no direction arrows,
- * so a label never reads as good/bad or up/down. (Green/red stays reserved for the inline
- * diff text, where it means added/removed words.)
+ * Direction of a disclosure change (DESIGN.md). Color follows direction and nothing else:
+ * blue = more language, orange = less language, ink = rewritten both ways.
  */
-const CHANGE_TYPE_BADGE = "bg-surface text-ink border-line-strong";
+export type Direction = "more" | "less" | "rewrite" | "none";
+
+export const DIRECTION_OF: Record<ChangeType, Direction> = {
+  new: "more",
+  expanded: "more",
+  reduced: "less",
+  removed: "less",
+  materially_reworded: "rewrite",
+  largely_unchanged: "none",
+};
+
+/** Tailwind classes from the design tokens: badge text, badge background, meter fill. */
+export interface Tone {
+  text: string;
+  bg: string;
+  fill: string;
+}
+
+export const CHANGE_TONE: Record<ChangeType, Tone> = {
+  new: { text: "text-more-strong-fg", bg: "bg-more-strong-bg", fill: "bg-more-strong-fg" },
+  expanded: { text: "text-more-fg", bg: "bg-more-bg", fill: "bg-more-fg" },
+  removed: { text: "text-less-strong-fg", bg: "bg-less-strong-bg", fill: "bg-less-strong-fg" },
+  reduced: { text: "text-less-fg", bg: "bg-less-bg", fill: "bg-less-fg" },
+  materially_reworded: { text: "text-rewrite-fg", bg: "bg-rewrite-bg", fill: "bg-rewrite-fg" },
+  largely_unchanged: { text: "text-ink-secondary", bg: "bg-surface ring-1 ring-inset ring-line", fill: "bg-line" },
+};
+
+export const ACTUAL_TONE: Tone = { text: "text-actual-fg", bg: "bg-actual-bg", fill: "bg-actual-fg" };
+export const SIGNAL_TONE: Tone = { text: "text-signal-fg", bg: "bg-signal-bg", fill: "bg-ink-secondary" };
+
+export function changeTone(t: string): Tone {
+  return CHANGE_TONE[t as ChangeType] ?? CHANGE_TONE.largely_unchanged;
+}
+
+export function directionOf(t: string): Direction {
+  return DIRECTION_OF[t as ChangeType] ?? "none";
+}
+
+/** Legacy field kept on the vocab entries; badges now take their colors from CHANGE_TONE. */
+const CHANGE_TYPE_BADGE = "";
 
 export const CHANGE_TYPE_VOCAB: Record<ChangeType, ChangeTypeVocab> = {
   new: {
@@ -95,9 +133,37 @@ export function changeTypeVocab(t: string): ChangeTypeVocab {
 export function displayTitle(shortTitle: string | null | undefined, fullTitle: string | null | undefined): string {
   const short = (shortTitle ?? "").trim();
   const full = (fullTitle ?? "").trim();
-  if (!short) return full;
-  if ((short.endsWith("…") || short.endsWith("...")) && full) return full;
+  if (!short) return shortTitleFromHeading(full);
+  if ((short.endsWith("…") || short.endsWith("...")) && full) return shortTitleFromHeading(full);
   return short;
+}
+
+/** Clause boundaries where a legal heading can be cut without losing its subject. */
+const CLAUSE_BREAKS = [", ", "; ", ": ", " which ", " that ", " may ", " might ", " could ", " including "];
+const TRAILING_FUNCTION_WORDS = /\s+(and|or|the|of|to|a|an|our|its|their|in|on|for|with|by|as)$/i;
+export const SHORT_TITLE_MAX_WORDS = 12;
+
+/**
+ * Deterministic display title from an official risk heading when no language-model short
+ * title exists: the heading's first clause (cut at the earliest clause boundary that keeps at
+ * least four words), trailing function words dropped, capped at SHORT_TITLE_MAX_WORDS words
+ * with a visible ellipsis. "Failure to meet the evolving needs of our industry and markets may
+ * adversely impact our financial results." -> "Failure to meet the evolving needs of our
+ * industry and markets". The full heading is always shown on the detail page.
+ */
+export function shortTitleFromHeading(heading: string): string {
+  const text = heading.trim().replace(/\s+/g, " ").replace(/[.;:]+$/, "");
+  if (!text) return "";
+  let cut = -1;
+  for (const brk of CLAUSE_BREAKS) {
+    const i = text.indexOf(brk);
+    if (i > 0 && text.slice(0, i).split(" ").length >= 4 && (cut === -1 || i < cut)) cut = i;
+  }
+  let head = cut > 0 ? text.slice(0, cut) : text;
+  head = head.replace(TRAILING_FUNCTION_WORDS, "").trim();
+  const words = head.split(" ");
+  if (words.length > SHORT_TITLE_MAX_WORDS) return words.slice(0, SHORT_TITLE_MAX_WORDS).join(" ").replace(TRAILING_FUNCTION_WORDS, "") + "…";
+  return head;
 }
 
 /** Every change type except "largely_unchanged" counts as a meaningful change. */
@@ -172,6 +238,18 @@ export function figureVocab(variant: FigureVariant): TermVocab {
   if (variant === "changed") return FIGURE_CHANGED;
   if (variant === "mixed") return FIGURE_NEW_OR_CHANGED;
   return SIGNAL_VOCAB.new_quantities;
+}
+
+export const HIGHLIGHT_TONE: Record<Highlight["kind"], Tone> = {
+  potential_became_actual: ACTUAL_TONE,
+  new_figure: SIGNAL_TONE,
+  new_named_party: SIGNAL_TONE,
+  new_risk: CHANGE_TONE.new,
+  removed_risk: CHANGE_TONE.removed,
+};
+
+export function highlightTone(kind: string): Tone {
+  return HIGHLIGHT_TONE[kind as Highlight["kind"]] ?? SIGNAL_TONE;
 }
 
 export const HIGHLIGHT_KIND_VOCAB: Record<Highlight["kind"], TermVocab & { badgeClass: string; marker: string }> = {
@@ -273,11 +351,25 @@ export function changeLevel(score: number): ChangeLevel {
 
 export const CHANGE_LEVEL = {
   label: "Wording change level",
-  /** Visible prefix on every level chip, so "High" never reads as a risk rating. */
+  /** Visible prefix on every level meter, so "High" never reads as a risk rating. */
   prefix: "Wording change",
   helper: "How much the language changed, not how risky the company is.",
   /** One-line note at the top of the "All changes" table. */
   tableNote: "Wording change level measures how much the language changed. It is not a risk rating.",
+} as const;
+
+/** Filled segments of the 3-segment level meter. */
+export function levelSegments(score: number): 1 | 2 | 3 {
+  const level = changeLevel(score);
+  return level === "High" ? 3 : level === "Medium" ? 2 : 1;
+}
+
+/** The one-line color legend shown once near the top of a company page. */
+export const LEGEND = {
+  more: "more disclosure language",
+  less: "less disclosure language",
+  rewrite: "rewritten",
+  actual: "potential became actual",
 } as const;
 
 // ---------------------------------------------------------------------------------------

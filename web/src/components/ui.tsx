@@ -1,144 +1,221 @@
-/** Small presentational building blocks (no hooks: usable from server and client components). */
+/**
+ * Shared presentational building blocks (no hooks: usable from server and client components).
+ * Colors come from the design tokens through lib/vocabulary (DESIGN.md): badges and level
+ * meters encode the DIRECTION of a disclosure change, never good or bad.
+ */
 import type { ReactNode } from "react";
 
 import { categoryLabel } from "@/lib/format";
 import { FIXTURE_BANNER } from "@/lib/copy";
-import { CHANGE_LEVEL, changeLevel, changeTypeVocab, highlightKindVocab } from "@/lib/vocabulary";
+import {
+  CHANGE_LEVEL,
+  CHANGE_TONE,
+  ACTUAL_TONE,
+  changeLevel,
+  changeTone,
+  changeTypeVocab,
+  highlightKindVocab,
+  highlightTone,
+  LEGEND,
+  levelSegments,
+  type Tone,
+} from "@/lib/vocabulary";
 
-function Badge({ marker, label, helper, badgeClass, size }: { marker: string; label: string; helper: string; badgeClass: string; size: "sm" | "md" }) {
+// ---------------------------------------------------------------------------------------
+// Badges
+// ---------------------------------------------------------------------------------------
+
+function Badge({ label, helper, tone, size }: { label: string; helper: string; tone: Tone; size: "sm" | "md" }) {
   return (
     <span
-      className={`inline-flex items-center gap-1 whitespace-nowrap rounded border font-semibold ${badgeClass} ${
-        size === "sm" ? "px-1.5 py-px text-xs" : "px-2 py-0.5 text-sm"
+      className={`inline-flex items-center whitespace-nowrap rounded-sm font-medium leading-none ${tone.bg} ${tone.text} ${
+        size === "sm" ? "px-2 py-1 text-xs" : "px-2.5 py-1.5 text-sm"
       }`}
       title={helper || undefined}
     >
-      {marker ? (
-        <span aria-hidden="true" className="font-mono">
-          {marker}
-        </span>
-      ) : null}
       {label}
     </span>
   );
 }
 
-/** Change-type label from the display vocabulary; the helper text is the tooltip. */
-export function ChangeTypeBadge({ type, size = "md" }: { type: string; size?: "sm" | "md" }) {
-  const v = changeTypeVocab(type);
-  return <Badge marker={v.marker} label={v.label} helper={v.helper} badgeClass={v.badgeClass} size={size} />;
-}
-
-/** Highlight-kind label ("Potential → Actual", "New figure disclosed", "Figure changed", ...). */
-export function HighlightKindBadge({
+/**
+ * The one change badge. Pass a change `type` (New risk, Expanded, Scaled back, Dropped risk,
+ * Major update, Essentially unchanged) or a highlight `kind` (Potential became actual, New
+ * figure disclosed / Figure changed, Newly named, New risk, Dropped risk).
+ */
+export function ChangeBadge({
+  type,
   kind,
-  size = "md",
   figureChanged = false,
+  size = "md",
 }: {
-  kind: string;
-  size?: "sm" | "md";
-  /** A `new_figure` highlight with both a last-year and a this-year sentence. */
+  type?: string;
+  kind?: string;
   figureChanged?: boolean;
+  size?: "sm" | "md";
 }) {
-  const v = highlightKindVocab(kind, figureChanged);
-  return <Badge marker={v.marker} label={v.label} helper={v.helper} badgeClass={v.badgeClass} size={size} />;
+  if (kind) {
+    const v = highlightKindVocab(kind, figureChanged);
+    return <Badge label={v.label} helper={v.helper} tone={highlightTone(kind)} size={size} />;
+  }
+  const v = changeTypeVocab(type ?? "largely_unchanged");
+  return <Badge label={v.label} helper={v.helper} tone={changeTone(type ?? "largely_unchanged")} size={size} />;
 }
 
-export function CategoryChip({ category }: { category: string }) {
+/** Legacy names, kept as thin wrappers. */
+export function ChangeTypeBadge({ type, size = "md" }: { type: string; size?: "sm" | "md" }) {
+  return <ChangeBadge type={type} size={size} />;
+}
+export function HighlightKindBadge({ kind, size = "md", figureChanged = false }: { kind: string; size?: "sm" | "md"; figureChanged?: boolean }) {
+  return <ChangeBadge kind={kind} size={size} figureChanged={figureChanged} />;
+}
+
+// ---------------------------------------------------------------------------------------
+// Change level: a 3-segment meter in the change's direction color
+// ---------------------------------------------------------------------------------------
+
+export function ChangeLevel({ score, changeType = "largely_unchanged", size = "md" }: { score: number; changeType?: string; size?: "sm" | "md" }) {
+  const level = changeLevel(score);
+  const filled = levelSegments(score);
+  const tone = changeTone(changeType);
+  const title = `${score} of 100. ${CHANGE_LEVEL.helper}`;
   return (
-    <span className="inline-flex items-center rounded-full border border-line bg-sunken px-2 py-px text-xs font-medium text-ink-muted">
-      {categoryLabel(category)}
+    <span
+      className={`inline-flex items-center gap-2 whitespace-nowrap ${size === "sm" ? "text-xs" : "text-sm"} text-ink-secondary`}
+      title={title}
+      aria-label={`${CHANGE_LEVEL.prefix}: ${level}, ${score} of 100`}
+    >
+      <span aria-hidden="true" className="inline-flex items-end gap-0.5">
+        {[1, 2, 3].map((i) => (
+          <span key={i} className={`block w-2 rounded-xs ${i <= filled ? tone.fill : "bg-line"}`} style={{ height: 4 + i * 3 }} />
+        ))}
+      </span>
+      <span aria-hidden="true">
+        {CHANGE_LEVEL.prefix}: <span className="font-medium text-ink">{level}</span>
+      </span>
     </span>
   );
 }
 
-/**
- * "Wording change: High 80": the change level in words with the 0–100 number small beside it.
- * Deliberately neutral (light outlined chip, same style for every level) and always prefixed
- * with "Wording change" so the level never reads as a risk rating.
- */
-export function ChangeLevelTag({ score }: { score: number }) {
-  const level = changeLevel(score);
+/** Legacy name. */
+export function ChangeLevelTag({ score, changeType }: { score: number; changeType?: string }) {
+  return <ChangeLevel score={score} changeType={changeType} />;
+}
+
+// ---------------------------------------------------------------------------------------
+// Legend: explains the three colors once
+// ---------------------------------------------------------------------------------------
+
+function Swatch({ tone }: { tone: Tone }) {
+  return <span aria-hidden="true" className={`inline-block h-3 w-3 rounded-xs ${tone.fill}`} />;
+}
+
+export function Legend({ className = "" }: { className?: string }) {
   return (
-    <span
-      className="inline-flex items-baseline gap-1.5 whitespace-nowrap rounded-full border border-line-strong bg-surface px-2.5 py-0.5 text-sm text-ink"
-      title={`${CHANGE_LEVEL.label}: ${CHANGE_LEVEL.helper}`}
-    >
-      <span className="text-ink-muted">{CHANGE_LEVEL.prefix}:</span>
-      <span className="font-semibold">{level}</span>
-      <span className="font-sans text-xs tabular-nums text-ink-faint">
-        <span className="sr-only">, </span>
-        {score}
-        <span className="sr-only"> of 100</span>
+    <p className={`flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-ink-secondary ${className}`} aria-label="Color legend">
+      <span className="inline-flex items-center gap-2">
+        <Swatch tone={CHANGE_TONE.new} /> Blue: {LEGEND.more}
       </span>
+      <span className="inline-flex items-center gap-2">
+        <Swatch tone={CHANGE_TONE.removed} /> Orange: {LEGEND.less}
+      </span>
+      <span className="inline-flex items-center gap-2">
+        <Swatch tone={CHANGE_TONE.materially_reworded} /> Ink: {LEGEND.rewrite}
+      </span>
+      <span className="inline-flex items-center gap-2">
+        <Swatch tone={ACTUAL_TONE} /> Amber: {LEGEND.actual}
+      </span>
+    </p>
+  );
+}
+
+export function CategoryChip({ category }: { category: string }) {
+  return <span className="inline-flex items-center rounded-sm bg-signal-bg px-2 py-0.5 text-xs font-medium text-ink-secondary">{categoryLabel(category)}</span>;
+}
+
+// ---------------------------------------------------------------------------------------
+// Layout helpers
+// ---------------------------------------------------------------------------------------
+
+export function PageContainer({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <div className={`mx-auto max-w-[1280px] px-8 ${className}`}>{children}</div>;
+}
+
+/** Section heading: 22px, 500. Sections are separated by spacing and one rule, not boxes. */
+export function SectionTitle({ id, children, aside }: { id?: string; children: ReactNode; aside?: ReactNode }) {
+  return (
+    <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t border-line pt-6">
+      <h2 id={id} className="text-lg font-medium text-ink">
+        {children}
+      </h2>
+      {aside ? <div className="text-sm text-ink-secondary">{aside}</div> : null}
+    </div>
+  );
+}
+
+/** A labeled figure: the number in ink, the label in secondary. */
+export function Stat({ value, label }: { value: ReactNode; label: string }) {
+  return (
+    <span className="inline-flex items-baseline gap-1.5">
+      <span className="text-base font-medium text-ink">{value}</span>
+      <span className="text-sm text-ink-secondary">{label}</span>
     </span>
   );
 }
 
 export function FixtureBanner() {
   return (
-    <div
-      role="note"
-      aria-label="Fixture data warning"
-      className="sticky top-14 z-30 border-y-2 border-fixture-line bg-fixture-bg text-fixture-fg"
-    >
-      <div className="mx-auto flex h-10 max-w-[1400px] items-center gap-3 overflow-hidden px-8 text-sm">
-        <span aria-hidden="true" className="font-mono text-base font-bold">
-          ⚠
-        </span>
-        <strong className="tracking-wide">{FIXTURE_BANNER}</strong>
-        <span className="text-fixture-fg/90">
-          Hand-made development data used to build and demo the interface. Company, filings, sentences and links are
-          invented.
-        </span>
+    <div role="note" aria-label="Fixture data warning" className="sticky top-14 z-30 border-y border-actual-fg/30 bg-actual-bg text-actual-fg">
+      <div className="mx-auto flex h-10 max-w-[1280px] items-center gap-3 overflow-hidden px-8 text-sm">
+        <strong className="font-medium">{FIXTURE_BANNER}</strong>
+        <span>Hand-made development data. Company, filings, sentences and links are invented.</span>
       </div>
     </div>
   );
 }
 
 export function InfoBox({ title, children, tone = "info" }: { title?: string; children: ReactNode; tone?: "info" | "warn" }) {
-  const toneClass =
-    tone === "warn" ? "border-mod-line bg-mod-bg text-mod-fg" : "border-accent/40 bg-accent-bg text-accent-strong";
+  const toneClass = tone === "warn" ? "border-actual-fg bg-actual-bg text-actual-fg" : "border-ink bg-signal-bg text-ink";
   return (
-    <div role="note" className={`rounded-md border-l-4 px-4 py-3 text-sm ${toneClass}`}>
-      {title ? (
-        <p className="mb-1 font-semibold">
-          <span aria-hidden="true">{tone === "warn" ? "! " : "ⓘ "}</span>
-          {title}
-        </p>
-      ) : null}
+    <div role="note" className={`rounded-md border-l-2 px-4 py-3 text-sm ${toneClass}`}>
+      {title ? <p className="mb-1 font-medium">{title}</p> : null}
       <div className="leading-relaxed">{children}</div>
     </div>
   );
 }
 
-export function PageContainer({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <div className={`mx-auto max-w-[1400px] px-8 ${className}`}>{children}</div>;
-}
-
 export function EmptyState({ title, children }: { title: string; children?: ReactNode }) {
   return (
-    <div className="rounded-lg border border-dashed border-line-strong bg-surface px-8 py-12 text-center">
-      <p className="text-lg font-semibold text-ink">{title}</p>
-      {children ? <div className="mx-auto mt-2 max-w-[65ch] text-ink-muted">{children}</div> : null}
+    <div className="border-t border-line py-12 text-center">
+      <p className="text-lg font-medium text-ink">{title}</p>
+      {children ? <div className="mx-auto mt-2 max-w-[60ch] text-base text-ink-secondary">{children}</div> : null}
     </div>
   );
 }
 
 export function Skeleton({ className = "" }: { className?: string }) {
-  return <div className={`animate-pulse rounded bg-sunken ${className}`} aria-hidden="true" />;
+  return <div className={`animate-pulse rounded-md bg-sunken ${className}`} aria-hidden="true" />;
+}
+
+// ---------------------------------------------------------------------------------------
+// Links
+// ---------------------------------------------------------------------------------------
+
+/** The only icon in the product: marks a link that leaves the site. */
+export function ExternalIcon() {
+  return (
+    <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" className="ml-1 inline-block align-[-1px]">
+      <path d="M6 3H3.5A1.5 1.5 0 0 0 2 4.5v8A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M9 2h5v5M14 2 7.5 8.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
 }
 
 export function ExternalLink({ href, children, className = "" }: { href: string; children: ReactNode; className?: string }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`text-accent underline decoration-accent/40 underline-offset-2 hover:decoration-accent ${className}`}
-    >
+    <a href={href} target="_blank" rel="noopener noreferrer" className={`text-accent underline underline-offset-2 ${className}`}>
       {children}
-      <span aria-hidden="true"> ↗</span>
+      <ExternalIcon />
       <span className="sr-only"> (opens in a new tab)</span>
     </a>
   );
@@ -148,31 +225,20 @@ export const FIXTURE_LINK_NOTE = "(fixture: no real filing)";
 
 /**
  * Link to an SEC document. For FIXTURE comparisons the URL is invented, so it renders as
- * disabled text instead of a link to sec.gov.
+ * disabled text instead of a link to sec.gov. Only sec.gov URLs are ever linked.
  */
-export function FilingLink({
-  href,
-  isFixture,
-  children,
-  className = "",
-}: {
-  href: string;
-  isFixture: boolean;
-  children: ReactNode;
-  className?: string;
-}) {
+export function FilingLink({ href, isFixture, children, className = "" }: { href: string; isFixture: boolean; children: ReactNode; className?: string }) {
   if (isFixture) {
     return (
-      <span aria-disabled="true" className={`cursor-not-allowed text-ink-faint ${className}`}>
-        {children} <span className="font-normal italic">{FIXTURE_LINK_NOTE}</span>
+      <span aria-disabled="true" className={`cursor-not-allowed text-ink-muted ${className}`}>
+        {children} <span className="font-normal">{FIXTURE_LINK_NOTE}</span>
       </span>
     );
   }
-  // Filing links may only point at sec.gov; anything else (from an untrusted API payload) is not linked.
   if (!/^https:\/\/www\.sec\.gov\//.test(href)) {
     return (
-      <span aria-disabled="true" className={`cursor-not-allowed text-ink-faint ${className}`}>
-        {children} <span className="font-normal italic">(link outside sec.gov not shown)</span>
+      <span aria-disabled="true" className={`cursor-not-allowed text-ink-muted ${className}`}>
+        {children} <span className="font-normal">(link outside sec.gov not shown)</span>
       </span>
     );
   }
