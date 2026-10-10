@@ -13,9 +13,11 @@ function Badge({ marker, label, helper, badgeClass, size }: { marker: string; la
       }`}
       title={helper || undefined}
     >
-      <span aria-hidden="true" className="font-mono">
-        {marker}
-      </span>
+      {marker ? (
+        <span aria-hidden="true" className="font-mono">
+          {marker}
+        </span>
+      ) : null}
       {label}
     </span>
   );
@@ -27,9 +29,18 @@ export function ChangeTypeBadge({ type, size = "md" }: { type: string; size?: "s
   return <Badge marker={v.marker} label={v.label} helper={v.helper} badgeClass={v.badgeClass} size={size} />;
 }
 
-/** Highlight-kind label ("Potential → Actual", "New figure disclosed", ...). */
-export function HighlightKindBadge({ kind, size = "md" }: { kind: string; size?: "sm" | "md" }) {
-  const v = highlightKindVocab(kind);
+/** Highlight-kind label ("Potential → Actual", "New figure disclosed", "Figure changed", ...). */
+export function HighlightKindBadge({
+  kind,
+  size = "md",
+  figureChanged = false,
+}: {
+  kind: string;
+  size?: "sm" | "md";
+  /** A `new_figure` highlight with both a last-year and a this-year sentence. */
+  figureChanged?: boolean;
+}) {
+  const v = highlightKindVocab(kind, figureChanged);
   return <Badge marker={v.marker} label={v.label} helper={v.helper} badgeClass={v.badgeClass} size={size} />;
 }
 
@@ -41,25 +52,24 @@ export function CategoryChip({ category }: { category: string }) {
   );
 }
 
-const LEVEL_CLASS = {
-  High: "border-ink bg-ink text-white",
-  Medium: "border-ink-muted bg-surface text-ink",
-  Low: "border-line-strong bg-sunken text-ink-muted",
-} as const;
-
-/** "High 80": the change level in words with the 0–100 number small beside it. */
-export function ChangeLevelTag({ score, withCaption = false }: { score: number; withCaption?: boolean }) {
+/**
+ * "Wording change: High 80": the change level in words with the 0–100 number small beside it.
+ * Deliberately neutral (light outlined chip, same style for every level) and always prefixed
+ * with "Wording change" so the level never reads as a risk rating.
+ */
+export function ChangeLevelTag({ score }: { score: number }) {
   const level = changeLevel(score);
   return (
-    <span className="inline-flex items-center gap-2" title={`${CHANGE_LEVEL.label}: ${CHANGE_LEVEL.helper}`}>
-      {withCaption ? <span className="text-sm text-ink-faint">{CHANGE_LEVEL.label}</span> : null}
-      <span className={`inline-flex items-baseline gap-1.5 whitespace-nowrap rounded border px-2 py-0.5 text-sm font-semibold ${LEVEL_CLASS[level]}`}>
-        {level}
-        <span className="font-mono text-xs font-medium tabular-nums opacity-80">
-          <span className="sr-only">, </span>
-          {score}
-          <span className="sr-only"> of 100</span>
-        </span>
+    <span
+      className="inline-flex items-baseline gap-1.5 whitespace-nowrap rounded-full border border-line-strong bg-surface px-2.5 py-0.5 text-sm text-ink"
+      title={`${CHANGE_LEVEL.label}: ${CHANGE_LEVEL.helper}`}
+    >
+      <span className="text-ink-muted">{CHANGE_LEVEL.prefix}:</span>
+      <span className="font-semibold">{level}</span>
+      <span className="font-mono text-xs tabular-nums text-ink-faint">
+        <span className="sr-only">, </span>
+        {score}
+        <span className="sr-only"> of 100</span>
       </span>
     </span>
   );

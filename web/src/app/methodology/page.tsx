@@ -150,180 +150,202 @@ export default async function MethodologyPage() {
         </div>
       </Section>
 
-      <div className="border-t-2 border-line-strong pt-10">
-        <h2 className="text-3xl font-bold tracking-tight text-ink">Technical detail</h2>
-        <p className="mt-2 max-w-[80ch] text-ink-muted">
-          For technical reviewers: the full pipeline, the published scoring weights, thresholds and caps, and the
-          evaluation results. RiskDiff reads Item 1A (Risk Factors) of each 10-K.
-        </p>
-      </div>
+      <details className="group border-t-2 border-line-strong pt-10" id="technical-detail">
+        <summary className="flex cursor-pointer list-none items-baseline gap-3 rounded-md">
+          <span aria-hidden="true" className="font-mono text-xl text-ink-faint transition group-open:rotate-90">
+            ▸
+          </span>
+          <span>
+            <span className="block text-3xl font-bold tracking-tight text-ink">Technical detail (for technical judges)</span>
+            <span className="mt-2 block max-w-[80ch] text-base text-ink-muted">
+              The full pipeline, the published scoring weights, thresholds and caps, blocked wording, and the
+              evaluation status. RiskDiff reads Item 1A (Risk Factors) of each 10-K.
+            </span>
+          </span>
+        </summary>
+        <div className="mt-10 space-y-14">
+        <Section id="pipeline" title="The pipeline (nine stages)" lead="Nine stages. Seven are deterministic code; two use models, and neither decides what changed.">
+          <PipelineDiagram />
+          <ol className="grid grid-cols-3 gap-4">
+            {STAGES.map((s) => (
+              <li key={s.stage} className={`rounded-md border p-4 text-sm ${s.kind === "ai" ? "border-dashed border-ai-line bg-ai-bg" : "border-line bg-surface"}`}>
+                <p className="font-semibold text-ink">
+                  <span className="font-mono text-ink-faint">{s.stage}</span> {s.label}
+                  {s.kind === "ai" ? <span className="text-xs text-ai-fg"> · ✦ AI-assisted</span> : null}
+                </p>
+                <p className="mt-1 leading-relaxed text-ink-muted">{s.description}</p>
+              </li>
+            ))}
+          </ol>
+        </Section>
 
-      <Section id="pipeline" title="The pipeline (nine stages)" lead="Nine stages. Seven are deterministic code; two use models, and neither decides what changed.">
-        <PipelineDiagram />
-        <ol className="grid grid-cols-3 gap-4">
-          {STAGES.map((s) => (
-            <li key={s.stage} className={`rounded-md border p-4 text-sm ${s.kind === "ai" ? "border-dashed border-ai-line bg-ai-bg" : "border-line bg-surface"}`}>
-              <p className="font-semibold text-ink">
-                <span className="font-mono text-ink-faint">{s.stage}</span> {s.label}
-                {s.kind === "ai" ? <span className="text-xs text-ai-fg"> · ✦ AI-assisted</span> : null}
+        <Section
+          id="scoring"
+          title="Scoring weights"
+          lead={`Each change gets a 0 to 100 score: a sum of published weights for signals that fired, each with cited sentences. It is shown as a change level (High at ${LEVEL_HIGH_MIN} or more, Medium from ${LEVEL_MEDIUM_MIN}, Low below ${LEVEL_MEDIUM_MIN}). It ranks how much the disclosure language changed and is not a measure of risk.`}
+        >
+          {rubric ? (
+            <div className="space-y-6">
+              <p className="text-sm text-ink-faint">
+                Rubric version <span className="font-mono text-ink">{rubric.rubric_version}</span> · pipeline version{" "}
+                <span className="font-mono text-ink">{rubric.pipeline_version}</span> · source{" "}
+                <span className="font-mono">contract/rubric.json</span>
               </p>
-              <p className="mt-1 leading-relaxed text-ink-muted">{s.description}</p>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      <Section
-        id="scoring"
-        title="Scoring weights"
-        lead={`Each change gets a 0 to 100 score: a sum of published weights for signals that fired, each with cited sentences. It is shown as a change level (High at ${LEVEL_HIGH_MIN} or more, Medium from ${LEVEL_MEDIUM_MIN}, Low below ${LEVEL_MEDIUM_MIN}). It ranks how much the disclosure language changed and is not a measure of risk.`}
-      >
-        {rubric ? (
-          <div className="space-y-6">
-            <p className="text-sm text-ink-faint">
-              Rubric version <span className="font-mono text-ink">{rubric.rubric_version}</span> · pipeline version{" "}
-              <span className="font-mono text-ink">{rubric.pipeline_version}</span> · source{" "}
-              <span className="font-mono">contract/rubric.json</span>
-            </p>
-            <div className="overflow-hidden rounded-lg border border-line bg-surface">
-              <table className="w-full text-left text-sm">
-                <caption className="sr-only">Score weights per signal</caption>
-                <thead className="bg-sunken text-xs uppercase tracking-wide text-ink-faint">
-                  <tr>
-                    <th scope="col" className="px-4 py-2">Signal</th>
-                    <th scope="col" className="px-4 py-2">Label</th>
-                    <th scope="col" className="px-4 py-2">Shown as</th>
-                    <th scope="col" className="px-4 py-2 text-right">Points</th>
-                    <th scope="col" className="px-4 py-2">What it means</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {rubric.weights.map((w) => (
-                    <tr key={w.signal} className="border-t border-line align-top">
-                      <td className="px-4 py-2.5 font-mono text-xs text-ink-muted">{w.signal}</td>
-                      <td className="px-4 py-2.5 font-medium text-ink">{w.label}</td>
-                      <td className="px-4 py-2.5 text-ink-muted">{scoreLineLabel(w.signal, "", w.label)}</td>
-                      <td className="px-4 py-2.5 text-right font-mono font-semibold tabular-nums text-ink">{w.points}</td>
-                      <td className="max-w-[60ch] px-4 py-2.5 leading-relaxed text-ink-muted">{w.description}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            {rubric.questions.length > 0 ? (
-              <div className="overflow-hidden rounded-lg border border-ai-line/50 bg-surface">
+              <div className="overflow-hidden rounded-lg border border-line bg-surface">
                 <table className="w-full text-left text-sm">
-                  <caption className="bg-ai-bg px-4 py-2 text-left text-sm font-semibold text-ai-fg">
-                    <span aria-hidden="true">✦ </span>AI rubric questions (a yes counts only with a valid citation)
-                  </caption>
+                  <caption className="sr-only">Score weights per signal</caption>
                   <thead className="bg-sunken text-xs uppercase tracking-wide text-ink-faint">
                     <tr>
-                      <th scope="col" className="px-4 py-2">Id</th>
-                      <th scope="col" className="px-4 py-2">Question</th>
+                      <th scope="col" className="px-4 py-2">Signal</th>
+                      <th scope="col" className="px-4 py-2">Label</th>
+                      <th scope="col" className="px-4 py-2">Shown as</th>
                       <th scope="col" className="px-4 py-2 text-right">Points</th>
+                      <th scope="col" className="px-4 py-2">What it means</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {rubric.questions.map((q) => (
-                      <tr key={q.id} className="border-t border-line align-top">
-                        <td className="px-4 py-2.5 font-mono text-xs text-ink-muted">{q.id}</td>
-                        <td className="max-w-[80ch] px-4 py-2.5 leading-relaxed text-ink">{q.text}</td>
-                        <td className="px-4 py-2.5 text-right font-mono font-semibold tabular-nums text-ink">{q.points}</td>
+                    {rubric.weights.map((w) => (
+                      <tr key={w.signal} className="border-t border-line align-top">
+                        <td className="px-4 py-2.5 font-mono text-xs text-ink-muted">{w.signal}</td>
+                        <td className="px-4 py-2.5 font-medium text-ink">{w.label}</td>
+                        <td className="px-4 py-2.5 text-ink-muted">{scoreLineLabel(w.signal, "", w.label)}</td>
+                        <td className="px-4 py-2.5 text-right font-mono font-semibold tabular-nums text-ink">{w.points}</td>
+                        <td className="max-w-[60ch] px-4 py-2.5 leading-relaxed text-ink-muted">{w.description}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-            ) : null}
-            <div className="grid grid-cols-3 gap-6">
-              {Object.keys(rubric.thresholds).length > 0 ? (
-                <div className="rounded-lg border border-line bg-surface p-4">
-                  <h3 className="text-sm font-bold text-ink">Thresholds</h3>
-                  <dl className="mt-2 grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 text-sm">
-                    {Object.entries(rubric.thresholds).map(([k, v]) => (
-                      <div key={k} className="contents">
-                        <dt className="font-mono text-xs text-ink-muted">{k}</dt>
-                        <dd className="text-right font-mono tabular-nums text-ink">{v}</dd>
-                      </div>
-                    ))}
-                  </dl>
+              {rubric.questions.length > 0 ? (
+                <div className="overflow-hidden rounded-lg border border-ai-line/50 bg-surface">
+                  <table className="w-full text-left text-sm">
+                    <caption className="bg-ai-bg px-4 py-2 text-left text-sm font-semibold text-ai-fg">
+                      <span aria-hidden="true">✦ </span>AI rubric questions (a yes counts only with a valid citation)
+                    </caption>
+                    <thead className="bg-sunken text-xs uppercase tracking-wide text-ink-faint">
+                      <tr>
+                        <th scope="col" className="px-4 py-2">Id</th>
+                        <th scope="col" className="px-4 py-2">Question</th>
+                        <th scope="col" className="px-4 py-2 text-right">Points</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {rubric.questions.map((q) => (
+                        <tr key={q.id} className="border-t border-line align-top">
+                          <td className="px-4 py-2.5 font-mono text-xs text-ink-muted">{q.id}</td>
+                          <td className="max-w-[80ch] px-4 py-2.5 leading-relaxed text-ink">{q.text}</td>
+                          <td className="px-4 py-2.5 text-right font-mono font-semibold tabular-nums text-ink">{q.points}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               ) : null}
-              {Object.keys(rubric.caps).length > 0 ? (
-                <div className="rounded-lg border border-line bg-surface p-4">
-                  <h3 className="text-sm font-bold text-ink">Score caps</h3>
-                  <p className="mt-1 text-xs leading-snug text-ink-faint">
-                    Upper limits applied while adding up points, so repeated hits of one signal cannot dominate a
-                    change score.
-                  </p>
-                  <dl className="mt-2 grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 text-sm">
-                    {Object.entries(rubric.caps).map(([k, v]) => (
-                      <div key={k} className="contents">
-                        <dt className="font-mono text-xs text-ink-muted">{k}</dt>
-                        <dd className="text-right font-mono tabular-nums text-ink">{v}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
-              ) : null}
-              {rubric.banned_phrases.length > 0 ? (
-                <div className="rounded-lg border border-line bg-surface p-4 text-sm">
-                  <h3 className="font-bold text-ink">Wording the citation validator blocks</h3>
-                  <p className="mt-2 text-ink-muted">
-                    The validator checks every AI claim against a list of {rubric.banned_phrases.length} blocked phrases
-                    and removes any claim that uses one before publishing. The list covers:
-                  </p>
-                  <ul className="mt-2 list-disc space-y-0.5 pl-5 text-ink-muted">
-                    {BLOCKED_CATEGORIES.map((c) => (
-                      <li key={c}>{c}</li>
-                    ))}
-                  </ul>
-                  <p className="mt-2 text-xs text-ink-faint">
-                    The exact list is in <span className="font-mono">contract/rubric.json</span>; it is not repeated here.
-                  </p>
-                </div>
-              ) : null}
+              <div className="grid grid-cols-3 gap-6">
+                {Object.keys(rubric.thresholds).length > 0 ? (
+                  <div className="rounded-lg border border-line bg-surface p-4">
+                    <h3 className="text-sm font-bold text-ink">Thresholds</h3>
+                    <dl className="mt-2 grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 text-sm">
+                      {Object.entries(rubric.thresholds).map(([k, v]) => (
+                        <div key={k} className="contents">
+                          <dt className="font-mono text-xs text-ink-muted">{k}</dt>
+                          <dd className="text-right font-mono tabular-nums text-ink">{v}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                ) : null}
+                {Object.keys(rubric.caps).length > 0 ? (
+                  <div className="rounded-lg border border-line bg-surface p-4">
+                    <h3 className="text-sm font-bold text-ink">Score caps</h3>
+                    <p className="mt-1 text-xs leading-snug text-ink-faint">
+                      Upper limits applied while adding up points, so repeated hits of one signal cannot dominate a
+                      change score.
+                    </p>
+                    <dl className="mt-2 grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 text-sm">
+                      {Object.entries(rubric.caps).map(([k, v]) => (
+                        <div key={k} className="contents">
+                          <dt className="font-mono text-xs text-ink-muted">{k}</dt>
+                          <dd className="text-right font-mono tabular-nums text-ink">{v}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                ) : null}
+                {rubric.banned_phrases.length > 0 ? (
+                  <div className="rounded-lg border border-line bg-surface p-4 text-sm">
+                    <h3 className="font-bold text-ink">Wording the citation validator blocks</h3>
+                    <p className="mt-2 text-ink-muted">
+                      The validator checks every AI claim against a list of {rubric.banned_phrases.length} blocked phrases
+                      and removes any claim that uses one before publishing. The list covers:
+                    </p>
+                    <ul className="mt-2 list-disc space-y-0.5 pl-5 text-ink-muted">
+                      {BLOCKED_CATEGORIES.map((c) => (
+                        <li key={c}>{c}</li>
+                      ))}
+                    </ul>
+                    <p className="mt-2 text-xs text-ink-faint">
+                      The exact list is in <span className="font-mono">contract/rubric.json</span>; it is not repeated here.
+                    </p>
+                  </div>
+                ) : null}
+              </div>
             </div>
-          </div>
-        ) : (
-          <EmptyState title="Scoring weights not yet generated.">
-            <p>
-              The pipeline exports its weights, rubric questions and thresholds to{" "}
-              <code className="rounded bg-sunken px-1 font-mono text-sm">contract/rubric.json</code>. This table will
-              appear once that file exists. Every published comparison still carries its own itemized score breakdown.
-            </p>
-          </EmptyState>
-        )}
-      </Section>
+          ) : (
+            <EmptyState title="Scoring weights not yet generated.">
+              <p>
+                The pipeline exports its weights, rubric questions and thresholds to{" "}
+                <code className="rounded bg-sunken px-1 font-mono text-sm">contract/rubric.json</code>. This table will
+                appear once that file exists. Every published comparison still carries its own itemized score breakdown.
+              </p>
+            </EmptyState>
+          )}
+        </Section>
 
-      <Section id="evaluation" title="Evaluation" lead="Matcher precision and recall on hand-labeled filing pairs, threshold calibration, and determinism checks.">
-        {evalMd ? (
-          <div className="rounded-lg border border-line bg-surface p-6">
-            <Markdown source={evalMd} />
-          </div>
-        ) : (
-          <EmptyState title="Evaluation not yet run.">
-            <p>
-              Results are written to <code className="rounded bg-sunken px-1 font-mono text-sm">EVAL.md</code> by{" "}
-              <code className="rounded bg-sunken px-1 font-mono text-sm">uv run python -m eval.eval</code>. No numbers
-              are shown until a real evaluation exists.
-            </p>
-          </EmptyState>
-        )}
-      </Section>
-
-      <Section id="never" title="What RiskDiff never does">
-        <ul className="grid max-w-[1000px] grid-cols-2 gap-3">
-          {NEVER.map((item) => (
-            <li key={item} className="flex gap-3 rounded-md border border-line bg-surface p-4 text-sm leading-relaxed text-ink">
-              <span aria-hidden="true" className="font-mono font-bold text-del-fg">
-                ✕
+        <Section id="evaluation" title="Evaluation" lead="Matcher precision and recall on hand-labeled filing pairs, threshold calibration, and determinism checks.">
+          <p className="max-w-[80ch] text-base text-ink-muted">
+            Evaluation runs on the team&apos;s machine with real filings; this box shows the latest saved results.
+          </p>
+          <details className="group/eval rounded-lg border border-line bg-surface">
+            <summary className="flex cursor-pointer list-none items-center gap-3 px-5 py-4">
+              <span aria-hidden="true" className="font-mono text-ink-faint transition group-open/eval:rotate-90">
+                ▸
               </span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </Section>
+              <span className="text-lg font-bold text-ink">Evaluation status</span>
+              <span className="text-sm text-ink-faint">
+                <span aria-hidden="true">· </span>EVAL.md: matcher precision and recall, thresholds, determinism
+              </span>
+            </summary>
+            <div className="border-t border-line p-5">
+              {evalMd ? (
+                <Markdown source={evalMd} />
+              ) : (
+                <EmptyState title="Evaluation not yet run.">
+                  <p>
+                    Results are written to <code className="rounded bg-sunken px-1 font-mono text-sm">EVAL.md</code> by{" "}
+                    <code className="rounded bg-sunken px-1 font-mono text-sm">uv run python -m eval.eval</code>. No numbers
+                    are shown until a real evaluation exists.
+                  </p>
+                </EmptyState>
+              )}
+            </div>
+          </details>
+        </Section>
+
+        <Section id="never" title="What RiskDiff never does">
+          <ul className="grid max-w-[1000px] grid-cols-2 gap-3">
+            {NEVER.map((item) => (
+              <li key={item} className="flex gap-3 rounded-md border border-line bg-surface p-4 text-sm leading-relaxed text-ink">
+                <span aria-hidden="true" className="font-mono font-bold text-del-fg">
+                  ✕
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </Section>
+        </div>
+      </details>
     </PageContainer>
   );
 }

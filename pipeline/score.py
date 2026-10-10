@@ -10,7 +10,14 @@ import hashlib
 import json
 
 from pipeline.config import PIPELINE_VERSION
-from pipeline.rubric import ADDED_TEXT_RATIO_MIN, CAPS, QUESTIONS, RUBRIC_VERSION, WEIGHT_BY_SIGNAL
+from pipeline.rubric import (
+    ADDED_TEXT_RATIO_MIN,
+    CAPS,
+    QUESTIONS,
+    RUBRIC_OVERLAPS_SIGNAL,
+    RUBRIC_VERSION,
+    WEIGHT_BY_SIGNAL,
+)
 from pipeline.schema import Interpretation, ModelIds, ScoreLine, Sentence, Signals
 
 
@@ -152,9 +159,13 @@ def score_change(
                 )
             )
 
-    # 7. validated rubric answers
+    # 7. validated rubric answers (a question whose deterministic twin already scored is skipped,
+    #    so the same fact never counts twice)
+    scored_signals = {line.signal for line in lines}
     for ans in interpretation.rubric:
         if ans.answer and ans.cited_sentence_ids:
+            if RUBRIC_OVERLAPS_SIGNAL.get(ans.question_id) in scored_signals:
+                continue
             q = next(q for q in QUESTIONS if q.id == ans.question_id)
             lines.append(
                 ScoreLine(

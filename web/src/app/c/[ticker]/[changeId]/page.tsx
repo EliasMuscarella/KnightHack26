@@ -8,7 +8,6 @@ import { ChangeDetail } from "@/components/ChangeDetail";
 import type { SentenceRef } from "@/components/citations";
 import { ChangeLevelTag, ChangeTypeBadge, FixtureBanner, PageContainer } from "@/components/ui";
 import { getComparison } from "@/lib/data";
-import { CHANGE_LEVEL } from "@/lib/vocabulary";
 import { CHANGE_ID_RE, normalizeTicker } from "@/lib/ticker";
 
 export const dynamic = "force-dynamic";
@@ -33,7 +32,7 @@ function NavLink({ ticker, change, dir }: { ticker: string; change: Change | und
   if (!change) {
     return (
       <span className="min-w-0 flex-1 rounded-md border border-dashed border-line px-4 py-3 text-sm text-ink-faint">
-        {dir === "prev" ? "This is the first change." : "This is the last change."}
+        {dir === "prev" ? "This is the first risk factor." : "This is the last risk factor."}
       </span>
     );
   }
@@ -43,7 +42,7 @@ function NavLink({ ticker, change, dir }: { ticker: string; change: Change | und
       className={`group min-w-0 flex-1 rounded-md border border-line bg-surface px-4 py-3 hover:border-accent ${dir === "next" ? "text-right" : ""}`}
     >
       <span className="block text-xs font-semibold uppercase tracking-wide text-ink-faint">
-        {dir === "prev" ? "← Previous change" : "Next change →"}
+        {dir === "prev" ? "← Previous risk factor" : "Next risk factor →"}
       </span>
       <span className="mt-0.5 block truncate text-base font-medium text-ink group-hover:underline">{change.short_title || change.title}</span>
     </Link>
@@ -94,7 +93,9 @@ export default async function ChangePage(props: PageProps<"/c/[ticker]/[changeId
             <Link href={`/c/${encodeURIComponent(ticker)}`} className="underline hover:text-ink">
               {comparison.company.name}
             </Link>{" "}
-            <span aria-hidden="true">/</span> <span className="text-ink">Change {change.rank} of {comparison.changes.length}</span>
+            <span aria-hidden="true">/</span> <span className="text-ink">
+              Risk factor {change.rank} of {comparison.changes.length}
+            </span>
           </span>
           <Link href={`/c/${encodeURIComponent(ticker)}`} className="font-medium text-accent underline">
             ← All {comparison.changes.length} risk factors
@@ -119,10 +120,7 @@ export default async function ChangePage(props: PageProps<"/c/[ticker]/[changeId
           </div>
           <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
             <ChangeTypeBadge type={change.change_type} />
-            <span className="inline-flex items-center gap-2">
-              <span className="text-sm text-ink-faint">{CHANGE_LEVEL.label}</span>
-              <ChangeLevelTag score={change.score} />
-            </span>
+            <ChangeLevelTag score={change.score} />
             <span className="text-sm text-ink-muted">
               <span className="text-ink-faint">Words, last year → this year:</span>{" "}
               <span className="font-semibold tabular-nums text-ink">
@@ -141,7 +139,7 @@ export default async function ChangePage(props: PageProps<"/c/[ticker]/[changeId
           modelIds={comparison.model_ids}
         />
 
-        <nav aria-label="Other changes" className="flex gap-4">
+        <nav aria-label="Other risk factors" className="flex gap-4">
           <NavLink ticker={ticker} change={prev} dir="prev" />
           <NavLink ticker={ticker} change={next} dir="next" />
         </nav>

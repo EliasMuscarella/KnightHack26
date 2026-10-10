@@ -191,13 +191,67 @@ Goal: a BNY finance judge understands a company page in five seconds. Status at 
 | J6–J10 finance-audience frontend | see below |
 | J11 verification + judge review | see below |
 
-**Important:** the NVDA data the brief describes exists only on the team's machine (this sandbox still has
-no SEC/HF access, no `.env`, and the repository holds no published NVDA file). The pipeline changes were
-therefore verified on synthetic cases that reproduce the quoted NVDA patterns, and the frontend on the
-fixture. Run this on the team's machine to verify on real data (the analysis id changes because stage
-versions changed, hence `--force`):
+**Data in the repo.** The team pushed `data/published/NVDA_2025_2026.json` and `SF_2024_2025.json`, produced by
+pipeline 0.1.0 / rubric 1.0.0 (bge-m3 embeddings, Qwen2.5-72B via Hugging Face). This sandbox still cannot
+re-run the pipeline (sec.gov and huggingface.co blocked, no stage caches, no `.env`), so both files were brought
+to the current contract with `scripts/migrate_published.py`: it derives `short_title` (deterministic truncation
+of the real heading, no LLM) and `highlights[]` (`select_highlights` over the file's own signals, change types
+and validated rubric answers) and records a note. Scores, sentences, citations and `analysis_id` are untouched.
+The J1–J3 pipeline improvements reach the NVDA file only through the re-run (the analysis id changes because
+stage versions changed, hence `--force`):
 
 ```bash
 uv run python -m pipeline.run NVDA --from-stage 2 --force
+uv run python -m pipeline.run SF --from-stage 2 --force
 ./scripts/dev.sh            # then open http://localhost:3000/c/NVDA
 ```
+
+### NVDA: before and after (migrated file; the re-run will change the "after" column again)
+
+| | Team's file (pipeline 0.1.0) | After migration | Expected after re-run (not verified here) |
+|---|---|---|---|
+| Blocks old → new | 27 → 29 (2 duplicate titles: summary not skipped) | same | ~23/24, no duplicates |
+| Changes | 29: 2 new, 2 expanded, 1 reworded, 1 reduced, 23 unchanged | same | the intro paragraph no longer a "new" risk |
+| Entities | "AI Diffusion IFR in", "D:4", "Groq", "Groq, Inc", … | same | junk dropped, near-duplicates merged |
+| Short titles | none | truncated headings | LLM titles (validated) with the same fallback |
+| Highlights | none | 5 (below) | antitrust "preliminary finding" pair should join via `status_change` |
+| analysis_id | `13acfdfe2afda6d2…` | unchanged (presentation fields only) | new |
+
+Migrated NVDA highlights, in order (no special-casing; `select_highlights` over the file):
+
+1. Potential → Actual, "We are subject to complex laws, rules…" (score 100): "Such requests **may** be expensive"
+   → "Such requests **have been** and are likely to be expensive".
+2. New risk, "Commercial arrangements expose us to counterparty risks" (40).
+3. Newly named, "Failure to meet the evolving needs of…" (31): Groq.
+4. New risk, "The following risk factors should be considered…" (30): the intro paragraph; an old-pipeline artifact
+   that J1 removes on re-run.
+5. New figure disclosed, "We are subject to complex laws, rules…" (100): the $4.5 billion H20 charge.
+
+So of the three facts the brief asked about: the **$4.5 billion H20 charge** and the **counterparty risk** appear;
+the **China antitrust pair** (investigating → published preliminary finding) does not, because the file was
+produced before the `status_change` detector existed. It fires on the quoted sentence pair in the unit tests.
+
+### Judge round 1 (fixture screenshots; verdict 6/10)
+
+Points raised and what was done:
+
+| Point | Response |
+|---|---|
+| Score points did not match the published weights (+10 for two names, +15 for one figure) | fixture scores were hand-written; the generator now calls the real `score_change` |
+| A rule-based signal and an AI check scored the same fact twice | rubric Q1–Q3 skipped when the twin signal already scored (`RUBRIC_VERSION` 1.1.0) |
+| "High / Medium / Low" read as a risk rating | neutral outlined chip "Wording change: High", clarifier line above the list, scoring subline kept |
+| "New figure disclosed" on a figure that merely changed | "Figure changed" when both years have the sentence |
+| Two cards about the same risk; new and dropped risks absent | ranking tiers: one card per change first; new/dropped risk is the primary card of such a change |
+| Counts disagreed ("2 modified" vs "1 modified"; "6 meaningful" vs "Change 1 of 7") | fixture stats now computed; breadcrumb says "Risk factor 1 of 29" |
+| "Eastland" struck on the left while present on the right | content words anchor the word diff (diff stage 0.1.2) |
+| "!" glyph on Potential → Actual read as an alert | glyph removed, outlined chip |
+| Citation chips looked like code | button-style chips, hover underline, hint line "Click a number to see the sentence…" |
+| Methodology was a technical dump with a "blocked / HF_TOKEN not set" box | technical detail and evaluation status collapsed by default under a neutral line |
+| Two search boxes on the home page | header search hidden on `/` |
+| Stray black "N" circle | Next dev indicator disabled |
+| Hatched boxes unexplained | captions "no sentence last year / this year" |
+| "worth reading" implied judgment | reworded to "whose wording moved the most" |
+
+### Judge round 2 (real NVDA screenshots)
+
+JUDGE_ROUND_2_PLACEHOLDER

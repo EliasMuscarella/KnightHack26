@@ -12,6 +12,9 @@ import {
   ANALYST_DETAILS,
   CHANGE_LEVEL,
   changeLevel,
+  figureVariant,
+  figureVocab,
+  type FigureVariant,
   scoreLineHelper,
   scoreLineLabel,
   SIGNAL_VOCAB,
@@ -50,7 +53,10 @@ export function WhatChangedPanel({ interp, numberOf }: { interp: Interpretation;
               </li>
             ))}
           </ul>
-          <p className="mt-3 text-xs text-ai-fg">{AI_SUMMARY.helper} Click a number to see the sentence in the filing text below.</p>
+          <p className="mt-3 text-sm font-medium text-ai-fg">
+            <span aria-hidden="true">↓ </span>Click a number to see the sentence in the filing text below.
+          </p>
+          <p className="mt-0.5 text-xs text-ai-fg">{AI_SUMMARY.helper}</p>
         </div>
       )}
     </section>
@@ -96,12 +102,12 @@ function CitedSentenceList({ ids }: { ids: string[] }) {
 /** Score-line details worth showing to a general reader (others stay in Analyst details). */
 const SHOW_DETAIL = new Set(["hypothetical_to_actual", "new_entities", "new_quantities", "added_text_ratio"]);
 
-function ScoreRow({ line, changeType }: { line: ScoreLine; changeType: string }) {
+function ScoreRow({ line, changeType, figures }: { line: ScoreLine; changeType: string; figures: FigureVariant }) {
   const [open, setOpen] = useState(false);
   const signal = line.signal;
   const isChangeType = signal === "change_type" || signal.startsWith("change_type:");
-  const label = scoreLineLabel(signal, changeType, line.label);
-  const helper = scoreLineHelper(signal, changeType);
+  const label = scoreLineLabel(signal, changeType, line.label, figures);
+  const helper = scoreLineHelper(signal, changeType, figures);
   const detail = line.detail && (SHOW_DETAIL.has(signal) || isChangeType) ? line.detail : null;
   const n = line.cited_sentence_ids.length;
   return (
@@ -139,13 +145,14 @@ function ScoreRow({ line, changeType }: { line: ScoreLine; changeType: string })
 
 export function ScoreBreakdownPanel({ change }: { change: Change }) {
   const total = change.score_breakdown.reduce((s, l) => s + l.points, 0);
+  const figures = figureVariant(change.signals.new_quantities);
   return (
     <section aria-labelledby="score-heading" className="rounded-lg border border-line bg-surface p-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 id="score-heading" className="text-xl font-bold text-ink">
           How this was scored
         </h2>
-        <ChangeLevelTag score={change.score} withCaption />
+        <ChangeLevelTag score={change.score} />
       </div>
       <p className="mt-1 text-sm text-ink-muted">
         {CHANGE_LEVEL.label} adds up fixed, published points for each thing that changed. {CHANGE_LEVEL.helper}
@@ -156,12 +163,12 @@ export function ScoreBreakdownPanel({ change }: { change: Change }) {
         <>
           <ul className="mt-3">
             {change.score_breakdown.map((line, i) => (
-              <ScoreRow key={`${line.signal}-${i}`} line={line} changeType={change.change_type} />
+              <ScoreRow key={`${line.signal}-${i}`} line={line} changeType={change.change_type} figures={figures} />
             ))}
           </ul>
           <div className="mt-1 flex items-center justify-between border-t-2 border-ink px-1 pt-2">
             <span className="font-semibold text-ink">
-              Total{total > 100 ? " (capped at 100)" : ""} · {changeLevel(change.score)}
+              Total{total > 100 ? " (capped at 100)" : ""} · {CHANGE_LEVEL.prefix}: {changeLevel(change.score)}
             </span>
             <span className="font-mono text-base font-bold tabular-nums text-ink">{change.score}</span>
           </div>
@@ -262,14 +269,16 @@ export function AnalystDetails({
           ▸
         </span>
         <span className="text-lg font-bold text-ink">{ANALYST_DETAILS}</span>
-        <span className="text-sm text-ink-faint">rule-based signals, measures, AI rubric and models</span>
+        <span className="text-sm text-ink-faint">
+          <span aria-hidden="true">· </span>rule-based signals, text measures, AI check answers, models
+        </span>
       </summary>
       <div className="grid grid-cols-2 gap-x-10 gap-y-6 border-t border-line px-5 py-5">
         <div className="space-y-4">
           <h3 className="text-base font-bold text-ink">Deterministic signals (rule-based, no AI)</h3>
           <HitList title={SIGNAL_VOCAB.hypothetical_to_actual.label} hits={hedge} numberOf={numberOf} />
           <HitList title={SIGNAL_VOCAB.new_entities.label} hits={ents} numberOf={numberOf} />
-          <HitList title={SIGNAL_VOCAB.new_quantities.label} hits={qty} numberOf={numberOf} />
+          <HitList title={figureVocab(figureVariant(qty)).label} hits={qty} numberOf={numberOf} />
           {hedge.length + ents.length + qty.length === 0 ? (
             <p className="text-sm text-ink-muted">No hedge, entity or quantity signals detected.</p>
           ) : null}

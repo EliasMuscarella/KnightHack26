@@ -168,3 +168,12 @@ def test_change_type_rules(old_wc, new_wc, added, removed, sim, expected):
         classify_change_type(stats(old_wc, new_wc, added, removed), sim, DEFAULT_DIFF_PARAMS)
         == expected
     )
+
+
+def test_content_words_anchor_the_word_diff():
+    old = "We rely on foundries located in Westland and Eastland."
+    new = "We rely on foundries located in Westland, Eastland, and Ruritania."
+    os_, ns_ = word_spans(old, new)
+    assert "".join(s.text for s in os_) == old and "".join(s.text for s in ns_) == new
+    assert "Eastland" not in "".join(s.text for s in os_ if s.op == "delete")
+    assert "Ruritania" in "".join(s.text for s in ns_ if s.op == "insert")

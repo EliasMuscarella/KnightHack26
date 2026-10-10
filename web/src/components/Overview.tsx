@@ -7,7 +7,7 @@ import { CopyId } from "@/components/CopyId";
 import { Quote } from "@/components/Quote";
 import { FilingLink, HighlightKindBadge } from "@/components/ui";
 import { formatDate, textFragmentUrl } from "@/lib/format";
-import { AUDIT_TRAIL, highlightKindVocab, meaningfulCount } from "@/lib/vocabulary";
+import { AUDIT_TRAIL, highlightKindVocab, isFigureChanged, meaningfulCount } from "@/lib/vocabulary";
 
 export function OverviewHeader({ comparison }: { comparison: Comparison }) {
   const { company, old_filing, new_filing } = comparison;
@@ -78,23 +78,34 @@ function HighlightCard({ h, comparison, first }: { h: Highlight; comparison: Com
   const oldText = h.old_sentence_id ? (idx[h.old_sentence_id]?.text ?? null) : null;
   const newText = h.new_sentence_id ? (idx[h.new_sentence_id]?.text ?? null) : null;
   const ticker = comparison.company.ticker;
-  const vocab = highlightKindVocab(h.kind);
+  const figureChanged = isFigureChanged(h);
+  const vocab = highlightKindVocab(h.kind, figureChanged);
   const linkSide = newText !== null ? "new" : "old";
   const linkText = newText ?? oldText;
   const filing = linkSide === "new" ? comparison.new_filing : comparison.old_filing;
+  // The empty side must not claim the whole risk is new when only a name or figure is new.
+  const absentOld =
+    h.kind === "new_risk"
+      ? "Not in last year's filing"
+      : h.kind === "new_named_party"
+        ? "This name did not appear in last year's version"
+        : h.kind === "new_figure"
+          ? "This figure did not appear in last year's version"
+          : "No matching sentence last year";
+  const absentNew = h.kind === "removed_risk" ? "Removed this year" : "No matching sentence this year";
   return (
     <article
       data-highlight-card={first ? "first" : undefined}
       className="rounded-lg border border-line bg-surface p-5 shadow-sm"
     >
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-        <HighlightKindBadge kind={h.kind} />
+        <HighlightKindBadge kind={h.kind} figureChanged={figureChanged} />
         {vocab.helper ? <span className="text-sm text-ink-faint">{vocab.helper}</span> : null}
       </div>
       <h3 className="mt-2 text-lg font-bold leading-snug text-ink">{h.short_title}</h3>
       <div className="mt-3 grid grid-cols-2 gap-6">
-        <QuoteSide label="Last year" fy={comparison.old_filing.fiscal_year} text={oldText} absent="Not in last year's filing" />
-        <QuoteSide label="This year" fy={comparison.new_filing.fiscal_year} text={newText} absent="Removed this year" />
+        <QuoteSide label="Last year" fy={comparison.old_filing.fiscal_year} text={oldText} absent={absentOld} />
+        <QuoteSide label="This year" fy={comparison.new_filing.fiscal_year} text={newText} absent={absentNew} />
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-line pt-3 text-sm font-medium">
         {linkText !== null ? (
@@ -195,7 +206,9 @@ export function AuditTrail({ comparison, source }: { comparison: Comparison; sou
           ▸
         </span>
         <span className="text-lg font-bold text-ink">{AUDIT_TRAIL}</span>
-        <span className="text-sm text-ink-faint">filings, versions and models behind this analysis</span>
+        <span className="text-sm text-ink-faint">
+          <span aria-hidden="true">· </span>filings, analysis id, versions and models behind this analysis
+        </span>
       </summary>
       <div className="space-y-5 border-t border-line px-5 py-5 text-sm">
         <p className="text-base font-semibold text-ink">

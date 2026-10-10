@@ -82,24 +82,25 @@
       "old_text": "FIXTURE: We depend on a limited number of third-party foundries to manufacture our widgets.\nFIXTURE: We do not own manufacturing facilities and rely on a small number of foundries located in Westland and Eastland.\nFIXTURE: A disruption at any of these foundries could delay shipments and increase our costs.\nFIXTURE: Natural disasters, political instability, or trade restrictions may affect our suppliers.\nFIXTURE: We attempt to mitigate these risks by maintaining safety stock, but our efforts may not be sufficient.",
       "old_title": "FIXTURE: We depend on a limited number of third-party foundries to manufacture our widgets.",
       "rank": 1,
-      "score": 80,
+      "score": 53,
       "score_breakdown": [
         {
           "cited_sentence_ids": [
+            "0000000000-25-000001:0:1",
             "0000000000-25-000001:0:3",
-            "0000000000-25-000001:0:6"
+            "0000000000-25-000001:0:4"
           ],
-          "detail": "FIXTURE: 2 sentences added, 1 modified",
+          "detail": "FIXTURE: 2 sentences added, 2 modified",
           "label": "FIXTURE: Risk was expanded",
           "points": 15,
-          "signal": "change_type"
+          "signal": "change_type:expanded"
         },
         {
           "cited_sentence_ids": [
             "0000000000-24-000001:0:3",
             "0000000000-25-000001:0:4"
           ],
-          "detail": "FIXTURE: 'may affect' -> 'have affected'",
+          "detail": "FIXTURE: FIXTURE: may affect -> have affected",
           "label": "FIXTURE: Hedged language became actual language",
           "points": 20,
           "signal": "hypothetical_to_actual"
@@ -107,39 +108,23 @@
         {
           "cited_sentence_ids": [
             "0000000000-25-000001:0:1",
+            "0000000000-25-000001:0:3",
             "0000000000-25-000001:0:6"
           ],
-          "detail": "FIXTURE: Ruritania, Northland",
-          "label": "FIXTURE: New named entities",
-          "points": 10,
+          "detail": "FIXTURE: FIXTURE: Ruritania, FIXTURE: Northland",
+          "label": "FIXTURE: New named geography, organization, or law",
+          "points": 8,
           "signal": "new_entities"
         },
         {
           "cited_sentence_ids": [
-            "0000000000-25-000001:0:3"
+            "0000000000-25-000001:0:3",
+            "0000000000-25-000001:0:6"
           ],
-          "detail": "FIXTURE: $1.2 billion",
-          "label": "FIXTURE: New quantified impact",
-          "points": 15,
+          "detail": "FIXTURE: FIXTURE: $1.2 billion, FIXTURE: 18 months",
+          "label": "FIXTURE: New quantified amount or percentage",
+          "points": 10,
           "signal": "new_quantities"
-        },
-        {
-          "cited_sentence_ids": [
-            "0000000000-25-000001:0:3"
-          ],
-          "detail": null,
-          "label": "FIXTURE: AI rubric: possibility became an occurred event",
-          "points": 10,
-          "signal": "rubric_q1"
-        },
-        {
-          "cited_sentence_ids": [
-            "0000000000-25-000001:0:3"
-          ],
-          "detail": null,
-          "label": "FIXTURE: AI rubric: newly quantified impact",
-          "points": 10,
-          "signal": "rubric_q3"
         }
       ],
       "section_group": "FIXTURE: Risks Related to Our Business and Industry",
@@ -425,35 +410,57 @@
       "old_text": "FIXTURE: Changes in trade policy could increase our costs.\nFIXTURE: Tariffs on imported components could increase our cost of goods sold.\nFIXTURE: We may be unable to pass these costs on to customers.",
       "old_title": "FIXTURE: Changes in trade policy could increase our costs.",
       "rank": 2,
-      "score": 50,
+      "score": 49,
       "score_breakdown": [
         {
           "cited_sentence_ids": [
+            "0000000000-25-000001:5:0",
+            "0000000000-25-000001:5:1",
             "0000000000-25-000001:5:3"
           ],
           "detail": "FIXTURE: 1 sentence added, 2 modified",
           "label": "FIXTURE: Risk was expanded",
           "points": 15,
-          "signal": "change_type"
+          "signal": "change_type:expanded"
         },
         {
           "cited_sentence_ids": [
             "0000000000-24-000001:5:0",
             "0000000000-25-000001:5:0"
           ],
-          "detail": "FIXTURE: 'could increase' -> 'have increased'",
+          "detail": "FIXTURE: FIXTURE: could increase -> have increased",
           "label": "FIXTURE: Hedged language became actual language",
           "points": 20,
           "signal": "hypothetical_to_actual"
         },
         {
           "cited_sentence_ids": [
+            "0000000000-25-000001:5:3"
+          ],
+          "detail": "FIXTURE: FIXTURE: Westland Trade Commission",
+          "label": "FIXTURE: New named geography, organization, or law",
+          "points": 4,
+          "signal": "new_entities"
+        },
+        {
+          "cited_sentence_ids": [
             "0000000000-25-000001:5:1"
           ],
-          "detail": "FIXTURE: 3%",
-          "label": "FIXTURE: New quantified impact",
-          "points": 15,
+          "detail": "FIXTURE: FIXTURE: 3%",
+          "label": "FIXTURE: New quantified amount or percentage",
+          "points": 5,
           "signal": "new_quantities"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:5:0",
+            "0000000000-25-000001:5:1",
+            "0000000000-25-000001:5:3"
+          ],
+          "detail": "FIXTURE: 51% of the new text is new",
+          "label": "FIXTURE: Large share of new text",
+          "points": 5,
+          "signal": "added_text_ratio"
         }
       ],
       "section_group": "FIXTURE: Risks Related to Regulation and Legal Matters",
@@ -647,184 +654,6 @@
       "title": "FIXTURE: Changes in trade policy, including tariffs, have increased and could further increase our costs."
     },
     {
-      "body_similarity": null,
-      "categories": [
-        "artificial_intelligence",
-        "regulation"
-      ],
-      "change_type": "new",
-      "heading_similarity": null,
-      "id": "a7ab944f05ff339d",
-      "interpretation": {
-        "claims": [
-          {
-            "cited_sentence_ids": [
-              "0000000000-25-000001:2:1",
-              "0000000000-25-000001:2:2"
-            ],
-            "text": "FIXTURE: This is an entirely new risk factor; it cites a named AI law and ties the exposure to machine learning features in the company's software."
-          }
-        ],
-        "dropped_claim_count": 0,
-        "dropped_reasons": [],
-        "model_id": "FIXTURE: fake/model-id",
-        "reason": null,
-        "rubric": [
-          {
-            "answer": false,
-            "cited_sentence_ids": [],
-            "question": "FIXTURE: Does the new text describe an event or condition that has already occurred, where the old text described it as a possibility?",
-            "question_id": "Q1",
-            "rationale": "FIXTURE: short rationale",
-            "raw_answer": false
-          },
-          {
-            "answer": true,
-            "cited_sentence_ids": [
-              "0000000000-25-000001:2:2"
-            ],
-            "question": "FIXTURE: Does the new text name a specific geography, government, regulation, or counterparty not named in the old text?",
-            "question_id": "Q2",
-            "rationale": "FIXTURE: short rationale",
-            "raw_answer": true
-          },
-          {
-            "answer": false,
-            "cited_sentence_ids": [],
-            "question": "FIXTURE: Does the new text state or quantify a financial or operational impact not stated in the old text?",
-            "question_id": "Q3",
-            "rationale": "FIXTURE: short rationale",
-            "raw_answer": false
-          },
-          {
-            "answer": false,
-            "cited_sentence_ids": [],
-            "question": "FIXTURE: Does the change narrow or remove a previously disclosed exposure?",
-            "question_id": "Q4",
-            "rationale": "FIXTURE: short rationale",
-            "raw_answer": false
-          }
-        ],
-        "status": "ok"
-      },
-      "new_block_id": "0000000000-25-000001:2",
-      "new_text": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure.\nFIXTURE: We have begun to integrate machine learning features into our widget planning software.\nFIXTURE: Laws governing artificial intelligence, such as the Westland AI Act, are evolving and may impose new obligations on us.\nFIXTURE: If our models produce inaccurate or biased outputs, our customers may lose confidence in our products.",
-      "new_title": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure.",
-      "old_block_id": null,
-      "old_text": null,
-      "old_title": null,
-      "rank": 3,
-      "score": 50,
-      "score_breakdown": [
-        {
-          "cited_sentence_ids": [
-            "0000000000-25-000001:2:0"
-          ],
-          "detail": "FIXTURE: No counterpart in the prior filing",
-          "label": "FIXTURE: New risk factor",
-          "points": 30,
-          "signal": "change_type"
-        },
-        {
-          "cited_sentence_ids": [
-            "0000000000-25-000001:2:2"
-          ],
-          "detail": "FIXTURE: Westland AI Act",
-          "label": "FIXTURE: New named entities",
-          "points": 10,
-          "signal": "new_entities"
-        },
-        {
-          "cited_sentence_ids": [
-            "0000000000-25-000001:2:2"
-          ],
-          "detail": null,
-          "label": "FIXTURE: AI rubric: new specific regulation",
-          "points": 10,
-          "signal": "rubric_q2"
-        }
-      ],
-      "section_group": "FIXTURE: Risks Related to Regulation and Legal Matters",
-      "sentences": [
-        {
-          "alignment_similarity": null,
-          "counterpart_id": null,
-          "diff_spans": null,
-          "id": "0000000000-25-000001:2:0",
-          "pair_index": 0,
-          "side": "new",
-          "status": "added",
-          "text": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure."
-        },
-        {
-          "alignment_similarity": null,
-          "counterpart_id": null,
-          "diff_spans": null,
-          "id": "0000000000-25-000001:2:1",
-          "pair_index": 1,
-          "side": "new",
-          "status": "added",
-          "text": "FIXTURE: We have begun to integrate machine learning features into our widget planning software."
-        },
-        {
-          "alignment_similarity": null,
-          "counterpart_id": null,
-          "diff_spans": null,
-          "id": "0000000000-25-000001:2:2",
-          "pair_index": 2,
-          "side": "new",
-          "status": "added",
-          "text": "FIXTURE: Laws governing artificial intelligence, such as the Westland AI Act, are evolving and may impose new obligations on us."
-        },
-        {
-          "alignment_similarity": null,
-          "counterpart_id": null,
-          "diff_spans": null,
-          "id": "0000000000-25-000001:2:3",
-          "pair_index": 3,
-          "side": "new",
-          "status": "added",
-          "text": "FIXTURE: If our models produce inaccurate or biased outputs, our customers may lose confidence in our products."
-        }
-      ],
-      "short_title": "FIXTURE: Artificial intelligence exposure",
-      "signals": {
-        "added_text_ratio": 1.0,
-        "category_scores": {
-          "artificial_intelligence": 0.88,
-          "regulation": 0.52
-        },
-        "hypothetical_to_actual": [],
-        "new_entities": [
-          {
-            "detail": "FIXTURE: Law/regulation named only in the new filing.",
-            "new_sentence_ids": [
-              "0000000000-25-000001:2:2"
-            ],
-            "old_sentence_ids": [],
-            "value": "FIXTURE: Westland AI Act"
-          }
-        ],
-        "new_quantities": [],
-        "removed_text_ratio": 0.0,
-        "semantic_shift": 0.0
-      },
-      "similarity": null,
-      "stats": {
-        "added": 4,
-        "added_word_count": 64,
-        "modified": 0,
-        "new_sentence_count": 4,
-        "new_word_count": 64,
-        "old_sentence_count": 0,
-        "old_word_count": 0,
-        "removed": 0,
-        "removed_word_count": 0,
-        "unchanged": 0
-      },
-      "title": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure."
-    },
-    {
       "body_similarity": 0.76,
       "categories": [
         "cybersecurity"
@@ -890,38 +719,50 @@
       "old_block_id": "0000000000-24-000001:1",
       "old_text": "FIXTURE: Security breaches could harm our business.\nFIXTURE: Our systems may be vulnerable to computer viruses, break-ins, and similar disruptions.\nFIXTURE: A breach could result in the loss of confidential information and damage to our reputation.\nFIXTURE: We may incur significant costs to remediate security incidents.",
       "old_title": "FIXTURE: Security breaches could harm our business.",
-      "rank": 4,
-      "score": 38,
+      "rank": 3,
+      "score": 34,
       "score_breakdown": [
         {
           "cited_sentence_ids": [
             "0000000000-25-000001:1:0",
             "0000000000-25-000001:1:1",
-            "0000000000-25-000001:1:2",
-            "0000000000-25-000001:1:3"
+            "0000000000-25-000001:1:2"
           ],
-          "detail": "FIXTURE: 4 of 4 sentences modified",
+          "detail": "FIXTURE: 4 modified",
           "label": "FIXTURE: Risk was materially reworded",
           "points": 20,
-          "signal": "change_type"
-        },
-        {
-          "cited_sentence_ids": [
-            "0000000000-25-000001:1:0"
-          ],
-          "detail": "FIXTURE: similarity 0.74",
-          "label": "FIXTURE: Meaning shifted noticeably",
-          "points": 8,
-          "signal": "semantic_shift"
+          "signal": "change_type:materially_reworded"
         },
         {
           "cited_sentence_ids": [
             "0000000000-25-000001:1:1"
           ],
-          "detail": null,
-          "label": "FIXTURE: AI rubric: new specific counterparty or regulation",
-          "points": 10,
-          "signal": "rubric_q2"
+          "detail": "FIXTURE: FIXTURE: state-sponsored attacks",
+          "label": "FIXTURE: New named geography, organization, or law",
+          "points": 4,
+          "signal": "new_entities"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:1:0",
+            "0000000000-25-000001:1:1",
+            "0000000000-25-000001:1:2"
+          ],
+          "detail": "FIXTURE: 53% of the new text is new",
+          "label": "FIXTURE: Large share of new text",
+          "points": 5,
+          "signal": "added_text_ratio"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:1:0",
+            "0000000000-25-000001:1:1",
+            "0000000000-25-000001:1:2"
+          ],
+          "detail": "FIXTURE: pair similarity 0.74",
+          "label": "FIXTURE: Meaning shifted noticeably",
+          "points": 5,
+          "signal": "semantic_shift"
         }
       ],
       "section_group": "FIXTURE: Risks Related to Our Business and Industry",
@@ -1311,6 +1152,175 @@
     {
       "body_similarity": null,
       "categories": [
+        "artificial_intelligence",
+        "regulation"
+      ],
+      "change_type": "new",
+      "heading_similarity": null,
+      "id": "a7ab944f05ff339d",
+      "interpretation": {
+        "claims": [
+          {
+            "cited_sentence_ids": [
+              "0000000000-25-000001:2:1",
+              "0000000000-25-000001:2:2"
+            ],
+            "text": "FIXTURE: This is an entirely new risk factor; it cites a named AI law and ties the exposure to machine learning features in the company's software."
+          }
+        ],
+        "dropped_claim_count": 0,
+        "dropped_reasons": [],
+        "model_id": "FIXTURE: fake/model-id",
+        "reason": null,
+        "rubric": [
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the new text describe an event or condition that has already occurred, where the old text described it as a possibility?",
+            "question_id": "Q1",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          },
+          {
+            "answer": true,
+            "cited_sentence_ids": [
+              "0000000000-25-000001:2:2"
+            ],
+            "question": "FIXTURE: Does the new text name a specific geography, government, regulation, or counterparty not named in the old text?",
+            "question_id": "Q2",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": true
+          },
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the new text state or quantify a financial or operational impact not stated in the old text?",
+            "question_id": "Q3",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          },
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the change narrow or remove a previously disclosed exposure?",
+            "question_id": "Q4",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          }
+        ],
+        "status": "ok"
+      },
+      "new_block_id": "0000000000-25-000001:2",
+      "new_text": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure.\nFIXTURE: We have begun to integrate machine learning features into our widget planning software.\nFIXTURE: Laws governing artificial intelligence, such as the Westland AI Act, are evolving and may impose new obligations on us.\nFIXTURE: If our models produce inaccurate or biased outputs, our customers may lose confidence in our products.",
+      "new_title": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure.",
+      "old_block_id": null,
+      "old_text": null,
+      "old_title": null,
+      "rank": 4,
+      "score": 34,
+      "score_breakdown": [
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:2:0"
+          ],
+          "detail": "FIXTURE: No counterpart in the prior filing",
+          "label": "FIXTURE: New risk factor",
+          "points": 30,
+          "signal": "change_type:new"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:2:2"
+          ],
+          "detail": "FIXTURE: FIXTURE: Westland AI Act",
+          "label": "FIXTURE: New named geography, organization, or law",
+          "points": 4,
+          "signal": "new_entities"
+        }
+      ],
+      "section_group": "FIXTURE: Risks Related to Regulation and Legal Matters",
+      "sentences": [
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-25-000001:2:0",
+          "pair_index": 0,
+          "side": "new",
+          "status": "added",
+          "text": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-25-000001:2:1",
+          "pair_index": 1,
+          "side": "new",
+          "status": "added",
+          "text": "FIXTURE: We have begun to integrate machine learning features into our widget planning software."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-25-000001:2:2",
+          "pair_index": 2,
+          "side": "new",
+          "status": "added",
+          "text": "FIXTURE: Laws governing artificial intelligence, such as the Westland AI Act, are evolving and may impose new obligations on us."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-25-000001:2:3",
+          "pair_index": 3,
+          "side": "new",
+          "status": "added",
+          "text": "FIXTURE: If our models produce inaccurate or biased outputs, our customers may lose confidence in our products."
+        }
+      ],
+      "short_title": "FIXTURE: Artificial intelligence exposure",
+      "signals": {
+        "added_text_ratio": 1.0,
+        "category_scores": {
+          "artificial_intelligence": 0.88,
+          "regulation": 0.52
+        },
+        "hypothetical_to_actual": [],
+        "new_entities": [
+          {
+            "detail": "FIXTURE: Law/regulation named only in the new filing.",
+            "new_sentence_ids": [
+              "0000000000-25-000001:2:2"
+            ],
+            "old_sentence_ids": [],
+            "value": "FIXTURE: Westland AI Act"
+          }
+        ],
+        "new_quantities": [],
+        "removed_text_ratio": 0.0,
+        "semantic_shift": 0.0
+      },
+      "similarity": null,
+      "stats": {
+        "added": 4,
+        "added_word_count": 64,
+        "modified": 0,
+        "new_sentence_count": 4,
+        "new_word_count": 64,
+        "old_sentence_count": 0,
+        "old_word_count": 0,
+        "removed": 0,
+        "removed_word_count": 0,
+        "unchanged": 0
+      },
+      "title": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure."
+    },
+    {
+      "body_similarity": null,
+      "categories": [
         "litigation",
         "regulation"
       ],
@@ -1376,7 +1386,7 @@
       "old_text": "FIXTURE: The pending acquisition of Gadgetron Inc. may not be completed on the expected timeline.\nFIXTURE: Completion of the acquisition is subject to regulatory approvals in the U.S. and the E.U., which may be delayed or denied.\nFIXTURE: If the acquisition is not completed, we may be required to pay a termination fee of $450 million.",
       "old_title": "FIXTURE: The pending acquisition of Gadgetron Inc. may not be completed on the expected timeline.",
       "rank": 5,
-      "score": 20,
+      "score": 26,
       "score_breakdown": [
         {
           "cited_sentence_ids": [
@@ -1385,7 +1395,16 @@
           "detail": "FIXTURE: No counterpart in the new filing",
           "label": "FIXTURE: Risk factor removed",
           "points": 20,
-          "signal": "change_type"
+          "signal": "change_type:removed"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-24-000001:2:0"
+          ],
+          "detail": "FIXTURE: FIXTURE: short rationale",
+          "label": "FIXTURE: AI rubric: a previously disclosed exposure was narrowed or removed",
+          "points": 6,
+          "signal": "rubric_q4"
         }
       ],
       "section_group": "FIXTURE: Risks Related to Regulation and Legal Matters",
@@ -1513,20 +1532,22 @@
       "score_breakdown": [
         {
           "cited_sentence_ids": [
+            "0000000000-24-000001:3:1",
             "0000000000-24-000001:3:3",
             "0000000000-24-000001:3:4"
           ],
-          "detail": "FIXTURE: 2 sentences removed",
+          "detail": "FIXTURE: 2 sentences removed, 1 modified",
           "label": "FIXTURE: Risk was reduced",
           "points": 10,
-          "signal": "change_type"
+          "signal": "change_type:reduced"
         },
         {
           "cited_sentence_ids": [
+            "0000000000-24-000001:3:1",
             "0000000000-25-000001:3:1"
           ],
-          "detail": "FIXTURE: 40% -> 30%",
-          "label": "FIXTURE: Changed quantity",
+          "detail": "FIXTURE: FIXTURE: 30%",
+          "label": "FIXTURE: New quantified amount or percentage",
           "points": 5,
           "signal": "new_quantities"
         }
@@ -1820,28 +1841,28 @@
       "short_title": "FIXTURE: Trade policy and tariffs"
     },
     {
-      "change_id": "d434664e80f07fbb",
-      "detail": "FIXTURE: $1.2 billion",
-      "kind": "new_figure",
-      "new_sentence_id": "0000000000-25-000001:0:3",
+      "change_id": "a7ab944f05ff339d",
+      "detail": null,
+      "kind": "new_risk",
+      "new_sentence_id": "0000000000-25-000001:2:0",
       "old_sentence_id": null,
-      "short_title": "FIXTURE: Reliance on outside foundries"
+      "short_title": "FIXTURE: Artificial intelligence exposure"
     },
     {
-      "change_id": "530f7128dc266e93",
-      "detail": "FIXTURE: 3%",
-      "kind": "new_figure",
-      "new_sentence_id": "0000000000-25-000001:5:1",
+      "change_id": "6f1bd4f571f61777",
+      "detail": "FIXTURE: state-sponsored attacks",
+      "kind": "new_named_party",
+      "new_sentence_id": "0000000000-25-000001:1:1",
       "old_sentence_id": null,
-      "short_title": "FIXTURE: Trade policy and tariffs"
+      "short_title": "FIXTURE: Cybersecurity and ransomware"
     },
     {
-      "change_id": "0f18522a41433ec5",
-      "detail": "FIXTURE: 30%",
-      "kind": "new_figure",
-      "new_sentence_id": "0000000000-25-000001:3:1",
-      "old_sentence_id": "0000000000-24-000001:3:1",
-      "short_title": "FIXTURE: Currency exchange rates"
+      "change_id": "99545bba86c20d17",
+      "detail": null,
+      "kind": "removed_risk",
+      "new_sentence_id": null,
+      "old_sentence_id": "0000000000-24-000001:2:0",
+      "short_title": "FIXTURE: Pending Gadgetron acquisition"
     }
   ],
   "is_fixture": true,
@@ -2412,7 +2433,7 @@
     },
     "interpretation_status": "ok",
     "matched_pairs": 5,
-    "max_score": 80,
+    "max_score": 53,
     "new_block_count": 6,
     "old_block_count": 6,
     "total_changes": 7

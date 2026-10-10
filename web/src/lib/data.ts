@@ -11,6 +11,7 @@ import { cache } from "react";
 import type { Comparison } from "@/types/comparison";
 import { ApiUnreachableError, getComparisonFromApi, getCompaniesFromApi, looksLikeComparison } from "@/lib/api";
 import type { CompanyCard, CompanyListing, RubricFile } from "@/lib/types";
+import { isFigureChanged } from "@/lib/vocabulary";
 
 const FILE_RE = /^([A-Z.\-]{1,6})_(\d{4})_(\d{4})\.json$/;
 
@@ -115,7 +116,7 @@ async function readPublishedFile(entry: PublishedEntry): Promise<Comparison | nu
 
 function topHighlight(c: Comparison): CompanyListing["top_highlight"] {
   const h = (c.highlights ?? []).find((x) => c.changes.some((ch) => ch.id === x.change_id));
-  return h ? { kind: h.kind, short_title: h.short_title } : null;
+  return h ? { kind: h.kind, short_title: h.short_title, figure_changed: isFigureChanged(h) } : null;
 }
 
 function toListing(c: Comparison, file: string, source: CompanyListing["source"]): CompanyListing {

@@ -4281,6 +4281,7 @@
           "text": "Any new restrictions that negatively impact our ability to receive supply of components, parts, or services from Taiwan and South Korea, would negatively impact our business and financial results."
         }
       ],
+      "short_title": "We are subject to complex laws, rules…",
       "signals": {
         "added_text_ratio": 0.2953,
         "category_scores": {
@@ -4604,6 +4605,7 @@
           "text": "Financing arrangements, if undertaken, may in some circumstances result in lower upfront cash flows associated with extended payment terms or payment terms made over a multi-year term and may increase credit risk."
         }
       ],
+      "short_title": "Commercial arrangements expose us to counterparty risks",
       "signals": {
         "added_text_ratio": 1.0,
         "category_scores": {
@@ -5365,6 +5367,7 @@
           "text": "We may incur significant costs and may not achieve any significant revenue from these offerings."
         }
       ],
+      "short_title": "Failure to meet the evolving needs of…",
       "signals": {
         "added_text_ratio": 0.2386,
         "category_scores": {
@@ -5543,6 +5546,7 @@
           "text": "Additional risks, trends and uncertainties not presently known to us or that we currently believe are immaterial may also harm our business, financial condition, results of operations or reputation."
         }
       ],
+      "short_title": "The following risk factors should be considered…",
       "signals": {
         "added_text_ratio": 1.0,
         "category_scores": {
@@ -6152,6 +6156,7 @@
           "text": "Power or water shortages, land or permitting constraints, or regulations that limit energy, water, or land availability, could impair the ability of our customers to expand their data center capacity and consume our products and services, which may in turn negatively impact our business."
         }
       ],
+      "short_title": "Business disruptions could harm our operations, lead…",
       "signals": {
         "added_text_ratio": 0.0141,
         "category_scores": {
@@ -8050,6 +8055,7 @@
           "text": "Our inability to accurately predict our demand that arises from new use cases may create volatility in our revenue."
         }
       ],
+      "short_title": "Long manufacturing lead times and uncertain supply…",
       "signals": {
         "added_text_ratio": 0.1513,
         "category_scores": {
@@ -8609,6 +8615,7 @@
           "text": "Further, our business liability insurance may be inadequate or future coverage may be unavailable on acceptable terms, which could adversely impact our financial results."
         }
       ],
+      "short_title": "Defects in our products have caused and…",
       "signals": {
         "added_text_ratio": 0.0412,
         "category_scores": {
@@ -9337,6 +9344,7 @@
           "text": "The loss of any of our large customers, a significant reduction in purchases by them, our inability to sell to a customer due to U.S. or other countries’ trade restrictions, or any difficulties in collecting accounts receivable would likely harm our financial condition and results of operations."
         }
       ],
+      "short_title": "We receive a significant amount of our…",
       "signals": {
         "added_text_ratio": 0.083,
         "category_scores": {
@@ -9600,6 +9608,7 @@
           "text": "These include domestic and international economic and political conditions in countries in which we and our suppliers and manufacturers do business, government lockdowns to control case spread of global or local health issues, differing legal standards with respect to protection of IP and employment practices, different domestic and international business and cultural practices, disruptions to capital markets, counter-inflation policies, currency fluctuations, natural disasters, acts of war or other military actions, terrorism, public health issues, restrictions on international trade, such as tariffs, sanctions, and other controls on imports or exports, and catastrophic events."
         }
       ],
+      "short_title": "International sales and operations are a significant…",
       "signals": {
         "added_text_ratio": 0.0088,
         "category_scores": {
@@ -10468,6 +10477,7 @@
           "text": "These challenges have impacted our results of operations and may continue to do so in the future."
         }
       ],
+      "short_title": "We may not be able to realize…",
       "signals": {
         "added_text_ratio": 0.1455,
         "category_scores": {
@@ -10887,6 +10897,7 @@
           "text": "We continuously assess whether and where to seek formal protection for existing and new innovations and technologies but cannot be certain whether our applications for such protections will be approved, and, if approved, whether they will be enforceable."
         }
       ],
+      "short_title": "Actions to adequately protect our IP rights…",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -11016,6 +11027,7 @@
           "text": "Competition could adversely impact our market share and financial results."
         }
       ],
+      "short_title": "Risks Related to Our Industry and Markets",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -11405,6 +11417,7 @@
           "text": "Failure to meet our expectations or the expectations of our investors or security analysts is likely to cause our stock price to decline, as it has in the past, or substantial price volatility."
         }
       ],
+      "short_title": "Our operating results have in the past…",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -11654,6 +11667,7 @@
           "text": "Remediation of any material weakness could require us to incur significant expenses, and if we fail to remediate any material weakness, our financial statements may be inaccurate, we may be required to restate our financial statements, our ability to report our financial results on a timely and accurate basis may be adversely affected, our access to the capital markets may be restricted, our stock price may decline, and we may be subject to sanctions or investigation by regulatory authorities."
         }
       ],
+      "short_title": "Our business is dependent upon the proper…",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -11862,6 +11876,7 @@
           "text": "Regardless of the outcome, litigation can be costly, time-consuming, and disruptive to our operations."
         }
       ],
+      "short_title": "Our business is exposed to the burden…",
       "signals": {
         "added_text_ratio": 0.0123,
         "category_scores": {
@@ -12290,6 +12305,7 @@
           "text": "These factors could cause an unrealized or realized loss position in our investments or require us to record impairment charges."
         }
       ],
+      "short_title": "Adverse economic conditions may harm our business",
       "signals": {
         "added_text_ratio": 0.1006,
         "category_scores": {
@@ -12445,6 +12461,7 @@
           "text": "Defects in our products have caused and could cause us to incur significant expenses to remediate and could damage our business."
         }
       ],
+      "short_title": "Long manufacturing lead times and uncertain supply…",
       "signals": {
         "added_text_ratio": 0.0118,
         "category_scores": {
@@ -12712,6 +12729,7 @@
           "text": "Delaware law, provisions in our governing documents and our agreement with Microsoft could delay or prevent a change in control."
         }
       ],
+      "short_title": "We are subject to complex laws, rules…",
       "signals": {
         "added_text_ratio": 0.0052,
         "category_scores": {
@@ -12940,6 +12958,7 @@
           "text": "These factors and increased disclosure may negatively harm our brand, reputation and business activities or expose us to liability."
         }
       ],
+      "short_title": "Scrutiny from shareholders, regulators and others regarding…",
       "signals": {
         "added_text_ratio": 0.0048,
         "category_scores": {
@@ -13129,6 +13148,7 @@
           "text": "These provisions could delay or prevent a change in control of NVIDIA, discourage proxy contests, and make it more difficult for shareholders to elect directors of their choosing and to cause us to take other corporate actions they desire."
         }
       ],
+      "short_title": "Delaware law and our certificate of incorporation…",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -13412,6 +13432,7 @@
           "text": "Failure to ensure effective succession planning, transfer of knowledge, and smooth transitions involving executives and key employees could hinder our strategic planning, execution, and long-term success."
         }
       ],
+      "short_title": "If we are unable to attract, retain…",
       "signals": {
         "added_text_ratio": 0.0111,
         "category_scores": {
@@ -13865,6 +13886,7 @@
           "text": "A decline in our stock price may result in reduced future tax benefits from stock-based compensation, increase our effective tax rate, and adversely affect our financial results."
         }
       ],
+      "short_title": "We may have exposure to additional tax…",
       "signals": {
         "added_text_ratio": 0.0472,
         "category_scores": {
@@ -14212,6 +14234,7 @@
           "text": "Our operating results have in the past fluctuated and may in the future fluctuate, and if our operating results are below the expectations of securities analysts or investors, our stock price could decline."
         }
       ],
+      "short_title": "Adverse economic conditions may harm our business",
       "signals": {
         "added_text_ratio": 0.1404,
         "category_scores": {
@@ -15141,6 +15164,7 @@
           "text": "Any of these events could have a material adverse effect on our reputation, business, or financial condition."
         }
       ],
+      "short_title": "We are subject to stringent and changing…",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -15572,6 +15596,7 @@
           "text": "Our business could be negatively impacted by concerns around the high absolute energy requirements of our GPUs, despite their much more energy efficient design and operation relative to alternative computing platforms."
         }
       ],
+      "short_title": "Climate change may have a long-term impact…",
       "signals": {
         "added_text_ratio": 0.0042,
         "category_scores": {
@@ -16067,6 +16092,7 @@
           "text": "suppliers extending lead times and/or increasing costs during shortages; and •disruptions in manufacturing, assembly and other processes due to closures related to heat waves, earthquakes, fires, or other natural disasters, electricity conservation efforts, pandemics, and cybersecurity incidents."
         }
       ],
+      "short_title": "Dependency on third-party suppliers and their technology…",
       "signals": {
         "added_text_ratio": 0.0022,
         "category_scores": {
@@ -16756,6 +16782,7 @@
           "text": "In addition to experiencing a security incident, third parties may gather, collect or infer sensitive information about us from public sources, data brokers or other means that reveals competitively sensitive details about our organization and could be used to harm our business."
         }
       ],
+      "short_title": "Product, system security, and data protection incidents…",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -17083,6 +17110,7 @@
           "text": "If we are unable to successfully compete in this environment, demand for our products, services and technologies could decrease, which may negatively impact our business."
         }
       ],
+      "short_title": "Competition could adversely impact our market share…",
       "signals": {
         "added_text_ratio": 0.0186,
         "category_scores": {
@@ -17398,6 +17426,7 @@
           "text": "Our failure to adequately address concerns and regulations relating to the responsible use of AI by us or others could undermine public confidence in AI and slow adoption of AI in our products and services or cause reputational or financial harm."
         }
       ],
+      "short_title": "Issues relating to the responsible use of…",
       "signals": {
         "added_text_ratio": 0.0025,
         "category_scores": {
@@ -17446,6 +17475,48 @@
     "ticker": "NVDA"
   },
   "filing_selection_note": "two most recent original 10-K filings (one per fiscal period); 10-K/A amendments excluded",
+  "highlights": [
+    {
+      "change_id": "a4156a06454f6dfd",
+      "detail": "may -> have been",
+      "kind": "potential_became_actual",
+      "new_sentence_id": "0001045810-26-000021:21:10",
+      "old_sentence_id": "0001045810-25-000023:19:10",
+      "short_title": "We are subject to complex laws, rules…"
+    },
+    {
+      "change_id": "b6d73c522e0cfea2",
+      "detail": null,
+      "kind": "new_risk",
+      "new_sentence_id": "0001045810-26-000021:17:0",
+      "old_sentence_id": null,
+      "short_title": "Commercial arrangements expose us to counterparty risks"
+    },
+    {
+      "change_id": "32866661d1b11115",
+      "detail": "Groq",
+      "kind": "new_named_party",
+      "new_sentence_id": "0001045810-26-000021:5:17",
+      "old_sentence_id": null,
+      "short_title": "Failure to meet the evolving needs of…"
+    },
+    {
+      "change_id": "692187bd48c050c3",
+      "detail": null,
+      "kind": "new_risk",
+      "new_sentence_id": "0001045810-26-000021:0:0",
+      "old_sentence_id": null,
+      "short_title": "The following risk factors should be considered…"
+    },
+    {
+      "change_id": "a4156a06454f6dfd",
+      "detail": "$4.5 billion",
+      "kind": "new_figure",
+      "new_sentence_id": "0001045810-26-000021:21:50",
+      "old_sentence_id": null,
+      "short_title": "We are subject to complex laws, rules…"
+    }
+  ],
   "is_fixture": false,
   "model_ids": {
     "category_method": "hybrid: keyword-lexicon-v1 + embedding-similarity:BAAI/bge-m3",
@@ -17481,6 +17552,7 @@
     ]
   },
   "notes": [
+    "Short titles and highlights were derived from this analysis's own content by a migration to pipeline 0.1.0 (titles are truncated headings, no language model). Re-run the pipeline for this ticker to regenerate everything with the current stages.",
     "Not investment advice. RiskDiff shows changes in disclosed risk language, not changes in actual risk."
   ],
   "old_filing": {

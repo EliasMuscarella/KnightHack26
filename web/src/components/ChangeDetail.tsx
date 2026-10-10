@@ -465,8 +465,10 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
   );
 
   const emptyCell = (side: "old" | "new") => (
-    <div className="h-full min-h-8 rounded border border-dashed border-line bg-[repeating-linear-gradient(135deg,transparent,transparent_6px,var(--color-sunken)_6px,var(--color-sunken)_12px)]">
-      <span className="sr-only">No corresponding sentence in {side === "old" ? "last year's" : "this year's"} filing.</span>
+    <div className="flex h-full min-h-8 items-center justify-center rounded border border-dashed border-line bg-[repeating-linear-gradient(135deg,transparent,transparent_6px,var(--color-sunken)_6px,var(--color-sunken)_12px)] p-1.5">
+      <span className="rounded bg-surface/90 px-1.5 py-px font-sans text-xs italic text-ink-faint">
+        {side === "old" ? "no sentence last year" : "no sentence this year"}
+      </span>
     </div>
   );
 

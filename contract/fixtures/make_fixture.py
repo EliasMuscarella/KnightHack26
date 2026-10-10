@@ -18,13 +18,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
+from pipeline.diff import DiffParams  # noqa: E402
 from pipeline.schema import (  # noqa: E402
     CATEGORIES,
     CHANGE_TYPES,
     SCHEMA_VERSION,
     Comparison,
+    Interpretation,
+    Sentence,
+    Signals,
     canonical_json,
 )
+from pipeline.score import score_change  # noqa: E402
 
 F = "FIXTURE: "
 OLD_ACC = "0000000000-24-000001"
@@ -126,7 +131,6 @@ def build_change(
     heading_sim: float | None,
     body_sim: float | None,
     signals: dict,
-    score_lines: list[dict],
     interpretation: dict,
 ) -> dict:
     short_title = SHORT_TITLES[(new_b or old_b)["heading"]]
@@ -217,7 +221,35 @@ def build_change(
     key = f"{old_b['id'] if old_b else ''}|{new_b['id'] if new_b else ''}"
     cid = hashlib.sha256(key.encode()).hexdigest()[:16]
     title = (new_b or old_b)["heading"]
-    score = min(100, sum(line["points"] for line in score_lines))
+    signal_payload = dict(
+        hypothetical_to_actual=signals.get("h2a", []),
+        new_entities=signals.get("ent", []),
+        new_quantities=signals.get("qty", []),
+        added_text_ratio=round(stats["added_word_count"] / max(1, new_wc), 4) if new_wc else 0.0,
+        removed_text_ratio=round(stats["removed_word_count"] / max(1, old_wc), 4)
+        if old_wc
+        else 0.0,
+        semantic_shift=round(1 - similarity, 4) if similarity is not None else 0.0,
+        category_scores=signals.get("cat", {}),
+    )
+    # Score lines come from the real scorer (same weights, caps and no-double-counting rule as
+    # a published file); labels and details are then prefixed so every string stays synthetic.
+    score, real_lines = score_change(
+        change_type,
+        [Sentence.model_validate(x) for x in sentences],
+        Signals.model_validate(signal_payload),
+        Interpretation.model_validate(interpretation),
+        similarity,
+        DiffParams().reworded_similarity,
+    )
+    score_lines = [
+        {
+            **line.model_dump(mode="json"),
+            "label": F + line.label,
+            "detail": (F + line.detail) if line.detail else None,
+        }
+        for line in real_lines
+    ]
     return dict(
         id=cid,
         rank=0,
@@ -250,19 +282,7 @@ def build_change(
             added_word_count=stats["added_word_count"],
             removed_word_count=stats["removed_word_count"],
         ),
-        signals=dict(
-            hypothetical_to_actual=signals.get("h2a", []),
-            new_entities=signals.get("ent", []),
-            new_quantities=signals.get("qty", []),
-            added_text_ratio=round(stats["added_word_count"] / max(1, new_wc), 4)
-            if new_wc
-            else 0.0,
-            removed_text_ratio=round(stats["removed_word_count"] / max(1, old_wc), 4)
-            if old_wc
-            else 0.0,
-            semantic_shift=round(1 - similarity, 4) if similarity is not None else 0.0,
-            category_scores=signals.get("cat", {}),
-        ),
+        signals=signal_payload,
         interpretation=interpretation,
     )
 
@@ -495,48 +515,6 @@ def main() -> int:
                 ],
                 cat={"supply_chain": 0.71, "geopolitical": 0.58, "macroeconomic": 0.31},
             ),
-            [
-                dict(
-                    signal="change_type",
-                    label=F + "Risk was expanded",
-                    points=15,
-                    detail=F + "2 sentences added, 1 modified",
-                    cited_sentence_ids=sids(n1, 3, 6),
-                ),
-                dict(
-                    signal="hypothetical_to_actual",
-                    label=F + "Hedged language became actual language",
-                    points=20,
-                    detail=F + "'may affect' -> 'have affected'",
-                    cited_sentence_ids=sids(o1, 3) + sids(n1, 4),
-                ),
-                dict(
-                    signal="new_entities",
-                    label=F + "New named entities",
-                    points=10,
-                    detail=F + "Ruritania, Northland",
-                    cited_sentence_ids=sids(n1, 1, 6),
-                ),
-                dict(
-                    signal="new_quantities",
-                    label=F + "New quantified impact",
-                    points=15,
-                    detail=F + "$1.2 billion",
-                    cited_sentence_ids=sids(n1, 3),
-                ),
-                dict(
-                    signal="rubric_q1",
-                    label=F + "AI rubric: possibility became an occurred event",
-                    points=10,
-                    cited_sentence_ids=sids(n1, 3),
-                ),
-                dict(
-                    signal="rubric_q3",
-                    label=F + "AI rubric: newly quantified impact",
-                    points=10,
-                    cited_sentence_ids=sids(n1, 3),
-                ),
-            ],
             dict(
                 status="ok",
                 model_id="FIXTURE: fake/model-id",
@@ -586,28 +564,6 @@ def main() -> int:
                 ],
                 cat={"cybersecurity": 0.83, "regulation": 0.22},
             ),
-            [
-                dict(
-                    signal="change_type",
-                    label=F + "Risk was materially reworded",
-                    points=20,
-                    detail=F + "4 of 4 sentences modified",
-                    cited_sentence_ids=sids(n2, 0, 1, 2, 3),
-                ),
-                dict(
-                    signal="semantic_shift",
-                    label=F + "Meaning shifted noticeably",
-                    points=8,
-                    detail=F + "similarity 0.74",
-                    cited_sentence_ids=sids(n2, 0),
-                ),
-                dict(
-                    signal="rubric_q2",
-                    label=F + "AI rubric: new specific counterparty or regulation",
-                    points=10,
-                    cited_sentence_ids=sids(n2, 1),
-                ),
-            ],
             dict(
                 status="ok",
                 model_id="FIXTURE: fake/model-id",
@@ -652,28 +608,6 @@ def main() -> int:
                 ],
                 cat={"artificial_intelligence": 0.88, "regulation": 0.52},
             ),
-            [
-                dict(
-                    signal="change_type",
-                    label=F + "New risk factor",
-                    points=30,
-                    detail=F + "No counterpart in the prior filing",
-                    cited_sentence_ids=sids(n3, 0),
-                ),
-                dict(
-                    signal="new_entities",
-                    label=F + "New named entities",
-                    points=10,
-                    detail=F + "Westland AI Act",
-                    cited_sentence_ids=sids(n3, 2),
-                ),
-                dict(
-                    signal="rubric_q2",
-                    label=F + "AI rubric: new specific regulation",
-                    points=10,
-                    cited_sentence_ids=sids(n3, 2),
-                ),
-            ],
             dict(
                 status="ok",
                 model_id="FIXTURE: fake/model-id",
@@ -709,15 +643,6 @@ def main() -> int:
             None,
             None,
             dict(cat={"regulation": 0.61, "litigation": 0.44}),
-            [
-                dict(
-                    signal="change_type",
-                    label=F + "Risk factor removed",
-                    points=20,
-                    detail=F + "No counterpart in the new filing",
-                    cited_sentence_ids=sids(o3, 0),
-                )
-            ],
             dict(
                 status="ok",
                 model_id="FIXTURE: fake/model-id",
@@ -763,22 +688,6 @@ def main() -> int:
                 ],
                 cat={"foreign_exchange": 0.9},
             ),
-            [
-                dict(
-                    signal="change_type",
-                    label=F + "Risk was reduced",
-                    points=10,
-                    detail=F + "2 sentences removed",
-                    cited_sentence_ids=sids(o4, 3, 4),
-                ),
-                dict(
-                    signal="new_quantities",
-                    label=F + "Changed quantity",
-                    points=5,
-                    detail=F + "40% -> 30%",
-                    cited_sentence_ids=sids(n4, 1),
-                ),
-            ],
             dict(
                 status="empty",
                 model_id="FIXTURE: fake/model-id",
@@ -830,29 +739,6 @@ def main() -> int:
                 ],
                 cat={"regulation": 0.66, "macroeconomic": 0.49},
             ),
-            [
-                dict(
-                    signal="change_type",
-                    label=F + "Risk was expanded",
-                    points=15,
-                    detail=F + "1 sentence added, 2 modified",
-                    cited_sentence_ids=sids(n6, 3),
-                ),
-                dict(
-                    signal="hypothetical_to_actual",
-                    label=F + "Hedged language became actual language",
-                    points=20,
-                    detail=F + "'could increase' -> 'have increased'",
-                    cited_sentence_ids=sids(o6, 0) + sids(n6, 0),
-                ),
-                dict(
-                    signal="new_quantities",
-                    label=F + "New quantified impact",
-                    points=15,
-                    detail=F + "3%",
-                    cited_sentence_ids=sids(n6, 1),
-                ),
-            ],
             dict(
                 status="unavailable",
                 model_id=None,
@@ -875,7 +761,6 @@ def main() -> int:
             1.0,
             1.0,
             dict(cat={"competition": 0.93}),
-            [],
             dict(
                 status="skipped",
                 model_id=None,

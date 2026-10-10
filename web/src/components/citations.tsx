@@ -37,7 +37,7 @@ function preview(text: string, max = 140): string {
   return text.length > max ? `${text.slice(0, max - 1)}…` : text;
 }
 
-/** Numbered citation chip `[n]`; click scrolls to and highlights the cited sentence. */
+/** Numbered citation chip (a small button); click scrolls to and highlights the cited sentence. */
 export function CitationChip({ n, id, withSide = false }: { n: number; id: string; withSide?: boolean }) {
   const { index, filings, jumpTo } = useCitations();
   const ref = index[id];
@@ -52,10 +52,12 @@ export function CitationChip({ n, id, withSide = false }: { n: number; id: strin
       }}
       title={ref ? `${sideText}: ${preview(ref.text)}` : id}
       aria-label={`Citation ${n}, ${sideText} sentence${ref ? `: ${preview(ref.text, 80)}` : ""}. Jump to sentence.`}
-      className="inline-flex items-center rounded border border-line-strong bg-surface px-1.5 py-px font-mono text-xs font-semibold text-accent no-underline shadow-sm hover:border-accent hover:bg-accent-bg"
+      className="group/cite inline-flex items-baseline gap-1 rounded-md border border-accent/30 bg-accent-bg/50 px-1.5 py-px align-baseline font-sans text-xs leading-snug no-underline transition-colors hover:border-accent hover:bg-accent-bg focus-visible:border-accent focus-visible:bg-accent-bg"
     >
-      [{n}
-      {withSide ? <span className="ml-1 font-sans font-medium text-ink-faint">{sideText}</span> : null}]
+      <span className="font-bold tabular-nums text-accent decoration-2 underline-offset-2 group-hover/cite:underline group-focus-visible/cite:underline">
+        {n}
+      </span>
+      {withSide ? <span className="font-normal text-ink-faint">{sideText}</span> : null}
     </a>
   );
 }
