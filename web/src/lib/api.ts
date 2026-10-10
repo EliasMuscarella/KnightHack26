@@ -223,6 +223,8 @@ function actual(x: unknown): TrendsActual | null {
     old_text: str(r.old_text, 5000),
     new_text: str(r.new_text, 5000),
     score: num(r.score),
+    old_spans: spans(r.old_spans, (str(r.old_text, 5000) ?? "").length),
+    new_spans: spans(r.new_spans, (str(r.new_text, 5000) ?? "").length),
   };
 }
 

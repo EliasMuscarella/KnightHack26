@@ -331,13 +331,22 @@ def phrases_in(doc) -> list[tuple[str, str]]:
 
 def added_spans(s: Sentence) -> list[tuple[int, int]]:
     """Offsets of inserted text inside s.text (whitespace-trimmed, adjacent runs merged)."""
-    if s.status == "added":
+    return _marked_spans(s, "insert", "added")
+
+
+def removed_spans(s: Sentence) -> list[tuple[int, int]]:
+    """Offsets of deleted text inside s.text (the old side's own spans)."""
+    return _marked_spans(s, "delete", "removed")
+
+
+def _marked_spans(s: Sentence, op: str, whole_status: str) -> list[tuple[int, int]]:
+    if s.status == whole_status:
         return [(0, len(s.text))]
     spans: list[tuple[int, int]] = []
     pos = 0
     for sp in s.diff_spans or []:
         end = pos + len(sp.text)
-        if sp.op == "insert":
+        if sp.op == op:
             seg = s.text[pos:end]
             a = pos + (len(seg) - len(seg.lstrip()))
             b = end - (len(seg) - len(seg.rstrip()))
@@ -501,12 +510,14 @@ def topic_mentions(comp: Comparison, nlp=None) -> list[TopicMention]:
 def potential_to_actual(comp: Comparison) -> list[PotentialToActual]:
     idx = comp.sentence_index
     scores = {c.id: c.score for c in comp.changes}
+    sentences = {s.id: s for c in comp.changes for s in c.sentences}
     out = []
     for h in comp.highlights:
         if h.kind != "potential_became_actual":
             continue
         if h.old_sentence_id not in idx or h.new_sentence_id not in idx:
             continue
+        old_s, new_s = sentences.get(h.old_sentence_id), sentences.get(h.new_sentence_id)
         out.append(
             PotentialToActual(
                 ticker=comp.company.ticker,
@@ -518,6 +529,8 @@ def potential_to_actual(comp: Comparison) -> list[PotentialToActual]:
                 old_text=idx[h.old_sentence_id].text,
                 new_text=idx[h.new_sentence_id].text,
                 score=scores.get(h.change_id, 0),
+                old_spans=removed_spans(old_s) if old_s else [],
+                new_spans=added_spans(new_s) if new_s else [],
             )
         )
     return out

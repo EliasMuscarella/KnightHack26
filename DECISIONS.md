@@ -370,14 +370,41 @@ Only a store that is already `ok` gets a 2 s wait for its very first remote resu
   - `offline` + `local` with empty lists.
   - any status + `null` with empty lists: an unexpected internal error (never a 5xx).
 
-## D-023 Company logos
+## D-023 Outside review responses (UX13)
+
+- The wording-change meter is ink only (fill = magnitude); direction stays in the badge. Both the
+  reverse-squint reviewer and the judge read direction-colored segments as a severity gauge, and the gray
+  rewrite fill made a High row look fainter than a Medium one. This departs from the brief's "meter in the
+  change's direction color" on purpose; the badge beside it still carries the direction color.
+- "Potential became actual" keeps the brief's amber tint and gains a 1px inset ring, so it stops reading as
+  a highlighted word. The amber family was kept (the brief fixed it); the ring is the distinction.
+- A highlight whose kind badge would repeat the change-type badge ("New risk" + "New risk") shows one badge.
+- Potential-to-actual rows in the trends facts carry the removed and added word ranges (`old_spans`,
+  `new_spans`), and the Databricks `highlights` table gains `old_spans_json` / `new_spans_json`, so the
+  library view draws the same marks from the store as from a local file. `TRENDS_VERSION` 1.1.0; the
+  setup script adds the columns to an existing table only when `DESCRIBE TABLE` shows them missing. The
+  published report contract and `analysis_id` are untouched (code fingerprint unchanged).
+- Merged one-sided sentence runs on the detail page render full width with one line ("5 sentences removed
+  this year. Nothing to compare in this year's filing.") instead of a column beside an empty column; the
+  per-sentence "Removed"/"Added" labels are hidden inside such a run. The reverse-squint reviewer would
+  rather keep the two-column grid; the judge did not object. Kept full width: a 21-sentence column of
+  struck text beside a 21-row empty column was the worse read on a projector.
+- Kept as the brief asked, despite review notes: library cards on the home page ("cards are the only
+  boxes"), the orange family for less disclosure language, the "Major update" label, and the
+  four-step / three-column methodology layout. Recorded here rather than changed.
+- Not fixable in this sandbox (data, needs the team's NVDA re-run): the section preamble ("The following
+  risk factors should be considered…") ranked as a New risk, entity topics such as "Biden Administration"
+  and "DOL", and a removed sentence starting mid-word ("z ECCNs"). All three come from the published NVDA
+  file, which this environment cannot regenerate (no SEC access).
+
+## D-024 Company logos
 
 - Logos for the published tickers (AAPL, AMZN, NVDA, CRWD, SF) are genuine Wikimedia Commons SVGs, downloaded
   once, sanitized, and served from `web/public/logos/` (sources in `web/public/logos/SOURCES.md`). Tickers not
   in the manifest `web/src/lib/logos.ts` get a token-colored monogram and never request an image. The logo
   tile is white in every theme (brand marks are drawn for a light background); the monogram uses tokens only.
 
-## D-024 Dark mode
+## D-025 Dark mode
 
 - Dark mode is class-based: `data-theme="light" | "dark"` on `<html>`, set before paint by a fixed inline script
   in `web/src/app/layout.tsx` (stored choice in localStorage `riskdiff-theme`, else `prefers-color-scheme`).
@@ -390,4 +417,3 @@ Only a store that is already `ok` gets a 2 s wait for its very first remote resu
   marker would need dark text, and the glyph tops above the stroke would then sit dark on dark.
 - Known pre-existing light-mode gaps left unchanged (out of scope, not a dark-mode need): heatmap cell text
   near the 0.55 intensity flip drops to about 2.3 to 3.8:1, and `ink-muted` on `sunken` is 4.4:1.
-

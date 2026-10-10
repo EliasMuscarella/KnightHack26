@@ -25,15 +25,16 @@ import {
 // Badges
 // ---------------------------------------------------------------------------------------
 
-function Badge({ label, helper, tone, size }: { label: string; helper: string; tone: Tone; size: "sm" | "md" }) {
+function Badge({ label, helper, tone, size, detail, ring = false }: { label: string; helper: string; tone: Tone; size: "sm" | "md"; detail?: string | null; ring?: boolean }) {
   return (
     <span
-      className={`inline-flex items-center whitespace-nowrap rounded-sm font-medium leading-none ${tone.bg} ${tone.text} ${
+      className={`inline-flex max-w-full items-center rounded-sm font-medium leading-none ${tone.bg} ${tone.text} ${
         size === "sm" ? "px-2 py-1 text-xs" : "px-2.5 py-1.5 text-sm"
-      }`}
+      } ${ring ? "ring-1 ring-inset ring-actual-fg/60" : ""}`}
       title={helper || undefined}
     >
-      {label}
+      <span className="whitespace-nowrap">{label}</span>
+      {detail ? <span className="truncate font-normal">: {detail}</span> : null}
     </span>
   );
 }
@@ -48,15 +49,19 @@ export function ChangeBadge({
   kind,
   figureChanged = false,
   size = "md",
+  detail,
 }: {
   type?: string;
   kind?: string;
   figureChanged?: boolean;
   size?: "sm" | "md";
+  /** The named party or figure behind a highlight ("Groq", "$4.5 billion"). */
+  detail?: string | null;
 }) {
   if (kind) {
     const v = highlightKindVocab(kind, figureChanged);
-    return <Badge label={v.label} helper={v.helper} tone={highlightTone(kind)} size={size} />;
+    // Amber sits in the highlighter's family: the ring keeps "potential became actual" apart from "new words".
+    return <Badge label={v.label} helper={v.helper} tone={highlightTone(kind)} size={size} detail={detail} ring={kind === "potential_became_actual"} />;
   }
   const v = changeTypeVocab(type ?? "largely_unchanged");
   return <Badge label={v.label} helper={v.helper} tone={changeTone(type ?? "largely_unchanged")} size={size} />;
@@ -71,23 +76,24 @@ export function HighlightKindBadge({ kind, size = "md", figureChanged = false }:
 }
 
 // ---------------------------------------------------------------------------------------
-// Change level: a 3-segment meter in the change's direction color
+// Change level: a 3-segment meter. Ink only: the fill is magnitude; direction lives in the badge
+// beside it (two outside reviews read direction-colored segments as a severity gauge).
 // ---------------------------------------------------------------------------------------
 
 export function ChangeLevel({ score, changeType = "largely_unchanged", size = "md" }: { score: number; changeType?: string; size?: "sm" | "md" }) {
   const level = changeLevel(score);
   const filled = levelSegments(score);
-  const tone = changeTone(changeType);
   const title = `${score} of 100. ${CHANGE_LEVEL.helper}`;
   return (
     <span
       className={`inline-flex items-center gap-2 whitespace-nowrap ${size === "sm" ? "text-xs" : "text-sm"} text-ink-secondary`}
       title={title}
       aria-label={`${CHANGE_LEVEL.prefix}: ${level}, ${score} of 100`}
+      data-change-type={changeType}
     >
-      <span aria-hidden="true" className="inline-flex items-end gap-0.5">
+      <span aria-hidden="true" className="inline-flex items-center gap-0.5">
         {[1, 2, 3].map((i) => (
-          <span key={i} className={`block w-2 rounded-xs ${i <= filled ? tone.fill : "bg-line"}`} style={{ height: 4 + i * 3 }} />
+          <span key={i} className={`block h-2.5 w-2.5 rounded-xs ${i <= filled ? "bg-ink" : "bg-line"}`} />
         ))}
       </span>
       <span aria-hidden="true">
@@ -120,10 +126,13 @@ export function Legend({ className = "" }: { className?: string }) {
         <Swatch tone={CHANGE_TONE.removed} /> Orange: {LEGEND.less}
       </span>
       <span className="inline-flex items-center gap-2">
-        <Swatch tone={CHANGE_TONE.materially_reworded} /> Ink: {LEGEND.rewrite}
+        <Swatch tone={CHANGE_TONE.materially_reworded} /> Gray: {LEGEND.rewrite}
       </span>
       <span className="inline-flex items-center gap-2">
-        <Swatch tone={ACTUAL_TONE} /> Amber: {LEGEND.actual}
+        <span aria-hidden="true" className={`inline-block h-3 w-3 rounded-xs ${ACTUAL_TONE.bg} ring-1 ring-inset ring-actual-fg/50`} /> Amber: {LEGEND.actual}
+      </span>
+      <span className="inline-flex items-center gap-2">
+        <mark className="hl text-xs text-ink">new words</mark> Highlighter: new words this year
       </span>
     </p>
   );

@@ -34,7 +34,7 @@ export default async function HomePage() {
                 From the library: {displayName(hero.comparison.company.name)}, FY{hero.comparison.old_filing.fiscal_year} to FY
                 {hero.comparison.new_filing.fiscal_year}. New words this year carry the highlighter.
               </p>
-              <HighlightCard change={hero.change} facts={[hero.highlight]} comparison={hero.comparison} variant="plain" showCompany />
+              <HighlightCard change={hero.change} facts={[hero.highlight]} comparison={hero.comparison} variant="plain" showCompany source={null} />
             </div>
           ) : null}
         </PageContainer>

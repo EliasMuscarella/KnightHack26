@@ -59,6 +59,8 @@ interface SentenceViewProps {
   aliasId?: string;
   /** "stacked" (side by side): tag line above the text. "gutter" (inline): tag in a left gutter. */
   layout: "stacked" | "gutter";
+  /** Inside a merged one-sided run the run's own line says "added" or "removed" once. */
+  labelHidden?: boolean;
 }
 
 function SentenceView(props: SentenceViewProps) {
@@ -82,10 +84,10 @@ function StatusTag({ status, highlighted, sideTag }: { status: keyof typeof STAT
   );
 }
 
-function SentenceInner({ s, heading, rewritten, sideTag, highlighted, actionOpen, filing, isFixture, onCloseAction, onBack, layout }: SentenceViewProps) {
+function SentenceInner({ s, heading, rewritten, sideTag, highlighted, actionOpen, filing, isFixture, onCloseAction, onBack, layout, labelHidden = false }: SentenceViewProps) {
   const status: keyof typeof STATUS_META = s.status === "modified" && rewritten ? "rewritten" : s.status;
   const stacked = layout === "stacked";
-  const showLabelLine = highlighted || s.status !== "unchanged" || !!sideTag;
+  const showLabelLine = highlighted || (s.status !== "unchanged" && !labelHidden) || !!sideTag;
   const actions = actionOpen ? (
     <div
       role="group"
@@ -371,11 +373,12 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
 
   const yearTag = (side: Sentence["side"]) => (side === "old" ? `Last year, FY${filings.old.fiscal_year}` : `This year, FY${filings.new.fiscal_year}`);
 
-  const renderSentence = (s: Sentence, withSideTag: boolean, aliasId?: string) => (
+  const renderSentence = (s: Sentence, withSideTag: boolean, aliasId?: string, labelHidden = false) => (
     <SentenceView
       key={s.id}
       s={s}
       layout={view === "split" ? "stacked" : "gutter"}
+      labelHidden={labelHidden}
       aliasId={aliasId}
       heading={isHeading(s.id)}
       rewritten={rewritten.has(s.id)}
@@ -415,6 +418,22 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
   const renderRow = (r: Row) => {
     if (r.kind !== "split") return renderSentence(r.s, view === "inline", r.alias?.id);
     const merged = r.merged ? { status: r.merged, count: r.merged === "added" ? r.new.length : r.old.length } : undefined;
+    if (merged) {
+      // A run of sentences that exist on one side only: full width, with one line saying so,
+      // instead of a column of text beside a column of nothing.
+      const list = merged.status === "added" ? r.new : r.old;
+      const noun = merged.count === 1 ? "sentence" : "sentences";
+      const note =
+        merged.status === "added"
+          ? `${merged.count} ${noun} added this year. Nothing to compare in last year's filing.`
+          : `${merged.count} ${noun} removed this year. Nothing to compare in this year's filing.`;
+      return (
+        <div key={r.key} className="border-y border-line py-2" data-merged-run={r.merged}>
+          <p className="mb-1 font-sans text-sm text-ink-secondary">{note}</p>
+          <div className="space-y-1">{list.map((s) => renderSentence(s, false, undefined, true))}</div>
+        </div>
+      );
+    }
     return (
       <div key={r.key} className="grid grid-cols-2 gap-5" data-merged-run={r.merged}>
         <div className="space-y-1">{r.old.length ? r.old.map((s) => renderSentence(s, false)) : emptyCell("old", merged)}</div>

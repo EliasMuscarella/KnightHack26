@@ -15,7 +15,7 @@ export function NavLinks() {
   return (
     <nav aria-label="Main" className="flex items-center gap-6 text-sm">
       {NAV.map(([href, label]) => {
-        const current = href === "/" ? pathname === "/" || pathname.startsWith("/c/") : pathname.startsWith(href);
+        const current = href === "/" ? pathname === "/" : pathname.startsWith(href);
         return (
           <Link key={href} href={href} aria-current={current ? "page" : undefined} className={`nav-link ${current ? "text-ink" : "text-ink-secondary hover:text-ink"}`}>
             {label}

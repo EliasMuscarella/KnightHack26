@@ -73,7 +73,7 @@ heavy weights.
 | `less-strong-fg` / `less-strong-bg` | `#96420F` | `#F8E3D6` | Dropped risk |
 | `less-fg` / `less-bg` | `#A64B18` | `#FBEDE3` | Scaled back (text adjusted from `#B5541C`, which was 4.3:1 on its tint) |
 | `rewrite-fg` / `rewrite-bg` | `#14213D` | `#E6E9EF` | Major update |
-| `actual-fg` / `actual-bg` | `#7A4B00` | `#FCEFC7` | Potential became actual |
+| `actual-fg` / `actual-bg` | `#7A4B00` | `#FCEFC7` | Potential became actual. Its badge also carries a 1px inset ring in `actual-fg` at 60%, because the tint sits in the highlighter's family and reviewers read the badge as a highlighted word |
 | `signal-fg` / `signal-bg` | `#14213D` | `#EEF1F5` | Newly named, New figure disclosed |
 
 Essentially unchanged uses `ink-secondary` on `surface` with a `line` border.
@@ -138,8 +138,10 @@ needed); the legend says "stronger color" rather than "darker" so it reads in bo
 
 * `ChangeBadge`: solid tint background, colored text from the direction tokens, 14–15px, 6px radius.
   No outline-only pills. One implementation, used in lists, cards, the detail page and Trends.
-* `ChangeLevel`: "Wording change: High / Medium / Low" as a 3-segment meter filled in the change's
-  direction color, number in a tooltip and for screen readers. Never a bare number beside a risk name.
+* `ChangeLevel`: "Wording change: High / Medium / Low" as a 3-segment meter of equal squares filled in
+  ink; the number sits in a tooltip and the aria-label. The meter shows magnitude only. Direction is
+  the badge beside it: two outside reviews read direction-colored segments as a severity gauge, and a
+  gray "Major update" at High looked fainter than a blue "Expanded" at Medium.
 * Before/after card: badge, 22px short title, one quiet source line; two columns "Last year" (muted
   serif, thin muted left rule, removed words struck) and "This year" (ink serif, ink left rule,
   highlighter on changed words); "Open in SEC filing" and "See the full change" in the footer.
