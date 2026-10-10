@@ -23,7 +23,7 @@ from pipeline.types import RiskBlock
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.1.0"
+STAGE_VERSION = "0.1.1"
 
 TOKEN_RE = re.compile(r"\s+|\w+(?:[’'\-]\w+)*|[^\w\s]")
 _NORM_RE = re.compile(r"\s+")
@@ -32,7 +32,9 @@ _NORM_RE = re.compile(r"\s+")
 @dataclass(frozen=True)
 class DiffParams:
     sentence_match_threshold: float = 0.45
-    sentence_unchanged_threshold: float = 1.0  # unchanged == exact after whitespace/quote normalization
+    sentence_unchanged_threshold: float = (
+        1.0  # unchanged == exact after whitespace/quote normalization
+    )
     expanded_ratio: float = 0.15
     reworded_similarity: float = 0.80
     minor_ratio: float = 0.05
@@ -40,12 +42,7 @@ class DiffParams:
     both_sides_ratio: float = 0.25
 
     def to_dict(self) -> dict:
-        return {
-            "sentence_match_threshold": self.sentence_match_threshold,
-            "sentence_unchanged_threshold": self.sentence_unchanged_threshold,
-            "expanded_ratio": self.expanded_ratio,
-            "reworded_similarity": self.reworded_similarity,
-        }
+        return dict(self.__dict__)
 
 
 DEFAULT_DIFF_PARAMS = DiffParams()
@@ -135,7 +132,9 @@ def align_sentences(sim: np.ndarray, threshold: float) -> list[tuple[int, int]]:
     return pairs[::-1]
 
 
-def sentence_similarity(old: RiskBlock, new: RiskBlock, old_vecs: np.ndarray | None, new_vecs: np.ndarray | None) -> np.ndarray:
+def sentence_similarity(
+    old: RiskBlock, new: RiskBlock, old_vecs: np.ndarray | None, new_vecs: np.ndarray | None
+) -> np.ndarray:
     n, m = len(old.sentences), len(new.sentences)
     sim = np.zeros((n, m))
     emb = None
@@ -181,7 +180,9 @@ def diff_pair(
         blk = new if old is None else old
         status = "added" if old is None else "removed"
         for s in blk.sentences:
-            sentences.append(Sentence(id=s.id, side=side, status=status, text=s.text, pair_index=pair_index))
+            sentences.append(
+                Sentence(id=s.id, side=side, status=status, text=s.text, pair_index=pair_index)
+            )
             pair_index += 1
         if old is None:
             added, added_wc = len(blk.sentences), sum(_wc(s.text) for s in blk.sentences)
@@ -197,7 +198,11 @@ def diff_pair(
         while i < n or j < m:
             if i < n and i not in ai:
                 s = old.sentences[i]
-                sentences.append(Sentence(id=s.id, side="old", status="removed", text=s.text, pair_index=pair_index))
+                sentences.append(
+                    Sentence(
+                        id=s.id, side="old", status="removed", text=s.text, pair_index=pair_index
+                    )
+                )
                 removed += 1
                 removed_wc += _wc(s.text)
                 pair_index += 1
@@ -205,7 +210,11 @@ def diff_pair(
                 continue
             if j < m and j not in aj:
                 s = new.sentences[j]
-                sentences.append(Sentence(id=s.id, side="new", status="added", text=s.text, pair_index=pair_index))
+                sentences.append(
+                    Sentence(
+                        id=s.id, side="new", status="added", text=s.text, pair_index=pair_index
+                    )
+                )
                 added += 1
                 added_wc += _wc(s.text)
                 pair_index += 1
@@ -216,13 +225,55 @@ def diff_pair(
             assert ai[i] == j, (i, j, ai)
             score = round(float(sim[i, j]), 4)
             if normalize_sentence(a.text) == normalize_sentence(b.text):
-                sentences.append(Sentence(id=a.id, side="old", status="unchanged", text=a.text, pair_index=pair_index, counterpart_id=b.id, alignment_similarity=score))
-                sentences.append(Sentence(id=b.id, side="new", status="unchanged", text=b.text, pair_index=pair_index, counterpart_id=a.id, alignment_similarity=score))
+                sentences.append(
+                    Sentence(
+                        id=a.id,
+                        side="old",
+                        status="unchanged",
+                        text=a.text,
+                        pair_index=pair_index,
+                        counterpart_id=b.id,
+                        alignment_similarity=score,
+                    )
+                )
+                sentences.append(
+                    Sentence(
+                        id=b.id,
+                        side="new",
+                        status="unchanged",
+                        text=b.text,
+                        pair_index=pair_index,
+                        counterpart_id=a.id,
+                        alignment_similarity=score,
+                    )
+                )
                 unchanged += 1
             else:
                 os_, ns_ = word_spans(a.text, b.text)
-                sentences.append(Sentence(id=a.id, side="old", status="modified", text=a.text, pair_index=pair_index, counterpart_id=b.id, alignment_similarity=score, diff_spans=os_))
-                sentences.append(Sentence(id=b.id, side="new", status="modified", text=b.text, pair_index=pair_index, counterpart_id=a.id, alignment_similarity=score, diff_spans=ns_))
+                sentences.append(
+                    Sentence(
+                        id=a.id,
+                        side="old",
+                        status="modified",
+                        text=a.text,
+                        pair_index=pair_index,
+                        counterpart_id=b.id,
+                        alignment_similarity=score,
+                        diff_spans=os_,
+                    )
+                )
+                sentences.append(
+                    Sentence(
+                        id=b.id,
+                        side="new",
+                        status="modified",
+                        text=b.text,
+                        pair_index=pair_index,
+                        counterpart_id=a.id,
+                        alignment_similarity=score,
+                        diff_spans=ns_,
+                    )
+                )
                 modified += 1
                 removed_wc += sum(_wc(sp.text) for sp in os_ if sp.op == "delete")
                 added_wc += sum(_wc(sp.text) for sp in ns_ if sp.op == "insert")
@@ -242,10 +293,16 @@ def diff_pair(
         added_word_count=added_wc,
         removed_word_count=removed_wc,
     )
-    return PairDiff(sentences=sentences, stats=stats, change_type=classify_change_type(stats, similarity, params))
+    return PairDiff(
+        sentences=sentences,
+        stats=stats,
+        change_type=classify_change_type(stats, similarity, params),
+    )
 
 
-def classify_change_type(stats: DiffStats, similarity: float | None, params: DiffParams = DEFAULT_DIFF_PARAMS) -> str:
+def classify_change_type(
+    stats: DiffStats, similarity: float | None, params: DiffParams = DEFAULT_DIFF_PARAMS
+) -> str:
     """Deterministic change_type rules (the only place these are decided).
 
     Let added = added_word_count / new_word_count and removed = removed_word_count / old_word_count
@@ -282,6 +339,10 @@ def classify_change_type(stats: DiffStats, similarity: float | None, params: Dif
         return "reduced"
     if total >= params.reworded_total_ratio:
         return "materially_reworded"
-    if similarity is not None and similarity < params.reworded_similarity and total >= params.expanded_ratio:
+    if (
+        similarity is not None
+        and similarity < params.reworded_similarity
+        and total >= params.expanded_ratio
+    ):
         return "materially_reworded"
     return "largely_unchanged"

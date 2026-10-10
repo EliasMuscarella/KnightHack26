@@ -32,7 +32,29 @@ export type EmbeddingBackend = "sentence-transformers" | "lexical-fallback";
  * 'ok' if the LLM stage ran for this comparison, else why not.
  */
 export type InterpretationStatus1 = "ok" | "unavailable" | "skipped" | "empty";
+export type StageStatus = "started" | "done" | "cached" | "error";
 
+export interface RiskDiffContract {
+  company_card?: CompanyCard;
+  comparison?: Comparison;
+  stage_event?: StageEvent;
+}
+export interface CompanyCard {
+  by_change_type: {
+    [k: string]: number;
+  };
+  cik: string;
+  file: string;
+  is_fixture?: boolean;
+  max_score: number;
+  name: string;
+  new_filing_date: string;
+  new_fiscal_year: number;
+  old_filing_date: string;
+  old_fiscal_year: number;
+  ticker: string;
+  total_changes: number;
+}
 export interface Comparison {
   analysis_id: string;
   /**
@@ -356,4 +378,14 @@ export interface Thresholds {
    * At/above this an aligned pair is 'unchanged'.
    */
   sentence_unchanged_threshold: number;
+}
+/**
+ * One SSE event emitted by POST /analyze.
+ */
+export interface StageEvent {
+  message?: string | null;
+  name: string;
+  stage: number;
+  status: StageStatus;
+  ticker?: string | null;
 }

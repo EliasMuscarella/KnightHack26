@@ -20,22 +20,27 @@ the pipeline with network access and `.env`. Nothing fake is ever published.
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 0 | Scaffold + CLAUDE.md | in progress | |
-| 1 | Data contract + fixture + TS types | todo | |
-| 2 | SEC fetch (stage 0) | todo | blocked for live runs (network + SEC_USER_AGENT); unit-tested with mocked HTTP |
-| 3 | Item 1A extraction (stage 1) | todo | |
-| 4 | Risk segmentation (stage 2) | todo | |
-| 5 | Embedding + matching (stages 3–4) | todo | bge-m3 path implemented; lexical fallback used here |
-| 6 | Sentence diff + change_type (stage 5) | todo | |
-| 7 | Deterministic signals (stage 6) | todo | |
-| 8 | LLM rubric + interpretation (stage 7) | todo | no provider available here → unavailable |
-| 9 | Scoring + publish (stage 8) | todo | |
+| 0 | Scaffold + CLAUDE.md | done | commit ae1c431 |
+| 1 | Data contract + fixture + TS types | done | `pipeline/schema.py` → `contract/comparison.schema.json` → `web/src/types/comparison.ts`; `scripts/regen_contract.py --check` is a test |
+| 2 | SEC fetch (stage 0) | done (code + mocked tests) | live runs blocked here: no SEC_USER_AGENT and sec.gov denied by network policy |
+| 3 | Item 1A extraction (stage 1) | done (synthetic tests only) | TOC trap, heading variants, furniture removal, loud failures. NOT yet validated on real filings (no SEC access) |
+| 4 | Risk segmentation (stage 2) | done (synthetic tests only) | group headers, bold lead sentences, pysbd; NOT yet validated on real filings |
+| 5 | Embedding + matching (stages 3–4) | done | bge-m3 path implemented (chunk + mean-pool, truncation logged) but cannot load here; lexical TF-IDF fallback is what ran. Thresholds are placeholders |
+| 6 | Sentence diff + change_type (stage 5) | done | rules documented in `diff.classify_change_type` |
+| 7 | Deterministic signals (stage 6) | done | spaCy en_core_web_sm NER; keyword lexicon (+ dense prototypes when bge-m3 available) for categories |
+| 8 | LLM rubric + interpretation (stage 7) | done (code) / unavailable at runtime | HF + Gemini clients written; no key and HF blocked, so every interpretation is `unavailable`. Validator unit-tested |
+| 9 | Scoring + publish (stage 8) | done | byte-identical output verified (cached vs --no-cache); fixture → data/scratch only |
 | 10 | Evaluation | todo | golden set needs real filings → blocked |
-| 11 | Frontend | todo | Opus subagent, `web/` only |
-| 12 | API + live mode | todo | |
+| 11 | Frontend | built by subagent; integration + my verification pending | build/lint/typecheck green per subagent report |
+| 12 | API + live mode | in progress | `api/main.py` written; tests pending |
 | 13 | Demo dataset | todo | blocked: needs SEC access |
 | 14 | Hardening + REPORT.md | todo | |
 
 ## What's next
 
-Task 0 commit, then Task 1 (schema, fixture, TS types), then spawn the frontend subagent.
+API tests → frontend integration + visual check → eval harness (what can run without real filings) → reviews → REPORT.md.
+
+## How to resume
+
+`uv run pytest` (all green), `uv run python -m pipeline.run FIXTUR` (synthetic end-to-end, writes data/scratch/),
+`uv run uvicorn api.main:app --port 8000`, `cd web && npm run dev`.

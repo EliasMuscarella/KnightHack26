@@ -431,10 +431,15 @@ class Comparison(Strict):
 class CompanyCard(Strict):
     ticker: str
     name: str
+    cik: str
     old_fiscal_year: int
     new_fiscal_year: int
+    old_filing_date: str
+    new_filing_date: str
     total_changes: int
     by_change_type: dict[str, int]
+    max_score: int
+    is_fixture: bool = False
     file: str
 
 

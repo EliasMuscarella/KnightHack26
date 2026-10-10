@@ -5,7 +5,13 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from pipeline.diff import DEFAULT_DIFF_PARAMS, align_sentences, classify_change_type, diff_pair, word_spans
+from pipeline.diff import (
+    DEFAULT_DIFF_PARAMS,
+    align_sentences,
+    classify_change_type,
+    diff_pair,
+    word_spans,
+)
 from pipeline.schema import DiffStats
 from pipeline.types import RiskBlock, SentenceRec
 
@@ -15,9 +21,27 @@ def block(acc: str, idx: int, heading: str, body: list[str]) -> RiskBlock:
     sents = []
     pos = 0
     for i, t in enumerate(texts):
-        sents.append(SentenceRec(id=f"{acc}:{idx}:{i}", text=t, char_start=pos, char_end=pos + len(t), is_heading=i == 0))
+        sents.append(
+            SentenceRec(
+                id=f"{acc}:{idx}:{i}",
+                text=t,
+                char_start=pos,
+                char_end=pos + len(t),
+                is_heading=i == 0,
+            )
+        )
         pos += len(t) + 1
-    return RiskBlock(id=f"{acc}:{idx}", accession_number=acc, index=idx, heading=heading, body="\n".join(body), section_group=None, sentences=sents, char_start=0, char_end=pos)
+    return RiskBlock(
+        id=f"{acc}:{idx}",
+        accession_number=acc,
+        index=idx,
+        heading=heading,
+        body="\n".join(body),
+        section_group=None,
+        sentences=sents,
+        char_start=0,
+        char_end=pos,
+    )
 
 
 OLD = "0000000000-24-000001"
@@ -31,7 +55,11 @@ def test_word_spans_are_precise_and_reproduce_text():
     assert "".join(s.text for s in os_) == old
     assert "".join(s.text for s in ns_) == new
     assert [s.text for s in os_ if s.op == "delete"] == []
-    assert [s.text.strip() for s in ns_ if s.op == "insert"] == [", political instability,", "have affected and", "continue to"]
+    assert [s.text.strip() for s in ns_ if s.op == "insert"] == [
+        ", political instability,",
+        "have affected and",
+        "continue to",
+    ]
     assert not any(s.op == "insert" for s in os_) and not any(s.op == "delete" for s in ns_)
 
 
@@ -49,8 +77,26 @@ def test_alignment_is_monotonic_and_thresholded():
 
 
 def test_diff_pair_statuses_and_pair_index():
-    old = block(OLD, 1, "Heading one.", ["Sentence A stays.", "Sentence B will be removed entirely from the text.", "Sentence C gets a small edit here."])
-    new = block(NEW, 1, "Heading one.", ["Sentence A stays.", "Sentence C gets a small change here.", "Sentence D is brand new content added to the block."])
+    old = block(
+        OLD,
+        1,
+        "Heading one.",
+        [
+            "Sentence A stays.",
+            "Sentence B will be removed entirely from the text.",
+            "Sentence C gets a small edit here.",
+        ],
+    )
+    new = block(
+        NEW,
+        1,
+        "Heading one.",
+        [
+            "Sentence A stays.",
+            "Sentence C gets a small change here.",
+            "Sentence D is brand new content added to the block.",
+        ],
+    )
     d = diff_pair(old, new, similarity=0.9)
     by_id = {s.id: s for s in d.sentences}
     assert by_id[f"{OLD}:1:0"].status == "unchanged" and by_id[f"{NEW}:1:0"].status == "unchanged"
@@ -61,8 +107,22 @@ def test_diff_pair_statuses_and_pair_index():
     assert by_id[f"{NEW}:1:2"].diff_spans is not None
     # unified order: pairs share pair_index, old before new
     order = [(s.pair_index, s.side, s.status) for s in d.sentences]
-    assert order == [(0, "old", "unchanged"), (0, "new", "unchanged"), (1, "old", "unchanged"), (1, "new", "unchanged"), (2, "old", "removed"), (3, "old", "modified"), (3, "new", "modified"), (4, "new", "added")]
-    assert d.stats.added == 1 and d.stats.removed == 1 and d.stats.modified == 1 and d.stats.unchanged == 2
+    assert order == [
+        (0, "old", "unchanged"),
+        (0, "new", "unchanged"),
+        (1, "old", "unchanged"),
+        (1, "new", "unchanged"),
+        (2, "old", "removed"),
+        (3, "old", "modified"),
+        (3, "new", "modified"),
+        (4, "new", "added"),
+    ]
+    assert (
+        d.stats.added == 1
+        and d.stats.removed == 1
+        and d.stats.modified == 1
+        and d.stats.unchanged == 2
+    )
 
 
 def test_new_and_removed_blocks():
@@ -74,7 +134,18 @@ def test_new_and_removed_blocks():
 
 
 def stats(old_wc, new_wc, added_wc, removed_wc):
-    return DiffStats(old_sentence_count=1, new_sentence_count=1, added=0, removed=0, modified=0, unchanged=0, old_word_count=old_wc, new_word_count=new_wc, added_word_count=added_wc, removed_word_count=removed_wc)
+    return DiffStats(
+        old_sentence_count=1,
+        new_sentence_count=1,
+        added=0,
+        removed=0,
+        modified=0,
+        unchanged=0,
+        old_word_count=old_wc,
+        new_word_count=new_wc,
+        added_word_count=added_wc,
+        removed_word_count=removed_wc,
+    )
 
 
 @pytest.mark.parametrize(
@@ -93,4 +164,7 @@ def stats(old_wc, new_wc, added_wc, removed_wc):
     ],
 )
 def test_change_type_rules(old_wc, new_wc, added, removed, sim, expected):
-    assert classify_change_type(stats(old_wc, new_wc, added, removed), sim, DEFAULT_DIFF_PARAMS) == expected
+    assert (
+        classify_change_type(stats(old_wc, new_wc, added, removed), sim, DEFAULT_DIFF_PARAMS)
+        == expected
+    )

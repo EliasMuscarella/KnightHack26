@@ -137,7 +137,9 @@ def run_pipeline(
     use_cache: bool = True,
     progress: ProgressFn | None = None,
     fixture: bool = False,
+    preloaded: dict[str, Any] | None = None,
 ) -> RunContext:
+    """`preloaded` may carry a warm `embedder` (and `llm_client`/`llm_reason`) from a long-lived process."""
     settings = settings or get_settings()
     ticker = normalize_ticker(ticker)
     fixture = fixture or ticker == FIXTURE_TICKER
@@ -151,6 +153,8 @@ def run_pipeline(
         fixture=fixture,
         progress=progress,
     )
+    if preloaded:
+        ctx.outputs.update(preloaded)
 
     # ---- stage 0: fetch ----
     ctx.emit(0, "started", ticker=ticker)

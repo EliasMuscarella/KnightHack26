@@ -24,6 +24,7 @@ from pipeline.schema import (  # noqa: E402
 )
 
 SCHEMA_PATH = ROOT / "contract" / "comparison.schema.json"
+RUBRIC_PATH = ROOT / "contract" / "rubric.json"
 TS_PATH = ROOT / "web" / "src" / "types" / "comparison.ts"
 
 
@@ -107,13 +108,41 @@ def main() -> int:
         SCHEMA_PATH.write_text(text)
         print(f"wrote {SCHEMA_PATH.relative_to(ROOT)}")
 
+    from pipeline.rubric import export as export_rubric
+
+    rubric_text = json.dumps(export_rubric(), indent=2, sort_keys=True, ensure_ascii=False) + "\n"
+    if check:
+        if not RUBRIC_PATH.exists() or RUBRIC_PATH.read_text() != rubric_text:
+            print(f"OUT OF DATE: {RUBRIC_PATH}")
+            return 1
+    else:
+        RUBRIC_PATH.write_text(rubric_text)
+        print(f"wrote {RUBRIC_PATH.relative_to(ROOT)}")
+
     web = ROOT / "web"
     if not (web / "node_modules" / ".bin" / "json2ts").exists():
         print("json2ts not installed: run `npm install` in web/ first", file=sys.stderr)
         return 2
     before = TS_PATH.read_text() if TS_PATH.exists() else None
     TS_PATH.parent.mkdir(parents=True, exist_ok=True)
-    ts_schema = json.loads(text)
+    # json2ts only emits types reachable from the root, so wrap Comparison + API payloads in a
+    # synthetic root for the TypeScript file. The JSON Schema file keeps Comparison as its root.
+    full = json.loads(text)
+    ts_schema = {
+        "$schema": full["$schema"],
+        "title": "RiskDiffContract",
+        "type": "object",
+        "additionalProperties": False,
+        "properties": {
+            "comparison": {"$ref": "#/$defs/Comparison"},
+            "company_card": {"$ref": "#/$defs/CompanyCard"},
+            "stage_event": {"$ref": "#/$defs/StageEvent"},
+        },
+        "$defs": {
+            **full["$defs"],
+            "Comparison": {k: v for k, v in full.items() if k not in ("$schema", "$id", "$defs")},
+        },
+    }
     strip_array_bounds(ts_schema)
     tmp = ROOT / "contract" / ".comparison.ts-input.schema.json"
     tmp.write_text(json.dumps(ts_schema, indent=2, sort_keys=True, ensure_ascii=False))
