@@ -272,3 +272,17 @@ def test_boilerplate_between_group_header_and_first_risk_is_skipped():
     ]
     assert all(b.section_group == "Risks Related to Our Business" for b in seg.blocks)
     assert seg.skipped_units == 1
+
+
+def test_no_sentence_starts_with_a_lowercase_letter():
+    from pipeline.segment import split_sentences
+
+    text = (
+        "The licensing requirement will include future ICs classified with ECCN 3A090.a or "
+        "4A090.a, or corresponding .z ECCNs, including all related software. "
+        "A second sentence follows here."
+    )
+    sents = [s for s, _, _ in split_sentences(text)]
+    assert all(not s[0].islower() for s in sents), sents
+    assert any("z ECCNs" in s for s in sents)
+    assert sents[-1] == "A second sentence follows here."

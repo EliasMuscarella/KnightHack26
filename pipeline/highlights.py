@@ -14,13 +14,17 @@ so the cards agree with the "N of M risk factors changed meaningfully" line and 
 evidence outranks an AI answer. Within a tier, rank_key orders candidates by parent change
 score (desc, the same order as the ranked list), then kind priority (new risk > dropped risk >
 potential became actual > figure > newly named), then change id, then the candidate's position
-(dollar amounts before percentages before counts). Each tier takes one card per change first,
+(dollar amounts before percentages before counts, larger figures first; for potential-became-actual
+pairs, self-contained sentences before ones that open with "Such", "This", "As a result"…). A new or dropped risk cites its first body sentence (the
+card already shows the heading as its title), falling back to the heading sentence. Each tier takes one card per change first,
 then second cards of a different kind. At most MAX_PER_CHANGE per change and MAX_TOTAL overall.
 A potential_became_actual highlight must carry BOTH a last-year and a this-year sentence: the
 before/after is the point of that card, so rubric-only candidates with one side are dropped.
 """
 
 from __future__ import annotations
+
+import re
 
 from pipeline.schema import Change, Highlight, SentenceLocation
 
@@ -45,14 +49,67 @@ def _split_sides(
     return old, new
 
 
-def _figure_order(value: str | None) -> int:
-    """Dollar amounts before percentages before other quantities (a finance reader's order)."""
+ANAPHORIC_OPENERS = (
+    "such ",
+    "this ",
+    "these ",
+    "that ",
+    "those ",
+    "it ",
+    "they ",
+    "there ",
+    "as a result",
+    "accordingly",
+    "for example",
+    "in addition",
+    "additionally",
+    "however",
+    "further,",
+)
+
+
+def _quote_order(text: str | None) -> int:
+    """A sentence that leans on the previous one ("Such requests…", "This…") makes a poor
+    standalone quote; self-contained sentences come first."""
+    t = (text or "").lstrip().lower()
+    return 1 if t.startswith(ANAPHORIC_OPENERS) else 0
+
+
+def _first_body_sentence(block_id: str, index: dict[str, SentenceLocation]) -> str:
+    """The first body sentence of a block when it exists (the heading is sentence 0 and the card
+    already shows it as the title), else the heading sentence."""
+    body = f"{block_id}:1"
+    return body if body in index else f"{block_id}:0"
+
+
+_MAGNITUDE_RE = re.compile(r"(\d[\d,]*(?:\.\d+)?)\s*(trillion|billion|million|thousand)?", re.I)
+_MULT = {"trillion": 1e12, "billion": 1e9, "million": 1e6, "thousand": 1e3}
+
+
+def _magnitude(value: str | None) -> float:
+    """Numeric size of a figure ("$4.5 billion" -> 4.5e9; "12% -> 22%" uses the new value)."""
+    v = (value or "").split("->")[-1]
+    m = _MAGNITUDE_RE.search(v)
+    if not m:
+        return 0.0
+    try:
+        n = float(m.group(1).replace(",", ""))
+    except ValueError:
+        return 0.0
+    return n * _MULT.get((m.group(2) or "").lower(), 1.0)
+
+
+def _figure_order(value: str | None) -> tuple[int, float]:
+    """Dollar amounts before percentages before other quantities, larger figures first
+    (a finance reader's order)."""
     v = value or ""
     if "$" in v:
-        return 0
-    if "%" in v or "percent" in v.lower():
-        return 1
-    return 2
+        kind = 0
+    elif "%" in v or "percent" in v.lower():
+        kind = 1
+    else:
+        kind = 2
+    return (kind, -_magnitude(v))
 
 
 def candidate_highlights(
@@ -97,11 +154,16 @@ def candidate_highlights(
         )
 
     sig = change.signals
+
+    def new_text(h) -> str | None:  # noqa: ANN001
+        sid = (h.new_sentence_ids or [None])[0]
+        return index[sid].text if sid in index else None
+
     if change.change_type == "new" and change.new_block_id:
-        add("new_risk", None, f"{change.new_block_id}:0", None, True)
+        add("new_risk", None, _first_body_sentence(change.new_block_id, index), None, True)
     if change.change_type == "removed" and change.old_block_id:
-        add("removed_risk", f"{change.old_block_id}:0", None, None, True)
-    for h in sig.hypothetical_to_actual:
+        add("removed_risk", _first_body_sentence(change.old_block_id, index), None, None, True)
+    for h in sorted(sig.hypothetical_to_actual, key=lambda h: _quote_order(new_text(h))):
         add(
             "potential_became_actual",
             (h.old_sentence_ids or [None])[0],

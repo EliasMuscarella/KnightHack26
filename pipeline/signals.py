@@ -32,7 +32,7 @@ from pipeline.types import RiskBlock
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.2.0"
+STAGE_VERSION = "0.2.1"
 LEXICON_METHOD_ID = "keyword-lexicon-v1"
 
 HEDGE_RE = re.compile(
@@ -574,10 +574,15 @@ def _display_entity(block: RiskBlock, sid: str, norm: str) -> str:
 # ---------- quantities ----------
 
 
+CODE_PREFIX_RE = re.compile(r"[A-Za-z]:$")  # "D:5 countries" is a country group code, not a count
+
+
 def _quantities(text: str) -> list[str]:
     found: list[str] = []
     for rx in (MONEY_RE, PERCENT_RE, UNIT_RE, BIGNUM_RE):
         for m in rx.finditer(text):
+            if CODE_PREFIX_RE.search(text[max(0, m.start() - 2) : m.start()]):
+                continue
             found.append(re.sub(r"\s+", " ", m.group(0)).strip())
     # drop bare big numbers that are part of money/percent matches
     out: list[str] = []

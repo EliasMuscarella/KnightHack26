@@ -1844,7 +1844,7 @@
       "change_id": "a7ab944f05ff339d",
       "detail": null,
       "kind": "new_risk",
-      "new_sentence_id": "0000000000-25-000001:2:0",
+      "new_sentence_id": "0000000000-25-000001:2:1",
       "old_sentence_id": null,
       "short_title": "FIXTURE: Artificial intelligence exposure"
     },
@@ -1861,7 +1861,7 @@
       "detail": null,
       "kind": "removed_risk",
       "new_sentence_id": null,
-      "old_sentence_id": "0000000000-24-000001:2:0",
+      "old_sentence_id": "0000000000-24-000001:2:1",
       "short_title": "FIXTURE: Pending Gadgetron acquisition"
     }
   ],
