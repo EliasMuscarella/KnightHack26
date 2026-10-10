@@ -417,3 +417,23 @@ Only a store that is already `ok` gets a 2 s wait for its very first remote resu
   marker would need dark text, and the glyph tops above the stroke would then sit dark on dark.
 - Known pre-existing light-mode gaps left unchanged (out of scope, not a dark-mode need): heatmap cell text
   near the 0.55 intensity flip drops to about 2.3 to 3.8:1, and `ink-muted` on `sunken` is 4.4:1.
+
+## D-026 Light-mode heatmap contrast
+
+- Resolves the heatmap gap listed in D-025 (the `ink-muted` on `sunken` gap there is unchanged). Before: light
+  cells flipped from navy to white text past 0.55 intensity, and just past the flip white text measured 2.30 to
+  2.55:1 on blue and orange cells and 3.82 to 4.02:1 on the navy rewrite cells. No single flip point could pass
+  everywhere (best possible worst case about 4.0:1).
+- Fix: light heat tones are now mid tones whose full-strength color still carries navy text, and light mode
+  always uses navy text, like dark mode's single light text color. The 0.55 flip and `heat-text-strong` are
+  removed. `heat-more` `#2C64A8` -> `#4E8BDC`, `heat-less` `#B5541C` -> `#CE713A`, `heat-rewrite` `#14213D` ->
+  `#848B93` (slate gray, matching the legend's "Gray"). `cellIntensity()` (0.15 to 1) and the dark values are
+  unchanged.
+- Measured with a script that parses `globals.css` and composites `color-mix(in srgb, tone p%, transparent)`
+  over the page (p from 0.15 to 1.00 in 0.01 steps plus the legend's 0.4/0.6/0.9, on paper and surface). Worst
+  case is at full strength: light 4.60 (blue), 4.60 (orange), 4.64 (gray); dark unchanged at 4.80, 4.77, 4.58.
+- Distinguishability (CIEDE2000 over paper, same intensity), light: at 0.4 blue/orange 26.6, blue/gray 11.1,
+  orange/gray 16.9; at 0.9 43.2, 16.8, 28.2 (before: blue/navy-rewrite 9.9 at 0.4; dark blue/gray is 7.3).
+  Magnitude: each light tone spans about 2.8:1 in luminance from 0.15 to 1.0 (dE00 25 to 33), close to dark
+  mode's 2.5 to 2.9:1. The darkest light cell is lighter than before, so the light heatmap has less range than
+  the old navy-to-white one, but the number in each cell carries the exact count.

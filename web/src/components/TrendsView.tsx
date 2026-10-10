@@ -221,7 +221,8 @@ function SharedTopics({ data }: { data: TrendsPayload }) {
 // 3. Heatmap
 // ---------------------------------------------------------------------------------------
 
-// Heat tones are theme tokens (globals.css); intensity mixes them toward transparent.
+// Heat tones are theme tokens (globals.css); intensity mixes them toward transparent. Each theme has one cell
+// text color (`heat-text`) that stays >= 4.5:1 on its tones at every intensity, so the text never flips (D-026).
 const HEAT_VAR = { more: "var(--color-heat-more)", less: "var(--color-heat-less)", rewrite: "var(--color-heat-rewrite)" } as const;
 const heat = (tone: keyof typeof HEAT_VAR, a: number) => `color-mix(in srgb, ${HEAT_VAR[tone]} ${Math.round(a * 100)}%, transparent)`;
 
@@ -229,7 +230,7 @@ function cellStyle(cell: HeatCell | undefined, maxActivity: number): { backgroun
   const tone = cellTone(cell);
   if (tone === "empty") return { background: "transparent", color: "inherit" };
   const a = cellIntensity(cell, maxActivity);
-  return { background: heat(tone, a), color: a > 0.55 ? "var(--color-heat-text-strong)" : "var(--color-heat-text)" };
+  return { background: heat(tone, a), color: "var(--color-heat-text)" };
 }
 
 function HeatmapLegend() {
