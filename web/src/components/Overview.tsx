@@ -1,13 +1,13 @@
 /** Company overview building blocks (server components). */
 import Link from "next/link";
 
-import type { Comparison, FilingMeta, Highlight } from "@/types/comparison";
+import type { Change, Comparison, FilingMeta, Highlight } from "@/types/comparison";
 
 import { CopyId } from "@/components/CopyId";
 import { Quote } from "@/components/Quote";
 import { FilingLink, HighlightKindBadge } from "@/components/ui";
 import { formatDate, textFragmentUrl } from "@/lib/format";
-import { AUDIT_TRAIL, highlightKindVocab, isFigureChanged, meaningfulCount } from "@/lib/vocabulary";
+import { AUDIT_TRAIL, displayTitle, highlightKindVocab, isFigureChanged, meaningfulCount } from "@/lib/vocabulary";
 
 export function OverviewHeader({ comparison }: { comparison: Comparison }) {
   const { company, old_filing, new_filing } = comparison;
@@ -73,17 +73,8 @@ function QuoteSide({
   );
 }
 
-function HighlightCard({ h, comparison, first }: { h: Highlight; comparison: Comparison; first: boolean }) {
-  const idx = comparison.sentence_index;
-  const oldText = h.old_sentence_id ? (idx[h.old_sentence_id]?.text ?? null) : null;
-  const newText = h.new_sentence_id ? (idx[h.new_sentence_id]?.text ?? null) : null;
-  const ticker = comparison.company.ticker;
-  const figureChanged = isFigureChanged(h);
-  const vocab = highlightKindVocab(h.kind, figureChanged);
-  const linkSide = newText !== null ? "new" : "old";
-  const linkText = newText ?? oldText;
-  const filing = linkSide === "new" ? comparison.new_filing : comparison.old_filing;
-  // The empty side must not claim the whole risk is new when only a name or figure is new.
+/** Kind-aware caption for an empty side: a new name or figure does not make the whole risk new. */
+function absentCaptions(h: Highlight): { absentOld: string; absentNew: string } {
   const absentOld =
     h.kind === "new_risk"
       ? "Not in last year's filing"
@@ -93,28 +84,73 @@ function HighlightCard({ h, comparison, first }: { h: Highlight; comparison: Com
           ? "This figure did not appear in last year's version"
           : "No matching sentence last year";
   const absentNew = h.kind === "removed_risk" ? "Removed this year" : "No matching sentence this year";
+  return { absentOld, absentNew };
+}
+
+/** One highlight of a risk factor: its kind badge + helper, then the Last year / This year quotes. */
+function HighlightFact({ h, comparison }: { h: Highlight; comparison: Comparison }) {
+  const idx = comparison.sentence_index;
+  const oldText = h.old_sentence_id ? (idx[h.old_sentence_id]?.text ?? null) : null;
+  const newText = h.new_sentence_id ? (idx[h.new_sentence_id]?.text ?? null) : null;
+  const figureChanged = isFigureChanged(h);
+  const vocab = highlightKindVocab(h.kind, figureChanged);
+  const { absentOld, absentNew } = absentCaptions(h);
+  return (
+    <div>
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <HighlightKindBadge kind={h.kind} figureChanged={figureChanged} />
+        {vocab.helper ? <span className="text-sm text-ink-faint">{vocab.helper}</span> : null}
+      </div>
+      <div className="mt-3 grid grid-cols-2 gap-6">
+        <QuoteSide label="Last year" fy={comparison.old_filing.fiscal_year} text={oldText} absent={absentOld} />
+        <QuoteSide label="This year" fy={comparison.new_filing.fiscal_year} text={newText} absent={absentNew} />
+      </div>
+    </div>
+  );
+}
+
+/** One card per risk factor: the title once, one fact block per highlight, the links once. */
+function HighlightCard({
+  change,
+  facts,
+  comparison,
+  first,
+}: {
+  change: Change;
+  facts: Highlight[];
+  comparison: Comparison;
+  first: boolean;
+}) {
+  const idx = comparison.sentence_index;
+  const ticker = comparison.company.ticker;
+  // "View in SEC filing" opens this year's filing at the first fact with a this-year sentence;
+  // a dropped risk (no this-year sentence anywhere) falls back to last year's filing.
+  const textOf = (id: string | null | undefined) => (id ? (idx[id]?.text ?? null) : null);
+  const newLink = facts.map((h) => textOf(h.new_sentence_id)).find((t): t is string => t !== null) ?? null;
+  const oldLink = facts.map((h) => textOf(h.old_sentence_id)).find((t): t is string => t !== null) ?? null;
+  const linkText = newLink ?? oldLink;
+  const filing = newLink !== null ? comparison.new_filing : comparison.old_filing;
   return (
     <article
       data-highlight-card={first ? "first" : undefined}
       className="rounded-lg border border-line bg-surface p-5 shadow-sm"
     >
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-        <HighlightKindBadge kind={h.kind} figureChanged={figureChanged} />
-        {vocab.helper ? <span className="text-sm text-ink-faint">{vocab.helper}</span> : null}
+      <h3 className="text-lg font-bold leading-snug text-ink">{displayTitle(change.short_title, change.title)}</h3>
+      <div className="mt-3 divide-y divide-line">
+        {facts.map((h, i) => (
+          <div key={i} className="py-4 first:pt-0 last:pb-0">
+            <HighlightFact h={h} comparison={comparison} />
+          </div>
+        ))}
       </div>
-      <h3 className="mt-2 text-lg font-bold leading-snug text-ink">{h.short_title}</h3>
-      <div className="mt-3 grid grid-cols-2 gap-6">
-        <QuoteSide label="Last year" fy={comparison.old_filing.fiscal_year} text={oldText} absent={absentOld} />
-        <QuoteSide label="This year" fy={comparison.new_filing.fiscal_year} text={newText} absent={absentNew} />
-      </div>
-      <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-line pt-3 text-sm font-medium">
+      <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-line pt-3 text-sm font-medium">
         {linkText !== null ? (
           <FilingLink href={textFragmentUrl(filing.edgar_url, linkText)} isFixture={comparison.is_fixture === true}>
             View in SEC filing
           </FilingLink>
         ) : null}
         <Link
-          href={`/c/${encodeURIComponent(ticker)}/${encodeURIComponent(h.change_id)}`}
+          href={`/c/${encodeURIComponent(ticker)}/${encodeURIComponent(change.id)}`}
           className="text-accent underline decoration-accent/40 underline-offset-2 hover:decoration-accent"
         >
           See full change <span aria-hidden="true">→</span>
@@ -125,19 +161,33 @@ function HighlightCard({ h, comparison, first }: { h: Highlight; comparison: Com
 }
 
 export function HighlightCards({ comparison }: { comparison: Comparison }) {
-  const highlights = (comparison.highlights ?? []).filter((h) => comparison.changes.some((c) => c.id === h.change_id));
+  const byId = new Map(comparison.changes.map((c) => [c.id, c] as const));
+  // Group highlights by risk factor, in order of first appearance.
+  const groups: { change: Change; facts: Highlight[] }[] = [];
+  const groupOf = new Map<string, { change: Change; facts: Highlight[] }>();
+  for (const h of comparison.highlights ?? []) {
+    const change = byId.get(h.change_id);
+    if (!change) continue;
+    let g = groupOf.get(h.change_id);
+    if (!g) {
+      g = { change, facts: [] };
+      groupOf.set(h.change_id, g);
+      groups.push(g);
+    }
+    g.facts.push(h);
+  }
   return (
     <section aria-labelledby="highlights-heading" className="space-y-3">
       <h2 id="highlights-heading" className="text-xl font-bold text-ink">
         Biggest changes
       </h2>
-      {highlights.length === 0 ? (
+      {groups.length === 0 ? (
         <p className="text-ink-muted">No single sentence-level change stood out. Every change is listed below.</p>
       ) : (
         <ol className="space-y-4">
-          {highlights.map((h, i) => (
-            <li key={`${h.change_id}-${i}`}>
-              <HighlightCard h={h} comparison={comparison} first={i === 0} />
+          {groups.map((g, i) => (
+            <li key={g.change.id}>
+              <HighlightCard change={g.change} facts={g.facts} comparison={comparison} first={i === 0} />
             </li>
           ))}
         </ol>

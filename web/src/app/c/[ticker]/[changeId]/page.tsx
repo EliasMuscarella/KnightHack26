@@ -9,6 +9,7 @@ import type { SentenceRef } from "@/components/citations";
 import { ChangeLevelTag, ChangeTypeBadge, FixtureBanner, PageContainer } from "@/components/ui";
 import { getComparison } from "@/lib/data";
 import { CHANGE_ID_RE, normalizeTicker } from "@/lib/ticker";
+import { displayTitle } from "@/lib/vocabulary";
 
 export const dynamic = "force-dynamic";
 
@@ -25,14 +26,14 @@ async function load(props: PageProps<"/c/[ticker]/[changeId]">) {
 
 export async function generateMetadata(props: PageProps<"/c/[ticker]/[changeId]">): Promise<Metadata> {
   const data = await load(props);
-  return { title: data ? `${data.comparison.company.ticker}: ${data.change.short_title || data.change.title}` : "Change" };
+  return { title: data ? `${data.comparison.company.ticker}: ${displayTitle(data.change.short_title, data.change.title)}` : "Change" };
 }
 
 function NavLink({ ticker, change, dir }: { ticker: string; change: Change | undefined; dir: "prev" | "next" }) {
   if (!change) {
     return (
       <span className="min-w-0 flex-1 rounded-md border border-dashed border-line px-4 py-3 text-sm text-ink-faint">
-        {dir === "prev" ? "This is the first risk factor." : "This is the last risk factor."}
+        {dir === "prev" ? "This is the top-ranked risk factor." : "This is the lowest-ranked risk factor."}
       </span>
     );
   }
@@ -44,7 +45,9 @@ function NavLink({ ticker, change, dir }: { ticker: string; change: Change | und
       <span className="block text-xs font-semibold uppercase tracking-wide text-ink-faint">
         {dir === "prev" ? "← Previous risk factor" : "Next risk factor →"}
       </span>
-      <span className="mt-0.5 block truncate text-base font-medium text-ink group-hover:underline">{change.short_title || change.title}</span>
+      <span className="mt-0.5 line-clamp-2 text-base font-medium leading-snug text-ink group-hover:underline" title={change.title}>
+        {displayTitle(change.short_title, change.title)}
+      </span>
     </Link>
   );
 }
@@ -79,6 +82,9 @@ export default async function ChangePage(props: PageProps<"/c/[ticker]/[changeId
   const oldTitle = change.old_title ?? null;
   const newTitle = change.new_title ?? null;
   const titlesDiffer = !!oldTitle && !!newTitle && oldTitle !== newTitle;
+  const heading = displayTitle(change.short_title, change.title);
+  // The grey full-heading line only adds something when it differs from the h1.
+  const showFullTitle = !!change.title && change.title.trim() !== heading;
 
   return (
     <>
@@ -103,21 +109,29 @@ export default async function ChangePage(props: PageProps<"/c/[ticker]/[changeId
         </nav>
 
         <header className="rounded-lg border border-line bg-surface p-6">
-          <h1 className="text-3xl font-bold leading-tight tracking-tight text-ink">{change.short_title || change.title}</h1>
-          <div className="mt-2 max-w-[100ch] space-y-1 text-base leading-snug text-ink-faint">
-            {titlesDiffer ? (
-              <>
-                <p>
-                  <span className="font-semibold text-ink-muted">Last year:</span> {oldTitle}
-                </p>
-                <p>
-                  <span className="font-semibold text-ink-muted">This year:</span> {newTitle}
-                </p>
-              </>
-            ) : (
-              <p>{change.title}</p>
-            )}
-          </div>
+          <h1
+            className={`max-w-[100ch] font-bold tracking-tight text-ink ${
+              heading.length > 140 ? "text-2xl leading-snug" : "text-3xl leading-tight"
+            }`}
+          >
+            {heading}
+          </h1>
+          {titlesDiffer || showFullTitle ? (
+            <div className="mt-2 max-w-[100ch] space-y-1 text-base leading-snug text-ink-faint">
+              {titlesDiffer ? (
+                <>
+                  <p>
+                    <span className="font-semibold text-ink-muted">Last year:</span> {oldTitle}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-ink-muted">This year:</span> {newTitle}
+                  </p>
+                </>
+              ) : (
+                <p>{change.title}</p>
+              )}
+            </div>
+          ) : null}
           <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
             <ChangeTypeBadge type={change.change_type} />
             <ChangeLevelTag score={change.score} />

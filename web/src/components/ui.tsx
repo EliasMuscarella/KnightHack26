@@ -66,7 +66,7 @@ export function ChangeLevelTag({ score }: { score: number }) {
     >
       <span className="text-ink-muted">{CHANGE_LEVEL.prefix}:</span>
       <span className="font-semibold">{level}</span>
-      <span className="font-mono text-xs tabular-nums text-ink-faint">
+      <span className="font-sans text-xs tabular-nums text-ink-faint">
         <span className="sr-only">, </span>
         {score}
         <span className="sr-only"> of 100</span>
