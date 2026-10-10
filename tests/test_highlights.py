@@ -127,3 +127,12 @@ def test_short_titles_batch_returns_none_after_bad_json():
 
     client = LLMClient(provider="huggingface", model_id="hf:test", _complete=lambda s, u: "not json")
     assert short_titles_raw(client, [("aaaaaaaaaaaaaaaa", "H.")]) is None
+
+
+def test_potential_became_actual_needs_both_sides_and_one_card_per_kind_per_change():
+    comp = fixture()
+    hl = select_highlights(comp.changes, comp.sentence_index)
+    for h in hl:
+        if h.kind == "potential_became_actual":
+            assert h.old_sentence_id and h.new_sentence_id
+    assert len({(h.change_id, h.kind) for h in hl}) == len(hl)
