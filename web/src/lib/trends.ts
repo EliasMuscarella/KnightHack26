@@ -48,6 +48,20 @@ export interface Heatmap {
   maxNet: number;
 }
 
+/**
+ * Heatmap columns from categories ranked by activity. "other" is both a real pipeline category
+ * and the catch-all, so there is exactly one column keyed OTHER_CATEGORY, always last: it merges
+ * the real "other" category with every category outside the top MAX_HEATMAP_COLUMNS. Keys are
+ * unique by construction.
+ */
+export function heatmapColumns(ranked: string[]): string[] {
+  const unique = [...new Set(ranked)];
+  const named = unique.filter((c) => c !== OTHER_CATEGORY);
+  const overflow = named.length > MAX_HEATMAP_COLUMNS;
+  const keep = named.slice(0, MAX_HEATMAP_COLUMNS);
+  return overflow || unique.includes(OTHER_CATEGORY) ? [...keep, OTHER_CATEGORY] : keep;
+}
+
 /** Companies (rows, by total activity) by categories (at most MAX_HEATMAP_COLUMNS, rest as Other). */
 export function buildHeatmap(activity: TrendsCategoryActivity[], companies: TrendsCompany[]): Heatmap {
   const byCategory = new Map<string, number>();
@@ -55,9 +69,9 @@ export function buildHeatmap(activity: TrendsCategoryActivity[], companies: Tren
     byCategory.set(a.category, (byCategory.get(a.category) ?? 0) + a.added_sentences + a.removed_sentences + a.modified_sentences);
   }
   const ranked = [...byCategory.entries()].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0])).map(([c]) => c);
-  const keep = ranked.slice(0, MAX_HEATMAP_COLUMNS);
-  const columns = ranked.length > MAX_HEATMAP_COLUMNS ? [...keep, OTHER_CATEGORY] : keep;
-  const colOf = (c: string) => (keep.includes(c) ? c : OTHER_CATEGORY);
+  const columns = heatmapColumns(ranked);
+  const keep = new Set(columns);
+  const colOf = (c: string) => (keep.has(c) ? c : OTHER_CATEGORY);
 
   const rowMap = new Map<string, Map<string, HeatCell>>();
   for (const a of activity) {

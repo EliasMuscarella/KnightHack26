@@ -65,7 +65,7 @@ function FilterButton({ pressed, onClick, children, count, title }: { pressed: b
   );
 }
 
-function Row({ ticker, r }: { ticker: string; r: ChangeRow }) {
+function Row({ ticker, r, companyName }: { ticker: string; r: ChangeRow; companyName?: string }) {
   return (
     <li className="border-b border-line last:border-b-0">
       <Link
@@ -74,7 +74,7 @@ function Row({ ticker, r }: { ticker: string; r: ChangeRow }) {
       >
         <span className="min-w-0">
           <span className="line-clamp-2 text-base font-medium leading-snug text-ink underline-offset-2 hover:underline" title={r.title}>
-            {displayTitle(r.short_title, r.title)}
+            {displayTitle(r.short_title, r.title, companyName)}
           </span>
           <span className="mt-0.5 block text-sm text-ink-secondary">
             {sentenceCountLine(r.added, r.removed, r.modified)}
@@ -92,7 +92,7 @@ function Row({ ticker, r }: { ticker: string; r: ChangeRow }) {
   );
 }
 
-export function ChangeList({ ticker, rows, initialTopic = "" }: { ticker: string; rows: ChangeRow[]; initialTopic?: string }) {
+export function ChangeList({ ticker, rows, initialTopic = "", companyName }: { ticker: string; rows: ChangeRow[]; initialTopic?: string; companyName?: string }) {
   const [type, setType] = useState<string | null>(null);
   const [topic, setTopic] = useState<string>(() => (rows.some((r) => r.categories.includes(initialTopic)) ? initialTopic : ""));
   const [showUnchanged, setShowUnchanged] = useState(false);
@@ -168,7 +168,7 @@ export function ChangeList({ ticker, rows, initialTopic = "" }: { ticker: string
           {changed.length > 0 ? (
             <ol aria-label="Changed risk factors, largest change first">
               {changed.map((r) => (
-                <Row key={r.id} ticker={ticker} r={r} />
+                <Row key={r.id} ticker={ticker} r={r} companyName={companyName} />
               ))}
             </ol>
           ) : null}
@@ -188,7 +188,7 @@ export function ChangeList({ ticker, rows, initialTopic = "" }: { ticker: string
               {showUnchanged ? (
                 <ol aria-label="Essentially unchanged risk factors" className="border-t border-line">
                   {unchanged.map((r) => (
-                    <Row key={r.id} ticker={ticker} r={r} />
+                    <Row key={r.id} ticker={ticker} r={r} companyName={companyName} />
                   ))}
                 </ol>
               ) : null}

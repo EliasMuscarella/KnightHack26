@@ -15,6 +15,7 @@ import hashlib
 import json
 import logging
 import re
+import time
 from collections.abc import Callable
 from dataclasses import dataclass
 
@@ -31,6 +32,7 @@ log = logging.getLogger(__name__)
 STAGE_VERSION = "0.2.0"
 MAX_ATTEMPTS = 3
 MAX_TOKENS = 1200
+RETRY_BACKOFF_S = 2.0  # provider errors only (rate limits under parallel calls): 2s, 4s
 
 SYSTEM_PROMPT = """You are a careful analyst comparing the Risk Factors section of a company's two consecutive annual reports (SEC Form 10-K). You answer narrow yes/no questions about ONE risk factor and write at most three short, neutral observations.
 
@@ -349,6 +351,8 @@ def interpret_change(
         except Exception as e:  # noqa: BLE001
             last_err = f"provider error on attempt {attempt}: {type(e).__name__}: {str(e)[:120]}"
             log.warning("%s for %r", last_err, title[:60])
+            if attempt < MAX_ATTEMPTS:
+                time.sleep(RETRY_BACKOFF_S * 2 ** (attempt - 1))
             continue
         raw = parsed.model_dump()
         v = validate_llm_output(raw, allowed)

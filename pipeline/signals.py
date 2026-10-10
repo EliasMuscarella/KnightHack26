@@ -3,11 +3,19 @@
 - hypothetical_to_actual: hedged wording in the old text ("may", "could", "might", "potential")
   that became actual/past-tense wording in the corresponding new text ("has/have + participle",
   "resulted in", "experienced", "incurred"); a modal right before the marker ("could have
-  disrupted") does not count. Detected (a) inside aligned modified sentence pairs via the word-level
-  diff (deleted hedge + inserted actual marker) and (b) for added sentences that report an event
-  with a year/past-tense marker and overlap lexically with a hedged old sentence.
+  disrupted") does not count. Also in-progress wording that became concluded wording
+  ("investigating" -> "published their preliminary finding", see status_change). Every potential
+  -> actual hit comes ONLY from an aligned pair: the new sentence has status "modified" and its
+  counterpart_id is the old sentence (stage 5's alignment). Unaligned removed/added sentences are
+  never paired: two unrelated sentences share enough 10-K boilerplate ("our business, financial
+  condition and results of operations could be materially and adversely affected") to look
+  similar lexically, so a before/after pair must come from the diff, not from word overlap.
 - new_entities: spaCy NER (en_core_web_sm) entities of type GPE/NORP/ORG/LAW/LOC/EVENT/FAC in the
-  new block that do not appear in the old block.
+  new block that do not appear in the old block, after the clean_entity post-filter, minus
+  is_generic_entity: bodies and places that every filer names (SEC, Congress, FDA, the United
+  States, U.S. states, "the Trump Administration", ...) are never "newly named parties". The list
+  (ENTITY_STOPLIST / ENTITY_STOP_PATTERNS) is at least as strict as the Trends stoplist in
+  pipeline/trends/derive.py, replicated here so the company page and Trends agree.
 - new_quantities: dollar amounts, percentages, and counted units present in the new block but
   not the old; changed numbers inside aligned sentences are reported as "old -> new".
 - added_text_ratio / removed_text_ratio / semantic_shift (= 1 - pair similarity).
@@ -21,18 +29,18 @@ from __future__ import annotations
 
 import logging
 import re
+from collections import Counter
 from collections.abc import Callable
 from dataclasses import dataclass
 
 import numpy as np
 
-from pipeline.diff import lexical_ratio
 from pipeline.schema import CATEGORIES, Sentence, SignalHit, Signals
 from pipeline.types import RiskBlock
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.2.1"
+STAGE_VERSION = "0.2.2"
 LEXICON_METHOD_ID = "keyword-lexicon-v1"
 
 HEDGE_RE = re.compile(
@@ -67,7 +75,6 @@ CONCLUDED_RE = re.compile(
     r"recorded a charge|took a charge|charged)\b",
     re.I,
 )
-STATUS_PAIR_MIN_OVERLAP = 0.25  # lexical ratio needed to pair an unaligned old/new sentence
 
 YEAR_RE = re.compile(
     r"\b(?:fiscal|calendar|in|during|since)\s+(?:year\s+)?(?:19|20)\d{2}\b|\b(?:19|20)\d{2}\b"
@@ -265,16 +272,13 @@ def hypothetical_to_actual(ctx: SignalContext) -> list[SignalHit]:
     hits: list[SignalHit] = []
     if ctx.old is None or ctx.new is None:
         return hits
-    by_id = {s.id: s for s in ctx.sentences}
     seen: set[tuple[str, str]] = set()
-    # (a) modified pairs: the old sentence is hedged and the inserted text carries an actual
-    #     marker ("have increased", "resulted in", ...), or a hedge was deleted and a past-event
-    #     verb inserted while the new sentence is less hedged than the old one.
-    for s in ctx.sentences:
-        if s.side != "new" or s.status != "modified" or not s.counterpart_id:
-            continue
-        old_s = by_id.get(s.counterpart_id)
-        if old_s is None or not old_s.diff_spans or not s.diff_spans:
+    pairs = _candidate_pairs(ctx)
+    # (a) aligned modified pairs: the old sentence is hedged and the inserted text carries an
+    #     actual marker ("have increased", "resulted in", ...), or a hedge was deleted and a
+    #     past-event verb inserted while the new sentence is less hedged than the old one.
+    for old_s, s in pairs:
+        if not old_s.diff_spans or not s.diff_spans:
             continue
         deleted = " ".join(sp.text for sp in old_s.diff_spans if sp.op == "delete")
         inserted = " ".join(sp.text for sp in s.diff_spans if sp.op == "insert")
@@ -303,9 +307,8 @@ def hypothetical_to_actual(ctx: SignalContext) -> list[SignalHit]:
                     )
                 )
     # (c) in-progress / possible wording became concluded wording ("investigating" ->
-    #     "published their preliminary finding"), over aligned pairs and over unaligned
-    #     removed/added pairs that overlap lexically
-    for old_s, new_s in _candidate_pairs(ctx):
+    #     "published their preliminary finding"), over the same aligned pairs only
+    for old_s, new_s in pairs:
         key = (old_s.id, new_s.id)
         if key in seen:
             continue
@@ -320,31 +323,6 @@ def hypothetical_to_actual(ctx: SignalContext) -> list[SignalHit]:
                     new_sentence_ids=[new_s.id],
                 )
             )
-    # (b) added sentence reporting a past event, overlapping a hedged old sentence
-    old_hedged = [s for s in ctx.old.sentences if HEDGE_RE.search(s.text)]
-    for s in ctx.sentences:
-        if s.side != "new" or s.status != "added":
-            continue
-        if not (PAST_EVENT_RE.search(s.text) and YEAR_RE.search(s.text)) or HEDGE_RE.search(s.text):
-            continue
-        best, best_r = None, 0.0
-        for o in old_hedged:
-            r = lexical_ratio(o.text, s.text)
-            if r > best_r:
-                best, best_r = o, r
-        if best is not None and best_r >= 0.25:
-            key = (best.id, s.id)
-            if key not in seen:
-                seen.add(key)
-                ev = PAST_EVENT_RE.search(s.text).group(0).lower()
-                hits.append(
-                    SignalHit(
-                        value=f"{_hedges(best.text)[0]} -> {ev}",
-                        detail="A possibility in the prior filing is reported as an event that occurred, in a newly added sentence.",
-                        old_sentence_ids=[best.id],
-                        new_sentence_ids=[s.id],
-                    )
-                )
     return hits
 
 
@@ -352,18 +330,23 @@ def status_change(old_text: str, new_text: str) -> tuple[str, str] | None:
     """Deterministic 'in progress -> concluded' check for one old/new sentence pair.
 
     Fires when the old sentence carries an in-progress/possible marker (IN_PROGRESS_RE), the new
-    sentence carries a concluded marker (CONCLUDED_RE) that is not preceded by a modal verb, and
-    the new sentence is less tentative than the old one (fewer in-progress markers). Returns
-    (old_marker, new_marker) or None."""
+    sentence carries a concluded marker (CONCLUDED_RE) that is not preceded by a modal verb and
+    occurs more often than in the old sentence ("which have been imposed" in both years is not a
+    status change; "the USG adopted" next to last year's "if adopted" is), and the new sentence is less tentative than the old one (fewer in-progress
+    markers). Returns (old_marker, new_marker) or None."""
     old_markers = [m.group(0).lower() for m in IN_PROGRESS_RE.finditer(old_text)]
     if not old_markers:
         return None
     new_markers = [m.group(0).lower() for m in IN_PROGRESS_RE.finditer(new_text)]
     if len(new_markers) >= len(old_markers):
         return None
+    old_concluded = Counter(m.group(0).casefold() for m in CONCLUDED_RE.finditer(old_text))
+    new_concluded = Counter(m.group(0).casefold() for m in CONCLUDED_RE.finditer(new_text))
     for m in CONCLUDED_RE.finditer(new_text):
         marker = m.group(0)
         if _modal_before(new_text, marker):
+            continue
+        if new_concluded[marker.casefold()] <= old_concluded[marker.casefold()]:
             continue
         # prefer the most specific old marker (a verb such as "investigating" over a bare modal)
         specific = [o for o in old_markers if o not in ("may", "might", "could", "would")]
@@ -372,24 +355,17 @@ def status_change(old_text: str, new_text: str) -> tuple[str, str] | None:
 
 
 def _candidate_pairs(ctx: SignalContext) -> list[tuple[Sentence, Sentence]]:
-    """Aligned modified pairs, plus (removed old, added new) pairs that overlap lexically.
-    Each added sentence is paired with at most one removed sentence (its best overlap)."""
+    """Aligned modified pairs only: (old counterpart, new sentence) where the new sentence is
+    "modified" and its counterpart_id names the old sentence. Unaligned removed/added sentences
+    are never paired (shared boilerplate is not evidence that two sentences are the same risk)."""
     by_id = {s.id: s for s in ctx.sentences}
     pairs: list[tuple[Sentence, Sentence]] = []
     for s in ctx.sentences:
-        if s.side == "new" and s.status == "modified" and s.counterpart_id in by_id:
-            pairs.append((by_id[s.counterpart_id], s))
-    removed = [s for s in ctx.sentences if s.side == "old" and s.status == "removed"]
-    for s in ctx.sentences:
-        if s.side != "new" or s.status != "added":
+        if s.side != "new" or s.status != "modified" or not s.counterpart_id:
             continue
-        best, best_r = None, 0.0
-        for o in removed:
-            r = lexical_ratio(o.text, s.text)
-            if r > best_r:
-                best, best_r = o, r
-        if best is not None and best_r >= STATUS_PAIR_MIN_OVERLAP:
-            pairs.append((best, s))
+        old_s = by_id.get(s.counterpart_id)
+        if old_s is not None and old_s.side == "old" and old_s.counterpart_id == s.id:
+            pairs.append((old_s, s))
     return pairs
 
 
@@ -451,6 +427,130 @@ def clean_entity(text: str) -> str | None:
     if letters < 3 or letters / max(1, len(compact)) < 0.5:
         return None
     return t
+
+
+# Bodies and places that every filer names: never a "newly named party" (casefolded keys, see
+# generic_entity_key). Replicates pipeline/trends/derive.py's ENTITY_STOPLIST (and the targets of
+# its alias map) so the company page is at least as strict as Trends, plus federal regulators,
+# legislatures, courts and the U.S./EU themselves.
+ENTITY_STOPLIST: frozenset[str] = frozenset(
+    {
+        # derive.ENTITY_STOPLIST
+        "sec",
+        "securities and exchange commission",
+        "u.s. securities and exchange commission",
+        "company",
+        "board",
+        "board of directors",
+        "gaap",
+        "u.s. gaap",
+        "fasb",
+        "financial accounting standards board",
+        "irs",
+        "internal revenue service",
+        "united states",
+        "nasdaq",
+        "nasdaq global select market",
+        "nyse",
+        "new york stock exchange",
+        "congress",
+        "u.s. congress",
+        "exchange act",
+        "securities act",
+        "form 10-k",
+        "annual report on form 10-k",
+        "item 1a",
+        "risk factors",
+        # the United States and its government (derive aliases these to "United States")
+        "u.s.",
+        "u.s",
+        "us",
+        "usa",
+        "u.s.a.",
+        "united states of america",
+        "usg",
+        "u.s. government",
+        "us government",
+        "united states government",
+        "federal government",
+        "government",
+        # legislatures and courts
+        "senate",
+        "u.s. senate",
+        "house",
+        "house of representatives",
+        "u.s. house of representatives",
+        "supreme court",
+        "u.s. supreme court",
+        # federal regulators every filer names
+        "fda",
+        "food and drug administration",
+        "u.s. food and drug administration",
+        "doj",
+        "department of justice",
+        "u.s. department of justice",
+        "ftc",
+        "federal trade commission",
+        "u.s. federal trade commission",
+        "treasury",
+        "u.s. treasury",
+        "treasury department",
+        "department of the treasury",
+        "u.s. department of the treasury",
+        "federal reserve",
+        "federal reserve board",
+        "federal reserve system",
+        "board of governors of the federal reserve system",
+        # the European Union
+        "european union",
+        "eu",
+        "e.u.",
+    }
+)
+_MONTHS = "january|february|march|april|may|june|july|august|september|october|november|december"
+ENTITY_STOP_PATTERNS: tuple[re.Pattern[str], ...] = (
+    # derive.ENTITY_STOP_PATTERNS: quarters, fiscal/calendar years, years, dates, weekdays
+    re.compile(r"^(?:the )?(?:first|second|third|fourth|q[1-4])(?: fiscal)? quarter\b.*$"),
+    re.compile(r"^q[1-4](?: (?:fiscal )?(?:19|20)?\d{2})?$"),
+    re.compile(r"^(?:fiscal|calendar)(?: year)?(?: (?:19|20)\d{2})?$"),
+    re.compile(r"^fy ?(?:19|20)?\d{2}$"),
+    re.compile(r"^(?:19|20)\d{2}$"),
+    re.compile(rf"^(?:{_MONTHS})(?: \d{{1,2}})?,?(?: (?:19|20)\d{{2}})?$"),
+    re.compile(r"^(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)$"),
+    # a bare government administration ("the Trump Administration", "Biden Administration")
+    re.compile(r"^(?:the )?[a-z]+(?:-[a-z]+)? administration$"),
+)
+_CORP_SUFFIX_RE = re.compile(
+    r"(?:,?\s+(?:inc|incorporated|corp|corporation|co|company|llc|l\.l\.c|ltd|limited|plc|"
+    r"n\.v|s\.a|ag|gmbh|holdings))\.?$",
+    re.IGNORECASE,
+)
+
+
+def generic_entity_key(text: str) -> str:
+    """Casefolded key for the generic-entity check: whitespace collapsed, quotes and a leading
+    "the" stripped, curly apostrophes straightened, a trailing possessive and corporate suffix
+    removed ("the Trump Administration’s" -> "trump administration", "Nasdaq, Inc." -> "nasdaq")."""
+    t = re.sub(r"\s+", " ", text).strip(" ,;:\"'()[]\u201c\u201d\u2018\u2019")
+    t = t.replace("\u2019", "'")
+    t = re.sub(r"^the\s+", "", t, flags=re.IGNORECASE)
+    t = re.sub(r"'s$", "", t)
+    prev = None
+    while prev != t:
+        prev = t
+        t = _CORP_SUFFIX_RE.sub("", t).strip(" ,")
+    return t.casefold()
+
+
+def is_generic_entity(text: str) -> bool:
+    """True for bodies and places every filer names (ENTITY_STOPLIST, ENTITY_STOP_PATTERNS):
+    they are never reported as newly named parties."""
+    key = generic_entity_key(text)
+    if not key:
+        return True
+    if key in ENTITY_STOPLIST or key.rstrip(".") in ENTITY_STOPLIST:
+        return True
+    return any(p.match(key) for p in ENTITY_STOP_PATTERNS)
 
 
 def _entity_key(text: str) -> str:
@@ -537,7 +637,7 @@ def new_entities(ctx: SignalContext, nlp=None) -> list[SignalHit]:
     first_seen: dict[str, tuple[str, list[str]]] = {}
     for sid, ents in new_ents.items():
         for n, label in ents:
-            if n in old_norm or (old_text and n in old_text):
+            if n in old_norm or (old_text and n in old_text) or is_generic_entity(n):
                 continue
             if n not in first_seen:
                 first_seen[n] = (label, [sid])

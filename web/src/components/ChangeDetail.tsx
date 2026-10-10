@@ -3,13 +3,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { flushSync } from "react-dom";
 
-import type { Change, ModelIds, Sentence } from "@/types/comparison";
+import type { Change, DiffSpan, ModelIds, Sentence } from "@/types/comparison";
 
 import { AnalystDetails, ScoreBreakdownPanel, WhatChangedPanel } from "@/components/ChangePanels";
 import { CitationContext, changeCitationNumbering, type CitationApi, type FilingRef, type SentenceRef } from "@/components/citations";
 import { MarkedText } from "@/components/MarkedText";
 import { FilingLink, SectionTitle } from "@/components/ui";
-import { rewrittenIds } from "@/lib/diffDisplay";
+import { pairDisplaySpans, rewrittenIds } from "@/lib/diffDisplay";
 import { textFragmentUrl } from "@/lib/format";
 
 type ViewMode = "split" | "inline";
@@ -33,19 +33,21 @@ const STATUS_META: Record<Sentence["status"] | "rewritten", { label: string }> =
   unchanged: { label: "Unchanged" },
 };
 
-function SentenceBody({ s, heading, rewritten }: { s: Sentence; heading: boolean; rewritten: boolean }) {
+function SentenceBody({ s, heading, rewritten, spans }: { s: Sentence; heading: boolean; rewritten: boolean; spans: DiffSpan[] | null | undefined }) {
   const cls = `filing-text ${heading ? "is-heading" : ""} ${s.side === "old" ? "is-old" : ""} ${s.status === "unchanged" && !heading ? "is-unchanged" : ""}`;
   // A rewritten pair (most words changed) is drawn whole: last year struck, this year highlighted.
   const status = s.status === "modified" && rewritten ? (s.side === "old" ? "removed" : "added") : s.status;
   return (
     <p className={cls}>
-      <MarkedText text={s.text} spans={s.diff_spans} side={s.side} status={status} />
+      <MarkedText text={s.text} spans={spans} side={s.side} status={status} />
     </p>
   );
 }
 
 interface SentenceViewProps {
   s: Sentence;
+  /** The spans to draw: the sentence's own, with case-only edits of its pair neutralized. */
+  spans: DiffSpan[] | null | undefined;
   heading: boolean;
   rewritten: boolean;
   sideTag: string | null;
@@ -84,7 +86,7 @@ function StatusTag({ status, highlighted, sideTag }: { status: keyof typeof STAT
   );
 }
 
-function SentenceInner({ s, heading, rewritten, sideTag, highlighted, actionOpen, filing, isFixture, onCloseAction, onBack, layout, labelHidden = false }: SentenceViewProps) {
+function SentenceInner({ s, spans, heading, rewritten, sideTag, highlighted, actionOpen, filing, isFixture, onCloseAction, onBack, layout, labelHidden = false }: SentenceViewProps) {
   const status: keyof typeof STATUS_META = s.status === "modified" && rewritten ? "rewritten" : s.status;
   const stacked = layout === "stacked";
   const showLabelLine = highlighted || (s.status !== "unchanged" && !labelHidden) || !!sideTag;
@@ -122,7 +124,7 @@ function SentenceInner({ s, heading, rewritten, sideTag, highlighted, actionOpen
         ) : (
           <span className="sr-only">Unchanged</span>
         )}
-        <SentenceBody s={s} heading={heading} rewritten={rewritten} />
+        <SentenceBody s={s} heading={heading} rewritten={rewritten} spans={spans} />
         {actions}
       </div>
     );
@@ -139,7 +141,7 @@ function SentenceInner({ s, heading, rewritten, sideTag, highlighted, actionOpen
         <StatusTag status={status} highlighted={highlighted} sideTag={sideTag} />
       </div>
       <div className="min-w-0">
-        <SentenceBody s={s} heading={heading} rewritten={rewritten} />
+        <SentenceBody s={s} heading={heading} rewritten={rewritten} spans={spans} />
         {actions}
       </div>
     </div>
@@ -273,6 +275,7 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
 
   const isHeading = useCallback((id: string) => index[id]?.is_heading === true || /:0$/.test(id), [index]);
   const rewritten = useMemo(() => rewrittenIds(change.sentences), [change.sentences]);
+  const displaySpans = useMemo(() => pairDisplaySpans(change.sentences), [change.sentences]);
 
   const sorted = useMemo(
     () =>
@@ -377,6 +380,7 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
     <SentenceView
       key={s.id}
       s={s}
+      spans={displaySpans.has(s.id) ? displaySpans.get(s.id) : s.diff_spans}
       layout={view === "split" ? "stacked" : "gutter"}
       labelHidden={labelHidden}
       aliasId={aliasId}

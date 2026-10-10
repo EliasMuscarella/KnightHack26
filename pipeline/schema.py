@@ -97,7 +97,7 @@ HIGHLIGHT_KINDS: tuple[str, ...] = (
     "removed_risk",
     "new_named_party",
 )
-MAX_SHORT_TITLE_WORDS = 8
+MAX_SHORT_TITLE_WORDS = 10
 
 SENTENCE_ID_RE = re.compile(r"^\d{10}-\d{2}-\d{6}:\d+:\d+$")
 BLOCK_ID_RE = re.compile(r"^\d{10}-\d{2}-\d{6}:\d+$")
@@ -277,8 +277,9 @@ class Change(Strict):
     title: str = Field(description="Risk heading (new side if present, else old).")
     short_title: str = Field(
         min_length=1,
-        description="At most 8 words, plain English, neutral; a label for lists and cards (never a claim). "
-        "LLM-generated and validated, or a deterministic truncation of the heading.",
+        description="At most 10 words, plain English, neutral; a label for lists and cards (never a claim). "
+        "LLM-generated and validated, or the deterministic first clause of the heading (never a fragment, "
+        "never an ellipsis, never the bare company name).",
     )
     old_title: str | None = None
     new_title: str | None = None
@@ -415,6 +416,12 @@ class Comparison(Strict):
     code_fingerprint: str = Field(
         pattern=r"^[0-9a-f]{64}$",
         description="sha256 over every stage version, the rubric export (weights, questions, thresholds) and the validator version; part of analysis_id.",
+    )
+    stage_versions: dict[str, str] | None = Field(
+        default=None,
+        description="STAGE_VERSION of each stage that produced this report, keyed by stage name "
+        "(fetch, extract, segment, embed, match, diff, signals, llm), so a checker can name the "
+        "earliest stage a re-run must start from. Absent in reports published before it was recorded.",
     )
     model_ids: ModelIds
     is_fixture: bool = Field(

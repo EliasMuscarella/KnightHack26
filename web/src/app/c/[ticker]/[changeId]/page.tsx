@@ -27,10 +27,10 @@ async function load(props: PageProps<"/c/[ticker]/[changeId]">) {
 
 export async function generateMetadata(props: PageProps<"/c/[ticker]/[changeId]">): Promise<Metadata> {
   const data = await load(props);
-  return { title: data ? `${displayName(data.comparison.company.name)}: ${displayTitle(data.change.short_title, data.change.title)}` : "Change" };
+  return { title: data ? `${displayName(data.comparison.company.name)}: ${displayTitle(data.change.short_title, data.change.title, data.comparison.company.name)}` : "Change" };
 }
 
-function NavLink({ ticker, change, dir }: { ticker: string; change: Change | undefined; dir: "prev" | "next" }) {
+function NavLink({ ticker, change, dir, companyName }: { ticker: string; change: Change | undefined; dir: "prev" | "next"; companyName: string }) {
   if (!change) {
     return (
       <span className={`min-w-0 flex-1 py-3 text-sm text-ink-secondary ${dir === "next" ? "text-right" : ""}`}>
@@ -45,7 +45,7 @@ function NavLink({ ticker, change, dir }: { ticker: string; change: Change | und
     >
       <span className="block text-sm text-ink-secondary">{dir === "prev" ? "Previous risk factor" : "Next risk factor"}</span>
       <span className="mt-0.5 line-clamp-2 text-base font-medium leading-snug text-ink group-hover:underline" title={change.title}>
-        {displayTitle(change.short_title, change.title)}
+        {displayTitle(change.short_title, change.title, companyName)}
       </span>
     </Link>
   );
@@ -82,7 +82,7 @@ export default async function ChangePage(props: PageProps<"/c/[ticker]/[changeId
   const oldTitle = change.old_title ?? null;
   const newTitle = change.new_title ?? null;
   const titlesDiffer = !!oldTitle && !!newTitle && oldTitle !== newTitle;
-  const heading = displayTitle(change.short_title, change.title);
+  const heading = displayTitle(change.short_title, change.title, comparison.company.name);
   const bare = (t: string) => t.trim().replace(/[.…\s]+$/, "");
   const showFullTitle = !!change.title && bare(change.title) !== bare(heading);
 
@@ -137,8 +137,8 @@ export default async function ChangePage(props: PageProps<"/c/[ticker]/[changeId
         />
 
         <nav aria-label="Other risk factors" className="flex gap-8 border-t border-line">
-          <NavLink ticker={ticker} change={prev} dir="prev" />
-          <NavLink ticker={ticker} change={next} dir="next" />
+          <NavLink companyName={comparison.company.name} ticker={ticker} change={prev} dir="prev" />
+          <NavLink companyName={comparison.company.name} ticker={ticker} change={next} dir="next" />
         </nav>
       </PageContainer>
     </>

@@ -397,30 +397,139 @@ Only a store that is already `ok` gets a 2 s wait for its very first remote resu
   and "DOL", and a removed sentence starting mid-word ("z ECCNs"). All three come from the published NVDA
   file, which this environment cannot regenerate (no SEC access).
 
-## D-024 Company logos
+## D-024 Integrity session: root causes proven before fixing (I1–I4)
 
-- Logos for the published tickers (AAPL, AMZN, NVDA, CRWD, SF) are genuine Wikimedia Commons SVGs, downloaded
-  once, sanitized, and served from `web/public/logos/` (sources in `web/public/logos/SOURCES.md`). Tickers not
-  in the manifest `web/src/lib/logos.ts` get a token-colored monogram and never request an image. The logo
-  tile is white in every theme (brand marks are drawn for a light background); the monogram uses tokens only.
+Method: `scripts/check_integrity.py` (I1) ran on the two real reports in the repo (NVDA FY2025→FY2026,
+SF FY2024→FY2025), the derived trend facts re-derived with the current code, and the running API.
+Baseline: 135 findings (`INTEGRITY_REPORT.before.md`). Each finding is classified by re-running the
+current pipeline code on the report's own data: `stale` when the current code no longer produces it,
+`code` when it still does. The live site's other reports (AAPL, AMZN, GOOGL, CRWD) are not in this
+repository and the sandbox has no SEC or Databricks access, so for those the mechanism is proven in
+code and on NVDA/SF, and the live instance is named as "not inspected here".
 
-## D-025 Dark mode
+- **Topics counted on words that were not inserted (TOPIC-NEW, 20 findings, code).** `topic_mentions`
+  scanned the whole text of added and modified sentences. Evidence: NVDA change `a4156a06454f6dfd`,
+  sentence `0001045810-26-000021:21:7`, phrase "CSP market" where only "CSP" is inserted; NVDA
+  `6ef9abded50fdc62`, sentence `0001045810-26-000021:18:1`, phrase "exceptional talent" in a sentence
+  with no inserted words at all. Rule now: the matched term must lie wholly inside an inserted span and
+  no synonym may appear in last year's text of the risk factor (old text taken from the old-side
+  sentences when `old_text` is absent).
+- **Topics counted on essentially unchanged risk factors (TOPIC-MEANINGFUL, 25 findings, code).**
+  Evidence: NVDA `472606c9d458f2e9` (largely unchanged) sentence `0001045810-26-000021:15:15` "We are
+  finalizing an investment and partnership agreement with OpenAI." counted "OpenAI". This is the
+  mechanism behind "Amazon: No meaningful changes" yet "4 companies newly added Tariffs": a small
+  insertion inside an essentially unchanged risk factor. Rule now: topics are derived only for changes
+  whose type is not `largely_unchanged`, so a company with zero meaningful changes has zero mentions.
+  The brief's hypothesis ("counted when the word appears anywhere in a modified sentence") was half
+  right: the freshness guard against last year's whole block text did hold, but the inserted-span
+  condition and the meaningful-change condition were both missing.
+- **Case-only highlights (CASE, 30 findings, code).** `diff.word_spans` compared tokens exactly.
+  Evidence: NVDA `a4156a06454f6dfd`, old `0001045810-25-000023:19:10` vs new `0001045810-26-000021:21:10`:
+  deleted "Excessive or shifting export", inserted "Export". The diff now compares casefolded tokens and
+  folds whitespace- and punctuation-only changes into equal (stage 5 version bumped).
+- **Potential → actual pairs that are not aligned pairs (PAIR, 0 findings on NVDA/SF, code).** Not
+  reproduced on NVDA/SF (both of its hits are aligned), but the code paired a newly added sentence with
+  the best lexically overlapping hedged old sentence at ratio ≥ 0.25 counting function words, and
+  `_candidate_pairs` added (removed, added) pairs; two unrelated sentences sharing 10-K boilerplate
+  qualify. That is the Alphabet symptom (advertising demand vs legal fines). Rule now: only aligned
+  pairs (new sentence `modified` with its `counterpart_id`), and the derived potential-to-actual rows
+  apply the same guard. The NVDA antitrust pair (`0001045810-25-000023:19:41` → `0001045810-26-000021:21:41`)
+  is aligned, so the status-change detector still fires on it.
+- **Short titles that are fragments (TITLES, 50 findings, code).** The deterministic fallback cut the
+  heading at 8 words and appended "…" ("We are subject to complex laws, rules…"); the frontend's clause
+  cutter then produced "We are subject to complex laws". Rule now (pipeline and frontend, same spec):
+  the longest clause of 4–10 words ending at a natural boundary and not on a dangling word, never an
+  ellipsis, never the bare company name; the LLM title is rejected by the same predicate.
+- **Entity noise (ENTITY, 5 findings).** "AI Diffusion IFR in" and "D:4" are stale (the J2 post-filter
+  already drops them). "Biden Administration", "Trump Administration" (NVDA `a4156a06454f6dfd`,
+  sentence `0001045810-26-000021:21:71`) and "SEC" (SF `61ffb76925cf3bc2`) were still emitted by
+  `signals.new_entities` while the Trends side already stop-listed them: the stoplist and the
+  administration pattern now live in the signals post-filter too.
+- **Intro paragraph as a risk (PREAMBLE, 1 finding, stale).** NVDA `692187bd48c050c3` = block
+  `0001045810-26-000021:0`, heading "The following risk factors should be considered in addition to the
+  other information in this Annual Report on Form 10-K." Segment 0.2.x skips it; confirmed by a unit test
+  built from the two real sentences; the published file needs the re-run.
+- **Trends crash and duplicate heatmap key (code, frontend).** `ActualItem` reduced over `old_spans`
+  without a default, so a payload row without span fields (older API or older store rows) threw;
+  the catch-all heatmap column reused the key `other`, which is also a real pipeline category. Fixed in
+  the frontend with an error boundary per section and a merged `other` column.
+- **Snippets cut before their evidence (SNIP-TOPIC 1 finding, code).** Prefix trimming
+  (`trimQuote`) dropped the topic term (SF "Gramm-Leach-Bliley Act") and, on the live site, Apple's and
+  Amazon's "tariff" and NVIDIA's changed words. Display now uses one window rule (`snippet_window`,
+  reference in the checker, port in `web/src/lib/snippet.ts`) that always contains the earliest
+  evidence span, with ellipses on both trimmed sides.
+- **Counts that disagree (COUNTS, 0 findings here).** Two code paths can drop a company from Trends
+  while Home lists it: the local path skipped a report whose facts failed to derive, and the Databricks
+  path built the company set from store rows only while `/companies` merges local and remote. Both are
+  closed (same merged set everywhere; a company without facts stays listed with a warning). The live
+  CrowdStrike case could not be inspected.
+- **Fiscal-year labels (YEARS, 0 findings here).** The CRWD "FY2024 and FY2026" label could not be
+  reproduced without its filings; `fiscal_year_from_html` and the 10-K selection were tested on
+  synthetic January fiscal-year-end cases instead (see the pipeline agent's notes in this section
+  once landed). No guess-fix was applied.
+- **Stage versions are now recorded in each report** (`stage_versions`, optional in the contract),
+  so STALE can name the earliest stage exactly for every report published from now on; for the two
+  existing reports the earliest stage is inferred from the findings (NVDA: 2, the intro paragraph).
 
-- Dark mode is class-based: `data-theme="light" | "dark"` on `<html>`, set before paint by a fixed inline script
-  in `web/src/app/layout.tsx` (stored choice in localStorage `riskdiff-theme`, else `prefers-color-scheme`).
-  Default is "system"; "system" is stored as no key. Every storage read/write is in try/catch; if storage is
-  blocked the choice lasts for the page only. No-JS visitors get the light theme.
-- The dark palette redefines the existing token names (DESIGN.md "Dark mode"); every text/background pair was
-  measured with a WCAG script, all >= 4.5:1. New tokens: `on-accent`, `on-ink` (replace `text-white` on filled
-  controls) and `heat-*` (Trends heatmap tones and cell text, read via `var()`).
-- The highlighter in dark mode is a deep amber (`#5E4B12`) under light ink, not the bright yellow: a bright
-  marker would need dark text, and the glyph tops above the stroke would then sit dark on dark.
-- Known pre-existing light-mode gaps left unchanged (out of scope, not a dark-mode need): heatmap cell text
-  near the 0.55 intensity flip drops to about 2.3 to 3.8:1, and `ink-muted` on `sunken` is 4.4:1.
+## D-025 Integrity session: rules adopted while fixing (I2–I4)
+
+Amends D-021: topic mentions are no longer derived for `largely_unchanged` changes, and a term counts
+only when it lies wholly inside inserted text (see D-024 for the proofs).
+
+Pipeline (stage versions: diff 0.1.3, signals 0.2.2, segment 0.2.2, sec_fetch 0.1.1; PIPELINE_VERSION 0.2.0):
+- **Potential → actual only from aligned pairs.** A hedge-to-actual or status-change signal needs a
+  `modified` new sentence whose `counterpart_id` is the old sentence. The lexical pairing of added
+  sentences with hedged old sentences (ratio ≥ 0.25 over all words) and the (removed, added) pairing
+  are gone. A concluded marker must also be new on the new side (NVDA `…19:30/…21:30` carried "have been
+  imposed" in both years and fired before).
+- **Word diff compares casefolded tokens** and folds whitespace- and punctuation-only changes into
+  equal; the content-word anchoring of D-018 stays, chosen only when it marks fewer content words than
+  the plain alignment. The checker's CASE rule therefore ignores function words (and, or, to, we, is…),
+  which the anchoring may re-mark around a changed content word; they are never evidence.
+- **Short titles** (pipeline `highlights.short_title_from_heading`, frontend `shortTitleFromHeading`,
+  same spec, parity on all 57 published headings): the longest clause of 4–10 words ending at a natural
+  boundary, trailing dangling words removed, and, when the cut lands right before a conjunction, a
+  trailing "<conjunction> <word>" pair removed too ("…regulations, and political | and other actions"
+  → "…regulations"; "incidents or breaches," stays). Never an ellipsis, never the bare company name. The
+  LLM title is accepted only when `title_problems` is empty; the schema allows ten words.
+- **Entity stoplist** lives in `signals` (regulators, legislatures, courts, generic government, U.S.
+  aliases, one-name administrations) and the trends derivation applies the same `is_generic_entity`
+  on top of its own list, so the company page and Trends agree. An agency ("Federal Aviation
+  Administration") is not a bare administration; a state name is kept.
+- **Item 1A introduction**: a heading-like unit before the first real risk heading whose text or first
+  body paragraph matches the intro patterns is skipped (test built from NVDA's real intro). The
+  "Risk Factors Summary" skip is unchanged.
+- **Fiscal year** comes from the `dei:DocumentFiscalYearFocus` fact whose context matches the
+  document's own period, else a single distinct value, else the period year; a prior-year comparative
+  fact listed first no longer wins. No defect explaining CrowdStrike's "FY2024 and FY2026" was found
+  in selection or labeling on synthetic January fiscal-year cases; that case needs its submissions
+  JSON and both filings (not available here).
+
+Trends (TRENDS_VERSION 1.2.2):
+- Topics: inserted-span containment, meaningful changes only, last year's text from the old-side
+  sentences when `old_text` is absent; potential-to-actual rows keep aligned pairs only.
+- One company set: `/companies` and `/trends` are built from the same merged current library; a
+  company without facts stays listed and is named in `warnings`.
+- Delta rows carry their `derivation`; the queries read only the current derivation, so rows of an
+  older derivation are never served (`databricks_setup.py` adds the column to existing tables).
+
+Data and process:
+- The two local reports were refreshed with `scripts/migrate_published.py` (titles and highlights:
+  presentation fields derived from the file's own content, as in D-018; a title that is an exact
+  prefix of its heading is a truncation by construction and follows the current rule). Their
+  analysis, scores, sentences and analysis ids are unchanged; `scripts/refresh_stale.py` performs the
+  real re-run from the earliest changed stage on a machine with SEC and Hugging Face access.
+- `stage_versions` is recorded in every report published from now on (optional contract field), so
+  STALE names the earliest stage exactly; for the two existing reports it is inferred from findings
+  (NVDA: 2, the intro paragraph; SF: 5, case-only spans).
+- The checker evaluates display rules through the frontend's own functions when Node is available
+  (`snippetWindow`, `heatmapColumns`) and through Python ports otherwise, with shared vectors.
+- `@playwright/test` 1.63.0 was added as a pinned dev dependency so the required smoke test can run;
+  it uses the Chromium already in the environment (no download).
 
 ## D-026 Light-mode heatmap contrast
 
-- Resolves the heatmap gap listed in D-025 (the `ink-muted` on `sunken` gap there is unchanged). Before: light
+- Resolves the heatmap gap listed in D-028 (dark mode) (the `ink-muted` on `sunken` gap there is unchanged). Before: light
   cells flipped from navy to white text past 0.55 intensity, and just past the flip white text measured 2.30 to
   2.55:1 on blue and orange cells and 3.82 to 4.02:1 on the navy rewrite cells. No single flip point could pass
   everywhere (best possible worst case about 4.0:1).
@@ -437,3 +546,24 @@ Only a store that is already `ok` gets a 2 s wait for its very first remote resu
   Magnitude: each light tone spans about 2.8:1 in luminance from 0.15 to 1.0 (dE00 25 to 33), close to dark
   mode's 2.5 to 2.9:1. The darkest light cell is lighter than before, so the light heatmap has less range than
   the old navy-to-white one, but the number in each cell carries the exact count.
+
+## D-027 Company logos
+
+- Logos for the published tickers (AAPL, AMZN, NVDA, CRWD, SF) are genuine Wikimedia Commons SVGs, downloaded
+  once, sanitized, and served from `web/public/logos/` (sources in `web/public/logos/SOURCES.md`). Tickers not
+  in the manifest `web/src/lib/logos.ts` get a token-colored monogram and never request an image. The logo
+  tile is white in every theme (brand marks are drawn for a light background); the monogram uses tokens only.
+
+## D-028 Dark mode
+
+- Dark mode is class-based: `data-theme="light" | "dark"` on `<html>`, set before paint by a fixed inline script
+  in `web/src/app/layout.tsx` (stored choice in localStorage `riskdiff-theme`, else `prefers-color-scheme`).
+  Default is "system"; "system" is stored as no key. Every storage read/write is in try/catch; if storage is
+  blocked the choice lasts for the page only. No-JS visitors get the light theme.
+- The dark palette redefines the existing token names (DESIGN.md "Dark mode"); every text/background pair was
+  measured with a WCAG script, all >= 4.5:1. New tokens: `on-accent`, `on-ink` (replace `text-white` on filled
+  controls) and `heat-*` (Trends heatmap tones and cell text, read via `var()`).
+- The highlighter in dark mode is a deep amber (`#5E4B12`) under light ink, not the bright yellow: a bright
+  marker would need dark text, and the glyph tops above the stroke would then sit dark on dark.
+- Known pre-existing light-mode gaps left unchanged (out of scope, not a dark-mode need): heatmap cell text
+  near the 0.55 intensity flip drops to about 2.3 to 3.8:1, and `ink-muted` on `sunken` is 4.4:1.

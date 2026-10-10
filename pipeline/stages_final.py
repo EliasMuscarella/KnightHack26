@@ -6,14 +6,22 @@ import hashlib
 import json
 import logging
 import os
+from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import TimeoutError as FuturesTimeout
 from typing import TYPE_CHECKING
 
+from pipeline import diff as diff_mod
+from pipeline import embed as embed_mod
+from pipeline import extract as extract_mod
 from pipeline import llm as llm_mod
+from pipeline import match as match_mod
+from pipeline import sec_fetch as fetch_mod
+from pipeline import segment as segment_mod
 from pipeline import signals as signals_mod
 from pipeline.config import NER_MODEL_ID, PIPELINE_VERSION, SENTENCE_SPLITTER_ID
 from pipeline.diff import diff_params_for
 from pipeline.errors import PipelineError
-from pipeline.highlights import select_highlights, truncate_heading
+from pipeline.highlights import select_highlights, short_title_from_heading, title_problems
 from pipeline.publish import publish
 from pipeline.rubric import RUBRIC_VERSION
 from pipeline.schema import (
@@ -105,6 +113,19 @@ def stage6_signals(
 
 
 # ---------- stage 7 ----------
+
+DEFAULT_LLM_CONCURRENCY = 6
+MAX_LLM_CONCURRENCY = 16
+
+
+def llm_concurrency() -> int:
+    """Parallel LLM calls (RISKDIFF_LLM_CONCURRENCY, default 6, clamped to 1-16)."""
+    raw = (os.environ.get("RISKDIFF_LLM_CONCURRENCY") or "").strip()
+    try:
+        n = int(raw) if raw else DEFAULT_LLM_CONCURRENCY
+    except ValueError:
+        n = DEFAULT_LLM_CONCURRENCY
+    return max(1, min(MAX_LLM_CONCURRENCY, n))
 
 
 def _llm_key_inputs(
@@ -215,32 +236,57 @@ def stage7_llm(
         results = [None] * len(records)
         calls = 0
         if client is not None:
+            todo = []
             for i, _r, old, new, title, sentences in prepared:
                 key = ctx.cache.key(
                     "llm",
                     llm_mod.STAGE_VERSION,
                     _llm_key_inputs(prompt_hash, client.model_id, old, new, sentences, fetch),
                 )
-                ctx.check_cancelled()
                 hit = None if ctx.refresh_llm else ctx.cache.get("llm", key)
                 if hit is not None:
                     results[i] = hit
-                    continue
-                calls += 1
-                res = llm_mod.interpret_change(
+                else:
+                    todo.append((i, key, old, new, title, sentences))
+            calls = len(todo)
+            ctx.check_cancelled()
+
+            def call(item):
+                _i, _key, old, new, title, sentences = item
+                return llm_mod.interpret_change(
                     client, title, old, new, sentences, fetch.old.fiscal_year, fetch.new.fiscal_year
                 )
-                row = {
-                    "status": res.status,
-                    "model_id": res.model_id,
-                    "provider": client.provider,
-                    "attempts": res.attempts,
-                    "error": res.error,
-                    "raw": res.raw,
-                }
-                if res.status != "error":
-                    ctx.cache.put("llm", key, row)
-                results[i] = row
+
+            # Calls are independent and each result keeps its record's slot, so running them
+            # concurrently changes wall time only, never the output.
+            workers = max(1, min(llm_concurrency(), len(todo) or 1))
+            log.info("LLM stage: %d calls, %d at a time", len(todo), workers)
+            pool = ThreadPoolExecutor(max_workers=workers, thread_name_prefix="llm")
+            futures = [pool.submit(call, item) for item in todo]
+            finished = False
+            try:
+                for (i, key, *_rest), fut in zip(todo, futures, strict=True):
+                    while True:
+                        try:
+                            res = fut.result(timeout=0.5)
+                            break
+                        except FuturesTimeout:
+                            ctx.check_cancelled()
+                    row = {
+                        "status": res.status,
+                        "model_id": res.model_id,
+                        "provider": client.provider,
+                        "attempts": res.attempts,
+                        "error": res.error,
+                        "raw": res.raw,
+                    }
+                    if res.status != "error":
+                        ctx.cache.put("llm", key, row)
+                    results[i] = row
+                finished = True
+            finally:
+                # on cancel/error, drop queued calls and do not wait for in-flight ones
+                pool.shutdown(wait=finished, cancel_futures=True)
         ctx.outputs["llm_calls"] = calls
     return results, info
 
@@ -347,18 +393,41 @@ _STOP = frozenset(
 )
 
 
-def validated_short_title(heading: str, proposed: str | None) -> str:
-    """Accept the LLM label only if it is short, neutral and anchored to the heading; otherwise
-    fall back to a deterministic truncation of the real heading."""
+def stage_versions() -> dict[str, str]:
+    """STAGE_VERSION of every stage, keyed by stage name, recorded in each published report so the
+    integrity checker (scripts/check_integrity.py) can name the earliest stage a re-run must start
+    from."""
+    return {
+        "fetch": fetch_mod.STAGE_VERSION,
+        "extract": extract_mod.STAGE_VERSION,
+        "segment": segment_mod.STAGE_VERSION,
+        "embed": embed_mod.STAGE_VERSION,
+        "match": match_mod.STAGE_VERSION,
+        "diff": diff_mod.STAGE_VERSION,
+        "signals": signals_mod.STAGE_VERSION,
+        "llm": llm_mod.STAGE_VERSION,
+    }
+
+
+def validated_short_title(
+    heading: str, proposed: str | None, company_name: str | None = None
+) -> str:
+    """Accept the LLM label only if it is short, neutral, anchored to the heading and not a fragment
+    (`highlights.title_problems`: no ellipsis, no dangling last word, not the bare company name);
+    otherwise fall back to the deterministic first clause of the real heading."""
     if proposed:
         t = " ".join(str(proposed).split()).strip().strip('"\u201c\u201d.')
         words = t.split()
-        if 1 <= len(words) <= MAX_SHORT_TITLE_WORDS and banned_language(t) is None:
+        if (
+            1 <= len(words) <= MAX_SHORT_TITLE_WORDS
+            and banned_language(t) is None
+            and not title_problems(t, company_name)
+        ):
             hw = {w.strip(".,;:()\u2019'\"").lower() for w in heading.split()} - _STOP
             tw = {w.strip(".,;:()\u2019'\"").lower() for w in words} - _STOP
             if hw & tw:
                 return t
-    return truncate_heading(heading, MAX_SHORT_TITLE_WORDS)
+    return short_title_from_heading(heading, MAX_SHORT_TITLE_WORDS, company_name=company_name)
 
 
 def assemble(
@@ -434,7 +503,9 @@ def assemble(
                 id=cid,
                 rank=1,
                 title=(new or old).heading,
-                short_title=validated_short_title((new or old).heading, llm_titles.get(cid)),
+                short_title=validated_short_title(
+                    (new or old).heading, llm_titles.get(cid), fetch.company.name
+                ),
                 old_title=old.heading if old else None,
                 new_title=new.heading if new else None,
                 section_group=(new or old).section_group,
@@ -502,6 +573,7 @@ def assemble(
         pipeline_version=PIPELINE_VERSION,
         rubric_version=RUBRIC_VERSION,
         code_fingerprint=fingerprint,
+        stage_versions=stage_versions(),
         model_ids=model_ids,
         is_fixture=ctx.fixture,
         company=fetch.company,

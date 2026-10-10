@@ -20,7 +20,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from pipeline.config import PIPELINE_VERSION  # noqa: E402
-from pipeline.highlights import select_highlights, truncate_heading  # noqa: E402
+from pipeline.highlights import (  # noqa: E402
+    select_highlights,
+    short_title_from_heading,
+    title_problems,
+    truncate_heading,
+)
 from pipeline.schema import Comparison, canonical_json  # noqa: E402
 
 NOTE = (
@@ -36,10 +41,23 @@ def migrate(path: Path) -> bool:
         print(f"{path.name}: fixture, skipped")
         return False
     changed = False
+    company_name = (d.get("company") or {}).get("name")
     for c in d["changes"]:
         if "short_title" not in c:
-            c["short_title"] = truncate_heading(c["title"])
+            c["short_title"] = truncate_heading(c["title"], company_name=company_name)
             changed = True
+        else:
+            stored = " ".join(c["short_title"].split())
+            heading = " ".join(c["title"].split())
+            # A title that is an exact prefix of its heading is a truncation by construction (an LLM
+            # label almost never is), so it follows the current deterministic rule; a title with
+            # problems (an old "…" cut, a fragment the old validator accepted) is replaced too.
+            deterministic = heading.startswith(stored.rstrip("….").rstrip(",.;: "))
+            if deterministic or title_problems(stored, company_name):
+                new = short_title_from_heading(c["title"], company_name=company_name)
+                if new != c["short_title"]:
+                    c["short_title"] = new
+                    changed = True
     if "highlights" not in d:
         d["highlights"] = []
         changed = True

@@ -3122,7 +3122,7 @@
           "text": "In addition, in order to access our products and services, our customers may use computers and other devices that are beyond our security control systems."
         }
       ],
-      "short_title": "Cyber attack or other security breach of…",
+      "short_title": "Cyber attack or other security breach of our technology systems",
       "signals": {
         "added_text_ratio": 0.4875,
         "category_scores": {
@@ -4120,7 +4120,7 @@
           "text": "Such perceptions or accusations could damage our reputation, result in litigation or regulatory enforcement actions, and adversely affect our business."
         }
       ],
-      "short_title": "We are subject to risks relating to…",
+      "short_title": "We are subject to risks relating to environmental, social",
       "signals": {
         "added_text_ratio": 0.447,
         "category_scores": {
@@ -4822,7 +4822,7 @@
           "text": "We believe that price competition and pricing pressures in these and other areas will continue as institutional investors continue to reduce the amounts they are willing to pay, including by reducing the number of brokerage firms they use, and some of our competitors seek to obtain market share by reducing fees, commissions, or margins."
         }
       ],
-      "short_title": "We face intense competition and pricing pressures…",
+      "short_title": "We face intense competition and pricing pressures",
       "signals": {
         "added_text_ratio": 0.2366,
         "category_scores": {
@@ -5710,7 +5710,7 @@
           "text": "Revenues from trading non-U.S. securities also may be subject to negative fluctuations as a result of the previously mentioned factors."
         }
       ],
-      "short_title": "Our business is sensitive to domestic and…",
+      "short_title": "Our business is sensitive to domestic",
       "signals": {
         "added_text_ratio": 0.1698,
         "category_scores": {
@@ -6456,7 +6456,7 @@
           "text": "If our associates engage in misconduct, our business could be adversely affected."
         }
       ],
-      "short_title": "Associate misconduct, which is difficult to detect…",
+      "short_title": "Associate misconduct, which is difficult to detect and deter",
       "signals": {
         "added_text_ratio": 0.2561,
         "category_scores": {
@@ -6719,7 +6719,7 @@
           "text": "See “Item 7 – Management’s Discussion and Analysis of Financial Condition and Results of Operations – Liquidity and Capital Resources” of this Form 10-K and Note 11 of the Notes to Consolidated Financial Statements of this Form 10-K for information on the Credit Facility."
         }
       ],
-      "short_title": "A downgrade in our credit ratings could…",
+      "short_title": "A downgrade in our credit ratings",
       "signals": {
         "added_text_ratio": 0.0102,
         "category_scores": {
@@ -7352,7 +7352,7 @@
           "text": "See “Item 1, Business – Regulation,” of this Form 10-K for additional information regarding our regulatory environment."
         }
       ],
-      "short_title": "Financial services firms are highly regulated and…",
+      "short_title": "Financial services firms are highly regulated",
       "signals": {
         "added_text_ratio": 0.0629,
         "category_scores": {
@@ -7851,7 +7851,7 @@
           "text": "See “Item 3 – Legal Proceedings,” and Note 18 of the Notes to Consolidated Financial Statements of this Form 10-K for additional information about legal matters."
         }
       ],
-      "short_title": "We are exposed to litigation and regulatory…",
+      "short_title": "We are exposed to litigation and regulatory investigations and proceedings",
       "signals": {
         "added_text_ratio": 0.0589,
         "category_scores": {
@@ -8001,7 +8001,7 @@
           "text": "In addition, U.S. and foreign governments have taken regulatory actions impacting the investment management industry, and may continue to do so, including expanding current (or enacting new) standards, requirements, and rules that may be applicable to us and our subsidiaries."
         }
       ],
-      "short_title": "Numerous regulatory changes and enhanced regulatory and…",
+      "short_title": "Numerous regulatory changes and enhanced regulatory",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -8238,7 +8238,7 @@
           "text": "Federal regulators, including the Federal Reserve and the SEC (through FINRA), have the authority and, under certain circumstances, the obligation to limit or prohibit dividend payments and share repurchases by the banking organizations they supervise, including our company and its bank subsidiaries."
         }
       ],
-      "short_title": "As a financial holding company, our company’s…",
+      "short_title": "As a financial holding company",
       "signals": {
         "added_text_ratio": 0.0041,
         "category_scores": {
@@ -8586,7 +8586,7 @@
           "text": "Failure of our technology systems to operate appropriately, which could result from events beyond our control, including a systems malfunction or cyber attack, failure by a third-party service provider, or an inability to effectively upgrade those systems or implement new technology-driven products or services, could result in financial losses, liability to clients for non-compliant data processing, and violations of privacy and other laws and regulations, as well as regulatory sanctions."
         }
       ],
-      "short_title": "A continued interruption to our telecommunications or…",
+      "short_title": "A continued interruption to our telecommunications or data processing systems",
       "signals": {
         "added_text_ratio": 0.0273,
         "category_scores": {
@@ -8946,7 +8946,7 @@
           "text": "While we perform extensive diligence on the banks we select to hold these deposits, a failure of one or more of these depository institutions to return these deposits could affect our operating liquidity, result in reputational damage, and impair our financial performance."
         }
       ],
-      "short_title": "The soundness of other financial institutions and…",
+      "short_title": "The soundness of other financial institutions and intermediaries affects us",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -9216,7 +9216,7 @@
           "text": "Additionally, others may use AI to increase the frequency and severity of cybersecurity attacks against us or our third-party service providers, which could adversely impact our business and results of operations."
         }
       ],
-      "short_title": "The development and use of artificial intelligence…",
+      "short_title": "The development and use of artificial intelligence presents risks",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -9426,7 +9426,7 @@
           "text": "See Note 19 of the Notes to Consolidated Financial Statements of this Form 10-K for additional information on regulatory capital requirements."
         }
       ],
-      "short_title": "Failure to comply with regulatory capital requirements…",
+      "short_title": "Failure to comply with regulatory capital requirements primarily applicable",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -9976,7 +9976,7 @@
           "text": "An adverse judgment could result in monetary damages, which could have a negative impact on our liquidity and financial condition."
         }
       ],
-      "short_title": "Business growth, including through acquisitions, could increase…",
+      "short_title": "Business growth, including through acquisitions, could increase costs",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -10293,7 +10293,7 @@
           "text": "Furthermore, certain non-U.S. jurisdictions have imposed heightened standards of conduct, which may have similar impacts on our business in those jurisdictions."
         }
       ],
-      "short_title": "Changes in requirements relating to the standard…",
+      "short_title": "Changes in requirements relating to the standard of care",
       "signals": {
         "added_text_ratio": 0.0253,
         "category_scores": {
@@ -10934,7 +10934,7 @@
           "text": "We may amend or supplement these risk factors from time to time in other reports we file with the SEC."
         }
       ],
-      "short_title": "Our operations and financial results are subject…",
+      "short_title": "Our operations and financial results are subject to various risks",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -11204,7 +11204,7 @@
           "text": "A continued trend toward passive investments or changes in market values or in the fee structure of asset management accounts would negatively affect our revenues, business, and financial condition."
         }
       ],
-      "short_title": "Our business depends on fees earned from…",
+      "short_title": "Our business depends on fees earned from the management",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -11654,7 +11654,7 @@
           "text": "Therefore, there can be no assurance that conflicts of interest will not arise in the future that could result in material harm to our business and financial condition."
         }
       ],
-      "short_title": "Our risk management and conflicts of interest…",
+      "short_title": "Our risk management and conflicts of interest policies and procedures",
       "signals": {
         "added_text_ratio": 0.0316,
         "category_scores": {
@@ -12130,7 +12130,7 @@
           "text": "The inability to reduce our positions in specific securities may not only increase the market and credit risks associated with such positions, but also increase the level of risk-weighted assets on our balance sheet, thereby increasing our capital requirements, which could have an adverse effect on our business results, financial condition and liquidity."
         }
       ],
-      "short_title": "We are exposed to market risk, including…",
+      "short_title": "We are exposed to market risk, including interest rate risk",
       "signals": {
         "added_text_ratio": 0.0076,
         "category_scores": {
@@ -12460,7 +12460,7 @@
           "text": "For additional discussion of our significant accounting estimates, policies, and standards, see “Item 7 – Management’s Discussion and Analysis of Financial Condition and Results of Operations - Critical Accounting Estimates” of this Form 10-K and Note 2 of the Notes to Consolidated Financial Statements of this Form 10-K."
         }
       ],
-      "short_title": "The preparation of the consolidated financial statements…",
+      "short_title": "The preparation of the consolidated financial statements requires the use",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -12980,7 +12980,7 @@
           "text": "See “Item 1 – Business – Regulation” of this Form 10-K for additional information on the Basel III regulatory capital standards."
         }
       ],
-      "short_title": "The Basel III regulatory capital standards impose…",
+      "short_title": "The Basel III regulatory capital standards impose capital",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -13208,7 +13208,7 @@
           "text": "Despite risk mitigation policies and practices, we may incur losses as a result of positions we hold in connection with these activities."
         }
       ],
-      "short_title": "Our underwriting, market-making, trading, and other business…",
+      "short_title": "Our underwriting, market-making, trading",
       "signals": {
         "added_text_ratio": 0.0107,
         "category_scores": {
@@ -13865,7 +13865,7 @@
           "text": "Rapidly rising rates, for example, have made and may continue to make investments in securities, such as fixed income securities and money market funds, more attractive for investors, thereby incentivizing them to reduce the cash they hold."
         }
       ],
-      "short_title": "Lack of funding, liquidity, or access to…",
+      "short_title": "Lack of funding, liquidity, or access to capital",
       "signals": {
         "added_text_ratio": 0.0314,
         "category_scores": {
@@ -14436,7 +14436,7 @@
           "text": "Additionally, we could experience a larger number of claims against us relating to our recruiting efforts."
         }
       ],
-      "short_title": "Our ability to attract and retain senior…",
+      "short_title": "Our ability to attract and retain senior professionals",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -14492,7 +14492,7 @@
       "kind": "new_named_party",
       "new_sentence_id": "0001193125-26-067130:14:34",
       "old_sentence_id": null,
-      "short_title": "Cyber attack or other security breach of…"
+      "short_title": "Cyber attack or other security breach of our technology systems"
     },
     {
       "change_id": "61ffb76925cf3bc2",
@@ -14500,7 +14500,7 @@
       "kind": "new_named_party",
       "new_sentence_id": "0001193125-26-067130:20:2",
       "old_sentence_id": null,
-      "short_title": "We are subject to risks relating to…"
+      "short_title": "We are subject to risks relating to environmental, social"
     },
     {
       "change_id": "c9c637a7b6f09af9",
@@ -14508,7 +14508,7 @@
       "kind": "new_figure",
       "new_sentence_id": "0001193125-26-067130:2:5",
       "old_sentence_id": "0000950170-25-027702:2:5",
-      "short_title": "A downgrade in our credit ratings could…"
+      "short_title": "A downgrade in our credit ratings"
     },
     {
       "change_id": "cdde20b394f48139",
@@ -14516,7 +14516,7 @@
       "kind": "new_named_party",
       "new_sentence_id": "0001193125-26-067130:21:3",
       "old_sentence_id": null,
-      "short_title": "Financial services firms are highly regulated and…"
+      "short_title": "Financial services firms are highly regulated"
     }
   ],
   "is_fixture": false,
@@ -14551,6 +14551,7 @@
     ]
   },
   "notes": [
+    "Short titles and highlights were derived from this analysis's own content by a migration to pipeline 0.2.0 (titles are truncated headings, no language model). Re-run the pipeline for this ticker to regenerate everything with the current stages.",
     "Short titles and highlights were derived from this analysis's own content by a migration to pipeline 0.1.0 (titles are truncated headings, no language model). Re-run the pipeline for this ticker to regenerate everything with the current stages.",
     "Not investment advice. RiskDiff shows changes in disclosed risk language, not changes in actual risk."
   ],
@@ -22769,6 +22770,7 @@
       "text": "Despite risk mitigation policies and practices, we may incur losses as a result of positions we hold in connection with these activities."
     }
   },
+  "stage_versions": null,
   "summary": {
     "by_category": {
       "artificial_intelligence": 1,

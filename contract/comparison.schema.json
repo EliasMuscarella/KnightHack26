@@ -189,7 +189,7 @@
           "type": "array"
         },
         "short_title": {
-          "description": "At most 8 words, plain English, neutral; a label for lists and cards (never a claim). LLM-generated and validated, or a deterministic truncation of the heading.",
+          "description": "At most 10 words, plain English, neutral; a label for lists and cards (never a claim). LLM-generated and validated, or the deterministic first clause of the heading (never a fragment, never an ellipsis, never the bare company name).",
           "minLength": 1,
           "title": "Short Title",
           "type": "string"
@@ -1425,6 +1425,22 @@
       },
       "title": "Sentence Index",
       "type": "object"
+    },
+    "stage_versions": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "STAGE_VERSION of each stage that produced this report, keyed by stage name (fetch, extract, segment, embed, match, diff, signals, llm), so a checker can name the earliest stage a re-run must start from. Absent in reports published before it was recorded.",
+      "title": "Stage Versions"
     },
     "summary": {
       "$ref": "#/$defs/Summary"

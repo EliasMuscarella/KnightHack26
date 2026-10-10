@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { buildHeatmap, cellIntensity, cellTone, headlineTopic, rankTopics, relativeTime, sourceLine } from "../trends.ts";
+import { buildHeatmap, cellIntensity, cellTone, headlineTopic, MAX_HEATMAP_COLUMNS, OTHER_CATEGORY, rankTopics, relativeTime, sourceLine } from "../trends.ts";
 
 const topic = (name: string, companies: string[], sentences: number, source: "lexicon" | "entity" | "phrase" = "lexicon") => ({
   topic: name,
@@ -47,4 +47,45 @@ test("source line and relative time", () => {
   assert.equal(relativeTime(null, now), null);
   assert.equal(sourceLine({ source: "databricks", computed_at: "2026-10-11T11:58:00Z" }, now), "Computed in Databricks, updated 2 min ago");
   assert.equal(sourceLine({ source: "local", computed_at: null }, now), "Source: the local report library");
+});
+
+const row = (ticker: string, category: string, added: number, removed = 0) => ({
+  ticker,
+  category,
+  risk_factors: 1,
+  change_ids: ["c"],
+  added_sentences: added,
+  removed_sentences: removed,
+  modified_sentences: 0,
+  added_words: added * 10,
+  removed_words: removed * 10,
+  modified_words: 0,
+  max_score: 10,
+});
+
+test("heatmap has one Other column that merges the real 'other' category with the overflow", () => {
+  // 12 named categories plus the real pipeline category "other", which ranks high on its own.
+  const activity = [row("AAA", "other", 50)];
+  for (let i = 0; i < 12; i++) activity.push(row("AAA", `cat_${i}`, 20 - i));
+  const hm = buildHeatmap(activity, []);
+  assert.equal(new Set(hm.columns).size, hm.columns.length, `duplicate column keys: ${hm.columns.join(", ")}`);
+  assert.equal(hm.columns.filter((c) => c === OTHER_CATEGORY).length, 1);
+  assert.equal(hm.columns.length, MAX_HEATMAP_COLUMNS + 1);
+  assert.equal(hm.columns[hm.columns.length - 1], OTHER_CATEGORY);
+  // the merged cell sums the real "other" (50) and the two categories outside the top ten (9 + 10)
+  const cell = hm.rows[0].cells.get(OTHER_CATEGORY)!;
+  assert.equal(cell.added, 50 + 9 + 10);
+  assert.equal(cell.activity, 50 + 9 + 10);
+  assert.ok(!hm.columns.includes("cat_10") && !hm.columns.includes("cat_11"));
+});
+
+test("heatmap keys stay unique with exactly ten named categories plus 'other', and with few categories", () => {
+  const ten = [row("AAA", "other", 1)];
+  for (let i = 0; i < 10; i++) ten.push(row("AAA", `cat_${i}`, 30 - i));
+  const hm = buildHeatmap(ten, []);
+  assert.equal(new Set(hm.columns).size, hm.columns.length);
+  assert.equal(hm.columns.length, 11);
+  const few = buildHeatmap([row("AAA", "other", 9), row("AAA", "tax", 2)], []);
+  assert.deepEqual(few.columns, ["tax", "other"]);
+  assert.equal(few.rows[0].cells.get("other")!.added, 9);
 });
