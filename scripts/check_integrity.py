@@ -145,7 +145,10 @@ GROUP_HEADER_RE = re.compile(r"^risks? (?:related|relating) to\b", re.IGNORECASE
 TOKEN_RE = diff_mod.TOKEN_RE
 # Function words the pipeline's content-word anchoring may re-mark around a changed content word
 # (D-018: keeping "Eastland" aligned beats keeping "and" aligned); they are not evidence of change.
-FUNCTION_WORDS = frozenset(getattr(diff_mod, "_JUNK_WORDS", ()))
+FUNCTION_WORDS = frozenset(getattr(diff_mod, "_JUNK_WORDS", ())) | frozenset(
+    "we our us ours it its they their them he she his her i you your is are was were be been being "
+    "has have had do does did will would shall should may might can could not no".split()
+)
 PERIOD_DAYS_MIN, PERIOD_DAYS_MAX = 330, 400
 
 
@@ -844,6 +847,8 @@ def entity_problems(value: str, comp: Comparison) -> list[str]:
         problems.append("short code")
     if ADMINISTRATION_RE.match(value.strip()):
         problems.append("bare government administration")
+    if getattr(sig_mod, "is_generic_entity", lambda _v: False)(value):
+        problems.append("generic body or regulator (signals stoplist)")
     try:
         key, _display = derive.normalize_entity(value)
         ident, toks = derive.own_name_tokens(comp.company.name, comp.company.ticker)
@@ -956,8 +961,9 @@ def check_stale(r: Report) -> tuple[list[Violation], dict]:
     reasons: list[str] = []
     earliest: int | None = None
     if comp.pipeline_version != PIPELINE_VERSION:
+        # the pipeline version says the analysis changed somewhere, not in which stage; the stage
+        # comes from the recorded stage versions or from the findings
         reasons.append(f"pipeline {comp.pipeline_version} != {PIPELINE_VERSION}")
-        earliest = 0
     if comp.rubric_version != RUBRIC_VERSION:
         reasons.append(f"rubric {comp.rubric_version} != {RUBRIC_VERSION}")
         earliest = 7 if earliest is None else min(earliest, 7)

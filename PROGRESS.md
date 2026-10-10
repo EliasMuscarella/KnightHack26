@@ -127,7 +127,7 @@ client; the one-time steps for the team are in REPORT.md §11 and README "Shared
 
 ## What's next
 
-Team: run the NVDA command above (it also removes the "The following risk factors…" preamble from the
+Team: `uv run python scripts/refresh_stale.py --check` on a machine with SEC and Hugging Face access re-runs NVDA and SF from their earliest changed stage (NVDA from segmentation, SF from the diff), republishes and re-derives trends; that clears the 30 remaining stale findings in INTEGRITY_REPORT.md. Then run the NVDA command above (it also removes the "The following risk factors…" preamble from the
 highlights and cleans the entity noise the reviewers saw), then `RISKDIFF_SHOW_FIXTURE= ./scripts/dev.sh`
 and walk the NVDA page as a judge. Smallest safe next task: REPORT.md §12, "Next smallest safe task".
 
@@ -145,11 +145,11 @@ instances named in the brief are proven as mechanisms in code and on NVDA/SF, ne
 | # | Task | Status | Notes |
 |---|------|--------|-------|
 | I1 | Integrity checker | done | `scripts/check_integrity.py` (13 checks, stale/code classification by re-running current code on the report's data), baseline `INTEGRITY_REPORT.before.md` + `data/integrity/before.json` (135 findings), `stage_versions` recorded in every new report, `tests/test_integrity_checker.py` |
-| I2a | Web fixes (Opus subagent, `web/` only) | in progress | Trends never throws (error boundary per section), merged `other` heatmap column, snippet windows (`snippet.ts` = port of the checker's rule, shared vectors), case/punctuation-only spans unmarked, fragment-free title fallback |
-| I2b | Trends derivation + serving (Opus subagent) | in progress | topics only from inserted spans and only on meaningful changes, Trends company set = `/companies` set, derivation failures visible, Databricks rows filtered to the current derivation, derived files regenerated |
-| I2c | Pipeline (Opus subagent) | in progress | aligned-only potential→actual pairs, casefold word diff (stage 5 bump), clause-boundary short titles, entity stoplist in signals, intro/summary test, January fiscal-year tests, PIPELINE_VERSION 0.2.0 |
-| I3 | Re-run stale reports | script done; runs blocked here | `scripts/refresh_stale.py` (NVDA first, then by age; cache decides the earliest stage; resumable log); NVDA/SF re-runs need a machine with SEC + Hugging Face access |
-| I4 | Verify | pending | checker to zero code findings, Playwright smoke test against the production build, tests/typecheck/lint/build/determinism, screenshots |
+| I2a | Web fixes (Opus subagent, `web/` only) | done | Trends never throws (error boundary per section), merged `other` heatmap column, snippet windows (`snippet.ts` = port of the checker's rule, shared vectors), case/punctuation-only spans unmarked, fragment-free title fallback |
+| I2b | Trends derivation + serving (Opus subagent) | done | topics only from inserted spans and only on meaningful changes, Trends company set = `/companies` set, derivation failures visible, Databricks rows filtered to the current derivation, derived files regenerated |
+| I2c | Pipeline (Opus subagent) | done | aligned-only potential→actual pairs, casefold word diff (stage 5 bump), clause-boundary short titles, entity stoplist in signals, intro/summary test, January fiscal-year tests, PIPELINE_VERSION 0.2.0 |
+| I3 | Re-run stale reports | script done; presentation refresh applied; real re-runs blocked here | `scripts/refresh_stale.py` (NVDA first, then by age; cache decides the earliest stage; resumable log); NVDA/SF re-runs need a machine with SEC + Hugging Face access |
+| I4 | Verify | done | checker: 135 → 30 findings, all 30 stale data in the two old reports (0 code); Playwright smoke test 3/3 green against the production build with zero console errors; 265 pytest + 29 node tests, ruff, typecheck, lint, build, FIXTUR byte-identical; screenshots viewed |
 
 ## Trends backend session (T-tasks, Oct 10 night)
 
