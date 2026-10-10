@@ -82,6 +82,11 @@ body {
   color: var(--color-ink);
 }
 
+.split-view .filing-text {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
 .filing-text.is-unchanged {
   color: var(--color-ink-faint);
 }
@@ -135,8 +140,6 @@ del.span-del {
   font-weight: 700;
   vertical-align: 0.35em;
   margin-right: 1px;
-  text-decoration: none;
-  display: inline-block;
 }
 
 /* Temporary highlight for a cited sentence (ring + background + left marker). */

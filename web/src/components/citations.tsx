@@ -22,7 +22,7 @@ export interface CitationApi {
   index: Record<string, SentenceRef>;
   filings: { old: FilingRef; new: FilingRef };
   isFixture: boolean;
-  jumpTo: (sentenceId: string) => void;
+  jumpTo: (sentenceId: string, source?: HTMLElement | null) => void;
 }
 
 export const CitationContext = createContext<CitationApi | null>(null);
@@ -48,7 +48,7 @@ export function CitationChip({ n, id, withSide = false }: { n: number; id: strin
       data-cite-id={id}
       onClick={(e) => {
         e.preventDefault();
-        jumpTo(id);
+        jumpTo(id, e.currentTarget);
       }}
       title={ref ? `${sideText}: ${preview(ref.text)}` : id}
       aria-label={`Citation ${n}, ${sideText} sentence${ref ? `: ${preview(ref.text, 80)}` : ""}. Jump to sentence.`}

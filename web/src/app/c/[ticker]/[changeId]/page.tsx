@@ -34,7 +34,7 @@ export async function generateMetadata(props: PageProps<"/c/[ticker]/[changeId]"
 function NavLink({ ticker, change, dir }: { ticker: string; change: Change | undefined; dir: "prev" | "next" }) {
   if (!change) {
     return (
-      <span className="flex-1 rounded-md border border-dashed border-line px-4 py-3 text-sm text-ink-faint">
+      <span className="min-w-0 flex-1 rounded-md border border-dashed border-line px-4 py-3 text-sm text-ink-faint">
         {dir === "prev" ? "This is the first change." : "This is the last change."}
       </span>
     );
@@ -42,7 +42,7 @@ function NavLink({ ticker, change, dir }: { ticker: string; change: Change | und
   return (
     <Link
       href={`/c/${encodeURIComponent(ticker)}/${encodeURIComponent(change.id)}`}
-      className={`group flex-1 rounded-md border border-line bg-surface px-4 py-3 hover:border-accent ${dir === "next" ? "text-right" : ""}`}
+      className={`group min-w-0 flex-1 rounded-md border border-line bg-surface px-4 py-3 hover:border-accent ${dir === "next" ? "text-right" : ""}`}
     >
       <span className="block text-xs font-semibold uppercase tracking-wide text-ink-faint">
         {dir === "prev" ? "← Previous" : "Next →"} · #{change.rank}

@@ -57,7 +57,7 @@ export function FixtureBanner() {
       aria-label="Fixture data warning"
       className="sticky top-14 z-30 border-y-2 border-fixture-line bg-fixture-bg text-fixture-fg"
     >
-      <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-8 py-2 text-sm">
+      <div className="mx-auto flex h-10 max-w-[1400px] items-center gap-3 overflow-hidden px-8 text-sm">
         <span aria-hidden="true" className="font-mono text-base font-bold">
           ⚠
         </span>
