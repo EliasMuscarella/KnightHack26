@@ -272,7 +272,7 @@ def test_case_check_on_real_nvda_export_pair():
     comp = ci.Comparison.model_validate(raw)
     r = ci.Report(path=path, comp=comp, raw=raw)
     out = ci.check_case(r)
-    hit = [v for v in out if "0001045810-26-000021:21:10" in v.sentence_ids]
+    hit = [v for v in out if "0001045810-26-000021:21:94" in v.sentence_ids]
     if not hit:
         pytest.skip("the NVDA report no longer carries the case-only span (re-run landed)")
     assert "export" in hit[0].evidence
