@@ -370,3 +370,372 @@ def test_derive_does_not_mutate_its_input():
     snap = copy.deepcopy(comp.model_dump())
     derive_trend_facts(comp)
     assert comp.model_dump() == snap
+
+
+# ---------- T11: aggregation ----------
+
+from pipeline.trends import aggregate  # noqa: E402
+
+
+def mention(
+    ticker,
+    topic,
+    *,
+    source="lexicon",
+    sid="0000000000-25-000001:0:1",
+    terms=("x",),
+    text="FIXTURE: sentence.",
+    cid="a" * 16,
+):
+    return {
+        "ticker": ticker,
+        "change_id": cid,
+        "sentence_id": sid,
+        "topic": topic,
+        "source": source,
+        "matched_terms": list(terms),
+        "status": "added",
+        "text": text,
+        "added_spans": [(0, len(text))],
+        "short_title": "FIXTURE: title",
+    }
+
+
+def test_phrases_need_two_companies_lexicon_and_entities_do_not():
+    rows = [
+        mention("AAA", "supply agreement", source="phrase"),
+        mention("AAA", "chip design", source="phrase"),
+        mention("BBB", "chip design", source="phrase"),
+        mention("AAA", "Tariffs"),
+        mention("BBB", "Groq", source="entity"),
+    ]
+    got = {(t["source"], t["topic"]): t for t in aggregate.topics(rows)}
+    assert ("phrase", "supply agreement") not in got
+    assert got[("phrase", "chip design")]["companies"] == ["AAA", "BBB"]
+    assert ("lexicon", "Tariffs") in got and ("entity", "Groq") in got
+
+
+def test_topic_ranking_and_example_selection():
+    rows = [
+        mention(
+            "AAA",
+            "Tariffs",
+            sid="0000000000-25-000001:0:1",
+            terms=("tariffs",),
+            text="FIXTURE: short.",
+        ),
+        mention(
+            "AAA",
+            "Tariffs",
+            sid="0000000000-25-000001:0:2",
+            terms=("tariffs", "Section 232"),
+            text="FIXTURE: a longer sentence with two terms.",
+        ),
+        mention("BBB", "Tariffs", sid="0000000000-25-000002:0:1", text="FIXTURE: b two."),
+        mention("BBB", "Tariffs", sid="0000000000-25-000002:0:2", text="FIXTURE: b."),
+        mention("AAA", "China", sid="0000000000-25-000001:0:3"),
+        mention("BBB", "Antitrust", sid="0000000000-25-000002:0:3"),
+        mention("BBB", "entity list", source="entity"),
+        mention("CCC", "Entity List", source="entity", sid="0000000000-25-000003:0:1"),
+    ]
+    t = aggregate.topics(rows)
+    # company_count desc, then sentence_count desc, then topic asc
+    assert [(x["topic"], x["company_count"], x["sentence_count"]) for x in t] == [
+        ("Tariffs", 2, 4),
+        ("entity list", 2, 2),  # entity names merge case-insensitively
+        ("Antitrust", 1, 1),
+        ("China", 1, 1),
+    ]
+    ex = {e["ticker"]: e for e in t[0]["examples"]}
+    assert list(ex) == ["AAA", "BBB"]  # one example per company
+    assert ex["AAA"]["matched_terms"] == ["tariffs", "Section 232"]  # most matched terms first
+    assert ex["BBB"]["text"] == "FIXTURE: b."  # then the shortest sentence
+    assert set(ex["AAA"]) == {
+        "ticker",
+        "change_id",
+        "sentence_id",
+        "short_title",
+        "status",
+        "text",
+        "added_spans",
+        "matched_terms",
+    }
+
+
+def test_category_activity_sums_and_skips_unchanged():
+    base = {
+        "added_sentences": 1,
+        "removed_sentences": 2,
+        "modified_sentences": 3,
+        "added_words": 10,
+        "removed_words": 20,
+        "modified_words": 30,
+    }
+    rows = [
+        {
+            "ticker": "AAA",
+            "category": "credit",
+            "change_id": "b" * 16,
+            "change_type": "new",
+            "score": 40,
+            **base,
+        },
+        {
+            "ticker": "AAA",
+            "category": "credit",
+            "change_id": "c" * 16,
+            "change_type": "expanded",
+            "score": 60,
+            **base,
+        },
+        {
+            "ticker": "AAA",
+            "category": "credit",
+            "change_id": "d" * 16,
+            "change_type": "largely_unchanged",
+            "score": 99,
+            **base,
+        },
+    ]
+    (row,) = aggregate.category_activity(rows)
+    assert row["risk_factors"] == 2 and row["change_ids"] == ["c" * 16, "b" * 16]
+    assert row["added_words"] == 20 and row["modified_sentences"] == 6 and row["max_score"] == 60
+
+
+def local_body() -> dict:
+    facts = [
+        load_facts(
+            ROOT / "data" / "derived",
+            Comparison.model_validate_json(p.read_text(encoding="utf-8")).analysis_id,
+        )
+        for p in PUBLISHED
+    ]
+    assert all(facts)
+    return aggregate.body_from_facts(facts)
+
+
+def test_local_body_on_the_real_reports():
+    body = local_body()
+    assert [c["ticker"] for c in body["companies"]] == ["NVDA", "SF"]
+    nvda = body["companies"][0]
+    assert nvda["cik"] == "0001045810" and nvda["edgar_url_new"].startswith("https://www.sec.gov/")
+    assert (
+        nvda["meaningful_changes"]
+        == nvda["total_changes"] - nvda["by_change_type"]["largely_unchanged"]
+    )
+    assert body["headline"]["companies"] == 2
+    assert body["headline"]["top_topic"] == {
+        "topic": body["topics"][0]["topic"],
+        "company_count": body["topics"][0]["company_count"],
+    }
+    assert body["potential_to_actual"] and body["potential_to_actual"][0]["ticker"] == "NVDA"
+    for t in body["topics"]:
+        for e in t["examples"]:
+            for a, b in e["added_spans"]:
+                assert 0 <= a < b <= len(e["text"])
+    # no banned wording anywhere in what /trends shows
+    text = json.dumps(body).lower()
+    for banned in ("riskier", "biggest risk", "probability"):
+        assert banned not in text
+
+
+# ---------- T11: the Databricks path against simulated tables ----------
+
+
+class TrendsStore:
+    """Duck-typed store for the API whose SQL is answered from TableSim rows (the publisher's
+    real MERGEs filled them). Evaluates the three trends queries in Python with the semantics the
+    SQL states (current ids, phrase rule, one example per topic+source+ticker)."""
+
+    def __init__(self, sim):
+        self.sim = sim
+        self.settings = type(
+            "S",
+            (),
+            {
+                "table": lambda self, n: f"`riskdiff`.`main`.`{n}`",
+                "host": "h",
+                "catalog": "riskdiff",
+                "schema": "main",
+                "warehouse_id": "w",
+            },
+        )()
+        self.statements: list[tuple[str, dict]] = []
+
+    def list_reports(self):
+        return [r for r in self.sim.rows["reports"].values() if r["is_current"]]
+
+    def health(self):
+        return {"remote": "ok", "warehouse_state": "RUNNING"}
+
+    def execute(self, sql, params=None):
+        params = params or {}
+        self.statements.append((sql, params))
+        ids = set(json.loads(params["ids"]))
+        cur = {a for (a,), r in self.sim.rows["reports"].items() if r["is_current"]} & ids
+        changes = self.sim.rows["changes"]
+        if sql.startswith("WITH m AS"):
+            assert params["phrase"] == "phrase" and params["current"] is True
+            ms = [r for r in self.sim.rows["topic_mentions"].values() if r["analysis_id"] in cur]
+            share: dict[str, set] = {}
+            for r in ms:
+                if r["topic_source"] == "phrase":
+                    share.setdefault(r["topic"], set()).add(r["ticker"])
+            ms = [
+                r
+                for r in ms
+                if r["topic_source"] != "phrase"
+                or len(share[r["topic"]]) >= params["min_companies"]
+            ]
+            groups: dict[tuple, list] = {}
+            for r in ms:
+                groups.setdefault((r["topic"], r["topic_source"], r["ticker"]), []).append(r)
+            out = []
+            for rs in groups.values():
+                best = min(
+                    rs,
+                    key=lambda r: (
+                        -len(r["matched_terms"]),
+                        len(r["sentence_text"]),
+                        r["change_id"],
+                        r["sentence_id"],
+                    ),
+                )
+                out.append(
+                    {
+                        **best,
+                        "matched_terms": json.dumps(best["matched_terms"]),
+                        "short_title": changes[(best["analysis_id"], best["change_id"])][
+                            "short_title"
+                        ],
+                        "ticker_sentence_count": len(rs),
+                    }
+                )
+            return out
+        if sql.startswith("SELECT ca.ticker"):
+            return [
+                r
+                for r in self.sim.rows["category_activity"].values()
+                if r["analysis_id"] in cur and r["change_type"] != params["unchanged"]
+            ]
+        if sql.startswith("SELECT h.ticker"):
+            reports = self.sim.rows["reports"]
+            return [
+                {
+                    **h,
+                    "company_name": reports[(h["analysis_id"],)]["company_name"],
+                    "score": changes[(h["analysis_id"], h["change_id"])]["score"],
+                }
+                for h in self.sim.rows["highlights"].values()
+                if h["analysis_id"] in cur and h["kind"] == params["kind"]
+            ]
+        raise AssertionError(sql[:60])
+
+
+def test_databricks_trends_match_the_local_aggregate(tmp_path, monkeypatch):
+    from fastapi.testclient import TestClient
+
+    from api import main as api_main
+    from pipeline.store import DatabricksStore
+    from pipeline.store.publisher import publish_remote
+    from tests.test_api_store import settings_for, wait_for_trends
+    from tests.test_store import HOST, FakeClient, settings
+    from tests.test_store_publish import TableSim
+
+    monkeypatch.setenv("DATABRICKS_HOST", HOST)
+    sim = TableSim()
+    db = DatabricksStore(settings(), client=FakeClient(sim), sleep=lambda s: None)
+    for p in PUBLISHED:  # the real reports through the real publish step (incl. the new MERGEs)
+        publish_remote(p, db, published_by="tester", derived_dir=tmp_path / "derived")
+    assert sim.rows["topic_mentions"] and sim.rows["category_activity"]
+    for sql in (r for r in sim.statements if r.startswith("MERGE")):
+        assert "'" not in sql.split("from_json(:rows, '")[0]  # values only as parameters
+
+    store = TrendsStore(sim)
+    s = settings_for(tmp_path)  # no local reports: everything comes from the store
+    app = api_main.create_app(s, store_factory=lambda: store)
+    with TestClient(app) as client:
+        remote = wait_for_trends(client, lambda t: t["source"] == "databricks")
+    assert remote["status"] == "ok" and remote["source"] == "databricks"
+    assert len(store.statements) == 3  # at most three small queries
+    for sql, params in store.statements:
+        assert ":ids" in sql and ":current" in sql and "NVDA" not in sql
+        assert sorted(json.loads(params["ids"])) == sorted(
+            c["analysis_id"] for c in remote["companies"]
+        )
+    local = local_body()
+    for key in ("headline", "topics", "category_activity", "potential_to_actual", "change_mix"):
+        assert remote[key] == local[key], key
+    for rc, lc in zip(remote["companies"], local["companies"], strict=True):
+        assert rc["edgar_url_old"] is None and rc["edgar_url_new"] is None  # not in the table
+        assert {k: v for k, v in rc.items() if not k.startswith("edgar")} == {
+            k: v for k, v in lc.items() if not k.startswith("edgar")
+        }
+
+
+# ---------- T11: the backfill script ----------
+
+
+def test_derive_trends_script_is_idempotent(tmp_path, monkeypatch, capsys):
+    import importlib
+    import shutil
+
+    script = importlib.import_module("scripts.derive_trends")
+    for v in ("DATABRICKS_HOST", "DATABRICKS_TOKEN", "DATABRICKS_WAREHOUSE_ID"):
+        monkeypatch.delenv(v, raising=False)
+    monkeypatch.setenv("RISKDIFF_DATA_DIR", str(tmp_path))
+    (tmp_path / "published").mkdir()
+    for p in PUBLISHED:
+        shutil.copy(p, tmp_path / "published" / p.name)
+    assert script.main([]) == 0
+    files = sorted((tmp_path / "derived").glob("*.trends.json"))
+    assert len(files) == len(PUBLISHED)
+    snap = {f.name: (f.read_bytes(), f.stat().st_mtime_ns) for f in files}
+    assert script.main(["--local-only"]) == 0
+    assert {f.name: (f.read_bytes(), f.stat().st_mtime_ns) for f in files} == snap  # no rewrite
+    out = capsys.readouterr().out
+    assert "unchanged" in out and "local only" in out
+    for f in files:  # identical to the committed derived files
+        assert f.read_bytes() == (ROOT / "data" / "derived" / f.name).read_bytes()
+    # a bad file counts as a failure (exit 1), the others still derive
+    (tmp_path / "published" / "BAD_2024_2025.json").write_text("{}")
+    assert script.main(["--local-only"]) == 1
+
+
+def test_derive_trends_script_backfills_the_store(tmp_path, monkeypatch):
+    import importlib
+    import shutil
+
+    from pipeline.store import DatabricksStore
+    from pipeline.store.publisher import publish_remote
+    from tests.test_store import HOST, FakeClient, settings
+    from tests.test_store_publish import TableSim
+
+    script = importlib.import_module("scripts.derive_trends")
+    monkeypatch.setenv("DATABRICKS_HOST", HOST)
+    monkeypatch.setenv("DATABRICKS_TOKEN", "dapi-test")
+    monkeypatch.setenv("DATABRICKS_WAREHOUSE_ID", "wh1")
+    monkeypatch.setenv("RISKDIFF_DATA_DIR", str(tmp_path))
+    sim = TableSim()
+    fake = FakeClient(sim)
+    db = DatabricksStore(settings(), client=fake, sleep=lambda s: None)
+    for p in PUBLISHED:
+        publish_remote(p, db, published_by="tester")
+    # a workspace from before T11: the report rows exist but the trend tables are empty
+    sim.rows["topic_mentions"].clear()
+    sim.rows["category_activity"].clear()
+    store = TrendsStore(sim)
+    store.download_report = lambda aid, volume_path=None, content_sha256=None: db.download_report(
+        aid, volume_path=volume_path, content_sha256=content_sha256
+    )
+    store.execute = db.execute
+    monkeypatch.setattr(script, "DatabricksStore", lambda s: store)
+    (tmp_path / "published").mkdir()
+    shutil.copy(
+        PUBLISHED[0], tmp_path / "published" / PUBLISHED[0].name
+    )  # one local, one remote-only
+    assert script.main([]) == 0
+    n = len(sim.rows["topic_mentions"])
+    assert n > 0 and sim.rows["category_activity"]
+    assert len(list((tmp_path / "derived").glob("*.trends.json"))) == len(PUBLISHED)
+    assert script.main([]) == 0 and len(sim.rows["topic_mentions"]) == n  # insert-if-absent

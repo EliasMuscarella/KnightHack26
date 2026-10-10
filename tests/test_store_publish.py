@@ -79,6 +79,8 @@ def test_publish_uploads_merges_in_order_and_flips_current(tmp_path, env):
         "MERGE INTO `riskdiff`.`main`.`reports`",
         "MERGE INTO `riskdiff`.`main`.`changes`",
         "MERGE INTO `riskdiff`.`main`.`highlights`",
+        "MERGE INTO `riskdiff`.`main`.`topic_mentions`",
+        "MERGE INTO `riskdiff`.`main`.`category_activity`",
         "UPDATE `riskdiff`.`main`.`reports` SET is_current",
     ]
     assert len(sim.statements) == len(expected)
@@ -89,6 +91,13 @@ def test_publish_uploads_merges_in_order_and_flips_current(tmp_path, env):
     assert rep["content_sha256"] == __import__("hashlib").sha256(p.read_bytes()).hexdigest()
     assert len(sim.rows["changes"]) == len(comp.changes)
     assert len(sim.rows["highlights"]) == len(comp.highlights)
+    from pipeline.trends.derive import derive_trend_facts
+
+    facts = derive_trend_facts(comp)
+    assert len(sim.rows["topic_mentions"]) == len(facts.topic_mentions) > 0
+    assert len(sim.rows["category_activity"]) == sum(
+        len(a.categories) for a in facts.category_activity
+    )
 
 
 def test_second_publish_changes_nothing(tmp_path, env):
@@ -105,7 +114,7 @@ def test_second_publish_changes_nothing(tmp_path, env):
     assert not r.inserted and not r.made_current
     assert sim.rows == snapshot  # no row changed
     assert fake.files.uploads == uploads  # no second upload
-    assert not any(s.startswith("UPDATE") for s in sim.statements[5:])  # no flip on repeat
+    assert not any(s.startswith("UPDATE") for s in sim.statements[7:])  # no flip on repeat
 
 
 def test_new_analysis_for_same_filings_becomes_current(tmp_path, env):
@@ -176,6 +185,7 @@ def test_sync_script_uses_the_same_path(tmp_path, env, monkeypatch):
     import importlib
 
     sync = importlib.import_module("scripts.sync_to_databricks")
+    monkeypatch.setenv("RISKDIFF_DATA_DIR", str(tmp_path / "data"))  # derived facts land here
     sim = TableSim()
     fake = FakeClient(sim)
     monkeypatch.setattr(
@@ -187,3 +197,4 @@ def test_sync_script_uses_the_same_path(tmp_path, env, monkeypatch):
     assert (comp.analysis_id,) in sim.rows["reports"]
     assert sync.main([str(p)]) == 0  # second run: no-op, still ok
     assert fake.files.uploads == 1
+    assert len(list((tmp_path / "data" / "derived").glob("*.trends.json"))) == 1
