@@ -295,3 +295,31 @@ def test_money_regex_has_no_trailing_comma():
         "$1,250.50 million",
         "$3 billion",
     ]
+
+
+def test_modal_before_actual_marker_is_not_a_hit():
+    old = block(
+        OLD,
+        1,
+        "Ops.",
+        ["A disruption could disrupt our operations.", "We may be subject to penalties."],
+    )
+    new = block(
+        NEW,
+        1,
+        "Ops.",
+        [
+            "A disruption could have disrupted our operations.",
+            "We may have been subject to penalties.",
+        ],
+    )
+    assert hypothetical_to_actual(ctx_for(old, new)) == []
+    # but the genuine case still fires
+    old2 = block(OLD, 1, "Ops.", ["Trade restrictions may affect our suppliers."])
+    new2 = block(
+        NEW,
+        1,
+        "Ops.",
+        ["Trade restrictions have affected and may continue to affect our suppliers."],
+    )
+    assert len(hypothetical_to_actual(ctx_for(old2, new2))) == 1

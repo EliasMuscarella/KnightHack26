@@ -5,12 +5,14 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import os
 from typing import TYPE_CHECKING
 
 from pipeline import llm as llm_mod
 from pipeline import signals as signals_mod
 from pipeline.config import NER_MODEL_ID, PIPELINE_VERSION, SENTENCE_SPLITTER_ID
 from pipeline.diff import diff_params_for
+from pipeline.errors import PipelineError
 from pipeline.publish import publish
 from pipeline.rubric import RUBRIC_VERSION
 from pipeline.schema import (
@@ -164,7 +166,16 @@ def stage7_llm(
     reason = ctx.outputs.get("llm_reason")
     results: list[dict | None] | None = None
     info: dict = {"provider": None, "model_id": None, "prompt_sha256": None, "reason": None}
-    if client is None and reason is None and prepared and not ctx.force(7):
+    if not prepared:
+        # nothing for the LLM to do (every change is largely unchanged): no provider probe, so the
+        # published output does not depend on network availability
+        return [None] * len(records), {
+            "provider": None,
+            "model_id": None,
+            "prompt_sha256": None,
+            "reason": "No change required the LLM stage.",
+        }
+    if client is None and reason is None and not ctx.refresh_llm:
         for provider, model_id in (
             ("huggingface", f"hf:{settings.llm_model}"),
             ("gemini", f"gemini:{settings.gemini_model}"),
@@ -208,7 +219,8 @@ def stage7_llm(
                     llm_mod.STAGE_VERSION,
                     _llm_key_inputs(prompt_hash, client.model_id, old, new, sentences, fetch),
                 )
-                hit = None if ctx.force(7) else ctx.cache.get("llm", key)
+                ctx.check_cancelled()
+                hit = None if ctx.refresh_llm else ctx.cache.get("llm", key)
                 if hit is not None:
                     results[i] = hit
                     continue
@@ -247,7 +259,7 @@ def build_interpretation(
     ):
         return Interpretation(
             status="unavailable",
-            reason=f"The model did not return valid output after {llm_mod.MAX_ATTEMPTS} attempts ({(llm_res or {}).get('error') or 'unknown error'}).",
+            reason=f"The model did not return valid output after {llm_mod.MAX_ATTEMPTS} attempts.",
             model_id=info["model_id"],
         )
     v = validate_llm_output(
@@ -396,12 +408,19 @@ def assemble(
         by_type[c.change_type] += 1
         for cat in c.categories:
             by_cat[cat] += 1
-    if llm_info["provider"] is None:
+    if (
+        llm_info["provider"] is None
+        and llm_info.get("reason") == "No change required the LLM stage."
+    ):
+        interp_status = "skipped"
+    elif llm_info["provider"] is None:
         interp_status = "unavailable"
     elif any(c.interpretation.status in ("ok", "empty") for c in changes):
         interp_status = "ok"
-    else:
+    elif all(c.interpretation.status == "skipped" for c in changes):
         interp_status = "skipped"
+    else:
+        interp_status = "unavailable"
 
     notes: list[str] = []
     if ctx.fixture:
@@ -486,6 +505,14 @@ def run_final_stages(ctx: RunContext, ticker: str):
         )
     if ctx.until_stage <= 7:
         return ctx
+
+    errored = [r for r in llm_rows if r and r.get("status") == "error"]
+    if errored and os.environ.get("RISKDIFF_ALLOW_PARTIAL_LLM", "") != "1":
+        raise PipelineError(
+            f"The LLM provider failed for {len(errored)} change(s) after retries; publishing would make the output "
+            "depend on a transient failure. Rerun (cached changes are reused) or set RISKDIFF_ALLOW_PARTIAL_LLM=1.",
+            code="llm_errors",
+        )
 
     ctx.emit(8, "started", ticker=ticker)
     comp = assemble(ctx, ticker, records, sig_rows, llm_rows, llm_info)

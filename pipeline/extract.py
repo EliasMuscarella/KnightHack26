@@ -29,7 +29,7 @@ from pipeline.types import ExtractedSection
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.2.0"
+STAGE_VERSION = "0.2.1"
 MIN_WORDS = 800
 MAX_WORDS = 60_000
 MAX_HEADING_WORDS = 20
@@ -53,6 +53,9 @@ FORM_FOOTER_RE = re.compile(r"^.{0,80}\b(19|20)\d{2}\s+(annual report|form\s*10-
 CONTINUED_RE = re.compile(r"\(continued\)\s*$", re.I)
 TERMINAL_PUNCT = (".", "!", "?", ":", ";", '"', "”")
 _TRAILING_PAGE_RE = re.compile(r"[\s|•\-–—]*\b\d{1,3}\s*$")
+BULLET_START_RE = re.compile(
+    r"^[\u2022\u25cf\u25aa\u25a0\u25e6\u2023\u2043\u00b7\-\u2013\u2014*]\s"
+)
 
 
 def _norm_key(text: str) -> str:
@@ -204,8 +207,11 @@ def clean_units(units: list[Unit], header_counts: Counter | None = None) -> tupl
                 and prev.emph_ratio < 0.9
                 and prev.word_count >= 8
             )
-            starts_lower = u.text[:1].islower()
-            if prev_open and starts_lower and u.emph_ratio < 0.9:
+            # the continuation may start with a capitalized word ("... customers in" + "China and ...")
+            continues = (
+                u.emph_ratio < 0.9 and not BULLET_START_RE.match(u.text) and u.word_count >= 3
+            )
+            if prev_open and continues:
                 kept[-1] = _merge_units(prev, u)
                 continue
         kept.append(u)

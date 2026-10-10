@@ -32,6 +32,9 @@ ARCHIVE_URL = "https://www.sec.gov/Archives/edgar/data/{cik_int}/{acc_nodash}/{d
 TICKERS_TTL = 7 * 24 * 3600
 SUBMISSIONS_TTL = 24 * 3600
 
+ACCESSION_RE = re.compile(r"^\d{10}-\d{2}-\d{6}$")
+PAGE_NAME_RE = re.compile(r"^CIK\d{10}-submissions-\d{3}\.json$")
+DOC_NAME_RE = re.compile(r"^[A-Za-z0-9._\-]{1,128}$")
 ORIGINAL_FORMS = ("10-K", "10-K405")
 AMENDMENT_FORMS = ("10-K/A", "10-K405/A")
 FY_FOCUS_RE = re.compile(
@@ -117,7 +120,7 @@ def _iter_filings(client: AllowlistClient, cik: str, cache_dir: Path, subs: dict
     yield from rows(subs.get("filings", {}).get("recent", {}))
     for extra in subs.get("filings", {}).get("files", []):
         name = extra.get("name")
-        if not name:
+        if not name or not PAGE_NAME_RE.match(name):
             continue
         path = cache_dir / "sec" / "submissions" / name
         if path.exists():
@@ -199,7 +202,11 @@ def select_two_latest(filings: list[dict]) -> tuple[dict, dict, str, list[str]]:
 def download_primary(client: AllowlistClient, cik: str, filing: dict, cache_dir: Path) -> Path:
     acc = filing["accessionNumber"]
     doc = filing["primaryDocument"]
+    if not ACCESSION_RE.match(acc):
+        raise SecUnavailable(f"Unexpected accession number format from SEC: {acc!r}")
     safe_doc = Path(doc).name  # primary docs are plain file names; never trust path segments
+    if not DOC_NAME_RE.match(safe_doc):
+        raise SecUnavailable(f"Unexpected primary document name from SEC: {doc!r}")
     path = cache_dir / "sec" / "filings" / acc / safe_doc
     if path.exists():
         return path

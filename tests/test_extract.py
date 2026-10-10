@@ -215,3 +215,23 @@ def test_oversized_candidate_fails_loudly():
     )
     with pytest.raises(ExtractionFailed, match="over"):
         extract_item_1a(html, "0000000000-25-000001")
+
+
+def test_page_split_paragraph_with_capitalized_continuation():
+    first = "We sell most of our products to customers in"
+    html = (
+        "<html><body><p><b>Item 1A. Risk Factors</b></p>"
+        + "".join(f"<p>{LOREM}</p>" for _ in range(6))
+        + f"<p>{first}</p><div>22</div><div><a href='#'>Table of Contents</a></div>"
+        + "<p>China and other countries subject to export controls.</p>"
+        + "".join(f"<p>{LOREM}</p>" for _ in range(6))
+        + "<p><b>A bold heading stays separate.</b></p><p>Body after the heading continues here with text.</p>"
+        + "<p><b>Item 1B. Unresolved Staff Comments</b></p></body></html>"
+    )
+    sec = extract_item_1a(html, "0000000000-25-000001")
+    joined = next(u for u in sec.units if u["text"].startswith("We sell most"))
+    assert (
+        joined["text"]
+        == "We sell most of our products to customers in China and other countries subject to export controls."
+    )
+    assert any(u["text"] == "A bold heading stays separate." for u in sec.units)

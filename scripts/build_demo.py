@@ -57,13 +57,16 @@ def main() -> int:
     ap.add_argument(
         "--dry-run", action="store_true", help="rank only; do not move files or write DEMO.md"
     )
+    ap.add_argument(
+        "--force", action="store_true", help="replace published files whose analysis_id differs"
+    )
     args = ap.parse_args()
     settings = get_settings()
     results: list[tuple[str, Comparison, Path]] = []
     failures: list[tuple[str, str]] = []
     for t in [x.strip().upper() for x in args.candidates.split(",") if x.strip()]:
         try:
-            ctx = run_pipeline(t, settings)
+            ctx = run_pipeline(t, settings, force_publish=args.force)
             path = Path(ctx.outputs["published_path"])
             comp = ctx.outputs["comparison"]
             if comp.is_fixture:

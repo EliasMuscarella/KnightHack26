@@ -23,13 +23,22 @@ log = logging.getLogger("pipeline")
 
 
 def _blocks_hash(segs: dict[str, SegmentedFiling]) -> str:
-    payload = {side: [[b.heading, b.body] for b in segs[side].blocks] for side in ("old", "new")}
+    """Includes accession numbers and block ids: cached outputs carry ids, so identical text under
+    different accessions must not share a cache entry."""
+    payload = {
+        side: [segs[side].accession_number, [[b.id, b.heading, b.body] for b in segs[side].blocks]]
+        for side in ("old", "new")
+    }
     return hashlib.sha256(json.dumps(payload, ensure_ascii=False).encode()).hexdigest()
 
 
 def _sentences_hash(segs: dict[str, SegmentedFiling]) -> str:
     payload = {
-        side: [[s.text for s in b.sentences] for b in segs[side].blocks] for side in ("old", "new")
+        side: [
+            segs[side].accession_number,
+            [[b.id, [[s.id, s.text] for s in b.sentences]] for b in segs[side].blocks],
+        ]
+        for side in ("old", "new")
     }
     return hashlib.sha256(json.dumps(payload, ensure_ascii=False).encode()).hexdigest()
 

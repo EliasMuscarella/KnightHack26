@@ -24,6 +24,7 @@ from typing import Any
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
@@ -38,6 +39,11 @@ log = logging.getLogger("api")
 
 ANALYZE_TIMEOUT_SECONDS = int(os.environ.get("RISKDIFF_ANALYZE_TIMEOUT", "1500"))
 ALLOW_FIXTURE = os.environ.get("RISKDIFF_ALLOW_FIXTURE", "") == "1"
+ALLOWED_HOSTS = [
+    h.strip()
+    for h in os.environ.get("RISKDIFF_API_HOSTS", "localhost,127.0.0.1,testserver").split(",")
+    if h.strip()
+]
 
 FRIENDLY: dict[str, str] = {
     "invalid_ticker": "That does not look like a ticker. Use 1-6 letters, '.', or '-'.",
@@ -101,6 +107,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     )
     app.state.rd = state
 
+    app.add_middleware(TrustedHostMiddleware, allowed_hosts=ALLOWED_HOSTS)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=[settings.api_origin],
@@ -131,7 +138,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "model_warm": state.warm and emb is not None,
             "embedding_backend": getattr(emb, "backend", None),
             "embedding_model": getattr(emb, "model_id", None),
-            "embedding_error": state.embedder_error,
+            "embedding_error": (state.embedder_error or "").split(":")[0] or None,
             "busy": state.busy.locked(),
             "pipeline_version": PIPELINE_VERSION,
             "sec_configured": bool(settings.sec_user_agent),

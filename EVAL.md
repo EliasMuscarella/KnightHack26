@@ -12,7 +12,7 @@ Numbers in this file are produced by `uv run python -m eval.eval`. Checks that c
 
 ## 3. Determinism (full pipeline twice from cache)
 
-Ticker FIXTUR (FIXTURE: synthetic filing pair, because real filings are unavailable in this environment): byte-identical = **True**, identical analysis_id = **True** (`f551f065a90e0219…`), 165,893 bytes, second-run cache misses: none.
+Ticker FIXTUR (FIXTURE: synthetic filing pair, because real filings are unavailable in this environment): byte-identical = **True**, identical analysis_id = **True** (`2bd78cac721633ab…`), 165,641 bytes, second-run cache misses: none.
 
 ## 4. Citation validator audit (published output)
 

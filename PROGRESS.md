@@ -34,11 +34,12 @@ the pipeline with network access and `.env`. Nothing fake is ever published.
 | 11 | Frontend | done + reviewed + fixed | build/lint/typecheck green; screenshots at 1440×900 reviewed; live SSE verified against the real API |
 | 12 | API + live mode | done + reviewed + fixed | thread-held single-analysis lock, cancel between stages, fixture never served, SSE tested |
 | 13 | Demo dataset | blocked (SEC access) | `scripts/build_demo.py` + `eval/citation_audit.py` ready; UI screenshots done on the fixture |
-| 14 | Hardening + REPORT.md | round 1 done (4 HIGH + 12 MEDIUM pipeline findings fixed; 3 MEDIUM + 14 LOW frontend findings fixed); round 2 in progress | |
+| 14 | Hardening + REPORT.md | two review rounds done | round 1: 4 HIGH + 12 MEDIUM (pipeline) and 3 MEDIUM + 14 LOW (frontend) fixed; round 2: 0 HIGH, 8 MEDIUM (pipeline) + 3 MEDIUM (frontend) fixed with tests; a third pass was not run (time), so "two consecutive clean passes" is NOT claimed |
 
 ## What's next
 
-Review round 2 (pipeline/API + frontend, security included) → fix → REPORT.md.
+For the team: `.env` + a machine with SEC/HF access → `uv run python scripts/build_demo.py` → spot-check
+Item 1A boundaries → `uv run python -m eval.eval --write` → citation audit (`eval/README.md`).
 
 ## How to resume
 

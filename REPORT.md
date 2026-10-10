@@ -10,9 +10,12 @@ without you), `EVAL.md` (real numbers only), `DEMO.md` (demo dataset status).
 (fetch → extract → segment → embed → match → diff → signals → LLM → score/publish), stage caching,
 byte-identical reruns, the FastAPI backend with SSE live mode, and the Next.js UI (all five screens,
 citation chips that jump to the cited sentence, side-by-side/inline diff, score breakdown, AI
-interpretation panel, methodology page). 104 pytest tests pass; `npm run build/lint/typecheck` pass.
-Two independent review rounds were run on the pipeline/API and the frontend; all HIGH and MEDIUM
-findings from round 1 were fixed (see `DECISIONS.md` D-015 and the round-2 section below).
+interpretation panel, methodology page). 113 pytest tests pass; `npm run build/lint/typecheck` pass.
+Two independent review rounds were run on the pipeline/API and on the frontend. Every HIGH and
+MEDIUM finding from both rounds was fixed and covered by a test where practical (`DECISIONS.md`
+D-015/D-016, section 9 below). The brief asked for two consecutive clean passes; the second pass
+still found MEDIUM items (now fixed), and a third pass was not run for lack of time, so that bar
+is not claimed.
 
 **Not done, and why (environment blockers, not code):**
 
@@ -62,8 +65,10 @@ uv run uvicorn api.main:app --port 8000
 cd web && npm run dev            # http://localhost:3000
 ```
 
-Useful flags: `--until-stage N`, `--from-stage N`, `--no-cache`, `--force` (replace a published
-file whose analysis_id differs). Dev only: `RISKDIFF_SHOW_FIXTURE=1` lists the FIXTURE company in
+Useful flags: `--until-stage N`, `--from-stage N`, `--no-cache` (recompute deterministic stages;
+raw filings and raw LLM output are still reused), `--refresh-llm` (re-query the provider; the
+published bytes can change under the same analysis_id, so use deliberately), `--force` (replace a
+published file whose analysis_id or bytes differ). Dev only: `RISKDIFF_SHOW_FIXTURE=1` lists the FIXTURE company in
 the UI (with a loud banner), `RISKDIFF_ALLOW_FIXTURE=1` lets the API analyze `FIXTUR` live.
 Speed knob for live demos on CPU: `RISKDIFF_EMBED_MODEL=BAAI/bge-small-en-v1.5` (512-token
 context, ~30× faster than bge-m3; changes `analysis_id`, so publish with one model only).
@@ -105,7 +110,10 @@ Do not quote any accuracy number in the pitch until `eval.eval --write` has run 
 - **Thresholds are placeholders** (dense 0.62, lexical 0.20) until `eval.eval` recalibrates them.
 - **LLM output is cached per change**; the first run of each company calls the provider once per
   non-trivial change (≈20–60 calls). Only the raw model JSON is cached; the citation validator
-  reruns on every load.
+  reruns on every load. Temperature-0 output is not reproducible across providers/time, so the raw
+  cache is the determinism anchor: back up `data/cache/stages/llm/` with the published files if you
+  need to regenerate later. If the provider fails for some changes the run aborts rather than
+  publishing a partial result (`RISKDIFF_ALLOW_PARTIAL_LLM=1` overrides).
 - **Cross-machine byte identity is not guaranteed** for dense embeddings (BLAS/thread float
   differences can move a 4-decimal similarity). Same machine + same `uv.lock` is deterministic.
 - **Hugging Face Inference Providers**: the request shape was validated against the SDK types but
@@ -157,5 +165,14 @@ published JSON; 10-Q monitoring (quarterly Item 1A updates); human-in-the-loop g
 ## 9. Review rounds
 
 - Round 1 (pipeline/API reviewer): 4 HIGH, 12 MEDIUM, 11 LOW → all HIGH/MEDIUM fixed, most LOW
-  fixed (see `DECISIONS.md` D-015). Round 1 (frontend reviewer): 0 HIGH, 3 MEDIUM, 14 LOW → all fixed.
-- Round 2: see the section appended below.
+  fixed (`DECISIONS.md` D-015). Round 1 (frontend reviewer): 0 HIGH, 3 MEDIUM, 14 LOW → all fixed.
+- Round 2 (pipeline/API/security reviewer): 0 HIGH, 8 MEDIUM, 15 LOW. Three of the MEDIUMs were
+  round-1 edits that had failed to apply after formatting (cancel check, `--force`, stage-5 cache
+  keys); all 8 MEDIUM are fixed with tests, plus the LOWs that touch security or determinism
+  (`DECISIONS.md` D-016). Deliberately left: per-process SEC rate limiter, paginated-history cache
+  refresh, unpinned embedding revision, worded numbers in the validator.
+- Round 2 (frontend reviewer): 0 HIGH, 3 MEDIUM, 7 LOW → all MEDIUM and most LOW fixed (neutral
+  validator reason labels, one citation numbering for the whole page, no AI note when no model ran,
+  sec.gov-only filing links, API card validation).
+- Known soft spots a third pass would probably raise: cross-machine float drift in dense
+  similarities; the extraction heuristics have still never met a real filing.

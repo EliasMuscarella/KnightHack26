@@ -88,3 +88,23 @@ decision, alternatives considered, how to reverse.
 - 10-K/A vs 10-K for the same period: the original wins.
 - Known, not fixed: cross-machine floating-point differences in dense similarities (4-decimal
   rounding) are possible; byte-identity is guaranteed on one machine + one lockfile. Documented in REPORT.md.
+
+## D-016 Review round 2 (pipeline): fixes and policy
+- Three round-1 edits had silently failed to apply after code formatting (cancel check, `--force`,
+  stage-5 cache keys). They are now in place with tests (`test_cancel_event_stops_between_stages`,
+  `test_cli_force_flag_exists`, `test_same_text_under_other_accessions_does_not_hit_stale_cache`).
+- Raw LLM output is treated like a raw filing: `--no-cache` does NOT re-query the provider; only
+  `--refresh-llm` does, because temperature-0 output is not reproducible and would change a published
+  file under the same `analysis_id`. `publish` now also refuses same-id/different-bytes without `--force`.
+- Provider errors after retries abort the run (`llm_errors`) unless `RISKDIFF_ALLOW_PARTIAL_LLM=1`,
+  so a transient failure never publishes "unavailable" rows under a reproducible id.
+- When no change needs the LLM, the provider is not probed at all (`interpretation_status = skipped`).
+- Hedge→actual ignores "could have disrupted"-style modal perfects (modal within 3 tokens before the marker).
+- Banned language adds comparative paraphrases ("higher/greater/increased ... risk", "more vulnerable")
+  and advice phrasing ("investors should ..."); reasons shown to users name a neutral category only.
+- Page-split paragraphs are re-joined even when the continuation starts with a capital letter.
+- `code_fingerprint` now hashes the source of `pipeline/*.py`, so any code change moves `analysis_id`.
+- API: TrustedHostMiddleware (`RISKDIFF_API_HOSTS`), health exposes only the error type, published
+  interpretation reasons never contain exception text; SEC-provided path segments are validated.
+- Not done (documented): per-process SEC rate limiter, paginated-history cache without refresh,
+  unpinned default embedding revision (`RISKDIFF_EMBED_REVISION`), worded numbers in the validator.

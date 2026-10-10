@@ -240,8 +240,31 @@ def test_hf_payload_shape(monkeypatch):
 
 
 def test_dropped_reasons_never_contain_the_banned_word():
-    r = validate_llm_output(raw([{"text": "This is likely to recur and investors should sell.", "cited_sentence_ids": ["0000000000-25-000001:1:1"]}]), ALLOWED)
+    r = validate_llm_output(
+        raw(
+            [
+                {
+                    "text": "This is likely to recur and investors should sell.",
+                    "cited_sentence_ids": ["0000000000-25-000001:1:1"],
+                }
+            ]
+        ),
+        ALLOWED,
+    )
     joined = " ".join(r.dropped_reasons).lower()
     for w in ("likely", "sell", "invest"):
         assert w not in joined
     assert "banned language" in joined
+
+
+def test_comparative_risk_paraphrases_are_banned():
+    for t in [
+        "The company now faces higher risk from export controls.",
+        "There is greater risk from Taiwan.",
+        "The company is more vulnerable to supply shocks.",
+        "Holders should consider exiting.",
+        "Investors should avoid the shares.",
+        "This represents an increased level of risk.",
+    ]:
+        assert banned_language(t) is not None, t
+    assert banned_language("The filing names Taiwan as a manufacturing location.") is None
