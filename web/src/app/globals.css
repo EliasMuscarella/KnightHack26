@@ -119,6 +119,38 @@ body {
   text-decoration-thickness: 1px;
 }
 
+/*
+ * Rewritten pairs (most words changed, see lib/diffDisplay.ts REPLACEMENT_THRESHOLD): last
+ * year's sentence is struck through but stays readable; this year's is fully highlighted.
+ */
+.filing-text .rewritten-old {
+  color: var(--color-ink-muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(180, 35, 24, 0.55);
+  text-decoration-thickness: 1.5px;
+}
+
+.filing-text .rewritten-new {
+  background: var(--color-add-bg);
+  color: var(--color-ink);
+  text-decoration: none;
+  border-radius: 2px;
+  padding: 1px 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Verbatim quotes on cards. */
+.quote {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  border-left: 3px solid var(--color-line-strong);
+  padding-left: 0.85rem;
+}
+.quote .quote-mark {
+  color: var(--color-ink-faint);
+}
+
 /* Word-level spans inside modified sentences. */
 ins.span-ins {
   background: var(--color-add-bg);

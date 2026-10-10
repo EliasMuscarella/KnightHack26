@@ -19,17 +19,17 @@ export const STAGES: StageInfo[] = [
   },
   {
     stage: 1,
-    label: "Extract Item 1A",
+    label: "Extract Risk Factors",
     kind: "deterministic",
     description:
-      "Finds the Risk Factors section (Item 1A) in each filing, skipping the table of contents and stopping at Item 1B, 1C or 2.",
+      "Finds the Risk Factors section in each filing, skipping the table of contents and stopping where the next section begins.",
   },
   {
     stage: 2,
     label: "Segment risk factors",
     kind: "deterministic",
     description:
-      "Splits Item 1A into risk blocks (a heading plus its body), then into sentences with stable ids and character offsets back into the filing text.",
+      "Splits the Risk Factors section into risk blocks (a heading plus its body), then into sentences with stable ids and character offsets back into the filing text.",
   },
   {
     stage: 3,

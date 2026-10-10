@@ -33,6 +33,11 @@ export interface AnalyzeErrorEvent {
 /** Listing entry used by the home grid: CompanyCard plus where it came from. */
 export interface CompanyListing extends CompanyCard {
   source: "published" | "fixture" | "api";
+  /**
+   * The comparison's rank-1 highlight, computed server-side from the comparison file.
+   * Absent for API cards (GET /companies does not carry highlights).
+   */
+  top_highlight?: { kind: string; short_title: string } | null;
 }
 
 /** contract/rubric.json (produced by the pipeline). */

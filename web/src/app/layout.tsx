@@ -7,11 +7,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "RiskDiff: GitHub Diff for SEC risk factors",
+    default: "RiskDiff: what changed in a company's risk disclosures",
     template: "%s · RiskDiff",
   },
   description:
-    "RiskDiff compares Item 1A (Risk Factors) between a company's two most recent 10-K filings and shows what management added, removed, expanded, or reworded, with every claim cited to the filing text.",
+    "RiskDiff compares the risk factors in a company's last two annual reports (10-K) and shows exactly what management added, removed, or changed, with every quote linked to the SEC filing.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -58,7 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               {DISCLAIMER}
             </p>
             <p className="text-ink-faint">
-              Source text: SEC EDGAR 10-K filings, Item 1A.{" "}
+              Source text: the Risk Factors section of SEC EDGAR 10-K filings.{" "}
               <Link href="/methodology" className="underline hover:text-ink">
                 How RiskDiff works
               </Link>

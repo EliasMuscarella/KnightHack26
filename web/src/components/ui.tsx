@@ -1,24 +1,36 @@
 /** Small presentational building blocks (no hooks: usable from server and client components). */
 import type { ReactNode } from "react";
 
-import { categoryLabel, changeTypeMeta } from "@/lib/format";
-import { FIXTURE_BANNER, SCORE_EXPLAINER } from "@/lib/copy";
+import { categoryLabel } from "@/lib/format";
+import { FIXTURE_BANNER } from "@/lib/copy";
+import { CHANGE_LEVEL, changeLevel, changeTypeVocab, highlightKindVocab } from "@/lib/vocabulary";
 
-export function ChangeTypeBadge({ type, size = "md" }: { type: string; size?: "sm" | "md" }) {
-  const meta = changeTypeMeta(type);
+function Badge({ marker, label, helper, badgeClass, size }: { marker: string; label: string; helper: string; badgeClass: string; size: "sm" | "md" }) {
   return (
     <span
-      className={`inline-flex items-center gap-1 whitespace-nowrap rounded border font-semibold ${meta.badgeClass} ${
+      className={`inline-flex items-center gap-1 whitespace-nowrap rounded border font-semibold ${badgeClass} ${
         size === "sm" ? "px-1.5 py-px text-xs" : "px-2 py-0.5 text-sm"
       }`}
-      title={meta.description}
+      title={helper || undefined}
     >
       <span aria-hidden="true" className="font-mono">
-        {meta.marker}
+        {marker}
       </span>
-      {meta.label}
+      {label}
     </span>
   );
+}
+
+/** Change-type label from the display vocabulary; the helper text is the tooltip. */
+export function ChangeTypeBadge({ type, size = "md" }: { type: string; size?: "sm" | "md" }) {
+  const v = changeTypeVocab(type);
+  return <Badge marker={v.marker} label={v.label} helper={v.helper} badgeClass={v.badgeClass} size={size} />;
+}
+
+/** Highlight-kind label ("Potential → Actual", "New figure disclosed", ...). */
+export function HighlightKindBadge({ kind, size = "md" }: { kind: string; size?: "sm" | "md" }) {
+  const v = highlightKindVocab(kind);
+  return <Badge marker={v.marker} label={v.label} helper={v.helper} badgeClass={v.badgeClass} size={size} />;
 }
 
 export function CategoryChip({ category }: { category: string }) {
@@ -29,22 +41,25 @@ export function CategoryChip({ category }: { category: string }) {
   );
 }
 
-export function ScoreBar({ score, width = "w-20", showLabel = true }: { score: number; width?: string; showLabel?: boolean }) {
-  const clamped = Math.max(0, Math.min(100, score));
+const LEVEL_CLASS = {
+  High: "border-ink bg-ink text-white",
+  Medium: "border-ink-muted bg-surface text-ink",
+  Low: "border-line-strong bg-sunken text-ink-muted",
+} as const;
+
+/** "High 80": the change level in words with the 0–100 number small beside it. */
+export function ChangeLevelTag({ score, withCaption = false }: { score: number; withCaption?: boolean }) {
+  const level = changeLevel(score);
   return (
-    <span className="inline-flex items-center gap-2" title={SCORE_EXPLAINER}>
-      {showLabel ? (
-        <span className="w-8 text-right font-mono text-sm font-semibold tabular-nums text-ink">{score}</span>
-      ) : null}
-      <span
-        className={`relative h-2 ${width} overflow-hidden rounded-full border border-line-strong bg-surface`}
-        role="meter"
-        aria-label="Change score"
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-valuenow={clamped}
-      >
-        <span className="absolute inset-y-0 left-0 bg-ink-muted" style={{ width: `${clamped}%` }} />
+    <span className="inline-flex items-center gap-2" title={`${CHANGE_LEVEL.label}: ${CHANGE_LEVEL.helper}`}>
+      {withCaption ? <span className="text-sm text-ink-faint">{CHANGE_LEVEL.label}</span> : null}
+      <span className={`inline-flex items-baseline gap-1.5 whitespace-nowrap rounded border px-2 py-0.5 text-sm font-semibold ${LEVEL_CLASS[level]}`}>
+        {level}
+        <span className="font-mono text-xs font-medium tabular-nums opacity-80">
+          <span className="sr-only">, </span>
+          {score}
+          <span className="sr-only"> of 100</span>
+        </span>
       </span>
     </span>
   );

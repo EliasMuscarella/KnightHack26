@@ -6,6 +6,7 @@ import { EmptyState, PageContainer } from "@/components/ui";
 import { DISCLAIMER } from "@/lib/copy";
 import { getEvalMarkdown, getRubric } from "@/lib/data";
 import { STAGES } from "@/lib/stages";
+import { CHANGE_LEVEL, LEVEL_HIGH_MIN, LEVEL_MEDIUM_MIN, scoreLineLabel } from "@/lib/vocabulary";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +30,44 @@ const BLOCKED_CATEGORIES = [
   "assurances about outcomes",
 ];
 
+const PLAIN_STEPS = [
+  {
+    title: "Pull both filings from SEC EDGAR",
+    body: "The company's two most recent annual reports (10-K), straight from the SEC. Amendments are excluded.",
+    ai: false,
+  },
+  {
+    title: "Match each risk factor to last year's version",
+    body: "Each risk is paired with its counterpart from last year, even when it moved or was renamed. Unpaired risks are new or dropped.",
+    ai: true,
+  },
+  {
+    title: "Find the exact sentences that changed",
+    body: "Sentence by sentence and word by word: what was added, removed, or rewritten.",
+    ai: false,
+  },
+  {
+    title: "Summarize, with every statement cited",
+    body: "A short plain-English summary of each change. Every point links to the filing sentences behind it.",
+    ai: true,
+  },
+];
+
+const DOES_NOT = [
+  {
+    title: "No predictions",
+    body: "It reports what the filings say. It never forecasts events or outcomes.",
+  },
+  {
+    title: "No risk ratings",
+    body: "A change in disclosure language is not a change in actual risk. The change level measures wording only.",
+  },
+  {
+    title: "No investment advice",
+    body: "It never suggests acting on a disclosure change.",
+  },
+];
+
 function Section({ id, title, children, lead }: { id: string; title: string; lead?: string; children: React.ReactNode }) {
   return (
     <section aria-labelledby={id} className="space-y-4">
@@ -49,21 +88,77 @@ export default async function MethodologyPage() {
   return (
     <PageContainer className="space-y-14 py-10">
       <header className="max-w-[80ch]">
-        <p className="font-mono text-sm font-semibold uppercase tracking-widest text-ink-faint">Methodology</p>
-        <h1 className="mt-2 text-4xl font-bold tracking-tight text-ink">How RiskDiff works</h1>
+        <h1 className="text-4xl font-bold tracking-tight text-ink">How RiskDiff works</h1>
         <p className="mt-4 text-lg leading-relaxed text-ink-muted">
-          RiskDiff treats SEC filing text as the only source of truth. It finds Item 1A in a company&apos;s two most
-          recent original 10-K filings, aligns equivalent risk factors across the two years, and computes a
-          sentence-level and word-level diff. AI assists with alignment and short cited interpretations, but never
-          decides facts.
+          Every year a public company lists the risks it faces in the Risk Factors section of its annual report (10-K).
+          RiskDiff lines up this year&apos;s list against last year&apos;s and shows exactly which sentences changed. The
+          filing text is the only evidence: every quote is verbatim, and every AI statement points to the sentences it
+          is based on.
         </p>
-        <div role="note" className="mt-6 rounded-md border-2 border-ink bg-surface px-5 py-4 text-base font-semibold text-ink">
+      </header>
+
+      <Section id="how" title="How it works">
+        <ol className="grid grid-cols-[repeat(4,minmax(0,1fr))] gap-8" aria-label="Four steps">
+          {PLAIN_STEPS.map((step, i) => (
+            <li key={step.title} className="relative min-w-0">
+              {i > 0 ? (
+                <span aria-hidden="true" className="absolute -left-[30px] top-9 flex w-[28px] justify-center text-ink-faint">
+                  <svg width="24" height="14" viewBox="0 0 24 14">
+                    <path d="M1 7h19M15 2l6 5-6 5" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              ) : null}
+              <div
+                className={`h-full rounded-lg p-5 ${
+                  step.ai ? "border-2 border-dashed border-ai-line bg-ai-bg" : "border-2 border-ink-muted bg-surface"
+                }`}
+              >
+                <p className={`font-mono text-sm font-bold ${step.ai ? "text-ai-fg" : "text-ink-faint"}`}>
+                  {step.ai ? "✦ " : ""}Step {i + 1}
+                </p>
+                <p className="mt-1 text-lg font-bold leading-snug text-ink">{step.title}</p>
+                <p className="mt-2 text-base leading-relaxed text-ink-muted">{step.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p className="max-w-[80ch] text-base text-ink-muted">
+          What changed is always computed by fixed rules in code, so the same two filings always give the same
+          result. AI helps in two narrow places only: recognizing that a reworded risk is the same risk as last
+          year&apos;s (step 2), and wording short summaries (step 4). Any summary statement that does not cite valid
+          filing sentences is removed before it is shown. Each change also gets a {CHANGE_LEVEL.label.toLowerCase()} (High {LEVEL_HIGH_MIN}+, Medium{" "}
+          {LEVEL_MEDIUM_MIN}–{LEVEL_HIGH_MIN - 1}, Low below {LEVEL_MEDIUM_MIN}, on a 0 to 100 scale): {CHANGE_LEVEL.helper.charAt(0).toLowerCase() + CHANGE_LEVEL.helper.slice(1)}
+        </p>
+      </Section>
+
+      <Section id="does-not" title="What RiskDiff does not do">
+        <ul className="grid max-w-[1000px] grid-cols-3 gap-4">
+          {DOES_NOT.map((item) => (
+            <li key={item.title} className="flex gap-3 rounded-md border border-line bg-surface p-4 text-base leading-relaxed text-ink">
+              <span aria-hidden="true" className="font-mono font-bold text-del-fg">
+                ✕
+              </span>
+              <span>
+                <strong>{item.title}.</strong> <span className="text-ink-muted">{item.body}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+        <div role="note" className="max-w-[1000px] rounded-md border-2 border-ink bg-surface px-5 py-4 text-base font-semibold text-ink">
           <span aria-hidden="true">ⓘ </span>
           {DISCLAIMER}
         </div>
-      </header>
+      </Section>
 
-      <Section id="pipeline" title="The pipeline" lead="Nine stages. Seven are deterministic code; two use models, and neither decides what changed.">
+      <div className="border-t-2 border-line-strong pt-10">
+        <h2 className="text-3xl font-bold tracking-tight text-ink">Technical detail</h2>
+        <p className="mt-2 max-w-[80ch] text-ink-muted">
+          For technical reviewers: the full pipeline, the published scoring weights, thresholds and caps, and the
+          evaluation results. RiskDiff reads Item 1A (Risk Factors) of each 10-K.
+        </p>
+      </div>
+
+      <Section id="pipeline" title="The pipeline (nine stages)" lead="Nine stages. Seven are deterministic code; two use models, and neither decides what changed.">
         <PipelineDiagram />
         <ol className="grid grid-cols-3 gap-4">
           {STAGES.map((s) => (
@@ -81,7 +176,7 @@ export default async function MethodologyPage() {
       <Section
         id="scoring"
         title="Scoring weights"
-        lead="Each change gets a 0 to 100 change score: a sum of published weights for signals that fired, each with cited sentences. The score ranks how much the disclosure language changed. It is not a measure of risk."
+        lead={`Each change gets a 0 to 100 score: a sum of published weights for signals that fired, each with cited sentences. It is shown as a change level (High at ${LEVEL_HIGH_MIN} or more, Medium from ${LEVEL_MEDIUM_MIN}, Low below ${LEVEL_MEDIUM_MIN}). It ranks how much the disclosure language changed and is not a measure of risk.`}
       >
         {rubric ? (
           <div className="space-y-6">
@@ -97,6 +192,7 @@ export default async function MethodologyPage() {
                   <tr>
                     <th scope="col" className="px-4 py-2">Signal</th>
                     <th scope="col" className="px-4 py-2">Label</th>
+                    <th scope="col" className="px-4 py-2">Shown as</th>
                     <th scope="col" className="px-4 py-2 text-right">Points</th>
                     <th scope="col" className="px-4 py-2">What it means</th>
                   </tr>
@@ -106,6 +202,7 @@ export default async function MethodologyPage() {
                     <tr key={w.signal} className="border-t border-line align-top">
                       <td className="px-4 py-2.5 font-mono text-xs text-ink-muted">{w.signal}</td>
                       <td className="px-4 py-2.5 font-medium text-ink">{w.label}</td>
+                      <td className="px-4 py-2.5 text-ink-muted">{scoreLineLabel(w.signal, "", w.label)}</td>
                       <td className="px-4 py-2.5 text-right font-mono font-semibold tabular-nums text-ink">{w.points}</td>
                       <td className="max-w-[60ch] px-4 py-2.5 leading-relaxed text-ink-muted">{w.description}</td>
                     </tr>

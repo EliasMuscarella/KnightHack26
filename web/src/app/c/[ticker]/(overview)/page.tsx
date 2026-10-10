@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ChangeList, type ChangeRow } from "@/components/ChangeList";
-import { ComparisonHeader } from "@/components/ComparisonHeader";
+import { AuditTrail, HighlightCards, OverviewHeader, SummaryLine } from "@/components/Overview";
 import { FixtureBanner, InfoBox, PageContainer } from "@/components/ui";
 import { getComparison } from "@/lib/data";
 import { normalizeTicker } from "@/lib/ticker";
@@ -27,10 +26,10 @@ export default async function ComparisonPage(props: PageProps<"/c/[ticker]">) {
   const rows: ChangeRow[] = comparison.changes.map((c) => ({
     id: c.id,
     rank: c.rank,
+    short_title: c.short_title,
     title: c.title,
     change_type: c.change_type,
     categories: c.categories,
-    section_group: c.section_group ?? null,
     score: c.score,
     added: c.stats.added,
     removed: c.stats.removed,
@@ -40,26 +39,22 @@ export default async function ComparisonPage(props: PageProps<"/c/[ticker]">) {
   return (
     <>
       {comparison.is_fixture ? <FixtureBanner /> : null}
-      <PageContainer className="space-y-10 py-8">
-        <nav aria-label="Breadcrumb" className="text-sm text-ink-faint">
-          <Link href="/" className="underline hover:text-ink">
-            Home
-          </Link>{" "}
-          <span aria-hidden="true">/</span> <span className="font-mono text-ink">{comparison.company.ticker}</span>
-          {source === "api" ? <span className="ml-3 rounded bg-sunken px-1.5 py-px text-xs">served by the live API</span> : null}
-        </nav>
-        <ComparisonHeader comparison={comparison} />
+      <PageContainer className="space-y-8 py-7">
+        <div className="space-y-4">
+          <OverviewHeader comparison={comparison} />
+          <SummaryLine comparison={comparison} />
+        </div>
         {comparison.changes.length === 0 ? (
           <InfoBox title="No risk factor changes">
-            The two filings&apos; Item 1A sections did not produce any matched or unmatched risk blocks.
+            The Risk Factors sections of the two filings did not produce any matched or unmatched risk factors.
           </InfoBox>
         ) : (
-          <ChangeList
-            ticker={comparison.company.ticker}
-            rows={rows}
-            countsByType={comparison.summary.by_change_type ?? {}}
-          />
+          <>
+            <HighlightCards comparison={comparison} />
+            <ChangeList ticker={comparison.company.ticker} rows={rows} />
+          </>
         )}
+        <AuditTrail comparison={comparison} source={source} />
       </PageContainer>
     </>
   );
