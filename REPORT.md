@@ -288,6 +288,13 @@ New points and responses:
 | Total "lands on exactly 100, nothing says whether that is a cap" | total line says "capped at 100 (points add to N)" when it is |
 | Companies below the fold at 1280×720 on home | left as is (the judge called it acceptable) |
 
+Verification after the round-2 fixes: 137 tests, ruff clean, web typecheck/lint/build clean, FIXTUR cached vs
+`--no-cache` byte-identical, no horizontal scroll at 1024/1280/1440 on all five pages, no page errors. At
+1440×900 the whole first card (two facts) is above the fold; at 1280×720 the first fact of it is, with the second
+fact starting at the fold. The frontend subagent questioned the counterparty summary bullet "The company has not
+entered into any financing arrangements"; its cited sentence is literally "We have not entered into any financing
+arrangements." (0001045810-26-000021:17:2), so the claim stands.
+
 Demo advice recorded from the judge: open with the counterparty new risk (card → detail → the financial-guarantee
 sentence), then the export-controls China section with the $4.5 billion line and a citation click; do not
 scroll "How this was scored" on the old file until the re-run replaces it.
