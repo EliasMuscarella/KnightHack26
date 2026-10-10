@@ -7,8 +7,9 @@ import type { Change, ModelIds, Sentence } from "@/types/comparison";
 
 import { AnalystDetails, ScoreBreakdownPanel, WhatChangedPanel } from "@/components/ChangePanels";
 import { CitationContext, changeCitationNumbering, type CitationApi, type FilingRef, type SentenceRef } from "@/components/citations";
-import { FilingLink } from "@/components/ui";
-import { mergeChangedSpans, rewrittenIds } from "@/lib/diffDisplay";
+import { MarkedText } from "@/components/MarkedText";
+import { FilingLink, SectionTitle } from "@/components/ui";
+import { rewrittenIds } from "@/lib/diffDisplay";
 import { textFragmentUrl } from "@/lib/format";
 
 type ViewMode = "split" | "inline";
@@ -24,93 +25,23 @@ function subscribeNarrow(cb: () => void) {
 const narrowSnapshot = () => window.matchMedia(NARROW_QUERY).matches;
 const narrowServerSnapshot = () => false;
 
-const STATUS_META: Record<Sentence["status"] | "rewritten", { marker: string; label: string; border: string; gutter: string }> = {
-  added: { marker: "+", label: "Added", border: "border-add-line", gutter: "text-add-fg" },
-  removed: { marker: "−", label: "Removed", border: "border-del-line", gutter: "text-del-fg" },
-  modified: { marker: "~", label: "Edited", border: "border-mod-line", gutter: "text-mod-fg" },
-  rewritten: { marker: "~", label: "Rewritten", border: "border-mod-line", gutter: "text-mod-fg" },
-  unchanged: { marker: "", label: "Unchanged", border: "border-transparent", gutter: "text-ink-faint" },
+const STATUS_META: Record<Sentence["status"] | "rewritten", { label: string }> = {
+  added: { label: "Added" },
+  removed: { label: "Removed" },
+  modified: { label: "Edited" },
+  rewritten: { label: "Rewritten" },
+  unchanged: { label: "Unchanged" },
 };
-
-const STATUS_TINT: Record<string, string> = {
-  added: "bg-add-bg/40",
-  removed: "bg-del-bg/40",
-};
-
-/** Splits a span into leading whitespace, the marked core, and trailing whitespace. */
-function splitWhitespace(text: string): [string, string, string] {
-  const m = /^(\s*)([\s\S]*?)(\s*)$/.exec(text);
-  return m ? [m[1], m[2], m[3]] : ["", text, ""];
-}
 
 function SentenceBody({ s, heading, rewritten }: { s: Sentence; heading: boolean; rewritten: boolean }) {
-  const cls = `filing-text ${heading ? "is-heading" : ""} ${s.status === "unchanged" && !heading ? "is-unchanged" : ""}`;
-  if (s.status === "added") {
-    return (
-      <p className={cls}>
-        <ins className="added-text no-underline">{s.text}</ins>
-      </p>
-    );
-  }
-  if (s.status === "removed") {
-    return (
-      <p className={cls}>
-        <del className="removed-text">{s.text}</del>
-      </p>
-    );
-  }
-  if (s.status === "modified" && rewritten) {
-    return (
-      <p className={cls}>
-        {s.side === "old" ? (
-          <del className="rewritten-old">
-            <span className="sr-only">deleted: </span>
-            {s.text}
-          </del>
-        ) : (
-          <ins className="rewritten-new">
-            <span className="sr-only">inserted: </span>
-            {s.text}
-          </ins>
-        )}
-      </p>
-    );
-  }
-  if (s.status === "modified" && s.diff_spans && s.diff_spans.length > 0) {
-    return (
-      <p className={cls}>
-        {mergeChangedSpans(s.diff_spans).map((span, i) => {
-          if (span.op !== "insert" && span.op !== "delete") return <span key={i}>{span.text}</span>;
-          // Leading/trailing whitespace stays plain text so the marker sits right before the
-          // first word and the underline/strikethrough never starts or ends on a space.
-          const [lead, core, trail] = splitWhitespace(span.text);
-          if (!core) return <span key={i}>{span.text}</span>;
-          const insert = span.op === "insert";
-          return (
-            <span key={i}>
-              {lead}
-              <span aria-hidden="true" className={`span-mark ${insert ? "text-add-fg" : "text-del-fg"}`}>
-                {insert ? "+" : "−"}
-              </span>
-              {insert ? (
-                <ins className="span-ins">
-                  <span className="sr-only">inserted: </span>
-                  {core}
-                </ins>
-              ) : (
-                <del className="span-del">
-                  <span className="sr-only">deleted: </span>
-                  {core}
-                </del>
-              )}
-              {trail}
-            </span>
-          );
-        })}
-      </p>
-    );
-  }
-  return <p className={cls}>{s.text}</p>;
+  const cls = `filing-text ${heading ? "is-heading" : ""} ${s.side === "old" ? "is-old" : ""} ${s.status === "unchanged" && !heading ? "is-unchanged" : ""}`;
+  // A rewritten pair (most words changed) is drawn whole: last year struck, this year highlighted.
+  const status = s.status === "modified" && rewritten ? (s.side === "old" ? "removed" : "added") : s.status;
+  return (
+    <p className={cls}>
+      <MarkedText text={s.text} spans={s.diff_spans} side={s.side} status={status} />
+    </p>
+  );
 }
 
 interface SentenceViewProps {
@@ -140,70 +71,51 @@ function SentenceView(props: SentenceViewProps) {
   );
 }
 
-function StatusTag({ status, highlighted, sideTag, stacked }: { status: keyof typeof STATUS_META; highlighted: boolean; sideTag: string | null; stacked: boolean }) {
+function StatusTag({ status, highlighted, sideTag }: { status: keyof typeof STATUS_META; highlighted: boolean; sideTag: string | null }) {
   const meta = STATUS_META[status];
   return (
     <>
-      {highlighted ? (
-        <span className={`${stacked ? "" : "mb-0.5 block "}font-bold text-ink`}>
-          <span aria-hidden="true">▶ </span>Cited
-        </span>
-      ) : null}
-      {status !== "unchanged" ? (
-        <span className="inline-flex items-center gap-1">
-          <span aria-hidden="true" className="font-mono text-sm leading-none">
-            {meta.marker}
-          </span>
-          {meta.label}
-        </span>
-      ) : (
-        <span className="sr-only">Unchanged</span>
-      )}
-      {sideTag ? <span className={`${stacked ? "" : "mt-0.5 block "}font-medium text-ink-faint`}>{sideTag}</span> : null}
+      {highlighted ? <span className="font-medium text-ink">Cited</span> : null}
+      {status !== "unchanged" ? <span>{meta.label}</span> : <span className="sr-only">Unchanged</span>}
+      {sideTag ? <span>{sideTag}</span> : null}
     </>
   );
 }
 
 function SentenceInner({ s, heading, rewritten, sideTag, highlighted, actionOpen, filing, isFixture, onCloseAction, onBack, layout }: SentenceViewProps) {
   const status: keyof typeof STATUS_META = s.status === "modified" && rewritten ? "rewritten" : s.status;
-  const meta = STATUS_META[status];
   const stacked = layout === "stacked";
   const showLabelLine = highlighted || s.status !== "unchanged" || !!sideTag;
   const actions = actionOpen ? (
     <div
       role="group"
       aria-label="Cited sentence actions"
-      className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 rounded border border-line-strong bg-surface px-3 py-1.5 font-sans text-sm shadow-sm"
+      className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 rounded-md border border-line bg-surface px-3 py-1.5 font-sans text-sm"
     >
-      <FilingLink href={textFragmentUrl(filing.edgar_url, s.text)} isFixture={isFixture} className="font-semibold">
-        View in SEC filing
+      <FilingLink href={textFragmentUrl(filing.edgar_url, s.text)} isFixture={isFixture}>
+        Open in SEC filing
       </FilingLink>
-      <span className="text-ink-faint">
+      <span className="text-ink-secondary">
         FY{filing.fiscal_year} {filing.form}
       </span>
       {onBack ? (
-        <button type="button" onClick={onBack} className="ml-auto font-semibold text-accent underline">
-          <span aria-hidden="true">↩ </span>Back to where you were
+        <button type="button" onClick={onBack} className="ml-auto text-accent underline">
+          Back to where you were
         </button>
       ) : null}
-      <button
-        type="button"
-        onClick={onCloseAction}
-        className={`${onBack ? "" : "ml-auto "}text-ink-muted hover:text-ink`}
-        aria-label="Close sentence actions"
-      >
-        ✕
+      <button type="button" onClick={onCloseAction} className={`${onBack ? "" : "ml-auto "}text-ink-secondary hover:text-ink`} aria-label="Close sentence actions">
+        Close
       </button>
     </div>
   ) : null;
-  const boxClass = `cite-target rounded-r border-l-4 outline-none ${highlighted ? "cite-flash border-ink" : `${meta.border} ${STATUS_TINT[s.status] ?? ""}`}`;
+  const boxClass = `cite-target outline-none ${highlighted ? "cite-flash" : ""}`;
 
   if (stacked) {
     return (
-      <div id={`s-${s.id}`} data-sentence-id={s.id} data-status={status} tabIndex={-1} className={`${boxClass} py-1.5 pl-3 pr-2`}>
+      <div id={`s-${s.id}`} data-sentence-id={s.id} data-status={status} tabIndex={-1} className={`${boxClass} py-1.5 pr-2`}>
         {showLabelLine ? (
-          <p className={`mb-0.5 flex flex-wrap items-center gap-x-2.5 font-sans text-xs font-semibold leading-tight ${meta.gutter}`}>
-            <StatusTag status={status} highlighted={highlighted} sideTag={sideTag} stacked />
+          <p className="mb-0.5 flex flex-wrap items-center gap-x-2.5 font-sans text-sm leading-tight text-ink-secondary">
+            <StatusTag status={status} highlighted={highlighted} sideTag={sideTag} />
           </p>
         ) : (
           <span className="sr-only">Unchanged</span>
@@ -219,10 +131,10 @@ function SentenceInner({ s, heading, rewritten, sideTag, highlighted, actionOpen
       data-sentence-id={s.id}
       data-status={status}
       tabIndex={-1}
-      className={`${boxClass} grid grid-cols-[84px_minmax(0,1fr)] gap-2.5 py-1.5 pl-2 pr-3`}
+      className={`${boxClass} grid grid-cols-[96px_minmax(0,1fr)] gap-3 py-1.5 pl-2 pr-3`}
     >
-      <div className={`pt-1 font-sans text-xs font-semibold leading-tight ${meta.gutter}`}>
-        <StatusTag status={status} highlighted={highlighted} sideTag={sideTag} stacked={false} />
+      <div className="pt-1 font-sans text-sm leading-tight text-ink-secondary">
+        <StatusTag status={status} highlighted={highlighted} sideTag={sideTag} />
       </div>
       <div className="min-w-0">
         <SentenceBody s={s} heading={heading} rewritten={rewritten} />
@@ -232,32 +144,17 @@ function SentenceInner({ s, heading, rewritten, sideTag, highlighted, actionOpen
   );
 }
 
-/** One collapsed run of unchanged sentences, or the "fold" control above an opened run. */
+/** One collapsed run of unchanged sentences, or the fold control above an opened run. */
 function RunToggle({ count, open, onClick }: { count: number; open: boolean; onClick: () => void }) {
   const noun = count === 1 ? "unchanged sentence" : "unchanged sentences";
   return (
-    <button
-      type="button"
-      aria-expanded={open}
-      onClick={onClick}
-      className="group my-1 flex w-full items-center gap-3 py-1 font-sans text-sm text-ink-faint hover:text-ink"
-    >
-      <span aria-hidden="true" className="h-px flex-1 bg-line group-hover:bg-line-strong" />
+    <button type="button" aria-expanded={open} onClick={onClick} className="group my-1 flex w-full items-center gap-3 py-1 font-sans text-sm text-ink-secondary hover:text-ink">
+      <span aria-hidden="true" className="h-px flex-1 bg-line" />
       <span>
-        {open ? (
-          <>
-            <span aria-hidden="true">▾ </span>Fold {count} {noun}
-          </>
-        ) : (
-          <>
-            <span aria-hidden="true">· </span>
-            {count} {noun}
-            <span aria-hidden="true"> ·</span>
-            <span className="ml-2 font-semibold text-accent">show</span>
-          </>
-        )}
+        {open ? `Fold ${count} ${noun}` : `${count} ${noun}`}
+        {!open ? <span className="ml-2 text-accent underline">show</span> : null}
       </span>
-      <span aria-hidden="true" className="h-px flex-1 bg-line group-hover:bg-line-strong" />
+      <span aria-hidden="true" className="h-px flex-1 bg-line" />
     </button>
   );
 }
@@ -472,8 +369,7 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
 
   const api: CitationApi = useMemo(() => ({ index, filings, isFixture, jumpTo }), [index, filings, isFixture, jumpTo]);
 
-  const yearTag = (side: Sentence["side"]) =>
-    side === "old" ? `Last year · FY${filings.old.fiscal_year}` : `This year · FY${filings.new.fiscal_year}`;
+  const yearTag = (side: Sentence["side"]) => (side === "old" ? `Last year, FY${filings.old.fiscal_year}` : `This year, FY${filings.new.fiscal_year}`);
 
   const renderSentence = (s: Sentence, withSideTag: boolean, aliasId?: string) => (
     <SentenceView
@@ -504,20 +400,14 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
   const emptyCell = (side: "old" | "new", merged?: { status: "added" | "removed"; count: number }) => {
     const label = merged
       ? merged.status === "added"
-        ? `no sentences last year (${merged.count} added this year)`
-        : `no sentences this year (${merged.count} removed)`
+        ? `No sentences last year. ${merged.count} added this year.`
+        : `No sentences this year. ${merged.count} removed.`
       : side === "old"
-        ? "no sentence last year"
-        : "no sentence this year";
+        ? "No sentence last year"
+        : "No sentence this year";
     return (
-      <div
-        className={`flex h-full min-h-8 justify-center rounded border border-dashed border-line bg-[repeating-linear-gradient(135deg,transparent,transparent_6px,var(--color-sunken)_6px,var(--color-sunken)_12px)] p-1.5 ${
-          merged ? "items-start" : "items-center"
-        }`}
-      >
-        <span className={`rounded bg-surface/90 px-1.5 py-px font-sans text-xs italic text-ink-faint ${merged ? "sticky top-28" : ""}`}>
-          {label}
-        </span>
+      <div className="flex h-full min-h-8 items-start p-1.5">
+        <span className={`font-sans text-sm text-ink-muted ${merged ? "sticky top-28" : ""}`}>{label}</span>
       </div>
     );
   };
@@ -552,20 +442,20 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
     if (view === "split") {
       const header = (
         <div
-          className={`sticky ${isFixture ? "top-[96px]" : "top-14"} z-10 grid grid-cols-2 gap-5 border-b border-line bg-surface pb-2 pt-1 text-xs font-semibold uppercase tracking-wide text-ink-faint`}
+          className={`sticky ${isFixture ? "top-[96px]" : "top-14"} z-10 grid grid-cols-2 gap-5 border-b border-line bg-paper pb-2 pt-1 text-sm text-ink-secondary`}
         >
           <span>
-            Last year · FY{filings.old.fiscal_year} {filings.old.form}
+            Last year, FY{filings.old.fiscal_year} {filings.old.form}
           </span>
           <span>
-            This year · FY{filings.new.fiscal_year} {filings.new.form}
+            This year, FY{filings.new.fiscal_year} {filings.new.form}
           </span>
         </div>
       );
       if (oneSided) {
         const absentOld = oldCount === 0;
         const absentBox = (
-          <div className="flex h-full min-h-[120px] items-start rounded border border-dashed border-line-strong bg-[repeating-linear-gradient(135deg,var(--color-paper),var(--color-paper)_8px,var(--color-sunken)_8px,var(--color-sunken)_16px)] p-4 text-base text-ink-muted">
+          <div className="min-h-[120px] p-1.5 text-base text-ink-muted">
             <p>{absentOld ? "Not in last year's filing." : "Removed this year."}</p>
           </div>
         );
@@ -595,20 +485,28 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
 
   return (
     <CitationContext.Provider value={api}>
-      <div className="space-y-8">
+      <div className="space-y-10">
         <WhatChangedPanel interp={change.interpretation} numberOf={numberOf} />
 
-        <section aria-labelledby="diff-heading" className="min-w-0 rounded-lg border border-line bg-surface p-5">
-          <div className="mb-4 flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-line pb-4">
-            <div>
-              <h2 id="diff-heading" className="text-xl font-bold text-ink">
-                Sentence by sentence
-              </h2>
-              <p className="text-sm text-ink-muted">
-                Changed sentences only. {runCount > 0 ? "Unchanged text is folded; click a fold to read it." : ""}
-              </p>
-            </div>
-            <div role="group" aria-label="Diff layout" className="inline-flex rounded-md border border-line-strong p-0.5">
+        <section aria-labelledby="diff-heading" className="min-w-0 space-y-4">
+          <SectionTitle
+            id="diff-heading"
+            aside={
+              <span className="flex flex-wrap items-center gap-x-5 gap-y-1" aria-label="Legend">
+                <span>
+                  <mark className="hl">new words</mark>
+                </span>
+                <span>
+                  <del className="strike">removed words</del>
+                </span>
+              </span>
+            }
+          >
+            Sentence by sentence
+          </SectionTitle>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <p className="text-sm text-ink-secondary">Changed sentences only. {runCount > 0 ? "Unchanged text is folded." : ""}</p>
+            <div role="group" aria-label="Diff layout" className="inline-flex rounded-md border border-line p-0.5">
               {(
                 [
                   ["split", "Side by side"],
@@ -620,7 +518,7 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
                   type="button"
                   aria-pressed={view === mode}
                   onClick={() => setChosenView(mode)}
-                  className={`rounded px-3 py-1 text-sm font-medium ${view === mode ? "bg-ink text-white" : "text-ink-muted hover:text-ink"}`}
+                  className={`rounded-sm px-3 py-1 text-sm ${view === mode ? "bg-ink text-white" : "text-ink-secondary hover:text-ink"}`}
                 >
                   {label}
                 </button>
@@ -636,24 +534,13 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
                     setOpenRuns(new Set());
                   }
                 }}
-                className="text-sm font-medium text-accent underline decoration-accent/40 underline-offset-2 hover:decoration-accent"
+                className="text-sm text-accent underline underline-offset-2"
               >
                 {anyClosed ? "Show all unchanged sentences" : "Fold all unchanged sentences"}
               </button>
             ) : null}
-            <ul className="ml-auto flex flex-wrap items-center gap-3 text-sm text-ink-muted" aria-label="Legend">
-              <li>
-                <span className="font-mono font-bold text-add-fg">+</span> <ins className="span-ins">added</ins>
-              </li>
-              <li>
-                <span className="font-mono font-bold text-del-fg">−</span> <del className="span-del">removed</del>
-              </li>
-              <li>
-                <span className="font-mono font-bold text-mod-fg">~</span> edited or rewritten
-              </li>
-            </ul>
           </div>
-          {change.sentences.length === 0 ? <p className="text-ink-muted">No sentences recorded for this change.</p> : renderDiff()}
+          {change.sentences.length === 0 ? <p className="text-ink-secondary">No sentences recorded for this change.</p> : renderDiff()}
         </section>
 
         <ScoreBreakdownPanel change={change} />
@@ -662,13 +549,13 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
       </div>
 
       {missing ? (
-        <div role="status" className="fixed bottom-6 right-6 z-50 w-[420px] max-w-[calc(100vw-48px)] rounded border border-mod-line bg-mod-bg p-4 text-sm text-mod-fg shadow-lg">
-          <p className="font-semibold">That cited sentence is not part of this risk factor&apos;s text.</p>
+        <div role="status" className="fixed bottom-6 right-6 z-50 w-[420px] max-w-[calc(100vw-48px)] rounded-md border border-line bg-surface p-4 text-sm text-ink shadow-card">
+          <p className="font-medium">That cited sentence is not part of this risk factor&apos;s text.</p>
           {missingRef ? <p className="mt-1 font-serif text-base text-ink">{missingRef.text}</p> : null}
           <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1">
             {missingRef ? (
-              <FilingLink href={textFragmentUrl(filings[missingRef.side].edgar_url, missingRef.text)} isFixture={isFixture} className="font-semibold">
-                View in SEC filing (FY{filings[missingRef.side].fiscal_year})
+              <FilingLink href={textFragmentUrl(filings[missingRef.side].edgar_url, missingRef.text)} isFixture={isFixture}>
+                Open in SEC filing (FY{filings[missingRef.side].fiscal_year})
               </FilingLink>
             ) : null}
             <button type="button" className="underline" onClick={() => setMissing(null)}>

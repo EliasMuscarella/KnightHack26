@@ -37,7 +37,7 @@ function preview(text: string, max = 140): string {
   return text.length > max ? `${text.slice(0, max - 1)}…` : text;
 }
 
-/** Numbered citation chip (a small button); click scrolls to and highlights the cited sentence. */
+/** Footnote-style citation: a superscript number; click scrolls to and highlights the cited sentence. */
 export function CitationChip({ n, id, withSide = false }: { n: number; id: string; withSide?: boolean }) {
   const { index, filings, jumpTo } = useCitations();
   const ref = index[id];
@@ -52,12 +52,10 @@ export function CitationChip({ n, id, withSide = false }: { n: number; id: strin
       }}
       title={ref ? `${sideText}: ${preview(ref.text)}` : id}
       aria-label={`Citation ${n}, ${sideText} sentence${ref ? `: ${preview(ref.text, 80)}` : ""}. Jump to sentence.`}
-      className="group/cite inline-flex items-baseline gap-1 rounded-md border border-accent/30 bg-accent-bg/50 px-1.5 py-px align-baseline font-sans text-xs leading-snug no-underline transition-colors hover:border-accent hover:bg-accent-bg focus-visible:border-accent focus-visible:bg-accent-bg"
+      className="cite ml-0.5 inline-block align-super font-sans text-xs font-medium leading-none text-accent no-underline hover:underline focus-visible:underline"
     >
-      <span className="font-bold tabular-nums text-accent decoration-2 underline-offset-2 group-hover/cite:underline group-focus-visible/cite:underline">
-        {n}
-      </span>
-      {withSide ? <span className="font-normal text-ink-faint">{sideText}</span> : null}
+      {n}
+      {withSide ? <span className="sr-only"> ({sideText})</span> : null}
     </a>
   );
 }
@@ -78,10 +76,10 @@ export function CitationChips({
   start?: number;
   numberOf?: (id: string) => number;
 }) {
-  if (ids.length === 0) return <span className="text-xs text-ink-faint">no citation</span>;
+  if (ids.length === 0) return <span className="text-sm text-ink-secondary">no citation</span>;
   const unique = [...new Set(ids)];
   return (
-    <span className="inline-flex flex-wrap gap-1">
+    <span className="whitespace-nowrap">
       {unique.map((id, i) => (
         <CitationChip key={id} n={numberOf ? numberOf(id) : start + i} id={id} withSide={withSide} />
       ))}
