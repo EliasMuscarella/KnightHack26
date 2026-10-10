@@ -20,6 +20,7 @@ import threading
 import time
 from collections.abc import Callable
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
 
 from pipeline import extract as extract_mod
@@ -63,6 +64,7 @@ class RunContext:
     cancel: threading.Event | None = None
     force_publish: bool = False
     refresh_llm: bool = False
+    remote: bool | None = None  # None = publish to the shared store when DATABRICKS_* is set
 
     def check_cancelled(self) -> None:
         if self.cancel is not None and self.cancel.is_set():
@@ -151,9 +153,12 @@ def run_pipeline(
     cancel: threading.Event | None = None,
     force_publish: bool = False,
     refresh_llm: bool = False,
+    remote: bool | None = None,
 ) -> RunContext:
     """`preloaded` may carry a warm `embedder` (and `llm_client`/`llm_reason`) from a long-lived process.
-    `cancel` is checked between stages. `force_publish` allows replacing a published file whose analysis_id differs."""
+    `cancel` is checked between stages. `force_publish` allows replacing a published file whose analysis_id differs.
+    `remote=False` skips the shared-store publish; None publishes when Databricks is configured (its
+    outcome lands in ctx.outputs["remote_publish"] and never undoes the local publish)."""
     settings = settings or get_settings()
     ticker = normalize_ticker(ticker)
     fixture = fixture or ticker == FIXTURE_TICKER
@@ -169,6 +174,7 @@ def run_pipeline(
         cancel=cancel,
         force_publish=force_publish,
         refresh_llm=refresh_llm,
+        remote=remote,
     )
     if preloaded:
         ctx.outputs.update(preloaded)
@@ -243,7 +249,16 @@ def run_pipeline(
 
     from pipeline.stages_late import run_late_stages
 
-    return run_late_stages(ctx, ticker)
+    ctx = run_late_stages(ctx, ticker)
+    if "published_path" in ctx.outputs and not fixture:
+        from pipeline.store.publisher import publish_remote_if_enabled
+
+        t0 = time.perf_counter()
+        ctx.outputs["remote_publish"] = publish_remote_if_enabled(
+            Path(ctx.outputs["published_path"]), enabled=ctx.remote
+        )
+        ctx.timings["remote_publish"] = time.perf_counter() - t0
+    return ctx
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -272,6 +287,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument(
         "--fixture", action="store_true", help="Run on the synthetic FIXTURE filing pair"
     )
+    ap.add_argument(
+        "--no-remote",
+        action="store_true",
+        help="Do not publish to the shared Databricks library even if DATABRICKS_* is set",
+    )
     ap.add_argument("-v", "--verbose", action="store_true")
     args = ap.parse_args(argv)
     logging.basicConfig(
@@ -288,12 +308,23 @@ def main(argv: list[str] | None = None) -> int:
             fixture=args.fixture,
             force_publish=args.force,
             refresh_llm=args.refresh_llm,
+            remote=False if args.no_remote else None,
         )
     except PipelineError as e:
         print(f"ERROR [{e.code}]: {e.message}", file=sys.stderr)
         return 2
     if "published_path" in ctx.outputs:
         print(ctx.outputs["published_path"])
+        remote = ctx.outputs.get("remote_publish") or {}
+        if remote.get("status") == "ok":
+            print(f"shared library: {remote['volume_path']}", file=sys.stderr)
+        elif remote.get("status") == "failed":
+            print(
+                f"REMOTE PUBLISH FAILED [{remote.get('code')}]: {remote.get('message')} "
+                "(the local published file above is intact)",
+                file=sys.stderr,
+            )
+            return 3
     elif "comparison" in ctx.outputs:
         print(ctx.outputs["comparison"].analysis_id)
     for name, secs in ctx.timings.items():
