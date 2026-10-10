@@ -2,6 +2,7 @@
 
 Read this file first on every task, and again after any context reset. Then read
 `PROGRESS.md` (where things stand) and `DECISIONS.md` (choices made without a human).
+Before touching anything under `web/`, read `DESIGN.md` and follow it: its tokens, type scale, color meaning and don'ts are binding.
 
 ## What RiskDiff is
 
