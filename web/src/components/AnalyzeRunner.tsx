@@ -106,11 +106,23 @@ function StepIcon({ state }: { state: StepState }) {
         </span>
       );
     case "done":
-      return <span className={`${base} border-more-fg bg-more-bg text-more-strong-fg`} aria-hidden="true">done</span>;
+      return (
+        <span className={`${base} border-more-fg bg-more-bg text-more-strong-fg`} aria-hidden="true">
+          <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3.5 8.5l3 3 6-7" />
+          </svg>
+        </span>
+      );
     case "cached":
       return <span className={`${base} border-exp-line bg-exp-bg text-exp-fg`} aria-hidden="true">↺</span>;
     case "error":
-      return <span className={`${base} border-less-fg bg-less-bg text-less-strong-fg`} aria-hidden="true">failed</span>;
+      return (
+        <span className={`${base} border-less-fg bg-less-bg text-less-strong-fg`} aria-hidden="true">
+          <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <path d="M4 4l8 8M12 4l-8 8" />
+          </svg>
+        </span>
+      );
     default:
       return <span className={`${base} border-line bg-surface text-ink-secondary`} aria-hidden="true"></span>;
   }
