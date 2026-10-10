@@ -57,10 +57,10 @@ export default async function HomePage() {
 
       <PageContainer className="py-10">
         <div className="mb-5 flex items-baseline justify-between">
-          <h2 className="text-xl font-bold text-ink">Companies</h2>
+          <h2 className="text-xl font-bold text-ink">Report library</h2>
           {companies.length > 0 ? (
             <p className="text-sm text-ink-faint">
-              {companies.length} {companies.length === 1 ? "company" : "companies"} ·{" "}
+              {companies.length} {companies.length === 1 ? "report" : "reports"} ·{" "}
               <Link href="/methodology" className="underline hover:text-ink">
                 How it works
               </Link>

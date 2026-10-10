@@ -7,7 +7,11 @@ import type {
   AnalyzeComplete,
   AnalyzeErrorEvent,
   CompanyCard,
+  LibraryStatus,
   StageEvent,
+  TrendsCategoryRow,
+  TrendsKindRow,
+  TrendsPayload,
 } from "@/lib/types";
 
 export const API_BASE = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(
@@ -74,6 +78,76 @@ export async function getCompaniesFromApi(timeoutMs = 1500): Promise<CompanyCard
   if (!res.ok) throw new ApiHttpError(res.status, await readDetail(res));
   const body = (await res.json()) as { companies?: CompanyCard[] };
   return Array.isArray(body.companies) ? body.companies : [];
+}
+
+const REMOTE_STATES = ["ok", "offline", "disabled"] as const;
+
+function asRemoteState(x: unknown): Exclude<LibraryStatus, "unknown"> | null {
+  return typeof x === "string" && (REMOTE_STATES as readonly string[]).includes(x)
+    ? (x as Exclude<LibraryStatus, "unknown">)
+    : null;
+}
+
+/**
+ * GET /store/health. Never throws: a network error, a timeout, a non-2xx response (the
+ * endpoint may not exist yet) or an unexpected body all read as "unknown".
+ */
+export async function getLibraryStatusFromApi(timeoutMs = 1500): Promise<LibraryStatus> {
+  try {
+    const res = await fetchWithTimeout(`${API_BASE}/store/health`, { cache: "no-store", timeoutMs });
+    if (!res.ok) return "unknown";
+    const body = (await res.json()) as { remote?: unknown };
+    return asRemoteState(body?.remote) ?? "unknown";
+  } catch {
+    return "unknown";
+  }
+}
+
+function isCount(x: unknown): x is number {
+  return typeof x === "number" && Number.isFinite(x) && x >= 0;
+}
+
+/**
+ * GET /trends, validated row by row (malformed rows are dropped). Never throws: returns
+ * null when the API is down, slow, lacks the endpoint, or answers with an unexpected body.
+ */
+export async function getTrendsFromApi(timeoutMs = 1500): Promise<TrendsPayload | null> {
+  let body: unknown;
+  try {
+    const res = await fetchWithTimeout(`${API_BASE}/trends`, { cache: "no-store", timeoutMs });
+    if (!res.ok) return null;
+    body = await res.json();
+  } catch {
+    return null;
+  }
+  if (!body || typeof body !== "object") return null;
+  const b = body as Record<string, unknown>;
+  if (typeof b.available !== "boolean") return null;
+  const byCategory: TrendsCategoryRow[] = (Array.isArray(b.by_category) ? b.by_category : []).filter(
+    (r): r is TrendsCategoryRow =>
+      !!r &&
+      typeof r === "object" &&
+      typeof (r as TrendsCategoryRow).category === "string" &&
+      typeof (r as TrendsCategoryRow).change_type === "string" &&
+      isCount((r as TrendsCategoryRow).companies),
+  );
+  const byKind: TrendsKindRow[] = (Array.isArray(b.by_kind) ? b.by_kind : []).filter(
+    (r): r is TrendsKindRow =>
+      !!r &&
+      typeof r === "object" &&
+      typeof (r as TrendsKindRow).ticker === "string" &&
+      /^[A-Z.\-]{1,6}$/.test((r as TrendsKindRow).ticker) &&
+      typeof (r as TrendsKindRow).company_name === "string" &&
+      typeof (r as TrendsKindRow).kind === "string" &&
+      isCount((r as TrendsKindRow).highlights),
+  );
+  return {
+    available: b.available,
+    remote: asRemoteState(b.remote) ?? "disabled",
+    companies: isCount(b.companies) ? Math.floor(b.companies) : 0,
+    by_category: byCategory,
+    by_kind: byKind,
+  };
 }
 
 /** Minimal structural check before treating untrusted JSON as a Comparison. */

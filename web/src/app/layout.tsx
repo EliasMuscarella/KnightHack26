@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { HeaderSearch } from "@/components/HeaderSearch";
+import { LibraryStatusLine } from "@/components/LibraryStatus";
 import { DISCLAIMER } from "@/lib/copy";
+import { getLibraryStatus } from "@/lib/data";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,7 +16,8 @@ export const metadata: Metadata = {
     "RiskDiff compares the risk factors in a company's last two annual reports (10-K) and shows exactly what management added, removed, or changed, with every quote linked to the SEC filing.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const libraryStatus = await getLibraryStatus();
   return (
     <html lang="en" className="h-full">
       <body className="flex min-h-full flex-col">
@@ -42,6 +45,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <Link href="/methodology" className="text-ink-muted hover:text-ink hover:underline">
                 Methodology
               </Link>
+              <Link href="/trends" className="text-ink-muted hover:text-ink hover:underline">
+                Trends
+              </Link>
             </nav>
             <HeaderSearch />
           </div>
@@ -55,12 +61,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <span aria-hidden="true">ⓘ </span>
               {DISCLAIMER}
             </p>
-            <p className="text-ink-faint">
-              Source text: the Risk Factors section of SEC EDGAR 10-K filings.{" "}
-              <Link href="/methodology" className="underline hover:text-ink">
-                How RiskDiff works
-              </Link>
-            </p>
+            <div className="space-y-0.5">
+              <p className="text-ink-faint">
+                Source text: the Risk Factors section of SEC EDGAR 10-K filings.{" "}
+                <Link href="/methodology" className="underline hover:text-ink">
+                  How RiskDiff works
+                </Link>
+              </p>
+              <LibraryStatusLine status={libraryStatus} />
+            </div>
           </div>
         </footer>
       </body>

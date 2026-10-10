@@ -6,7 +6,9 @@ import type { Change, Comparison, FilingMeta, Highlight } from "@/types/comparis
 import { CopyId } from "@/components/CopyId";
 import { Quote } from "@/components/Quote";
 import { FilingLink, HighlightKindBadge } from "@/components/ui";
+import { LibraryStatusLine } from "@/components/LibraryStatus";
 import { formatDate, textFragmentUrl } from "@/lib/format";
+import type { LibraryStatus } from "@/lib/types";
 import { AUDIT_TRAIL, displayTitle, highlightKindVocab, isFigureChanged, meaningfulCount } from "@/lib/vocabulary";
 
 export function OverviewHeader({ comparison }: { comparison: Comparison }) {
@@ -243,7 +245,15 @@ const INTERPRETATION_STATUS_COPY: Record<string, string> = {
     "The language model ran, but the citation validator dropped every summary point it produced (uncited, invalid or disallowed wording). Diffs, signals and change levels are unaffected.",
 };
 
-export function AuditTrail({ comparison, source }: { comparison: Comparison; source: string }) {
+export function AuditTrail({
+  comparison,
+  source,
+  libraryStatus = "unknown",
+}: {
+  comparison: Comparison;
+  source: string;
+  libraryStatus?: LibraryStatus;
+}) {
   const { company, old_filing, new_filing, model_ids, summary } = comparison;
   const isFixture = comparison.is_fixture === true;
   const changeModelIds = [
@@ -272,6 +282,7 @@ export function AuditTrail({ comparison, source }: { comparison: Comparison; sou
           <span className="font-semibold text-ink">Filing selection:</span> {comparison.filing_selection_note}
           {source === "api" ? " · Served by the live API." : ""}
         </p>
+        <LibraryStatusLine status={libraryStatus} size="sm" />
         <div className="grid grid-cols-2 gap-x-10 gap-y-2">
           <dl className="grid grid-cols-[150px_minmax(0,1fr)] items-center gap-x-4 gap-y-1.5">
             <dt className="text-ink-faint">Analysis id</dt>
