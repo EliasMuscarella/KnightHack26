@@ -87,8 +87,14 @@ def test_score_lines_all_cited_and_capped():
     assert by["new_quantities"].points == CAPS["new_quantities"]
     assert by["change_type:expanded"].points == WEIGHT_BY_SIGNAL["change_type:expanded"].points
     assert all(line.cited_sentence_ids for line in lines if line.points)
-    assert score == 100  # capped
-    assert sum(line.points for line in lines) > 100
+    # rubric Q1-Q3 restate signals that already scored -> no double counting; Q4 has no twin
+    assert not any(s in by for s in ("rubric_q1", "rubric_q2", "rubric_q3"))
+    assert by["rubric_q4"].points == QUESTIONS[3].points
+    assert score == min(100, sum(line.points for line in lines))
+    # without the deterministic signals the same rubric answers do score
+    none = Signals(added_text_ratio=0.0, removed_text_ratio=0.0, semantic_shift=0.0)
+    _, lines2 = score_change("expanded", sents(), none, interp, 0.9, 0.8)
+    assert {"rubric_q1", "rubric_q2", "rubric_q3", "rubric_q4"} <= {x.signal for x in lines2}
 
 
 def test_rubric_no_without_citation_scores_nothing():

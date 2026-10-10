@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { TickerSearch } from "@/components/TickerSearch";
+import { HeaderSearch } from "@/components/HeaderSearch";
 import { DISCLAIMER } from "@/lib/copy";
 import "./globals.css";
 
@@ -43,9 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 Methodology
               </Link>
             </nav>
-            <div className="ml-auto w-[340px]">
-              <TickerSearch size="compact" />
-            </div>
+            <HeaderSearch />
           </div>
         </header>
         <main id="main" className="flex-1">

@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-RUBRIC_VERSION = "1.0.0"
+RUBRIC_VERSION = "1.1.0"
 
 # ---- LLM rubric questions (narrow yes/no; every "yes" must cite >= 1 sentence id) ----
 
@@ -117,19 +117,22 @@ WEIGHTS: tuple[Weight, ...] = (
         "rubric_q1",
         QUESTIONS[0].label,
         QUESTIONS[0].points,
-        "Validated 'yes' to Q1 with citations.",
+        "Validated 'yes' to Q1 with citations; scores only when the rule-based "
+        "hedge-to-actual signal did not already score the same fact.",
     ),
     Weight(
         "rubric_q2",
         QUESTIONS[1].label,
         QUESTIONS[1].points,
-        "Validated 'yes' to Q2 with citations.",
+        "Validated 'yes' to Q2 with citations; scores only when the rule-based "
+        "new-entities signal did not already score the same fact.",
     ),
     Weight(
         "rubric_q3",
         QUESTIONS[2].label,
         QUESTIONS[2].points,
-        "Validated 'yes' to Q3 with citations.",
+        "Validated 'yes' to Q3 with citations; scores only when the rule-based "
+        "new-quantities signal did not already score the same fact.",
     ),
     Weight(
         "rubric_q4",
@@ -139,6 +142,14 @@ WEIGHTS: tuple[Weight, ...] = (
     ),
 )
 WEIGHT_BY_SIGNAL = {w.signal: w for w in WEIGHTS}
+
+# A validated rubric "yes" that restates a deterministic signal never scores twice: when the
+# signal on the right already produced a score line, the question on the left adds nothing.
+RUBRIC_OVERLAPS_SIGNAL = {
+    "Q1": "hypothetical_to_actual",
+    "Q2": "new_entities",
+    "Q3": "new_quantities",
+}
 
 CAPS = {
     "hypothetical_to_actual": 30,
@@ -187,6 +198,7 @@ def export() -> dict:
             for w in WEIGHTS
         ],
         "caps": CAPS,
+        "rubric_overlaps_signal": RUBRIC_OVERLAPS_SIGNAL,
         "banned_phrases": list(BANNED_PHRASES),
         "thresholds": {
             **{

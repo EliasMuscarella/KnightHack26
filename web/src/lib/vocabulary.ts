@@ -5,7 +5,7 @@
  *
  * Neutral wording only: a change in disclosure language is not a change in actual risk.
  */
-import type { ChangeType, Highlight } from "@/types/comparison";
+import type { ChangeType, Highlight, SignalHit } from "@/types/comparison";
 
 // ---------------------------------------------------------------------------------------
 // Change types
@@ -121,8 +121,42 @@ export const SIGNAL_VOCAB: Record<string, TermVocab> = {
   },
 };
 
+/**
+ * "New figure disclosed" is only accurate when last year's version had no counterpart
+ * sentence. When a figure sits in a sentence that also existed last year (40% → 30%), the
+ * figure changed rather than appeared.
+ */
+export const FIGURE_CHANGED: TermVocab = {
+  label: "Figure changed",
+  helper: "A dollar amount, percentage, or count that changed from last year's version.",
+};
+
+/** Mixed case for a score line or list: some figures are new, some changed. */
+export const FIGURE_NEW_OR_CHANGED: TermVocab = {
+  label: "New or changed figures",
+  helper: "Dollar amounts, percentages, or counts that are new or changed from last year's version.",
+};
+
+export type FigureVariant = "new" | "changed" | "mixed";
+
+/** A figure hit with a last-year sentence is a changed figure; without one it is new. */
+export function figureVariant(hits: Pick<SignalHit, "old_sentence_ids" | "new_sentence_ids">[] | null | undefined): FigureVariant {
+  const list = hits ?? [];
+  if (list.length === 0) return "new";
+  const changed = list.filter((h) => (h.old_sentence_ids ?? []).length > 0 && (h.new_sentence_ids ?? []).length > 0).length;
+  if (changed === 0) return "new";
+  return changed === list.length ? "changed" : "mixed";
+}
+
+export function figureVocab(variant: FigureVariant): TermVocab {
+  if (variant === "changed") return FIGURE_CHANGED;
+  if (variant === "mixed") return FIGURE_NEW_OR_CHANGED;
+  return SIGNAL_VOCAB.new_quantities;
+}
+
 export const HIGHLIGHT_KIND_VOCAB: Record<Highlight["kind"], TermVocab & { badgeClass: string; marker: string }> = {
-  potential_became_actual: { ...SIGNAL_VOCAB.hypothetical_to_actual, marker: "!", badgeClass: "bg-mod-bg text-mod-fg border-mod-line" },
+  // No glyph: the label already carries the arrow, and a "!" read as an alert.
+  potential_became_actual: { ...SIGNAL_VOCAB.hypothetical_to_actual, marker: "", badgeClass: "bg-surface text-mod-fg border-mod-line" },
   new_figure: { ...SIGNAL_VOCAB.new_quantities, marker: "#", badgeClass: "bg-exp-bg text-exp-fg border-exp-line" },
   new_named_party: { ...SIGNAL_VOCAB.new_entities, marker: "@", badgeClass: "bg-exp-bg text-exp-fg border-exp-line" },
   new_risk: {
@@ -139,7 +173,17 @@ export const HIGHLIGHT_KIND_VOCAB: Record<Highlight["kind"], TermVocab & { badge
   },
 };
 
-export function highlightKindVocab(kind: string) {
+/** True for a `new_figure` highlight that has both a last-year and a this-year sentence. */
+export function isFigureChanged(h: Pick<Highlight, "kind" | "old_sentence_id" | "new_sentence_id">): boolean {
+  return h.kind === "new_figure" && !!h.old_sentence_id && !!h.new_sentence_id;
+}
+
+/**
+ * Display vocabulary for a highlight. Pass `figureChanged` (both an old and a new sentence
+ * id on a `new_figure` highlight) to get the "Figure changed" variant.
+ */
+export function highlightKindVocab(kind: string, figureChanged = false) {
+  if (kind === "new_figure" && figureChanged) return { ...HIGHLIGHT_KIND_VOCAB.new_figure, ...FIGURE_CHANGED };
   return (
     HIGHLIGHT_KIND_VOCAB[kind as Highlight["kind"]] ?? {
       label: kind.replace(/_/g, " "),
@@ -166,7 +210,8 @@ export const AI_CHECK_PREFIX = "AI check: ";
 export const AI_CHECK_HELPER = "An AI model answered yes and cited the filing sentences that show it.";
 
 /** Display label for a score line, from its machine key (`signal`). */
-export function scoreLineLabel(signal: string, changeType: string, fallback: string): string {
+export function scoreLineLabel(signal: string, changeType: string, fallback: string, figures: FigureVariant = "new"): string {
+  if (signal === "new_quantities") return figureVocab(figures).label;
   if (signal === "change_type" || signal.startsWith("change_type:")) {
     const t = signal.includes(":") ? signal.split(":")[1] : changeType;
     return changeTypeVocab(t).label;
@@ -179,7 +224,8 @@ export function scoreLineLabel(signal: string, changeType: string, fallback: str
   return SIGNAL_VOCAB[signal]?.label ?? fallback;
 }
 
-export function scoreLineHelper(signal: string, changeType: string): string {
+export function scoreLineHelper(signal: string, changeType: string, figures: FigureVariant = "new"): string {
+  if (signal === "new_quantities") return figureVocab(figures).helper;
   if (signal === "change_type" || signal.startsWith("change_type:")) {
     const t = signal.includes(":") ? signal.split(":")[1] : changeType;
     return changeTypeVocab(t).helper;
@@ -207,7 +253,11 @@ export function changeLevel(score: number): ChangeLevel {
 
 export const CHANGE_LEVEL = {
   label: "Change level",
+  /** Visible prefix on every level chip, so "High" never reads as a risk rating. */
+  prefix: "Wording change",
   helper: "How much the language changed, not how risky the company is.",
+  /** One-line note at the top of the "All changes" table. */
+  tableNote: "Change level measures how much the wording changed. It is not a risk rating.",
 } as const;
 
 // ---------------------------------------------------------------------------------------

@@ -6,6 +6,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   cacheComponents: false,
   poweredByHeader: false,
+  // No Next.js dev-tools indicator (the floating "N" badge) during a demo run with `npm run dev`.
+  devIndicators: false,
   // Do not let `next dev` write AGENTS.md into the repo.
   agentRules: false,
   turbopack: {

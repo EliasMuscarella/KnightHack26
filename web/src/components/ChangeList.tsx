@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 
 import { ChangeLevelTag, ChangeTypeBadge } from "@/components/ui";
 import { categoryLabel } from "@/lib/format";
-import { CHANGE_TYPE_ORDER, changeTypeVocab } from "@/lib/vocabulary";
+import { CHANGE_LEVEL, CHANGE_TYPE_ORDER, changeTypeVocab } from "@/lib/vocabulary";
 
 export interface ChangeRow {
   id: string;
@@ -72,7 +72,7 @@ function Row({ ticker, r }: { ticker: string; r: ChangeRow }) {
     <li className="border-b border-line last:border-b-0">
       <Link
         href={`/c/${encodeURIComponent(ticker)}/${encodeURIComponent(r.id)}`}
-        className="grid grid-cols-[minmax(0,1fr)_200px_120px] items-center gap-4 px-5 py-3.5 hover:bg-paper focus-visible:bg-paper"
+        className="grid grid-cols-[minmax(0,1fr)_190px_224px] items-center gap-4 px-5 py-3.5 hover:bg-paper focus-visible:bg-paper"
       >
         <span className="min-w-0">
           <span className="block font-semibold leading-snug text-ink underline-offset-2 hover:underline" title={r.title}>
@@ -135,6 +135,10 @@ export function ChangeList({ ticker, rows }: { ticker: string; rows: ChangeRow[]
         All changes
       </h2>
       <div className="rounded-lg border border-line bg-surface">
+        <p className="border-b border-line bg-paper px-5 py-2 text-sm text-ink-muted">
+          <span aria-hidden="true">ⓘ </span>
+          {CHANGE_LEVEL.tableNote}
+        </p>
         <div className="flex flex-wrap items-center gap-x-5 gap-y-3 border-b border-line px-5 py-3">
           <div role="group" aria-label="Filter by type of change" className="flex flex-wrap items-center gap-2">
             <TypeFilterButton pressed={type === null} onClick={() => setType(null)} count={rows.length}>

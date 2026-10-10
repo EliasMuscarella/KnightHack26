@@ -23,7 +23,7 @@ from pipeline.types import RiskBlock
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.1.1"
+STAGE_VERSION = "0.1.2"
 
 TOKEN_RE = re.compile(r"\s+|\w+(?:[’'\-]\w+)*|[^\w\s]")
 _NORM_RE = re.compile(r"\s+")
@@ -74,12 +74,22 @@ def lexical_ratio(a: str, b: str) -> float:
     return difflib.SequenceMatcher(a=wa, b=wb, autojunk=False).ratio()
 
 
+_JUNK_WORDS = frozenset("and or the a an of to in on for with by as at".split())
+
+
+def _is_junk_token(t: str) -> bool:
+    return not t.strip() or not t[0].isalnum() or t.lower() in _JUNK_WORDS
+
+
 def word_spans(old: str, new: str) -> tuple[list[DiffSpan], list[DiffSpan]]:
     """Word-level diff. Old side gets equal/delete spans, new side equal/insert spans; each
     side's spans concatenate back to its exact text."""
     a, b = TOKEN_RE.findall(old), TOKEN_RE.findall(new)
     assert "".join(a) == old and "".join(b) == new
-    sm = difflib.SequenceMatcher(a=a, b=b, autojunk=False)
+    # Content words anchor the alignment: whitespace, punctuation and function words are "junk"
+    # for anchoring (they still match when adjacent to anchors), so "Westland and Eastland." vs
+    # "Westland, Eastland, and Ruritania." keeps "Eastland" instead of re-inserting it.
+    sm = difflib.SequenceMatcher(isjunk=_is_junk_token, a=a, b=b, autojunk=False)
     old_spans: list[DiffSpan] = []
     new_spans: list[DiffSpan] = []
 

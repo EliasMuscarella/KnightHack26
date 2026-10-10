@@ -48,7 +48,7 @@ export function CompanyCardView({ company }: { company: CompanyListing }) {
         <div className="mt-auto border-t border-line pt-3">
           <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Top change</p>
           <div className="mt-1 flex flex-wrap items-center gap-2">
-            <HighlightKindBadge kind={top.kind} size="sm" />
+            <HighlightKindBadge kind={top.kind} size="sm" figureChanged={top.figure_changed === true} />
             <span className="text-sm font-medium leading-snug text-ink">{top.short_title}</span>
           </div>
         </div>

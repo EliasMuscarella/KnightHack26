@@ -1,3 +1,11 @@
+Context given by the team: NVDA was published on their machine and a finance-judge walkthrough found the
+screens too technical. The team later pushed `data/published/NVDA_2025_2026.json` and `SF_2024_2025.json`
+(produced by pipeline 0.1.0 / rubric 1.0.0, bge-m3 + Qwen2.5-72B). This sandbox still cannot re-run the
+pipeline (sec.gov and huggingface.co blocked, no stage caches, no `.env`), so those two files were upgraded to
+the current contract with `scripts/migrate_published.py` (derived `short_title` + `highlights` only; analysis
+untouched, see D-018) and the frontend/judge work below was verified on that real NVDA data. The J1–J3
+pipeline improvements only reach the NVDA file through the re-run documented below.
+
 # PROGRESS
 
 Hackathon: Knight Hacks 9. Submission due Sunday Oct 11, 2026, 10:30 AM ET.
@@ -49,15 +57,25 @@ NVDA re-run + judge verification must be done on the team's machine (commands be
 | J1 | Skip Risk Factors Summary + intro paragraphs | done, tested | `segment.summary_skip_range`, intro/boilerplate never becomes a block; stage 2 → 0.2.0 |
 | J2 | Entity post-filters | done, tested | `signals.clean_entity` + `merge_near_duplicates` ("D:4" dropped, trailing "in" stripped, Ruritania/Ruritanian merged) |
 | J3 | In-progress → concluded detector | done, tested | `signals.status_change`; the quoted NVDA antitrust pair fires (aligned and unaligned); stage 6 → 0.2.0 |
-| J4 | `highlights[]` + `short_title` | done, tested | `pipeline/highlights.py` ranking; LLM short-title batch (cached, validated) with heading-truncation fallback; contract + TS types regenerated |
+| J4 | `highlights[]` + `short_title` | done, tested | `pipeline/highlights.py`: four evidence tiers (meaningful + rule-based first), then score order, kind priority, position; max 2 per change / 5 total (D-018). LLM short-title batch (cached, validated) with heading-truncation fallback; contract + TS types regenerated |
 | J5 | Hide FIXTURE by default | done | flag documented in `.env.example`, README, `web/.env.development` |
 | J6–J10 | Finance-audience frontend | done (Opus subagent, `web/` only; verified by me) | overview leads with summary + highlight cards; detail leads with short title + AI summary + changed sentences only; vocabulary module; audit trail / analyst details collapsed; static methodology; no horizontal scroll at 1024/1280/1440 |
-| J11 | Judge review + verification | done on the fixture | 131 tests, build/lint/typecheck clean, byte-identical reruns, copy greps clean; judge subagent reviewed screenshots (see REPORT.md); NVDA screens need the team's machine |
+| J11 | Judge review + verification | done on real NVDA data (migrated file) | 134 tests, ruff clean, web build/lint/typecheck clean, FIXTUR cached vs `--no-cache` byte-identical, mechanical citation audit of NVDA+SF (32 claims, 11 rubric yes, 37 score lines, 9 highlights: 0 problems), no horizontal scroll at 1024/1280/1440, first highlight card fully visible at 1440×900 and 1280×720; two judge rounds (REPORT.md §10) |
+| J11b | Judge round 1 follow-ups | done | rubric Q1–Q3 never double-count their rule-based twin (RUBRIC_VERSION 1.1.0); content-word anchoring in `diff.word_spans` (0.1.2); fixture scores from the real scorer; `scripts/migrate_published.py`; frontend: neutral "Wording change: High/Medium/Low" chips + clarifier, "Figure changed" vs "New figure disclosed", "Risk factor 1 of 29" breadcrumb, button-style citation chips, labelled hatched cells, collapsed technical methodology, single search box on home, `devIndicators: false` |
 
-### NVDA re-run on the team's machine (required to verify J1–J4 on real data)
+### NVDA re-run on the team's machine (required to get J1–J3 into the published NVDA file)
+
+What the migrated file still shows from the old pipeline: 27→29 blocks with 2 duplicate titles (Risk Factors
+Summary not skipped), the intro paragraph "The following risk factors should be considered…" ranked as a
+new risk, entities "AI Diffusion IFR in" and "D:4", no status-change (investigating → preliminary finding)
+signal, and truncated headings instead of LLM short titles. The migrated highlights are: "may → have been"
+(potential became actual, export-controls risk), the new counterparty risk, Groq newly named, the intro row
+(artifact), and the $4.5 billion H20 charge. Re-run to replace all of that:
 
 ```bash
 uv run python -m pipeline.run NVDA --from-stage 2 --force   # --force: the analysis_id changes (new stage versions)
+uv run python -m pipeline.run SF --from-stage 2 --force
+# (older published files can be brought to the current contract without a re-run: uv run python scripts/migrate_published.py)
 uv run python - <<'EOF'
 import json; d=json.load(open(sorted(__import__('glob').glob('data/published/NVDA_*.json'))[-1]))
 print(d['summary']['by_change_type'], len(d['changes']))

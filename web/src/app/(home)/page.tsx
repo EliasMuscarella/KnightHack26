@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 const BENEFITS = [
   {
     title: "Find what matters",
-    body: "The handful of changes worth reading, out of 15,000+ words.",
+    body: "The few risk factors whose wording moved the most, out of 15,000+ words.",
   },
   {
     title: "Verify every word",
@@ -41,7 +41,7 @@ export default async function HomePage() {
           <div className="mt-7 max-w-[640px]">
             <TickerSearch size="large" knownTickers={companies.map((c) => c.ticker)} />
             <p className="mt-2 text-sm text-ink-faint">
-              Published companies open instantly. Other tickers start a live analysis.
+              Published companies open instantly. Other tickers start a live analysis (a few minutes).
             </p>
           </div>
           <ul className="mt-9 grid grid-cols-3 gap-5">

@@ -152,7 +152,7 @@ def stage7_llm(
 
     def cached_rows(model_id: str) -> list[dict | None] | None:
         rows: list[dict | None] = [None] * len(records)
-        for i, r, old, new, _title, sentences in prepared:
+        for i, _r, old, new, _title, sentences in prepared:
             key = ctx.cache.key(
                 "llm",
                 llm_mod.STAGE_VERSION,
@@ -215,7 +215,7 @@ def stage7_llm(
         results = [None] * len(records)
         calls = 0
         if client is not None:
-            for i, r, old, new, title, sentences in prepared:
+            for i, _r, old, new, title, sentences in prepared:
                 key = ctx.cache.key(
                     "llm",
                     llm_mod.STAGE_VERSION,

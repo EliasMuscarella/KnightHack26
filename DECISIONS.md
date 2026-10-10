@@ -127,3 +127,29 @@ decision, alternatives considered, how to reverse.
   words, passes the banned-language check and shares a content word with the heading, else the heading is
   truncated deterministically with a visible ellipsis. Without a provider every short title is the fallback.
 - J5: `web/.env.development` no longer sets RISKDIFF_SHOW_FIXTURE; the fixture is opt-in everywhere.
+
+## D-018 Judge round 1 follow-ups (pipeline)
+- Rubric Q1/Q2/Q3 no longer score when the deterministic twin signal (hedge→actual, new entities, new
+  quantities) already produced a score line for the same change; Q4 has no twin and always scores when
+  validated. One fact never counts twice. `RUBRIC_VERSION` 1.0.0 → 1.1.0, exported as
+  `rubric_overlaps_signal` in `contract/rubric.json`.
+- Highlight selection (one function, `highlights.select_highlights`) now runs over four evidence tiers:
+  meaningful change + rule-based evidence, meaningful + AI-rubric-only, essentially-unchanged + rule-based,
+  essentially-unchanged + AI-only. Within a tier the order is parent score (same order as the ranked list),
+  then kind priority (new risk > dropped risk > potential→actual > figure > newly named), then change id,
+  then position (dollar amounts before percentages before counts). This deviates from the brief's literal
+  "kind priority, then parent score" because the judge read cards that did not follow the list order, and a
+  card from a risk labelled "Essentially unchanged", as contradictions. Each tier takes one card per change
+  first, then second cards of a different kind, so the top change can show two different facts (e.g. a
+  potential→actual pair and a new dollar figure) without crowding out other risks.
+- `diff.word_spans` treats whitespace, punctuation and a short list of function words as junk for anchoring
+  (difflib `isjunk`), so "Westland and Eastland." vs "Westland, Eastland, and Ruritania." keeps "Eastland"
+  on both sides. Diff stage 0.1.1 → 0.1.2.
+- The fixture generator now computes `score_breakdown` with the real `score_change` (then prefixes labels and
+  details with `FIXTURE:`), so the fixture can never disagree with the published weights again.
+- `scripts/migrate_published.py` upgrades files published by an older pipeline to the current contract by
+  deriving only presentation fields from the file's own content: `short_title` = deterministic truncation of
+  the real heading (no LLM) and `highlights` = `select_highlights` over the file's own signals, change types
+  and validated rubric answers; a note records the migration. Scores, sentences, citations and `analysis_id`
+  are untouched, so the file still describes exactly the analysis that produced it. Segmentation, entity and
+  status-change improvements (J1–J3) cannot be migrated; they need the documented re-run.

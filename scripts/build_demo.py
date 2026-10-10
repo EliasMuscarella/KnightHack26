@@ -43,13 +43,30 @@ def best_moment(comp: Comparison) -> dict | None:
         loc = comp.sentence_index.get(sid) if sid else None
         c = by_id.get(h.change_id)
         if loc and c:
-            return {"change": c, "kind": h.kind, "detail": h.detail, "sid": sid, "text": loc.text, "side": loc.side, "label": None, "line": None}
+            return {
+                "change": c,
+                "kind": h.kind,
+                "detail": h.detail,
+                "sid": sid,
+                "text": loc.text,
+                "side": loc.side,
+                "label": None,
+                "line": None,
+            }
     for c in comp.changes:  # ranked by score already
         for line in c.score_breakdown:
             for sid in line.cited_sentence_ids:
                 loc = comp.sentence_index.get(sid)
                 if loc and not loc.is_heading:
-                    return {"change": c, "kind": None, "detail": line.detail, "sid": sid, "text": loc.text, "side": loc.side, "line": line}
+                    return {
+                        "change": c,
+                        "kind": None,
+                        "detail": line.detail,
+                        "sid": sid,
+                        "text": loc.text,
+                        "side": loc.side,
+                        "line": line,
+                    }
     return None
 
 
