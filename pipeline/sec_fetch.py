@@ -5,6 +5,17 @@ Raw artifacts are cached under data/cache/sec/ and never re-downloaded:
   company_tickers.json          (TTL 7 days)
   submissions/CIK##########.json (TTL 24 hours; new filings appear over time)
   filings/<accession>/<primary document>  (forever: a filed document never changes)
+
+Selection (select_two_latest): the two most recent original 10-Ks with distinct report periods
+(newest period first; within a period an original beats a 10-K/A, then the latest filing);
+10-K/A amendments only when fewer than two originals exist. Every candidate considered is
+recorded (form, accession, period of report, filing date) and logged.
+
+Fiscal-year label (fiscal_year_from_html): the inline-XBRL dei:DocumentFiscalYearFocus fact of
+the document's own context, i.e. the contextRef of dei:DocumentPeriodEndDate or dei:DocumentType
+(a fact of another context, such as a prior-year comparative, is never used); when no fact uses
+that context, a single distinct value is used, or else the first value that is the period-of-report
+year or the year before; with no usable fact, the year of the period of report.
 """
 
 from __future__ import annotations
@@ -24,7 +35,7 @@ from pipeline.types import FetchResult, FilingRecord
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.1.0"
+STAGE_VERSION = "0.1.1"
 TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
 SUBMISSIONS_URL = "https://data.sec.gov/submissions/{name}"
 ARCHIVE_URL = "https://www.sec.gov/Archives/edgar/data/{cik_int}/{acc_nodash}/{doc}"
@@ -38,8 +49,13 @@ DOC_NAME_RE = re.compile(r"^[A-Za-z0-9._\-]{1,128}$")
 ORIGINAL_FORMS = ("10-K", "10-K405")
 AMENDMENT_FORMS = ("10-K/A", "10-K405/A")
 FY_FOCUS_RE = re.compile(
-    r'name="dei:DocumentFiscalYearFocus"[^>]*>\s*(?:<[^>]+>\s*)*(\d{4})\s*<', re.IGNORECASE
+    r'<[\w:.-]+\b([^>]*\bname="dei:DocumentFiscalYearFocus"[^>]*)>\s*(?:<[^>]+>\s*)*(\d{4})\s*<',
+    re.IGNORECASE,
 )
+DOC_CONTEXT_RE = re.compile(
+    r'<[\w:.-]+\b([^>]*\bname="dei:(?:DocumentPeriodEndDate|DocumentType)"[^>]*)>', re.IGNORECASE
+)
+CONTEXT_REF_RE = re.compile(r'\bcontextRef="([^"]+)"', re.IGNORECASE)
 
 
 def _fresh(path: Path, ttl: float) -> bool:
@@ -178,7 +194,8 @@ def select_two_latest(filings: list[dict]) -> tuple[dict, dict, str, list[str]]:
         return out
 
     considered = [
-        f"{f['form']} {f['accessionNumber']} filed {f['filingDate']}"
+        f"{f['form']} {f['accessionNumber']} period {f.get('reportDate') or '?'} "
+        f"filed {f['filingDate']}"
         for f in originals + amendments
     ]
     picks = dedupe_by_period(originals)
@@ -218,10 +235,27 @@ def download_primary(client: AllowlistClient, cik: str, filing: dict, cache_dir:
     return path
 
 
+def _context_ref(attrs: str) -> str | None:
+    m = CONTEXT_REF_RE.search(attrs)
+    return m.group(1) if m else None
+
+
 def fiscal_year_from_html(html: str, report_date: str) -> tuple[int, str]:
-    m = FY_FOCUS_RE.search(html)
-    if m:
-        return int(m.group(1)), "dei:DocumentFiscalYearFocus"
+    """(fiscal year, source) for a filing; see the module docstring for the rule."""
+    facts = [(_context_ref(m.group(1)), int(m.group(2))) for m in FY_FOCUS_RE.finditer(html)]
+    if facts:
+        doc_contexts = {_context_ref(m.group(1)) for m in DOC_CONTEXT_RE.finditer(html)}
+        doc_contexts.discard(None)
+        chosen = next((fy for ctx, fy in facts if ctx in doc_contexts), None)
+        if chosen is None:
+            values = list(dict.fromkeys(fy for _, fy in facts))
+            if len(values) == 1:
+                chosen = values[0]
+            else:
+                period_year = int(report_date[:4])
+                chosen = next((fy for fy in values if fy - period_year in (0, -1)), None)
+        if chosen is not None:
+            return chosen, "dei:DocumentFiscalYearFocus"
     return int(report_date[:4]), "period_of_report"
 
 
@@ -282,15 +316,21 @@ def run_stage0(
             candidates_considered=considered[:20],
         )
         log.info(
-            "stage0 %s: old=%s (%s FY%s) new=%s (%s FY%s) requests=%d",
+            "stage0 %s: old=%s (period %s, filed %s, FY%s via %s) new=%s (period %s, filed %s, "
+            "FY%s via %s) requests=%d candidates considered: %s",
             company.ticker,
             result.old.accession_number,
+            result.old.report_date,
             result.old.filing_date,
             result.old.fiscal_year,
+            result.old.fiscal_year_source,
             result.new.accession_number,
+            result.new.report_date,
             result.new.filing_date,
             result.new.fiscal_year,
+            result.new.fiscal_year_source,
             client.request_count,
+            "; ".join(considered) or "none",
         )
         return result
     finally:

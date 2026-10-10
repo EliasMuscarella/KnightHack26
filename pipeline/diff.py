@@ -6,6 +6,14 @@ cosine. Pairs below `sentence_match_threshold` cannot align. Aligned pairs whose
 is identical are `unchanged`; otherwise `modified`, with word-level spans from difflib
 (deterministic, autojunk disabled). Unaligned old sentences are `removed`, new ones `added`.
 
+Word spans (`word_spans`): only word tokens are aligned, compared by a normalized key
+(`token_key`: casefold, curly quotes/dashes folded to ASCII), so "Export" vs "export", a line
+break vs a space, or an added comma is never a change; the original text is always emitted.
+Content words anchor the alignment (`_word_opcodes`: the anchored alignment is used when it marks
+fewer content words than the plain one). Whitespace right after a changed word joins the change;
+other whitespace/punctuation at a change border stays equal; changed spans with no alphanumeric
+character fold into `equal` (`_fold_ws`). Each side's spans still concatenate to its exact text.
+
 `classify_change_type` is the ONLY place change types are decided; its rules are in its docstring.
 """
 
@@ -23,7 +31,7 @@ from pipeline.types import RiskBlock
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.1.2"
+STAGE_VERSION = "0.1.3"
 
 TOKEN_RE = re.compile(r"\s+|\w+(?:[’'\-]\w+)*|[^\w\s]")
 _NORM_RE = re.compile(r"\s+")
@@ -78,47 +86,128 @@ _JUNK_WORDS = frozenset("and or the a an of to in on for with by as at".split())
 
 
 def _is_junk_token(t: str) -> bool:
+    """Whitespace, punctuation and function words never anchor an alignment."""
     return not t.strip() or not t[0].isalnum() or t.lower() in _JUNK_WORDS
+
+
+_KEY_TRANS = str.maketrans(
+    {"\u2019": "'", "\u2018": "'", "\u201c": '"', "\u201d": '"', "\u2013": "-", "\u2014": "-"}
+)
+
+
+def token_key(t: str) -> str:
+    """Comparison key of one token: case, curly quotes/dashes and the kind of whitespace are
+    not changes."""
+    if not t.strip():
+        return " "
+    return t.translate(_KEY_TRANS).casefold()
+
+
+def _is_word(t: str) -> bool:
+    return bool(t.strip()) and t[0].isalnum()
+
+
+def _changed_marks(ops: list[tuple], ka: list[str], kb: list[str]) -> tuple[int, int]:
+    """(content words marked, all words marked) by a list of word-level opcodes."""
+    content = total = 0
+    for tag, i1, i2, j1, j2 in ops:
+        if tag == "equal":
+            continue
+        for w in ka[i1:i2] + kb[j1:j2]:
+            total += 1
+            content += w not in _JUNK_WORDS
+    return content, total
+
+
+def _word_opcodes(ka: list[str], kb: list[str]) -> list[tuple]:
+    """Word-level opcodes over normalized word keys (whitespace and punctuation excluded).
+
+    Two deterministic alignments are computed: a plain one (difflib, autojunk off) and one where
+    content words anchor the alignment (function words in _JUNK_WORDS are difflib "junk": they
+    still match next to anchors but never anchor). The alignment that marks fewer content words
+    wins, then the one marking fewer words overall; a tie keeps the plain alignment. So
+    "Westland and Eastland." vs "Westland, Eastland, and Ruritania." keeps "Eastland" equal
+    (marking "and" twice instead of "Eastland" twice), while two equivalent alignments never
+    move a mark from a word the plain diff leaves alone."""
+    plain = difflib.SequenceMatcher(a=ka, b=kb, autojunk=False).get_opcodes()
+    anchored = difflib.SequenceMatcher(
+        isjunk=_is_junk_token, a=ka, b=kb, autojunk=False
+    ).get_opcodes()
+    if _changed_marks(anchored, ka, kb) < _changed_marks(plain, ka, kb):
+        return anchored
+    return plain
+
+
+def _side_spans(tokens: list[str], word_op: list[str]) -> list[DiffSpan]:
+    """Spans of one side from the per-word ops (`word_op[k]` = op of the k-th word token).
+
+    A gap of non-word tokens (whitespace, punctuation) between two words of the same op takes
+    that op. A whitespace-only gap right after a changed run joins it (so "Excessive or
+    shifting " is deleted with its trailing space); any other gap at the border of a changed run
+    stays equal (punctuation alone is never a change). Text is emitted verbatim."""
+    word_pos = [i for i, t in enumerate(tokens) if _is_word(t)]
+    ops = ["equal"] * len(tokens)
+    for k, i in enumerate(word_pos):
+        ops[i] = word_op[k]
+    bounds = [-1] + word_pos + [len(tokens)]
+    for g in range(len(bounds) - 1):
+        lo, hi = bounds[g] + 1, bounds[g + 1]
+        if lo >= hi:
+            continue
+        left = ops[bounds[g]] if bounds[g] >= 0 else None
+        right = ops[bounds[g + 1]] if bounds[g + 1] < len(tokens) else None
+        gap = "".join(tokens[lo:hi])
+        if left is not None and left == right:
+            op = left
+        elif not gap.strip() and left not in (None, "equal"):
+            op = left
+        else:
+            op = "equal"
+        for i in range(lo, hi):
+            ops[i] = op
+    spans: list[DiffSpan] = []
+    for t, op in zip(tokens, ops, strict=True):
+        if spans and spans[-1].op == op:
+            spans[-1] = DiffSpan(op=op, text=spans[-1].text + t)
+        else:
+            spans.append(DiffSpan(op=op, text=t))
+    return spans
 
 
 def word_spans(old: str, new: str) -> tuple[list[DiffSpan], list[DiffSpan]]:
     """Word-level diff. Old side gets equal/delete spans, new side equal/insert spans; each
-    side's spans concatenate back to its exact text."""
+    side's spans concatenate back to its exact text.
+
+    Only word tokens are aligned, by their normalized key (`token_key`), so case, curly quotes,
+    whitespace and punctuation never count as a change; see _word_opcodes for the alignment and
+    _side_spans for how whitespace/punctuation between words is attributed."""
     a, b = TOKEN_RE.findall(old), TOKEN_RE.findall(new)
     assert "".join(a) == old and "".join(b) == new
-    # Content words anchor the alignment: whitespace, punctuation and function words are "junk"
-    # for anchoring (they still match when adjacent to anchors), so "Westland and Eastland." vs
-    # "Westland, Eastland, and Ruritania." keeps "Eastland" instead of re-inserting it.
-    sm = difflib.SequenceMatcher(isjunk=_is_junk_token, a=a, b=b, autojunk=False)
-    old_spans: list[DiffSpan] = []
-    new_spans: list[DiffSpan] = []
-
-    def push(spans: list[DiffSpan], op: str, text: str) -> None:
-        if not text:
-            return
-        if spans and spans[-1].op == op:
-            spans[-1] = DiffSpan(op=op, text=spans[-1].text + text)
-        else:
-            spans.append(DiffSpan(op=op, text=text))
-
-    for tag, i1, i2, j1, j2 in sm.get_opcodes():
-        if tag == "equal":
-            push(old_spans, "equal", "".join(a[i1:i2]))
-            push(new_spans, "equal", "".join(b[j1:j2]))
+    ka = [token_key(t) for t in a if _is_word(t)]
+    kb = [token_key(t) for t in b if _is_word(t)]
+    a_op = ["equal"] * len(ka)
+    b_op = ["equal"] * len(kb)
+    for tag, i1, i2, j1, j2 in _word_opcodes(ka, kb):
         if tag in ("delete", "replace"):
-            push(old_spans, "delete", "".join(a[i1:i2]))
+            a_op[i1:i2] = ["delete"] * (i2 - i1)
         if tag in ("insert", "replace"):
-            push(new_spans, "insert", "".join(b[j1:j2]))
-    # whitespace-only changed spans are noise: fold them into neighbors as equal
-    old_spans = _fold_ws(old_spans)
-    new_spans = _fold_ws(new_spans)
+            b_op[j1:j2] = ["insert"] * (j2 - j1)
+    # whitespace- or punctuation-only changed spans are noise: fold them into neighbors as equal
+    old_spans = _fold_ws(_side_spans(a, a_op))
+    new_spans = _fold_ws(_side_spans(b, b_op))
     return old_spans, new_spans
 
 
+def _has_alnum(text: str) -> bool:
+    return any(c.isalnum() for c in text)
+
+
 def _fold_ws(spans: list[DiffSpan]) -> list[DiffSpan]:
+    """Fold changed spans that carry no alphanumeric character (whitespace or punctuation only)
+    into `equal`, merging adjacent spans of the same op."""
     out: list[DiffSpan] = []
     for sp in spans:
-        op = "equal" if (sp.op != "equal" and not sp.text.strip()) else sp.op
+        op = "equal" if (sp.op != "equal" and not _has_alnum(sp.text)) else sp.op
         if out and out[-1].op == op:
             out[-1] = DiffSpan(op=op, text=out[-1].text + sp.text)
         else:

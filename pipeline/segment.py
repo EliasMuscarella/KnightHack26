@@ -13,6 +13,13 @@ Heuristics (all deterministic, documented here):
   the first *real* risk block (a heading followed by a plain paragraph of >= MIN_REAL_BODY_WORDS).
 - Intro and boilerplate paragraphs that appear before any risk heading (or between a group
   header and its first risk heading) are skipped, never turned into blocks.
+- The Item 1A introduction is skipped even when it is emphasized like a heading (NVDA sets "The
+  following risk factors should be considered in addition to the other information in this
+  Annual Report on Form 10-K." in bold, followed by a plain paragraph): before the first risk
+  block is emitted, a heading whose text, or whose first body paragraph, matches INTRO_RE ("The
+  following risk factors...", "You should carefully consider...", "Investing in our securities
+  involves...", "...could be materially adversely affected by the following") is the
+  introduction, and it and its body are dropped (counted in skipped_units).
 - Sentences are split with pysbd (legal-text aware: "U.S.", "Inc.", "e.g."). Sentence 0 of every
   block is the heading. Ids are "{accession}:{block_index}:{sentence_index}" and char offsets
   index into `SegmentedFiling.text` (= extracted unit texts joined with "\\n").
@@ -32,7 +39,7 @@ from pipeline.types import ExtractedSection, RiskBlock, SegmentedFiling, Sentenc
 
 log = logging.getLogger(__name__)
 
-STAGE_VERSION = "0.2.1"
+STAGE_VERSION = "0.2.2"
 MAX_HEADING_WORDS = 60
 MAX_GROUP_WORDS = 15
 MIN_BLOCKS = 3
@@ -55,6 +62,21 @@ SUMMARY_RE = re.compile(
     re.I,
 )
 MIN_REAL_BODY_WORDS = 40
+# Wording that opens the Item 1A introduction (matched at the start of a heading or paragraph).
+INTRO_RE = re.compile(
+    r"^(?:the following (?:risk factors?|risks|discussion|is a (?:summary|discussion))"
+    r"|you should (?:carefully )?(?:consider|read)"
+    r"|investing in (?:our|the company['’]s) (?:securities|common stock|shares|ordinary shares)"
+    r"|(?:an investment|investments?) in our (?:securities|common stock|shares|ordinary shares)"
+    r"|the risks? (?:and uncertainties )?(?:described|discussed|set forth|listed|identified) below"
+    r"|this (?:section|item|discussion) (?:contains|discusses|describes|includes|sets forth)"
+    r"|in addition to the other information"
+    r"|before (?:you )?(?:decide|invest|making an investment)"
+    r"|our business,? (?:financial condition,? )?(?:and )?(?:results of operations|operating results)"
+    r"[^.]{0,80}?\b(?:could|may|can) be (?:materially )?(?:and adversely )?(?:affected|impacted) by"
+    r"(?: any of| one or more of)? the following)",
+    re.IGNORECASE,
+)
 TERMINAL = (".", "!", "?", ":", ";")
 
 _segmenter = pysbd.Segmenter(language="en", clean=False, char_span=True)
@@ -123,6 +145,12 @@ def split_lead_heading(u: Unit) -> tuple[str, str] | None:
     return p, r
 
 
+def is_intro(heading: str, body: list[str]) -> bool:
+    """True when a pending heading, or its first body paragraph, is the Item 1A introduction."""
+    first = BULLET_RE.sub("", body[0]).strip() if body else ""
+    return bool(INTRO_RE.match(BULLET_RE.sub("", heading).strip()) or INTRO_RE.match(first))
+
+
 def _is_real_risk_start(units: list[Unit], j: int) -> bool:
     """A heading-like unit followed by a plain, non-bullet paragraph of real length, or an
     Apple-style unit whose emphasized lead is followed by such a body."""
@@ -185,14 +213,23 @@ def segment(section: ExtractedSection) -> SegmentedFiling:
     current_group: str | None = None
     pending: tuple[str, int] | None = None  # (heading, char_start)
     body: list[tuple[str, int]] = []  # (text, char_start)
+    pending_units = 0  # extraction units consumed by the pending heading and its body
+    skipped_units = 0
 
     def flush() -> None:
-        nonlocal pending, body
+        nonlocal pending, body, pending_units, skipped_units
         if pending is None:
             # body text with no heading (intro/boilerplate): never a block
             body = []
+            pending_units = 0
             return
         heading, h_start = pending
+        if not blocks and is_intro(heading, [p for p, _ in body]):
+            log.debug("skipping the Item 1A introduction: %r", heading[:80])
+            skipped_units += pending_units
+            pending, body, pending_units = None, [], 0
+            return
+        pending_units = 0
         if not body:
             log.debug("dropping heading without body: %r", heading[:80])
             pending, body = None, []
@@ -245,7 +282,6 @@ def segment(section: ExtractedSection) -> SegmentedFiling:
             groups.append(name)
 
     skip = summary_skip_range(units)
-    skipped_units = 0
     for u in units:
         if skip is not None and skip[0] <= u.index < skip[1]:
             skipped_units += 1
@@ -258,12 +294,14 @@ def segment(section: ExtractedSection) -> SegmentedFiling:
                 # two headings in a row: the first was a group header
                 set_group(pending[0])
                 pending = (stripped, u_start)
+                pending_units = 1
             elif is_group_header(u):
                 flush()
                 set_group(stripped)
             else:
                 flush()
                 pending = (stripped, u_start)
+                pending_units = 1
             continue
         lead = split_lead_heading(u)
         if lead is not None:
@@ -275,11 +313,13 @@ def segment(section: ExtractedSection) -> SegmentedFiling:
             h_off = stripped.index(heading)
             pending = (heading, u_start + h_off)
             body = [(remainder, u_start + stripped.index(remainder, h_off + len(heading)))]
+            pending_units = 1
             continue
         if pending is None:
             skipped_units += 1  # intro / boilerplate paragraph before any risk heading
             continue
         body.append((stripped, u_start))
+        pending_units += 1
     flush()
 
     if len(blocks) < MIN_BLOCKS:

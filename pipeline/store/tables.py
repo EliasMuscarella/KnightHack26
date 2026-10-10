@@ -89,6 +89,10 @@ TOPIC_MENTION_COLUMNS: tuple[tuple[str, str], ...] = (
     ("status", "STRING"),
     ("sentence_text", "STRING"),
     ("added_spans_json", "STRING"),
+    # TrendFacts.derivation ("{TRENDS_VERSION}+topics{N}") of the code that wrote the row; part of
+    # the key, so a newer derivation inserts its own rows and the /trends queries read only the
+    # rows of the running derivation (rows of an older derivation are never served).
+    ("derivation", "STRING"),
 )
 CATEGORY_ACTIVITY_COLUMNS: tuple[tuple[str, str], ...] = (
     ("analysis_id", "STRING"),
@@ -103,6 +107,7 @@ CATEGORY_ACTIVITY_COLUMNS: tuple[tuple[str, str], ...] = (
     ("added_words", "INT"),
     ("removed_words", "INT"),
     ("modified_words", "INT"),
+    ("derivation", "STRING"),  # see TOPIC_MENTION_COLUMNS
 )
 COLUMNS = {
     REPORTS: REPORT_COLUMNS,
@@ -115,8 +120,8 @@ KEYS = {
     REPORTS: ("analysis_id",),
     CHANGES: ("analysis_id", "change_id"),
     HIGHLIGHTS: ("analysis_id", "change_id", "position"),
-    TOPIC_MENTIONS: ("analysis_id", "change_id", "sentence_id", "topic"),
-    CATEGORY_ACTIVITY: ("analysis_id", "change_id", "category"),
+    TOPIC_MENTIONS: ("analysis_id", "change_id", "sentence_id", "topic", "derivation"),
+    CATEGORY_ACTIVITY: ("analysis_id", "change_id", "category", "derivation"),
 }
 
 
@@ -144,6 +149,8 @@ def ddl(s: DatabricksSettings) -> list[tuple[str, str]]:
 ADDED_COLUMNS: tuple[tuple[str, str, str], ...] = (
     (HIGHLIGHTS, "old_spans_json", "STRING"),
     (HIGHLIGHTS, "new_spans_json", "STRING"),
+    (TOPIC_MENTIONS, "derivation", "STRING"),  # TRENDS_VERSION 1.2.0; older rows read as NULL
+    (CATEGORY_ACTIVITY, "derivation", "STRING"),
 )
 
 
@@ -258,6 +265,7 @@ def topic_mention_rows(facts: TrendFacts) -> list[dict]:
             "status": m.status,
             "sentence_text": m.text,
             "added_spans_json": json.dumps([list(sp) for sp in m.added_spans]),
+            "derivation": facts.derivation,
         }
         for m in facts.topic_mentions
     ]
@@ -278,6 +286,7 @@ def category_activity_rows(facts: TrendFacts) -> list[dict]:
             "added_words": a.added_words,
             "removed_words": a.removed_words,
             "modified_words": a.modified_words,
+            "derivation": facts.derivation,
         }
         for a in facts.category_activity
         for cat in a.categories
@@ -342,9 +351,11 @@ def list_current_sql(s: DatabricksSettings) -> str:
 
 
 # ---------- /trends: three row-fetching queries over the current reports ----------
-# Each takes :current (TRUE) and :ids, a JSON array of the analysis_ids the API treats as current
-# (newest filing pair per ticker, the same rule as /companies). Ranking, grouping and sums happen
-# in pipeline.trends.aggregate, shared with the local path; SQL only narrows the rows.
+# Each takes :current (TRUE), :ids, a JSON array of the analysis_ids the API treats as current (the
+# same merged, newest-pair-per-ticker set as /companies), and the trend-fact queries take
+# :derivation, the running code's `derive.derivation_id()`: rows written by another derivation
+# (older code, or a teammate on newer code) are never read. Ranking, grouping and sums happen in
+# pipeline.trends.aggregate, shared with the local path; SQL only narrows the rows.
 
 
 def _current_ids(alias: str) -> str:
@@ -355,8 +366,10 @@ def _current_ids(alias: str) -> str:
 
 
 def trends_topics_sql(s: DatabricksSettings) -> str:
-    """One example row per (topic, source, ticker) plus that company's sentence count. Phrases
-    only when at least :min_companies companies share them. The example order is
+    """One example row per (topic, source, ticker) plus that company's sentence count, from the
+    rows of the current derivation. Phrases only when at least :min_companies companies share
+    them (the API lowers it when some companies' facts come from local files, and the shared
+    Python aggregation applies the real threshold). The example order is
     pipeline.trends.aggregate.EXAMPLE_ORDER_SQL (most matched terms, then shortest sentence)."""
     from pipeline.trends.aggregate import EXAMPLE_ORDER_SQL
 
@@ -367,6 +380,7 @@ def trends_topics_sql(s: DatabricksSettings) -> str:
         f"  LEFT JOIN {s.table(CHANGES)} c\n"
         f"    ON c.analysis_id = tm.analysis_id AND c.change_id = tm.change_id\n"
         f"  WHERE {cur}\n"
+        f"    AND tm.derivation = :derivation\n"
         f"), shared AS (\n"
         f"  SELECT topic FROM m WHERE topic_source = :phrase\n"
         f"  GROUP BY topic HAVING COUNT(DISTINCT ticker) >= :min_companies\n"
@@ -384,14 +398,17 @@ def trends_topics_sql(s: DatabricksSettings) -> str:
 
 
 def trends_activity_sql(s: DatabricksSettings) -> str:
-    """Per-change category rows of the current reports (the heatmap sums are done in Python)."""
+    """Per-change category rows of the current reports and the current derivation, including
+    largely unchanged risk factors: every change has at least one category, so an analysis with
+    changes but no row here has no facts of this derivation in the store (the API lists it with a
+    warning). The heatmap sums, which leave unchanged risk factors out, are done in Python."""
     cur = _current_ids("ca").format(reports=s.table(REPORTS))
     return (
-        f"SELECT ca.ticker, ca.change_id, ca.category, ca.change_type, ca.score,\n"
+        f"SELECT ca.analysis_id, ca.ticker, ca.change_id, ca.category, ca.change_type, ca.score,\n"
         f"  ca.added_sentences, ca.removed_sentences, ca.modified_sentences,\n"
         f"  ca.added_words, ca.removed_words, ca.modified_words\n"
         f"FROM {s.table(CATEGORY_ACTIVITY)} ca\n"
-        f"WHERE {cur} AND ca.change_type <> :unchanged\n"
+        f"WHERE {cur} AND ca.derivation = :derivation\n"
         f"ORDER BY ca.ticker, ca.category, ca.change_id"
     )
 

@@ -564,3 +564,139 @@ cd web && npm run test:unit && npm run typecheck && npm run lint && npm run buil
 Re-run NVDA on a machine with SEC access (`uv run python -m pipeline.run NVDA --force`), publish, and
 re-derive trends. That single run removes the three data findings both reviewers flagged (preamble as a
 New risk, entity noise, the mid-word fragment) without touching any code.
+
+## 13. Integrity session (I1–I4)
+
+Goal: every quote visibly contains its evidence, every before/after pair is a true pair, counts agree
+everywhere, no page crashes, and a checker proves it. This sandbox holds only the NVDA and SF reports
+and has no SEC, Hugging Face or Databricks access, so the AAPL/AMZN/GOOGL/CRWD instances from the live
+walkthrough were proven as mechanisms in code and on NVDA/SF, never inspected live.
+
+### 1. Violations before → after, by check id
+
+| Check | Before | After | Remaining classification |
+|-------|-------:|------:|--------------------------|
+| SNIP-TOPIC | 1 | 0 | |
+| SNIP-CHANGE | 0 | 0 | |
+| TOPIC-NEW | 20 | 0 | |
+| TOPIC-MEANINGFUL | 25 | 0 | |
+| PAIR | 0 | 0 | |
+| CASE | 31 | 21 | all stale data (old diff in the two published files) |
+| YEARS | 0 | 0 | |
+| COUNTS | 0 | 0 | |
+| TITLES | 50 | 0 | |
+| PREAMBLE | 1 | 1 | stale data (NVDA intro paragraph; segment 0.2.2 skips it) |
+| ENTITY | 5 | 6 | all stale data (old signals in the two files; current code drops them) |
+| STALE | 2 | 2 | NVDA (re-run from stage 2), SF (from stage 5) |
+| HEATMAP | 0 | 0 | |
+| **Total** | **135** | **30** | **30 stale data, 0 code, 0 data** |
+
+Baseline: `INTEGRITY_REPORT.before.md` / `data/integrity/before.json`. Final: `INTEGRITY_REPORT.md` /
+`data/integrity/latest.json` (copy in `after.json`). The checker exits 1 while the 30 stale findings
+remain; they clear with the re-run below, not with code.
+
+### 2. Root causes (one line each, with the proving example)
+
+- Topics counted on words that were not inserted: `topic_mentions` scanned whole modified sentences.
+  NVDA `a4156a06454f6dfd` sentence `0001045810-26-000021:21:7`, phrase "CSP market" (only "CSP" inserted).
+- Topics counted on essentially unchanged risk factors (the "Amazon: no meaningful changes, yet newly
+  added Tariffs" mechanism): NVDA `472606c9d458f2e9` sentence `…21:15:15` "…agreement with OpenAI." in a
+  `largely_unchanged` change.
+- Case-only highlights: `word_spans` compared tokens exactly. NVDA `a4156a06454f6dfd`,
+  `0001045810-25-000023:19:95` → `0001045810-26-000021:21:91`: "Excessive or shifting export" deleted,
+  "Export" inserted.
+- Unrelated before/after pairs (the Alphabet symptom): signals paired an added sentence with the best
+  lexically overlapping hedged old sentence at ratio ≥ 0.25 counting function words; proven by a
+  synthetic boilerplate pair and removed; the aligned NVDA antitrust pair `…19:41` → `…21:41` still fires.
+- Fragment titles: the fallback cut the heading at 8 words plus "…" and the frontend's clause cutter
+  then produced "We are subject to complex laws"; 50 of 57 titles. Now the longest clause of 4–10 words.
+- Entity noise still emitted by current code: "Biden Administration", "Trump Administration"
+  (NVDA `…21:71`), "SEC" (SF `61ffb76925cf3bc2`); "AI Diffusion IFR in" and "D:4" were already stale.
+- Trends crash: `ActualItem` reduced over `old_spans` without a default; duplicate heatmap key: the
+  catch-all column reused the real category key `other`.
+- Snippets cut before their evidence: prefix trimming (SF "Gramm-Leach-Bliley Act" shown without the
+  term; the live Apple/Amazon "tariff" and NVIDIA changed-words cases are the same rule).
+- Counts that disagree (CrowdStrike): the local Trends path dropped a company whose facts failed to
+  derive, and the Databricks path built its company set from store rows while `/companies` merges local
+  and remote; both closed, the live instance not inspected.
+- Fiscal-year labels (CrowdStrike "FY2024 and FY2026"): no defect found in selection or labeling on
+  synthetic January fiscal-year cases; one real defect fixed on the way (a prior-year
+  `DocumentFiscalYearFocus` fact listed first won). Needs the real submissions JSON and filings.
+
+### 3. Files changed, by task
+
+- I1: `scripts/check_integrity.py`, `tests/test_integrity_checker.py`, `tests/fixtures/snippet_vectors.json`,
+  `pipeline/schema.py` + `pipeline/stages_final.py` (`stage_versions` recorded), `contract/`,
+  `web/src/types/comparison.ts`, `INTEGRITY_REPORT.before.md`, `data/integrity/before.json`.
+- I2a (web): `web/src/lib/{snippet,diffDisplay,trends,vocabulary}.ts`,
+  `web/src/components/{SectionBoundary,MarkedText,Quote,HighlightCard,ChangeDetail,TrendsView,ChangeList,CompanyGrid}.tsx`,
+  the overview and change pages, `web/src/lib/__tests__/*`.
+- I2b (trends/API): `pipeline/trends/{derive,aggregate,schema}.py`, `api/main.py`,
+  `pipeline/store/{tables,publisher}.py`, `scripts/derive_trends.py`, `tests/test_trends_rules.py`,
+  `tests/test_trends.py`, `tests/test_api_store.py`, `data/derived/*.trends.json`.
+- I2c (pipeline): `pipeline/{diff,signals,highlights,segment,sec_fetch,config}.py`,
+  `tests/test_{diff,signals,highlights}.py`, `tests/test_integrity_pipeline.py`.
+- I3: `scripts/refresh_stale.py`, `scripts/migrate_published.py`, `data/published/*.json` (titles,
+  highlights), `data/derived/*.trends.json`.
+- I4: `web/e2e/smoke.spec.ts`, `web/playwright.config.ts`, `web/package.json` (`test:e2e`,
+  `@playwright/test` 1.63.0), `INTEGRITY_REPORT.md`, `data/integrity/latest.json`, `DECISIONS.md`
+  (D-024, D-025), `PROGRESS.md`, this section.
+
+### 4. Reports re-run
+
+None could be re-run here (no sec.gov, no Hugging Face). `scripts/refresh_stale.py` is ready and
+tested with a fake runner; on the team's machine:
+
+```bash
+uv run python scripts/refresh_stale.py --check        # NVDA from stage 2, SF from stage 5, then the rest by age
+uv run python scripts/check_integrity.py --api http://127.0.0.1:8000
+```
+
+What did change locally: NVDA and SF had their presentation fields refreshed by
+`scripts/migrate_published.py` (short titles and highlights; analysis ids `13acfdfe…` and `c07038f7…`
+unchanged). Their derived trend facts were regenerated under derivation `1.2.2+topics1`.
+
+### 5. Remaining exceptions and why they are acceptable for now
+
+No accepted exceptions. The 30 remaining findings are stale data in the two old published files
+(21 case-only spans, the intro paragraph, 6 entity values, 2 version records); every one disappears
+with the re-run above, and the checker will prove it. The live Trends source line and company logos
+added by the team's concurrent push were merged without conflict and are outside this brief.
+
+### 6. NVDA highlights now shown
+
+1. Potential → Actual: "We are subject to complex laws, rules, regulations" (export controls, "may → experienced").
+2. New risk: "Commercial arrangements expose us to counterparty risks".
+3. Newly named: Groq, under "Failure to meet the evolving needs of our industry".
+4. New risk: "The following risk factors" (the Item 1A intro, stale; the re-run removes it).
+5. New figure disclosed: $4.5 billion, under "We are subject to complex laws, rules, regulations".
+
+The China antitrust "preliminary finding" pair does NOT appear yet: the published NVDA file carries
+signals from stage 6 version 0.1.x, before the status-change detector existed, and the migration only
+re-selects highlights from the file's own signals. The pair is aligned (`…19:41` → `…21:41`) and the
+current detector fires on it in `tests/test_integrity_pipeline.py`, so the re-run will surface it.
+
+### 7. Invariants confirmed
+
+- SEC text is the only source: every quote on every page is the verbatim sentence text; windows are
+  exact substrings with visible ellipses; the smoke test and the checker read the same files.
+- The LLM never decides what changed or the score: untouched; the LLM title is now validated harder.
+- Citation validator unchanged and still on every LLM output.
+- No probability or advice language added anywhere (grep of the new copy; the footer disclaimer only).
+- Nothing fabricated: the two reports keep their analyses; only derived presentation fields moved.
+- Determinism: FIXTUR cached vs `--no-cache` byte-identical on the final tree; `stage_versions`
+  recorded; same inputs + same versions → same `analysis_id`.
+- Contract: changed only through `pipeline/schema.py` (`stage_versions`, ten-word titles) with regenerated
+  JSON Schema and TS types.
+- SEC fair access, outbound allowlist, ticker validation, no raw HTML, secrets only via env, CORS/one
+  analysis/timeouts, pinned dependencies (one added, exact), no shell from user input: unchanged; the
+  refresh script passes validated tickers as argv.
+- No company, filing or sentence is special-cased in any rule.
+
+### 8. Next smallest safe task
+
+Run `uv run python scripts/refresh_stale.py --check` on a machine with SEC and Hugging Face access,
+then the checker: expected result zero findings, the intro row gone, the China antitrust pair shown.
+After that, give `Quote` and the Trends pair an optional anchor on the signal's own words
+(`detail` "may → experienced") so a potential-to-actual window centers on the "actual" span rather
+than the first changed word.

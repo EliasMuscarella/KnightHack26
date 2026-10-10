@@ -91,6 +91,12 @@ export interface Comparison {
   sentence_index: {
     [k: string]: SentenceLocation;
   };
+  /**
+   * STAGE_VERSION of each stage that produced this report, keyed by stage name (fetch, extract, segment, embed, match, diff, signals, llm), so a checker can name the earliest stage a re-run must start from. Absent in reports published before it was recorded.
+   */
+  stage_versions?: {
+    [k: string]: string;
+  } | null;
   summary: Summary;
   thresholds: Thresholds;
 }
@@ -122,7 +128,7 @@ export interface Change {
   section_group?: string | null;
   sentences: Sentence[];
   /**
-   * At most 8 words, plain English, neutral; a label for lists and cards (never a claim). LLM-generated and validated, or a deterministic truncation of the heading.
+   * At most 10 words, plain English, neutral; a label for lists and cards (never a claim). LLM-generated and validated, or the deterministic first clause of the heading (never a fragment, never an ellipsis, never the bare company name).
    */
   short_title: string;
   signals: Signals;

@@ -398,7 +398,12 @@ def test_trends_cold_start_serves_local_while_connecting(tmp_path):
         assert [c["ticker"] for c in t["companies"]] == ["TEST"]
         store.gate.set()  # the warehouse answers: the background refresh lands
         t = wait_for_trends(client, lambda t: t["source"] == "databricks")
-        assert t["status"] == "ok" and [c["ticker"] for c in t["companies"]] == ["ACME"]
+        # the same merged set as /companies: TEST (local only) stays listed next to ACME
+        assert t["status"] == "ok" and [c["ticker"] for c in t["companies"]] == ["ACME", "TEST"]
+        assert [c["ticker"] for c in client.get("/companies").json()["companies"]] == [
+            "ACME",
+            "TEST",
+        ]
 
 
 def test_trends_connecting_with_nothing_local_is_an_empty_retryable_answer(tmp_path):
@@ -418,6 +423,7 @@ def test_trends_connecting_with_nothing_local_is_an_empty_retryable_answer(tmp_p
             "category_activity": [],
             "potential_to_actual": [],
             "change_mix": [],
+            "warnings": [],
         }
         store.gate.set()
 
@@ -521,8 +527,9 @@ def test_trends_local_fallback_shape_and_timing(tmp_path):
         "category_activity",
         "potential_to_actual",
         "change_mix",
+        "warnings",
     }
-    assert t["status"] == "disabled" and t["source"] == "local"
+    assert t["status"] == "disabled" and t["source"] == "local" and t["warnings"] == []
     assert [c["ticker"] for c in t["companies"]] == ["NVDA", "SF"]
     assert all(set(c) == COMPANY_KEYS for c in t["companies"])
     assert set(t["headline"]) == {"companies", "meaningful_changes", "top_topic"}

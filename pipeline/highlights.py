@@ -235,11 +235,184 @@ def select_highlights(changes: list[Change], index: dict[str, SentenceLocation])
     return chosen
 
 
-def truncate_heading(heading: str, max_words: int = 8) -> str:
-    """Deterministic fallback short title: the first `max_words` words of the official heading,
-    with a visible ellipsis when cut."""
-    words = heading.strip().split()
-    if len(words) <= max_words:
-        return heading.strip().rstrip(".;:")
-    cut = " ".join(words[: max_words - 1]).rstrip(",.;:")
-    return cut + "\u2026"
+# ---------- deterministic short titles ----------
+
+# Words a short title must not end on (it would be cut mid-clause).
+DANGLING_WORDS = frozenset(
+    "including include includes and or but of the a an to in on for with by as at from into "
+    "which that our its their his her we they it is are was were be been being may might could "
+    "would should can will shall if when while because whether than such other certain any all "
+    "laws law inc corp co ltd plc llc".split()
+)
+# A clause starts BEFORE a token whose casefolded form is one of these.
+CLAUSE_START_WORDS = frozenset(
+    "which that including because as if when where while whether due resulting and or but may "
+    "might could would should will can".split()
+)
+# A clause ends AFTER a token ending with one of these (or a standalone " - ").
+CLAUSE_END_CHARS = (",", ";", ":", "\u2014", "\u2013")
+_TRAILING_PUNCT = ",;:\u2014\u2013-"
+_QUOTES = "\"'\u201c\u201d\u2018\u2019"
+_COMPANY_SUFFIX_RE = re.compile(
+    r"[\s,.]*\b(?:inc|incorporated|corp|corporation|co|company|ltd|limited|plc|llc|lp|holdings|"
+    r"group|com)\b[.,\s]*$",
+    re.IGNORECASE,
+)
+MAX_TITLE_WORDS = 10
+MIN_TITLE_WORDS = 4
+
+
+def _bare(word: str) -> str:
+    """A word with surrounding punctuation stripped, casefolded (for the DANGLING test)."""
+    return re.sub(r"^[^\w]+|[^\w'\u2019]+$", "", word).casefold()
+
+
+CONJUNCTIONS = frozenset({"and", "or", "but"})
+
+
+def _strip_trailing(tokens: list[str]) -> list[str]:
+    """Strip trailing punctuation from the last token, dropping tokens that were only punctuation."""
+    words = list(tokens)
+    while words:
+        last = words[-1].rstrip(_TRAILING_PUNCT)
+        if last:
+            words[-1] = last
+            break
+        words.pop()  # a standalone "-" or dash
+    return words
+
+
+def _trim_candidate(tokens: list[str], cut_before_conjunction: bool = False) -> list[str]:
+    """Strip trailing punctuation from the last token, then drop trailing DANGLING words while at
+    least MIN_TITLE_WORDS words would remain. When the candidate was cut right before a
+    conjunction and itself ends in "<conjunction> <word>", the coordination continues past the cut
+    ("…regulations, and political | and other actions"), so that trailing pair goes too."""
+    words = _strip_trailing(tokens)
+    while True:
+        if len(words) > MIN_TITLE_WORDS and _bare(words[-1]) in DANGLING_WORDS:
+            words = _strip_trailing(words[:-1])
+            continue
+        if (
+            cut_before_conjunction
+            and len(words) >= MIN_TITLE_WORDS + 2
+            and _bare(words[-2]) in CONJUNCTIONS
+        ):
+            words = _strip_trailing(words[:-2])
+            cut_before_conjunction = False
+            continue
+        break
+    return words
+
+
+def _name_key(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", text.casefold())
+
+
+def _company_keys(company_name: str | None) -> set[str]:
+    if not company_name:
+        return set()
+    keys = {_name_key(company_name)}
+    stripped = company_name
+    prev = None
+    while prev != stripped:
+        prev = stripped
+        stripped = _COMPANY_SUFFIX_RE.sub("", stripped).strip()
+    keys.add(_name_key(stripped))
+    return {k for k in keys if k}
+
+
+def _is_company_name(title: str, company_name: str | None) -> bool:
+    keys = _company_keys(company_name)
+    if not keys:
+        return False
+    t = title
+    prev = None
+    variants = {_name_key(t)}
+    while prev != t:
+        prev = t
+        t = _COMPANY_SUFFIX_RE.sub("", t).strip()
+        variants.add(_name_key(t))
+    return bool(variants & keys)
+
+
+def short_title_from_heading(
+    heading: str, max_words: int = MAX_TITLE_WORDS, company_name: str | None = None
+) -> str:
+    """Deterministic short title from an official risk heading (the frontend ports this spec).
+
+    1. Collapse whitespace; strip surrounding quotes; strip trailing ".", ";", ":".
+    2. A heading of at most `max_words` words is returned as is.
+    3. Clause boundaries lie AFTER a token ending with , ; : \u2014 \u2013 (or a standalone "-"),
+       and BEFORE a token whose casefolded form is in CLAUSE_START_WORDS. Each boundary gives a
+       candidate: the tokens before it, trailing punctuation stripped from its last token, then
+       trailing DANGLING_WORDS removed while at least 4 words remain; a candidate cut right before
+       a conjunction that itself ends in "<conjunction> <word>" also loses that pair
+       ("…regulations, and political | and other actions" -> "…regulations"). A candidate qualifies with
+       4..max_words words and a last word that is not DANGLING. The LONGEST qualifying one wins.
+    4. Otherwise: the first `max_words` tokens, trimmed the same way.
+    5. Never an ellipsis. A result equal to the company name (with or without a corporate
+       suffix) is replaced by step 4.
+    """
+    t = " ".join((heading or "").split())
+    t = t.strip(_QUOTES).strip()
+    t = t.rstrip(".;:").strip()
+    tokens = t.split(" ") if t else []
+    if len(tokens) <= max_words:
+        return t
+
+    def step4() -> str:
+        return " ".join(_trim_candidate(tokens[:max_words]))
+
+    best: list[str] | None = None
+    for k, tok in enumerate(tokens):
+        cuts = []
+        if tok.casefold() in CLAUSE_START_WORDS:
+            cuts.append(k)  # boundary before token k
+        if tok.endswith(CLAUSE_END_CHARS) or tok == "-":
+            cuts.append(k + 1)  # boundary after token k
+        for cut in cuts:
+            cand = _trim_candidate(
+                tokens[:cut],
+                cut_before_conjunction=_bare(tokens[cut]) in CONJUNCTIONS
+                if cut < len(tokens)
+                else False,
+            )
+            if not (MIN_TITLE_WORDS <= len(cand) <= max_words):
+                continue
+            if _bare(cand[-1]) in DANGLING_WORDS:
+                continue
+            if best is None or len(cand) > len(best):
+                best = cand
+    result = " ".join(best) if best is not None else step4()
+    if _is_company_name(result, company_name):
+        result = step4()
+    return result
+
+
+def title_problems(title: str, company_name: str | None = None) -> list[str]:
+    """Why a short title is not acceptable (empty list = acceptable): an ellipsis, more than
+    MAX_TITLE_WORDS words, a DANGLING last word, a trailing , ; : ( - \u2013 \u2014, or the bare company
+    name. Same rules as scripts/check_integrity.py's TITLES check."""
+    t = " ".join((title or "").split())
+    if not t:
+        return ["empty"]
+    problems: list[str] = []
+    if t.endswith("\u2026") or t.endswith("..."):
+        problems.append("ends with an ellipsis")
+    words = t.rstrip("\u2026.").split()
+    if len(words) > MAX_TITLE_WORDS:
+        problems.append(f"{len(words)} words (max {MAX_TITLE_WORDS})")
+    if words and _bare(words[-1]) in DANGLING_WORDS:
+        problems.append(f"ends mid-clause on {_bare(words[-1])!r}")
+    if t.rstrip("\u2026").endswith((",", ";", ":", "(", "-", "\u2013", "\u2014")):
+        problems.append("ends on punctuation")
+    if _is_company_name(t, company_name):
+        problems.append("is just the company name")
+    return problems
+
+
+def truncate_heading(
+    heading: str, max_words: int = MAX_TITLE_WORDS, company_name: str | None = None
+) -> str:
+    """Deterministic fallback short title (kept for callers): short_title_from_heading."""
+    return short_title_from_heading(heading, max_words=max_words, company_name=company_name)
