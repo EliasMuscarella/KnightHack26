@@ -18,6 +18,7 @@ import logging
 import os
 import threading
 import time
+from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Any
 
@@ -68,7 +69,30 @@ class AppState:
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or get_settings()
     state = AppState(settings)
-    app = FastAPI(title="RiskDiff API", version=PIPELINE_VERSION, docs_url="/docs", redoc_url=None)
+
+    @asynccontextmanager
+    async def lifespan(_: FastAPI):
+        def load() -> None:
+            try:
+                from pipeline.embed import load_embedder
+
+                state.embedder = load_embedder(settings)
+            except Exception as e:  # noqa: BLE001
+                state.embedder_error = f"{type(e).__name__}"
+                log.warning("embedding warm-up failed: %s", e)
+            finally:
+                state.warm = True
+
+        threading.Thread(target=load, name="embed-warmup", daemon=True).start()
+        yield
+
+    app = FastAPI(
+        title="RiskDiff API",
+        version=PIPELINE_VERSION,
+        docs_url="/docs",
+        redoc_url=None,
+        lifespan=lifespan,
+    )
     app.state.rd = state
 
     app.add_middleware(
@@ -92,21 +116,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return JSONResponse(
             status_code=500, content={"detail": FRIENDLY["internal"], "code": "internal"}
         )
-
-    @app.on_event("startup")
-    async def _warm() -> None:
-        def load() -> None:
-            try:
-                from pipeline.embed import load_embedder
-
-                state.embedder = load_embedder(settings)
-            except Exception as e:  # noqa: BLE001
-                state.embedder_error = f"{type(e).__name__}"
-                log.warning("embedding warm-up failed: %s", e)
-            finally:
-                state.warm = True
-
-        threading.Thread(target=load, name="embed-warmup", daemon=True).start()
 
     @app.get("/health")
     async def health() -> dict[str, Any]:

@@ -1,30 +1,11 @@
 /**
- * Frontend mirrors of API payloads that exist in pipeline/schema.py but are not emitted
- * into the generated src/types/comparison.ts (json2ts only emits types reachable from
- * `Comparison`). Keep these in sync with `CompanyCard` and `StageEvent` in schema.py.
+ * API payload types. `CompanyCard`, `StageEvent` and `StageStatus` come from the generated
+ * contract (pipeline/schema.py → web/src/types/comparison.ts); the SSE envelope types below
+ * describe the `complete` / `error` events of POST /analyze.
  */
+import type { CompanyCard, StageEvent, StageStatus } from "@/types/comparison";
 
-/** pipeline/schema.py: CompanyCard */
-export interface CompanyCard {
-  ticker: string;
-  name: string;
-  old_fiscal_year: number;
-  new_fiscal_year: number;
-  total_changes: number;
-  by_change_type: Record<string, number>;
-  file: string;
-}
-
-export type StageStatus = "started" | "done" | "cached" | "error";
-
-/** pipeline/schema.py: StageEvent (one SSE `stage` event from POST /analyze). */
-export interface StageEvent {
-  stage: number;
-  name: string;
-  status: StageStatus;
-  message?: string | null;
-  ticker?: string | null;
-}
+export type { CompanyCard, StageEvent, StageStatus };
 
 /** SSE `complete` event payload. */
 export interface AnalyzeComplete {
@@ -49,13 +30,8 @@ export interface AnalyzeErrorEvent {
   message: string;
 }
 
-/** Listing entry used by the home grid: CompanyCard plus fields read from the file. */
+/** Listing entry used by the home grid: CompanyCard plus where it came from. */
 export interface CompanyListing extends CompanyCard {
-  cik?: string;
-  old_filing_date?: string;
-  new_filing_date?: string;
-  max_score?: number;
-  is_fixture: boolean;
   source: "published" | "fixture" | "api";
 }
 
