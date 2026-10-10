@@ -6,6 +6,8 @@ import hashlib
 import json
 import logging
 import os
+from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import TimeoutError as FuturesTimeout
 from typing import TYPE_CHECKING
 
 from pipeline import diff as diff_mod
@@ -111,6 +113,19 @@ def stage6_signals(
 
 
 # ---------- stage 7 ----------
+
+DEFAULT_LLM_CONCURRENCY = 6
+MAX_LLM_CONCURRENCY = 16
+
+
+def llm_concurrency() -> int:
+    """Parallel LLM calls (RISKDIFF_LLM_CONCURRENCY, default 6, clamped to 1-16)."""
+    raw = (os.environ.get("RISKDIFF_LLM_CONCURRENCY") or "").strip()
+    try:
+        n = int(raw) if raw else DEFAULT_LLM_CONCURRENCY
+    except ValueError:
+        n = DEFAULT_LLM_CONCURRENCY
+    return max(1, min(MAX_LLM_CONCURRENCY, n))
 
 
 def _llm_key_inputs(
@@ -221,32 +236,57 @@ def stage7_llm(
         results = [None] * len(records)
         calls = 0
         if client is not None:
+            todo = []
             for i, _r, old, new, title, sentences in prepared:
                 key = ctx.cache.key(
                     "llm",
                     llm_mod.STAGE_VERSION,
                     _llm_key_inputs(prompt_hash, client.model_id, old, new, sentences, fetch),
                 )
-                ctx.check_cancelled()
                 hit = None if ctx.refresh_llm else ctx.cache.get("llm", key)
                 if hit is not None:
                     results[i] = hit
-                    continue
-                calls += 1
-                res = llm_mod.interpret_change(
+                else:
+                    todo.append((i, key, old, new, title, sentences))
+            calls = len(todo)
+            ctx.check_cancelled()
+
+            def call(item):
+                _i, _key, old, new, title, sentences = item
+                return llm_mod.interpret_change(
                     client, title, old, new, sentences, fetch.old.fiscal_year, fetch.new.fiscal_year
                 )
-                row = {
-                    "status": res.status,
-                    "model_id": res.model_id,
-                    "provider": client.provider,
-                    "attempts": res.attempts,
-                    "error": res.error,
-                    "raw": res.raw,
-                }
-                if res.status != "error":
-                    ctx.cache.put("llm", key, row)
-                results[i] = row
+
+            # Calls are independent and each result keeps its record's slot, so running them
+            # concurrently changes wall time only, never the output.
+            workers = max(1, min(llm_concurrency(), len(todo) or 1))
+            log.info("LLM stage: %d calls, %d at a time", len(todo), workers)
+            pool = ThreadPoolExecutor(max_workers=workers, thread_name_prefix="llm")
+            futures = [pool.submit(call, item) for item in todo]
+            finished = False
+            try:
+                for (i, key, *_rest), fut in zip(todo, futures, strict=True):
+                    while True:
+                        try:
+                            res = fut.result(timeout=0.5)
+                            break
+                        except FuturesTimeout:
+                            ctx.check_cancelled()
+                    row = {
+                        "status": res.status,
+                        "model_id": res.model_id,
+                        "provider": client.provider,
+                        "attempts": res.attempts,
+                        "error": res.error,
+                        "raw": res.raw,
+                    }
+                    if res.status != "error":
+                        ctx.cache.put("llm", key, row)
+                    results[i] = row
+                finished = True
+            finally:
+                # on cancel/error, drop queued calls and do not wait for in-flight ones
+                pool.shutdown(wait=finished, cancel_futures=True)
         ctx.outputs["llm_calls"] = calls
     return results, info
 

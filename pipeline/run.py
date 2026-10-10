@@ -60,7 +60,9 @@ class RunContext:
     fixture: bool = False
     progress: ProgressFn | None = None
     outputs: dict[str, Any] = field(default_factory=dict)
-    timings: dict[str, float] = field(default_factory=dict)
+    timings: dict[str, float] = field(default_factory=dict)  # compute time inside cached()
+    stage_seconds: dict[str, float] = field(default_factory=dict)  # wall time, started -> done
+    _stage_t0: dict[int, float] = field(default_factory=dict, repr=False)
     cancel: threading.Event | None = None
     force_publish: bool = False
     refresh_llm: bool = False
@@ -78,10 +80,23 @@ class RunContext:
     ) -> None:
         if status == "started":
             self.check_cancelled()
+            self._stage_t0[idx] = time.perf_counter()
+        elapsed = ""
+        if status != "started" and idx in self._stage_t0:
+            secs = time.perf_counter() - self._stage_t0.pop(idx)
+            self.stage_seconds[STAGE_NAMES[idx]] = secs
+            elapsed = f" in {secs:.1f}s"
         ev = StageEvent(
             stage=idx, name=STAGE_LABELS[idx], status=status, message=message, ticker=ticker
         )
-        log.info("[%d %s] %s%s", idx, STAGE_NAMES[idx], status, f": {message}" if message else "")
+        log.info(
+            "[%d %s] %s%s%s",
+            idx,
+            STAGE_NAMES[idx],
+            status,
+            elapsed,
+            f": {message}" if message else "",
+        )
         if self.progress:
             self.progress(ev)
 
@@ -327,9 +342,28 @@ def main(argv: list[str] | None = None) -> int:
             return 3
     elif "comparison" in ctx.outputs:
         print(ctx.outputs["comparison"].analysis_id)
-    for name, secs in ctx.timings.items():
-        log.info("timing %s: %.2fs", name, secs)
+    print(format_timings(ctx), file=sys.stderr)
     return 0
+
+
+def format_timings(ctx: RunContext) -> str:
+    """Per-stage wall-clock table for the CLI (stderr only; never part of published output)."""
+    rows = [(name, secs) for name, secs in ctx.stage_seconds.items()]
+    if "remote_publish" in ctx.timings:
+        rows.append(("remote_publish", ctx.timings["remote_publish"]))
+    total = sum(secs for _n, secs in rows)
+    width = max([len(n) for n, _s in rows] + [5])
+    lines = ["stage timings (wall clock):"]
+    for name, secs in rows:
+        share = f"{100 * secs / total:5.1f}%" if total else "    -"
+        note = (
+            f"  ({ctx.outputs['llm_calls']} calls)"
+            if name == "llm" and "llm_calls" in ctx.outputs
+            else ""
+        )
+        lines.append(f"  {name:<{width}}  {secs:8.1f}s  {share}{note}")
+    lines.append(f"  {'total':<{width}}  {total:8.1f}s")
+    return "\n".join(lines)
 
 
 if __name__ == "__main__":

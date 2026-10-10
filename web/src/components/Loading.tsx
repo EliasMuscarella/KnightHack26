@@ -10,7 +10,7 @@ export function PageLoading({ label, variant = "list" }: { label: string; varian
       <Skeleton className="h-4 w-24" />
       <Skeleton className="mt-3 h-9 w-[520px]" />
       {variant === "grid" ? (
-        <div className="mt-8 grid grid-cols-3 gap-5">
+        <div className="mt-8 grid grid-cols-3 gap-4">
           {Array.from({ length: 6 }).map((_, i) => (
             <Skeleton key={i} className="h-44" />
           ))}

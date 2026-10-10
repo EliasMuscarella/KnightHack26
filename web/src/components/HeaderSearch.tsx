@@ -9,7 +9,7 @@ export function HeaderSearch() {
   const pathname = usePathname();
   if (pathname === "/") return null;
   return (
-    <div className="ml-auto w-[340px]">
+    <div className="w-[300px]">
       <TickerSearch size="compact" />
     </div>
   );

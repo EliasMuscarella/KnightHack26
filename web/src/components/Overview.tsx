@@ -1,6 +1,9 @@
 /** Company page building blocks (server components). Sections are separated by spacing and one rule. */
+import type { ReactNode } from "react";
+
 import type { Comparison, FilingMeta } from "@/types/comparison";
 
+import { CompanyLogo } from "@/components/CompanyLogo";
 import { CopyId } from "@/components/CopyId";
 import { HighlightCard, groupHighlights } from "@/components/HighlightCard";
 import { LibraryStatusLine } from "@/components/LibraryStatus";
@@ -10,6 +13,16 @@ import { displayName } from "@/lib/names";
 import type { LibraryStatus } from "@/lib/types";
 import { AUDIT_TRAIL, meaningfulCount } from "@/lib/vocabulary";
 
+/** One labeled figure in the header's filing strip: label above, value below, separated by thin rules. */
+function StripItem({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div className="min-w-0 border-l border-line px-6 first:border-l-0 first:pl-0">
+      <dt className="text-sm text-ink-secondary">{label}</dt>
+      <dd className="mt-0.5 text-base font-medium text-ink">{children}</dd>
+    </div>
+  );
+}
+
 export function OverviewHeader({ comparison }: { comparison: Comparison }) {
   const { company, old_filing, new_filing } = comparison;
   const name = displayName(company.name);
@@ -18,11 +31,16 @@ export function OverviewHeader({ comparison }: { comparison: Comparison }) {
   const total = comparison.summary.total_changes || summed;
   return (
     <header>
-      <p className="text-sm text-ink-secondary">
-        {company.ticker}, annual reports FY{old_filing.fiscal_year} and FY{new_filing.fiscal_year}
-      </p>
-      <h1 className="mt-1 text-2xl font-title leading-none tracking-tight text-ink">{name}</h1>
-      <p className="mt-4 max-w-prose-72 text-lg font-medium leading-snug text-ink">
+      <div className="flex items-center gap-4">
+        <CompanyLogo ticker={company.ticker} name={name} size="md" />
+        <div className="min-w-0">
+          <p className="text-sm text-ink-secondary">
+            <span className="font-medium text-ink">{company.ticker}</span>, annual reports FY{old_filing.fiscal_year} and FY{new_filing.fiscal_year}
+          </p>
+          <h1 className="mt-1 text-2xl font-title leading-none tracking-tight text-ink">{name}</h1>
+        </div>
+      </div>
+      <p className="mt-6 max-w-prose-72 text-lg font-medium leading-snug text-ink">
         {meaningful} of {total} risk {total === 1 ? "factor" : "factors"} changed meaningfully this year.
         {unchanged > 0 ? (
           <span className="font-normal text-ink-secondary">
@@ -31,11 +49,22 @@ export function OverviewHeader({ comparison }: { comparison: Comparison }) {
           </span>
         ) : null}
       </p>
-      <p className="mt-2 max-w-prose-72 text-sm text-ink-secondary">
-        Filed {formatDate(old_filing.filing_date)} and {formatDate(new_filing.filing_date)}. Every quote is verbatim from the filings.
+      <dl className="mt-4 flex flex-wrap gap-y-3 border-y border-line py-3">
+        <StripItem label="Last year's 10-K">
+          FY{old_filing.fiscal_year}, filed {formatDate(old_filing.filing_date)}
+        </StripItem>
+        <StripItem label="This year's 10-K">
+          FY{new_filing.fiscal_year}, filed {formatDate(new_filing.filing_date)}
+        </StripItem>
+        <StripItem label="Risk Factors section length">
+          {old_filing.item_1a_word_count.toLocaleString("en-US")} words last year, {new_filing.item_1a_word_count.toLocaleString("en-US")} this year
+        </StripItem>
+      </dl>
+      <p className="mt-3 max-w-prose-72 text-sm text-ink-secondary">
+        Every quote is verbatim from the filings.
         {comparison.summary.interpretation_status !== "ok" ? " AI summaries were not generated for this comparison." : ""}
       </p>
-      <Legend className="mt-4" />
+      <Legend className="mt-3" />
     </header>
   );
 }
@@ -120,7 +149,7 @@ export function AuditTrail({ comparison, source, libraryStatus = "unknown" }: { 
         <span className="text-lg font-medium text-ink">{AUDIT_TRAIL}</span>
         <span className="text-sm text-ink-secondary">Official name, filings, analysis id, versions and models behind this analysis</span>
       </summary>
-      <div className="mt-5 space-y-6 text-sm">
+      <div className="mt-6 space-y-6 text-sm">
         <p className="max-w-prose-72 text-base text-ink">Same filings and same software version always produce the same analysis id. Re-run it and compare.</p>
         <dl className="grid grid-cols-[160px_minmax(0,1fr)] gap-x-4 gap-y-1">
           <dt className="text-ink-secondary">Official SEC name</dt>
