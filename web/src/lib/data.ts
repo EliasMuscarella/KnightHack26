@@ -13,11 +13,11 @@ import type { CompanyListing, RubricFile } from "@/lib/types";
 const FILE_RE = /^([A-Z.\-]{1,6})_(\d{4})_(\d{4})\.json$/;
 
 export function publishedDir(): string {
-  return process.env.RISKDIFF_PUBLISHED_DIR ?? path.resolve(process.cwd(), "../data/published");
+  return process.env.RISKDIFF_PUBLISHED_DIR ?? path.resolve(/*turbopackIgnore: true*/ process.cwd(), "../data/published");
 }
 
 function fixturePath(): string {
-  return path.resolve(process.cwd(), "../contract/fixtures/FIXTURE_comparison.json");
+  return path.resolve(/*turbopackIgnore: true*/ process.cwd(), "../contract/fixtures/FIXTURE_comparison.json");
 }
 
 export function fixtureEnabled(): boolean {
@@ -85,7 +85,7 @@ async function listPublishedEntries(): Promise<PublishedEntry[]> {
   const dir = publishedDir();
   let names: string[];
   try {
-    names = await fs.readdir(dir);
+    names = await fs.readdir(/*turbopackIgnore: true*/ dir);
   } catch {
     return [];
   }
@@ -97,7 +97,7 @@ async function listPublishedEntries(): Promise<PublishedEntry[]> {
       ticker: m[1],
       oldFY: Number(m[2]),
       newFY: Number(m[3]),
-      file: path.join(dir, name),
+      file: path.join(/*turbopackIgnore: true*/ dir, name),
       name,
     };
     const prev = best.get(entry.ticker);
@@ -199,7 +199,7 @@ function looksLikeRubric(x: unknown): x is RubricFile {
 export async function getRubric(): Promise<RubricFile | null> {
   try {
     const raw: unknown = JSON.parse(
-      await fs.readFile(path.resolve(process.cwd(), "../contract/rubric.json"), "utf8"),
+      await fs.readFile(path.resolve(/*turbopackIgnore: true*/ process.cwd(), "../contract/rubric.json"), "utf8"),
     );
     if (!looksLikeRubric(raw)) return null;
     return {
@@ -218,7 +218,7 @@ export async function getRubric(): Promise<RubricFile | null> {
 /** ../EVAL.md as raw markdown text, or null when evaluation has not been run. */
 export async function getEvalMarkdown(): Promise<string | null> {
   try {
-    const text = await fs.readFile(path.resolve(process.cwd(), "../EVAL.md"), "utf8");
+    const text = await fs.readFile(path.resolve(/*turbopackIgnore: true*/ process.cwd(), "../EVAL.md"), "utf8");
     return text.trim() ? text : null;
   } catch {
     return null;
