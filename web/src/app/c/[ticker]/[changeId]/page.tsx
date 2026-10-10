@@ -84,7 +84,9 @@ export default async function ChangePage(props: PageProps<"/c/[ticker]/[changeId
   const titlesDiffer = !!oldTitle && !!newTitle && oldTitle !== newTitle;
   const heading = displayTitle(change.short_title, change.title);
   // The grey full-heading line only adds something when it differs from the h1.
-  const showFullTitle = !!change.title && change.title.trim() !== heading;
+  // (A trailing period alone does not count as a difference.)
+  const bare = (t: string) => t.trim().replace(/[.\s]+$/, "");
+  const showFullTitle = !!change.title && bare(change.title) !== bare(heading);
 
   return (
     <>
