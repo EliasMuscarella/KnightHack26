@@ -129,7 +129,7 @@ function ScoreRow({ line, changeType, figures }: { line: ScoreLine; changeType: 
             {open ? "Hide" : "Show"} {n} cited {n === 1 ? "sentence" : "sentences"}
           </span>
         </span>
-        <span className="text-right font-mono text-base font-bold tabular-nums text-ink">
+        <span className="text-right font-sans text-base font-bold tabular-nums text-ink">
           {line.points > 0 ? "+" : ""}
           {line.points}
         </span>
@@ -155,7 +155,7 @@ export function ScoreBreakdownPanel({ change }: { change: Change }) {
         <ChangeLevelTag score={change.score} />
       </div>
       <p className="mt-1 text-sm text-ink-muted">
-        {CHANGE_LEVEL.label} adds up fixed, published points for each thing that changed. {CHANGE_LEVEL.helper}
+        The wording-change level adds up fixed, published points for each thing that changed. {CHANGE_LEVEL.helper}
       </p>
       {change.score_breakdown.length === 0 ? (
         <p className="mt-3 text-ink-muted">Nothing in this risk factor changed enough to add points.</p>
@@ -168,9 +168,10 @@ export function ScoreBreakdownPanel({ change }: { change: Change }) {
           </ul>
           <div className="mt-1 flex items-center justify-between border-t-2 border-ink px-1 pt-2">
             <span className="font-semibold text-ink">
-              Total{total > 100 ? " (capped at 100)" : ""} · {CHANGE_LEVEL.prefix}: {changeLevel(change.score)}
+              {total > 100 ? `Total · capped at 100 (points add to ${total})` : "Total"} · {CHANGE_LEVEL.prefix}:{" "}
+              {changeLevel(change.score)}
             </span>
-            <span className="font-mono text-base font-bold tabular-nums text-ink">{change.score}</span>
+            <span className="font-sans text-base font-bold tabular-nums text-ink">{change.score}</span>
           </div>
         </>
       )}

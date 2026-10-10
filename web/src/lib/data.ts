@@ -115,8 +115,11 @@ async function readPublishedFile(entry: PublishedEntry): Promise<Comparison | nu
 }
 
 function topHighlight(c: Comparison): CompanyListing["top_highlight"] {
-  const h = (c.highlights ?? []).find((x) => c.changes.some((ch) => ch.id === x.change_id));
-  return h ? { kind: h.kind, short_title: h.short_title, figure_changed: isFigureChanged(h) } : null;
+  for (const h of c.highlights ?? []) {
+    const change = c.changes.find((ch) => ch.id === h.change_id);
+    if (change) return { kind: h.kind, short_title: h.short_title, title: change.title, figure_changed: isFigureChanged(h) };
+  }
+  return null;
 }
 
 function toListing(c: Comparison, file: string, source: CompanyListing["source"]): CompanyListing {

@@ -30,42 +30,49 @@ export const CHANGE_TYPE_ORDER: ChangeType[] = [
   "largely_unchanged",
 ];
 
+/**
+ * One neutral outlined style for every change type: no fill colors and no direction arrows,
+ * so a label never reads as good/bad or up/down. (Green/red stays reserved for the inline
+ * diff text, where it means added/removed words.)
+ */
+const CHANGE_TYPE_BADGE = "bg-surface text-ink border-line-strong";
+
 export const CHANGE_TYPE_VOCAB: Record<ChangeType, ChangeTypeVocab> = {
   new: {
     label: "New risk",
     helper: "Appears only in this year's filing.",
     marker: "+",
-    badgeClass: "bg-add-bg text-add-fg border-add-line",
+    badgeClass: CHANGE_TYPE_BADGE,
   },
   removed: {
     label: "Dropped risk",
     helper: "Appeared last year, not this year.",
     marker: "−",
-    badgeClass: "bg-del-bg text-del-fg border-del-line",
+    badgeClass: CHANGE_TYPE_BADGE,
   },
   expanded: {
     label: "Expanded",
     helper: "Substantially more language this year.",
-    marker: "↗",
-    badgeClass: "bg-exp-bg text-exp-fg border-exp-line",
+    marker: "",
+    badgeClass: CHANGE_TYPE_BADGE,
   },
   reduced: {
     label: "Scaled back",
     helper: "Substantially less language this year.",
-    marker: "↘",
-    badgeClass: "bg-red-bg text-red-fg border-red-line",
+    marker: "",
+    badgeClass: CHANGE_TYPE_BADGE,
   },
   materially_reworded: {
     label: "Major update",
     helper: "Substantially rewritten from last year.",
     marker: "~",
-    badgeClass: "bg-mod-bg text-mod-fg border-mod-line",
+    badgeClass: CHANGE_TYPE_BADGE,
   },
   largely_unchanged: {
     label: "Essentially unchanged",
     helper: "Little or no change in wording from last year.",
     marker: "=",
-    badgeClass: "bg-neutral-bg text-ink-muted border-line-strong",
+    badgeClass: CHANGE_TYPE_BADGE,
   },
 };
 
@@ -75,9 +82,22 @@ export function changeTypeVocab(t: string): ChangeTypeVocab {
       label: t.replace(/_/g, " "),
       helper: "",
       marker: "•",
-      badgeClass: "bg-neutral-bg text-ink-muted border-line-strong",
+      badgeClass: CHANGE_TYPE_BADGE,
     }
   );
+}
+
+/**
+ * The title to show for a change. A `short_title` ending in an ellipsis is a deterministic
+ * truncation fallback that says nothing on its own ("We are subject to complex laws, rules…"),
+ * so the full heading is shown instead.
+ */
+export function displayTitle(shortTitle: string | null | undefined, fullTitle: string | null | undefined): string {
+  const short = (shortTitle ?? "").trim();
+  const full = (fullTitle ?? "").trim();
+  if (!short) return full;
+  if ((short.endsWith("…") || short.endsWith("...")) && full) return full;
+  return short;
 }
 
 /** Every change type except "largely_unchanged" counts as a meaningful change. */
@@ -235,7 +255,7 @@ export function scoreLineHelper(signal: string, changeType: string, figures: Fig
 }
 
 // ---------------------------------------------------------------------------------------
-// Change level (the 0–100 score in words)
+// Wording change level (the 0–100 score in words)
 // ---------------------------------------------------------------------------------------
 
 /** Score at or above this is "High". */
@@ -252,12 +272,12 @@ export function changeLevel(score: number): ChangeLevel {
 }
 
 export const CHANGE_LEVEL = {
-  label: "Change level",
+  label: "Wording change level",
   /** Visible prefix on every level chip, so "High" never reads as a risk rating. */
   prefix: "Wording change",
   helper: "How much the language changed, not how risky the company is.",
   /** One-line note at the top of the "All changes" table. */
-  tableNote: "Change level measures how much the wording changed. It is not a risk rating.",
+  tableNote: "Wording change level measures how much the language changed. It is not a risk rating.",
 } as const;
 
 // ---------------------------------------------------------------------------------------

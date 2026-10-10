@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 
 import { ChangeLevelTag, ChangeTypeBadge } from "@/components/ui";
 import { categoryLabel } from "@/lib/format";
-import { CHANGE_LEVEL, CHANGE_TYPE_ORDER, changeTypeVocab } from "@/lib/vocabulary";
+import { CHANGE_LEVEL, CHANGE_TYPE_ORDER, changeTypeVocab, displayTitle } from "@/lib/vocabulary";
 
 export interface ChangeRow {
   id: string;
@@ -75,8 +75,8 @@ function Row({ ticker, r }: { ticker: string; r: ChangeRow }) {
         className="grid grid-cols-[minmax(0,1fr)_190px_224px] items-center gap-4 px-5 py-3.5 hover:bg-paper focus-visible:bg-paper"
       >
         <span className="min-w-0">
-          <span className="block font-semibold leading-snug text-ink underline-offset-2 hover:underline" title={r.title}>
-            {r.short_title || r.title}
+          <span className="line-clamp-2 font-semibold leading-snug text-ink underline-offset-2 hover:underline" title={r.title}>
+            {displayTitle(r.short_title, r.title)}
           </span>
           <span className="mt-0.5 block text-sm text-ink-muted">
             {sentenceCountLine(r.added, r.removed, r.modified)}
@@ -154,9 +154,11 @@ export function ChangeList({ ticker, rows }: { ticker: string; rows: ChangeRow[]
                   count={typeCounts.get(t)}
                   title={v.helper}
                 >
-                  <span aria-hidden="true" className="font-mono">
-                    {v.marker}
-                  </span>
+                  {v.marker ? (
+                    <span aria-hidden="true" className="font-mono">
+                      {v.marker}
+                    </span>
+                  ) : null}
                   {v.label}
                 </TypeFilterButton>
               );

@@ -273,6 +273,8 @@ interface SplitRow {
   old: Sentence[];
   new: Sentence[];
   collapsible: boolean;
+  /** Set when 2+ consecutive one-sided rows (all added, or all removed) were merged into this one. */
+  merged?: "added" | "removed";
 }
 interface InlineRow {
   kind: "inline";
@@ -287,6 +289,41 @@ type Block<R extends Row> = { kind: "row"; row: R } | { kind: "run"; key: string
 
 function rowIds(r: Row): string[] {
   return r.kind === "split" ? [...r.old, ...r.new].map((s) => s.id) : [r.s.id, ...(r.alias ? [r.alias.id] : [])];
+}
+
+/** "added" when only this year's side has sentences and all are added; "removed" for the mirror case. */
+function oneSidedStatus(r: SplitRow): "added" | "removed" | null {
+  if (r.old.length === 0 && r.new.length > 0 && r.new.every((s) => s.status === "added")) return "added";
+  if (r.new.length === 0 && r.old.length > 0 && r.old.every((s) => s.status === "removed")) return "removed";
+  return null;
+}
+
+/**
+ * Side by side: a run of 2+ consecutive rows that are all added (or all removed) becomes one
+ * row, so a long new passage shows one placeholder on the empty side instead of a wall of them.
+ * Every sentence keeps its own row inside the merged cell (and its anchor id).
+ */
+function mergeOneSidedRuns(rows: SplitRow[]): SplitRow[] {
+  const out: SplitRow[] = [];
+  let i = 0;
+  while (i < rows.length) {
+    const status = rows[i].collapsible ? null : oneSidedStatus(rows[i]);
+    let j = i + 1;
+    if (status) while (j < rows.length && !rows[j].collapsible && oneSidedStatus(rows[j]) === status) j++;
+    if (status && j - i >= 2) {
+      const run = rows.slice(i, j);
+      out.push({
+        ...run[0],
+        old: run.flatMap((r) => r.old),
+        new: run.flatMap((r) => r.new),
+        merged: status,
+      });
+    } else {
+      out.push(...rows.slice(i, j));
+    }
+    i = j;
+  }
+  return out;
 }
 
 function groupRuns<R extends Row>(rows: R[]): Block<R>[] {
@@ -361,7 +398,7 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
       const rows: SplitRow[] = [...pairs.entries()]
         .sort((a, b) => a[0] - b[0])
         .map(([pi, p]) => ({ kind: "split", key: `p${pi}`, pair: pi, old: p.old, new: p.new, collapsible: [...p.old, ...p.new].every(quiet) }));
-      return groupRuns<Row>(rows);
+      return groupRuns<Row>(mergeOneSidedRuns(rows));
     }
     // Inline (and one-sided) view: an unchanged pair whose two sentences are byte-identical is
     // shown once, like a context line in a unified diff; the old id stays addressable.
@@ -464,23 +501,37 @@ export function ChangeDetail({ change, index, filings, isFixture, modelIds }: De
     />
   );
 
-  const emptyCell = (side: "old" | "new") => (
-    <div className="flex h-full min-h-8 items-center justify-center rounded border border-dashed border-line bg-[repeating-linear-gradient(135deg,transparent,transparent_6px,var(--color-sunken)_6px,var(--color-sunken)_12px)] p-1.5">
-      <span className="rounded bg-surface/90 px-1.5 py-px font-sans text-xs italic text-ink-faint">
-        {side === "old" ? "no sentence last year" : "no sentence this year"}
-      </span>
-    </div>
-  );
-
-  const renderRow = (r: Row) =>
-    r.kind === "split" ? (
-      <div key={r.key} className="grid grid-cols-2 gap-5">
-        <div className="space-y-1">{r.old.length ? r.old.map((s) => renderSentence(s, false)) : emptyCell("old")}</div>
-        <div className="space-y-1">{r.new.length ? r.new.map((s) => renderSentence(s, false)) : emptyCell("new")}</div>
+  const emptyCell = (side: "old" | "new", merged?: { status: "added" | "removed"; count: number }) => {
+    const label = merged
+      ? merged.status === "added"
+        ? `no sentences last year (${merged.count} added this year)`
+        : `no sentences this year (${merged.count} removed)`
+      : side === "old"
+        ? "no sentence last year"
+        : "no sentence this year";
+    return (
+      <div
+        className={`flex h-full min-h-8 justify-center rounded border border-dashed border-line bg-[repeating-linear-gradient(135deg,transparent,transparent_6px,var(--color-sunken)_6px,var(--color-sunken)_12px)] p-1.5 ${
+          merged ? "items-start" : "items-center"
+        }`}
+      >
+        <span className={`rounded bg-surface/90 px-1.5 py-px font-sans text-xs italic text-ink-faint ${merged ? "sticky top-28" : ""}`}>
+          {label}
+        </span>
       </div>
-    ) : (
-      renderSentence(r.s, view === "inline", r.alias?.id)
     );
+  };
+
+  const renderRow = (r: Row) => {
+    if (r.kind !== "split") return renderSentence(r.s, view === "inline", r.alias?.id);
+    const merged = r.merged ? { status: r.merged, count: r.merged === "added" ? r.new.length : r.old.length } : undefined;
+    return (
+      <div key={r.key} className="grid grid-cols-2 gap-5" data-merged-run={r.merged}>
+        <div className="space-y-1">{r.old.length ? r.old.map((s) => renderSentence(s, false)) : emptyCell("old", merged)}</div>
+        <div className="space-y-1">{r.new.length ? r.new.map((s) => renderSentence(s, false)) : emptyCell("new", merged)}</div>
+      </div>
+    );
+  };
 
   const renderBlocks = () =>
     blocks.map((b) => {

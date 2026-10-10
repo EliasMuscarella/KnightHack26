@@ -3,7 +3,7 @@ import Link from "next/link";
 import { HighlightKindBadge } from "@/components/ui";
 import { formatDate } from "@/lib/format";
 import type { CompanyListing } from "@/lib/types";
-import { meaningfulCount } from "@/lib/vocabulary";
+import { displayTitle, meaningfulCount } from "@/lib/vocabulary";
 
 export function CompanyCardView({ company }: { company: CompanyListing }) {
   const { meaningful, total: summed } = meaningfulCount(company.by_change_type);
@@ -49,8 +49,10 @@ export function CompanyCardView({ company }: { company: CompanyListing }) {
           <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Top change</p>
           <div className="mt-1 flex flex-wrap items-center gap-2">
             <HighlightKindBadge kind={top.kind} size="sm" figureChanged={top.figure_changed === true} />
-            <span className="text-sm font-medium leading-snug text-ink">{top.short_title}</span>
           </div>
+          <p className="mt-1 line-clamp-2 text-sm font-medium leading-snug text-ink" title={top.title || top.short_title}>
+            {displayTitle(top.short_title, top.title)}
+          </p>
         </div>
       ) : null}
     </Link>

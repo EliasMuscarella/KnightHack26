@@ -60,7 +60,7 @@ const DOES_NOT = [
   },
   {
     title: "No risk ratings",
-    body: "A change in disclosure language is not a change in actual risk. The change level measures wording only.",
+    body: "A change in disclosure language is not a change in actual risk. The wording change level measures wording only.",
   },
   {
     title: "No investment advice",
@@ -124,8 +124,10 @@ export default async function MethodologyPage() {
         </ol>
         <p className="max-w-[80ch] text-base text-ink-muted">
           What changed is always computed by fixed rules in code, so the same two filings always give the same
-          result. AI helps in two narrow places only: recognizing that a reworded risk is the same risk as last
-          year&apos;s (step 2), and wording short summaries (step 4). Any summary statement that does not cite valid
+          result. AI helps in three narrow places only: recognizing that a reworded risk is the same risk as last
+          year&apos;s (step 2), wording short summaries (step 4), and answering four fixed yes/no questions about each
+          change. A &ldquo;yes&rdquo; adds a fixed, published number of points only when it cites the filing sentences
+          behind it, and never when a rule in code already scored the same fact. Any summary statement that does not cite valid
           filing sentences is removed before it is shown. Each change also gets a {CHANGE_LEVEL.label.toLowerCase()} (High {LEVEL_HIGH_MIN}+, Medium{" "}
           {LEVEL_MEDIUM_MIN}–{LEVEL_HIGH_MIN - 1}, Low below {LEVEL_MEDIUM_MIN}, on a 0 to 100 scale): {CHANGE_LEVEL.helper.charAt(0).toLowerCase() + CHANGE_LEVEL.helper.slice(1)}
         </p>
@@ -156,7 +158,7 @@ export default async function MethodologyPage() {
             ▸
           </span>
           <span>
-            <span className="block text-3xl font-bold tracking-tight text-ink">Technical detail (for technical judges)</span>
+            <span className="block text-3xl font-bold tracking-tight text-ink">Technical detail</span>
             <span className="mt-2 block max-w-[80ch] text-base text-ink-muted">
               The full pipeline, the published scoring weights, thresholds and caps, blocked wording, and the
               evaluation status. RiskDiff reads Item 1A (Risk Factors) of each 10-K.
