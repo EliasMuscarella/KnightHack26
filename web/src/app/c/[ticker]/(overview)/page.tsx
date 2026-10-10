@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ChangeList, type ChangeRow } from "@/components/ChangeList";
-import { AuditTrail, HighlightCards, OverviewHeader, SummaryLine } from "@/components/Overview";
+import { AuditTrail, HighlightCards, OverviewHeader } from "@/components/Overview";
 import { FixtureBanner, InfoBox, PageContainer } from "@/components/ui";
 import { getComparison, getLibraryStatus } from "@/lib/data";
 import { normalizeTicker } from "@/lib/ticker";
@@ -39,11 +39,8 @@ export default async function ComparisonPage(props: PageProps<"/c/[ticker]">) {
   return (
     <>
       {comparison.is_fixture ? <FixtureBanner /> : null}
-      <PageContainer className="space-y-8 py-7">
-        <div className="space-y-4">
-          <OverviewHeader comparison={comparison} />
-          <SummaryLine comparison={comparison} />
-        </div>
+      <PageContainer className="space-y-10 py-10">
+        <OverviewHeader comparison={comparison} />
         {comparison.changes.length === 0 ? (
           <InfoBox title="No risk factor changes">
             The Risk Factors sections of the two filings did not produce any matched or unmatched risk factors.
