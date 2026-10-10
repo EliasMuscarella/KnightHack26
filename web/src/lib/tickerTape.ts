@@ -143,7 +143,7 @@ export function formatTapeTime(iso: string | null, withDate = false): string | n
   return withDate ? `${parts.month} ${parts.day}, ${time}` : time;
 }
 
-/** Animation length for one pass of the list: about 2.5 seconds per quote, so symbols stay readable. */
+/** Animation length for one pass of the list: about 3.2 seconds per quote, so symbols stay readable. */
 export function tapeDurationSeconds(count: number): number {
-  return Math.max(20, Math.round(count * 2.5));
+  return Math.max(20, Math.round(count * 3.2));
 }

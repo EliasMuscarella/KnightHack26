@@ -445,7 +445,7 @@ summary {
 }
 
 /* Home page market-price tape: the list is rendered twice and the track slides by one copy
-   (-50%), so the loop is seamless. Duration comes from --tape-duration (about 2.5s per quote). */
+   (-50%), so the loop is seamless. Duration comes from --tape-duration (about 3.2s per quote). */
 @keyframes rd-tape {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -459,8 +459,7 @@ summary {
   animation: rd-tape var(--tape-duration, 120s) linear infinite;
 }
 .tape-viewport:hover .tape-track,
-.tape-viewport:focus-within .tape-track,
-.tape[data-paused="true"] .tape-track {
+.tape-viewport:focus-within .tape-track {
   animation-play-state: paused;
 }
 
@@ -473,9 +472,8 @@ summary {
   details[open] > :not(summary),
   .draw-marks .hl { animation: none; }
   a, button, summary, .nav-link::after, details > summary [aria-hidden="true"] { transition: none; }
-  /* The tape stands still: one copy of the list in a horizontally scrollable row, no pause control. */
+  /* The tape stands still: one copy of the list in a horizontally scrollable row. */
   .tape-track { animation: none; }
-  .tape-copy[aria-hidden="true"],
-  .tape-pause { display: none; }
+  .tape-copy[aria-hidden="true"] { display: none; }
   .tape-viewport { overflow-x: auto; scrollbar-width: thin; }
 }
