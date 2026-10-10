@@ -1,0 +1,2379 @@
+{
+  "analysis_id": "70c95c4b3e0dbbf6863d8d888c4cce41afbf45aceb7a4afc70aab945da104a05",
+  "changes": [
+    {
+      "body_similarity": 0.87,
+      "categories": [
+        "supply_chain",
+        "geopolitical"
+      ],
+      "change_type": "expanded",
+      "heading_similarity": 1.0,
+      "id": "d434664e80f07fbb",
+      "interpretation": {
+        "claims": [
+          {
+            "cited_sentence_ids": [
+              "0000000000-24-000001:0:3",
+              "0000000000-25-000001:0:3"
+            ],
+            "text": "FIXTURE: The new filing reports that Ruritanian export restrictions caused a shipment delay with a stated revenue effect, which the prior filing framed only as a possibility."
+          },
+          {
+            "cited_sentence_ids": [
+              "0000000000-25-000001:0:1",
+              "0000000000-25-000001:0:6"
+            ],
+            "text": "FIXTURE: The company now names a third manufacturing country and discloses an 18-month timeline to qualify an additional foundry."
+          }
+        ],
+        "dropped_claim_count": 1,
+        "dropped_reasons": [
+          "FIXTURE: claim 3 dropped: cited sentence id not in sentence_index"
+        ],
+        "model_id": "FIXTURE: fake/model-id",
+        "reason": null,
+        "rubric": [
+          {
+            "answer": true,
+            "cited_sentence_ids": [
+              "0000000000-25-000001:0:3"
+            ],
+            "question": "FIXTURE: Does the new text describe an event or condition that has already occurred, where the old text described it as a possibility?",
+            "question_id": "Q1",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": true
+          },
+          {
+            "answer": true,
+            "cited_sentence_ids": [
+              "0000000000-25-000001:0:1"
+            ],
+            "question": "FIXTURE: Does the new text name a specific geography, government, regulation, or counterparty not named in the old text?",
+            "question_id": "Q2",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": true
+          },
+          {
+            "answer": true,
+            "cited_sentence_ids": [
+              "0000000000-25-000001:0:3"
+            ],
+            "question": "FIXTURE: Does the new text state or quantify a financial or operational impact not stated in the old text?",
+            "question_id": "Q3",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": true
+          },
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the change narrow or remove a previously disclosed exposure?",
+            "question_id": "Q4",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          }
+        ],
+        "status": "ok"
+      },
+      "new_block_id": "0000000000-25-000001:0",
+      "new_text": "FIXTURE: We depend on a limited number of third-party foundries to manufacture our widgets.\nFIXTURE: We do not own manufacturing facilities and rely on a small number of foundries located in Westland, Eastland, and Ruritania.\nFIXTURE: A disruption at any of these foundries could delay shipments and increase our costs.\nFIXTURE: In fiscal 2025, export restrictions imposed by the Ruritanian government resulted in a shipment delay that reduced our revenue by approximately $1.2 billion.\nFIXTURE: Natural disasters, political instability, or trade restrictions have affected and may continue to affect our suppliers.\nFIXTURE: We attempt to mitigate these risks by maintaining safety stock, but our efforts may not be sufficient.\nFIXTURE: We are qualifying an additional foundry in Northland, which we expect to take at least 18 months.",
+      "new_title": "FIXTURE: We depend on a limited number of third-party foundries to manufacture our widgets.",
+      "old_block_id": "0000000000-24-000001:0",
+      "old_text": "FIXTURE: We depend on a limited number of third-party foundries to manufacture our widgets.\nFIXTURE: We do not own manufacturing facilities and rely on a small number of foundries located in Westland and Eastland.\nFIXTURE: A disruption at any of these foundries could delay shipments and increase our costs.\nFIXTURE: Natural disasters, political instability, or trade restrictions may affect our suppliers.\nFIXTURE: We attempt to mitigate these risks by maintaining safety stock, but our efforts may not be sufficient.",
+      "old_title": "FIXTURE: We depend on a limited number of third-party foundries to manufacture our widgets.",
+      "rank": 1,
+      "score": 80,
+      "score_breakdown": [
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:0:3",
+            "0000000000-25-000001:0:6"
+          ],
+          "detail": "FIXTURE: 2 sentences added, 1 modified",
+          "label": "FIXTURE: Risk was expanded",
+          "points": 15,
+          "signal": "change_type"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-24-000001:0:3",
+            "0000000000-25-000001:0:4"
+          ],
+          "detail": "FIXTURE: 'may affect' -> 'have affected'",
+          "label": "FIXTURE: Hedged language became actual language",
+          "points": 20,
+          "signal": "hypothetical_to_actual"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:0:1",
+            "0000000000-25-000001:0:6"
+          ],
+          "detail": "FIXTURE: Ruritania, Northland",
+          "label": "FIXTURE: New named entities",
+          "points": 10,
+          "signal": "new_entities"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:0:3"
+          ],
+          "detail": "FIXTURE: $1.2 billion",
+          "label": "FIXTURE: New quantified impact",
+          "points": 15,
+          "signal": "new_quantities"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:0:3"
+          ],
+          "detail": null,
+          "label": "FIXTURE: AI rubric: possibility became an occurred event",
+          "points": 10,
+          "signal": "rubric_q1"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:0:3"
+          ],
+          "detail": null,
+          "label": "FIXTURE: AI rubric: newly quantified impact",
+          "points": 10,
+          "signal": "rubric_q3"
+        }
+      ],
+      "section_group": "FIXTURE: Risks Related to Our Business and Industry",
+      "sentences": [
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-25-000001:0:0",
+          "diff_spans": null,
+          "id": "0000000000-24-000001:0:0",
+          "pair_index": 0,
+          "side": "old",
+          "status": "unchanged",
+          "text": "FIXTURE: We depend on a limited number of third-party foundries to manufacture our widgets."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-24-000001:0:0",
+          "diff_spans": null,
+          "id": "0000000000-25-000001:0:0",
+          "pair_index": 0,
+          "side": "new",
+          "status": "unchanged",
+          "text": "FIXTURE: We depend on a limited number of third-party foundries to manufacture our widgets."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-25-000001:0:1",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: We do not own manufacturing facilities and rely on a small number of foundries located in Westland and "
+            },
+            {
+              "op": "delete",
+              "text": "Eastland"
+            },
+            {
+              "op": "equal",
+              "text": "."
+            }
+          ],
+          "id": "0000000000-24-000001:0:1",
+          "pair_index": 1,
+          "side": "old",
+          "status": "modified",
+          "text": "FIXTURE: We do not own manufacturing facilities and rely on a small number of foundries located in Westland and Eastland."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-24-000001:0:1",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: We do not own manufacturing facilities and rely on a small number of foundries located in Westland"
+            },
+            {
+              "op": "insert",
+              "text": ", Eastland,"
+            },
+            {
+              "op": "equal",
+              "text": " and "
+            },
+            {
+              "op": "insert",
+              "text": "Ruritania"
+            },
+            {
+              "op": "equal",
+              "text": "."
+            }
+          ],
+          "id": "0000000000-25-000001:0:1",
+          "pair_index": 1,
+          "side": "new",
+          "status": "modified",
+          "text": "FIXTURE: We do not own manufacturing facilities and rely on a small number of foundries located in Westland, Eastland, and Ruritania."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-25-000001:0:2",
+          "diff_spans": null,
+          "id": "0000000000-24-000001:0:2",
+          "pair_index": 2,
+          "side": "old",
+          "status": "unchanged",
+          "text": "FIXTURE: A disruption at any of these foundries could delay shipments and increase our costs."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-24-000001:0:2",
+          "diff_spans": null,
+          "id": "0000000000-25-000001:0:2",
+          "pair_index": 2,
+          "side": "new",
+          "status": "unchanged",
+          "text": "FIXTURE: A disruption at any of these foundries could delay shipments and increase our costs."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-25-000001:0:3",
+          "pair_index": 3,
+          "side": "new",
+          "status": "added",
+          "text": "FIXTURE: In fiscal 2025, export restrictions imposed by the Ruritanian government resulted in a shipment delay that reduced our revenue by approximately $1.2 billion."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-25-000001:0:4",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: Natural disasters, political instability, or trade restrictions may affect our suppliers."
+            }
+          ],
+          "id": "0000000000-24-000001:0:3",
+          "pair_index": 4,
+          "side": "old",
+          "status": "modified",
+          "text": "FIXTURE: Natural disasters, political instability, or trade restrictions may affect our suppliers."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-24-000001:0:3",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: Natural disasters, political instability, or trade restrictions "
+            },
+            {
+              "op": "insert",
+              "text": "have affected and "
+            },
+            {
+              "op": "equal",
+              "text": "may"
+            },
+            {
+              "op": "insert",
+              "text": " continue to"
+            },
+            {
+              "op": "equal",
+              "text": " affect our suppliers."
+            }
+          ],
+          "id": "0000000000-25-000001:0:4",
+          "pair_index": 4,
+          "side": "new",
+          "status": "modified",
+          "text": "FIXTURE: Natural disasters, political instability, or trade restrictions have affected and may continue to affect our suppliers."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-25-000001:0:5",
+          "diff_spans": null,
+          "id": "0000000000-24-000001:0:4",
+          "pair_index": 5,
+          "side": "old",
+          "status": "unchanged",
+          "text": "FIXTURE: We attempt to mitigate these risks by maintaining safety stock, but our efforts may not be sufficient."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-24-000001:0:4",
+          "diff_spans": null,
+          "id": "0000000000-25-000001:0:5",
+          "pair_index": 5,
+          "side": "new",
+          "status": "unchanged",
+          "text": "FIXTURE: We attempt to mitigate these risks by maintaining safety stock, but our efforts may not be sufficient."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-25-000001:0:6",
+          "pair_index": 6,
+          "side": "new",
+          "status": "added",
+          "text": "FIXTURE: We are qualifying an additional foundry in Northland, which we expect to take at least 18 months."
+        }
+      ],
+      "signals": {
+        "added_text_ratio": 0.3937,
+        "category_scores": {
+          "geopolitical": 0.58,
+          "macroeconomic": 0.31,
+          "supply_chain": 0.71
+        },
+        "hypothetical_to_actual": [
+          {
+            "detail": "FIXTURE: Hedged verb became an actual past-tense statement.",
+            "new_sentence_ids": [
+              "0000000000-25-000001:0:4"
+            ],
+            "old_sentence_ids": [
+              "0000000000-24-000001:0:3"
+            ],
+            "value": "FIXTURE: may affect -> have affected"
+          }
+        ],
+        "new_entities": [
+          {
+            "detail": "FIXTURE: Geography (GPE) not present in the old text.",
+            "new_sentence_ids": [
+              "0000000000-25-000001:0:1",
+              "0000000000-25-000001:0:3"
+            ],
+            "old_sentence_ids": [],
+            "value": "FIXTURE: Ruritania"
+          },
+          {
+            "detail": "FIXTURE: Geography (GPE) not present in the old text.",
+            "new_sentence_ids": [
+              "0000000000-25-000001:0:6"
+            ],
+            "old_sentence_ids": [],
+            "value": "FIXTURE: Northland"
+          }
+        ],
+        "new_quantities": [
+          {
+            "detail": "FIXTURE: Dollar amount not present in the old text.",
+            "new_sentence_ids": [
+              "0000000000-25-000001:0:3"
+            ],
+            "old_sentence_ids": [],
+            "value": "FIXTURE: $1.2 billion"
+          },
+          {
+            "detail": "FIXTURE: Duration not present in the old text.",
+            "new_sentence_ids": [
+              "0000000000-25-000001:0:6"
+            ],
+            "old_sentence_ids": [],
+            "value": "FIXTURE: 18 months"
+          }
+        ],
+        "removed_text_ratio": 0.0127,
+        "semantic_shift": 0.09
+      },
+      "similarity": 0.91,
+      "stats": {
+        "added": 2,
+        "added_word_count": 50,
+        "modified": 2,
+        "new_sentence_count": 7,
+        "new_word_count": 127,
+        "old_sentence_count": 5,
+        "old_word_count": 79,
+        "removed": 0,
+        "removed_word_count": 1,
+        "unchanged": 3
+      },
+      "title": "FIXTURE: We depend on a limited number of third-party foundries to manufacture our widgets."
+    },
+    {
+      "body_similarity": 0.86,
+      "categories": [
+        "regulation",
+        "macroeconomic"
+      ],
+      "change_type": "expanded",
+      "heading_similarity": 0.78,
+      "id": "530f7128dc266e93",
+      "interpretation": {
+        "claims": [],
+        "dropped_claim_count": 0,
+        "dropped_reasons": [],
+        "model_id": null,
+        "reason": "FIXTURE: LLM stage unavailable: no provider configured",
+        "rubric": [],
+        "status": "unavailable"
+      },
+      "new_block_id": "0000000000-25-000001:5",
+      "new_text": "FIXTURE: Changes in trade policy, including tariffs, have increased and could further increase our costs.\nFIXTURE: Tariffs on imported components increased our cost of goods sold by approximately 3% in fiscal 2025.\nFIXTURE: We may be unable to pass these costs on to customers.\nFIXTURE: Additional tariffs announced by the Westland Trade Commission in March 2025 could apply to our products.",
+      "new_title": "FIXTURE: Changes in trade policy, including tariffs, have increased and could further increase our costs.",
+      "old_block_id": "0000000000-24-000001:5",
+      "old_text": "FIXTURE: Changes in trade policy could increase our costs.\nFIXTURE: Tariffs on imported components could increase our cost of goods sold.\nFIXTURE: We may be unable to pass these costs on to customers.",
+      "old_title": "FIXTURE: Changes in trade policy could increase our costs.",
+      "rank": 2,
+      "score": 50,
+      "score_breakdown": [
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:5:3"
+          ],
+          "detail": "FIXTURE: 1 sentence added, 2 modified",
+          "label": "FIXTURE: Risk was expanded",
+          "points": 15,
+          "signal": "change_type"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-24-000001:5:0",
+            "0000000000-25-000001:5:0"
+          ],
+          "detail": "FIXTURE: 'could increase' -> 'have increased'",
+          "label": "FIXTURE: Hedged language became actual language",
+          "points": 20,
+          "signal": "hypothetical_to_actual"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:5:1"
+          ],
+          "detail": "FIXTURE: 3%",
+          "label": "FIXTURE: New quantified impact",
+          "points": 15,
+          "signal": "new_quantities"
+        }
+      ],
+      "section_group": "FIXTURE: Risks Related to Regulation and Legal Matters",
+      "sentences": [
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-25-000001:5:0",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: Changes in trade policy could increase our costs."
+            }
+          ],
+          "id": "0000000000-24-000001:5:0",
+          "pair_index": 0,
+          "side": "old",
+          "status": "modified",
+          "text": "FIXTURE: Changes in trade policy could increase our costs."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-24-000001:5:0",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: Changes in trade policy"
+            },
+            {
+              "op": "insert",
+              "text": ", including tariffs, have increased and"
+            },
+            {
+              "op": "equal",
+              "text": " could"
+            },
+            {
+              "op": "insert",
+              "text": " further"
+            },
+            {
+              "op": "equal",
+              "text": " increase our costs."
+            }
+          ],
+          "id": "0000000000-25-000001:5:0",
+          "pair_index": 0,
+          "side": "new",
+          "status": "modified",
+          "text": "FIXTURE: Changes in trade policy, including tariffs, have increased and could further increase our costs."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-25-000001:5:1",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: Tariffs on imported components "
+            },
+            {
+              "op": "delete",
+              "text": "could increase"
+            },
+            {
+              "op": "equal",
+              "text": " our cost of goods sold."
+            }
+          ],
+          "id": "0000000000-24-000001:5:1",
+          "pair_index": 1,
+          "side": "old",
+          "status": "modified",
+          "text": "FIXTURE: Tariffs on imported components could increase our cost of goods sold."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-24-000001:5:1",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: Tariffs on imported components "
+            },
+            {
+              "op": "insert",
+              "text": "increased"
+            },
+            {
+              "op": "equal",
+              "text": " our cost of goods sold"
+            },
+            {
+              "op": "insert",
+              "text": " by approximately 3% in fiscal 2025"
+            },
+            {
+              "op": "equal",
+              "text": "."
+            }
+          ],
+          "id": "0000000000-25-000001:5:1",
+          "pair_index": 1,
+          "side": "new",
+          "status": "modified",
+          "text": "FIXTURE: Tariffs on imported components increased our cost of goods sold by approximately 3% in fiscal 2025."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-25-000001:5:2",
+          "diff_spans": null,
+          "id": "0000000000-24-000001:5:2",
+          "pair_index": 2,
+          "side": "old",
+          "status": "unchanged",
+          "text": "FIXTURE: We may be unable to pass these costs on to customers."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-24-000001:5:2",
+          "diff_spans": null,
+          "id": "0000000000-25-000001:5:2",
+          "pair_index": 2,
+          "side": "new",
+          "status": "unchanged",
+          "text": "FIXTURE: We may be unable to pass these costs on to customers."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-25-000001:5:3",
+          "pair_index": 3,
+          "side": "new",
+          "status": "added",
+          "text": "FIXTURE: Additional tariffs announced by the Westland Trade Commission in March 2025 could apply to our products."
+        }
+      ],
+      "signals": {
+        "added_text_ratio": 0.5082,
+        "category_scores": {
+          "macroeconomic": 0.49,
+          "regulation": 0.66
+        },
+        "hypothetical_to_actual": [
+          {
+            "detail": "FIXTURE: Heading moved from hedged to actual.",
+            "new_sentence_ids": [
+              "0000000000-25-000001:5:0"
+            ],
+            "old_sentence_ids": [
+              "0000000000-24-000001:5:0"
+            ],
+            "value": "FIXTURE: could increase -> have increased"
+          }
+        ],
+        "new_entities": [
+          {
+            "detail": "FIXTURE: Government body named only in the new filing.",
+            "new_sentence_ids": [
+              "0000000000-25-000001:5:3"
+            ],
+            "old_sentence_ids": [],
+            "value": "FIXTURE: Westland Trade Commission"
+          }
+        ],
+        "new_quantities": [
+          {
+            "detail": "FIXTURE: Percentage not present in the old text.",
+            "new_sentence_ids": [
+              "0000000000-25-000001:5:1"
+            ],
+            "old_sentence_ids": [],
+            "value": "FIXTURE: 3%"
+          }
+        ],
+        "removed_text_ratio": 0.0606,
+        "semantic_shift": 0.16
+      },
+      "similarity": 0.84,
+      "stats": {
+        "added": 1,
+        "added_word_count": 31,
+        "modified": 2,
+        "new_sentence_count": 4,
+        "new_word_count": 61,
+        "old_sentence_count": 3,
+        "old_word_count": 33,
+        "removed": 0,
+        "removed_word_count": 2,
+        "unchanged": 1
+      },
+      "title": "FIXTURE: Changes in trade policy, including tariffs, have increased and could further increase our costs."
+    },
+    {
+      "body_similarity": null,
+      "categories": [
+        "artificial_intelligence",
+        "regulation"
+      ],
+      "change_type": "new",
+      "heading_similarity": null,
+      "id": "a7ab944f05ff339d",
+      "interpretation": {
+        "claims": [
+          {
+            "cited_sentence_ids": [
+              "0000000000-25-000001:2:1",
+              "0000000000-25-000001:2:2"
+            ],
+            "text": "FIXTURE: This is an entirely new risk factor; it cites a named AI law and ties the exposure to machine learning features in the company's software."
+          }
+        ],
+        "dropped_claim_count": 0,
+        "dropped_reasons": [],
+        "model_id": "FIXTURE: fake/model-id",
+        "reason": null,
+        "rubric": [
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the new text describe an event or condition that has already occurred, where the old text described it as a possibility?",
+            "question_id": "Q1",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          },
+          {
+            "answer": true,
+            "cited_sentence_ids": [
+              "0000000000-25-000001:2:2"
+            ],
+            "question": "FIXTURE: Does the new text name a specific geography, government, regulation, or counterparty not named in the old text?",
+            "question_id": "Q2",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": true
+          },
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the new text state or quantify a financial or operational impact not stated in the old text?",
+            "question_id": "Q3",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          },
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the change narrow or remove a previously disclosed exposure?",
+            "question_id": "Q4",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          }
+        ],
+        "status": "ok"
+      },
+      "new_block_id": "0000000000-25-000001:2",
+      "new_text": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure.\nFIXTURE: We have begun to integrate machine learning features into our widget planning software.\nFIXTURE: Laws governing artificial intelligence, such as the Westland AI Act, are evolving and may impose new obligations on us.\nFIXTURE: If our models produce inaccurate or biased outputs, our customers may lose confidence in our products.",
+      "new_title": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure.",
+      "old_block_id": null,
+      "old_text": null,
+      "old_title": null,
+      "rank": 3,
+      "score": 50,
+      "score_breakdown": [
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:2:0"
+          ],
+          "detail": "FIXTURE: No counterpart in the prior filing",
+          "label": "FIXTURE: New risk factor",
+          "points": 30,
+          "signal": "change_type"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:2:2"
+          ],
+          "detail": "FIXTURE: Westland AI Act",
+          "label": "FIXTURE: New named entities",
+          "points": 10,
+          "signal": "new_entities"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:2:2"
+          ],
+          "detail": null,
+          "label": "FIXTURE: AI rubric: new specific regulation",
+          "points": 10,
+          "signal": "rubric_q2"
+        }
+      ],
+      "section_group": "FIXTURE: Risks Related to Regulation and Legal Matters",
+      "sentences": [
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-25-000001:2:0",
+          "pair_index": 0,
+          "side": "new",
+          "status": "added",
+          "text": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-25-000001:2:1",
+          "pair_index": 1,
+          "side": "new",
+          "status": "added",
+          "text": "FIXTURE: We have begun to integrate machine learning features into our widget planning software."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-25-000001:2:2",
+          "pair_index": 2,
+          "side": "new",
+          "status": "added",
+          "text": "FIXTURE: Laws governing artificial intelligence, such as the Westland AI Act, are evolving and may impose new obligations on us."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-25-000001:2:3",
+          "pair_index": 3,
+          "side": "new",
+          "status": "added",
+          "text": "FIXTURE: If our models produce inaccurate or biased outputs, our customers may lose confidence in our products."
+        }
+      ],
+      "signals": {
+        "added_text_ratio": 1.0,
+        "category_scores": {
+          "artificial_intelligence": 0.88,
+          "regulation": 0.52
+        },
+        "hypothetical_to_actual": [],
+        "new_entities": [
+          {
+            "detail": "FIXTURE: Law/regulation named only in the new filing.",
+            "new_sentence_ids": [
+              "0000000000-25-000001:2:2"
+            ],
+            "old_sentence_ids": [],
+            "value": "FIXTURE: Westland AI Act"
+          }
+        ],
+        "new_quantities": [],
+        "removed_text_ratio": 0.0,
+        "semantic_shift": 0.0
+      },
+      "similarity": null,
+      "stats": {
+        "added": 4,
+        "added_word_count": 64,
+        "modified": 0,
+        "new_sentence_count": 4,
+        "new_word_count": 64,
+        "old_sentence_count": 0,
+        "old_word_count": 0,
+        "removed": 0,
+        "removed_word_count": 0,
+        "unchanged": 0
+      },
+      "title": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure."
+    },
+    {
+      "body_similarity": 0.76,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_type": "materially_reworded",
+      "heading_similarity": 0.69,
+      "id": "6f1bd4f571f61777",
+      "interpretation": {
+        "claims": [
+          {
+            "cited_sentence_ids": [
+              "0000000000-25-000001:1:0",
+              "0000000000-25-000001:1:1"
+            ],
+            "text": "FIXTURE: The heading and body now name specific attack types (ransomware, phishing, state-sponsored) and extend the scope to vendors' systems."
+          }
+        ],
+        "dropped_claim_count": 0,
+        "dropped_reasons": [],
+        "model_id": "FIXTURE: fake/model-id",
+        "reason": null,
+        "rubric": [
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the new text describe an event or condition that has already occurred, where the old text described it as a possibility?",
+            "question_id": "Q1",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          },
+          {
+            "answer": true,
+            "cited_sentence_ids": [
+              "0000000000-25-000001:1:1"
+            ],
+            "question": "FIXTURE: Does the new text name a specific geography, government, regulation, or counterparty not named in the old text?",
+            "question_id": "Q2",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": true
+          },
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the new text state or quantify a financial or operational impact not stated in the old text?",
+            "question_id": "Q3",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          },
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the change narrow or remove a previously disclosed exposure?",
+            "question_id": "Q4",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          }
+        ],
+        "status": "ok"
+      },
+      "new_block_id": "0000000000-25-000001:1",
+      "new_text": "FIXTURE: Cybersecurity incidents, including ransomware, could materially disrupt our operations.\nFIXTURE: Our information technology systems and those of our vendors are vulnerable to ransomware, phishing, and state-sponsored attacks.\nFIXTURE: An incident could result in the loss or exposure of confidential information, regulatory penalties, and damage to our reputation.\nFIXTURE: We may incur significant costs to remediate security incidents, and our insurance may not cover all losses.",
+      "new_title": "FIXTURE: Cybersecurity incidents, including ransomware, could materially disrupt our operations.",
+      "old_block_id": "0000000000-24-000001:1",
+      "old_text": "FIXTURE: Security breaches could harm our business.\nFIXTURE: Our systems may be vulnerable to computer viruses, break-ins, and similar disruptions.\nFIXTURE: A breach could result in the loss of confidential information and damage to our reputation.\nFIXTURE: We may incur significant costs to remediate security incidents.",
+      "old_title": "FIXTURE: Security breaches could harm our business.",
+      "rank": 4,
+      "score": 38,
+      "score_breakdown": [
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:1:0",
+            "0000000000-25-000001:1:1",
+            "0000000000-25-000001:1:2",
+            "0000000000-25-000001:1:3"
+          ],
+          "detail": "FIXTURE: 4 of 4 sentences modified",
+          "label": "FIXTURE: Risk was materially reworded",
+          "points": 20,
+          "signal": "change_type"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:1:0"
+          ],
+          "detail": "FIXTURE: similarity 0.74",
+          "label": "FIXTURE: Meaning shifted noticeably",
+          "points": 8,
+          "signal": "semantic_shift"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:1:1"
+          ],
+          "detail": null,
+          "label": "FIXTURE: AI rubric: new specific counterparty or regulation",
+          "points": 10,
+          "signal": "rubric_q2"
+        }
+      ],
+      "section_group": "FIXTURE: Risks Related to Our Business and Industry",
+      "sentences": [
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-25-000001:1:0",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: "
+            },
+            {
+              "op": "delete",
+              "text": "Security"
+            },
+            {
+              "op": "equal",
+              "text": " "
+            },
+            {
+              "op": "delete",
+              "text": "breaches"
+            },
+            {
+              "op": "equal",
+              "text": " could "
+            },
+            {
+              "op": "delete",
+              "text": "harm"
+            },
+            {
+              "op": "equal",
+              "text": " our "
+            },
+            {
+              "op": "delete",
+              "text": "business"
+            },
+            {
+              "op": "equal",
+              "text": "."
+            }
+          ],
+          "id": "0000000000-24-000001:1:0",
+          "pair_index": 0,
+          "side": "old",
+          "status": "modified",
+          "text": "FIXTURE: Security breaches could harm our business."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-24-000001:1:0",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: "
+            },
+            {
+              "op": "insert",
+              "text": "Cybersecurity"
+            },
+            {
+              "op": "equal",
+              "text": " "
+            },
+            {
+              "op": "insert",
+              "text": "incidents, including ransomware,"
+            },
+            {
+              "op": "equal",
+              "text": " could "
+            },
+            {
+              "op": "insert",
+              "text": "materially disrupt"
+            },
+            {
+              "op": "equal",
+              "text": " our "
+            },
+            {
+              "op": "insert",
+              "text": "operations"
+            },
+            {
+              "op": "equal",
+              "text": "."
+            }
+          ],
+          "id": "0000000000-25-000001:1:0",
+          "pair_index": 0,
+          "side": "new",
+          "status": "modified",
+          "text": "FIXTURE: Cybersecurity incidents, including ransomware, could materially disrupt our operations."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-25-000001:1:1",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: Our systems "
+            },
+            {
+              "op": "delete",
+              "text": "may"
+            },
+            {
+              "op": "equal",
+              "text": " "
+            },
+            {
+              "op": "delete",
+              "text": "be"
+            },
+            {
+              "op": "equal",
+              "text": " vulnerable to "
+            },
+            {
+              "op": "delete",
+              "text": "computer viruses"
+            },
+            {
+              "op": "equal",
+              "text": ", "
+            },
+            {
+              "op": "delete",
+              "text": "break-ins"
+            },
+            {
+              "op": "equal",
+              "text": ", and "
+            },
+            {
+              "op": "delete",
+              "text": "similar"
+            },
+            {
+              "op": "equal",
+              "text": " "
+            },
+            {
+              "op": "delete",
+              "text": "disruptions"
+            },
+            {
+              "op": "equal",
+              "text": "."
+            }
+          ],
+          "id": "0000000000-24-000001:1:1",
+          "pair_index": 1,
+          "side": "old",
+          "status": "modified",
+          "text": "FIXTURE: Our systems may be vulnerable to computer viruses, break-ins, and similar disruptions."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-24-000001:1:1",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: Our "
+            },
+            {
+              "op": "insert",
+              "text": "information technology "
+            },
+            {
+              "op": "equal",
+              "text": "systems "
+            },
+            {
+              "op": "insert",
+              "text": "and"
+            },
+            {
+              "op": "equal",
+              "text": " "
+            },
+            {
+              "op": "insert",
+              "text": "those of our vendors are"
+            },
+            {
+              "op": "equal",
+              "text": " vulnerable to "
+            },
+            {
+              "op": "insert",
+              "text": "ransomware"
+            },
+            {
+              "op": "equal",
+              "text": ", "
+            },
+            {
+              "op": "insert",
+              "text": "phishing"
+            },
+            {
+              "op": "equal",
+              "text": ", and "
+            },
+            {
+              "op": "insert",
+              "text": "state-sponsored"
+            },
+            {
+              "op": "equal",
+              "text": " "
+            },
+            {
+              "op": "insert",
+              "text": "attacks"
+            },
+            {
+              "op": "equal",
+              "text": "."
+            }
+          ],
+          "id": "0000000000-25-000001:1:1",
+          "pair_index": 1,
+          "side": "new",
+          "status": "modified",
+          "text": "FIXTURE: Our information technology systems and those of our vendors are vulnerable to ransomware, phishing, and state-sponsored attacks."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-25-000001:1:2",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: "
+            },
+            {
+              "op": "delete",
+              "text": "A"
+            },
+            {
+              "op": "equal",
+              "text": " "
+            },
+            {
+              "op": "delete",
+              "text": "breach"
+            },
+            {
+              "op": "equal",
+              "text": " could result in the loss of confidential information and damage to our reputation."
+            }
+          ],
+          "id": "0000000000-24-000001:1:2",
+          "pair_index": 2,
+          "side": "old",
+          "status": "modified",
+          "text": "FIXTURE: A breach could result in the loss of confidential information and damage to our reputation."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-24-000001:1:2",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: "
+            },
+            {
+              "op": "insert",
+              "text": "An"
+            },
+            {
+              "op": "equal",
+              "text": " "
+            },
+            {
+              "op": "insert",
+              "text": "incident"
+            },
+            {
+              "op": "equal",
+              "text": " could result in the loss "
+            },
+            {
+              "op": "insert",
+              "text": "or exposure "
+            },
+            {
+              "op": "equal",
+              "text": "of confidential information"
+            },
+            {
+              "op": "insert",
+              "text": ", regulatory penalties,"
+            },
+            {
+              "op": "equal",
+              "text": " and damage to our reputation."
+            }
+          ],
+          "id": "0000000000-25-000001:1:2",
+          "pair_index": 2,
+          "side": "new",
+          "status": "modified",
+          "text": "FIXTURE: An incident could result in the loss or exposure of confidential information, regulatory penalties, and damage to our reputation."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-25-000001:1:3",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: We may incur significant costs to remediate security incidents."
+            }
+          ],
+          "id": "0000000000-24-000001:1:3",
+          "pair_index": 3,
+          "side": "old",
+          "status": "modified",
+          "text": "FIXTURE: We may incur significant costs to remediate security incidents."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-24-000001:1:3",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: We may incur significant costs to remediate security incidents"
+            },
+            {
+              "op": "insert",
+              "text": ", and our insurance may not cover all losses"
+            },
+            {
+              "op": "equal",
+              "text": "."
+            }
+          ],
+          "id": "0000000000-25-000001:1:3",
+          "pair_index": 3,
+          "side": "new",
+          "status": "modified",
+          "text": "FIXTURE: We may incur significant costs to remediate security incidents, and our insurance may not cover all losses."
+        }
+      ],
+      "signals": {
+        "added_text_ratio": 0.5303,
+        "category_scores": {
+          "cybersecurity": 0.83,
+          "regulation": 0.22
+        },
+        "hypothetical_to_actual": [],
+        "new_entities": [
+          {
+            "detail": "FIXTURE: Threat actor category not present in the old text.",
+            "new_sentence_ids": [
+              "0000000000-25-000001:1:1"
+            ],
+            "old_sentence_ids": [],
+            "value": "FIXTURE: state-sponsored attacks"
+          }
+        ],
+        "new_quantities": [],
+        "removed_text_ratio": 0.2826,
+        "semantic_shift": 0.26
+      },
+      "similarity": 0.74,
+      "stats": {
+        "added": 0,
+        "added_word_count": 35,
+        "modified": 4,
+        "new_sentence_count": 4,
+        "new_word_count": 66,
+        "old_sentence_count": 4,
+        "old_word_count": 46,
+        "removed": 0,
+        "removed_word_count": 13,
+        "unchanged": 0
+      },
+      "title": "FIXTURE: Cybersecurity incidents, including ransomware, could materially disrupt our operations."
+    },
+    {
+      "body_similarity": null,
+      "categories": [
+        "litigation",
+        "regulation"
+      ],
+      "change_type": "removed",
+      "heading_similarity": null,
+      "id": "99545bba86c20d17",
+      "interpretation": {
+        "claims": [
+          {
+            "cited_sentence_ids": [
+              "0000000000-24-000001:2:0",
+              "0000000000-24-000001:2:2"
+            ],
+            "text": "FIXTURE: The prior filing's acquisition-related risk, including a stated termination fee, no longer appears."
+          }
+        ],
+        "dropped_claim_count": 0,
+        "dropped_reasons": [],
+        "model_id": "FIXTURE: fake/model-id",
+        "reason": null,
+        "rubric": [
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the new text describe an event or condition that has already occurred, where the old text described it as a possibility?",
+            "question_id": "Q1",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          },
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the new text name a specific geography, government, regulation, or counterparty not named in the old text?",
+            "question_id": "Q2",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          },
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the new text state or quantify a financial or operational impact not stated in the old text?",
+            "question_id": "Q3",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          },
+          {
+            "answer": true,
+            "cited_sentence_ids": [
+              "0000000000-24-000001:2:0"
+            ],
+            "question": "FIXTURE: Does the change narrow or remove a previously disclosed exposure?",
+            "question_id": "Q4",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": true
+          }
+        ],
+        "status": "ok"
+      },
+      "new_block_id": null,
+      "new_text": null,
+      "new_title": null,
+      "old_block_id": "0000000000-24-000001:2",
+      "old_text": "FIXTURE: The pending acquisition of Gadgetron Inc. may not be completed on the expected timeline.\nFIXTURE: Completion of the acquisition is subject to regulatory approvals in the U.S. and the E.U., which may be delayed or denied.\nFIXTURE: If the acquisition is not completed, we may be required to pay a termination fee of $450 million.",
+      "old_title": "FIXTURE: The pending acquisition of Gadgetron Inc. may not be completed on the expected timeline.",
+      "rank": 5,
+      "score": 20,
+      "score_breakdown": [
+        {
+          "cited_sentence_ids": [
+            "0000000000-24-000001:2:0"
+          ],
+          "detail": "FIXTURE: No counterpart in the new filing",
+          "label": "FIXTURE: Risk factor removed",
+          "points": 20,
+          "signal": "change_type"
+        }
+      ],
+      "section_group": "FIXTURE: Risks Related to Regulation and Legal Matters",
+      "sentences": [
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-24-000001:2:0",
+          "pair_index": 0,
+          "side": "old",
+          "status": "removed",
+          "text": "FIXTURE: The pending acquisition of Gadgetron Inc. may not be completed on the expected timeline."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-24-000001:2:1",
+          "pair_index": 1,
+          "side": "old",
+          "status": "removed",
+          "text": "FIXTURE: Completion of the acquisition is subject to regulatory approvals in the U.S. and the E.U., which may be delayed or denied."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-24-000001:2:2",
+          "pair_index": 2,
+          "side": "old",
+          "status": "removed",
+          "text": "FIXTURE: If the acquisition is not completed, we may be required to pay a termination fee of $450 million."
+        }
+      ],
+      "signals": {
+        "added_text_ratio": 0.0,
+        "category_scores": {
+          "litigation": 0.44,
+          "regulation": 0.61
+        },
+        "hypothetical_to_actual": [],
+        "new_entities": [],
+        "new_quantities": [],
+        "removed_text_ratio": 1.0,
+        "semantic_shift": 0.0
+      },
+      "similarity": null,
+      "stats": {
+        "added": 0,
+        "added_word_count": 0,
+        "modified": 0,
+        "new_sentence_count": 0,
+        "new_word_count": 0,
+        "old_sentence_count": 3,
+        "old_word_count": 56,
+        "removed": 3,
+        "removed_word_count": 56,
+        "unchanged": 0
+      },
+      "title": "FIXTURE: The pending acquisition of Gadgetron Inc. may not be completed on the expected timeline."
+    },
+    {
+      "body_similarity": 0.8,
+      "categories": [
+        "foreign_exchange"
+      ],
+      "change_type": "reduced",
+      "heading_similarity": 1.0,
+      "id": "0f18522a41433ec5",
+      "interpretation": {
+        "claims": [],
+        "dropped_claim_count": 2,
+        "dropped_reasons": [
+          "FIXTURE: claim 1 dropped: banned language ('likely')",
+          "FIXTURE: claim 2 dropped: no citations"
+        ],
+        "model_id": "FIXTURE: fake/model-id",
+        "reason": "FIXTURE: all 2 claims dropped by the citation validator",
+        "rubric": [
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the new text describe an event or condition that has already occurred, where the old text described it as a possibility?",
+            "question_id": "Q1",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          },
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the new text name a specific geography, government, regulation, or counterparty not named in the old text?",
+            "question_id": "Q2",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          },
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the new text state or quantify a financial or operational impact not stated in the old text?",
+            "question_id": "Q3",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          },
+          {
+            "answer": false,
+            "cited_sentence_ids": [],
+            "question": "FIXTURE: Does the change narrow or remove a previously disclosed exposure?",
+            "question_id": "Q4",
+            "rationale": "FIXTURE: short rationale",
+            "raw_answer": false
+          }
+        ],
+        "status": "empty"
+      },
+      "new_block_id": "0000000000-25-000001:3",
+      "new_text": "FIXTURE: Fluctuations in foreign currency exchange rates could adversely affect our results.\nFIXTURE: Approximately 30% of our revenue is denominated in currencies other than the U.S. dollar.\nFIXTURE: We use forward contracts to hedge a portion of this exposure, but hedging may not be effective.",
+      "new_title": "FIXTURE: Fluctuations in foreign currency exchange rates could adversely affect our results.",
+      "old_block_id": "0000000000-24-000001:3",
+      "old_text": "FIXTURE: Fluctuations in foreign currency exchange rates could adversely affect our results.\nFIXTURE: Approximately 40% of our revenue is denominated in currencies other than the U.S. dollar.\nFIXTURE: We use forward contracts to hedge a portion of this exposure, but hedging may not be effective.\nFIXTURE: A strengthening U.S. dollar would reduce the reported value of our international revenue.\nFIXTURE: We do not hedge translation exposure for our subsidiaries in Southland.",
+      "old_title": "FIXTURE: Fluctuations in foreign currency exchange rates could adversely affect our results.",
+      "rank": 6,
+      "score": 15,
+      "score_breakdown": [
+        {
+          "cited_sentence_ids": [
+            "0000000000-24-000001:3:3",
+            "0000000000-24-000001:3:4"
+          ],
+          "detail": "FIXTURE: 2 sentences removed",
+          "label": "FIXTURE: Risk was reduced",
+          "points": 10,
+          "signal": "change_type"
+        },
+        {
+          "cited_sentence_ids": [
+            "0000000000-25-000001:3:1"
+          ],
+          "detail": "FIXTURE: 40% -> 30%",
+          "label": "FIXTURE: Changed quantity",
+          "points": 5,
+          "signal": "new_quantities"
+        }
+      ],
+      "section_group": "FIXTURE: Risks Related to Financial Matters",
+      "sentences": [
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-25-000001:3:0",
+          "diff_spans": null,
+          "id": "0000000000-24-000001:3:0",
+          "pair_index": 0,
+          "side": "old",
+          "status": "unchanged",
+          "text": "FIXTURE: Fluctuations in foreign currency exchange rates could adversely affect our results."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-24-000001:3:0",
+          "diff_spans": null,
+          "id": "0000000000-25-000001:3:0",
+          "pair_index": 0,
+          "side": "new",
+          "status": "unchanged",
+          "text": "FIXTURE: Fluctuations in foreign currency exchange rates could adversely affect our results."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-25-000001:3:1",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: Approximately "
+            },
+            {
+              "op": "delete",
+              "text": "40"
+            },
+            {
+              "op": "equal",
+              "text": "% of our revenue is denominated in currencies other than the U.S. dollar."
+            }
+          ],
+          "id": "0000000000-24-000001:3:1",
+          "pair_index": 1,
+          "side": "old",
+          "status": "modified",
+          "text": "FIXTURE: Approximately 40% of our revenue is denominated in currencies other than the U.S. dollar."
+        },
+        {
+          "alignment_similarity": 0.82,
+          "counterpart_id": "0000000000-24-000001:3:1",
+          "diff_spans": [
+            {
+              "op": "equal",
+              "text": "FIXTURE: Approximately "
+            },
+            {
+              "op": "insert",
+              "text": "30"
+            },
+            {
+              "op": "equal",
+              "text": "% of our revenue is denominated in currencies other than the U.S. dollar."
+            }
+          ],
+          "id": "0000000000-25-000001:3:1",
+          "pair_index": 1,
+          "side": "new",
+          "status": "modified",
+          "text": "FIXTURE: Approximately 30% of our revenue is denominated in currencies other than the U.S. dollar."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-25-000001:3:2",
+          "diff_spans": null,
+          "id": "0000000000-24-000001:3:2",
+          "pair_index": 2,
+          "side": "old",
+          "status": "unchanged",
+          "text": "FIXTURE: We use forward contracts to hedge a portion of this exposure, but hedging may not be effective."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-24-000001:3:2",
+          "diff_spans": null,
+          "id": "0000000000-25-000001:3:2",
+          "pair_index": 2,
+          "side": "new",
+          "status": "unchanged",
+          "text": "FIXTURE: We use forward contracts to hedge a portion of this exposure, but hedging may not be effective."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-24-000001:3:3",
+          "pair_index": 3,
+          "side": "old",
+          "status": "removed",
+          "text": "FIXTURE: A strengthening U.S. dollar would reduce the reported value of our international revenue."
+        },
+        {
+          "alignment_similarity": null,
+          "counterpart_id": null,
+          "diff_spans": null,
+          "id": "0000000000-24-000001:3:4",
+          "pair_index": 4,
+          "side": "old",
+          "status": "removed",
+          "text": "FIXTURE: We do not hedge translation exposure for our subsidiaries in Southland."
+        }
+      ],
+      "signals": {
+        "added_text_ratio": 0.0222,
+        "category_scores": {
+          "foreign_exchange": 0.9
+        },
+        "hypothetical_to_actual": [],
+        "new_entities": [],
+        "new_quantities": [
+          {
+            "detail": "FIXTURE: Percentage changed from 40% to 30%.",
+            "new_sentence_ids": [
+              "0000000000-25-000001:3:1"
+            ],
+            "old_sentence_ids": [
+              "0000000000-24-000001:3:1"
+            ],
+            "value": "FIXTURE: 30%"
+          }
+        ],
+        "removed_text_ratio": 0.3803,
+        "semantic_shift": 0.14
+      },
+      "similarity": 0.86,
+      "stats": {
+        "added": 0,
+        "added_word_count": 1,
+        "modified": 1,
+        "new_sentence_count": 3,
+        "new_word_count": 45,
+        "old_sentence_count": 5,
+        "old_word_count": 71,
+        "removed": 2,
+        "removed_word_count": 27,
+        "unchanged": 2
+      },
+      "title": "FIXTURE: Fluctuations in foreign currency exchange rates could adversely affect our results."
+    },
+    {
+      "body_similarity": 1.0,
+      "categories": [
+        "competition"
+      ],
+      "change_type": "largely_unchanged",
+      "heading_similarity": 1.0,
+      "id": "4a78b46c10ede4cb",
+      "interpretation": {
+        "claims": [],
+        "dropped_claim_count": 0,
+        "dropped_reasons": [],
+        "model_id": null,
+        "reason": "FIXTURE: not run for largely_unchanged risks",
+        "rubric": [],
+        "status": "skipped"
+      },
+      "new_block_id": "0000000000-25-000001:4",
+      "new_text": "FIXTURE: The widget market is intensely competitive.\nFIXTURE: We compete with larger companies that have greater resources, e.g. Megacorp and Omnicorp.\nFIXTURE: If we fail to compete effectively, our market share and margins could decline.",
+      "new_title": "FIXTURE: The widget market is intensely competitive.",
+      "old_block_id": "0000000000-24-000001:4",
+      "old_text": "FIXTURE: The widget market is intensely competitive.\nFIXTURE: We compete with larger companies that have greater resources, e.g. Megacorp and Omnicorp.\nFIXTURE: If we fail to compete effectively, our market share and margins could decline.",
+      "old_title": "FIXTURE: The widget market is intensely competitive.",
+      "rank": 7,
+      "score": 0,
+      "score_breakdown": [],
+      "section_group": "FIXTURE: Risks Related to Our Business and Industry",
+      "sentences": [
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-25-000001:4:0",
+          "diff_spans": null,
+          "id": "0000000000-24-000001:4:0",
+          "pair_index": 0,
+          "side": "old",
+          "status": "unchanged",
+          "text": "FIXTURE: The widget market is intensely competitive."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-24-000001:4:0",
+          "diff_spans": null,
+          "id": "0000000000-25-000001:4:0",
+          "pair_index": 0,
+          "side": "new",
+          "status": "unchanged",
+          "text": "FIXTURE: The widget market is intensely competitive."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-25-000001:4:1",
+          "diff_spans": null,
+          "id": "0000000000-24-000001:4:1",
+          "pair_index": 1,
+          "side": "old",
+          "status": "unchanged",
+          "text": "FIXTURE: We compete with larger companies that have greater resources, e.g. Megacorp and Omnicorp."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-24-000001:4:1",
+          "diff_spans": null,
+          "id": "0000000000-25-000001:4:1",
+          "pair_index": 1,
+          "side": "new",
+          "status": "unchanged",
+          "text": "FIXTURE: We compete with larger companies that have greater resources, e.g. Megacorp and Omnicorp."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-25-000001:4:2",
+          "diff_spans": null,
+          "id": "0000000000-24-000001:4:2",
+          "pair_index": 2,
+          "side": "old",
+          "status": "unchanged",
+          "text": "FIXTURE: If we fail to compete effectively, our market share and margins could decline."
+        },
+        {
+          "alignment_similarity": 1.0,
+          "counterpart_id": "0000000000-24-000001:4:2",
+          "diff_spans": null,
+          "id": "0000000000-25-000001:4:2",
+          "pair_index": 2,
+          "side": "new",
+          "status": "unchanged",
+          "text": "FIXTURE: If we fail to compete effectively, our market share and margins could decline."
+        }
+      ],
+      "signals": {
+        "added_text_ratio": 0.0,
+        "category_scores": {
+          "competition": 0.93
+        },
+        "hypothetical_to_actual": [],
+        "new_entities": [],
+        "new_quantities": [],
+        "removed_text_ratio": 0.0,
+        "semantic_shift": 0.0
+      },
+      "similarity": 1.0,
+      "stats": {
+        "added": 0,
+        "added_word_count": 0,
+        "modified": 0,
+        "new_sentence_count": 3,
+        "new_word_count": 35,
+        "old_sentence_count": 3,
+        "old_word_count": 35,
+        "removed": 0,
+        "removed_word_count": 0,
+        "unchanged": 3
+      },
+      "title": "FIXTURE: The widget market is intensely competitive."
+    }
+  ],
+  "company": {
+    "cik": "0000000000",
+    "name": "FIXTURE: Example Widgets Corp (synthetic, not a real company)",
+    "ticker": "FIXTUR"
+  },
+  "filing_selection_note": "FIXTURE: two most recent original 10-K filings; amendments (10-K/A) excluded",
+  "is_fixture": true,
+  "model_ids": {
+    "category_method": "FIXTURE: fake-method",
+    "embedding_backend": "lexical-fallback",
+    "embedding_model": "FIXTURE: fake/embedding-model",
+    "llm_model": null,
+    "llm_provider": null,
+    "ner_model": "FIXTURE: fake/ner-model",
+    "prompt_sha256": null,
+    "sentence_splitter": "FIXTURE: fake-splitter"
+  },
+  "new_filing": {
+    "accession_number": "0000000000-25-000001",
+    "block_count": 6,
+    "edgar_index_url": "https://www.sec.gov/FIXTURE/not-a-real-index-2025",
+    "edgar_url": "https://www.sec.gov/FIXTURE/not-a-real-filing-2025",
+    "filing_date": "2025-02-26",
+    "fiscal_year": 2025,
+    "form": "10-K",
+    "is_amendment": false,
+    "item_1a_char_count": 2694,
+    "item_1a_word_count": 398,
+    "period_of_report": "2025-01-26",
+    "primary_document": "FIXTURE-fixtur-20250126.htm",
+    "section_groups": [
+      "FIXTURE: Risks Related to Our Business and Industry",
+      "FIXTURE: Risks Related to Regulation and Legal Matters",
+      "FIXTURE: Risks Related to Financial Matters"
+    ]
+  },
+  "notes": [
+    "FIXTURE: This is synthetic development data. It is not derived from any SEC filing.",
+    "FIXTURE: Not investment advice. RiskDiff shows changes in disclosed risk language, not changes in actual risk."
+  ],
+  "old_filing": {
+    "accession_number": "0000000000-24-000001",
+    "block_count": 6,
+    "edgar_index_url": "https://www.sec.gov/FIXTURE/not-a-real-index-2024",
+    "edgar_url": "https://www.sec.gov/FIXTURE/not-a-real-filing-2024",
+    "filing_date": "2024-02-21",
+    "fiscal_year": 2024,
+    "form": "10-K",
+    "is_amendment": false,
+    "item_1a_char_count": 2096,
+    "item_1a_word_count": 320,
+    "period_of_report": "2024-01-28",
+    "primary_document": "FIXTURE-fixtur-20240128.htm",
+    "section_groups": [
+      "FIXTURE: Risks Related to Our Business and Industry",
+      "FIXTURE: Risks Related to Regulation and Legal Matters",
+      "FIXTURE: Risks Related to Financial Matters"
+    ]
+  },
+  "pipeline_version": "FIXTURE",
+  "rubric_version": "FIXTURE",
+  "schema_version": "1.0.0",
+  "sentence_index": {
+    "0000000000-24-000001:0:0": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:0",
+      "char_end": 91,
+      "char_start": 0,
+      "id": "0000000000-24-000001:0:0",
+      "is_heading": true,
+      "side": "old",
+      "text": "FIXTURE: We depend on a limited number of third-party foundries to manufacture our widgets."
+    },
+    "0000000000-24-000001:0:1": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:0",
+      "char_end": 213,
+      "char_start": 92,
+      "id": "0000000000-24-000001:0:1",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: We do not own manufacturing facilities and rely on a small number of foundries located in Westland and Eastland."
+    },
+    "0000000000-24-000001:0:2": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:0",
+      "char_end": 307,
+      "char_start": 214,
+      "id": "0000000000-24-000001:0:2",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: A disruption at any of these foundries could delay shipments and increase our costs."
+    },
+    "0000000000-24-000001:0:3": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:0",
+      "char_end": 406,
+      "char_start": 308,
+      "id": "0000000000-24-000001:0:3",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: Natural disasters, political instability, or trade restrictions may affect our suppliers."
+    },
+    "0000000000-24-000001:0:4": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:0",
+      "char_end": 518,
+      "char_start": 407,
+      "id": "0000000000-24-000001:0:4",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: We attempt to mitigate these risks by maintaining safety stock, but our efforts may not be sufficient."
+    },
+    "0000000000-24-000001:1:0": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:1",
+      "char_end": 570,
+      "char_start": 519,
+      "id": "0000000000-24-000001:1:0",
+      "is_heading": true,
+      "side": "old",
+      "text": "FIXTURE: Security breaches could harm our business."
+    },
+    "0000000000-24-000001:1:1": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:1",
+      "char_end": 666,
+      "char_start": 571,
+      "id": "0000000000-24-000001:1:1",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: Our systems may be vulnerable to computer viruses, break-ins, and similar disruptions."
+    },
+    "0000000000-24-000001:1:2": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:1",
+      "char_end": 767,
+      "char_start": 667,
+      "id": "0000000000-24-000001:1:2",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: A breach could result in the loss of confidential information and damage to our reputation."
+    },
+    "0000000000-24-000001:1:3": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:1",
+      "char_end": 840,
+      "char_start": 768,
+      "id": "0000000000-24-000001:1:3",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: We may incur significant costs to remediate security incidents."
+    },
+    "0000000000-24-000001:2:0": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:2",
+      "char_end": 938,
+      "char_start": 841,
+      "id": "0000000000-24-000001:2:0",
+      "is_heading": true,
+      "side": "old",
+      "text": "FIXTURE: The pending acquisition of Gadgetron Inc. may not be completed on the expected timeline."
+    },
+    "0000000000-24-000001:2:1": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:2",
+      "char_end": 1070,
+      "char_start": 939,
+      "id": "0000000000-24-000001:2:1",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: Completion of the acquisition is subject to regulatory approvals in the U.S. and the E.U., which may be delayed or denied."
+    },
+    "0000000000-24-000001:2:2": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:2",
+      "char_end": 1177,
+      "char_start": 1071,
+      "id": "0000000000-24-000001:2:2",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: If the acquisition is not completed, we may be required to pay a termination fee of $450 million."
+    },
+    "0000000000-24-000001:3:0": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:3",
+      "char_end": 1270,
+      "char_start": 1178,
+      "id": "0000000000-24-000001:3:0",
+      "is_heading": true,
+      "side": "old",
+      "text": "FIXTURE: Fluctuations in foreign currency exchange rates could adversely affect our results."
+    },
+    "0000000000-24-000001:3:1": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:3",
+      "char_end": 1369,
+      "char_start": 1271,
+      "id": "0000000000-24-000001:3:1",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: Approximately 40% of our revenue is denominated in currencies other than the U.S. dollar."
+    },
+    "0000000000-24-000001:3:2": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:3",
+      "char_end": 1474,
+      "char_start": 1370,
+      "id": "0000000000-24-000001:3:2",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: We use forward contracts to hedge a portion of this exposure, but hedging may not be effective."
+    },
+    "0000000000-24-000001:3:3": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:3",
+      "char_end": 1573,
+      "char_start": 1475,
+      "id": "0000000000-24-000001:3:3",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: A strengthening U.S. dollar would reduce the reported value of our international revenue."
+    },
+    "0000000000-24-000001:3:4": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:3",
+      "char_end": 1654,
+      "char_start": 1574,
+      "id": "0000000000-24-000001:3:4",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: We do not hedge translation exposure for our subsidiaries in Southland."
+    },
+    "0000000000-24-000001:4:0": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:4",
+      "char_end": 1707,
+      "char_start": 1655,
+      "id": "0000000000-24-000001:4:0",
+      "is_heading": true,
+      "side": "old",
+      "text": "FIXTURE: The widget market is intensely competitive."
+    },
+    "0000000000-24-000001:4:1": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:4",
+      "char_end": 1806,
+      "char_start": 1708,
+      "id": "0000000000-24-000001:4:1",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: We compete with larger companies that have greater resources, e.g. Megacorp and Omnicorp."
+    },
+    "0000000000-24-000001:4:2": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:4",
+      "char_end": 1894,
+      "char_start": 1807,
+      "id": "0000000000-24-000001:4:2",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: If we fail to compete effectively, our market share and margins could decline."
+    },
+    "0000000000-24-000001:5:0": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:5",
+      "char_end": 1953,
+      "char_start": 1895,
+      "id": "0000000000-24-000001:5:0",
+      "is_heading": true,
+      "side": "old",
+      "text": "FIXTURE: Changes in trade policy could increase our costs."
+    },
+    "0000000000-24-000001:5:1": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:5",
+      "char_end": 2032,
+      "char_start": 1954,
+      "id": "0000000000-24-000001:5:1",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: Tariffs on imported components could increase our cost of goods sold."
+    },
+    "0000000000-24-000001:5:2": {
+      "accession_number": "0000000000-24-000001",
+      "block_id": "0000000000-24-000001:5",
+      "char_end": 2095,
+      "char_start": 2033,
+      "id": "0000000000-24-000001:5:2",
+      "is_heading": false,
+      "side": "old",
+      "text": "FIXTURE: We may be unable to pass these costs on to customers."
+    },
+    "0000000000-25-000001:0:0": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:0",
+      "char_end": 91,
+      "char_start": 0,
+      "id": "0000000000-25-000001:0:0",
+      "is_heading": true,
+      "side": "new",
+      "text": "FIXTURE: We depend on a limited number of third-party foundries to manufacture our widgets."
+    },
+    "0000000000-25-000001:0:1": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:0",
+      "char_end": 225,
+      "char_start": 92,
+      "id": "0000000000-25-000001:0:1",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: We do not own manufacturing facilities and rely on a small number of foundries located in Westland, Eastland, and Ruritania."
+    },
+    "0000000000-25-000001:0:2": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:0",
+      "char_end": 319,
+      "char_start": 226,
+      "id": "0000000000-25-000001:0:2",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: A disruption at any of these foundries could delay shipments and increase our costs."
+    },
+    "0000000000-25-000001:0:3": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:0",
+      "char_end": 486,
+      "char_start": 320,
+      "id": "0000000000-25-000001:0:3",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: In fiscal 2025, export restrictions imposed by the Ruritanian government resulted in a shipment delay that reduced our revenue by approximately $1.2 billion."
+    },
+    "0000000000-25-000001:0:4": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:0",
+      "char_end": 615,
+      "char_start": 487,
+      "id": "0000000000-25-000001:0:4",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: Natural disasters, political instability, or trade restrictions have affected and may continue to affect our suppliers."
+    },
+    "0000000000-25-000001:0:5": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:0",
+      "char_end": 727,
+      "char_start": 616,
+      "id": "0000000000-25-000001:0:5",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: We attempt to mitigate these risks by maintaining safety stock, but our efforts may not be sufficient."
+    },
+    "0000000000-25-000001:0:6": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:0",
+      "char_end": 834,
+      "char_start": 728,
+      "id": "0000000000-25-000001:0:6",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: We are qualifying an additional foundry in Northland, which we expect to take at least 18 months."
+    },
+    "0000000000-25-000001:1:0": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:1",
+      "char_end": 931,
+      "char_start": 835,
+      "id": "0000000000-25-000001:1:0",
+      "is_heading": true,
+      "side": "new",
+      "text": "FIXTURE: Cybersecurity incidents, including ransomware, could materially disrupt our operations."
+    },
+    "0000000000-25-000001:1:1": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:1",
+      "char_end": 1069,
+      "char_start": 932,
+      "id": "0000000000-25-000001:1:1",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: Our information technology systems and those of our vendors are vulnerable to ransomware, phishing, and state-sponsored attacks."
+    },
+    "0000000000-25-000001:1:2": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:1",
+      "char_end": 1208,
+      "char_start": 1070,
+      "id": "0000000000-25-000001:1:2",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: An incident could result in the loss or exposure of confidential information, regulatory penalties, and damage to our reputation."
+    },
+    "0000000000-25-000001:1:3": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:1",
+      "char_end": 1325,
+      "char_start": 1209,
+      "id": "0000000000-25-000001:1:3",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: We may incur significant costs to remediate security incidents, and our insurance may not cover all losses."
+    },
+    "0000000000-25-000001:2:0": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:2",
+      "char_end": 1426,
+      "char_start": 1326,
+      "id": "0000000000-25-000001:2:0",
+      "is_heading": true,
+      "side": "new",
+      "text": "FIXTURE: Our use of artificial intelligence may create legal, regulatory, and reputational exposure."
+    },
+    "0000000000-25-000001:2:1": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:2",
+      "char_end": 1523,
+      "char_start": 1427,
+      "id": "0000000000-25-000001:2:1",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: We have begun to integrate machine learning features into our widget planning software."
+    },
+    "0000000000-25-000001:2:2": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:2",
+      "char_end": 1652,
+      "char_start": 1524,
+      "id": "0000000000-25-000001:2:2",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: Laws governing artificial intelligence, such as the Westland AI Act, are evolving and may impose new obligations on us."
+    },
+    "0000000000-25-000001:2:3": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:2",
+      "char_end": 1764,
+      "char_start": 1653,
+      "id": "0000000000-25-000001:2:3",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: If our models produce inaccurate or biased outputs, our customers may lose confidence in our products."
+    },
+    "0000000000-25-000001:3:0": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:3",
+      "char_end": 1857,
+      "char_start": 1765,
+      "id": "0000000000-25-000001:3:0",
+      "is_heading": true,
+      "side": "new",
+      "text": "FIXTURE: Fluctuations in foreign currency exchange rates could adversely affect our results."
+    },
+    "0000000000-25-000001:3:1": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:3",
+      "char_end": 1956,
+      "char_start": 1858,
+      "id": "0000000000-25-000001:3:1",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: Approximately 30% of our revenue is denominated in currencies other than the U.S. dollar."
+    },
+    "0000000000-25-000001:3:2": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:3",
+      "char_end": 2061,
+      "char_start": 1957,
+      "id": "0000000000-25-000001:3:2",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: We use forward contracts to hedge a portion of this exposure, but hedging may not be effective."
+    },
+    "0000000000-25-000001:4:0": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:4",
+      "char_end": 2114,
+      "char_start": 2062,
+      "id": "0000000000-25-000001:4:0",
+      "is_heading": true,
+      "side": "new",
+      "text": "FIXTURE: The widget market is intensely competitive."
+    },
+    "0000000000-25-000001:4:1": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:4",
+      "char_end": 2213,
+      "char_start": 2115,
+      "id": "0000000000-25-000001:4:1",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: We compete with larger companies that have greater resources, e.g. Megacorp and Omnicorp."
+    },
+    "0000000000-25-000001:4:2": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:4",
+      "char_end": 2301,
+      "char_start": 2214,
+      "id": "0000000000-25-000001:4:2",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: If we fail to compete effectively, our market share and margins could decline."
+    },
+    "0000000000-25-000001:5:0": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:5",
+      "char_end": 2407,
+      "char_start": 2302,
+      "id": "0000000000-25-000001:5:0",
+      "is_heading": true,
+      "side": "new",
+      "text": "FIXTURE: Changes in trade policy, including tariffs, have increased and could further increase our costs."
+    },
+    "0000000000-25-000001:5:1": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:5",
+      "char_end": 2516,
+      "char_start": 2408,
+      "id": "0000000000-25-000001:5:1",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: Tariffs on imported components increased our cost of goods sold by approximately 3% in fiscal 2025."
+    },
+    "0000000000-25-000001:5:2": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:5",
+      "char_end": 2579,
+      "char_start": 2517,
+      "id": "0000000000-25-000001:5:2",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: We may be unable to pass these costs on to customers."
+    },
+    "0000000000-25-000001:5:3": {
+      "accession_number": "0000000000-25-000001",
+      "block_id": "0000000000-25-000001:5",
+      "char_end": 2693,
+      "char_start": 2580,
+      "id": "0000000000-25-000001:5:3",
+      "is_heading": false,
+      "side": "new",
+      "text": "FIXTURE: Additional tariffs announced by the Westland Trade Commission in March 2025 could apply to our products."
+    }
+  },
+  "summary": {
+    "by_category": {
+      "artificial_intelligence": 1,
+      "climate": 0,
+      "competition": 1,
+      "credit": 0,
+      "customer_concentration": 0,
+      "cybersecurity": 1,
+      "foreign_exchange": 1,
+      "geopolitical": 1,
+      "intellectual_property": 0,
+      "interest_rates": 0,
+      "labor": 0,
+      "liquidity": 0,
+      "litigation": 1,
+      "macroeconomic": 1,
+      "other": 0,
+      "regulation": 3,
+      "supply_chain": 1
+    },
+    "by_change_type": {
+      "expanded": 2,
+      "largely_unchanged": 1,
+      "materially_reworded": 1,
+      "new": 1,
+      "reduced": 1,
+      "removed": 1
+    },
+    "interpretation_status": "ok",
+    "matched_pairs": 5,
+    "max_score": 80,
+    "new_block_count": 6,
+    "old_block_count": 6,
+    "total_changes": 7
+  },
+  "thresholds": {
+    "body_weight": 0.6,
+    "expanded_ratio": 0.25,
+    "heading_weight": 0.4,
+    "match_threshold": 0.55,
+    "reworded_similarity": 0.8,
+    "sentence_match_threshold": 0.6,
+    "sentence_unchanged_threshold": 0.98
+  }
+}

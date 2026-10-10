@@ -1,0 +1,1331 @@
+{
+  "$defs": {
+    "Category": {
+      "enum": [
+        "geopolitical",
+        "supply_chain",
+        "regulation",
+        "cybersecurity",
+        "customer_concentration",
+        "competition",
+        "liquidity",
+        "credit",
+        "interest_rates",
+        "foreign_exchange",
+        "artificial_intelligence",
+        "intellectual_property",
+        "labor",
+        "climate",
+        "litigation",
+        "macroeconomic",
+        "other"
+      ],
+      "title": "Category",
+      "type": "string"
+    },
+    "Change": {
+      "additionalProperties": false,
+      "properties": {
+        "body_similarity": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Body Similarity"
+        },
+        "categories": {
+          "items": {
+            "$ref": "#/$defs/Category"
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "title": "Categories",
+          "type": "array"
+        },
+        "change_type": {
+          "$ref": "#/$defs/ChangeType"
+        },
+        "heading_similarity": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Heading Similarity"
+        },
+        "id": {
+          "description": "Stable hash of (old_block_id, new_block_id).",
+          "pattern": "^[0-9a-f]{16}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "interpretation": {
+          "$ref": "#/$defs/Interpretation"
+        },
+        "new_block_id": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{10}-\\d{2}-\\d{6}:\\d+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "New Block Id"
+        },
+        "new_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Full new block text (heading + body).",
+          "title": "New Text"
+        },
+        "new_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "New Title"
+        },
+        "old_block_id": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{10}-\\d{2}-\\d{6}:\\d+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Old Block Id"
+        },
+        "old_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Full old block text (heading + body).",
+          "title": "Old Text"
+        },
+        "old_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Old Title"
+        },
+        "rank": {
+          "minimum": 1,
+          "title": "Rank",
+          "type": "integer"
+        },
+        "score": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Score",
+          "type": "integer"
+        },
+        "score_breakdown": {
+          "items": {
+            "$ref": "#/$defs/ScoreLine"
+          },
+          "title": "Score Breakdown",
+          "type": "array"
+        },
+        "section_group": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section Group"
+        },
+        "sentences": {
+          "items": {
+            "$ref": "#/$defs/Sentence"
+          },
+          "title": "Sentences",
+          "type": "array"
+        },
+        "signals": {
+          "$ref": "#/$defs/Signals"
+        },
+        "similarity": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Similarity"
+        },
+        "stats": {
+          "$ref": "#/$defs/DiffStats"
+        },
+        "title": {
+          "description": "Risk heading (new side if present, else old).",
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "rank",
+        "title",
+        "change_type",
+        "categories",
+        "score",
+        "score_breakdown",
+        "sentences",
+        "stats",
+        "signals",
+        "interpretation"
+      ],
+      "title": "Change",
+      "type": "object"
+    },
+    "ChangeType": {
+      "enum": [
+        "new",
+        "removed",
+        "expanded",
+        "reduced",
+        "materially_reworded",
+        "largely_unchanged"
+      ],
+      "title": "ChangeType",
+      "type": "string"
+    },
+    "Claim": {
+      "additionalProperties": false,
+      "properties": {
+        "cited_sentence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Cited Sentence Ids",
+          "type": "array"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "cited_sentence_ids"
+      ],
+      "title": "Claim",
+      "type": "object"
+    },
+    "Company": {
+      "additionalProperties": false,
+      "properties": {
+        "cik": {
+          "description": "10-digit zero-padded CIK.",
+          "pattern": "^\\d{10}$",
+          "title": "Cik",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "ticker": {
+          "pattern": "^[A-Z.\\-]{1,6}$",
+          "title": "Ticker",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ticker",
+        "name",
+        "cik"
+      ],
+      "title": "Company",
+      "type": "object"
+    },
+    "CompanyCard": {
+      "additionalProperties": false,
+      "properties": {
+        "by_change_type": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "By Change Type",
+          "type": "object"
+        },
+        "file": {
+          "title": "File",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "new_fiscal_year": {
+          "title": "New Fiscal Year",
+          "type": "integer"
+        },
+        "old_fiscal_year": {
+          "title": "Old Fiscal Year",
+          "type": "integer"
+        },
+        "ticker": {
+          "title": "Ticker",
+          "type": "string"
+        },
+        "total_changes": {
+          "title": "Total Changes",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "ticker",
+        "name",
+        "old_fiscal_year",
+        "new_fiscal_year",
+        "total_changes",
+        "by_change_type",
+        "file"
+      ],
+      "title": "CompanyCard",
+      "type": "object"
+    },
+    "DiffOp": {
+      "enum": [
+        "equal",
+        "insert",
+        "delete"
+      ],
+      "title": "DiffOp",
+      "type": "string"
+    },
+    "DiffSpan": {
+      "additionalProperties": false,
+      "description": "Word-level span inside a modified sentence. Old side carries equal/delete,\nnew side carries equal/insert. Concatenating `text` over a side's spans reproduces\nthat side's sentence text exactly.",
+      "properties": {
+        "op": {
+          "$ref": "#/$defs/DiffOp"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "op",
+        "text"
+      ],
+      "title": "DiffSpan",
+      "type": "object"
+    },
+    "DiffStats": {
+      "additionalProperties": false,
+      "properties": {
+        "added": {
+          "minimum": 0,
+          "title": "Added",
+          "type": "integer"
+        },
+        "added_word_count": {
+          "description": "Words in added sentences + inserted spans.",
+          "minimum": 0,
+          "title": "Added Word Count",
+          "type": "integer"
+        },
+        "modified": {
+          "minimum": 0,
+          "title": "Modified",
+          "type": "integer"
+        },
+        "new_sentence_count": {
+          "minimum": 0,
+          "title": "New Sentence Count",
+          "type": "integer"
+        },
+        "new_word_count": {
+          "minimum": 0,
+          "title": "New Word Count",
+          "type": "integer"
+        },
+        "old_sentence_count": {
+          "minimum": 0,
+          "title": "Old Sentence Count",
+          "type": "integer"
+        },
+        "old_word_count": {
+          "minimum": 0,
+          "title": "Old Word Count",
+          "type": "integer"
+        },
+        "removed": {
+          "minimum": 0,
+          "title": "Removed",
+          "type": "integer"
+        },
+        "removed_word_count": {
+          "description": "Words in removed sentences + deleted spans.",
+          "minimum": 0,
+          "title": "Removed Word Count",
+          "type": "integer"
+        },
+        "unchanged": {
+          "minimum": 0,
+          "title": "Unchanged",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "old_sentence_count",
+        "new_sentence_count",
+        "added",
+        "removed",
+        "modified",
+        "unchanged",
+        "old_word_count",
+        "new_word_count",
+        "added_word_count",
+        "removed_word_count"
+      ],
+      "title": "DiffStats",
+      "type": "object"
+    },
+    "EmbeddingBackend": {
+      "enum": [
+        "sentence-transformers",
+        "lexical-fallback"
+      ],
+      "title": "EmbeddingBackend",
+      "type": "string"
+    },
+    "FilingMeta": {
+      "additionalProperties": false,
+      "properties": {
+        "accession_number": {
+          "pattern": "^\\d{10}-\\d{2}-\\d{6}$",
+          "title": "Accession Number",
+          "type": "string"
+        },
+        "block_count": {
+          "minimum": 0,
+          "title": "Block Count",
+          "type": "integer"
+        },
+        "edgar_index_url": {
+          "description": "Filing index page on www.sec.gov.",
+          "title": "Edgar Index Url",
+          "type": "string"
+        },
+        "edgar_url": {
+          "description": "Direct URL of the primary document on www.sec.gov.",
+          "title": "Edgar Url",
+          "type": "string"
+        },
+        "filing_date": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "title": "Filing Date",
+          "type": "string"
+        },
+        "fiscal_year": {
+          "maximum": 2100,
+          "minimum": 1990,
+          "title": "Fiscal Year",
+          "type": "integer"
+        },
+        "form": {
+          "description": "'10-K' or '10-K/A'.",
+          "title": "Form",
+          "type": "string"
+        },
+        "is_amendment": {
+          "default": false,
+          "title": "Is Amendment",
+          "type": "boolean"
+        },
+        "item_1a_char_count": {
+          "minimum": 0,
+          "title": "Item 1A Char Count",
+          "type": "integer"
+        },
+        "item_1a_word_count": {
+          "minimum": 0,
+          "title": "Item 1A Word Count",
+          "type": "integer"
+        },
+        "period_of_report": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "title": "Period Of Report",
+          "type": "string"
+        },
+        "primary_document": {
+          "title": "Primary Document",
+          "type": "string"
+        },
+        "section_groups": {
+          "description": "Group headers found in Item 1A, e.g. 'Risks Related to Our Industry'.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Section Groups",
+          "type": "array"
+        }
+      },
+      "required": [
+        "accession_number",
+        "form",
+        "fiscal_year",
+        "period_of_report",
+        "filing_date",
+        "primary_document",
+        "edgar_url",
+        "edgar_index_url",
+        "item_1a_word_count",
+        "item_1a_char_count",
+        "block_count"
+      ],
+      "title": "FilingMeta",
+      "type": "object"
+    },
+    "FilingSide": {
+      "enum": [
+        "old",
+        "new"
+      ],
+      "title": "FilingSide",
+      "type": "string"
+    },
+    "Interpretation": {
+      "additionalProperties": false,
+      "properties": {
+        "claims": {
+          "items": {
+            "$ref": "#/$defs/Claim"
+          },
+          "maxItems": 3,
+          "title": "Claims",
+          "type": "array"
+        },
+        "dropped_claim_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Dropped Claim Count",
+          "type": "integer"
+        },
+        "dropped_reasons": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Dropped Reasons",
+          "type": "array"
+        },
+        "model_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Id"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "rubric": {
+          "items": {
+            "$ref": "#/$defs/RubricAnswer"
+          },
+          "title": "Rubric",
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/$defs/InterpretationStatus",
+          "description": "ok = LLM ran and output validated; unavailable = no provider; skipped = not run for largely_unchanged; empty = ran but every claim was dropped."
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "Interpretation",
+      "type": "object"
+    },
+    "InterpretationStatus": {
+      "enum": [
+        "ok",
+        "unavailable",
+        "skipped",
+        "empty"
+      ],
+      "title": "InterpretationStatus",
+      "type": "string"
+    },
+    "ModelIds": {
+      "additionalProperties": false,
+      "description": "Exact identifiers of every model/method that influenced the output.\n\nThese feed `analysis_id`, so switching any of them yields a different id.",
+      "properties": {
+        "category_method": {
+          "description": "How categories were assigned, e.g. 'embedding-similarity:BAAI/bge-m3'.",
+          "title": "Category Method",
+          "type": "string"
+        },
+        "embedding_backend": {
+          "$ref": "#/$defs/EmbeddingBackend"
+        },
+        "embedding_model": {
+          "description": "Hugging Face model id used for block embeddings, e.g. 'BAAI/bge-m3'. If the fallback lexical embedder was used this says so explicitly.",
+          "title": "Embedding Model",
+          "type": "string"
+        },
+        "llm_model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Pinned LLM model id, if used.",
+          "title": "Llm Model"
+        },
+        "llm_provider": {
+          "anyOf": [
+            {
+              "enum": [
+                "huggingface",
+                "gemini"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "None when the LLM stage did not run.",
+          "title": "Llm Provider"
+        },
+        "ner_model": {
+          "description": "NER model id, e.g. 'spacy/en_core_web_sm@3.8.0'.",
+          "title": "Ner Model",
+          "type": "string"
+        },
+        "prompt_sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "sha256 of the exact prompt template text used for stage 7.",
+          "title": "Prompt Sha256"
+        },
+        "sentence_splitter": {
+          "description": "e.g. 'pysbd@0.3.4'.",
+          "title": "Sentence Splitter",
+          "type": "string"
+        }
+      },
+      "required": [
+        "embedding_model",
+        "embedding_backend",
+        "ner_model",
+        "category_method",
+        "sentence_splitter"
+      ],
+      "title": "ModelIds",
+      "type": "object"
+    },
+    "RubricAnswer": {
+      "additionalProperties": false,
+      "properties": {
+        "answer": {
+          "description": "After citation validation: a 'yes' without a valid citation becomes False.",
+          "title": "Answer",
+          "type": "boolean"
+        },
+        "cited_sentence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Cited Sentence Ids",
+          "type": "array"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        },
+        "question_id": {
+          "pattern": "^Q[1-9]$",
+          "title": "Question Id",
+          "type": "string"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Short LLM rationale (display only).",
+          "title": "Rationale"
+        },
+        "raw_answer": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "What the model said before validation (transparency).",
+          "title": "Raw Answer"
+        }
+      },
+      "required": [
+        "question_id",
+        "question",
+        "answer"
+      ],
+      "title": "RubricAnswer",
+      "type": "object"
+    },
+    "ScoreLine": {
+      "additionalProperties": false,
+      "properties": {
+        "cited_sentence_ids": {
+          "description": "Must be non-empty whenever points != 0. Ids must exist in sentence_index.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Cited Sentence Ids",
+          "type": "array"
+        },
+        "detail": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Detail"
+        },
+        "label": {
+          "description": "Plain-English label shown in the UI.",
+          "title": "Label",
+          "type": "string"
+        },
+        "points": {
+          "title": "Points",
+          "type": "integer"
+        },
+        "signal": {
+          "description": "Machine key, e.g. 'hypothetical_to_actual', 'rubric_q1'.",
+          "title": "Signal",
+          "type": "string"
+        }
+      },
+      "required": [
+        "signal",
+        "label",
+        "points",
+        "cited_sentence_ids"
+      ],
+      "title": "ScoreLine",
+      "type": "object"
+    },
+    "Sentence": {
+      "additionalProperties": false,
+      "properties": {
+        "alignment_similarity": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Similarity used to align the pair, if any.",
+          "title": "Alignment Similarity"
+        },
+        "counterpart_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "For modified/unchanged: the aligned sentence id on the other side.",
+          "title": "Counterpart Id"
+        },
+        "diff_spans": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/DiffSpan"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Only for status == 'modified'.",
+          "title": "Diff Spans"
+        },
+        "id": {
+          "pattern": "^\\d{10}-\\d{2}-\\d{6}:\\d+:\\d+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "pair_index": {
+          "description": "Display order in a unified (inline) view. Modified/unchanged pairs share the same pair_index (old entry first, then new).",
+          "minimum": 0,
+          "title": "Pair Index",
+          "type": "integer"
+        },
+        "side": {
+          "$ref": "#/$defs/FilingSide"
+        },
+        "status": {
+          "$ref": "#/$defs/SentenceStatus"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "side",
+        "status",
+        "text",
+        "pair_index"
+      ],
+      "title": "Sentence",
+      "type": "object"
+    },
+    "SentenceLocation": {
+      "additionalProperties": false,
+      "properties": {
+        "accession_number": {
+          "pattern": "^\\d{10}-\\d{2}-\\d{6}$",
+          "title": "Accession Number",
+          "type": "string"
+        },
+        "block_id": {
+          "pattern": "^\\d{10}-\\d{2}-\\d{6}:\\d+$",
+          "title": "Block Id",
+          "type": "string"
+        },
+        "char_end": {
+          "minimum": 0,
+          "title": "Char End",
+          "type": "integer"
+        },
+        "char_start": {
+          "description": "Offset into the extracted Item 1A plain text.",
+          "minimum": 0,
+          "title": "Char Start",
+          "type": "integer"
+        },
+        "id": {
+          "pattern": "^\\d{10}-\\d{2}-\\d{6}:\\d+:\\d+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "is_heading": {
+          "default": false,
+          "title": "Is Heading",
+          "type": "boolean"
+        },
+        "side": {
+          "$ref": "#/$defs/FilingSide"
+        },
+        "text": {
+          "description": "Exact sentence text as extracted from the filing.",
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "accession_number",
+        "side",
+        "block_id",
+        "text",
+        "char_start",
+        "char_end"
+      ],
+      "title": "SentenceLocation",
+      "type": "object"
+    },
+    "SentenceStatus": {
+      "enum": [
+        "added",
+        "removed",
+        "modified",
+        "unchanged"
+      ],
+      "title": "SentenceStatus",
+      "type": "string"
+    },
+    "SignalHit": {
+      "additionalProperties": false,
+      "description": "One concrete, cited detection by a deterministic signal.",
+      "properties": {
+        "detail": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Plain-English explanation.",
+          "title": "Detail"
+        },
+        "new_sentence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "New Sentence Ids",
+          "type": "array"
+        },
+        "old_sentence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Old Sentence Ids",
+          "type": "array"
+        },
+        "value": {
+          "description": "What was detected, e.g. 'may -> has', 'Taiwan', '$1.2 billion'.",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "SignalHit",
+      "type": "object"
+    },
+    "Signals": {
+      "additionalProperties": false,
+      "properties": {
+        "added_text_ratio": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Added Text Ratio",
+          "type": "number"
+        },
+        "category_scores": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "description": "Per-category similarity used to pick `categories`.",
+          "title": "Category Scores",
+          "type": "object"
+        },
+        "hypothetical_to_actual": {
+          "items": {
+            "$ref": "#/$defs/SignalHit"
+          },
+          "title": "Hypothetical To Actual",
+          "type": "array"
+        },
+        "new_entities": {
+          "items": {
+            "$ref": "#/$defs/SignalHit"
+          },
+          "title": "New Entities",
+          "type": "array"
+        },
+        "new_quantities": {
+          "items": {
+            "$ref": "#/$defs/SignalHit"
+          },
+          "title": "New Quantities",
+          "type": "array"
+        },
+        "removed_text_ratio": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Removed Text Ratio",
+          "type": "number"
+        },
+        "semantic_shift": {
+          "description": "1 - pair similarity (0 for new/removed).",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Semantic Shift",
+          "type": "number"
+        }
+      },
+      "required": [
+        "added_text_ratio",
+        "removed_text_ratio",
+        "semantic_shift"
+      ],
+      "title": "Signals",
+      "type": "object"
+    },
+    "StageEvent": {
+      "additionalProperties": false,
+      "description": "One SSE event emitted by POST /analyze.",
+      "properties": {
+        "message": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Message"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "stage": {
+          "maximum": 8,
+          "minimum": 0,
+          "title": "Stage",
+          "type": "integer"
+        },
+        "status": {
+          "$ref": "#/$defs/StageStatus"
+        },
+        "ticker": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ticker"
+        }
+      },
+      "required": [
+        "stage",
+        "name",
+        "status"
+      ],
+      "title": "StageEvent",
+      "type": "object"
+    },
+    "StageStatus": {
+      "enum": [
+        "started",
+        "done",
+        "cached",
+        "error"
+      ],
+      "title": "StageStatus",
+      "type": "string"
+    },
+    "Summary": {
+      "additionalProperties": false,
+      "properties": {
+        "by_category": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "description": "Counts keyed by every Category (zeros included).",
+          "title": "By Category",
+          "type": "object"
+        },
+        "by_change_type": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "description": "Counts keyed by every ChangeType (zeros included).",
+          "title": "By Change Type",
+          "type": "object"
+        },
+        "interpretation_status": {
+          "$ref": "#/$defs/InterpretationStatus",
+          "description": "'ok' if the LLM stage ran for this comparison, else why not."
+        },
+        "matched_pairs": {
+          "minimum": 0,
+          "title": "Matched Pairs",
+          "type": "integer"
+        },
+        "max_score": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Max Score",
+          "type": "integer"
+        },
+        "new_block_count": {
+          "minimum": 0,
+          "title": "New Block Count",
+          "type": "integer"
+        },
+        "old_block_count": {
+          "minimum": 0,
+          "title": "Old Block Count",
+          "type": "integer"
+        },
+        "total_changes": {
+          "minimum": 0,
+          "title": "Total Changes",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "total_changes",
+        "by_change_type",
+        "by_category",
+        "old_block_count",
+        "new_block_count",
+        "matched_pairs",
+        "interpretation_status",
+        "max_score"
+      ],
+      "title": "Summary",
+      "type": "object"
+    },
+    "Thresholds": {
+      "additionalProperties": false,
+      "description": "Matching + diff parameters in force for this run (transparency; recalibrated in eval).",
+      "properties": {
+        "body_weight": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Body Weight",
+          "type": "number"
+        },
+        "expanded_ratio": {
+          "description": "added/removed ratio rules; see diff.classify_change_type.",
+          "title": "Expanded Ratio",
+          "type": "number"
+        },
+        "heading_weight": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Heading Weight",
+          "type": "number"
+        },
+        "match_threshold": {
+          "description": "Min combined similarity to accept a match.",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Match Threshold",
+          "type": "number"
+        },
+        "reworded_similarity": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Reworded Similarity",
+          "type": "number"
+        },
+        "sentence_match_threshold": {
+          "description": "Min similarity to align two sentences.",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Sentence Match Threshold",
+          "type": "number"
+        },
+        "sentence_unchanged_threshold": {
+          "description": "At/above this an aligned pair is 'unchanged'.",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Sentence Unchanged Threshold",
+          "type": "number"
+        }
+      },
+      "required": [
+        "match_threshold",
+        "heading_weight",
+        "body_weight",
+        "sentence_match_threshold",
+        "sentence_unchanged_threshold",
+        "expanded_ratio",
+        "reworded_similarity"
+      ],
+      "title": "Thresholds",
+      "type": "object"
+    }
+  },
+  "$id": "https://riskdiff.local/contract/comparison.schema.json#v1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "analysis_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Analysis Id",
+      "type": "string"
+    },
+    "changes": {
+      "description": "Ranked by score desc, then stable id.",
+      "items": {
+        "$ref": "#/$defs/Change"
+      },
+      "title": "Changes",
+      "type": "array"
+    },
+    "company": {
+      "$ref": "#/$defs/Company"
+    },
+    "filing_selection_note": {
+      "description": "How the two filings were chosen (e.g. 'two most recent original 10-Ks; amendments excluded').",
+      "title": "Filing Selection Note",
+      "type": "string"
+    },
+    "is_fixture": {
+      "default": false,
+      "description": "True ONLY for the hand-made dev fixture. Published data must have False.",
+      "title": "Is Fixture",
+      "type": "boolean"
+    },
+    "model_ids": {
+      "$ref": "#/$defs/ModelIds"
+    },
+    "new_filing": {
+      "$ref": "#/$defs/FilingMeta"
+    },
+    "notes": {
+      "description": "Plain-language caveats, e.g. 'LLM stage unavailable: no provider configured'.",
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "old_filing": {
+      "$ref": "#/$defs/FilingMeta"
+    },
+    "pipeline_version": {
+      "title": "Pipeline Version",
+      "type": "string"
+    },
+    "rubric_version": {
+      "title": "Rubric Version",
+      "type": "string"
+    },
+    "schema_version": {
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sentence_index": {
+      "additionalProperties": {
+        "$ref": "#/$defs/SentenceLocation"
+      },
+      "title": "Sentence Index",
+      "type": "object"
+    },
+    "summary": {
+      "$ref": "#/$defs/Summary"
+    },
+    "thresholds": {
+      "$ref": "#/$defs/Thresholds"
+    }
+  },
+  "required": [
+    "schema_version",
+    "analysis_id",
+    "pipeline_version",
+    "rubric_version",
+    "model_ids",
+    "company",
+    "old_filing",
+    "new_filing",
+    "filing_selection_note",
+    "summary",
+    "thresholds",
+    "changes",
+    "sentence_index"
+  ],
+  "title": "Comparison",
+  "type": "object"
+}
