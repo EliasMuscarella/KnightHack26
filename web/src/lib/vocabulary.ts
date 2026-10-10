@@ -380,9 +380,14 @@ export const CHANGE_LEVEL = {
   prefix: "Wording change",
   helper: "How much the language changed, not how risky the company is.",
   /** One-line note at the top of the "All changes" table. */
-  tableNote:
-    "Wording change level adds fixed, published points per kind of change (a new or dropped risk factor counts more than an expanded one). It measures wording, not risk.",
+  tableNote: `Wording change is High from ${LEVEL_HIGH_MIN}, Medium from ${LEVEL_MEDIUM_MIN}, else Low, on a 0 to 100 scale of how much the wording changed. It measures wording, not risk.`,
 } as const;
+
+/** The named party or figure a highlight is about; a hedge pair is explained by its quotes. */
+export function factDetail(h: { kind: string; detail?: string | null }): string | null {
+  if (h.kind === "new_named_party" || h.kind === "new_figure") return h.detail ?? null;
+  return null;
+}
 
 /** Filled segments of the 3-segment level meter. */
 export function levelSegments(score: number): 1 | 2 | 3 {

@@ -50,7 +50,7 @@ export function CompanyCardView({ company }: { company: CompanyListing }) {
         <div className="mt-5 border-t border-line pt-4">
           <p className="text-sm text-ink-secondary">Top change</p>
           <div className="mt-1.5">
-            <ChangeBadge kind={top.kind} size="sm" figureChanged={top.figure_changed === true} />
+            <ChangeBadge kind={top.kind} size="sm" figureChanged={top.figure_changed === true} detail={top.detail ?? null} />
           </div>
           <p className="mt-1.5 line-clamp-2 text-base leading-snug text-ink" title={top.title || top.short_title}>
             {displayTitle(top.short_title, top.title)}

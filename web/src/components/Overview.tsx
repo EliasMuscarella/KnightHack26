@@ -21,7 +21,7 @@ export function OverviewHeader({ comparison }: { comparison: Comparison }) {
       <p className="text-sm text-ink-secondary">
         {company.ticker}, annual reports FY{old_filing.fiscal_year} and FY{new_filing.fiscal_year}
       </p>
-      <h1 className="mt-1 text-xl font-title leading-tight tracking-tight text-ink">{name}</h1>
+      <h1 className="mt-1 text-2xl font-title leading-none tracking-tight text-ink">{name}</h1>
       <p className="mt-4 max-w-prose-72 text-lg font-medium leading-snug text-ink">
         {meaningful} of {total} risk {total === 1 ? "factor" : "factors"} changed meaningfully this year.
         {unchanged > 0 ? (
@@ -51,7 +51,7 @@ export function HighlightCards({ comparison }: { comparison: Comparison }) {
         <ol className="space-y-8">
           {groups.map((g, i) => (
             <li key={g.change.id} data-highlight-card={i === 0 ? "first" : undefined}>
-              <HighlightCard change={g.change} facts={g.facts} comparison={comparison} />
+              <HighlightCard change={g.change} facts={g.facts} comparison={comparison} source={null} />
             </li>
           ))}
         </ol>

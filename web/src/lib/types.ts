@@ -37,7 +37,7 @@ export interface CompanyListing extends CompanyCard {
    * The comparison's rank-1 highlight, computed server-side from the comparison file.
    * Absent for API cards (GET /companies does not carry highlights).
    */
-  top_highlight?: { kind: string; short_title: string; title?: string; figure_changed?: boolean } | null;
+  top_highlight?: { kind: string; short_title: string; title?: string; figure_changed?: boolean; detail?: string | null } | null;
   /** Optional shared-library metadata from GET /companies (absent on plain local reports). */
   analysis_id?: string;
   published_by?: string | null;
