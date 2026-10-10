@@ -32,7 +32,7 @@
   --color-less-bg: #fbede3;
   --color-rewrite-fg: #14213d; /* Major update */
   --color-rewrite-bg: #e6e9ef;
-  --color-rewrite-mid: #8a95a8; /* Major update FILLS only (bars, meters, heatmap): apart from the blues */
+  --color-rewrite-mid: #8a95a8; /* Major update FILLS only (bars, meters): apart from the blues */
 
   /* ---- signals ---- */
   --color-actual-fg: #7a4b00; /* Potential became actual */
@@ -140,12 +140,12 @@
 :root {
   color-scheme: light;
 
-  /* ---- heatmap (Trends, read via var() in TrendsView.tsx, so outside @theme): tone colors mixed toward transparent by intensity ---- */
-  --color-heat-more: #2c64a8;
-  --color-heat-less: #b5541c;
-  --color-heat-rewrite: #14213d;
-  --color-heat-text: #14213d; /* cell text at intensity <= 0.55 */
-  --color-heat-text-strong: #ffffff; /* cell text at intensity > 0.55 */
+  /* ---- heatmap (Trends, read via var() in TrendsView.tsx, so outside @theme): tone colors mixed toward transparent by intensity.
+     Mid tones so navy cell text stays >= 4.5:1 at every intensity (worst 4.60, at full strength; D-026) ---- */
+  --color-heat-more: #4e8bdc;
+  --color-heat-less: #ce713a;
+  --color-heat-rewrite: #848b93; /* slate gray, the legend's "Gray" */
+  --color-heat-text: #14213d;
 }
 
 /*
@@ -205,7 +205,6 @@
   --color-heat-less: #9a5225;
   --color-heat-rewrite: #5a697f;
   --color-heat-text: #e4e9f0;
-  --color-heat-text-strong: #e4e9f0;
 
   /* ---- legacy aliases ---- */
   --color-add-bg: #3a3014;
