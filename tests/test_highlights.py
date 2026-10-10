@@ -96,8 +96,9 @@ def test_truncate_heading():
     assert truncate_heading("Short heading.") == "Short heading"
     long = "We depend on a limited number of third-party foundries to manufacture our products and components."
     t = truncate_heading(long)
-    assert len(t.split()) <= 8 and t.endswith("…")
-    assert t.startswith("We depend on a limited number")
+    # no ellipsis any more; the cut never ends mid-clause (the dangling "to" is dropped)
+    assert t == "We depend on a limited number of third-party foundries"
+    assert truncate_heading(long, 8) == "We depend on a limited number of third-party"
 
 
 def test_validated_short_title_accepts_good_and_falls_back_on_bad():

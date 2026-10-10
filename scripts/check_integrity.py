@@ -120,9 +120,7 @@ DANGLING_LAST_WORDS = frozenset(
     "would should can will shall if when while because whether than such other certain any all "
     "laws law inc corp co ltd plc llc".split()
 )
-ADMINISTRATION_RE = re.compile(
-    r"^(?:the\s+)?[a-z]+(?:[\s-][a-z]+)?\s+administration$", re.IGNORECASE
-)
+ADMINISTRATION_RE = re.compile(r"^(?:the\s+)?[a-z]+(?:-[a-z]+)?\s+administration$", re.IGNORECASE)
 TRAILING_STOPWORD_RE = re.compile(
     r"\s(?:in|on|at|of|for|to|by|with|from|and|or|the|a|an)$", re.IGNORECASE
 )
@@ -145,6 +143,9 @@ INTRO_RE = re.compile(
 GROUP_HEADER_RE = re.compile(r"^risks? (?:related|relating) to\b", re.IGNORECASE)
 
 TOKEN_RE = diff_mod.TOKEN_RE
+# Function words the pipeline's content-word anchoring may re-mark around a changed content word
+# (D-018: keeping "Eastland" aligned beats keeping "and" aligned); they are not evidence of change.
+FUNCTION_WORDS = frozenset(getattr(diff_mod, "_JUNK_WORDS", ()))
 PERIOD_DAYS_MIN, PERIOD_DAYS_MAX = 330, 400
 
 
@@ -657,6 +658,11 @@ def check_case(r: Report) -> list[Violation]:
             stored = stored_insert_words(sd)
             expected = expected_insert_words(o.text, s.text)
             extra = stored - expected
+            for w in list(
+                extra
+            ):  # function words are never evidence; anchoring may re-mark them (D-018)
+                if w in FUNCTION_WORDS:
+                    del extra[w]
             if not extra:
                 continue
             # does the current diff code still mark these words?

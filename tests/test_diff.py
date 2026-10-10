@@ -55,8 +55,9 @@ def test_word_spans_are_precise_and_reproduce_text():
     assert "".join(s.text for s in os_) == old
     assert "".join(s.text for s in ns_) == new
     assert [s.text for s in os_ if s.op == "delete"] == []
+    # punctuation alone is never a change: the commas around the inserted words stay equal
     assert [s.text.strip() for s in ns_ if s.op == "insert"] == [
-        ", political instability,",
+        "political instability",
         "have affected and",
         "continue to",
     ]

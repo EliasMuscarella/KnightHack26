@@ -53,7 +53,7 @@ def test_hedge_to_actual_in_modified_sentence():
     assert hits[0].old_sentence_ids == [f"{OLD}:1:1"] and hits[0].new_sentence_ids == [f"{NEW}:1:1"]
 
 
-def test_hedge_to_actual_in_added_sentence_with_year():
+def test_added_sentence_reporting_an_event_is_not_paired():
     old = block(
         OLD,
         1,
@@ -73,10 +73,10 @@ def test_hedge_to_actual_in_added_sentence_with_year():
             "We keep safety stock.",
         ],
     )
-    hits = hypothetical_to_actual(ctx_for(old, new))
-    assert len(hits) == 1
-    assert hits[0].old_sentence_ids == [f"{OLD}:1:1"] and hits[0].new_sentence_ids == [f"{NEW}:1:2"]
-    assert hits[0].value.startswith("could ->")
+    # The old sentence is kept unchanged and the event is reported in a newly ADDED sentence:
+    # potential -> actual pairs come only from aligned (modified) pairs, so this is not a pair
+    # (see test_integrity_pipeline for the boilerplate case that motivated the rule).
+    assert hypothetical_to_actual(ctx_for(old, new)) == []
 
 
 def test_hedge_kept_but_actual_inserted():
@@ -392,7 +392,7 @@ def test_status_change_detected_on_aligned_pair():
     assert hits[0].old_sentence_ids == [f"{OLD}:1:1"] and hits[0].new_sentence_ids == [f"{NEW}:1:1"]
 
 
-def test_status_change_detected_on_removed_added_pair():
+def test_status_change_survives_an_inserted_sentence_via_alignment():
     old = block(OLD, 1, "Regulation.", ["We sell products worldwide.", OLD_ANTITRUST])
     new = block(
         NEW,
