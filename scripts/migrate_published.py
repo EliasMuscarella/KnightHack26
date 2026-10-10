@@ -20,7 +20,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from pipeline.config import PIPELINE_VERSION  # noqa: E402
-from pipeline.highlights import select_highlights, truncate_heading  # noqa: E402
+from pipeline.highlights import (  # noqa: E402
+    select_highlights,
+    short_title_from_heading,
+    title_problems,
+    truncate_heading,
+)
 from pipeline.schema import Comparison, canonical_json  # noqa: E402
 
 NOTE = (
@@ -36,10 +41,18 @@ def migrate(path: Path) -> bool:
         print(f"{path.name}: fixture, skipped")
         return False
     changed = False
+    company_name = (d.get("company") or {}).get("name")
     for c in d["changes"]:
         if "short_title" not in c:
-            c["short_title"] = truncate_heading(c["title"])
+            c["short_title"] = truncate_heading(c["title"], company_name=company_name)
             changed = True
+        elif title_problems(c["short_title"], company_name):
+            # an old truncated heading ("We are subject to complex laws, rules…") or a fragment the
+            # old validator accepted: replace it with the deterministic first clause of the heading
+            new = short_title_from_heading(c["title"], company_name=company_name)
+            if new != c["short_title"]:
+                c["short_title"] = new
+                changed = True
     if "highlights" not in d:
         d["highlights"] = []
         changed = True
