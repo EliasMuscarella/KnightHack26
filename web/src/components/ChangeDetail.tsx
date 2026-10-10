@@ -43,22 +43,22 @@ function SentenceBody({ s, heading }: { s: Sentence; heading: boolean }) {
         {s.diff_spans.map((span, i) => {
           if (span.op === "insert") {
             return (
-              <ins key={i} className="span-ins">
-                <span aria-hidden="true" className="span-mark">
+              <span key={i}>
+                <span aria-hidden="true" className="span-mark text-add-fg">
                   +
                 </span>
-                {span.text}
-              </ins>
+                <ins className="span-ins">{span.text}</ins>
+              </span>
             );
           }
           if (span.op === "delete") {
             return (
-              <del key={i} className="span-del">
-                <span aria-hidden="true" className="span-mark">
+              <span key={i}>
+                <span aria-hidden="true" className="span-mark text-del-fg">
                   −
                 </span>
-                {span.text}
-              </del>
+                <del className="span-del">{span.text}</del>
+              </span>
             );
           }
           return <span key={i}>{span.text}</span>;
@@ -78,9 +78,22 @@ interface SentenceViewProps {
   filing: FilingRef;
   isFixture: boolean;
   onCloseAction: () => void;
+  onBack: (() => void) | null;
+  /** Inline view: id of an identical unchanged old-side sentence shown merged into this one. */
+  aliasId?: string;
 }
 
-function SentenceView({ s, heading, sideTag, highlighted, actionOpen, filing, isFixture, onCloseAction }: SentenceViewProps) {
+function SentenceView(props: SentenceViewProps) {
+  if (!props.aliasId) return <SentenceInner {...props} />;
+  // Keep an anchor for the merged old-side id so citations to it still resolve.
+  return (
+    <div id={`s-${props.aliasId}`} data-sentence-id={props.aliasId} tabIndex={-1} className="cite-target outline-none">
+      <SentenceInner {...props} />
+    </div>
+  );
+}
+
+function SentenceInner({ s, heading, sideTag, highlighted, actionOpen, filing, isFixture, onCloseAction, onBack }: SentenceViewProps) {
   const meta = STATUS_META[s.status];
   return (
     <div
@@ -88,7 +101,7 @@ function SentenceView({ s, heading, sideTag, highlighted, actionOpen, filing, is
       data-sentence-id={s.id}
       data-status={s.status}
       tabIndex={-1}
-      className={`cite-target grid grid-cols-[96px_minmax(0,1fr)] gap-3 rounded-r border-l-4 py-1.5 pl-2 pr-3 outline-none ${
+      className={`cite-target grid grid-cols-[80px_minmax(0,1fr)] gap-2.5 rounded-r border-l-4 py-1.5 pl-2 pr-3 outline-none ${
         highlighted ? "cite-flash border-ink" : meta.border
       }`}
     >
@@ -135,7 +148,17 @@ function SentenceView({ s, heading, sideTag, highlighted, actionOpen, filing, is
               FY{filing.fiscal_year} {filing.form}
               {isFixture ? " · fixture link, not a real filing" : ""}
             </span>
-            <button type="button" onClick={onCloseAction} className="ml-auto text-ink-muted hover:text-ink" aria-label="Close sentence actions">
+            {onBack ? (
+              <button type="button" onClick={onBack} className="ml-auto font-semibold text-accent underline">
+                <span aria-hidden="true">↩ </span>Back to citation
+              </button>
+            ) : null}
+            <button
+              type="button"
+              onClick={onCloseAction}
+              className={`${onBack ? "" : "ml-auto "}text-ink-muted hover:text-ink`}
+              aria-label="Close sentence actions"
+            >
               ✕
             </button>
           </div>
@@ -147,7 +170,7 @@ function SentenceView({ s, heading, sideTag, highlighted, actionOpen, filing, is
 
 function HiddenRun({ count, unit }: { count: number; unit: string }) {
   return (
-    <p className="my-1 ml-[108px] text-xs italic text-ink-faint">
+    <p className="my-1 ml-[92px] text-xs italic text-ink-faint">
       <span aria-hidden="true">⋯ </span>
       {count} unchanged {unit}
       {count === 1 ? "" : "s"} hidden
@@ -168,7 +191,26 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
   const [highlightId, setHighlightId] = useState<string | null>(null);
   const [actionId, setActionId] = useState<string | null>(null);
   const [missing, setMissing] = useState<string | null>(null);
+  const [returnEl, setReturnEl] = useState<HTMLElement | null>(null);
+  const [asideFits, setAsideFits] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const asideRef = useRef<HTMLElement | null>(null);
+  const stickyTop = isFixture ? 112 : 72;
+
+  // The panel column is sticky only when it fits in the viewport; otherwise it scrolls with
+  // the page so nothing (e.g. the AI section) is hidden behind an inner scroll area.
+  useEffect(() => {
+    const el = asideRef.current;
+    if (!el) return;
+    const check = () => setAsideFits(el.offsetHeight <= window.innerHeight - stickyTop - 16);
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    window.addEventListener("resize", check);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", check);
+    };
+  }, [stickyTop]);
 
   useEffect(() => () => {
     if (timer.current) clearTimeout(timer.current);
@@ -181,7 +223,7 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
   );
 
   const jumpTo = useCallback(
-    (id: string) => {
+    (id: string, source?: HTMLElement | null) => {
       const sentence = change.sentences.find((s) => s.id === id);
       if (!sentence) {
         setMissing(id);
@@ -194,6 +236,7 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
       flushSync(() => {
         setHighlightId(id);
         setActionId(id);
+        setReturnEl(source ?? null);
       });
       const el = document.getElementById(`s-${id}`);
       if (!el) return;
@@ -219,17 +262,27 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
   const newCount = change.sentences.length - oldCount;
   const fyTag = (side: Sentence["side"]) => `FY${side === "old" ? filings.old.fiscal_year : filings.new.fiscal_year}`;
 
-  const renderSentence = (s: Sentence, withSideTag: boolean) => (
+  const renderSentence = (s: Sentence, withSideTag: boolean, aliasId?: string) => (
     <SentenceView
       key={s.id}
       s={s}
+      aliasId={aliasId}
       heading={isHeading(s.id)}
-      sideTag={withSideTag ? fyTag(s.side) : null}
-      highlighted={highlightId === s.id}
-      actionOpen={actionId === s.id}
-      filing={s.side === "old" ? filings.old : filings.new}
+      sideTag={aliasId ? "both years" : withSideTag ? fyTag(s.side) : null}
+      highlighted={highlightId === s.id || (!!aliasId && highlightId === aliasId)}
+      actionOpen={actionId === s.id || (!!aliasId && actionId === aliasId)}
+      filing={(aliasId && actionId === aliasId) || s.side === "old" ? filings.old : filings.new}
       isFixture={isFixture}
       onCloseAction={() => setActionId(null)}
+      onBack={
+        returnEl
+          ? () => {
+              returnEl.scrollIntoView({ block: "center" });
+              returnEl.focus({ preventScroll: true });
+              setActionId(null);
+            }
+          : null
+      }
     />
   );
 
@@ -256,7 +309,7 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
     const oldFiling = filings.old;
     const newFiling = filings.new;
     const header = (
-      <div className={`sticky ${isFixture ? "top-[96px]" : "top-14"} z-10 grid grid-cols-2 gap-6 border-b border-line bg-surface pb-2 pt-1 text-xs font-semibold uppercase tracking-wide text-ink-faint`}>
+      <div className={`sticky ${isFixture ? "top-[100px]" : "top-14"} z-10 grid grid-cols-2 gap-6 border-b border-line bg-surface pb-2 pt-1 text-xs font-semibold uppercase tracking-wide text-ink-faint`}>
         <span>
           Older · FY{oldFiling.fiscal_year} {oldFiling.form}
         </span>
@@ -277,7 +330,7 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
       );
       const presentCol = <div className="space-y-1">{withHiddenRuns(present, visibleSentence, (s) => renderSentence(s, false), "sentence", (s) => s.id)}</div>;
       return (
-        <div>
+        <div className="split-view">
           {header}
           <div className="mt-2 grid grid-cols-2 gap-6">
             {absentSide === "old" ? absentBox : presentCol}
@@ -300,7 +353,7 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
       </div>
     );
     return (
-      <div>
+      <div className="split-view">
         {header}
         <div className="mt-2 space-y-1">
           {withHiddenRuns(
@@ -321,9 +374,29 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
   }
 
   function renderInline() {
+    // Unified view: an unchanged pair whose two sentences are byte-identical is shown once
+    // (like a context line in a unified diff); the old id stays addressable for citations.
+    const byId = new Map(change.sentences.map((s) => [s.id, s] as const));
+    const identicalOld = (s: Sentence) => {
+      if (s.status !== "unchanged" || s.side !== "new" || !s.counterpart_id) return undefined;
+      const o = byId.get(s.counterpart_id);
+      return o && o.side === "old" && o.status === "unchanged" && o.text === s.text ? o : undefined;
+    };
+    const merged = new Set<string>();
+    for (const s of change.sentences) {
+      const o = identicalOld(s);
+      if (o) merged.add(o.id);
+    }
+    const items = sorted.filter((s) => !merged.has(s.id));
     return (
       <div className="max-w-[880px] space-y-1">
-        {withHiddenRuns(sorted, visibleSentence, (s) => renderSentence(s, s.status !== "unchanged" || isHeading(s.id)), "sentence", (s) => s.id)}
+        {withHiddenRuns(
+          items,
+          visibleSentence,
+          (s) => renderSentence(s, true, identicalOld(s)?.id),
+          "sentence",
+          (s) => s.id,
+        )}
       </div>
     );
   }
@@ -332,7 +405,7 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
 
   return (
     <CitationContext.Provider value={api}>
-      <div className="grid grid-cols-[minmax(0,1fr)_400px] items-start gap-8">
+      <div className="grid grid-cols-[minmax(0,1fr)_380px] items-start gap-6">
         <section aria-labelledby="diff-heading" className="min-w-0 rounded-lg border border-line bg-surface p-5">
           <div className="mb-4 flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-line pb-4">
             <h2 id="diff-heading" className="text-base font-bold text-ink">
@@ -390,8 +463,10 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
         </section>
 
         <aside
+          ref={asideRef}
           aria-label="Why this change scored as it did"
-          className={`sticky ${isFixture ? "top-[108px] max-h-[calc(100vh-124px)]" : "top-[72px] max-h-[calc(100vh-88px)]"} space-y-4 overflow-y-auto pb-2 pr-1`}
+          style={asideFits ? { position: "sticky", top: stickyTop } : undefined}
+          className="space-y-4"
         >
           {missing ? (
             <div role="status" className="rounded border border-mod-line bg-mod-bg p-3 text-sm text-mod-fg">

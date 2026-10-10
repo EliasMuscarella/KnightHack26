@@ -36,7 +36,7 @@ function CitedSentenceList({ ids }: { ids: string[] }) {
                 href={`#s-${id}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  jumpTo(id);
+                  jumpTo(id, e.currentTarget);
                 }}
                 className="font-semibold text-accent underline"
               >
