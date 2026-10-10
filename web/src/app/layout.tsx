@@ -3,6 +3,8 @@ import { Public_Sans, Source_Serif_4 } from "next/font/google";
 import Link from "next/link";
 
 import { HeaderSearch } from "@/components/HeaderSearch";
+import { NavLinks } from "@/components/NavLinks";
+import { PageTransition } from "@/components/PageTransition";
 import { Wordmark } from "@/components/Wordmark";
 import { LibraryStatusLine } from "@/components/LibraryStatus";
 import { DISCLAIMER } from "@/lib/copy";
@@ -33,12 +35,6 @@ export const metadata: Metadata = {
     "RiskDiff compares the risk factors in a company's last two annual reports (10-K) and shows exactly what management added, removed, or changed, with every quote linked to the SEC filing.",
 };
 
-const NAV = [
-  ["/", "Home"],
-  ["/trends", "Trends"],
-  ["/methodology", "Methodology"],
-] as const;
-
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const libraryStatus = await getLibraryStatus();
   return (
@@ -53,18 +49,12 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <header className="sticky top-0 z-40 border-b border-line bg-surface">
           <div className="mx-auto flex h-14 max-w-[1280px] items-center gap-8 px-8">
             <Wordmark />
-            <nav aria-label="Main" className="flex items-center gap-6 text-sm">
-              {NAV.map(([href, label]) => (
-                <Link key={href} href={href} className="text-ink-secondary hover:text-ink hover:underline">
-                  {label}
-                </Link>
-              ))}
-            </nav>
+            <NavLinks />
             <HeaderSearch />
           </div>
         </header>
         <main id="main" className="flex-1">
-          {children}
+          <PageTransition>{children}</PageTransition>
         </main>
         <footer className="mt-16 border-t border-line bg-surface">
           <div className="mx-auto flex max-w-[1280px] flex-wrap items-start justify-between gap-x-8 gap-y-3 px-8 py-6 text-sm">

@@ -5,13 +5,20 @@
 import type { TrendsCategoryActivity, TrendsCompany, TrendsPayload, TrendsTopic } from "@/lib/types";
 
 export const MIN_SHARED_COMPANIES = 2;
+
+/** The headline names a "most widespread" topic only when at least two companies newly added it. */
+export function headlineTopic(top: { topic: string; company_count: number } | null | undefined): { topic: string; company_count: number } | null {
+  return top && top.company_count >= MIN_SHARED_COMPANIES ? top : null;
+}
 export const TOP_TOPICS = 10;
 export const MAX_HEATMAP_COLUMNS = 10;
 export const OTHER_CATEGORY = "other";
 
 /** Topics newly added by at least MIN_SHARED_COMPANIES companies, ranked; then the rest. */
 export function rankTopics(topics: TrendsTopic[]): { shared: TrendsTopic[]; single: TrendsTopic[] } {
-  const byRank = (a: TrendsTopic, b: TrendsTopic) => b.company_count - a.company_count || b.sentence_count - a.sentence_count || a.topic.localeCompare(b.topic);
+  const sourceRank = { lexicon: 0, entity: 1, phrase: 2 } as const;
+  const byRank = (a: TrendsTopic, b: TrendsTopic) =>
+    b.company_count - a.company_count || b.sentence_count - a.sentence_count || sourceRank[a.source] - sourceRank[b.source] || a.topic.localeCompare(b.topic);
   const sorted = [...topics].sort(byRank);
   return {
     shared: sorted.filter((t) => t.company_count >= MIN_SHARED_COMPANIES && t.examples.length > 0),

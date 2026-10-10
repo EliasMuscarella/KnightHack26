@@ -14,9 +14,9 @@ import { parseTrends } from "@/lib/api";
 import { categoryLabel, textFragmentUrl } from "@/lib/format";
 import { displayName } from "@/lib/names";
 import { trimQuote } from "@/lib/quote";
-import { buildHeatmap, cellDescription, cellIntensity, cellTone, type HeatCell, MIX_TYPES, mixTotal, OTHER_CATEGORY, rankTopics, sourceLine, TOP_TOPICS } from "@/lib/trends";
+import { buildHeatmap, cellDescription, cellIntensity, cellTone, headlineTopic, type HeatCell, MIX_TYPES, mixTotal, OTHER_CATEGORY, rankTopics, sourceLine, TOP_TOPICS } from "@/lib/trends";
 import type { TrendsActual, TrendsCompany, TrendsPayload, TrendsTopic, TrendsTopicExample } from "@/lib/types";
-import { CHANGE_TONE, changeTypeVocab } from "@/lib/vocabulary";
+import { CHANGE_TONE, changeTypeVocab, countedLabel, displayTitle } from "@/lib/vocabulary";
 
 const RETRY_MS = 2500;
 const RETRY_FOR_MS = 60_000;
@@ -84,7 +84,7 @@ function Bar({ fraction, label, tone = "more" }: { fraction: number; label: stri
 function Headline({ data }: { data: TrendsPayload }) {
   const n = data.headline.companies;
   const m = data.headline.meaningful_changes;
-  const top = data.headline.top_topic;
+  const top = headlineTopic(data.headline.top_topic);
   return (
     <header className="max-w-[80ch]">
       <h1 className="text-xl font-medium leading-tight tracking-tight text-ink">Trends across the library</h1>
@@ -95,7 +95,9 @@ function Headline({ data }: { data: TrendsPayload }) {
             {" "}
             The most widespread new topic: {top.topic}, newly added by {top.company_count} of {n} companies.
           </>
-        ) : null}
+        ) : (
+          <span className="font-normal text-ink-secondary"> No topic was newly added by more than one company yet.</span>
+        )}
       </p>
       <p className="mt-2 text-sm text-ink-secondary">These counts describe disclosure wording only, not how risky any company is.</p>
     </header>
@@ -115,7 +117,7 @@ function TopicExample({ ex, company }: { ex: TrendsTopicExample; company: Trends
         <Link href={`/c/${encodeURIComponent(ex.ticker)}`} className="font-medium text-ink underline-offset-2 hover:underline">
           {displayName(company?.name) || ex.ticker}
         </Link>
-        {ex.short_title ? `, ${ex.short_title}` : ""}
+        {ex.short_title ? `, ${displayTitle(ex.short_title, null)}` : ""}
       </p>
       <blockquote className="quote is-new mt-1.5">
         <p>
@@ -330,7 +332,7 @@ function ActualItem({ a, company }: { a: TrendsActual; company: TrendsCompany | 
       </div>
       <h3 className="mt-2 text-base font-medium text-ink">
         <Link href={`/c/${encodeURIComponent(a.ticker)}/${encodeURIComponent(a.change_id)}`} className="underline-offset-2 hover:underline">
-          {a.short_title || "See the change"}
+          {displayTitle(a.short_title, null) || "See the change"}
         </Link>
       </h3>
       <div className="mt-3 grid gap-x-10 gap-y-3 min-[900px]:grid-cols-2">
@@ -420,7 +422,7 @@ function ChangeMix({ data }: { data: TrendsPayload }) {
                 {r.total === 0
                   ? "No meaningful changes this year"
                   : MIX_TYPES.filter((t) => (r.by_change_type[t] ?? 0) > 0)
-                      .map((t) => `${r.by_change_type[t]} ${changeTypeVocab(t).label.toLowerCase()}`)
+                      .map((t) => countedLabel(r.by_change_type[t], t))
                       .join(", ")}
               </p>
             </div>

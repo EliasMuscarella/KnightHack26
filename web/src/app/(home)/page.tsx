@@ -29,7 +29,7 @@ export default async function HomePage() {
             </p>
           </div>
           {hero ? (
-            <div className="mt-12 border-t border-line pt-8">
+            <div className="draw-marks mt-12 border-t border-line pt-8">
               <p className="mb-4 text-sm text-ink-secondary">
                 From the library: {displayName(hero.comparison.company.name)}, FY{hero.comparison.old_filing.fiscal_year} to FY
                 {hero.comparison.new_filing.fiscal_year}. New words this year carry the highlighter.
