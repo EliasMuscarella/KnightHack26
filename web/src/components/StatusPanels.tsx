@@ -88,7 +88,7 @@ export function ErrorPanel({ error, retry, context }: { error: Error & { digest?
         <button
           type="button"
           onClick={() => retry()}
-          className="rounded-md bg-accent px-5 py-2 font-semibold text-white hover:bg-accent-strong"
+          className="rounded-md bg-accent px-5 py-2 font-semibold text-on-accent hover:bg-accent-strong"
         >
           Try again
         </button>

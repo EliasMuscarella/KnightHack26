@@ -22,6 +22,20 @@ export interface ChangeRow {
 
 const UNCHANGED = "largely_unchanged";
 
+/** Shared by the column header and every row, so the three columns line up like a table. */
+const ROW_GRID = "grid grid-cols-[minmax(0,1fr)_170px_220px] items-center gap-6";
+
+/** Visual column labels; the rows carry their own accessible text, so this is hidden from screen readers. */
+function ColumnHeader() {
+  return (
+    <div aria-hidden="true" className={`${ROW_GRID} border-b border-line pb-2 pt-3 text-sm text-ink-secondary`}>
+      <span>Risk factor</span>
+      <span>Type of change</span>
+      <span>{CHANGE_LEVEL.prefix}</span>
+    </div>
+  );
+}
+
 /** "12 sentences added, 3 modified" (the first part carries the noun). */
 export function sentenceCountLine(added: number, removed: number, modified: number): string {
   const parts: [number, string][] = [
@@ -42,7 +56,7 @@ function FilterButton({ pressed, onClick, children, count, title }: { pressed: b
       onClick={onClick}
       title={title}
       className={`inline-flex items-center gap-1.5 rounded-md border px-3 py-1 text-sm transition ${
-        pressed ? "border-ink bg-ink text-white" : "border-line bg-surface text-ink-secondary hover:border-ink hover:text-ink"
+        pressed ? "border-ink bg-ink text-on-ink" : "border-line bg-surface text-ink-secondary hover:border-ink hover:text-ink"
       }`}
     >
       {children}
@@ -56,7 +70,7 @@ function Row({ ticker, r }: { ticker: string; r: ChangeRow }) {
     <li className="border-b border-line last:border-b-0">
       <Link
         href={`/c/${encodeURIComponent(ticker)}/${encodeURIComponent(r.id)}`}
-        className="grid grid-cols-[minmax(0,1fr)_170px_220px] items-center gap-6 py-3.5 hover:bg-surface focus-visible:bg-surface min-[900px]:grid-cols-[minmax(0,1fr)_170px_220px]"
+        className={`${ROW_GRID} -mx-3 px-3 py-3 hover:bg-surface focus-visible:bg-surface`}
       >
         <span className="min-w-0">
           <span className="line-clamp-2 text-base font-medium leading-snug text-ink underline-offset-2 hover:underline" title={r.title}>
@@ -150,6 +164,7 @@ export function ChangeList({ ticker, rows, initialTopic = "" }: { ticker: string
         <p className="py-10 text-center text-ink-secondary">No risk factors match these filters.</p>
       ) : (
         <div className="border-t border-line">
+          <ColumnHeader />
           {changed.length > 0 ? (
             <ol aria-label="Changed risk factors, largest change first">
               {changed.map((r) => (

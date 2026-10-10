@@ -5,6 +5,7 @@ import Link from "next/link";
 import { HeaderSearch } from "@/components/HeaderSearch";
 import { NavLinks } from "@/components/NavLinks";
 import { PageTransition } from "@/components/PageTransition";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Wordmark } from "@/components/Wordmark";
 import { LibraryStatusLine } from "@/components/LibraryStatus";
 import { DISCLAIMER } from "@/lib/copy";
@@ -35,10 +36,22 @@ export const metadata: Metadata = {
     "RiskDiff compares the risk factors in a company's last two annual reports (10-K) and shows exactly what management added, removed, or changed, with every quote linked to the SEC filing.",
 };
 
+/*
+ * Sets data-theme on <html> before first paint: the stored choice ("riskdiff-theme", same key as
+ * ThemeToggle.tsx), else the OS preference. A fixed constant string, never built from input.
+ */
+const THEME_SCRIPT =
+  "(function(){var t=null;try{t=window.localStorage.getItem('riskdiff-theme')}catch(e){}" +
+  "var d=t==='dark'||(t!=='light'&&!!window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);" +
+  "document.documentElement.setAttribute('data-theme',d?'dark':'light')})()";
+
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const libraryStatus = await getLibraryStatus();
   return (
-    <html lang="en" className={`h-full ${publicSans.variable} ${sourceSerif.variable}`}>
+    <html lang="en" className={`h-full ${publicSans.variable} ${sourceSerif.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body className="flex min-h-full flex-col">
         <a
           href="#main"
@@ -50,7 +63,11 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <div className="mx-auto flex h-14 max-w-[1280px] items-center gap-8 px-8">
             <Wordmark />
             <NavLinks />
-            <HeaderSearch />
+            {/* Search and theme sit together at the right edge; the search is absent on the home page. */}
+            <div className="ml-auto flex items-center gap-2">
+              <HeaderSearch />
+              <ThemeToggle />
+            </div>
           </div>
         </header>
         <main id="main" className="flex-1">

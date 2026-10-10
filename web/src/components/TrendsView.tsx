@@ -221,13 +221,15 @@ function SharedTopics({ data }: { data: TrendsPayload }) {
 // 3. Heatmap
 // ---------------------------------------------------------------------------------------
 
-const TONE_RGB = { more: "44, 100, 168", less: "181, 84, 28", rewrite: "138, 149, 168" } as const;
+// Heat tones are theme tokens (globals.css); intensity mixes them toward transparent.
+const HEAT_VAR = { more: "var(--color-heat-more)", less: "var(--color-heat-less)", rewrite: "var(--color-heat-rewrite)" } as const;
+const heat = (tone: keyof typeof HEAT_VAR, a: number) => `color-mix(in srgb, ${HEAT_VAR[tone]} ${Math.round(a * 100)}%, transparent)`;
 
 function cellStyle(cell: HeatCell | undefined, maxActivity: number): { background: string; color: string } {
   const tone = cellTone(cell);
   if (tone === "empty") return { background: "transparent", color: "inherit" };
   const a = cellIntensity(cell, maxActivity);
-  return { background: `rgba(${TONE_RGB[tone]}, ${a.toFixed(2)})`, color: a > 0.55 ? "#ffffff" : "#14213D" };
+  return { background: heat(tone, a), color: a > 0.55 ? "var(--color-heat-text-strong)" : "var(--color-heat-text)" };
 }
 
 function HeatmapLegend() {
@@ -243,13 +245,13 @@ function HeatmapLegend() {
       <ul className="flex flex-wrap gap-x-5 gap-y-2" aria-label="Heatmap legend">
         {steps.map((s) => (
           <li key={s.label} className="flex items-center gap-2">
-            <span aria-hidden="true" className="inline-block h-4 w-7 rounded-xs" style={{ background: `rgba(${TONE_RGB[s.tone]}, ${s.a})` }} />
+            <span aria-hidden="true" className="inline-block h-4 w-7 rounded-xs" style={{ background: heat(s.tone, s.a) }} />
             {s.label}
           </li>
         ))}
       </ul>
       <p>
-        Orange: more language removed than added in that area. Blue: more added. Gray: rewritten both ways. Darker means more sentences changed. The number in a
+        Orange: more language removed than added in that area. Blue: more added. Gray: rewritten both ways. Stronger color means more sentences changed. The number in a
         cell is sentences changed. A risk factor tagged with two areas counts under both. The Change mix bars below count whole risk factors by kind of change, so one
         rewritten risk factor can add words in one area and remove them in another.
       </p>
@@ -345,7 +347,7 @@ function ActualItem({ a, company }: { a: TrendsActual; company: TrendsCompany | 
   const oldQ = a.old_text ? trimQuote(a.old_text, Math.max(200, Math.min(600, lastEnd(a.old_spans) + 40))) : null;
   const newQ = a.new_text ? trimQuote(a.new_text, Math.max(200, Math.min(600, lastEnd(a.new_spans) + 40))) : null;
   return (
-    <li className="border-t border-line py-5">
+    <li className="border-t border-line py-6">
       <div className="flex flex-wrap items-center gap-3">
         <ChangeBadge kind="potential_became_actual" size="sm" />
         <Link href={`/c/${encodeURIComponent(a.ticker)}`} className="text-sm text-ink-secondary underline-offset-2 hover:underline">
@@ -426,9 +428,9 @@ function ChangeMix({ data }: { data: TrendsPayload }) {
   return (
     <section aria-labelledby="mix-heading" className="space-y-4">
       <SectionTitle id="mix-heading">Change mix by company</SectionTitle>
-      <ul className="space-y-3">
+      <ul className="border-t border-line">
         {rows.map((r) => (
-          <li key={r.ticker} className="grid items-center gap-x-6 gap-y-1 min-[900px]:grid-cols-[160px_minmax(0,1fr)]">
+          <li key={r.ticker} className="grid items-center gap-x-6 gap-y-1 border-b border-line py-3 min-[900px]:grid-cols-[160px_minmax(0,1fr)]">
             <Link href={`/c/${encodeURIComponent(r.ticker)}`} className="text-base font-medium text-ink underline-offset-2 hover:underline">
               {names.get(r.ticker) ?? r.ticker}
             </Link>
