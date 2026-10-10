@@ -183,7 +183,7 @@ def test_marked_spans_and_window_contains():
     ]
 
 
-def test_heatmap_duplicate_detection():
+def test_heatmap_columns_are_unique_and_empty_rows_follow_the_frontend():
     activity = [
         {
             "ticker": "AAA",
@@ -211,12 +211,16 @@ def test_heatmap_duplicate_detection():
         )
     ]
     columns = ci.heatmap_columns(activity, max_columns=10)
-    assert len(columns) == 11
-    # the checker reports a duplicate only when the frontend's rule produces one
+    assert len(columns) == len(set(columns)), columns
+    assert columns[-1] == "other" and len(columns) == 11
     body = {"category_activity": activity, "companies": [{"ticker": "AAA"}, {"ticker": "BBB"}]}
     out = ci.check_heatmap(body)
+    assert not [v for v in out if "duplicate" in v.evidence]
+    placeholder = "No changed sentences" in (
+        ROOT / "web" / "src" / "components" / "TrendsView.tsx"
+    ).read_text(encoding="utf-8")
     empties = [v for v in out if v.ticker == "BBB"]
-    assert empties, "a company without activity must be reported as an all-empty row"
+    assert bool(empties) == (not placeholder)
 
 
 # ---------------------------------------------------------------------------------------------

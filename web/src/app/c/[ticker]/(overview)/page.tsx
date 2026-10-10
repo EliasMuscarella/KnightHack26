@@ -51,7 +51,7 @@ export default async function ComparisonPage(props: PageProps<"/c/[ticker]">) {
         ) : (
           <>
             <HighlightCards comparison={comparison} />
-            <ChangeList ticker={comparison.company.ticker} rows={rows} initialTopic={initialTopic} />
+            <ChangeList ticker={comparison.company.ticker} rows={rows} initialTopic={initialTopic} companyName={comparison.company.name} />
           </>
         )}
         <AuditTrail comparison={comparison} source={source} libraryStatus={libraryStatus} />

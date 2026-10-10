@@ -1162,7 +1162,9 @@ def check_snip_change(r: Report, served_p2a: list[dict], profile: str) -> list[V
 
 
 def heatmap_columns(activity: list[dict], max_columns: int = 10) -> list[str]:
-    """Port of web/src/lib/trends.ts buildHeatmap column selection."""
+    """Column keys the frontend would render: the real `heatmapColumns` from web/src/lib/trends.ts
+    when Node can evaluate it, else a port of the fixed rule (named categories ranked by activity,
+    the top N kept, one `other` column last that merges the real `other` category with the rest)."""
     by_cat: dict[str, int] = defaultdict(int)
     for a in activity:
         by_cat[a["category"]] += (
@@ -1171,8 +1173,11 @@ def heatmap_columns(activity: list[dict], max_columns: int = 10) -> list[str]:
             + int(a.get("modified_sentences", 0))
         )
     ranked = [c for c, _ in sorted(by_cat.items(), key=lambda kv: (-kv[1], kv[0]))]
-    keep = ranked[:max_columns]
-    other_key = "other"
+    via_node = _frontend_heatmap_columns(ranked)
+    if via_node is not None:
+        return via_node
+    other_key, max_cols = "other", max_columns
+    fixed = True
     try:
         src = (ROOT / "web" / "src" / "lib" / "trends.ts").read_text(encoding="utf-8")
         m = re.search(r'OTHER_CATEGORY\s*=\s*"([^"]+)"', src)
@@ -1180,11 +1185,61 @@ def heatmap_columns(activity: list[dict], max_columns: int = 10) -> list[str]:
             other_key = m.group(1)
         m = re.search(r"MAX_HEATMAP_COLUMNS\s*=\s*(\d+)", src)
         if m:
-            keep = ranked[: int(m.group(1))]
-            return keep + ([other_key] if len(ranked) > int(m.group(1)) else [])
+            max_cols = int(m.group(1))
+        fixed = "function heatmapColumns" in src
     except OSError:
         pass
-    return keep + ([other_key] if len(ranked) > max_columns else [])
+    if not fixed:  # the pre-fix rule: top N, then the catch-all appended even when `other` is kept
+        keep = ranked[:max_cols]
+        return keep + ([other_key] if len(ranked) > max_cols else [])
+    named = [c for c in dict.fromkeys(ranked) if c != other_key]
+    keep = named[:max_cols]
+    return keep + ([other_key] if len(named) > max_cols or other_key in ranked else [])
+
+
+def _frontend_heatmap_columns(ranked: list[str]) -> list[str] | None:
+    """Evaluate web/src/lib/trends.ts `heatmapColumns` with Node (strip-types); None if unavailable."""
+    import shutil
+    import subprocess
+
+    node = shutil.which("node")
+    src_path = ROOT / "web" / "src" / "lib" / "trends.ts"
+    try:
+        has_fn = src_path.exists() and "function heatmapColumns" in src_path.read_text(
+            encoding="utf-8"
+        )
+    except OSError:
+        has_fn = False
+    if not node or not has_fn:
+        return None
+    script = (
+        "import { heatmapColumns } from './src/lib/trends.ts';"
+        f"console.log(JSON.stringify(heatmapColumns({json.dumps(ranked)})));"
+    )
+    try:
+        proc = subprocess.run(  # noqa: S603 (fixed argv; data passes as JSON)
+            [
+                node,
+                "--experimental-strip-types",
+                "--no-warnings",
+                "--input-type=module",
+                "-e",
+                script,
+            ],
+            cwd=str(ROOT / "web"),
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    if proc.returncode != 0:
+        return None
+    try:
+        out = json.loads(proc.stdout.strip().splitlines()[-1])
+    except (ValueError, IndexError):
+        return None
+    return [str(c) for c in out] if isinstance(out, list) else None
 
 
 def check_heatmap(body: dict) -> list[Violation]:
@@ -1215,8 +1270,17 @@ def check_heatmap(body: dict) -> list[Violation]:
         )
         > 0
     }
+    # The fixed frontend draws a company without activity as one labeled cell ("No changed
+    # sentences"); before that fix the row was a line of empty boxes.
+    explicit_empty_row = False
+    try:
+        explicit_empty_row = "No changed sentences" in (
+            ROOT / "web" / "src" / "components" / "TrendsView.tsx"
+        ).read_text(encoding="utf-8")
+    except OSError:
+        pass
     for c in body.get("companies") or []:
-        if c.get("ticker") not in active:
+        if c.get("ticker") not in active and not explicit_empty_row:
             out.append(
                 Violation(
                     check="HEATMAP",

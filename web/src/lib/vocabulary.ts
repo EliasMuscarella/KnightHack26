@@ -128,16 +128,25 @@ export function changeTypeVocab(t: string): ChangeTypeVocab {
 /**
  * The title to show for a change. A `short_title` ending in an ellipsis is a deterministic
  * truncation fallback that says nothing on its own ("We are subject to complex laws, rules…"),
- * so the full heading is shown instead.
+ * and a short title that is just the company name says nothing either: both fall back to
+ * `shortTitleFromHeading` on the full heading (or on the short title itself when the heading is
+ * not at hand, e.g. Trends rows). Callers that have the comparison pass `company.name`.
  */
-export function displayTitle(shortTitle: string | null | undefined, fullTitle: string | null | undefined): string {
+export function displayTitle(
+  shortTitle: string | null | undefined,
+  fullTitle: string | null | undefined,
+  companyName?: string | null,
+): string {
   const short = (shortTitle ?? "").trim();
   const full = (fullTitle ?? "").trim();
-  if (!short) return shortTitleFromHeading(full);
-  if (short.endsWith("…") || short.endsWith("...")) {
-    // A truncation fallback: cut the full heading at a clause, or the truncation itself when the
-    // full heading is not at hand (e.g. Trends rows), so "…laws, rules…" becomes "…laws".
-    return shortTitleFromHeading(full || short.replace(/(…|\.\.\.)$/, ""));
+  if (!short) return shortTitleFromHeading(full, companyName);
+  const truncated = short.endsWith("…") || short.endsWith("...");
+  if (truncated || isCompanyName(short, companyName)) {
+    // Without the heading, the truncation itself is the source: it may stop mid-clause ("breach
+    // of…"), so trailing dangling words are removed as in the first-words rule.
+    const title = full ? shortTitleFromHeading(full, companyName) : cleanTruncation(short.replace(/(…|\.\.\.)$/, ""), companyName);
+    // Only the company name and no heading to fall back on: no title (callers show their own label).
+    return !full && isCompanyName(title, companyName) ? "" : title;
   }
   return short;
 }
@@ -149,46 +158,128 @@ export function countedLabel(n: number, changeType: string): string {
   return `${n} ${plural}`;
 }
 
-/** Clause boundaries where a legal heading can be cut without losing its subject. */
-const CLAUSE_BREAKS = [", ", "; ", ": ", " which ", " that ", " may ", " might ", " could ", " including "];
-const TRAILING_FUNCTION_WORDS = /\s+(and|or|the|of|to|a|an|our|its|their|in|on|for|with|by|as)$/i;
-export const SHORT_TITLE_MAX_WORDS = 12;
+// ---------------------------------------------------------------------------------------
+// Short titles from official headings (the pipeline applies the same rule in Python)
+// ---------------------------------------------------------------------------------------
+
+export const SHORT_TITLE_MAX_WORDS = 10;
+const SHORT_TITLE_MIN_WORDS = 4;
+
+/** A clause boundary lies before a token that is one of these words. */
+const BOUNDARY_BEFORE = new Set(
+  "which that including because as if when where while whether due resulting and or but may might could would should will can".split(" "),
+);
+
+/** A title must not end on one of these words (it would stop mid-clause). */
+const DANGLING = new Set(
+  (
+    "including include includes and or but of the a an to in on for with by as at from into which that our its their his her " +
+    "we they it is are was were be been being may might could would should can will shall if when while because whether than " +
+    "such other certain any all laws law inc corp co ltd plc llc"
+  ).split(" "),
+);
+
+const CORPORATE_SUFFIX =
+  /[\s,.]*\b(?:inc|incorporated|corp|corporation|co|company|ltd|limited|plc|llc|lp|holdings|group|com)\b[.,\s]*$/i;
+const TRAILING_PUNCT = /[,;:—–-]+$/;
+
+/** Lowercase letters and digits only ("Alphabet Inc." -> "alphabetinc"). */
+function nameKey(text: string): string {
+  return text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
+}
+
+/** True when `text` is just the company name, with or without its corporate suffix. */
+export function isCompanyName(text: string, companyName: string | null | undefined): boolean {
+  if (!companyName) return false;
+  const k = nameKey(text);
+  if (!k) return false;
+  return k === nameKey(companyName) || k === nameKey(companyName.replace(CORPORATE_SUFFIX, ""));
+}
+
+/** A token compared as a word: lowercase, surrounding punctuation removed. */
+function bare(token: string): string {
+  return token.toLowerCase().replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "");
+}
+
+/** Strips trailing , ; : — – - from the last token, dropping tokens that were only punctuation. */
+function stripTrailingPunct(tokens: string[]): string[] {
+  const out = [...tokens];
+  while (out.length > 0) {
+    const last = out[out.length - 1].replace(TRAILING_PUNCT, "");
+    if (last) {
+      out[out.length - 1] = last;
+      break;
+    }
+    out.pop();
+  }
+  return out;
+}
+
+/** Removes trailing dangling words while at least SHORT_TITLE_MIN_WORDS words remain. */
+function dropDangling(tokens: string[]): string[] {
+  let out = stripTrailingPunct(tokens);
+  while (out.length > SHORT_TITLE_MIN_WORDS && DANGLING.has(bare(out[out.length - 1]))) {
+    out = stripTrailingPunct(out.slice(0, -1));
+  }
+  return out;
+}
+
+/** Step 4 of the rule: the first max words, cleaned at the end. */
+function firstWords(tokens: string[]): string {
+  return dropDangling(tokens.slice(0, SHORT_TITLE_MAX_WORDS)).join(" ");
+}
+
+/** A truncated short title without its heading: the clause rule, then trailing dangling words removed. */
+function cleanTruncation(text: string, companyName?: string | null): string {
+  const title = shortTitleFromHeading(text, companyName);
+  return title ? dropDangling(title.split(" ")).join(" ") : "";
+}
 
 /**
- * Deterministic display title from an official risk heading when no language-model short
- * title exists: the heading's first clause (cut at the earliest clause boundary that keeps at
- * least four words), trailing function words dropped, capped at SHORT_TITLE_MAX_WORDS words
- * with a visible ellipsis. "Failure to meet the evolving needs of our industry and markets may
- * adversely impact our financial results." -> "Failure to meet the evolving needs of our
- * industry and markets". The full heading is always shown on the detail page.
+ * Deterministic display title from an official risk heading (no language model, no ellipsis):
+ *
+ * 1. Collapse whitespace; strip surrounding quotes; strip trailing `.`, `;`, `:`.
+ * 2. A heading of at most SHORT_TITLE_MAX_WORDS (10) words is returned as is.
+ * 3. Clause boundaries lie after a token ending in `,` `;` `:` `—` `–` (or a lone ` - `) and
+ *    before one of BOUNDARY_BEFORE ("which", "including", "and", "may", ...). For each boundary
+ *    the candidate is the tokens before it, trailing punctuation stripped, trailing DANGLING words
+ *    removed while at least 4 words remain. A candidate of 4..10 words whose last word is not
+ *    DANGLING qualifies; the longest qualifying candidate wins.
+ * 4. Otherwise: the first 10 words, cleaned the same way.
+ * 5. A result that is just the company name is replaced by step 4.
+ *
+ * The full heading is always shown on the detail page.
  */
-export function shortTitleFromHeading(heading: string): string {
-  const text = heading.trim().replace(/\s+/g, " ").replace(/[.;:]+$/, "");
+export function shortTitleFromHeading(heading: string | null | undefined, companyName?: string | null): string {
+  const text = (heading ?? "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .join(" ")
+    .replace(/^["'“”‘’]+|["'“”‘’]+$/g, "")
+    .trim()
+    .replace(/[.;:]+$/, "")
+    .trim();
   if (!text) return "";
-  // Every clause boundary, in text order; the first one that leaves a clean head wins.
-  const cuts: number[] = [];
-  for (const brk of CLAUSE_BREAKS) {
-    let from = 0;
-    for (;;) {
-      const i = text.indexOf(brk, from);
-      if (i < 0) break;
-      cuts.push(i);
-      from = i + brk.length;
+  const tokens = text.split(" ");
+  let result: string;
+  if (tokens.length <= SHORT_TITLE_MAX_WORDS) {
+    result = text;
+  } else {
+    let best: string[] | null = null;
+    for (let i = 1; i < tokens.length; i++) {
+      const prev = tokens[i - 1];
+      const after = /[,;:—–]$/.test(prev) || prev === "-";
+      const before = BOUNDARY_BEFORE.has(bare(tokens[i]));
+      if (!after && !before) continue;
+      const cand = dropDangling(tokens.slice(0, i));
+      if (cand.length < SHORT_TITLE_MIN_WORDS || cand.length > SHORT_TITLE_MAX_WORDS) continue;
+      if (DANGLING.has(bare(cand[cand.length - 1]))) continue;
+      if (!best || cand.length > best.length) best = cand;
     }
+    result = best ? best.join(" ") : firstWords(tokens);
   }
-  cuts.sort((a, b) => a - b);
-  let head = text;
-  for (const i of cuts) {
-    const candidate = text.slice(0, i).trim();
-    if (candidate.split(" ").length < 4) continue;
-    if (TRAILING_FUNCTION_WORDS.test(candidate)) continue; // "...have caused and" is not a title
-    head = candidate;
-    break;
-  }
-  head = head.replace(TRAILING_FUNCTION_WORDS, "").trim();
-  const words = head.split(" ");
-  if (words.length > SHORT_TITLE_MAX_WORDS) return words.slice(0, SHORT_TITLE_MAX_WORDS).join(" ").replace(TRAILING_FUNCTION_WORDS, "") + "…";
-  return head;
+  if (isCompanyName(result, companyName)) result = firstWords(tokens);
+  return result;
 }
 
 /** Every change type except "largely_unchanged" counts as a meaningful change. */
