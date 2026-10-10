@@ -134,3 +134,4 @@ Team: run the NVDA command above, then `RISKDIFF_SHOW_FIXTURE= ./scripts/dev.sh`
 |---|------|--------|-------|
 | T9 | Trends cold-start bug | done, tested | root cause in DECISIONS D-021; four health states, SWR `/trends` with disk cache, local fallback |
 | T10 | Derive trend facts at publish time | done, tested | `pipeline/trends/derive.py` + `topics.yml` (31 topics); `data/derived/*.trends.json` committed for NVDA + SF; hook in the publisher (run.py untouched: it feeds analysis_id) |
+| T11 | Store and serve trend facts | done, tested (fake SDK + simulated tables) | `topic_mentions` + `category_activity` tables and MERGEs, three parameterized `/trends` queries, shared `pipeline/trends/aggregate.py`, `scripts/derive_trends.py`; Databricks body == local body on NVDA + SF (simulated); never run against a real warehouse |

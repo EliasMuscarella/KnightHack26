@@ -2,8 +2,10 @@
 
     uv run python scripts/databricks_setup.py [--dry-run]
 
-Creates, if missing, the schema, the Volume and the three Delta tables (`reports`, `changes`,
-`highlights`) under DATABRICKS_CATALOG.DATABRICKS_SCHEMA. Every statement is CREATE ... IF NOT
+Creates, if missing, the schema, the Volume and the Delta tables (`reports`, `changes`,
+`highlights`, and the derived trend facts `topic_mentions`, `category_activity`) under
+DATABRICKS_CATALOG.DATABRICKS_SCHEMA. Existing workspaces just re-run it to get the two new tables,
+then `scripts/derive_trends.py` backfills them. Every statement is CREATE ... IF NOT
 EXISTS, so a second run changes nothing. It needs no permission beyond creating objects in the
 configured catalog and schema (the catalog itself must already exist). Never prints secrets.
 """

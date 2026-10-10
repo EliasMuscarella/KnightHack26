@@ -386,7 +386,15 @@ def test_health(monkeypatch):
 def test_ddl_is_idempotent_statements_only():
     stmts = ddl_list = tables.ddl(settings())
     labels = [label for label, _ in stmts]
-    assert labels == ["schema", "volume", "reports", "changes", "highlights"]
+    assert labels == [
+        "schema",
+        "volume",
+        "reports",
+        "changes",
+        "highlights",
+        "topic_mentions",
+        "category_activity",
+    ]
     assert all("IF NOT EXISTS" in sql for _, sql in ddl_list)
     assert "CREATE CATALOG" not in " ".join(sql for _, sql in ddl_list)
 

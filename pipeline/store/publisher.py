@@ -18,6 +18,8 @@ from pathlib import Path
 from pipeline.config import ROOT, get_databricks_settings
 from pipeline.store import tables
 from pipeline.store.databricks import DatabricksStore, StoreError, verify_report
+from pipeline.trends.derive import derive_trend_facts, ensure_facts
+from pipeline.trends.schema import TrendFacts
 
 log = logging.getLogger(__name__)
 
@@ -58,18 +60,37 @@ def git_user_name() -> str:
         return "unknown"
 
 
+def merge_trend_tables(store: DatabricksStore, facts: TrendFacts) -> int:
+    """Insert-if-absent MERGEs of the derived trend facts (topic_mentions, category_activity),
+    chunked so each JSON parameter stays small. Returns the number of rows sent."""
+    s = store.settings
+    sent = 0
+    for table, rows in (
+        (tables.TOPIC_MENTIONS, tables.topic_mention_rows(facts)),
+        (tables.CATEGORY_ACTIVITY, tables.category_activity_rows(facts)),
+    ):
+        for chunk in tables.chunks(rows):
+            store.execute(tables.merge_sql(s, table), {"rows": tables.rows_json(chunk)})
+            sent += len(chunk)
+    return sent
+
+
 def publish_remote(
     path: Path,
     store: DatabricksStore,
     *,
     published_by: str | None = None,
     now: datetime | None = None,
+    derived_dir: Path | None = None,
 ) -> RemotePublishResult:
-    """Upload `path` and MERGE its rows into reports, changes and highlights (in that order), then
-    make it the current report for its ticker + filing pair if it is new. Raises StoreError."""
+    """Upload `path` and MERGE its rows into reports, changes, highlights, topic_mentions and
+    category_activity (in that order), then make it the current report for its ticker + filing
+    pair if it is new. The trend facts come from `derived_dir` (written there when missing or
+    stale) or are derived in memory. Raises StoreError."""
     path = Path(path)
     data = path.read_bytes()
     comp = verify_report(data)  # contract + analysis_id recompute; fixtures refused
+    facts = ensure_facts(comp, derived_dir) if derived_dir else derive_trend_facts(comp)
     s = store.settings
     vpath = store.upload_report(path)
 
@@ -90,6 +111,7 @@ def publish_remote(
     hl = tables.highlight_rows(comp)
     if hl:
         store.execute(tables.merge_sql(s, tables.HIGHLIGHTS), {"rows": tables.rows_json(hl)})
+    merge_trend_tables(store, facts)
     made_current = False
     if inserted:
         store.execute(
@@ -117,9 +139,11 @@ def publish_remote(
     )
 
 
-def derived_dir_for_published(path: Path) -> Path:
-    """data/published/X.json -> data/derived (siblings under the same data directory)."""
-    return Path(path).resolve().parent.parent / "derived"
+def derived_dir_for_published(path: Path) -> Path | None:
+    """data/published/X.json -> data/derived (siblings under the same data directory); None for a
+    file outside a `published` directory (its facts are then derived in memory, never written)."""
+    parent = Path(path).resolve().parent
+    return parent.parent / "derived" if parent.name == "published" else None
 
 
 def publish_remote_if_enabled(path: Path, *, enabled: bool | None = None) -> dict:
@@ -133,13 +157,18 @@ def publish_remote_if_enabled(path: Path, *, enabled: bool | None = None) -> dic
     code_fingerprint and therefore analysis_id, so the hook lives in this sub-package."""
     from pipeline.trends.derive import derive_after_publish
 
-    trend = derive_after_publish(Path(path), derived_dir_for_published(path))
-    out = _publish_remote_step(Path(path), enabled=enabled)
+    derived_dir = derived_dir_for_published(path)
+    trend = (
+        derive_after_publish(Path(path), derived_dir)
+        if derived_dir is not None
+        else {"status": "skipped", "reason": "not in a published directory"}
+    )
+    out = _publish_remote_step(Path(path), enabled=enabled, derived_dir=derived_dir)
     out["trend_facts"] = trend
     return out
 
 
-def _publish_remote_step(path: Path, *, enabled: bool | None) -> dict:
+def _publish_remote_step(path: Path, *, enabled: bool | None, derived_dir: Path | None) -> dict:
     if enabled is False:
         return {"status": "skipped", "reason": "--no-remote"}
     try:
@@ -149,7 +178,9 @@ def _publish_remote_step(path: Path, *, enabled: bool | None) -> dict:
     if not settings.enabled:
         return {"status": "disabled"}
     try:
-        return publish_remote(Path(path), DatabricksStore(settings)).to_dict()
+        return publish_remote(
+            Path(path), DatabricksStore(settings), derived_dir=derived_dir
+        ).to_dict()
     except StoreError as e:
         log.warning("remote publish failed [%s]: %s", e.code, e.message)
         return {"status": "failed", "code": e.code, "message": e.message[:300]}

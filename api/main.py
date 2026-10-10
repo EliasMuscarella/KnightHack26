@@ -51,8 +51,8 @@ from pipeline.errors import InvalidTicker, PipelineError
 from pipeline.publish import load_published
 from pipeline.run import FIXTURE_TICKER, STAGE_LABELS, run_pipeline
 from pipeline.schema import CHANGE_TYPES, CompanyCard, Comparison, StageEvent
-from pipeline.store import DatabricksStore, StoreDisabled, StoreError, StoreUnavailable
-from pipeline.trends import aggregate
+from pipeline.store import DatabricksStore, StoreDisabled, StoreError, StoreUnavailable, tables
+from pipeline.trends import aggregate, derive
 
 log = logging.getLogger("api")
 
@@ -75,7 +75,8 @@ TRENDS_TTL_SECONDS = 60.0  # a remote trends result older than this is refreshed
 TRENDS_FAIL_RETRY_SECONDS = 20.0  # after a failed refresh, wait this long before the next one
 TRENDS_COLD_WAIT_SECONDS = 2.0  # store ok + nothing cached: wait this long for the first result
 REMOTE_REFRESH_WAIT_SECONDS = 200.0  # background only: a cold warehouse may take minutes
-TRENDS_CACHE_VERSION = 1
+TRENDS_CACHE_VERSION = 2  # bump when the /trends body changes shape (old disk caches are ignored)
+TRENDS_AGGREGATE_VERSION = 1  # bump when aggregate.py changes what it computes
 
 FRIENDLY: dict[str, str] = {
     "invalid_ticker": "That does not look like a ticker. Use 1-6 letters, '.', or '-'.",
@@ -774,37 +775,37 @@ def list_local(state: AppState) -> list[dict]:
 
 def local_trends_inputs(state: AppState) -> tuple[str, Callable[[], dict]]:
     """(fingerprint, compute) for the local trends aggregate over the current local reports
-    (newest filing pair per ticker, the same rule as /companies)."""
+    (newest filing pair per ticker, the same rule as /companies). A derived file is a pure
+    function of (analysis_id, derivation), so the fingerprint needs no file reads; compute loads
+    data/derived/{analysis_id}.trends.json and derives (and writes) any that is missing or stale."""
     cards = list_local(state)
-    pdir = state.settings.published_dir
-    parts = []
-    for c in cards:
-        try:
-            st = (pdir / c["file"]).stat()
-            parts.append(f"{c['file']}|{c['analysis_id']}|{st.st_mtime_ns}|{st.st_size}")
-        except OSError:
-            parts.append(f"{c['file']}|{c['analysis_id']}|missing")
+    derivation = (
+        f"{derive.derivation_id()}|{derive.phrase_model_id()}|agg{TRENDS_AGGREGATE_VERSION}"
+    )
+    parts = [derivation] + sorted(f"{c['ticker']}|{c['analysis_id']}" for c in cards)
     fingerprint = hashlib.sha256("\n".join(parts).encode("utf-8")).hexdigest()
 
     def compute() -> dict:
-        return aggregate.build_body(
-            aggregate.company_entry(
-                ticker=c["ticker"],
-                name=c["name"],
-                analysis_id=c["analysis_id"],
-                old_fiscal_year=c["old_fiscal_year"],
-                new_fiscal_year=c["new_fiscal_year"],
-                total_changes=c["total_changes"],
-                by_change_type=c["by_change_type"],
-            )
-            for c in cards
-        )
+        ddir = derive.derived_dir_for(state.settings.data_dir)
+        facts = []
+        for c in cards:
+            f = derive.load_facts(ddir, c["analysis_id"])
+            if f is None:
+                try:
+                    comp = load_published(state.settings.published_dir / c["file"])
+                    f = derive.ensure_facts(comp, ddir)
+                except Exception as e:  # noqa: BLE001
+                    log.warning("no trend facts for %s: %s", c["ticker"], type(e).__name__)
+                    continue
+            facts.append(f)
+        return aggregate.body_from_facts(facts)
 
     return fingerprint, compute
 
 
 def remote_trends_body(store: Any, rows: list[dict]) -> dict:
-    """The trends body from the shared store's current reports (one row per ticker)."""
+    """The trends body from the shared store: companies from its current-report rows (one per
+    ticker), then three parameterized row queries over exactly those analysis_ids."""
     companies = []
     for r in rows:
         try:
@@ -817,11 +818,35 @@ def remote_trends_body(store: Any, rows: list[dict]) -> dict:
                     new_fiscal_year=int(r.get("new_fiscal_year") or 0),
                     total_changes=int(r.get("total_changes") or 0),
                     by_change_type={ct: int(r.get(f"n_{ct}") or 0) for ct in CHANGE_TYPES},
+                    cik=r.get("cik"),
+                    old_accession=r.get("old_accession"),
+                    new_accession=r.get("new_accession"),
                 )
             )
         except Exception as e:  # noqa: BLE001
             log.warning("skipping unusable reports row: %s", type(e).__name__)
-    return aggregate.build_body(companies)
+    if not companies:
+        return aggregate.build_body([])
+    s = store.settings
+    ids = json.dumps(sorted(c["analysis_id"] for c in companies))
+    topic_rows = store.execute(
+        tables.trends_topics_sql(s),
+        {
+            "current": True,
+            "ids": ids,
+            "phrase": "phrase",
+            "min_companies": aggregate.PHRASE_MIN_COMPANIES,
+        },
+    )
+    activity_rows = store.execute(
+        tables.trends_activity_sql(s),
+        {"current": True, "ids": ids, "unchanged": aggregate.UNCHANGED},
+    )
+    p2a_rows = store.execute(
+        tables.trends_potential_to_actual_sql(s),
+        {"current": True, "ids": ids, "kind": "potential_became_actual"},
+    )
+    return aggregate.body_from_rows(companies, topic_rows, activity_rows, p2a_rows)
 
 
 def card_from_row(row: dict) -> dict | None:

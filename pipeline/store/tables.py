@@ -14,11 +14,16 @@ from datetime import datetime
 
 from pipeline.config import DatabricksSettings
 from pipeline.schema import CHANGE_TYPES, Comparison
+from pipeline.trends.schema import TrendFacts
 
 REPORTS = "reports"
 CHANGES = "changes"
 HIGHLIGHTS = "highlights"
-TABLES = (REPORTS, CHANGES, HIGHLIGHTS)
+TOPIC_MENTIONS = "topic_mentions"  # derived trend facts (D-021), one row per sentence + topic
+CATEGORY_ACTIVITY = "category_activity"  # derived trend facts, one row per change + category
+TABLES = (REPORTS, CHANGES, HIGHLIGHTS, TOPIC_MENTIONS, CATEGORY_ACTIVITY)
+TREND_TABLES = (TOPIC_MENTIONS, CATEGORY_ACTIVITY)
+MERGE_CHUNK_ROWS = 500  # rows per MERGE statement (keeps each JSON parameter small)
 
 # (column, SQL type) in table order; the struct schema for from_json is derived from this.
 REPORT_COLUMNS: tuple[tuple[str, str], ...] = (
@@ -69,11 +74,46 @@ HIGHLIGHT_COLUMNS: tuple[tuple[str, str], ...] = (
     ("old_text", "STRING"),
     ("new_text", "STRING"),
 )
-COLUMNS = {REPORTS: REPORT_COLUMNS, CHANGES: CHANGE_COLUMNS, HIGHLIGHTS: HIGHLIGHT_COLUMNS}
+TOPIC_MENTION_COLUMNS: tuple[tuple[str, str], ...] = (
+    ("analysis_id", "STRING"),
+    ("ticker", "STRING"),
+    ("change_id", "STRING"),
+    ("sentence_id", "STRING"),
+    ("position", "INT"),
+    ("topic", "STRING"),
+    ("topic_source", "STRING"),
+    ("matched_terms", "ARRAY<STRING>"),
+    ("status", "STRING"),
+    ("sentence_text", "STRING"),
+    ("added_spans_json", "STRING"),
+)
+CATEGORY_ACTIVITY_COLUMNS: tuple[tuple[str, str], ...] = (
+    ("analysis_id", "STRING"),
+    ("ticker", "STRING"),
+    ("change_id", "STRING"),
+    ("category", "STRING"),
+    ("change_type", "STRING"),
+    ("score", "INT"),
+    ("added_sentences", "INT"),
+    ("removed_sentences", "INT"),
+    ("modified_sentences", "INT"),
+    ("added_words", "INT"),
+    ("removed_words", "INT"),
+    ("modified_words", "INT"),
+)
+COLUMNS = {
+    REPORTS: REPORT_COLUMNS,
+    CHANGES: CHANGE_COLUMNS,
+    HIGHLIGHTS: HIGHLIGHT_COLUMNS,
+    TOPIC_MENTIONS: TOPIC_MENTION_COLUMNS,
+    CATEGORY_ACTIVITY: CATEGORY_ACTIVITY_COLUMNS,
+}
 KEYS = {
     REPORTS: ("analysis_id",),
     CHANGES: ("analysis_id", "change_id"),
     HIGHLIGHTS: ("analysis_id", "change_id", "position"),
+    TOPIC_MENTIONS: ("analysis_id", "change_id", "sentence_id", "topic"),
+    CATEGORY_ACTIVITY: ("analysis_id", "change_id", "category"),
 }
 
 
@@ -173,6 +213,50 @@ def highlight_rows(comp: Comparison) -> list[dict]:
     return out
 
 
+def topic_mention_rows(facts: TrendFacts) -> list[dict]:
+    return [
+        {
+            "analysis_id": facts.analysis_id,
+            "ticker": m.ticker,
+            "change_id": m.change_id,
+            "sentence_id": m.sentence_id,
+            "position": m.position,
+            "topic": m.topic,
+            "topic_source": m.source,
+            "matched_terms": list(m.matched_terms),
+            "status": m.status,
+            "sentence_text": m.text,
+            "added_spans_json": json.dumps([list(sp) for sp in m.added_spans]),
+        }
+        for m in facts.topic_mentions
+    ]
+
+
+def category_activity_rows(facts: TrendFacts) -> list[dict]:
+    return [
+        {
+            "analysis_id": facts.analysis_id,
+            "ticker": facts.ticker,
+            "change_id": a.change_id,
+            "category": cat,
+            "change_type": a.change_type,
+            "score": a.score,
+            "added_sentences": a.added_sentences,
+            "removed_sentences": a.removed_sentences,
+            "modified_sentences": a.modified_sentences,
+            "added_words": a.added_words,
+            "removed_words": a.removed_words,
+            "modified_words": a.modified_words,
+        }
+        for a in facts.category_activity
+        for cat in a.categories
+    ]
+
+
+def chunks(rows: list[dict], size: int = MERGE_CHUNK_ROWS) -> list[list[dict]]:
+    return [rows[i : i + size] for i in range(0, len(rows), size)]
+
+
 def rows_json(rows: list[dict]) -> str:
     return json.dumps(rows, ensure_ascii=False, separators=(",", ":"))
 
@@ -226,27 +310,70 @@ def list_current_sql(s: DatabricksSettings) -> str:
     )
 
 
-def trends_by_category_sql(s: DatabricksSettings) -> str:
-    """Per category and change type: how many companies (current reports) have such a change."""
+# ---------- /trends: three row-fetching queries over the current reports ----------
+# Each takes :current (TRUE) and :ids, a JSON array of the analysis_ids the API treats as current
+# (newest filing pair per ticker, the same rule as /companies). Ranking, grouping and sums happen
+# in pipeline.trends.aggregate, shared with the local path; SQL only narrows the rows.
+
+
+def _current_ids(alias: str) -> str:
     return (
-        f"SELECT cat AS category, c.change_type, COUNT(DISTINCT c.ticker) AS companies\n"
-        f"FROM {s.table(CHANGES)} c\n"
-        f"JOIN {s.table(REPORTS)} r ON r.analysis_id = c.analysis_id AND r.is_current = :current\n"
-        f"LATERAL VIEW explode(c.categories) AS cat\n"
-        f"WHERE c.change_type <> :unchanged\n"
-        f"GROUP BY cat, c.change_type ORDER BY cat, c.change_type"
+        f"{alias}.analysis_id IN (SELECT analysis_id FROM {{reports}} WHERE is_current = :current)\n"
+        f"  AND array_contains(from_json(:ids, 'array<string>'), {alias}.analysis_id)"
     )
 
 
-def trends_by_kind_sql(s: DatabricksSettings) -> str:
-    """Per company: how many highlights of each kind (current reports)."""
+def trends_topics_sql(s: DatabricksSettings) -> str:
+    """One example row per (topic, source, ticker) plus that company's sentence count. Phrases
+    only when at least :min_companies companies share them. The example order is
+    pipeline.trends.aggregate.EXAMPLE_ORDER_SQL (most matched terms, then shortest sentence)."""
+    from pipeline.trends.aggregate import EXAMPLE_ORDER_SQL
+
+    cur = _current_ids("tm").format(reports=s.table(REPORTS))
     return (
-        f"SELECT h.ticker, r.company_name, h.kind, COUNT(*) AS highlights\n"
+        f"WITH m AS (\n"
+        f"  SELECT tm.*, c.short_title FROM {s.table(TOPIC_MENTIONS)} tm\n"
+        f"  LEFT JOIN {s.table(CHANGES)} c\n"
+        f"    ON c.analysis_id = tm.analysis_id AND c.change_id = tm.change_id\n"
+        f"  WHERE {cur}\n"
+        f"), shared AS (\n"
+        f"  SELECT topic FROM m WHERE topic_source = :phrase\n"
+        f"  GROUP BY topic HAVING COUNT(DISTINCT ticker) >= :min_companies\n"
+        f"), ranked AS (\n"
+        f"  SELECT m.*,\n"
+        f"    COUNT(*) OVER (PARTITION BY m.topic, m.topic_source, m.ticker) AS ticker_sentence_count,\n"
+        f"    ROW_NUMBER() OVER (PARTITION BY m.topic, m.topic_source, m.ticker\n"
+        f"      ORDER BY {EXAMPLE_ORDER_SQL}) AS rn\n"
+        f"  FROM m WHERE m.topic_source <> :phrase OR m.topic IN (SELECT topic FROM shared)\n"
+        f")\n"
+        f"SELECT ticker, change_id, sentence_id, topic, topic_source, matched_terms, status,\n"
+        f"  sentence_text, added_spans_json, short_title, ticker_sentence_count\n"
+        f"FROM ranked WHERE rn = 1 ORDER BY topic, topic_source, ticker"
+    )
+
+
+def trends_activity_sql(s: DatabricksSettings) -> str:
+    """Per-change category rows of the current reports (the heatmap sums are done in Python)."""
+    cur = _current_ids("ca").format(reports=s.table(REPORTS))
+    return (
+        f"SELECT ca.ticker, ca.change_id, ca.category, ca.change_type, ca.score,\n"
+        f"  ca.added_sentences, ca.removed_sentences, ca.modified_sentences,\n"
+        f"  ca.added_words, ca.removed_words, ca.modified_words\n"
+        f"FROM {s.table(CATEGORY_ACTIVITY)} ca\n"
+        f"WHERE {cur} AND ca.change_type <> :unchanged\n"
+        f"ORDER BY ca.ticker, ca.category, ca.change_id"
+    )
+
+
+def trends_potential_to_actual_sql(s: DatabricksSettings) -> str:
+    """'Potential became actual' highlights of the current reports, with company and score."""
+    cur = _current_ids("h").format(reports=s.table(REPORTS))
+    return (
+        f"SELECT h.ticker, r.company_name, h.change_id, h.short_title, h.old_sentence_id,\n"
+        f"  h.new_sentence_id, h.old_text, h.new_text, c.score\n"
         f"FROM {s.table(HIGHLIGHTS)} h\n"
-        f"JOIN {s.table(REPORTS)} r ON r.analysis_id = h.analysis_id AND r.is_current = :current\n"
-        f"GROUP BY h.ticker, r.company_name, h.kind ORDER BY h.ticker, h.kind"
+        f"JOIN {s.table(REPORTS)} r ON r.analysis_id = h.analysis_id\n"
+        f"LEFT JOIN {s.table(CHANGES)} c ON c.analysis_id = h.analysis_id AND c.change_id = h.change_id\n"
+        f"WHERE {cur} AND h.kind = :kind\n"
+        f"ORDER BY c.score DESC, h.ticker"
     )
-
-
-def company_count_sql(s: DatabricksSettings) -> str:
-    return f"SELECT COUNT(DISTINCT ticker) AS companies FROM {s.table(REPORTS)} WHERE is_current = :current"

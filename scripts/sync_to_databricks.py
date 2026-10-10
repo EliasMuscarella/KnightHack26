@@ -4,8 +4,9 @@
 
 Uses exactly the pipeline's remote publish step (pipeline.store.publisher.publish_remote), so
 the result is the same as if each report had been published remotely when it was produced:
-the JSON lands byte-for-byte in the Volume and its rows are MERGEd into the tables. Reports
-already in the library are no-ops. Exit code: 0 all ok, 1 some failed, 2 not configured.
+the JSON lands byte-for-byte in the Volume and its rows are MERGEd into the tables, including the
+derived trend facts (topic_mentions, category_activity; written to data/derived/ when missing).
+Reports already in the library are no-ops. Exit code: 0 all ok, 1 some failed, 2 not configured.
 """
 
 from __future__ import annotations
@@ -21,6 +22,7 @@ from pipeline.config import get_databricks_settings, get_settings  # noqa: E402
 from pipeline.errors import PipelineError  # noqa: E402
 from pipeline.store import DatabricksStore, StoreError  # noqa: E402
 from pipeline.store.publisher import publish_remote  # noqa: E402
+from pipeline.trends.derive import derived_dir_for  # noqa: E402
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -46,7 +48,7 @@ def main(argv: list[str] | None = None) -> int:
     failed = 0
     for p in paths:
         try:
-            r = publish_remote(p, store)
+            r = publish_remote(p, store, derived_dir=derived_dir_for(get_settings().data_dir))
             print(
                 f"{'published' if r.inserted else 'already present'}  {p.name}  -> {r.volume_path}"
             )

@@ -327,3 +327,45 @@ Only a store that is already `ok` gets a 2 s wait for its very first remote resu
   `connecting`; "not connected" shows only for `disabled` or `offline` with nothing local.
 - The frontend's pure helpers (display names, hero pick, short titles, trends math) are unit-tested with
   Node's built-in runner (`npm run test:unit`, also executed from pytest).
+
+**T11 storing and serving trend facts.**
+- Two Delta tables are defined as constants in `tables.py` and created by `databricks_setup.py`:
+  `topic_mentions` keyed by (analysis_id, change_id, sentence_id, topic), and `category_activity` keyed by
+  (analysis_id, change_id, category). Both use the same insert-if-absent MERGE with one JSON parameter,
+  chunked at 500 rows. `publish_remote` writes them after `highlights` and BEFORE the `is_current` flip, so
+  a report only becomes current once all of its rows exist. The facts come from `data/derived/`, or are
+  derived and written there when missing or stale.
+- `/trends` on Databricks runs exactly three parameterized queries, after the cached report list: topics,
+  category rows and potential→actual. Each takes `:current` plus `:ids`, a JSON array of the analysis_ids
+  the API treats as current (the newest filing pair per ticker, the same rule as `/companies`); no value is
+  interpolated. SQL only narrows rows. The topics query keeps one example per (topic, source, ticker) with a
+  window function ordered by `aggregate.EXAMPLE_ORDER_SQL` (the same order as the Python `example_key`), and
+  it pre-applies the 2-company phrase rule. Sums, grouping and ranking all happen in
+  `pipeline/trends/aggregate.py`, shared with the local path. A test publishes the real NVDA and SF reports
+  through the real publisher into simulated tables and checks that the Databricks body equals the local body.
+  The SQL itself has never run against a real warehouse (none was available).
+- The local path aggregates `data/derived/*.trends.json` for the current local reports, using `list_local`
+  (newest pair per ticker). A missing or stale file is derived from the published file and written. The
+  memo/disk fingerprint is (derivation, phrase model, aggregate version, analysis_ids), so cached answers
+  need no file reads.
+- Aggregation rules:
+  - Topics are sorted by company_count desc, sentence_count desc, then topic, and capped at 40. Entity names
+    merge case-insensitively across companies. Phrases appear only when 2+ companies share them.
+  - Each topic carries one example per company: the sentence with the most matched terms, then the shortest.
+  - Category activity leaves out `largely_unchanged` risk factors and sums the six counts per
+    (ticker, category). `change_ids` are ordered by score desc.
+  - Potential→actual is sorted by score desc, then ticker.
+- Companies also carry `cik`, `old_accession`, `new_accession`, `edgar_url_old` and `edgar_url_new` (added at
+  the coordinator's request). The Databricks `reports` table has no EDGAR URL columns, so both URLs are null
+  on the remote path and the UI builds the index URL from cik + accession. The table schema was not altered.
+- `scripts/derive_trends.py` is the idempotent backfill: local files first, then every current Volume report
+  (verified download) plus the MERGEs. `--local-only` skips Databricks. Exit codes: 0 ok, 1 some failed,
+  2 bad Databricks config. Databricks not configured is not an error.
+- Every `status`/`source` combination `/trends` can return:
+  - `disabled` + `local`: always, with data (or empty lists if there are no local reports).
+  - `ok` + `databricks`.
+  - `connecting`, `ok` or `offline` + `databricks`: a cached remote result, possibly stale while it revalidates.
+  - `connecting`, `ok` or `offline` + `local` with data: no remote result yet.
+  - `connecting` or `ok` + `null` with empty lists: no remote result and no local reports (retry).
+  - `offline` + `local` with empty lists.
+  - any status + `null` with empty lists: an unexpected internal error (never a 5xx).
