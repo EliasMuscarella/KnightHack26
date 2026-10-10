@@ -102,6 +102,38 @@ Essentially unchanged uses `ink-secondary` on `surface` with a `line` border.
 4px base; steps 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 (Tailwind 1, 2, 3, 4, 6, 8, 12, 16). Running text
 is capped at about 72 characters (`max-w-prose-72`). Cards stack to one column below about 900px.
 
+### Dark mode
+
+Same token names, redefined under `:root[data-theme="dark"]` in `globals.css`; components never branch on the
+theme. The look is a calm financial terminal: near-black blue-gray page, slightly lighter surfaces, crisp light
+ink. Meanings do not change: blue = more language, orange = less, amber = potential became actual, no green/red.
+The inline script in `layout.tsx` sets `data-theme` before paint (stored choice under `riskdiff-theme`, else
+`prefers-color-scheme`); `ThemeToggle` in the header cycles system, light, dark. Tailwind's `dark:` variant
+follows `data-theme`. Text on filled controls uses `on-accent` / `on-ink`, never `text-white`.
+
+| Token | Dark | Measured contrast |
+|---|---|---|
+| `paper` / `surface` / `sunken` | `#0F151D` / `#161E29` / `#1D2734` | (backgrounds) |
+| `ink` | `#E4E9F0` | 15.0 paper, 13.8 surface, 12.4 sunken |
+| `ink-secondary` | `#B3BECC` | 9.7 paper, 8.9 surface, 8.0 sunken |
+| `ink-muted` | `#8D9AAB` | 6.4 paper, 5.9 surface, 5.3 sunken |
+| `line` / `line-input` | `#2B3747` / `#7A889A` | input border 4.7:1 on surface |
+| `more-strong-fg` / `-bg` | `#9CC5F5` / `#17304F` | 7.5 |
+| `more-fg` / `-bg` | `#86B6EC` / `#142A43` | 6.9 |
+| `less-strong-fg` / `-bg` | `#F5B088` / `#40261A` | 7.6 |
+| `less-fg` / `-bg` | `#EBA072` / `#36221A` | 7.0 |
+| `rewrite-fg` / `-bg` | `#E4E9F0` / `#252F3D` | 11.1 |
+| `actual-fg` / `-bg` | `#F0C46A` / `#382C12` | 8.3 |
+| `signal-fg` / `-bg` | `#E4E9F0` / `#1D2734` | 12.4 |
+| `highlighter` (ink on it) | `#5E4B12` | 6.9: a deep amber marker under light ink |
+| `strike` | `#E08A52` | (decoration) |
+| `accent` / `accent-strong` / `accent-bg` | `#86B6EC` / `#B9D6F7` / `#142A43` | 8.7 paper, 7.9 surface, 6.9 on accent-bg |
+| `on-accent`, `on-ink` | `#0F151D` | 8.7 on accent, 12.3 on accent-strong, 15.0 on ink |
+| `heat-more` / `heat-less` / `heat-rewrite` | `#3266A6` / `#9A5225` / `#5A697F` | ink text >= 4.6 at every intensity |
+
+Heatmap cells in dark mode keep light ink at every intensity (the tones are deep enough that a text flip is not
+needed); the legend says "stronger color" rather than "darker" so it reads in both themes.
+
 ## Components
 
 * `ChangeBadge`: solid tint background, colored text from the direction tokens, 14–15px, 6px radius.

@@ -213,7 +213,7 @@ function RubricList({ interp, numberOf }: { interp: Interpretation; numberOf: (i
           <div className="flex items-start gap-2">
             <span className="text-ink-secondary">{r.question_id}</span>
             <p className="min-w-0 flex-1 leading-snug text-ink">{r.question}</p>
-            <span className={`shrink-0 rounded-sm px-1.5 py-px text-xs font-medium ${r.answer ? "bg-ink text-white" : "bg-signal-bg text-ink-secondary"}`}>
+            <span className={`shrink-0 rounded-sm px-1.5 py-px text-xs font-medium ${r.answer ? "bg-ink text-on-ink" : "bg-signal-bg text-ink-secondary"}`}>
               {r.answer ? "Yes" : "No"}
             </span>
           </div>

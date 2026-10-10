@@ -42,7 +42,7 @@ function FilterButton({ pressed, onClick, children, count, title }: { pressed: b
       onClick={onClick}
       title={title}
       className={`inline-flex items-center gap-1.5 rounded-md border px-3 py-1 text-sm transition ${
-        pressed ? "border-ink bg-ink text-white" : "border-line bg-surface text-ink-secondary hover:border-ink hover:text-ink"
+        pressed ? "border-ink bg-ink text-on-ink" : "border-line bg-surface text-ink-secondary hover:border-ink hover:text-ink"
       }`}
     >
       {children}
