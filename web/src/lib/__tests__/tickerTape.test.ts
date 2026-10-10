@@ -102,6 +102,6 @@ test("times render in Eastern time with plain spaces", () => {
 });
 
 test("animation length scales with the number of quotes", () => {
-  assert.equal(tapeDurationSeconds(50), 125);
+  assert.equal(tapeDurationSeconds(50), 160);
   assert.equal(tapeDurationSeconds(2), 20);
 });

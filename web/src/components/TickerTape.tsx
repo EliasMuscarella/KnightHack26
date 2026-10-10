@@ -7,8 +7,8 @@
  *
  * Direction uses DESIGN.md's value-neutral families (blue up, orange down, secondary ink flat),
  * never green/red, and every colored change also carries a sign and an arrow. Motion is a
- * CSS-only marquee (globals.css, .tape-*): paused on hover, on keyboard focus and by the Pause
- * button; under prefers-reduced-motion it is a still, horizontally scrollable row.
+ * CSS-only marquee (globals.css, .tape-*): paused on hover and on keyboard focus; under
+ * prefers-reduced-motion it is a still, horizontally scrollable row.
  */
 import { useEffect, useState, type CSSProperties } from "react";
 
@@ -60,7 +60,6 @@ function QuoteItem({ q }: { q: TapeQuote }) {
 
 export function TickerTape({ initial }: { initial: TickerTapePayload | null }) {
   const [data, setData] = useState<TickerTapePayload | null>(initial);
-  const [paused, setPaused] = useState(false);
   const startedEmpty = !tapeVisible(initial);
 
   useEffect(() => {
@@ -104,7 +103,7 @@ export function TickerTape({ initial }: { initial: TickerTapePayload | null }) {
   const trackStyle = { "--tape-duration": `${tapeDurationSeconds(data.quotes.length)}s` } as CSSProperties;
 
   return (
-    <section aria-label="Market prices" className="tape overflow-hidden border-b border-line bg-surface" data-paused={paused ? "true" : undefined}>
+    <section aria-label="Market prices" className="overflow-hidden border-b border-line bg-surface">
       <div className="mx-auto flex max-w-[1280px] items-center gap-6 px-8 py-2 text-sm">
         <p className="shrink-0 text-ink-secondary" title={sourceLine}>
           <span aria-hidden="true">Delayed prices</span>
@@ -129,13 +128,6 @@ export function TickerTape({ initial }: { initial: TickerTapePayload | null }) {
             Last updated {time}
           </p>
         ) : null}
-        <button
-          type="button"
-          onClick={() => setPaused((p) => !p)}
-          className="tape-pause shrink-0 rounded-md border border-line px-2 text-ink-secondary hover:border-ink hover:text-ink"
-        >
-          {paused ? "Play" : "Pause"}
-        </button>
       </div>
     </section>
   );
