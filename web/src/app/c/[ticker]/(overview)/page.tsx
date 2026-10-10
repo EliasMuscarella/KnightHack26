@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ChangeList, type ChangeRow } from "@/components/ChangeList";
+import { CompanyLogo } from "@/components/CompanyLogo";
 import { AuditTrail, HighlightCards, OverviewHeader } from "@/components/Overview";
 import { FixtureBanner, InfoBox, PageContainer } from "@/components/ui";
 import { getComparison, getLibraryStatus } from "@/lib/data";
+import { displayName } from "@/lib/names";
 import { normalizeTicker } from "@/lib/ticker";
 
 export const dynamic = "force-dynamic";
@@ -43,7 +45,16 @@ export default async function ComparisonPage(props: PageProps<"/c/[ticker]">) {
     <>
       {comparison.is_fixture ? <FixtureBanner /> : null}
       <PageContainer className="space-y-10 py-10">
-        <OverviewHeader comparison={comparison} />
+        {/* The header itself lives in components/Overview.tsx; the logo sits just above it. */}
+        <div>
+          <CompanyLogo
+            ticker={comparison.company.ticker}
+            name={displayName(comparison.company.name)}
+            size="md"
+            className="mb-4"
+          />
+          <OverviewHeader comparison={comparison} />
+        </div>
         {comparison.changes.length === 0 ? (
           <InfoBox title="No risk factor changes">
             The Risk Factors sections of the two filings did not produce any matched or unmatched risk factors.

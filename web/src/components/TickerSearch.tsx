@@ -85,8 +85,8 @@ export function TickerSearch({ size = "large", knownTickers, autoFocus }: Props)
           disabled={busy}
           className={
             compact
-              ? "absolute right-1 h-7 rounded-sm bg-accent px-3 text-xs font-medium text-white hover:bg-accent-strong disabled:opacity-60"
-              : "h-14 shrink-0 rounded-md bg-accent px-7 text-base font-medium text-white hover:bg-accent-strong disabled:opacity-60"
+              ? "absolute right-1 h-7 rounded-sm bg-accent px-3 text-xs font-medium text-on-accent hover:bg-accent-strong disabled:opacity-60"
+              : "h-14 shrink-0 rounded-md bg-accent px-7 text-base font-medium text-on-accent hover:bg-accent-strong disabled:opacity-60"
           }
         >
           {busy ? "…" : compact ? "Go" : "Compare filings"}

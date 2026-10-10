@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CompanyLogo } from "@/components/CompanyLogo";
 import { ChangeBadge } from "@/components/ui";
 import { formatDate } from "@/lib/format";
 import { displayName } from "@/lib/names";
@@ -26,9 +27,12 @@ export function CompanyCardView({ company }: { company: CompanyListing }) {
       href={`/c/${encodeURIComponent(company.ticker)}`}
       className="group flex h-full flex-col rounded-lg border border-line bg-surface p-6 transition hover:border-ink hover:shadow-card"
     >
-      <div className="flex items-baseline justify-between gap-3">
-        <h3 className="text-lg font-medium leading-snug text-ink group-hover:underline">{name}</h3>
-        <span className="text-sm text-ink-secondary">{company.ticker}</span>
+      <div className="flex items-center gap-3">
+        <CompanyLogo ticker={company.ticker} name={name} size="sm" />
+        <div className="flex min-w-0 flex-1 items-baseline justify-between gap-3">
+          <h3 className="text-lg font-medium leading-snug text-ink group-hover:underline">{name}</h3>
+          <span className="text-sm text-ink-secondary">{company.ticker}</span>
+        </div>
       </div>
       <p className="mt-1 text-sm text-ink-secondary">
         FY{company.old_fiscal_year} and FY{company.new_fiscal_year} annual reports

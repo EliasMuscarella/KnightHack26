@@ -47,6 +47,8 @@
   --color-accent: #174a85;
   --color-accent-strong: #14213d;
   --color-accent-bg: #e6effa;
+  --color-on-accent: #ffffff; /* text on bg-accent / bg-accent-strong buttons */
+  --color-on-ink: #ffffff; /* text on bg-ink (pressed toggles, yes/no chips) */
 
   /* ---- legacy names kept so older components keep compiling; they now resolve to the
      direction palette (no green/red anywhere) and are removed as components are rebuilt ---- */
@@ -119,6 +121,12 @@
   --container-prose-72: 72ch;
 }
 
+/*
+ * Class-based dark mode: the inline script in layout.tsx sets data-theme="light" | "dark" on <html>
+ * before paint (user choice in localStorage, else prefers-color-scheme). `dark:` utilities follow it.
+ */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 @theme inline {
   --font-sans: var(--font-public-sans), "Public Sans", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -129,6 +137,98 @@
 
 :root {
   color-scheme: light;
+
+  /* ---- heatmap (Trends, read via var() in TrendsView.tsx, so outside @theme): tone colors mixed toward transparent by intensity ---- */
+  --color-heat-more: #2c64a8;
+  --color-heat-less: #b5541c;
+  --color-heat-rewrite: #14213d;
+  --color-heat-text: #14213d; /* cell text at intensity <= 0.55 */
+  --color-heat-text-strong: #ffffff; /* cell text at intensity > 0.55 */
+}
+
+/*
+ * Dark palette (DESIGN.md "Dark mode"): a calm financial terminal. Near-black blue-gray page,
+ * slightly lighter surfaces, crisp light ink. Same token names, same meanings: blue = more
+ * language, orange = less, amber = potential became actual, no green/red. Every text/background
+ * pair is >= 4.5:1 (measured; see DESIGN.md).
+ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* ---- neutrals ---- */
+  --color-ink: #e4e9f0;
+  --color-ink-secondary: #b3becc;
+  --color-ink-muted: #8d9aab;
+  --color-ink-faint: #b3becc;
+  --color-line: #2b3747;
+  --color-line-strong: #3a4759;
+  --color-line-input: #7a889a;
+  --color-paper: #0f151d;
+  --color-surface: #161e29;
+  --color-sunken: #1d2734;
+  --color-neutral-bg: #1d2734;
+
+  /* ---- direction of change ---- */
+  --color-more-strong-fg: #9cc5f5;
+  --color-more-strong-bg: #17304f;
+  --color-more-fg: #86b6ec;
+  --color-more-bg: #142a43;
+  --color-less-strong-fg: #f5b088;
+  --color-less-strong-bg: #40261a;
+  --color-less-fg: #eba072;
+  --color-less-bg: #36221a;
+  --color-rewrite-fg: #e4e9f0;
+  --color-rewrite-bg: #252f3d;
+
+  /* ---- signals ---- */
+  --color-actual-fg: #f0c46a;
+  --color-actual-bg: #382c12;
+  --color-signal-fg: #e4e9f0;
+  --color-signal-bg: #1d2734;
+
+  /* ---- marks: a deep amber marker under light ink ---- */
+  --color-highlighter: #5e4b12;
+  --color-strike: #e08a52;
+  --color-flash: #5e4b12;
+
+  /* ---- links, focus, filled controls ---- */
+  --color-accent: #86b6ec;
+  --color-accent-strong: #b9d6f7;
+  --color-accent-bg: #142a43;
+  --color-on-accent: #0f151d;
+  --color-on-ink: #0f151d;
+
+  /* ---- heatmap: deep tones so light ink stays >= 4.5:1 at every intensity ---- */
+  --color-heat-more: #3266a6;
+  --color-heat-less: #9a5225;
+  --color-heat-rewrite: #5a697f;
+  --color-heat-text: #e4e9f0;
+  --color-heat-text-strong: #e4e9f0;
+
+  /* ---- legacy aliases ---- */
+  --color-add-bg: #3a3014;
+  --color-add-fg: #e4e9f0;
+  --color-add-line: #8a6d1f;
+  --color-del-bg: #36221a;
+  --color-del-fg: #f5b088;
+  --color-del-line: #e08a52;
+  --color-mod-bg: #382c12;
+  --color-mod-fg: #f0c46a;
+  --color-mod-line: #8a6d1f;
+  --color-exp-bg: #142a43;
+  --color-exp-fg: #86b6ec;
+  --color-exp-line: #86b6ec;
+  --color-red-bg: #36221a;
+  --color-red-fg: #f5b088;
+  --color-red-line: #e08a52;
+  --color-ai-bg: #1d2734;
+  --color-ai-line: #2b3747;
+  --color-ai-fg: #e4e9f0;
+  --color-fixture-bg: #382c12;
+  --color-fixture-fg: #f0c46a;
+  --color-fixture-line: #8a6d1f;
+
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.45);
 }
 
 html {

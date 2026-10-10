@@ -208,13 +208,15 @@ function SharedTopics({ data }: { data: TrendsPayload }) {
 // 3. Heatmap
 // ---------------------------------------------------------------------------------------
 
-const TONE_RGB = { more: "44, 100, 168", less: "181, 84, 28", rewrite: "20, 33, 61" } as const;
+// Heat tones are theme tokens (globals.css); intensity mixes them toward transparent.
+const HEAT_VAR = { more: "var(--color-heat-more)", less: "var(--color-heat-less)", rewrite: "var(--color-heat-rewrite)" } as const;
+const heat = (tone: keyof typeof HEAT_VAR, a: number) => `color-mix(in srgb, ${HEAT_VAR[tone]} ${Math.round(a * 100)}%, transparent)`;
 
 function cellStyle(cell: HeatCell | undefined, maxActivity: number): { background: string; color: string } {
   const tone = cellTone(cell);
   if (tone === "empty") return { background: "transparent", color: "inherit" };
   const a = cellIntensity(cell, maxActivity);
-  return { background: `rgba(${TONE_RGB[tone]}, ${a.toFixed(2)})`, color: a > 0.55 ? "#ffffff" : "#14213D" };
+  return { background: heat(tone, a), color: a > 0.55 ? "var(--color-heat-text-strong)" : "var(--color-heat-text)" };
 }
 
 function HeatmapLegend() {
@@ -229,10 +231,10 @@ function HeatmapLegend() {
     <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-secondary">
       <span className="flex items-center gap-1.5">
         {steps.map((s) => (
-          <span key={s.label} title={s.label} aria-label={s.label} className="inline-block h-4 w-7 rounded-xs" style={{ background: `rgba(${TONE_RGB[s.tone]}, ${s.a})` }} />
+          <span key={s.label} title={s.label} aria-label={s.label} className="inline-block h-4 w-7 rounded-xs" style={{ background: heat(s.tone, s.a) }} />
         ))}
       </span>
-      <span>Orange: more language removed than added. Blue: more added. Ink: rewritten both ways. Darker means more sentences changed.</span>
+      <span>Orange: more language removed than added. Blue: more added. Ink: rewritten both ways. Stronger color means more sentences changed.</span>
     </div>
   );
 }
