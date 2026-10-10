@@ -216,10 +216,28 @@ function stripTrailingPunct(tokens: string[]): string[] {
 }
 
 /** Removes trailing dangling words while at least SHORT_TITLE_MIN_WORDS words remain. */
-function dropDangling(tokens: string[]): string[] {
+const CONJUNCTIONS = new Set(["and", "or", "but"]);
+
+/**
+ * Drops trailing dangling words while at least the minimum number of words remains. When the
+ * candidate was cut right before a conjunction and itself ends in "<conjunction> <word>", the
+ * coordination continues past the cut ("…regulations, and political | and other actions"), so that
+ * trailing pair goes too. Same rule as pipeline/highlights.py `_trim_candidate`.
+ */
+function dropDangling(tokens: string[], cutBeforeConjunction = false): string[] {
   let out = stripTrailingPunct(tokens);
-  while (out.length > SHORT_TITLE_MIN_WORDS && DANGLING.has(bare(out[out.length - 1]))) {
-    out = stripTrailingPunct(out.slice(0, -1));
+  let pairRule = cutBeforeConjunction;
+  for (;;) {
+    if (out.length > SHORT_TITLE_MIN_WORDS && DANGLING.has(bare(out[out.length - 1]))) {
+      out = stripTrailingPunct(out.slice(0, -1));
+      continue;
+    }
+    if (pairRule && out.length >= SHORT_TITLE_MIN_WORDS + 2 && CONJUNCTIONS.has(bare(out[out.length - 2]))) {
+      out = stripTrailingPunct(out.slice(0, -2));
+      pairRule = false;
+      continue;
+    }
+    break;
   }
   return out;
 }
@@ -271,7 +289,7 @@ export function shortTitleFromHeading(heading: string | null | undefined, compan
       const after = /[,;:—–]$/.test(prev) || prev === "-";
       const before = BOUNDARY_BEFORE.has(bare(tokens[i]));
       if (!after && !before) continue;
-      const cand = dropDangling(tokens.slice(0, i));
+      const cand = dropDangling(tokens.slice(0, i), CONJUNCTIONS.has(bare(tokens[i] ?? "")));
       if (cand.length < SHORT_TITLE_MIN_WORDS || cand.length > SHORT_TITLE_MAX_WORDS) continue;
       if (DANGLING.has(bare(cand[cand.length - 1]))) continue;
       if (!best || cand.length > best.length) best = cand;

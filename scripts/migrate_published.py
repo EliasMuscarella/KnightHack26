@@ -46,13 +46,18 @@ def migrate(path: Path) -> bool:
         if "short_title" not in c:
             c["short_title"] = truncate_heading(c["title"], company_name=company_name)
             changed = True
-        elif title_problems(c["short_title"], company_name):
-            # an old truncated heading ("We are subject to complex laws, rules…") or a fragment the
-            # old validator accepted: replace it with the deterministic first clause of the heading
-            new = short_title_from_heading(c["title"], company_name=company_name)
-            if new != c["short_title"]:
-                c["short_title"] = new
-                changed = True
+        else:
+            stored = " ".join(c["short_title"].split())
+            heading = " ".join(c["title"].split())
+            # A title that is an exact prefix of its heading is a truncation by construction (an LLM
+            # label almost never is), so it follows the current deterministic rule; a title with
+            # problems (an old "…" cut, a fragment the old validator accepted) is replaced too.
+            deterministic = heading.startswith(stored.rstrip("….").rstrip(",.;: "))
+            if deterministic or title_problems(stored, company_name):
+                new = short_title_from_heading(c["title"], company_name=company_name)
+                if new != c["short_title"]:
+                    c["short_title"] = new
+                    changed = True
     if "highlights" not in d:
         d["highlights"] = []
         changed = True

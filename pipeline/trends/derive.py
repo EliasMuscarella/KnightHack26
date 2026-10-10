@@ -38,7 +38,7 @@ import yaml
 from pipeline.config import NER_MODEL_ID
 from pipeline.diff import words
 from pipeline.schema import Change, Comparison, Sentence, canonical_json
-from pipeline.signals import clean_entity
+from pipeline.signals import clean_entity, is_generic_entity
 from pipeline.trends.schema import (
     TRENDS_VERSION,
     ChangeActivity,
@@ -277,6 +277,8 @@ def own_name_tokens(name: str, ticker: str) -> tuple[frozenset[str], frozenset[s
 
 def is_stop_entity(key: str, ident: frozenset[str], all_tokens: frozenset[str]) -> bool:
     if key in ENTITY_STOPLIST or any(p.match(key) for p in ENTITY_STOP_PATTERNS):
+        return True
+    if is_generic_entity(key):  # the company page's own stoplist (regulators, legislatures, courts)
         return True
     toks = set(re.findall(r"[a-z0-9]+", key))
     if not toks:
