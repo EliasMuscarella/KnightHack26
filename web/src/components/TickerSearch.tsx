@@ -76,8 +76,8 @@ export function TickerSearch({ size = "large", knownTickers, autoFocus }: Props)
           aria-describedby={error ? errorId : undefined}
           className={
             compact
-              ? "h-9 w-full rounded-md border border-line-input bg-surface pl-3 pr-20 font-mono text-sm uppercase placeholder:font-sans placeholder:normal-case placeholder:text-ink-faint focus:border-accent focus:outline-none"
-              : "h-14 w-full rounded-lg border border-line-input bg-surface px-5 font-mono text-xl uppercase tracking-wide shadow-sm placeholder:font-sans placeholder:text-lg placeholder:normal-case placeholder:tracking-normal placeholder:text-ink-faint focus:border-accent focus:outline-none"
+              ? "h-9 w-full rounded-md border border-line-input bg-surface pl-3 pr-20 text-sm uppercase placeholder:normal-case placeholder:text-ink-secondary focus:border-accent focus:outline-none"
+              : "h-14 w-full rounded-md border border-line-input bg-surface px-5 text-lg uppercase placeholder:normal-case placeholder:text-ink-secondary focus:border-accent focus:outline-none"
           }
         />
         <button
@@ -85,8 +85,8 @@ export function TickerSearch({ size = "large", knownTickers, autoFocus }: Props)
           disabled={busy}
           className={
             compact
-              ? "absolute right-1 h-7 rounded bg-accent px-3 text-xs font-semibold text-white hover:bg-accent-strong disabled:opacity-60"
-              : "h-14 shrink-0 rounded-lg bg-accent px-7 text-base font-semibold text-white hover:bg-accent-strong disabled:opacity-60"
+              ? "absolute right-1 h-7 rounded-sm bg-accent px-3 text-xs font-medium text-white hover:bg-accent-strong disabled:opacity-60"
+              : "h-14 shrink-0 rounded-md bg-accent px-7 text-base font-medium text-white hover:bg-accent-strong disabled:opacity-60"
           }
         >
           {busy ? "…" : compact ? "Go" : "Compare filings"}
@@ -98,17 +98,12 @@ export function TickerSearch({ size = "large", knownTickers, autoFocus }: Props)
         className={
           error
             ? compact
-              ? "absolute mt-1 w-[340px] rounded border border-del-line bg-del-bg px-2 py-1 text-xs text-del-fg shadow"
-              : "mt-2 text-sm font-medium text-del-fg"
+              ? "absolute mt-1 w-[340px] rounded-md border border-less-fg bg-less-bg px-2 py-1 text-xs text-less-strong-fg"
+              : "mt-2 text-sm font-medium text-less-strong-fg"
             : "sr-only"
         }
       >
-        {error ? (
-          <>
-            <span aria-hidden="true">✕ </span>
-            {error}
-          </>
-        ) : null}
+        {error ? error : null}
       </p>
     </form>
   );
