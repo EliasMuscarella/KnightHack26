@@ -416,6 +416,12 @@ class Comparison(Strict):
         pattern=r"^[0-9a-f]{64}$",
         description="sha256 over every stage version, the rubric export (weights, questions, thresholds) and the validator version; part of analysis_id.",
     )
+    stage_versions: dict[str, str] | None = Field(
+        default=None,
+        description="STAGE_VERSION of each stage that produced this report, keyed by stage name "
+        "(fetch, extract, segment, embed, match, diff, signals, llm), so a checker can name the "
+        "earliest stage a re-run must start from. Absent in reports published before it was recorded.",
+    )
     model_ids: ModelIds
     is_fixture: bool = Field(
         default=False,
