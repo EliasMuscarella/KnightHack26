@@ -1,0 +1,3100 @@
+{
+  "analysis_id": "c07038f75e99a4a6013eac6f10a8801b99427b9a4f188a67fa4abe3fe7ed0107",
+  "by_change_type": {
+    "expanded": 0,
+    "largely_unchanged": 23,
+    "materially_reworded": 5,
+    "new": 0,
+    "reduced": 0,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 23,
+      "added_words": 626,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "change_type": "materially_reworded",
+      "modified_sentences": 22,
+      "modified_words": 472,
+      "removed_sentences": 7,
+      "removed_words": 175,
+      "score": 45,
+      "short_title": "Cyber attack or other security breach of…"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 118,
+      "categories": [
+        "climate",
+        "regulation"
+      ],
+      "change_id": "61ffb76925cf3bc2",
+      "change_type": "materially_reworded",
+      "modified_sentences": 6,
+      "modified_words": 125,
+      "removed_sentences": 7,
+      "removed_words": 211,
+      "score": 37,
+      "short_title": "We are subject to risks relating to…"
+    },
+    {
+      "added_sentences": 5,
+      "added_words": 173,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "6a8ab8f8ba0b3e6e",
+      "change_type": "materially_reworded",
+      "modified_sentences": 2,
+      "modified_words": 17,
+      "removed_sentences": 4,
+      "removed_words": 130,
+      "score": 30,
+      "short_title": "We face intense competition and pricing pressures…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 81,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "faa01310d8a450a6",
+      "change_type": "materially_reworded",
+      "modified_sentences": 3,
+      "modified_words": 131,
+      "removed_sentences": 1,
+      "removed_words": 41,
+      "score": 30,
+      "short_title": "Our business is sensitive to domestic and…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "db2dc1bfc373add1",
+      "change_type": "materially_reworded",
+      "modified_sentences": 7,
+      "modified_words": 111,
+      "removed_sentences": 4,
+      "removed_words": 88,
+      "score": 20,
+      "short_title": "Associate misconduct, which is difficult to detect…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "c9c637a7b6f09af9",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 5,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "A downgrade in our credit ratings could…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 28,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "cdde20b394f48139",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 26,
+      "removed_sentences": 3,
+      "removed_words": 90,
+      "score": 4,
+      "short_title": "Financial services firms are highly regulated and…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 34,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "004fde9f3c9e2280",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are exposed to litigation and regulatory…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "01c4bf9a6fdd34a1",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Numerous regulatory changes and enhanced regulatory and…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity",
+        "regulation"
+      ],
+      "change_id": "110fd3809db62155",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "As a financial holding company, our company’s…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "1860d97fe1f9183e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 8,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "A continued interruption to our telecommunications or…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "1d17926540b996ca",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 1,
+      "removed_words": 18,
+      "score": 0,
+      "short_title": "The soundness of other financial institutions and…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "5b166d3768038548",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The development and use of artificial intelligence…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "6273be7b6d05488d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Failure to comply with regulatory capital requirements…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "688d9a8f3df31b31",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Business growth, including through acquisitions, could increase…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "6e2490b399eb9eb4",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 15,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Changes in requirements relating to the standard…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "8050046ed44c773d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are exposed to credit risk"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "9544e9cba9256740",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our operations and financial results are subject…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "9fa16d1123110dd3",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business depends on fees earned from…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "a3f929046016c860",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 19,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our risk management and conflicts of interest…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "interest_rates"
+      ],
+      "change_id": "b5a154b2ec7f44e6",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 7,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are exposed to market risk, including…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "c092b5083dee157f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The preparation of the consolidated financial statements…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "da3489463bd45d74",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are exposed to operational risk"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "da70c265a7c8e9a9",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Basel III regulatory capital standards impose…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "e05b4ea6d5ef463f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our underwriting, market-making, trading, and other business…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "f28055e5199321ff",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Damage to our reputation could damage our businesses"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 18,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "fa831ff1fb46062f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Lack of funding, liquidity, or access to…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor",
+        "competition"
+      ],
+      "change_id": "fee898b2afc93812",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our ability to attract and retain senior…"
+    }
+  ],
+  "cik": "0000720672",
+  "company_name": "STIFEL FINANCIAL CORP",
+  "derivation": "1.0.0+topics1",
+  "new_accession": "0001193125-26-067130",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/720672/000119312526067130/sf-20251231.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0000950170-25-027702",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/720672/000095017025027702/sf-20241231.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "SF",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          106,
+          148
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "external service providers"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-067130:14:9",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We also face additional cybersecurity risk related to an increased focus on mobile and cloud technologies and reliance on external service providers.",
+      "ticker": "SF",
+      "topic": "external service provider"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          189
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "Cloud-related risks"
+      ],
+      "position": 22,
+      "sentence_id": "0001193125-26-067130:14:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Cloud-related risks may also arise from misconfiguration, weaknesses in identity and access controls, vulnerabilities in cloud workloads, and failures or outages at cloud service providers.",
+      "ticker": "SF",
+      "topic": "cloud related risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          189
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "cloud service providers"
+      ],
+      "position": 22,
+      "sentence_id": "0001193125-26-067130:14:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Cloud-related risks may also arise from misconfiguration, weaknesses in identity and access controls, vulnerabilities in cloud workloads, and failures or outages at cloud service providers.",
+      "ticker": "SF",
+      "topic": "cloud service provider"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          189
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "cloud workloads"
+      ],
+      "position": 22,
+      "sentence_id": "0001193125-26-067130:14:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Cloud-related risks may also arise from misconfiguration, weaknesses in identity and access controls, vulnerabilities in cloud workloads, and failures or outages at cloud service providers.",
+      "ticker": "SF",
+      "topic": "cloud workload"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          189
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "identity and access controls"
+      ],
+      "position": 22,
+      "sentence_id": "0001193125-26-067130:14:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Cloud-related risks may also arise from misconfiguration, weaknesses in identity and access controls, vulnerabilities in cloud workloads, and failures or outages at cloud service providers.",
+      "ticker": "SF",
+      "topic": "identity and access control"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "incident notification"
+      ],
+      "position": 27,
+      "sentence_id": "0001193125-26-067130:14:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "We also rely on numerous third-party service providers to conduct aspects of our business operations and face similar risks relating to those third parties, including operational disruptions, security weaknesses, delayed incident notification, and supply chain risks.",
+      "ticker": "SF",
+      "topic": "incident notification"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "operational disruptions"
+      ],
+      "position": 27,
+      "sentence_id": "0001193125-26-067130:14:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "We also rely on numerous third-party service providers to conduct aspects of our business operations and face similar risks relating to those third parties, including operational disruptions, security weaknesses, delayed incident notification, and supply chain risks.",
+      "ticker": "SF",
+      "topic": "operational disruption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "security weaknesses"
+      ],
+      "position": 27,
+      "sentence_id": "0001193125-26-067130:14:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "We also rely on numerous third-party service providers to conduct aspects of our business operations and face similar risks relating to those third parties, including operational disruptions, security weaknesses, delayed incident notification, and supply chain risks.",
+      "ticker": "SF",
+      "topic": "security weakness"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "supply chain risks"
+      ],
+      "position": 27,
+      "sentence_id": "0001193125-26-067130:14:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "We also rely on numerous third-party service providers to conduct aspects of our business operations and face similar risks relating to those third parties, including operational disruptions, security weaknesses, delayed incident notification, and supply chain risks.",
+      "ticker": "SF",
+      "topic": "supply chain risk"
+    },
+    {
+      "added_spans": [
+        [
+          54,
+          65
+        ],
+        [
+          156,
+          162
+        ],
+        [
+          261,
+          273
+        ],
+        [
+          295,
+          319
+        ],
+        [
+          457,
+          477
+        ],
+        [
+          482,
+          500
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "supply-chain attacks"
+      ],
+      "position": 40,
+      "sentence_id": "0001193125-26-067130:14:21",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Despite our implementation of protective measures and our efforts to modify them as circumstances warrant, our computer systems, software, and networks may remain vulnerable to human error, equipment failure, natural disasters, power loss, unauthorized access, supply-chain attacks, distributed denial-of-service (DDoS) attacks, zero-day vulnerabilities, computer viruses and other malicious code, and other events that could result in significant liability, reputational harm, and ongoing disruption to our operations.",
+      "ticker": "SF",
+      "topic": "supply chain attack"
+    },
+    {
+      "added_spans": [
+        [
+          34,
+          47
+        ],
+        [
+          58,
+          115
+        ],
+        [
+          125,
+          127
+        ],
+        [
+          139,
+          145
+        ],
+        [
+          151,
+          164
+        ],
+        [
+          169,
+          175
+        ],
+        [
+          221,
+          230
+        ],
+        [
+          291,
+          309
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "broader risk-mitigation strategy"
+      ],
+      "position": 42,
+      "sentence_id": "0001193125-26-067130:14:22",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, although we maintain cybersecurity insurance as one component of our broader risk-mitigation strategy, coverage is subject to policy terms, exclusions, and limits and may be insufficient to cover all losses, including litigation costs or losses that exceed policy limits or are otherwise excluded.",
+      "ticker": "SF",
+      "topic": "broader risk mitigation strategy"
+    },
+    {
+      "added_spans": [
+        [
+          34,
+          47
+        ],
+        [
+          58,
+          115
+        ],
+        [
+          125,
+          127
+        ],
+        [
+          139,
+          145
+        ],
+        [
+          151,
+          164
+        ],
+        [
+          169,
+          175
+        ],
+        [
+          221,
+          230
+        ],
+        [
+          291,
+          309
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "cybersecurity insurance"
+      ],
+      "position": 42,
+      "sentence_id": "0001193125-26-067130:14:22",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, although we maintain cybersecurity insurance as one component of our broader risk-mitigation strategy, coverage is subject to policy terms, exclusions, and limits and may be insufficient to cover all losses, including litigation costs or losses that exceed policy limits or are otherwise excluded.",
+      "ticker": "SF",
+      "topic": "cybersecurity insurance"
+    },
+    {
+      "added_spans": [
+        [
+          34,
+          47
+        ],
+        [
+          58,
+          115
+        ],
+        [
+          125,
+          127
+        ],
+        [
+          139,
+          145
+        ],
+        [
+          151,
+          164
+        ],
+        [
+          169,
+          175
+        ],
+        [
+          221,
+          230
+        ],
+        [
+          291,
+          309
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "policy terms"
+      ],
+      "position": 42,
+      "sentence_id": "0001193125-26-067130:14:22",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, although we maintain cybersecurity insurance as one component of our broader risk-mitigation strategy, coverage is subject to policy terms, exclusions, and limits and may be insufficient to cover all losses, including litigation costs or losses that exceed policy limits or are otherwise excluded.",
+      "ticker": "SF",
+      "topic": "policy term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          168
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "business continuity"
+      ],
+      "position": 55,
+      "sentence_id": "0001193125-26-067130:14:27",
+      "source": "phrase",
+      "status": "added",
+      "text": "We maintain incident response, business continuity, and remediation programs designed to mitigate these impacts and to support timely regulatory reporting and recovery.",
+      "ticker": "SF",
+      "topic": "business continuity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          168
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "incident response"
+      ],
+      "position": 55,
+      "sentence_id": "0001193125-26-067130:14:27",
+      "source": "phrase",
+      "status": "added",
+      "text": "We maintain incident response, business continuity, and remediation programs designed to mitigate these impacts and to support timely regulatory reporting and recovery.",
+      "ticker": "SF",
+      "topic": "incident response"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          168
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "remediation programs"
+      ],
+      "position": 55,
+      "sentence_id": "0001193125-26-067130:14:27",
+      "source": "phrase",
+      "status": "added",
+      "text": "We maintain incident response, business continuity, and remediation programs designed to mitigate these impacts and to support timely regulatory reporting and recovery.",
+      "ticker": "SF",
+      "topic": "remediation program"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          168
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "timely regulatory reporting"
+      ],
+      "position": 55,
+      "sentence_id": "0001193125-26-067130:14:27",
+      "source": "phrase",
+      "status": "added",
+      "text": "We maintain incident response, business continuity, and remediation programs designed to mitigate these impacts and to support timely regulatory reporting and recovery.",
+      "ticker": "SF",
+      "topic": "timely regulatory reporting"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          15,
+          34
+        ],
+        [
+          36,
+          64
+        ],
+        [
+          123,
+          131
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "high transaction volumes"
+      ],
+      "position": 57,
+      "sentence_id": "0001193125-26-067130:14:28",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Given our high transaction volumes, remote-work environment, and the large number of clients, partners, and counterparties we serve, a cyber attack could occur.",
+      "ticker": "SF",
+      "topic": "high transaction volume"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          15,
+          34
+        ],
+        [
+          36,
+          64
+        ],
+        [
+          123,
+          131
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "remote-work environment"
+      ],
+      "position": 57,
+      "sentence_id": "0001193125-26-067130:14:28",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Given our high transaction volumes, remote-work environment, and the large number of clients, partners, and counterparties we serve, a cyber attack could occur.",
+      "ticker": "SF",
+      "topic": "remote work environment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          43
+        ],
+        [
+          48,
+          57
+        ],
+        [
+          76,
+          87
+        ],
+        [
+          112,
+          120
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "complete and reliable information"
+      ],
+      "position": 61,
+      "sentence_id": "0001193125-26-067130:14:30",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Investigations can require substantial time and resources, and there may be significant delays before we obtain complete and reliable information.",
+      "ticker": "SF",
+      "topic": "complete and reliable information"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          43
+        ],
+        [
+          48,
+          57
+        ],
+        [
+          76,
+          87
+        ],
+        [
+          112,
+          120
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "substantial time"
+      ],
+      "position": 61,
+      "sentence_id": "0001193125-26-067130:14:30",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Investigations can require substantial time and resources, and there may be significant delays before we obtain complete and reliable information.",
+      "ticker": "SF",
+      "topic": "substantial time"
+    },
+    {
+      "added_spans": [
+        [
+          7,
+          32
+        ],
+        [
+          37,
+          40
+        ],
+        [
+          54,
+          58
+        ],
+        [
+          81,
+          109
+        ],
+        [
+          133,
+          142
+        ],
+        [
+          199,
+          209
+        ],
+        [
+          232,
+          251
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "extended investigation"
+      ],
+      "position": 63,
+      "sentence_id": "0001193125-26-067130:14:31",
+      "source": "phrase",
+      "status": "modified",
+      "text": "During an extended investigation, we may not know the full extent of the harm or the optimal remediation path, and certain errors or malicious actions could be repeated or compounded before they are identified and remediated, which could significantly increase the costs and consequences of such an attack.",
+      "ticker": "SF",
+      "topic": "extended investigation"
+    },
+    {
+      "added_spans": [
+        [
+          7,
+          32
+        ],
+        [
+          37,
+          40
+        ],
+        [
+          54,
+          58
+        ],
+        [
+          81,
+          109
+        ],
+        [
+          133,
+          142
+        ],
+        [
+          199,
+          209
+        ],
+        [
+          232,
+          251
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "malicious actions"
+      ],
+      "position": 63,
+      "sentence_id": "0001193125-26-067130:14:31",
+      "source": "phrase",
+      "status": "modified",
+      "text": "During an extended investigation, we may not know the full extent of the harm or the optimal remediation path, and certain errors or malicious actions could be repeated or compounded before they are identified and remediated, which could significantly increase the costs and consequences of such an attack.",
+      "ticker": "SF",
+      "topic": "malicious action"
+    },
+    {
+      "added_spans": [
+        [
+          7,
+          32
+        ],
+        [
+          37,
+          40
+        ],
+        [
+          54,
+          58
+        ],
+        [
+          81,
+          109
+        ],
+        [
+          133,
+          142
+        ],
+        [
+          199,
+          209
+        ],
+        [
+          232,
+          251
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "optimal remediation path"
+      ],
+      "position": 63,
+      "sentence_id": "0001193125-26-067130:14:31",
+      "source": "phrase",
+      "status": "modified",
+      "text": "During an extended investigation, we may not know the full extent of the harm or the optimal remediation path, and certain errors or malicious actions could be repeated or compounded before they are identified and remediated, which could significantly increase the costs and consequences of such an attack.",
+      "ticker": "SF",
+      "topic": "optimal remediation path"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          219
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "incident investigation"
+      ],
+      "position": 64,
+      "sentence_id": "0001193125-26-067130:14:32",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our Security Operations Center is designed to contain attacks and to support incident investigation and remediation, but notwithstanding these capabilities, detection or remediation may be delayed in some circumstances.",
+      "ticker": "SF",
+      "topic": "incident investigation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          219
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "Security Operations Center"
+      ],
+      "position": 64,
+      "sentence_id": "0001193125-26-067130:14:32",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our Security Operations Center is designed to contain attacks and to support incident investigation and remediation, but notwithstanding these capabilities, detection or remediation may be delayed in some circumstances.",
+      "ticker": "SF",
+      "topic": "security operations center"
+    },
+    {
+      "added_spans": [
+        [
+          37,
+          44
+        ],
+        [
+          46,
+          56
+        ],
+        [
+          62,
+          70
+        ],
+        [
+          88,
+          91
+        ],
+        [
+          102,
+          113
+        ],
+        [
+          138,
+          182
+        ],
+        [
+          183,
+          438
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "Gramm-Leach-Bliley Act"
+      ],
+      "position": 68,
+      "sentence_id": "0001193125-26-067130:14:34",
+      "source": "entity",
+      "status": "modified",
+      "text": "In providing services to clients, we collect, use, store, and transmit sensitive client and associate information, including personal data, and are subject to an evolving matrix of U.S. federal, state, and international privacy and data-protection laws and regulations, including, where applicable, the Gramm-Leach-Bliley Act (GLBA), the EU General Data Protection Regulation (GDPR), and state consumer privacy laws such as the CCPA/CPRA.",
+      "ticker": "SF",
+      "topic": "Gramm-Leach-Bliley Act"
+    },
+    {
+      "added_spans": [
+        [
+          37,
+          44
+        ],
+        [
+          46,
+          56
+        ],
+        [
+          62,
+          70
+        ],
+        [
+          88,
+          91
+        ],
+        [
+          102,
+          113
+        ],
+        [
+          138,
+          182
+        ],
+        [
+          183,
+          438
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "evolving matrix"
+      ],
+      "position": 68,
+      "sentence_id": "0001193125-26-067130:14:34",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In providing services to clients, we collect, use, store, and transmit sensitive client and associate information, including personal data, and are subject to an evolving matrix of U.S. federal, state, and international privacy and data-protection laws and regulations, including, where applicable, the Gramm-Leach-Bliley Act (GLBA), the EU General Data Protection Regulation (GDPR), and state consumer privacy laws such as the CCPA/CPRA.",
+      "ticker": "SF",
+      "topic": "evolving matrix"
+    },
+    {
+      "added_spans": [
+        [
+          37,
+          44
+        ],
+        [
+          46,
+          56
+        ],
+        [
+          62,
+          70
+        ],
+        [
+          88,
+          91
+        ],
+        [
+          102,
+          113
+        ],
+        [
+          138,
+          182
+        ],
+        [
+          183,
+          438
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "international privacy"
+      ],
+      "position": 68,
+      "sentence_id": "0001193125-26-067130:14:34",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In providing services to clients, we collect, use, store, and transmit sensitive client and associate information, including personal data, and are subject to an evolving matrix of U.S. federal, state, and international privacy and data-protection laws and regulations, including, where applicable, the Gramm-Leach-Bliley Act (GLBA), the EU General Data Protection Regulation (GDPR), and state consumer privacy laws such as the CCPA/CPRA.",
+      "ticker": "SF",
+      "topic": "international privacy"
+    },
+    {
+      "added_spans": [
+        [
+          60,
+          197
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "breach notification"
+      ],
+      "position": 71,
+      "sentence_id": "0001193125-26-067130:14:35",
+      "source": "phrase",
+      "status": "modified",
+      "text": "These laws and regulations are increasing in complexity and may impose obligations related to data security, breach notification, cross-border data transfers, data subject rights, and recordkeeping.",
+      "ticker": "SF",
+      "topic": "breach notification"
+    },
+    {
+      "added_spans": [
+        [
+          60,
+          197
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "cross-border data transfers"
+      ],
+      "position": 71,
+      "sentence_id": "0001193125-26-067130:14:35",
+      "source": "phrase",
+      "status": "modified",
+      "text": "These laws and regulations are increasing in complexity and may impose obligations related to data security, breach notification, cross-border data transfers, data subject rights, and recordkeeping.",
+      "ticker": "SF",
+      "topic": "cross border data transfer"
+    },
+    {
+      "added_spans": [
+        [
+          60,
+          197
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "data security"
+      ],
+      "position": 71,
+      "sentence_id": "0001193125-26-067130:14:35",
+      "source": "phrase",
+      "status": "modified",
+      "text": "These laws and regulations are increasing in complexity and may impose obligations related to data security, breach notification, cross-border data transfers, data subject rights, and recordkeeping.",
+      "ticker": "SF",
+      "topic": "data security"
+    },
+    {
+      "added_spans": [
+        [
+          60,
+          197
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "data subject rights"
+      ],
+      "position": 71,
+      "sentence_id": "0001193125-26-067130:14:35",
+      "source": "phrase",
+      "status": "modified",
+      "text": "These laws and regulations are increasing in complexity and may impose obligations related to data security, breach notification, cross-border data transfers, data subject rights, and recordkeeping.",
+      "ticker": "SF",
+      "topic": "data subject right"
+    },
+    {
+      "added_spans": [
+        [
+          25,
+          71
+        ],
+        [
+          198,
+          203
+        ],
+        [
+          286,
+          295
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "criminal penalties"
+      ],
+      "position": 73,
+      "sentence_id": "0001193125-26-067130:14:36",
+      "source": "phrase",
+      "status": "modified",
+      "text": "If any person, including an associate or a third-party service provider, negligently disregards or intentionally breaches our controls or otherwise mismanages or misappropriates such data, we could incur significant monetary damages, regulatory enforcement actions, fines, and criminal penalties.",
+      "ticker": "SF",
+      "topic": "criminal penalty"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          111,
+          122
+        ],
+        [
+          134,
+          156
+        ],
+        [
+          185,
+          186
+        ],
+        [
+          193,
+          200
+        ],
+        [
+          228,
+          268
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "substantial liability"
+      ],
+      "position": 75,
+      "sentence_id": "0001193125-26-067130:14:37",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Unauthorized disclosure of sensitive or confidential client or associate data, whether through system failure, human error, fraud, or third-party compromise, could damage our reputation, cause loss of clients and related revenue, and expose us to substantial liability.",
+      "ticker": "SF",
+      "topic": "substantial liability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          6
+        ],
+        [
+          10,
+          13
+        ],
+        [
+          28,
+          38
+        ],
+        [
+          49,
+          76
+        ],
+        [
+          81,
+          104
+        ],
+        [
+          125,
+          126
+        ],
+        [
+          136,
+          190
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "regulatory findings"
+      ],
+      "position": 80,
+      "sentence_id": "0001193125-26-067130:14:39",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Lapses in our cybersecurity or privacy controls, or regulatory findings that our controls are inadequate, could lead to fines, penalties, or other remediation obligations that would compound monetary losses.",
+      "ticker": "SF",
+      "topic": "regulatory finding"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          6
+        ],
+        [
+          10,
+          13
+        ],
+        [
+          28,
+          38
+        ],
+        [
+          49,
+          76
+        ],
+        [
+          81,
+          104
+        ],
+        [
+          125,
+          126
+        ],
+        [
+          136,
+          190
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "remediation obligations"
+      ],
+      "position": 80,
+      "sentence_id": "0001193125-26-067130:14:39",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Lapses in our cybersecurity or privacy controls, or regulatory findings that our controls are inadequate, could lead to fines, penalties, or other remediation obligations that would compound monetary losses.",
+      "ticker": "SF",
+      "topic": "remediation obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          364
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "contractual requirements"
+      ],
+      "position": 81,
+      "sentence_id": "0001193125-26-067130:14:40",
+      "source": "phrase",
+      "status": "added",
+      "text": "We maintain a privacy governance framework that includes a designated privacy lead, a documented data inventory and mapping process, privacy impact assessments for high-risk processing, technical controls, such as encryption and data-loss prevention, and contractual requirements for processors and other third parties to meet our security and privacy obligations.",
+      "ticker": "SF",
+      "topic": "contractual requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          364
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "data-loss prevention"
+      ],
+      "position": 81,
+      "sentence_id": "0001193125-26-067130:14:40",
+      "source": "phrase",
+      "status": "added",
+      "text": "We maintain a privacy governance framework that includes a designated privacy lead, a documented data inventory and mapping process, privacy impact assessments for high-risk processing, technical controls, such as encryption and data-loss prevention, and contractual requirements for processors and other third parties to meet our security and privacy obligations.",
+      "ticker": "SF",
+      "topic": "data loss prevention"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          364
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "designated privacy lead"
+      ],
+      "position": 81,
+      "sentence_id": "0001193125-26-067130:14:40",
+      "source": "phrase",
+      "status": "added",
+      "text": "We maintain a privacy governance framework that includes a designated privacy lead, a documented data inventory and mapping process, privacy impact assessments for high-risk processing, technical controls, such as encryption and data-loss prevention, and contractual requirements for processors and other third parties to meet our security and privacy obligations.",
+      "ticker": "SF",
+      "topic": "designated privacy lead"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          364
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "high-risk processing"
+      ],
+      "position": 81,
+      "sentence_id": "0001193125-26-067130:14:40",
+      "source": "phrase",
+      "status": "added",
+      "text": "We maintain a privacy governance framework that includes a designated privacy lead, a documented data inventory and mapping process, privacy impact assessments for high-risk processing, technical controls, such as encryption and data-loss prevention, and contractual requirements for processors and other third parties to meet our security and privacy obligations.",
+      "ticker": "SF",
+      "topic": "high risk processing"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          364
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "privacy governance framework"
+      ],
+      "position": 81,
+      "sentence_id": "0001193125-26-067130:14:40",
+      "source": "phrase",
+      "status": "added",
+      "text": "We maintain a privacy governance framework that includes a designated privacy lead, a documented data inventory and mapping process, privacy impact assessments for high-risk processing, technical controls, such as encryption and data-loss prevention, and contractual requirements for processors and other third parties to meet our security and privacy obligations.",
+      "ticker": "SF",
+      "topic": "privacy governance framework"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          364
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "privacy impact assessments"
+      ],
+      "position": 81,
+      "sentence_id": "0001193125-26-067130:14:40",
+      "source": "phrase",
+      "status": "added",
+      "text": "We maintain a privacy governance framework that includes a designated privacy lead, a documented data inventory and mapping process, privacy impact assessments for high-risk processing, technical controls, such as encryption and data-loss prevention, and contractual requirements for processors and other third parties to meet our security and privacy obligations.",
+      "ticker": "SF",
+      "topic": "privacy impact assessment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          364
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "security and privacy obligations"
+      ],
+      "position": 81,
+      "sentence_id": "0001193125-26-067130:14:40",
+      "source": "phrase",
+      "status": "added",
+      "text": "We maintain a privacy governance framework that includes a designated privacy lead, a documented data inventory and mapping process, privacy impact assessments for high-risk processing, technical controls, such as encryption and data-loss prevention, and contractual requirements for processors and other third parties to meet our security and privacy obligations.",
+      "ticker": "SF",
+      "topic": "security and privacy obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          364
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "technical controls"
+      ],
+      "position": 81,
+      "sentence_id": "0001193125-26-067130:14:40",
+      "source": "phrase",
+      "status": "added",
+      "text": "We maintain a privacy governance framework that includes a designated privacy lead, a documented data inventory and mapping process, privacy impact assessments for high-risk processing, technical controls, such as encryption and data-loss prevention, and contractual requirements for processors and other third parties to meet our security and privacy obligations.",
+      "ticker": "SF",
+      "topic": "technical control"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          167
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "escalation procedures"
+      ],
+      "position": 82,
+      "sentence_id": "0001193125-26-067130:14:41",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our incident response and escalation procedures incorporate regulatory notification requirements and roles to support timely reporting and cooperation with regulators.",
+      "ticker": "SF",
+      "topic": "escalation procedure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          167
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "incident response"
+      ],
+      "position": 82,
+      "sentence_id": "0001193125-26-067130:14:41",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our incident response and escalation procedures incorporate regulatory notification requirements and roles to support timely reporting and cooperation with regulators.",
+      "ticker": "SF",
+      "topic": "incident response"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          167
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "regulatory notification requirements"
+      ],
+      "position": 82,
+      "sentence_id": "0001193125-26-067130:14:41",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our incident response and escalation procedures incorporate regulatory notification requirements and roles to support timely reporting and cooperation with regulators.",
+      "ticker": "SF",
+      "topic": "regulatory notification requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          167
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "timely reporting"
+      ],
+      "position": 82,
+      "sentence_id": "0001193125-26-067130:14:41",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our incident response and escalation procedures incorporate regulatory notification requirements and roles to support timely reporting and cooperation with regulators.",
+      "ticker": "SF",
+      "topic": "timely reporting"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          148
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "AI present risks"
+      ],
+      "position": 83,
+      "sentence_id": "0001193125-26-067130:14:42",
+      "source": "phrase",
+      "status": "added",
+      "text": "The development and use of AI present risks and challenges that could adversely impact our business, financial condition, and results of operations.",
+      "ticker": "SF",
+      "topic": "ai present risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          137
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "AI technology"
+      ],
+      "position": 84,
+      "sentence_id": "0001193125-26-067130:14:43",
+      "source": "phrase",
+      "status": "added",
+      "text": "We, and our third-party service providers, may develop or incorporate AI technology in certain business processes, products, or services.",
+      "ticker": "SF",
+      "topic": "ai technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          137
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "business processes"
+      ],
+      "position": 84,
+      "sentence_id": "0001193125-26-067130:14:43",
+      "source": "phrase",
+      "status": "added",
+      "text": "We, and our third-party service providers, may develop or incorporate AI technology in certain business processes, products, or services.",
+      "ticker": "SF",
+      "topic": "business process"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          233
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "AI-based technology"
+      ],
+      "position": 85,
+      "sentence_id": "0001193125-26-067130:14:44",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI-based technology may produce output that is incorrect, biased, infringes on the intellectual property rights of others, or is otherwise harmful; the complexity of AI can make it challenging to explain why particular outputs occur.",
+      "ticker": "SF",
+      "topic": "ai based technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          233
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "intellectual property rights"
+      ],
+      "position": 85,
+      "sentence_id": "0001193125-26-067130:14:44",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI-based technology may produce output that is incorrect, biased, infringes on the intellectual property rights of others, or is otherwise harmful; the complexity of AI can make it challenging to explain why particular outputs occur.",
+      "ticker": "SF",
+      "topic": "intellectual property right"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          199
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "cybersecurity attacks"
+      ],
+      "position": 86,
+      "sentence_id": "0001193125-26-067130:14:45",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, others may use AI to increase the frequency or severity of cybersecurity attacks against us or our service providers, which could adversely affect our business and results of operations.",
+      "ticker": "SF",
+      "topic": "cybersecurity attack"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "AI risk management framework"
+      ],
+      "position": 87,
+      "sentence_id": "0001193125-26-067130:14:46",
+      "source": "phrase",
+      "status": "added",
+      "text": "We seek to maintain an AI risk management framework that provides a centralized inventory of AI technologies, risk-based classification, security guardrails, and operational requirements prior to deployment.",
+      "ticker": "SF",
+      "topic": "ai risk management framework"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "AI technologies"
+      ],
+      "position": 87,
+      "sentence_id": "0001193125-26-067130:14:46",
+      "source": "phrase",
+      "status": "added",
+      "text": "We seek to maintain an AI risk management framework that provides a centralized inventory of AI technologies, risk-based classification, security guardrails, and operational requirements prior to deployment.",
+      "ticker": "SF",
+      "topic": "ai technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "centralized inventory"
+      ],
+      "position": 87,
+      "sentence_id": "0001193125-26-067130:14:46",
+      "source": "phrase",
+      "status": "added",
+      "text": "We seek to maintain an AI risk management framework that provides a centralized inventory of AI technologies, risk-based classification, security guardrails, and operational requirements prior to deployment.",
+      "ticker": "SF",
+      "topic": "centralized inventory"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "operational requirements"
+      ],
+      "position": 87,
+      "sentence_id": "0001193125-26-067130:14:46",
+      "source": "phrase",
+      "status": "added",
+      "text": "We seek to maintain an AI risk management framework that provides a centralized inventory of AI technologies, risk-based classification, security guardrails, and operational requirements prior to deployment.",
+      "ticker": "SF",
+      "topic": "operational requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "risk-based classification"
+      ],
+      "position": 87,
+      "sentence_id": "0001193125-26-067130:14:46",
+      "source": "phrase",
+      "status": "added",
+      "text": "We seek to maintain an AI risk management framework that provides a centralized inventory of AI technologies, risk-based classification, security guardrails, and operational requirements prior to deployment.",
+      "ticker": "SF",
+      "topic": "risk based classification"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "security guardrails"
+      ],
+      "position": 87,
+      "sentence_id": "0001193125-26-067130:14:46",
+      "source": "phrase",
+      "status": "added",
+      "text": "We seek to maintain an AI risk management framework that provides a centralized inventory of AI technologies, risk-based classification, security guardrails, and operational requirements prior to deployment.",
+      "ticker": "SF",
+      "topic": "security guardrail"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          306
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "AI-enabled capabilities"
+      ],
+      "position": 88,
+      "sentence_id": "0001193125-26-067130:14:47",
+      "source": "phrase",
+      "status": "added",
+      "text": "These frameworks seek to include documented requirements for ongoing monitoring, technical and security controls for AI-enabled capabilities, access and privilege controls, and controls to protect the confidentiality, integrity, and availability of systems and data used to develop, deploy, and operate AI.",
+      "ticker": "SF",
+      "topic": "ai enabled capability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          306
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "documented requirements"
+      ],
+      "position": 88,
+      "sentence_id": "0001193125-26-067130:14:47",
+      "source": "phrase",
+      "status": "added",
+      "text": "These frameworks seek to include documented requirements for ongoing monitoring, technical and security controls for AI-enabled capabilities, access and privilege controls, and controls to protect the confidentiality, integrity, and availability of systems and data used to develop, deploy, and operate AI.",
+      "ticker": "SF",
+      "topic": "documented requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          306
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "privilege controls"
+      ],
+      "position": 88,
+      "sentence_id": "0001193125-26-067130:14:47",
+      "source": "phrase",
+      "status": "added",
+      "text": "These frameworks seek to include documented requirements for ongoing monitoring, technical and security controls for AI-enabled capabilities, access and privilege controls, and controls to protect the confidentiality, integrity, and availability of systems and data used to develop, deploy, and operate AI.",
+      "ticker": "SF",
+      "topic": "privilege control"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          306
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "technical and security controls"
+      ],
+      "position": 88,
+      "sentence_id": "0001193125-26-067130:14:47",
+      "source": "phrase",
+      "status": "added",
+      "text": "These frameworks seek to include documented requirements for ongoing monitoring, technical and security controls for AI-enabled capabilities, access and privilege controls, and controls to protect the confidentiality, integrity, and availability of systems and data used to develop, deploy, and operate AI.",
+      "ticker": "SF",
+      "topic": "technical and security control"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          147
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "AI governance"
+      ],
+      "position": 89,
+      "sentence_id": "0001193125-26-067130:14:48",
+      "source": "lexicon",
+      "status": "added",
+      "text": "The Written Information Security Program (“WISP”) incorporates AI governance and risk management and is subject to periodic independent assessment.",
+      "ticker": "SF",
+      "topic": "AI regulation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          147
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "Written Information Security Program"
+      ],
+      "position": 89,
+      "sentence_id": "0001193125-26-067130:14:48",
+      "source": "entity",
+      "status": "added",
+      "text": "The Written Information Security Program (“WISP”) incorporates AI governance and risk management and is subject to periodic independent assessment.",
+      "ticker": "SF",
+      "topic": "Written Information Security Program"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          147
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "periodic independent assessment"
+      ],
+      "position": 89,
+      "sentence_id": "0001193125-26-067130:14:48",
+      "source": "phrase",
+      "status": "added",
+      "text": "The Written Information Security Program (“WISP”) incorporates AI governance and risk management and is subject to periodic independent assessment.",
+      "ticker": "SF",
+      "topic": "periodic independent assessment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          147
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "risk management"
+      ],
+      "position": 89,
+      "sentence_id": "0001193125-26-067130:14:48",
+      "source": "phrase",
+      "status": "added",
+      "text": "The Written Information Security Program (“WISP”) incorporates AI governance and risk management and is subject to periodic independent assessment.",
+      "ticker": "SF",
+      "topic": "risk management"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "contractual and assurance measures"
+      ],
+      "position": 90,
+      "sentence_id": "0001193125-26-067130:14:49",
+      "source": "phrase",
+      "status": "added",
+      "text": "For third-party AI technologies, we seek to require appropriate contractual and assurance measures, including data-handling obligations, intellectual property protections, explainability and validation rights, and incident-notification obligations.",
+      "ticker": "SF",
+      "topic": "contractual and assurance measure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "data-handling obligations"
+      ],
+      "position": 90,
+      "sentence_id": "0001193125-26-067130:14:49",
+      "source": "phrase",
+      "status": "added",
+      "text": "For third-party AI technologies, we seek to require appropriate contractual and assurance measures, including data-handling obligations, intellectual property protections, explainability and validation rights, and incident-notification obligations.",
+      "ticker": "SF",
+      "topic": "data handling obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "incident-notification obligations"
+      ],
+      "position": 90,
+      "sentence_id": "0001193125-26-067130:14:49",
+      "source": "phrase",
+      "status": "added",
+      "text": "For third-party AI technologies, we seek to require appropriate contractual and assurance measures, including data-handling obligations, intellectual property protections, explainability and validation rights, and incident-notification obligations.",
+      "ticker": "SF",
+      "topic": "incident notification obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "intellectual property protections"
+      ],
+      "position": 90,
+      "sentence_id": "0001193125-26-067130:14:49",
+      "source": "phrase",
+      "status": "added",
+      "text": "For third-party AI technologies, we seek to require appropriate contractual and assurance measures, including data-handling obligations, intellectual property protections, explainability and validation rights, and incident-notification obligations.",
+      "ticker": "SF",
+      "topic": "intellectual property protection"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "validation rights"
+      ],
+      "position": 90,
+      "sentence_id": "0001193125-26-067130:14:49",
+      "source": "phrase",
+      "status": "added",
+      "text": "For third-party AI technologies, we seek to require appropriate contractual and assurance measures, including data-handling obligations, intellectual property protections, explainability and validation rights, and incident-notification obligations.",
+      "ticker": "SF",
+      "topic": "validation right"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          114
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "AI-related risks"
+      ],
+      "position": 91,
+      "sentence_id": "0001193125-26-067130:14:50",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI-related risks are evaluated within our broader cybersecurity, operational resilience, and vendor risk programs.",
+      "ticker": "SF",
+      "topic": "ai related risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          114
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "broader cybersecurity"
+      ],
+      "position": 91,
+      "sentence_id": "0001193125-26-067130:14:50",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI-related risks are evaluated within our broader cybersecurity, operational resilience, and vendor risk programs.",
+      "ticker": "SF",
+      "topic": "broader cybersecurity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          114
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "operational resilience"
+      ],
+      "position": 91,
+      "sentence_id": "0001193125-26-067130:14:50",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI-related risks are evaluated within our broader cybersecurity, operational resilience, and vendor risk programs.",
+      "ticker": "SF",
+      "topic": "operational resilience"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          114
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "vendor risk programs"
+      ],
+      "position": 91,
+      "sentence_id": "0001193125-26-067130:14:50",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI-related risks are evaluated within our broader cybersecurity, operational resilience, and vendor risk programs.",
+      "ticker": "SF",
+      "topic": "vendor risk program"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          168
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "legal and regulatory environment"
+      ],
+      "position": 92,
+      "sentence_id": "0001193125-26-067130:14:51",
+      "source": "phrase",
+      "status": "added",
+      "text": "The legal and regulatory environment for AI is evolving and could require changes to our use of AI, limiting our ability to integrate AI or increasing compliance costs.",
+      "ticker": "SF",
+      "topic": "legal and regulatory environment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          188
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "AI use"
+      ],
+      "position": 93,
+      "sentence_id": "0001193125-26-067130:14:52",
+      "source": "phrase",
+      "status": "added",
+      "text": "While we maintain policies and governance processes for AI, we cannot guarantee that they will be followed in all cases or that they will prevent all liability or harm arising from AI use.",
+      "ticker": "SF",
+      "topic": "ai use"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          188
+        ]
+      ],
+      "change_id": "3b93c57e20a358e4",
+      "matched_terms": [
+        "governance processes"
+      ],
+      "position": 93,
+      "sentence_id": "0001193125-26-067130:14:52",
+      "source": "phrase",
+      "status": "added",
+      "text": "While we maintain policies and governance processes for AI, we cannot guarantee that they will be followed in all cases or that they will prevent all liability or harm arising from AI use.",
+      "ticker": "SF",
+      "topic": "governance process"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          87,
+          95
+        ],
+        [
+          100,
+          107
+        ],
+        [
+          260,
+          297
+        ]
+      ],
+      "change_id": "61ffb76925cf3bc2",
+      "matched_terms": [
+        "foreign regulatory authorities"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-067130:20:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We have multiple stakeholders, including our shareholders, clients, associates, federal, state, and foreign regulatory authorities, and the communities in which we operate, and these stakeholders will often have differing priorities and expectations regarding environmental, social, and governance matters.",
+      "ticker": "SF",
+      "topic": "foreign regulatory authority"
+    },
+    {
+      "added_spans": [
+        [
+          164,
+          286
+        ]
+      ],
+      "change_id": "61ffb76925cf3bc2",
+      "matched_terms": [
+        "federal level"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-067130:20:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For example, individual U.S. states are increasingly developing differing, and sometimes conflicting, rules related to environmental, social, and governance matters, while at the federal level, the SEC has recently stopped pursuing rulemaking efforts focused on certain of these matters.",
+      "ticker": "SF",
+      "topic": "federal level"
+    },
+    {
+      "added_spans": [
+        [
+          164,
+          286
+        ]
+      ],
+      "change_id": "61ffb76925cf3bc2",
+      "matched_terms": [
+        "rulemaking efforts"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-067130:20:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For example, individual U.S. states are increasingly developing differing, and sometimes conflicting, rules related to environmental, social, and governance matters, while at the federal level, the SEC has recently stopped pursuing rulemaking efforts focused on certain of these matters.",
+      "ticker": "SF",
+      "topic": "rulemaking effort"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          235
+        ]
+      ],
+      "change_id": "61ffb76925cf3bc2",
+      "matched_terms": [
+        "independent advisors"
+      ],
+      "position": 25,
+      "sentence_id": "0001193125-26-067130:20:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any adverse publicity in connection with environmental, social, and governance issues could damage our reputation, ability to attract and retain clients, associates, and independent advisors, compete effectively, and grow our business.",
+      "ticker": "SF",
+      "topic": "independent advisor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          250
+        ]
+      ],
+      "change_id": "61ffb76925cf3bc2",
+      "matched_terms": [
+        "recent years"
+      ],
+      "position": 26,
+      "sentence_id": "0001193125-26-067130:20:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Regulatory scrutiny of disclosure practices for sustainable and values-based investment strategies has been a focus in recent years, though that focus appears to be moderating following the SEC’s decision to withdraw proposed rulemaking in this area.",
+      "ticker": "SF",
+      "topic": "recent year"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          250
+        ]
+      ],
+      "change_id": "61ffb76925cf3bc2",
+      "matched_terms": [
+        "Regulatory scrutiny"
+      ],
+      "position": 26,
+      "sentence_id": "0001193125-26-067130:20:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Regulatory scrutiny of disclosure practices for sustainable and values-based investment strategies has been a focus in recent years, though that focus appears to be moderating following the SEC’s decision to withdraw proposed rulemaking in this area.",
+      "ticker": "SF",
+      "topic": "regulatory scrutiny"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "6a8ab8f8ba0b3e6e",
+      "matched_terms": [
+        "data protection"
+      ],
+      "position": 42,
+      "sentence_id": "0001193125-26-067130:11:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "Despite implementing polices and safeguards to prevent unauthorized disclosures, our use of AI may still pose heightened security and privacy risks, which we seek to mitigate by relying on proprietary or “walled-garden” environments to enhance data protection and operational controls and maintain confidentiality.",
+      "ticker": "SF",
+      "topic": "data protection"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "6a8ab8f8ba0b3e6e",
+      "matched_terms": [
+        "operational controls"
+      ],
+      "position": 42,
+      "sentence_id": "0001193125-26-067130:11:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "Despite implementing polices and safeguards to prevent unauthorized disclosures, our use of AI may still pose heightened security and privacy risks, which we seek to mitigate by relying on proprietary or “walled-garden” environments to enhance data protection and operational controls and maintain confidentiality.",
+      "ticker": "SF",
+      "topic": "operational control"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "6a8ab8f8ba0b3e6e",
+      "matched_terms": [
+        "unauthorized disclosures"
+      ],
+      "position": 42,
+      "sentence_id": "0001193125-26-067130:11:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "Despite implementing polices and safeguards to prevent unauthorized disclosures, our use of AI may still pose heightened security and privacy risks, which we seek to mitigate by relying on proprietary or “walled-garden” environments to enhance data protection and operational controls and maintain confidentiality.",
+      "ticker": "SF",
+      "topic": "unauthorized disclosure"
+    },
+    {
+      "added_spans": [
+        [
+          58,
+          77
+        ],
+        [
+          86,
+          213
+        ],
+        [
+          218,
+          224
+        ]
+      ],
+      "change_id": "faa01310d8a450a6",
+      "matched_terms": [
+        "immigration"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-067130:5:5",
+      "source": "lexicon",
+      "status": "modified",
+      "text": "In addition, our results of operations may be impacted by governmental policy changes and/or regulatory reform in multiple areas, including tax, international trade, immigration, healthcare, labor, infrastructure, and energy.",
+      "ticker": "SF",
+      "topic": "Immigration policy"
+    },
+    {
+      "added_spans": [
+        [
+          58,
+          77
+        ],
+        [
+          86,
+          213
+        ],
+        [
+          218,
+          224
+        ]
+      ],
+      "change_id": "faa01310d8a450a6",
+      "matched_terms": [
+        "governmental policy changes"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-067130:5:5",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, our results of operations may be impacted by governmental policy changes and/or regulatory reform in multiple areas, including tax, international trade, immigration, healthcare, labor, infrastructure, and energy.",
+      "ticker": "SF",
+      "topic": "governmental policy change"
+    },
+    {
+      "added_spans": [
+        [
+          58,
+          77
+        ],
+        [
+          86,
+          213
+        ],
+        [
+          218,
+          224
+        ]
+      ],
+      "change_id": "faa01310d8a450a6",
+      "matched_terms": [
+        "regulatory reform"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-067130:5:5",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, our results of operations may be impacted by governmental policy changes and/or regulatory reform in multiple areas, including tax, international trade, immigration, healthcare, labor, infrastructure, and energy.",
+      "ticker": "SF",
+      "topic": "regulatory reform"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          89
+        ],
+        [
+          129,
+          138
+        ],
+        [
+          149,
+          170
+        ]
+      ],
+      "change_id": "faa01310d8a450a6",
+      "matched_terms": [
+        "governmental policies"
+      ],
+      "position": 14,
+      "sentence_id": "0001193125-26-067130:5:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "While there is uncertainty around the timing of many such potential changes, such changes, or any market uncertainty caused by a potential change in governmental policies, may also affect our clients and, directly or indirectly, our business.",
+      "ticker": "SF",
+      "topic": "governmental policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          213
+        ]
+      ],
+      "change_id": "faa01310d8a450a6",
+      "matched_terms": [
+        "federal government"
+      ],
+      "position": 15,
+      "sentence_id": "0001193125-26-067130:5:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Furthermore, over the last several years, the federal government has shut down multiple times, in some cases for prolonged periods, and it is possible that the federal government may shut down again in the future.",
+      "ticker": "SF",
+      "topic": "federal government"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          213
+        ]
+      ],
+      "change_id": "faa01310d8a450a6",
+      "matched_terms": [
+        "prolonged periods"
+      ],
+      "position": 15,
+      "sentence_id": "0001193125-26-067130:5:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Furthermore, over the last several years, the federal government has shut down multiple times, in some cases for prolonged periods, and it is possible that the federal government may shut down again in the future.",
+      "ticker": "SF",
+      "topic": "prolonged period"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          322
+        ]
+      ],
+      "change_id": "faa01310d8a450a6",
+      "matched_terms": [
+        "government shutdown"
+      ],
+      "position": 16,
+      "sentence_id": "0001193125-26-067130:5:8",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Although the recent government shutdown is not expected to materially affect our results of operations, any prolonged future shutdown could significantly impact business and economic conditions generally or specifically in our key markets, which could have a material adverse effect on our results and financial condition.",
+      "ticker": "SF",
+      "topic": "Government shutdown"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          322
+        ]
+      ],
+      "change_id": "faa01310d8a450a6",
+      "matched_terms": [
+        "business and economic conditions"
+      ],
+      "position": 16,
+      "sentence_id": "0001193125-26-067130:5:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although the recent government shutdown is not expected to materially affect our results of operations, any prolonged future shutdown could significantly impact business and economic conditions generally or specifically in our key markets, which could have a material adverse effect on our results and financial condition.",
+      "ticker": "SF",
+      "topic": "business and economic condition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          322
+        ]
+      ],
+      "change_id": "faa01310d8a450a6",
+      "matched_terms": [
+        "prolonged future shutdown"
+      ],
+      "position": 16,
+      "sentence_id": "0001193125-26-067130:5:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although the recent government shutdown is not expected to materially affect our results of operations, any prolonged future shutdown could significantly impact business and economic conditions generally or specifically in our key markets, which could have a material adverse effect on our results and financial condition.",
+      "ticker": "SF",
+      "topic": "prolonged future shutdown"
+    },
+    {
+      "added_spans": [
+        [
+          62,
+          157
+        ],
+        [
+          194,
+          233
+        ]
+      ],
+      "change_id": "db2dc1bfc373add1",
+      "matched_terms": [
+        "firm policies"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-067130:18:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "There is a risk that our associates could engage in misconduct, fraudulent, unauthorized, or illegal acts, or noncompliance with firm policies or regulations that adversely affects our business and/or results in substantial liability.",
+      "ticker": "SF",
+      "topic": "firm policy"
+    },
+    {
+      "added_spans": [
+        [
+          62,
+          157
+        ],
+        [
+          194,
+          233
+        ]
+      ],
+      "change_id": "db2dc1bfc373add1",
+      "matched_terms": [
+        "substantial liability"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-067130:18:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "There is a risk that our associates could engage in misconduct, fraudulent, unauthorized, or illegal acts, or noncompliance with firm policies or regulations that adversely affects our business and/or results in substantial liability.",
+      "ticker": "SF",
+      "topic": "substantial liability"
+    },
+    {
+      "added_spans": [
+        [
+          68,
+          138
+        ],
+        [
+          152,
+          163
+        ]
+      ],
+      "change_id": "db2dc1bfc373add1",
+      "matched_terms": [
+        "institutional clients"
+      ],
+      "position": 5,
+      "sentence_id": "0001193125-26-067130:18:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For example, our investment banking business often requires that we appropriately manage the use of our institutional clients’ non-public, confidential information.",
+      "ticker": "SF",
+      "topic": "institutional client"
+    },
+    {
+      "added_spans": [
+        [
+          68,
+          138
+        ],
+        [
+          152,
+          163
+        ]
+      ],
+      "change_id": "db2dc1bfc373add1",
+      "matched_terms": [
+        "non-public, confidential information"
+      ],
+      "position": 5,
+      "sentence_id": "0001193125-26-067130:18:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For example, our investment banking business often requires that we appropriately manage the use of our institutional clients’ non-public, confidential information.",
+      "ticker": "SF",
+      "topic": "non public confidential information"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          22
+        ],
+        [
+          34,
+          88
+        ],
+        [
+          105,
+          129
+        ],
+        [
+          134,
+          144
+        ],
+        [
+          165,
+          186
+        ],
+        [
+          199,
+          202
+        ],
+        [
+          207,
+          210
+        ]
+      ],
+      "change_id": "db2dc1bfc373add1",
+      "matched_terms": [
+        "clients’ confidential information"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-067130:18:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Similarly, many of our associates interact routinely with clients and counterparties and are expected to comply with our policies and procedures to protect both our clients’ confidential information and our own.",
+      "ticker": "SF",
+      "topic": "client confidential information"
+    },
+    {
+      "added_spans": [
+        [
+          27,
+          73
+        ],
+        [
+          77,
+          90
+        ],
+        [
+          126,
+          132
+        ]
+      ],
+      "change_id": "db2dc1bfc373add1",
+      "matched_terms": [
+        "regulatory action"
+      ],
+      "position": 10,
+      "sentence_id": "0001193125-26-067130:18:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "If confidential information, for example, is improperly used or disclosed by any associate, we could be subject to regulatory action and suffer serious harm to our reputation, financial position, current client relationships, and ability to attract future clients.",
+      "ticker": "SF",
+      "topic": "regulatory action"
+    },
+    {
+      "added_spans": [
+        [
+          223,
+          231
+        ]
+      ],
+      "change_id": "cdde20b394f48139",
+      "matched_terms": [
+        "DOL"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-067130:21:3",
+      "source": "entity",
+      "status": "modified",
+      "text": "The financial services industry has experienced an extended period of significant change in laws and regulations, as well as a high degree of scrutiny from various regulators, including the SEC, the Fed, the FDIC, the OCC, the DOL, and the CFPB, in addition to stock exchanges, FINRA, and governmental authorities, such as state attorneys general.",
+      "ticker": "SF",
+      "topic": "DOL"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "cdde20b394f48139",
+      "matched_terms": [
+        "banking regulators"
+      ],
+      "position": 39,
+      "sentence_id": "0001193125-26-067130:21:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "In particular, the banking regulators have broad enforcement power over bank holding companies and banks, including with respect to unsafe or unsound practices or violations of the law.",
+      "ticker": "SF",
+      "topic": "banking regulator"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "cdde20b394f48139",
+      "matched_terms": [
+        "enforcement power"
+      ],
+      "position": 39,
+      "sentence_id": "0001193125-26-067130:21:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "In particular, the banking regulators have broad enforcement power over bank holding companies and banks, including with respect to unsafe or unsound practices or violations of the law.",
+      "ticker": "SF",
+      "topic": "enforcement power"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "cdde20b394f48139",
+      "matched_terms": [
+        "unsafe or unsound practices"
+      ],
+      "position": 39,
+      "sentence_id": "0001193125-26-067130:21:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "In particular, the banking regulators have broad enforcement power over bank holding companies and banks, including with respect to unsafe or unsound practices or violations of the law.",
+      "ticker": "SF",
+      "topic": "unsafe or unsound practice"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          126
+        ]
+      ],
+      "change_id": "004fde9f3c9e2280",
+      "matched_terms": [
+        "firm policies"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-067130:22:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Unauthorized or illegal acts or noncompliance with firm policies by our associates could also result in substantial liability.",
+      "ticker": "SF",
+      "topic": "firm policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          126
+        ]
+      ],
+      "change_id": "004fde9f3c9e2280",
+      "matched_terms": [
+        "substantial liability"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-067130:22:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Unauthorized or illegal acts or noncompliance with firm policies by our associates could also result in substantial liability.",
+      "ticker": "SF",
+      "topic": "substantial liability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          126
+        ]
+      ],
+      "change_id": "004fde9f3c9e2280",
+      "matched_terms": [
+        "Unauthorized or illegal acts"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-067130:22:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Unauthorized or illegal acts or noncompliance with firm policies by our associates could also result in substantial liability.",
+      "ticker": "SF",
+      "topic": "unauthorized or illegal act"
+    },
+    {
+      "added_spans": [
+        [
+          77,
+          151
+        ]
+      ],
+      "change_id": "1860d97fe1f9183e",
+      "matched_terms": [
+        "technology solutions"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-067130:13:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our businesses rely extensively on data processing and communications systems, including both third-party and internally developed technology solutions.",
+      "ticker": "SF",
+      "topic": "technology solution"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          113
+        ]
+      ],
+      "change_id": "fa831ff1fb46062f",
+      "matched_terms": [
+        "fund banking clients"
+      ],
+      "position": 26,
+      "sentence_id": "0001193125-26-067130:1:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "During 2025, we have seen an increase in deposits from our commercial, venture banking, and fund banking clients.",
+      "ticker": "SF",
+      "topic": "fund banking client"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          113
+        ]
+      ],
+      "change_id": "fa831ff1fb46062f",
+      "matched_terms": [
+        "venture banking"
+      ],
+      "position": 26,
+      "sentence_id": "0001193125-26-067130:1:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "During 2025, we have seen an increase in deposits from our commercial, venture banking, and fund banking clients.",
+      "ticker": "SF",
+      "topic": "venture banking"
+    }
+  ],
+  "total_changes": 28
+}

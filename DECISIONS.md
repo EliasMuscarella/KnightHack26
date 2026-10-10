@@ -242,3 +242,52 @@ with nothing local either and the store connecting, empty lists and `source: nul
 Only a store that is already `ok` gets a 2 s wait for its very first remote result. A bad
 `DATABRICKS_HOST` is now `offline` (it was `disabled`; "disabled" now strictly means "not configured").
 `/trends` never returns 5xx: any unexpected error becomes an empty answer with `source: null`.
+
+**T10 derived trend facts.**
+- `pipeline/trends/derive.py` → `TrendFacts` (`pipeline/trends/schema.py`, NOT in the contract), written as
+  `data/derived/{analysis_id}.trends.json` with `canonical_json`. Each file stores `derivation`
+  (`TRENDS_VERSION` + `TOPICS_VERSION`) and `phrase_model` (spaCy id + version); a file whose values differ
+  from the running code is re-derived and never trusted.
+- **The post-publish hook is in `pipeline/store/publisher.publish_remote_if_enabled`, not in
+  `pipeline/run.py`.** `score._pipeline_source_hash()` hashes every top-level `pipeline/*.py` into
+  `code_fingerprint`. Editing `run.py` was measured to change the fingerprint (e94330… → efdbd9…), which
+  would change every future `analysis_id`. `run.py` already calls `publish_remote_if_enabled` right after
+  the local publish (never for the fixture), so derivation runs there, before the remote step, and its
+  outcome is in the result's `trend_facts` key. A derivation failure is logged and never undoes the publish.
+  `pipeline/trends/` and `pipeline/store/` are sub-packages and are not hashed.
+- **`data/derived/` is committed** (it is not ignored; only `data/cache/` and `data/scratch/` are). The
+  two files (~90 KB each) let a fresh clone serve `/trends` with no spaCy run. A test makes sure they equal a
+  fresh derivation.
+- **Topic rule ("newly added language").** A topic counts for a risk factor only when it appears in this
+  year's added or modified sentences and NONE of its synonyms appears in that risk factor's `old_text`
+  (whole word, case-insensitive). Terms match whole words only (`(?<!\w)…(?!\w)`), multi-word terms match
+  across whitespace or a hyphen, and curly or straight apostrophes are both accepted. This applies to every
+  change, including `largely_unchanged` ones: a single new sentence about tariffs is still new language.
+- **Lexicon precision.** 31 topics in `topics.yml`. The brief's "duties" became `import/customs/
+  countervailing/anti-dumping duties`, because "duties" alone matches "fiduciary duties" (SF is a broker).
+  "visa(s)" became `work visa(s)`, `visa restrictions/programs/policies`, because "Visa" is also a card
+  network. "strike(s)" became `strikes` and `labor strike(s)`, because "strike" is also a verb. Two topics
+  were added: Digital assets and Bank capital rules.
+- **Entities.** Each entity is normalized: quotes and a leading "the" are stripped, then the alias map is
+  applied (U.S./US/USA → United States, USG → U.S. government, PRC → China, EU, UK). Next comes the
+  pipeline's own `signals.clean_entity`, which drops old-pipeline artifacts such as "D:4", and corporate
+  suffixes are removed ("Groq, Inc" → "Groq"). Entities on `ENTITY_STOPLIST` / `ENTITY_STOP_PATTERNS` are
+  dropped (SEC, GAAP, FASB, IRS, United States, Nasdaq, NYSE, Congress, Exchange/Securities Act, quarters,
+  fiscal years, months, years). The company's own name is excluded when the entity contains an
+  *identifying* token of the name or the ticker; generic name words such as "Corp" or "Financial" do not
+  count, so FINRA is not dropped for Stifel Financial. An entity that matches a lexicon synonym reinforces
+  that topic (source `lexicon`) and must pass that topic's "absent last year" check.
+- **Phrases.** spaCy `en_core_web_sm` noun chunks with NER disabled. Leading determiners, pronouns,
+  numbers, stop words and generic adjectives ("new", "additional") are stripped, and the chunk must end on a
+  noun. Phrases have 2–4 tokens. Only nouns are lemmatized: participles keep their surface form, because the
+  model turns "binding" into "bind", and "data" stays "data" instead of the model's "datum". Phrases are
+  dropped when they are on `PHRASE_STOPLIST`, are made only of `GENERIC_TOKENS`, contain a `BANNED_TOKENS`
+  word, contain the company's own name, repeat an entity of the same risk factor, are covered by a lexicon
+  topic, or appear in last year's text. Every phrase is stored; the API shows one only when 2+ companies
+  share it.
+- **Word counts partition the diff.** `added_words` counts wholly added sentences, `removed_words` wholly
+  removed ones, and `modified_words` counts inserted plus deleted words inside rewritten pairs. Together
+  they equal `stats.added_word_count + stats.removed_word_count`, which is tested on NVDA and SF.
+- Potential→actual comes from the report's `potential_became_actual` highlights (verbatim sentences via
+  `sentence_index`). The change mix comes from `summary.by_change_type`. The EDGAR primary-document URLs
+  are stored so `/trends` can link quotes to the filing.

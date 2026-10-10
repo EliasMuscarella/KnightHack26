@@ -117,10 +117,29 @@ def publish_remote(
     )
 
 
+def derived_dir_for_published(path: Path) -> Path:
+    """data/published/X.json -> data/derived (siblings under the same data directory)."""
+    return Path(path).resolve().parent.parent / "derived"
+
+
 def publish_remote_if_enabled(path: Path, *, enabled: bool | None = None) -> dict:
-    """The pipeline's remote step. Never raises: returns a status dict
-    ({"status": "ok" | "disabled" | "skipped" | "failed", ...}) so a remote failure can be
-    reported without undoing the local publish."""
+    """The pipeline's post-publish step (run.py calls it after the local publish, never for the
+    fixture). Never raises: returns a status dict ({"status": "ok" | "disabled" | "skipped" |
+    "failed", ..., "trend_facts": {...}}) so a remote failure can be reported without undoing the
+    local publish.
+
+    It first derives the trend facts of the published file (data/derived/, D-021). That happens
+    here and not in pipeline/run.py on purpose: every top-level pipeline/*.py file feeds
+    code_fingerprint and therefore analysis_id, so the hook lives in this sub-package."""
+    from pipeline.trends.derive import derive_after_publish
+
+    trend = derive_after_publish(Path(path), derived_dir_for_published(path))
+    out = _publish_remote_step(Path(path), enabled=enabled)
+    out["trend_facts"] = trend
+    return out
+
+
+def _publish_remote_step(path: Path, *, enabled: bool | None) -> dict:
     if enabled is False:
         return {"status": "skipped", "reason": "--no-remote"}
     try:

@@ -117,3 +117,4 @@ Team: run the NVDA command above, then `RISKDIFF_SHOW_FIXTURE= ./scripts/dev.sh`
 | # | Task | Status | Notes |
 |---|------|--------|-------|
 | T9 | Trends cold-start bug | done, tested | root cause in DECISIONS D-021; four health states, SWR `/trends` with disk cache, local fallback |
+| T10 | Derive trend facts at publish time | done, tested | `pipeline/trends/derive.py` + `topics.yml` (31 topics); `data/derived/*.trends.json` committed for NVDA + SF; hook in the publisher (run.py untouched: it feeds analysis_id) |
