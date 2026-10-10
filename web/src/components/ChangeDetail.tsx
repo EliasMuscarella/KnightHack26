@@ -1,25 +1,40 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { flushSync } from "react-dom";
 
-import type { Change, Sentence } from "@/types/comparison";
+import type { Change, ModelIds, Sentence } from "@/types/comparison";
 
-import { AiInterpretationPanel, ScoreBreakdownPanel, SignalsPanel } from "@/components/ChangePanels";
+import { AnalystDetails, ScoreBreakdownPanel, WhatChangedPanel } from "@/components/ChangePanels";
 import { CitationContext, changeCitationNumbering, type CitationApi, type FilingRef, type SentenceRef } from "@/components/citations";
 import { FilingLink } from "@/components/ui";
+import { mergeChangedSpans, rewrittenIds } from "@/lib/diffDisplay";
 import { textFragmentUrl } from "@/lib/format";
 
 type ViewMode = "split" | "inline";
 
-const STATUS_META: Record<
-  Sentence["status"],
-  { marker: string; label: string; border: string; gutter: string }
-> = {
+/** Below this viewport width the diff opens in the inline view (side by side stays available). */
+const NARROW_QUERY = "(max-width: 1099px)";
+
+function subscribeNarrow(cb: () => void) {
+  const m = window.matchMedia(NARROW_QUERY);
+  m.addEventListener("change", cb);
+  return () => m.removeEventListener("change", cb);
+}
+const narrowSnapshot = () => window.matchMedia(NARROW_QUERY).matches;
+const narrowServerSnapshot = () => false;
+
+const STATUS_META: Record<Sentence["status"] | "rewritten", { marker: string; label: string; border: string; gutter: string }> = {
   added: { marker: "+", label: "Added", border: "border-add-line", gutter: "text-add-fg" },
   removed: { marker: "−", label: "Removed", border: "border-del-line", gutter: "text-del-fg" },
-  modified: { marker: "~", label: "Modified", border: "border-mod-line", gutter: "text-mod-fg" },
+  modified: { marker: "~", label: "Edited", border: "border-mod-line", gutter: "text-mod-fg" },
+  rewritten: { marker: "~", label: "Rewritten", border: "border-mod-line", gutter: "text-mod-fg" },
   unchanged: { marker: "", label: "Unchanged", border: "border-transparent", gutter: "text-ink-faint" },
+};
+
+const STATUS_TINT: Record<string, string> = {
+  added: "bg-add-bg/40",
+  removed: "bg-del-bg/40",
 };
 
 /** Splits a span into leading whitespace, the marked core, and trailing whitespace. */
@@ -28,7 +43,7 @@ function splitWhitespace(text: string): [string, string, string] {
   return m ? [m[1], m[2], m[3]] : ["", text, ""];
 }
 
-function SentenceBody({ s, heading }: { s: Sentence; heading: boolean }) {
+function SentenceBody({ s, heading, rewritten }: { s: Sentence; heading: boolean; rewritten: boolean }) {
   const cls = `filing-text ${heading ? "is-heading" : ""} ${s.status === "unchanged" && !heading ? "is-unchanged" : ""}`;
   if (s.status === "added") {
     return (
@@ -44,10 +59,27 @@ function SentenceBody({ s, heading }: { s: Sentence; heading: boolean }) {
       </p>
     );
   }
+  if (s.status === "modified" && rewritten) {
+    return (
+      <p className={cls}>
+        {s.side === "old" ? (
+          <del className="rewritten-old">
+            <span className="sr-only">deleted: </span>
+            {s.text}
+          </del>
+        ) : (
+          <ins className="rewritten-new">
+            <span className="sr-only">inserted: </span>
+            {s.text}
+          </ins>
+        )}
+      </p>
+    );
+  }
   if (s.status === "modified" && s.diff_spans && s.diff_spans.length > 0) {
     return (
       <p className={cls}>
-        {s.diff_spans.map((span, i) => {
+        {mergeChangedSpans(s.diff_spans).map((span, i) => {
           if (span.op !== "insert" && span.op !== "delete") return <span key={i}>{span.text}</span>;
           // Leading/trailing whitespace stays plain text so the marker sits right before the
           // first word and the underline/strikethrough never starts or ends on a space.
@@ -84,6 +116,7 @@ function SentenceBody({ s, heading }: { s: Sentence; heading: boolean }) {
 interface SentenceViewProps {
   s: Sentence;
   heading: boolean;
+  rewritten: boolean;
   sideTag: string | null;
   highlighted: boolean;
   actionOpen: boolean;
@@ -93,10 +126,7 @@ interface SentenceViewProps {
   onBack: (() => void) | null;
   /** Inline view: id of an identical unchanged old-side sentence shown merged into this one. */
   aliasId?: string;
-  /**
-   * "stacked" (side by side): status tag on a label line above the text, so the text gets
-   * the full column width. "gutter" (inline): status tag in a narrow left gutter.
-   */
+  /** "stacked" (side by side): tag line above the text. "gutter" (inline): tag in a left gutter. */
   layout: "stacked" | "gutter";
 }
 
@@ -110,15 +140,8 @@ function SentenceView(props: SentenceViewProps) {
   );
 }
 
-const STATUS_TINT: Record<Sentence["status"], string> = {
-  added: "bg-add-bg/40",
-  removed: "bg-del-bg/40",
-  modified: "",
-  unchanged: "",
-};
-
-function StatusTag({ s, highlighted, sideTag, stacked }: { s: Sentence; highlighted: boolean; sideTag: string | null; stacked: boolean }) {
-  const meta = STATUS_META[s.status];
+function StatusTag({ status, highlighted, sideTag, stacked }: { status: keyof typeof STATUS_META; highlighted: boolean; sideTag: string | null; stacked: boolean }) {
+  const meta = STATUS_META[status];
   return (
     <>
       {highlighted ? (
@@ -126,7 +149,7 @@ function StatusTag({ s, highlighted, sideTag, stacked }: { s: Sentence; highligh
           <span aria-hidden="true">▶ </span>Cited
         </span>
       ) : null}
-      {s.status !== "unchanged" ? (
+      {status !== "unchanged" ? (
         <span className="inline-flex items-center gap-1">
           <span aria-hidden="true" className="font-mono text-sm leading-none">
             {meta.marker}
@@ -136,33 +159,31 @@ function StatusTag({ s, highlighted, sideTag, stacked }: { s: Sentence; highligh
       ) : (
         <span className="sr-only">Unchanged</span>
       )}
-      {sideTag ? <span className={`${stacked ? "" : "mt-0.5 block "}font-mono font-medium text-ink-faint`}>{sideTag}</span> : null}
+      {sideTag ? <span className={`${stacked ? "" : "mt-0.5 block "}font-medium text-ink-faint`}>{sideTag}</span> : null}
     </>
   );
 }
 
-function SentenceInner({ s, heading, sideTag, highlighted, actionOpen, filing, isFixture, onCloseAction, onBack, layout }: SentenceViewProps) {
-  const meta = STATUS_META[s.status];
+function SentenceInner({ s, heading, rewritten, sideTag, highlighted, actionOpen, filing, isFixture, onCloseAction, onBack, layout }: SentenceViewProps) {
+  const status: keyof typeof STATUS_META = s.status === "modified" && rewritten ? "rewritten" : s.status;
+  const meta = STATUS_META[status];
   const stacked = layout === "stacked";
   const showLabelLine = highlighted || s.status !== "unchanged" || !!sideTag;
   const actions = actionOpen ? (
     <div
       role="group"
       aria-label="Cited sentence actions"
-      className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 rounded border border-line-strong bg-surface px-3 py-1.5 font-sans text-xs shadow-sm"
+      className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 rounded border border-line-strong bg-surface px-3 py-1.5 font-sans text-sm shadow-sm"
     >
       <FilingLink href={textFragmentUrl(filing.edgar_url, s.text)} isFixture={isFixture} className="font-semibold">
-        Open in SEC filing
-      </FilingLink>
-      <FilingLink href={filing.edgar_url} isFixture={isFixture}>
-        Filing without highlight
+        View in SEC filing
       </FilingLink>
       <span className="text-ink-faint">
         FY{filing.fiscal_year} {filing.form}
       </span>
       {onBack ? (
         <button type="button" onClick={onBack} className="ml-auto font-semibold text-accent underline">
-          <span aria-hidden="true">↩ </span>Back to citation
+          <span aria-hidden="true">↩ </span>Back to where you were
         </button>
       ) : null}
       <button
@@ -175,19 +196,19 @@ function SentenceInner({ s, heading, sideTag, highlighted, actionOpen, filing, i
       </button>
     </div>
   ) : null;
-  const boxClass = `cite-target rounded-r border-l-4 outline-none ${highlighted ? "cite-flash border-ink" : `${meta.border} ${STATUS_TINT[s.status]}`}`;
+  const boxClass = `cite-target rounded-r border-l-4 outline-none ${highlighted ? "cite-flash border-ink" : `${meta.border} ${STATUS_TINT[s.status] ?? ""}`}`;
 
   if (stacked) {
     return (
-      <div id={`s-${s.id}`} data-sentence-id={s.id} data-status={s.status} tabIndex={-1} className={`${boxClass} py-1.5 pl-3 pr-2`}>
+      <div id={`s-${s.id}`} data-sentence-id={s.id} data-status={status} tabIndex={-1} className={`${boxClass} py-1.5 pl-3 pr-2`}>
         {showLabelLine ? (
           <p className={`mb-0.5 flex flex-wrap items-center gap-x-2.5 font-sans text-xs font-semibold leading-tight ${meta.gutter}`}>
-            <StatusTag s={s} highlighted={highlighted} sideTag={sideTag} stacked />
+            <StatusTag status={status} highlighted={highlighted} sideTag={sideTag} stacked />
           </p>
         ) : (
           <span className="sr-only">Unchanged</span>
         )}
-        <SentenceBody s={s} heading={heading} />
+        <SentenceBody s={s} heading={heading} rewritten={rewritten} />
         {actions}
       </div>
     );
@@ -196,29 +217,94 @@ function SentenceInner({ s, heading, sideTag, highlighted, actionOpen, filing, i
     <div
       id={`s-${s.id}`}
       data-sentence-id={s.id}
-      data-status={s.status}
+      data-status={status}
       tabIndex={-1}
-      className={`${boxClass} grid grid-cols-[72px_minmax(0,1fr)] gap-2.5 py-1.5 pl-2 pr-3`}
+      className={`${boxClass} grid grid-cols-[84px_minmax(0,1fr)] gap-2.5 py-1.5 pl-2 pr-3`}
     >
       <div className={`pt-1 font-sans text-xs font-semibold leading-tight ${meta.gutter}`}>
-        <StatusTag s={s} highlighted={highlighted} sideTag={sideTag} stacked={false} />
+        <StatusTag status={status} highlighted={highlighted} sideTag={sideTag} stacked={false} />
       </div>
       <div className="min-w-0">
-        <SentenceBody s={s} heading={heading} />
+        <SentenceBody s={s} heading={heading} rewritten={rewritten} />
         {actions}
       </div>
     </div>
   );
 }
 
-function HiddenRun({ count, unit, indent }: { count: number; unit: string; indent: string }) {
+/** One collapsed run of unchanged sentences, or the "fold" control above an opened run. */
+function RunToggle({ count, open, onClick }: { count: number; open: boolean; onClick: () => void }) {
+  const noun = count === 1 ? "unchanged sentence" : "unchanged sentences";
   return (
-    <p className={`my-1 ${indent} font-sans text-xs italic text-ink-faint`}>
-      <span aria-hidden="true">⋯ </span>
-      {count} unchanged {unit}
-      {count === 1 ? "" : "s"} hidden
-    </p>
+    <button
+      type="button"
+      aria-expanded={open}
+      onClick={onClick}
+      className="group my-1 flex w-full items-center gap-3 py-1 font-sans text-sm text-ink-faint hover:text-ink"
+    >
+      <span aria-hidden="true" className="h-px flex-1 bg-line group-hover:bg-line-strong" />
+      <span>
+        {open ? (
+          <>
+            <span aria-hidden="true">▾ </span>Fold {count} {noun}
+          </>
+        ) : (
+          <>
+            <span aria-hidden="true">· </span>
+            {count} {noun}
+            <span aria-hidden="true"> ·</span>
+            <span className="ml-2 font-semibold text-accent">show</span>
+          </>
+        )}
+      </span>
+      <span aria-hidden="true" className="h-px flex-1 bg-line group-hover:bg-line-strong" />
+    </button>
   );
+}
+
+// ---------------------------------------------------------------------------------------
+// Layout model: rows (side by side) or sentences (inline), grouped into collapsible runs.
+// ---------------------------------------------------------------------------------------
+
+interface SplitRow {
+  kind: "split";
+  key: string;
+  pair: number;
+  old: Sentence[];
+  new: Sentence[];
+  collapsible: boolean;
+}
+interface InlineRow {
+  kind: "inline";
+  key: string;
+  pair: number;
+  s: Sentence;
+  alias?: Sentence;
+  collapsible: boolean;
+}
+type Row = SplitRow | InlineRow;
+type Block<R extends Row> = { kind: "row"; row: R } | { kind: "run"; key: string; rows: R[]; count: number };
+
+function rowIds(r: Row): string[] {
+  return r.kind === "split" ? [...r.old, ...r.new].map((s) => s.id) : [r.s.id, ...(r.alias ? [r.alias.id] : [])];
+}
+
+function groupRuns<R extends Row>(rows: R[]): Block<R>[] {
+  const out: Block<R>[] = [];
+  let run: R[] = [];
+  const flush = () => {
+    if (run.length > 0) out.push({ kind: "run", key: `run-${run[0].key}`, rows: run, count: new Set(run.map((r) => r.pair)).size });
+    run = [];
+  };
+  for (const r of rows) {
+    if (r.collapsible) run.push(r);
+    else {
+      flush();
+      out.push({ kind: "row", row: r });
+    }
+  }
+  flush();
+  return out;
 }
 
 interface DetailProps {
@@ -226,45 +312,98 @@ interface DetailProps {
   index: Record<string, SentenceRef>;
   filings: { old: FilingRef; new: FilingRef };
   isFixture: boolean;
+  modelIds: ModelIds;
 }
 
-export function ChangeDetail({ change, index, filings, isFixture }: DetailProps) {
+export function ChangeDetail({ change, index, filings, isFixture, modelIds }: DetailProps) {
   const numberOf = changeCitationNumbering(change);
-  const [view, setView] = useState<ViewMode>("split");
-  const [showUnchanged, setShowUnchanged] = useState(true);
+  const narrow = useSyncExternalStore(subscribeNarrow, narrowSnapshot, narrowServerSnapshot);
+  const [chosenView, setChosenView] = useState<ViewMode | null>(null);
+  const view: ViewMode = chosenView ?? (narrow ? "inline" : "split");
+  const [allOpen, setAllOpen] = useState(false);
+  const [openRuns, setOpenRuns] = useState<Set<string>>(() => new Set());
   const [highlightId, setHighlightId] = useState<string | null>(null);
   const [actionId, setActionId] = useState<string | null>(null);
   const [missing, setMissing] = useState<string | null>(null);
   const [returnEl, setReturnEl] = useState<HTMLElement | null>(null);
-  const [asideFits, setAsideFits] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const asideRef = useRef<HTMLElement | null>(null);
-  const stickyTop = isFixture ? 112 : 72;
 
-  // The panel column is sticky only when it fits in the viewport; otherwise it scrolls with
-  // the page so nothing (e.g. the AI section) is hidden behind an inner scroll area.
-  useEffect(() => {
-    const el = asideRef.current;
-    if (!el) return;
-    const check = () => setAsideFits(el.offsetHeight <= window.innerHeight - stickyTop - 16);
-    const ro = new ResizeObserver(check);
-    ro.observe(el);
-    window.addEventListener("resize", check);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", check);
-    };
-  }, [stickyTop]);
-
-  useEffect(() => () => {
-    if (timer.current) clearTimeout(timer.current);
-  }, []);
-
-  const isHeading = useCallback((id: string) => index[id]?.is_heading === true, [index]);
-  const visibleSentence = useCallback(
-    (s: Sentence) => showUnchanged || s.status !== "unchanged" || isHeading(s.id),
-    [showUnchanged, isHeading],
+  useEffect(
+    () => () => {
+      if (timer.current) clearTimeout(timer.current);
+    },
+    [],
   );
+
+  const isHeading = useCallback((id: string) => index[id]?.is_heading === true || /:0$/.test(id), [index]);
+  const rewritten = useMemo(() => rewrittenIds(change.sentences), [change.sentences]);
+
+  const sorted = useMemo(
+    () =>
+      [...change.sentences].sort(
+        (a, b) => a.pair_index - b.pair_index || (a.side === b.side ? 0 : a.side === "old" ? -1 : 1),
+      ),
+    [change.sentences],
+  );
+  const oldCount = change.sentences.filter((s) => s.side === "old").length;
+  const newCount = change.sentences.length - oldCount;
+  const oneSided = oldCount === 0 || newCount === 0;
+
+  const blocks = useMemo((): Block<Row>[] => {
+    const quiet = (s: Sentence) => s.status === "unchanged" && !isHeading(s.id);
+    if (view === "split" && !oneSided) {
+      const pairs = new Map<number, { old: Sentence[]; new: Sentence[] }>();
+      for (const s of sorted) {
+        const p = pairs.get(s.pair_index) ?? { old: [], new: [] };
+        p[s.side].push(s);
+        pairs.set(s.pair_index, p);
+      }
+      const rows: SplitRow[] = [...pairs.entries()]
+        .sort((a, b) => a[0] - b[0])
+        .map(([pi, p]) => ({ kind: "split", key: `p${pi}`, pair: pi, old: p.old, new: p.new, collapsible: [...p.old, ...p.new].every(quiet) }));
+      return groupRuns<Row>(rows);
+    }
+    // Inline (and one-sided) view: an unchanged pair whose two sentences are byte-identical is
+    // shown once, like a context line in a unified diff; the old id stays addressable.
+    const byId = new Map(change.sentences.map((s) => [s.id, s] as const));
+    const identicalOld = (s: Sentence) => {
+      if (s.status !== "unchanged" || s.side !== "new" || !s.counterpart_id) return undefined;
+      const o = byId.get(s.counterpart_id);
+      return o && o.side === "old" && o.status === "unchanged" && o.text === s.text ? o : undefined;
+    };
+    const merged = new Set<string>();
+    for (const s of change.sentences) {
+      const o = identicalOld(s);
+      if (o) merged.add(o.id);
+    }
+    const rows: InlineRow[] = sorted
+      .filter((s) => !merged.has(s.id))
+      .map((s) => ({ kind: "inline", key: s.id, pair: s.pair_index, s, alias: identicalOld(s), collapsible: quiet(s) }));
+    return groupRuns<Row>(rows);
+  }, [view, oneSided, sorted, change.sentences, isHeading]);
+
+  const runOf = useMemo(() => {
+    const m = new Map<string, string>();
+    for (const b of blocks) if (b.kind === "run") for (const r of b.rows) for (const id of rowIds(r)) m.set(id, b.key);
+    return m;
+  }, [blocks]);
+
+  const isRunOpen = useCallback((key: string) => allOpen || openRuns.has(key), [allOpen, openRuns]);
+  const toggleRun = (key: string) => {
+    if (!isRunOpen(key)) {
+      setOpenRuns((prev) => new Set(prev).add(key));
+    } else if (allOpen) {
+      // Folding one run while "show all" is on: switch to per-run state with the others open.
+      setAllOpen(false);
+      setOpenRuns(new Set(blocks.filter((b) => b.kind === "run" && b.key !== key).map((b) => (b.kind === "run" ? b.key : ""))));
+    } else {
+      setOpenRuns((prev) => {
+        const next = new Set(prev);
+        next.delete(key);
+        return next;
+      });
+    }
+  };
 
   const jumpTo = useCallback(
     (id: string, source?: HTMLElement | null) => {
@@ -274,8 +413,9 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
         return;
       }
       setMissing(null);
-      if (!showUnchanged && sentence.status === "unchanged" && !isHeading(id)) {
-        flushSync(() => setShowUnchanged(true));
+      const run = runOf.get(id);
+      if (run && !isRunOpen(run)) {
+        flushSync(() => setOpenRuns((prev) => new Set(prev).add(run)));
       }
       flushSync(() => {
         setHighlightId(id);
@@ -290,21 +430,13 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
       if (timer.current) clearTimeout(timer.current);
       timer.current = setTimeout(() => setHighlightId(null), 3000);
     },
-    [change.sentences, showUnchanged, isHeading],
+    [change.sentences, runOf, isRunOpen],
   );
 
   const api: CitationApi = useMemo(() => ({ index, filings, isFixture, jumpTo }), [index, filings, isFixture, jumpTo]);
 
-  const sorted = useMemo(
-    () =>
-      [...change.sentences].sort(
-        (a, b) => a.pair_index - b.pair_index || (a.side === b.side ? 0 : a.side === "old" ? -1 : 1),
-      ),
-    [change.sentences],
-  );
-  const oldCount = change.sentences.filter((s) => s.side === "old").length;
-  const newCount = change.sentences.length - oldCount;
-  const fyTag = (side: Sentence["side"]) => `FY${side === "old" ? filings.old.fiscal_year : filings.new.fiscal_year}`;
+  const yearTag = (side: Sentence["side"]) =>
+    side === "old" ? `Last year · FY${filings.old.fiscal_year}` : `This year · FY${filings.new.fiscal_year}`;
 
   const renderSentence = (s: Sentence, withSideTag: boolean, aliasId?: string) => (
     <SentenceView
@@ -313,7 +445,8 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
       layout={view === "split" ? "stacked" : "gutter"}
       aliasId={aliasId}
       heading={isHeading(s.id)}
-      sideTag={aliasId ? "both years" : withSideTag ? fyTag(s.side) : null}
+      rewritten={rewritten.has(s.id)}
+      sideTag={aliasId ? "Both years" : withSideTag ? yearTag(s.side) : null}
       highlighted={highlightId === s.id || (!!aliasId && highlightId === aliasId)}
       actionOpen={actionId === s.id || (!!aliasId && actionId === aliasId)}
       filing={(aliasId && actionId === aliasId) || s.side === "old" ? filings.old : filings.new}
@@ -331,135 +464,97 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
     />
   );
 
-  /** Renders a list, collapsing runs of hidden unchanged items into one note. */
-  const hiddenIndent = view === "split" ? "ml-4" : "ml-[86px]";
-  function withHiddenRuns<T>(items: T[], isVisible: (x: T) => boolean, render: (x: T) => React.ReactNode, unit: string, keyOf: (x: T) => string) {
-    const out: React.ReactNode[] = [];
-    let hidden = 0;
-    let runKey = "";
-    for (const it of items) {
-      if (isVisible(it)) {
-        if (hidden > 0) out.push(<HiddenRun key={`h-${runKey}`} count={hidden} unit={unit} indent={hiddenIndent} />);
-        hidden = 0;
-        out.push(render(it));
-      } else {
-        if (hidden === 0) runKey = keyOf(it);
-        hidden += 1;
-      }
-    }
-    if (hidden > 0) out.push(<HiddenRun key={`h-${runKey}`} count={hidden} unit={unit} indent={hiddenIndent} />);
-    return out;
-  }
+  const emptyCell = (side: "old" | "new") => (
+    <div className="h-full min-h-8 rounded border border-dashed border-line bg-[repeating-linear-gradient(135deg,transparent,transparent_6px,var(--color-sunken)_6px,var(--color-sunken)_12px)]">
+      <span className="sr-only">No corresponding sentence in {side === "old" ? "last year's" : "this year's"} filing.</span>
+    </div>
+  );
 
-  function renderSplit() {
-    const oldFiling = filings.old;
-    const newFiling = filings.new;
-    const header = (
-      <div className={`sticky ${isFixture ? "top-[100px]" : "top-14"} z-10 grid grid-cols-2 gap-5 border-b border-line bg-surface pb-2 pt-1 text-xs font-semibold uppercase tracking-wide text-ink-faint`}>
-        <span>
-          Older · FY{oldFiling.fiscal_year} {oldFiling.form}
-        </span>
-        <span>
-          Newer · FY{newFiling.fiscal_year} {newFiling.form}
-        </span>
+  const renderRow = (r: Row) =>
+    r.kind === "split" ? (
+      <div key={r.key} className="grid grid-cols-2 gap-5">
+        <div className="space-y-1">{r.old.length ? r.old.map((s) => renderSentence(s, false)) : emptyCell("old")}</div>
+        <div className="space-y-1">{r.new.length ? r.new.map((s) => renderSentence(s, false)) : emptyCell("new")}</div>
       </div>
+    ) : (
+      renderSentence(r.s, view === "inline", r.alias?.id)
     );
-    if (oldCount === 0 || newCount === 0) {
-      const present = sorted;
-      const absentSide = oldCount === 0 ? "old" : "new";
-      const absentBox = (
-        <div className="flex h-full min-h-[120px] items-start rounded border border-dashed border-line-strong bg-[repeating-linear-gradient(135deg,var(--color-paper),var(--color-paper)_8px,var(--color-sunken)_8px,var(--color-sunken)_16px)] p-4 text-sm text-ink-muted">
-          <p>
-            This risk factor does not appear in the FY{absentSide === "old" ? oldFiling.fiscal_year : newFiling.fiscal_year} filing.
-          </p>
+
+  const renderBlocks = () =>
+    blocks.map((b) => {
+      if (b.kind === "row") return renderRow(b.row);
+      const open = isRunOpen(b.key);
+      return (
+        <div key={b.key}>
+          <RunToggle count={b.count} open={open} onClick={() => toggleRun(b.key)} />
+          {open ? <div className="space-y-1">{b.rows.map(renderRow)}</div> : null}
         </div>
       );
-      const presentCol = <div className="space-y-1">{withHiddenRuns(present, visibleSentence, (s) => renderSentence(s, false), "sentence", (s) => s.id)}</div>;
+    });
+
+  const runCount = blocks.filter((b) => b.kind === "run").length;
+  const anyClosed = blocks.some((b) => b.kind === "run" && !isRunOpen(b.key));
+
+  function renderDiff() {
+    if (view === "split") {
+      const header = (
+        <div
+          className={`sticky ${isFixture ? "top-[96px]" : "top-14"} z-10 grid grid-cols-2 gap-5 border-b border-line bg-surface pb-2 pt-1 text-xs font-semibold uppercase tracking-wide text-ink-faint`}
+        >
+          <span>
+            Last year · FY{filings.old.fiscal_year} {filings.old.form}
+          </span>
+          <span>
+            This year · FY{filings.new.fiscal_year} {filings.new.form}
+          </span>
+        </div>
+      );
+      if (oneSided) {
+        const absentOld = oldCount === 0;
+        const absentBox = (
+          <div className="flex h-full min-h-[120px] items-start rounded border border-dashed border-line-strong bg-[repeating-linear-gradient(135deg,var(--color-paper),var(--color-paper)_8px,var(--color-sunken)_8px,var(--color-sunken)_16px)] p-4 text-base text-ink-muted">
+            <p>{absentOld ? "Not in last year's filing." : "Removed this year."}</p>
+          </div>
+        );
+        const presentCol = <div className="space-y-1">{renderBlocks()}</div>;
+        return (
+          <div className="split-view">
+            {header}
+            <div className="mt-2 grid grid-cols-2 gap-5">
+              {absentOld ? absentBox : presentCol}
+              {absentOld ? presentCol : absentBox}
+            </div>
+          </div>
+        );
+      }
       return (
         <div className="split-view">
           {header}
-          <div className="mt-2 grid grid-cols-2 gap-5">
-            {absentSide === "old" ? absentBox : presentCol}
-            {absentSide === "old" ? presentCol : absentBox}
-          </div>
+          <div className="mt-2 space-y-1">{renderBlocks()}</div>
         </div>
       );
     }
-    const pairs = new Map<number, { old: Sentence[]; new: Sentence[] }>();
-    for (const s of sorted) {
-      const p = pairs.get(s.pair_index) ?? { old: [], new: [] };
-      p[s.side].push(s);
-      pairs.set(s.pair_index, p);
-    }
-    const rows = [...pairs.entries()].sort((a, b) => a[0] - b[0]);
-    const rowVisible = ([, p]: [number, { old: Sentence[]; new: Sentence[] }]) => [...p.old, ...p.new].some(visibleSentence);
-    const emptyCell = (side: "old" | "new") => (
-      <div className="h-full min-h-8 rounded border border-dashed border-line bg-[repeating-linear-gradient(135deg,transparent,transparent_6px,var(--color-sunken)_6px,var(--color-sunken)_12px)]">
-        <span className="sr-only">No corresponding sentence in the {side === "old" ? "older" : "newer"} filing.</span>
-      </div>
-    );
-    return (
-      <div className="split-view">
-        {header}
-        <div className="mt-2 space-y-1">
-          {withHiddenRuns(
-            rows,
-            rowVisible,
-            ([pi, p]) => (
-              <div key={pi} className="grid grid-cols-2 gap-5">
-                <div className="space-y-1">{p.old.length ? p.old.map((s) => renderSentence(s, false)) : emptyCell("old")}</div>
-                <div className="space-y-1">{p.new.length ? p.new.map((s) => renderSentence(s, false)) : emptyCell("new")}</div>
-              </div>
-            ),
-            "sentence pair",
-            ([pi]) => String(pi),
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  function renderInline() {
-    // Unified view: an unchanged pair whose two sentences are byte-identical is shown once
-    // (like a context line in a unified diff); the old id stays addressable for citations.
-    const byId = new Map(change.sentences.map((s) => [s.id, s] as const));
-    const identicalOld = (s: Sentence) => {
-      if (s.status !== "unchanged" || s.side !== "new" || !s.counterpart_id) return undefined;
-      const o = byId.get(s.counterpart_id);
-      return o && o.side === "old" && o.status === "unchanged" && o.text === s.text ? o : undefined;
-    };
-    const merged = new Set<string>();
-    for (const s of change.sentences) {
-      const o = identicalOld(s);
-      if (o) merged.add(o.id);
-    }
-    const items = sorted.filter((s) => !merged.has(s.id));
-    return (
-      // Line-length cap for the unified view: ~75 characters of filing text per line. A literal
-      // 75ch is wider (ch is the width of "0"; prose averages ~0.42em per character), so the
-      // text column is 34rem (32em of the 17px filing text) plus the 106px gutter + padding.
-      <div className="max-w-[calc(34rem+106px)] space-y-1">
-        {withHiddenRuns(
-          items,
-          visibleSentence,
-          (s) => renderSentence(s, true, identicalOld(s)?.id),
-          "sentence",
-          (s) => s.id,
-        )}
-      </div>
-    );
+    // Line-length cap for the inline view: ~75 characters of filing text per line.
+    return <div className="max-w-[calc(36rem+118px)] space-y-1">{renderBlocks()}</div>;
   }
 
   const missingRef = missing ? index[missing] : null;
 
   return (
     <CitationContext.Provider value={api}>
-      <div className="grid grid-cols-[minmax(0,1fr)_340px] items-start gap-5">
-        <section aria-labelledby="diff-heading" className="min-w-0 rounded-lg border border-line bg-surface p-4">
+      <div className="space-y-8">
+        <WhatChangedPanel interp={change.interpretation} numberOf={numberOf} />
+
+        <section aria-labelledby="diff-heading" className="min-w-0 rounded-lg border border-line bg-surface p-5">
           <div className="mb-4 flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-line pb-4">
-            <h2 id="diff-heading" className="text-base font-bold text-ink">
-              Sentence diff
-            </h2>
+            <div>
+              <h2 id="diff-heading" className="text-xl font-bold text-ink">
+                Sentence by sentence
+              </h2>
+              <p className="text-sm text-ink-muted">
+                Changed sentences only. {runCount > 0 ? "Unchanged text is folded; click a fold to read it." : ""}
+              </p>
+            </div>
             <div role="group" aria-label="Diff layout" className="inline-flex rounded-md border border-line-strong p-0.5">
               {(
                 [
@@ -471,25 +566,29 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
                   key={mode}
                   type="button"
                   aria-pressed={view === mode}
-                  onClick={() => setView(mode)}
-                  className={`rounded px-3 py-1 text-sm font-medium ${
-                    view === mode ? "bg-ink text-white" : "text-ink-muted hover:text-ink"
-                  }`}
+                  onClick={() => setChosenView(mode)}
+                  className={`rounded px-3 py-1 text-sm font-medium ${view === mode ? "bg-ink text-white" : "text-ink-muted hover:text-ink"}`}
                 >
                   {label}
                 </button>
               ))}
             </div>
-            <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-ink-muted">
-              <input
-                type="checkbox"
-                checked={showUnchanged}
-                onChange={(e) => setShowUnchanged(e.target.checked)}
-                className="h-4 w-4 accent-ink"
-              />
-              Show unchanged sentences
-            </label>
-            <ul className="ml-auto flex flex-wrap items-center gap-3 text-xs text-ink-muted" aria-label="Legend">
+            {runCount > 0 ? (
+              <button
+                type="button"
+                onClick={() => {
+                  if (anyClosed) setAllOpen(true);
+                  else {
+                    setAllOpen(false);
+                    setOpenRuns(new Set());
+                  }
+                }}
+                className="text-sm font-medium text-accent underline decoration-accent/40 underline-offset-2 hover:decoration-accent"
+              >
+                {anyClosed ? "Show all unchanged sentences" : "Fold all unchanged sentences"}
+              </button>
+            ) : null}
+            <ul className="ml-auto flex flex-wrap items-center gap-3 text-sm text-ink-muted" aria-label="Legend">
               <li>
                 <span className="font-mono font-bold text-add-fg">+</span> <ins className="span-ins">added</ins>
               </li>
@@ -497,51 +596,34 @@ export function ChangeDetail({ change, index, filings, isFixture }: DetailProps)
                 <span className="font-mono font-bold text-del-fg">−</span> <del className="span-del">removed</del>
               </li>
               <li>
-                <span className="font-mono font-bold text-mod-fg">~</span> modified
+                <span className="font-mono font-bold text-mod-fg">~</span> edited or rewritten
               </li>
-              <li className="text-ink-faint">unchanged (muted)</li>
             </ul>
           </div>
-          {change.sentences.length === 0 ? (
-            <p className="text-ink-muted">No sentences recorded for this change.</p>
-          ) : view === "split" ? (
-            renderSplit()
-          ) : (
-            renderInline()
-          )}
+          {change.sentences.length === 0 ? <p className="text-ink-muted">No sentences recorded for this change.</p> : renderDiff()}
         </section>
 
-        <aside
-          ref={asideRef}
-          aria-label="Why this change scored as it did"
-          style={asideFits ? { position: "sticky", top: stickyTop } : undefined}
-          className="space-y-4"
-        >
-          {missing ? (
-            <div role="status" className="rounded border border-mod-line bg-mod-bg p-3 text-sm text-mod-fg">
-              <p className="font-semibold">That cited sentence is not part of this diff.</p>
-              {missingRef ? <p className="mt-1 font-serif text-ink">{missingRef.text}</p> : <p className="font-mono">{missing}</p>}
-              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
-                {missingRef ? (
-                  <FilingLink
-                    href={textFragmentUrl(filings[missingRef.side].edgar_url, missingRef.text)}
-                    isFixture={isFixture}
-                    className="font-semibold"
-                  >
-                    Open in SEC filing (FY{filings[missingRef.side].fiscal_year})
-                  </FilingLink>
-                ) : null}
-                <button type="button" className="underline" onClick={() => setMissing(null)}>
-                  Dismiss
-                </button>
-              </div>
-            </div>
-          ) : null}
-          <ScoreBreakdownPanel change={change} />
-          <AiInterpretationPanel interp={change.interpretation} numberOf={numberOf} />
-          <SignalsPanel change={change} numberOf={numberOf} />
-        </aside>
+        <ScoreBreakdownPanel change={change} />
+
+        <AnalystDetails change={change} numberOf={numberOf} modelIds={modelIds} />
       </div>
+
+      {missing ? (
+        <div role="status" className="fixed bottom-6 right-6 z-50 w-[420px] max-w-[calc(100vw-48px)] rounded border border-mod-line bg-mod-bg p-4 text-sm text-mod-fg shadow-lg">
+          <p className="font-semibold">That cited sentence is not part of this risk factor&apos;s text.</p>
+          {missingRef ? <p className="mt-1 font-serif text-base text-ink">{missingRef.text}</p> : null}
+          <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1">
+            {missingRef ? (
+              <FilingLink href={textFragmentUrl(filings[missingRef.side].edgar_url, missingRef.text)} isFixture={isFixture} className="font-semibold">
+                View in SEC filing (FY{filings[missingRef.side].fiscal_year})
+              </FilingLink>
+            ) : null}
+            <button type="button" className="underline" onClick={() => setMissing(null)}>
+              Dismiss
+            </button>
+          </div>
+        </div>
+      ) : null}
     </CitationContext.Provider>
   );
 }

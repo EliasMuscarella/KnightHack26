@@ -36,7 +36,7 @@ const ERROR_TITLES: Record<string, { title: string; body: string; retryable: boo
     retryable: false,
   },
   extraction_failed: {
-    title: "Could not extract Item 1A",
+    title: "Could not find the Risk Factors section",
     body: "The Risk Factors section could not be located reliably in one of the filings, so no comparison was produced rather than a partial one.",
     retryable: false,
   },

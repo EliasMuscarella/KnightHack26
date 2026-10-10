@@ -47,7 +47,7 @@ export default async function AnalyzePage(props: PageProps<"/analyze/[ticker]">)
         <p className="font-mono text-sm font-bold tracking-wide text-accent">{ticker}</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-ink">Live analysis</h1>
         <p className="mt-1 max-w-[70ch] text-ink-muted">
-          Comparing Item 1A (Risk Factors) of {ticker}&apos;s two most recent 10-K filings. You will be taken to the
+          Comparing the Risk Factors section of {ticker}&apos;s two most recent 10-K filings. You will be taken to the
           comparison when it is published.
         </p>
       </div>

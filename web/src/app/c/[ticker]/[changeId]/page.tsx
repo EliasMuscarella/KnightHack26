@@ -6,9 +6,9 @@ import type { Change } from "@/types/comparison";
 
 import { ChangeDetail } from "@/components/ChangeDetail";
 import type { SentenceRef } from "@/components/citations";
-import { CategoryChip, ChangeTypeBadge, FixtureBanner, PageContainer, ScoreBar } from "@/components/ui";
+import { ChangeLevelTag, ChangeTypeBadge, FixtureBanner, PageContainer } from "@/components/ui";
 import { getComparison } from "@/lib/data";
-import { formatRatio } from "@/lib/format";
+import { CHANGE_LEVEL } from "@/lib/vocabulary";
 import { CHANGE_ID_RE, normalizeTicker } from "@/lib/ticker";
 
 export const dynamic = "force-dynamic";
@@ -26,7 +26,7 @@ async function load(props: PageProps<"/c/[ticker]/[changeId]">) {
 
 export async function generateMetadata(props: PageProps<"/c/[ticker]/[changeId]">): Promise<Metadata> {
   const data = await load(props);
-  return { title: data ? `${data.comparison.company.ticker}: ${data.change.title}` : "Change" };
+  return { title: data ? `${data.comparison.company.ticker}: ${data.change.short_title || data.change.title}` : "Change" };
 }
 
 function NavLink({ ticker, change, dir }: { ticker: string; change: Change | undefined; dir: "prev" | "next" }) {
@@ -43,9 +43,9 @@ function NavLink({ ticker, change, dir }: { ticker: string; change: Change | und
       className={`group min-w-0 flex-1 rounded-md border border-line bg-surface px-4 py-3 hover:border-accent ${dir === "next" ? "text-right" : ""}`}
     >
       <span className="block text-xs font-semibold uppercase tracking-wide text-ink-faint">
-        {dir === "prev" ? "← Previous" : "Next →"} · #{change.rank}
+        {dir === "prev" ? "← Previous change" : "Next change →"}
       </span>
-      <span className="mt-0.5 block truncate text-sm font-medium text-ink group-hover:underline">{change.title}</span>
+      <span className="mt-0.5 block truncate text-base font-medium text-ink group-hover:underline">{change.short_title || change.title}</span>
     </Link>
   );
 }
@@ -77,83 +77,59 @@ export default async function ChangePage(props: PageProps<"/c/[ticker]/[changeId
     edgar_url: f.edgar_url,
     filing_date: f.filing_date,
   });
-  const titleChanged = change.old_title && change.new_title && change.old_title !== change.new_title;
+  const oldTitle = change.old_title ?? null;
+  const newTitle = change.new_title ?? null;
+  const titlesDiffer = !!oldTitle && !!newTitle && oldTitle !== newTitle;
 
   return (
     <>
       {comparison.is_fixture ? <FixtureBanner /> : null}
-      <PageContainer className="space-y-6 py-8">
+      <PageContainer className="space-y-8 py-7">
         <nav aria-label="Breadcrumb" className="flex items-center justify-between text-sm text-ink-faint">
           <span>
             <Link href="/" className="underline hover:text-ink">
               Home
             </Link>{" "}
             <span aria-hidden="true">/</span>{" "}
-            <Link href={`/c/${encodeURIComponent(ticker)}`} className="font-mono underline hover:text-ink">
-              {ticker}
+            <Link href={`/c/${encodeURIComponent(ticker)}`} className="underline hover:text-ink">
+              {comparison.company.name}
             </Link>{" "}
-            <span aria-hidden="true">/</span> <span className="text-ink">Change #{change.rank}</span>
+            <span aria-hidden="true">/</span> <span className="text-ink">Change {change.rank} of {comparison.changes.length}</span>
           </span>
           <Link href={`/c/${encodeURIComponent(ticker)}`} className="font-medium text-accent underline">
-            ← Back to all {comparison.changes.length} changes
+            ← All {comparison.changes.length} risk factors
           </Link>
         </nav>
 
         <header className="rounded-lg border border-line bg-surface p-6">
-          <div className="flex items-start justify-between gap-8">
-            <div className="min-w-0 max-w-[90ch]">
-              <p className="text-sm text-ink-faint">
-                <span className="font-mono font-semibold">#{change.rank}</span> of {comparison.changes.length} ·{" "}
-                {comparison.company.name}
-              </p>
-              <h1 className="mt-1 text-2xl font-bold leading-snug tracking-tight text-ink">{change.title}</h1>
-              {titleChanged ? (
-                <p className="mt-2 text-sm text-ink-muted">
-                  <span className="font-semibold">FY{comparison.old_filing.fiscal_year} heading:</span>{" "}
-                  <span className="line-through decoration-del-line">{change.old_title}</span>
+          <h1 className="text-3xl font-bold leading-tight tracking-tight text-ink">{change.short_title || change.title}</h1>
+          <div className="mt-2 max-w-[100ch] space-y-1 text-base leading-snug text-ink-faint">
+            {titlesDiffer ? (
+              <>
+                <p>
+                  <span className="font-semibold text-ink-muted">Last year:</span> {oldTitle}
                 </p>
-              ) : null}
-              <div className="mt-3 flex flex-wrap items-center gap-2">
-                <ChangeTypeBadge type={change.change_type} />
-                {change.categories.map((c) => (
-                  <CategoryChip key={c} category={c} />
-                ))}
-                {change.section_group ? <span className="text-sm text-ink-faint">· {change.section_group}</span> : null}
-              </div>
-            </div>
-            <dl className="grid shrink-0 grid-cols-[auto_auto] items-center gap-x-4 gap-y-2 text-sm">
-              <dt className="text-ink-faint">Change score</dt>
-              <dd>
-                <ScoreBar score={change.score} width="w-28" />
-              </dd>
-              <dt className="text-ink-faint">Match similarity</dt>
-              <dd className="font-mono tabular-nums text-ink">
-                {change.similarity === null || change.similarity === undefined ? (
-                  <span className="font-sans text-ink-faint">n/a (unmatched)</span>
-                ) : (
-                  formatRatio(change.similarity)
-                )}
-              </dd>
-              {change.heading_similarity != null || change.body_similarity != null ? (
-                <>
-                  <dt className="text-ink-faint">Heading / body</dt>
-                  <dd className="font-mono tabular-nums text-ink">
-                    {formatRatio(change.heading_similarity)} / {formatRatio(change.body_similarity)}
-                  </dd>
-                </>
-              ) : null}
-              <dt className="text-ink-faint">Sentences</dt>
-              <dd className="flex gap-3 font-mono tabular-nums">
-                <span className="text-add-fg">+{change.stats.added}<span className="sr-only"> added</span></span>
-                <span className="text-del-fg">−{change.stats.removed}<span className="sr-only"> removed</span></span>
-                <span className="text-mod-fg">~{change.stats.modified}<span className="sr-only"> modified</span></span>
-                <span className="text-ink-faint">={change.stats.unchanged}<span className="sr-only"> unchanged</span></span>
-              </dd>
-              <dt className="text-ink-faint">Words</dt>
-              <dd className="font-mono tabular-nums text-ink">
-                {change.stats.old_word_count} → {change.stats.new_word_count}
-              </dd>
-            </dl>
+                <p>
+                  <span className="font-semibold text-ink-muted">This year:</span> {newTitle}
+                </p>
+              </>
+            ) : (
+              <p>{change.title}</p>
+            )}
+          </div>
+          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
+            <ChangeTypeBadge type={change.change_type} />
+            <span className="inline-flex items-center gap-2">
+              <span className="text-sm text-ink-faint">{CHANGE_LEVEL.label}</span>
+              <ChangeLevelTag score={change.score} />
+            </span>
+            <span className="text-sm text-ink-muted">
+              <span className="text-ink-faint">Words, last year → this year:</span>{" "}
+              <span className="font-semibold tabular-nums text-ink">
+                {change.stats.old_word_count.toLocaleString("en-US")} <span aria-hidden="true">→</span>
+                <span className="sr-only">to</span> {change.stats.new_word_count.toLocaleString("en-US")}
+              </span>
+            </span>
           </div>
         </header>
 
@@ -162,6 +138,7 @@ export default async function ChangePage(props: PageProps<"/c/[ticker]/[changeId
           index={index}
           filings={{ old: filingRef(comparison.old_filing), new: filingRef(comparison.new_filing) }}
           isFixture={comparison.is_fixture === true}
+          modelIds={comparison.model_ids}
         />
 
         <nav aria-label="Other changes" className="flex gap-4">

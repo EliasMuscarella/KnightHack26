@@ -113,6 +113,11 @@ async function readPublishedFile(entry: PublishedEntry): Promise<Comparison | nu
   return c;
 }
 
+function topHighlight(c: Comparison): CompanyListing["top_highlight"] {
+  const h = (c.highlights ?? []).find((x) => c.changes.some((ch) => ch.id === x.change_id));
+  return h ? { kind: h.kind, short_title: h.short_title } : null;
+}
+
 function toListing(c: Comparison, file: string, source: CompanyListing["source"]): CompanyListing {
   return {
     ticker: c.company.ticker,
@@ -128,6 +133,7 @@ function toListing(c: Comparison, file: string, source: CompanyListing["source"]
     file,
     is_fixture: c.is_fixture === true,
     source,
+    top_highlight: topHighlight(c),
   };
 }
 
