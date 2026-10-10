@@ -23,6 +23,7 @@ from __future__ import annotations
 import hashlib
 import io
 import logging
+import threading
 import time
 from collections.abc import Callable, Mapping
 from pathlib import Path
@@ -35,11 +36,11 @@ from pipeline.schema import Comparison
 
 log = logging.getLogger(__name__)
 
-HTTP_TIMEOUT_SECONDS = 30  # per HTTP request inside the SDK
-SDK_RETRY_BUDGET_SECONDS = 20  # the SDK's own retry budget per call (kept short; we retry above it)
+HTTP_TIMEOUT_SECONDS = 15  # per HTTP request inside the SDK (must exceed STATEMENT_WAIT)
+SDK_RETRY_BUDGET_SECONDS = 5  # the SDK's own retry budget per call (kept short; we retry above it)
 MAX_RETRIES = 2  # our retries on top: 1 call + 2 retries
 BACKOFF_SECONDS = (0.5, 1.5)
-STATEMENT_WAIT = "30s"  # synchronous wait inside execute_statement before we start polling
+STATEMENT_WAIT = "10s"  # synchronous wait inside execute_statement before we start polling
 STATEMENT_TIMEOUT_SECONDS = 180.0  # total, including a cold warehouse start
 POLL_SECONDS = 1.0
 
@@ -195,27 +196,26 @@ class DatabricksStore:
         check_host(self.settings.host or "")
         self._client = client
         self._sleep = sleep
+        self._client_lock = threading.Lock()
 
     # -- client --
 
     @property
     def client(self) -> Any:
-        if self._client is None:
-            self._client = self._make_client()
-        return self._client
+        with self._client_lock:  # one SDK client per store, even when threads race on first use
+            if self._client is None:
+                self._client = self._make_client()
+            return self._client
 
     def _make_client(self) -> Any:
         from databricks.sdk import WorkspaceClient
         from databricks.sdk.core import Config
 
-        class _Config(Config):
-            # The SDK probes <host>/.well-known/databricks-config while building a Config. It is a
-            # best-effort OAuth discovery call we never need (PAT auth) and it would block for the
-            # whole retry budget when the workspace is unreachable; skip it.
-            def _resolve_host_metadata(self) -> None:  # pragma: no cover - SDK internals
-                return None
-
-        cfg = _Config(
+        # Config() probes <host>/.well-known/databricks-config once (best-effort OAuth discovery
+        # we do not need with a PAT); it is bounded by the short timeouts below and runs lazily,
+        # on first use, in whichever background thread first needs the client. Config must not be
+        # subclassed: the SDK collects its attributes from the class itself.
+        cfg = Config(
             host=self.settings.host,
             token=self.settings.token,
             auth_type="pat",

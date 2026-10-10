@@ -62,7 +62,7 @@ ALLOWED_HOSTS = [
 REMOTE_LIST_TTL_SECONDS = 60.0  # how long the shared store's report list is reused
 REMOTE_FAIL_TTL_SECONDS = 20.0  # how long an "offline" answer is reused before retrying
 REMOTE_WAIT_SECONDS = 1.0  # how long /companies waits for a cold list refresh before serving
-REMOTE_MISS_WAIT_SECONDS = 60.0  # on a local miss, how long /comparison may wait for the store
+REMOTE_MISS_WAIT_SECONDS = 20.0  # on a local miss, how long /comparison may wait for the store
 HEALTH_TTL_SECONDS = 15.0
 HEALTH_TIMEOUT_SECONDS = 5.0
 TRENDS_TTL_SECONDS = 60.0
@@ -179,6 +179,15 @@ class RemoteLibrary:
             self.reports_at = 0.0
             self._trends = None
 
+    def recently_offline(self) -> bool:
+        """The last list refresh failed and that answer is still within its TTL: do not make a
+        request wait on the store again."""
+        with self.lock:
+            return (
+                self.reports_ok is False
+                and time.monotonic() - self.reports_at < REMOTE_LIST_TTL_SECONDS
+            )
+
     def current_rows(self) -> list[dict]:
         """One row per ticker: the newest filing pair among the current reports."""
         best: dict[str, dict] = {}
@@ -220,7 +229,7 @@ class RemoteLibrary:
     def pull_for_ticker(self, ticker: str, published_dir: Path, *, wait: float) -> Path | None:
         """Local miss: find the ticker's current report in the store, download + verify it, save it
         under published_dir and return the path. Any failure -> None (the caller answers 404)."""
-        if self.store() is None:
+        if self.store() is None or self.recently_offline():
             return None
         self.ensure_fresh(wait)
         row = next((r for r in self.current_rows() if r.get("ticker") == ticker), None)
@@ -278,6 +287,14 @@ class RemoteLibrary:
         with self.lock:
             if self._trends and time.monotonic() - self._trends[0] < TRENDS_TTL_SECONDS:
                 return self._trends[1]
+        if self.recently_offline():
+            return {
+                "available": False,
+                "remote": "offline",
+                "companies": 0,
+                "by_category": [],
+                "by_kind": [],
+            }
         s = store.settings
         try:
             count = store.execute(tables.company_count_sql(s), {"current": True})

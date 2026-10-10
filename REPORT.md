@@ -299,3 +299,72 @@ Demo advice recorded from the judge: open with the counterparty new risk (card �
 sentence), then the export-controls China section with the $4.5 billion line and a citation click; do not
 scroll "How this was scored" on the old file until the re-run replaces it.
 
+## 11. Shared report library (Databricks session, D1–D7)
+
+Goal: any teammate's `uv run python -m pipeline.run AAPL` lands in one shared library that every running copy of
+the app reads, with local files still the fast path and the app fully working without Databricks.
+
+**Ran against mocks only.** This sandbox has no Databricks workspace or credentials, so every component was built
+and tested against a fake SDK client (Files API + Statement Execution) and simulated Delta tables. Nothing was
+uploaded anywhere. What the team must do once (about ten minutes, one person):
+
+1. Databricks workspace with Unity Catalog; create catalog `riskdiff` (or set `DATABRICKS_CATALOG`); create a SQL
+   warehouse (serverless) and copy its id.
+2. Personal access token → `.env`: `DATABRICKS_HOST=https://<workspace host>`, `DATABRICKS_TOKEN`,
+   `DATABRICKS_WAREHOUSE_ID`.
+3. `uv run python scripts/databricks_setup.py` (twice, to see the second run is a no-op).
+4. `uv run python scripts/sync_to_databricks.py` (uploads NVDA and SF), then the delete-local-and-reload check:
+   move `data/published/NVDA_2025_2026.json` aside, start the API, open `/c/NVDA`; the file reappears byte-identical
+   (`cmp`) and the page loads; `GET /store/health` → `{"remote": "ok"}`; `/trends` shows 2 companies.
+5. Every other teammate: their own token in `.env`; nothing else.
+
+If a step fails, the error names the typed store error (`store_auth`, `store_unavailable`, `store_query`,
+`store_integrity`) and never the token.
+
+**What was built**
+
+| Piece | Where |
+|---|---|
+| Client wrapper (upload/download/list/execute/health, timeouts, 2 retries, typed errors) | `pipeline/store/databricks.py` |
+| Table definitions, row builders, parameterized MERGE/flip/list/trends SQL | `pipeline/store/tables.py` |
+| Publish step (upload → MERGE reports, changes, highlights → flip current) | `pipeline/store/publisher.py`, hooked in `pipeline/run.py` (`--no-remote`, exit 3 on remote-only failure) |
+| Setup + sync scripts | `scripts/databricks_setup.py`, `scripts/sync_to_databricks.py` |
+| API: library merge, read-through pull with verification, `/store/health`, `/trends` | `api/main.py` |
+| Settings + host validation + single-host allowlist | `pipeline/config.py`, `pipeline/http.py` |
+| Frontend: library labels, publisher/date, store indicator, Trends page | `web/` (see D5/D6 below) |
+| Tests (fake SDK, simulated tables, fake store for the API) | `tests/test_store.py`, `tests/test_store_publish.py`, `tests/test_api_store.py` |
+
+**Invariants and the session's additional rules, checked**
+
+* Only one host joins the allowlist: the hostname of `DATABRICKS_HOST`, after validation (https, no path, known
+  Databricks domain); `check_host` still refuses every other host, including other workspaces on the same domain
+  (test `test_allowlist_admits_only_the_configured_workspace`).
+* All SQL is parameterized (`:name` markers, typed parameters); identifiers are code constants plus the validated,
+  back-quoted catalog/schema/volume names; rows travel as one JSON parameter. No user input reaches SQL (tickers
+  are validated before any lookup and are never interpolated).
+* The Volume file is the exact local bytes (`upload_report` sends `path.read_bytes()`; the publisher never
+  re-serializes); tables are derived and rebuildable with the sync script.
+* A downloaded report is used only after contract validation, `analysis_id` recomputation from its own fields
+  and the content-hash check against the `reports` row (tests cover a tampered file, a forged provenance, a
+  wrong id, a fixture and a path outside the Volume).
+* Databricks is never required: with no variables set `/store/health` says `disabled` and everything is local;
+  with it configured but unreachable, local reports load, the list refresh fails in the background and the
+  footer says offline; a local file is always served without touching the store (test
+  `test_local_hit_never_touches_the_store`).
+* Credentials: read only in `pipeline/config.py` (server side), never logged (`redacted()` prints presence only),
+  never in `web/` (`grep DATABRICKS web/src` is empty), never in git (`.env` is ignored; `.env.example` has
+  placeholders).
+* The published JSON contract did not change; `CompanyCard` is unchanged and the API adds the library fields as
+  extra keys.
+* Determinism: the remote step runs after the local publish and adds nothing to the JSON (`published_at`
+  exists only in the table), so the byte-identical/identical-`analysis_id` guarantee is untouched.
+
+**Measured here with the real SDK against an unreachable workspace** (`DATABRICKS_HOST` set to a non-existent
+Azure workspace, local NVDA on disk): `/store/health` → `offline` at its 5 s cap; `/companies` → local NVDA in
+1.0 s; `/comparison/NVDA` → 200 in 47 ms (never touches the store); after the background refresh recorded the
+failure, `/comparison/ACME` (a miss) → 404 in 3 ms and `/trends` → `available: false, remote: offline` in 2 ms;
+the token never appears in the log.
+
+**Next smallest safe task:** run the five steps above against a real workspace and record the output in this
+section; then add a nightly `scripts/sync_to_databricks.py` run (or a `--rebuild-tables` flag that re-derives the
+three tables from the Volume) so the tables can be regenerated after a schema change.
