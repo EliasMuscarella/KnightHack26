@@ -1,26 +1,188 @@
 @import "tailwindcss";
 
+/*
+ * RiskDiff design tokens. Calm neutral palette, light scheme only (desktop, dense legal text).
+ * All text/background pairs below meet WCAG AA (>= 4.5:1) for body-size text.
+ */
+@theme {
+  --color-paper: #f6f6f3;
+  --color-surface: #ffffff;
+  --color-sunken: #efeee9;
+  --color-line: #dfddd6;
+  --color-line-strong: #b9b6ac;
+  --color-ink: #1b1d21;
+  --color-ink-muted: #4b4f57;
+  --color-ink-faint: #61656d;
+  --color-accent: #1d4f7c;
+  --color-accent-strong: #143a5c;
+  --color-accent-bg: #e8eff6;
+
+  --color-add-bg: #e2f2e6;
+  --color-add-fg: #14532d;
+  --color-add-line: #2f7d4a;
+  --color-del-bg: #fbe6e5;
+  --color-del-fg: #7f1d1d;
+  --color-del-line: #b42318;
+  --color-mod-bg: #fbf1d6;
+  --color-mod-fg: #5f3b00;
+  --color-mod-line: #b7791f;
+  --color-exp-bg: #e6edfa;
+  --color-exp-fg: #1e3a7b;
+  --color-exp-line: #4f6fb8;
+  --color-red-bg: #f3ebe3;
+  --color-red-fg: #6b3410;
+  --color-red-line: #a2643a;
+  --color-neutral-bg: #eeede8;
+
+  --color-ai-bg: #f3f1fb;
+  --color-ai-line: #6d5fd3;
+  --color-ai-fg: #3a2e8c;
+
+  --color-fixture-bg: #fff4c2;
+  --color-fixture-fg: #4a3500;
+  --color-fixture-line: #a47c00;
+
+  --color-flash: #fff3b0;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif;
+  --font-serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, "Source Serif Pro", "Noto Serif",
+    "DejaVu Serif", Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono",
+    monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-padding-top: 140px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Filing text ---------- */
+
+.filing-text {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+}
+
+.filing-text.is-unchanged {
+  color: var(--color-ink-faint);
+}
+
+.filing-text.is-heading {
+  font-family: var(--font-sans);
+  font-weight: 650;
+  font-size: 1.0625rem;
+  line-height: 1.45;
+  color: var(--color-ink);
+}
+
+.filing-text .added-text {
+  text-decoration: underline;
+  text-decoration-color: var(--color-add-line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.filing-text .removed-text {
+  text-decoration: line-through;
+  text-decoration-color: var(--color-del-line);
+  text-decoration-thickness: 2px;
+}
+
+/* Word-level spans inside modified sentences. */
+ins.span-ins {
+  background: var(--color-add-bg);
+  color: var(--color-add-fg);
+  text-decoration: underline;
+  text-decoration-color: var(--color-add-line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+del.span-del {
+  background: var(--color-del-bg);
+  color: var(--color-del-fg);
+  text-decoration: line-through;
+  text-decoration-color: var(--color-del-line);
+  text-decoration-thickness: 2px;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+.span-mark {
+  font-family: var(--font-mono);
+  font-size: 0.7em;
+  font-weight: 700;
+  vertical-align: 0.35em;
+  margin-right: 1px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Temporary highlight for a cited sentence (ring + background + left marker). */
+.cite-flash {
+  background: var(--color-flash) !important;
+  box-shadow:
+    0 0 0 2px var(--color-ink),
+    0 0 0 5px var(--color-flash);
+  transition: background 0.3s ease;
+}
+
+.cite-target {
+  scroll-margin-top: 160px;
+  scroll-margin-bottom: 80px;
+}
+
+/* ---------- Markdown (EVAL.md) ---------- */
+
+.md {
+  font-size: 1rem;
+  line-height: 1.65;
+  max-width: 80ch;
+}
+.md h1 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+.md h2 { font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
+.md h3 { font-size: 1.05rem; font-weight: 650; margin: 1.25rem 0 0.5rem; }
+.md p { margin: 0.6rem 0; }
+.md ul { list-style: disc; padding-left: 1.5rem; margin: 0.6rem 0; }
+.md ol { list-style: decimal; padding-left: 1.5rem; margin: 0.6rem 0; }
+.md code { font-family: var(--font-mono); font-size: 0.9em; background: var(--color-sunken); padding: 0.05rem 0.3rem; border-radius: 3px; }
+.md pre { background: var(--color-sunken); padding: 0.75rem 1rem; border-radius: 6px; overflow-x: auto; }
+.md pre code { background: none; padding: 0; }
+.md table { border-collapse: collapse; margin: 0.75rem 0; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.md th, .md td { border: 1px solid var(--color-line); padding: 0.35rem 0.7rem; text-align: left; }
+.md th { background: var(--color-sunken); font-weight: 650; }
+.md a { color: var(--color-accent); text-decoration: underline; }
+.md blockquote { border-left: 3px solid var(--color-line-strong); padding-left: 1rem; color: var(--color-ink-muted); }
+
+@keyframes rd-spin {
+  to { transform: rotate(360deg); }
+}
+.rd-spin {
+  animation: rd-spin 0.9s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rd-spin { animation-duration: 3s; }
 }

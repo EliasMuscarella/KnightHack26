@@ -18,8 +18,8 @@ from pipeline.schema import (  # noqa: E402
     CATEGORIES,
     CHANGE_TYPES,
     SCHEMA_VERSION,
-    Comparison,
     CompanyCard,
+    Comparison,
     StageEvent,
 )
 
