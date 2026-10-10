@@ -1,0 +1,24 @@
+{
+  "matcher": null,
+  "consistency": {
+    "status": "blocked",
+    "reason": "LLM stage unavailable: HF_TOKEN is not set; GEMINI_API_KEY is not set",
+    "ticker": "FIXTUR"
+  },
+  "determinism": {
+    "status": "ok",
+    "ticker": "FIXTUR",
+    "byte_identical": true,
+    "analysis_id_identical": true,
+    "analysis_id": "f551f065a90e02194bf320c1aa4f7e0685702cc19935a7f9c3d62cadf8baaa47",
+    "bytes": 165893,
+    "second_run_cache_misses": [],
+    "is_fixture": true
+  },
+  "validator": {
+    "files": 0,
+    "claims_total": 0,
+    "claims_dropped": 0,
+    "top_reasons": []
+  }
+}
