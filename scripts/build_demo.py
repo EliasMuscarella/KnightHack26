@@ -35,18 +35,21 @@ def substance(comp: Comparison) -> tuple[int, int]:
 
 
 def best_moment(comp: Comparison) -> dict | None:
+    """The top-ranked highlight (verbatim sentence ids), falling back to the first cited body
+    sentence of the top-scoring change."""
+    by_id = {c.id: c for c in comp.changes}
+    for h in comp.highlights:
+        sid = h.new_sentence_id or h.old_sentence_id
+        loc = comp.sentence_index.get(sid) if sid else None
+        c = by_id.get(h.change_id)
+        if loc and c:
+            return {"change": c, "kind": h.kind, "detail": h.detail, "sid": sid, "text": loc.text, "side": loc.side, "label": None, "line": None}
     for c in comp.changes:  # ranked by score already
         for line in c.score_breakdown:
             for sid in line.cited_sentence_ids:
                 loc = comp.sentence_index.get(sid)
                 if loc and not loc.is_heading:
-                    return {
-                        "change": c,
-                        "line": line,
-                        "sid": sid,
-                        "text": loc.text,
-                        "side": loc.side,
-                    }
+                    return {"change": c, "kind": None, "detail": line.detail, "sid": sid, "text": loc.text, "side": loc.side, "line": line}
     return None
 
 
@@ -88,7 +91,7 @@ def main() -> int:
         return 0
     scratch = settings.data_dir / "scratch"
     scratch.mkdir(parents=True, exist_ok=True)
-    for t, _, path in dropped:
+    for _ticker, _, path in dropped:
         shutil.move(str(path), str(scratch / path.name))
     lines = [
         "# DEMO",

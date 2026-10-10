@@ -89,3 +89,4 @@ class SegmentedFiling(Internal):
     word_count: int
     char_count: int
     splitter: str
+    skipped_units: int = 0

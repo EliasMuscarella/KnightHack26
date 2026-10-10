@@ -325,6 +325,7 @@
           "text": "FIXTURE: We are qualifying an additional foundry in Northland, which we expect to take at least 18 months."
         }
       ],
+      "short_title": "FIXTURE: Reliance on outside foundries",
       "signals": {
         "added_text_ratio": 0.3937,
         "category_scores": {
@@ -588,6 +589,7 @@
           "text": "FIXTURE: Additional tariffs announced by the Westland Trade Commission in March 2025 could apply to our products."
         }
       ],
+      "short_title": "FIXTURE: Trade policy and tariffs",
       "signals": {
         "added_text_ratio": 0.5082,
         "category_scores": {
@@ -785,6 +787,7 @@
           "text": "FIXTURE: If our models produce inaccurate or biased outputs, our customers may lose confidence in our products."
         }
       ],
+      "short_title": "FIXTURE: Artificial intelligence exposure",
       "signals": {
         "added_text_ratio": 1.0,
         "category_scores": {
@@ -1268,6 +1271,7 @@
           "text": "FIXTURE: We may incur significant costs to remediate security incidents, and our insurance may not cover all losses."
         }
       ],
+      "short_title": "FIXTURE: Cybersecurity and ransomware",
       "signals": {
         "added_text_ratio": 0.5303,
         "category_scores": {
@@ -1417,6 +1421,7 @@
           "text": "FIXTURE: If the acquisition is not completed, we may be required to pay a termination fee of $450 million."
         }
       ],
+      "short_title": "FIXTURE: Pending Gadgetron acquisition",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -1635,6 +1640,7 @@
           "text": "FIXTURE: We do not hedge translation exposure for our subsidiaries in Southland."
         }
       ],
+      "short_title": "FIXTURE: Currency exchange rates",
       "signals": {
         "added_text_ratio": 0.0222,
         "category_scores": {
@@ -1761,6 +1767,7 @@
           "text": "FIXTURE: If we fail to compete effectively, our market share and margins could decline."
         }
       ],
+      "short_title": "FIXTURE: Competition in the widget market",
       "signals": {
         "added_text_ratio": 0.0,
         "category_scores": {
@@ -1795,6 +1802,48 @@
     "ticker": "FIXTUR"
   },
   "filing_selection_note": "FIXTURE: two most recent original 10-K filings; amendments (10-K/A) excluded",
+  "highlights": [
+    {
+      "change_id": "d434664e80f07fbb",
+      "detail": "FIXTURE: may affect -> have affected",
+      "kind": "potential_became_actual",
+      "new_sentence_id": "0000000000-25-000001:0:4",
+      "old_sentence_id": "0000000000-24-000001:0:3",
+      "short_title": "FIXTURE: Reliance on outside foundries"
+    },
+    {
+      "change_id": "d434664e80f07fbb",
+      "detail": null,
+      "kind": "potential_became_actual",
+      "new_sentence_id": "0000000000-25-000001:0:3",
+      "old_sentence_id": null,
+      "short_title": "FIXTURE: Reliance on outside foundries"
+    },
+    {
+      "change_id": "530f7128dc266e93",
+      "detail": "FIXTURE: could increase -> have increased",
+      "kind": "potential_became_actual",
+      "new_sentence_id": "0000000000-25-000001:5:0",
+      "old_sentence_id": "0000000000-24-000001:5:0",
+      "short_title": "FIXTURE: Trade policy and tariffs"
+    },
+    {
+      "change_id": "530f7128dc266e93",
+      "detail": "FIXTURE: 3%",
+      "kind": "new_figure",
+      "new_sentence_id": "0000000000-25-000001:5:1",
+      "old_sentence_id": null,
+      "short_title": "FIXTURE: Trade policy and tariffs"
+    },
+    {
+      "change_id": "0f18522a41433ec5",
+      "detail": "FIXTURE: 30%",
+      "kind": "new_figure",
+      "new_sentence_id": "0000000000-25-000001:3:1",
+      "old_sentence_id": "0000000000-24-000001:3:1",
+      "short_title": "FIXTURE: Currency exchange rates"
+    }
+  ],
   "is_fixture": true,
   "model_ids": {
     "category_method": "FIXTURE: fake-method",
