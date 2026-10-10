@@ -2,20 +2,24 @@ import Link from "next/link";
 
 import { CompanyGrid } from "@/components/CompanyGrid";
 import { HighlightCard } from "@/components/HighlightCard";
+import { TickerTape } from "@/components/TickerTape";
 import { TickerSearch } from "@/components/TickerSearch";
 import { EmptyState, FixtureBanner, PageContainer, SectionTitle } from "@/components/ui";
+import { getTickerTapeFromApi } from "@/lib/api";
 import { getHero, listCompanies } from "@/lib/data";
 import { displayName } from "@/lib/names";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [companies, hero] = await Promise.all([listCompanies(), getHero()]);
+  // The tape waits at most 1.5s here (in parallel with the library listing); it refreshes client-side.
+  const [companies, hero, tape] = await Promise.all([listCompanies(), getHero(), getTickerTapeFromApi(1500)]);
   const hasFixture = companies.some((c) => c.is_fixture);
   const reports = companies.filter((c) => !c.is_fixture);
 
   return (
     <>
+      <TickerTape initial={tape} />
       {hasFixture ? <FixtureBanner /> : null}
       <section className="border-b border-line bg-surface">
         <PageContainer className="py-12">
