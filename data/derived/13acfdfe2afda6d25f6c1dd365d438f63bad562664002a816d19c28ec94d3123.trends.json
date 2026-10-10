@@ -451,7 +451,7 @@
   ],
   "cik": "0001045810",
   "company_name": "NVIDIA CORP",
-  "derivation": "1.1.0+topics1",
+  "derivation": "1.2.1+topics1",
   "new_accession": "0001045810-26-000021",
   "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
   "new_fiscal_year": 2026,
@@ -512,25 +512,6 @@
     {
       "added_spans": [
         [
-          140,
-          143
-        ]
-      ],
-      "change_id": "a4156a06454f6dfd",
-      "matched_terms": [
-        "CSP market"
-      ],
-      "position": 15,
-      "sentence_id": "0001045810-26-000021:21:7",
-      "source": "phrase",
-      "status": "modified",
-      "text": "For example, the French Competition Authority collected information from us regarding our business and competition in the graphics card and CSP market as part of an ongoing inquiry into competition in those markets.",
-      "ticker": "NVDA",
-      "topic": "csp market"
-    },
-    {
-      "added_spans": [
-        [
           102,
           159
         ]
@@ -546,33 +527,6 @@
       "text": "Several states are considering enacting or have already enacted regulations concerning AI technologies, with new state laws that took effect on January 1, 2026, which may impact our ability to train, deploy, or release AI models, and increase our compliance costs.",
       "ticker": "NVDA",
       "topic": "state law"
-    },
-    {
-      "added_spans": [
-        [
-          16,
-          24
-        ],
-        [
-          31,
-          44
-        ],
-        [
-          194,
-          209
-        ]
-      ],
-      "change_id": "a4156a06454f6dfd",
-      "matched_terms": [
-        "non-data center products"
-      ],
-      "position": 67,
-      "sentence_id": "0001045810-26-000021:21:33",
-      "source": "phrase",
-      "status": "modified",
-      "text": "Export controls have and could in the future disrupt our supply chain and distribution channels, negatively impacting our ability to serve demand, including in markets outside China and for our non-data center products.",
-      "ticker": "NVDA",
-      "topic": "non data center product"
     },
     {
       "added_spans": [
@@ -643,37 +597,6 @@
       "text": "On September 15, 2025, China’s antitrust regulators published their preliminary finding that our compliance with applicable U.S. export controls, which required us to offer degraded products to the Chinese market, discriminated unfairly against customers in the China market and therefore violated the terms of China’s approval of our Mellanox acquisition.",
       "ticker": "NVDA",
       "topic": "preliminary finding"
-    },
-    {
-      "added_spans": [
-        [
-          54,
-          91
-        ],
-        [
-          251,
-          266
-        ],
-        [
-          292,
-          301
-        ],
-        [
-          310,
-          311
-        ]
-      ],
-      "change_id": "a4156a06454f6dfd",
-      "matched_terms": [
-        "networking business"
-      ],
-      "position": 85,
-      "sentence_id": "0001045810-26-000021:21:42",
-      "source": "phrase",
-      "status": "modified",
-      "text": "If regulators conclude that we have failed to fulfill the terms of our Mellanox acquisition or we have violated any applicable law in China, we could be subject to financial penalties, restrictions on our ability to conduct our business, restrictions or other orders regarding our networking business, products, and services, or otherwise impact our operations in China, any of which could have a material and adverse impact on our business, operating results and financial condition.",
-      "ticker": "NVDA",
-      "topic": "networking business"
     },
     {
       "added_spans": [
@@ -1110,44 +1033,6 @@
       ],
       "change_id": "a4156a06454f6dfd",
       "matched_terms": [
-        "Biden Administration"
-      ],
-      "position": 154,
-      "sentence_id": "0001045810-26-000021:21:71",
-      "source": "entity",
-      "status": "added",
-      "text": "The GAIN AI Act would restrict the Trump Administration’s ability to adapt the Biden Administration’s export control rules, and could also allow private U.S. persons to review and overturn licensing and foreign policy decisions made by the Trump Administration.",
-      "ticker": "NVDA",
-      "topic": "Biden Administration"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          261
-        ]
-      ],
-      "change_id": "a4156a06454f6dfd",
-      "matched_terms": [
-        "Trump Administration"
-      ],
-      "position": 154,
-      "sentence_id": "0001045810-26-000021:21:71",
-      "source": "entity",
-      "status": "added",
-      "text": "The GAIN AI Act would restrict the Trump Administration’s ability to adapt the Biden Administration’s export control rules, and could also allow private U.S. persons to review and overturn licensing and foreign policy decisions made by the Trump Administration.",
-      "ticker": "NVDA",
-      "topic": "Trump Administration"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          261
-        ]
-      ],
-      "change_id": "a4156a06454f6dfd",
-      "matched_terms": [
         "foreign policy decisions"
       ],
       "position": 154,
@@ -1454,25 +1339,6 @@
       "text": "Incorrect allegations that our compliance efforts satisfy the letter but not the “spirit” of the applicable regulations, as well as incorrect allegations that legitimate and appropriate business is using supposed “loopholes” in the export controls may negatively impact our business, relationships with partners and customers, and our reputation.",
       "ticker": "NVDA",
       "topic": "supposed loophole"
-    },
-    {
-      "added_spans": [
-        [
-          21,
-          48
-        ]
-      ],
-      "change_id": "a4156a06454f6dfd",
-      "matched_terms": [
-        "Connected Vehicle” restrictions"
-      ],
-      "position": 203,
-      "sentence_id": "0001045810-26-000021:21:100",
-      "source": "phrase",
-      "status": "modified",
-      "text": "For example, the USG adopted “Connected Vehicle” restrictions on the import and sale of certain automotive products in the United States, which if adopted and interpreted broadly, could impact our ability to develop and supply solutions for our automotive customers.",
-      "ticker": "NVDA",
-      "topic": "connected vehicle restriction"
     },
     {
       "added_spans": [
@@ -2292,318 +2158,6 @@
       "text": "Customers may delay adopting new architectures if their data center infrastructure is not ready, which could affect the timing of our revenue.",
       "ticker": "NVDA",
       "topic": "data center infrastructure"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          27
-        ],
-        [
-          31,
-          34
-        ],
-        [
-          42,
-          50
-        ],
-        [
-          63,
-          65
-        ],
-        [
-          84,
-          153
-        ]
-      ],
-      "change_id": "b7c169267209801d",
-      "matched_terms": [
-        "direct customer"
-      ],
-      "position": 5,
-      "sentence_id": "0001045810-26-000021:16:2",
-      "source": "phrase",
-      "status": "modified",
-      "text": "For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute & Networking segment.",
-      "ticker": "NVDA",
-      "topic": "direct customer"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          70
-        ]
-      ],
-      "change_id": "472606c9d458f2e9",
-      "matched_terms": [
-        "OpenAI"
-      ],
-      "position": 27,
-      "sentence_id": "0001045810-26-000021:15:15",
-      "source": "entity",
-      "status": "added",
-      "text": "We are finalizing an investment and partnership agreement with OpenAI.",
-      "ticker": "NVDA",
-      "topic": "OpenAI"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          70
-        ]
-      ],
-      "change_id": "472606c9d458f2e9",
-      "matched_terms": [
-        "investment and partnership agreement"
-      ],
-      "position": 27,
-      "sentence_id": "0001045810-26-000021:15:15",
-      "source": "phrase",
-      "status": "added",
-      "text": "We are finalizing an investment and partnership agreement with OpenAI.",
-      "ticker": "NVDA",
-      "topic": "investment and partnership agreement"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          138
-        ]
-      ],
-      "change_id": "472606c9d458f2e9",
-      "matched_terms": [
-        "investment and partnership agreement"
-      ],
-      "position": 28,
-      "sentence_id": "0001045810-26-000021:15:16",
-      "source": "phrase",
-      "status": "added",
-      "text": "There is no assurance that we will enter into an investment and partnership agreement with OpenAI or that a transaction will be completed.",
-      "ticker": "NVDA",
-      "topic": "investment and partnership agreement"
-    },
-    {
-      "added_spans": [
-        [
-          178,
-          201
-        ]
-      ],
-      "change_id": "3efe394c13cfbc9c",
-      "matched_terms": [
-        "intellectual property"
-      ],
-      "position": 3,
-      "sentence_id": "0001045810-26-000021:27:1",
-      "source": "phrase",
-      "status": "modified",
-      "text": "We currently and will likely continue to face legal, administrative and regulatory proceedings, claims, demands and/or investigations involving shareholder, consumer, competition, intellectual property and/or other issues relating to our business.",
-      "ticker": "NVDA",
-      "topic": "intellectual property"
-    },
-    {
-      "added_spans": [
-        [
-          26,
-          27
-        ],
-        [
-          41,
-          99
-        ]
-      ],
-      "change_id": "514830a330b756d7",
-      "matched_terms": [
-        "cash management purposes"
-      ],
-      "position": 22,
-      "sentence_id": "0001045810-26-000021:10:11",
-      "source": "phrase",
-      "status": "modified",
-      "text": "Additionally, we maintain a portfolio of liquid investments for cash management purposes, including various holdings, types, and maturities.",
-      "ticker": "NVDA",
-      "topic": "cash management purpose"
-    },
-    {
-      "added_spans": [
-        [
-          26,
-          27
-        ],
-        [
-          41,
-          99
-        ]
-      ],
-      "change_id": "514830a330b756d7",
-      "matched_terms": [
-        "liquid investments"
-      ],
-      "position": 22,
-      "sentence_id": "0001045810-26-000021:10:11",
-      "source": "phrase",
-      "status": "modified",
-      "text": "Additionally, we maintain a portfolio of liquid investments for cash management purposes, including various holdings, types, and maturities.",
-      "ticker": "NVDA",
-      "topic": "liquid investment"
-    },
-    {
-      "added_spans": [],
-      "change_id": "6ef9abded50fdc62",
-      "matched_terms": [
-        "exceptional talent"
-      ],
-      "position": 3,
-      "sentence_id": "0001045810-26-000021:18:1",
-      "source": "phrase",
-      "status": "modified",
-      "text": "To remain competitive and successfully execute our business strategy, we must attract, retain, and motivate our executives and key employees, as well as recruit and develop exceptional talent.",
-      "ticker": "NVDA",
-      "topic": "exceptional talent"
-    },
-    {
-      "added_spans": [
-        [
-          34,
-          39
-        ]
-      ],
-      "change_id": "8789091d41a73853",
-      "matched_terms": [
-        "FDDEI deduction"
-      ],
-      "position": 15,
-      "sentence_id": "0001045810-26-000021:26:7",
-      "source": "phrase",
-      "status": "modified",
-      "text": "If U.S. tax rates increase or the FDDEI deduction is reduced, our provision for income taxes, results of operations, net income, and cash flows would be adversely affected.",
-      "ticker": "NVDA",
-      "topic": "fddei deduction"
-    },
-    {
-      "added_spans": [
-        [
-          132,
-          266
-        ]
-      ],
-      "change_id": "8789091d41a73853",
-      "matched_terms": [
-        "coordination mechanisms"
-      ],
-      "position": 19,
-      "sentence_id": "0001045810-26-000021:26:9",
-      "source": "phrase",
-      "status": "modified",
-      "text": "A number of countries in which we conduct business have enacted, or are in the process of enacting, elements of the Pillar Two rules, including the recently released \"side-by-side\" framework, which provides certain additional safe harbors and coordination mechanisms.",
-      "ticker": "NVDA",
-      "topic": "coordination mechanism"
-    },
-    {
-      "added_spans": [
-        [
-          132,
-          266
-        ]
-      ],
-      "change_id": "8789091d41a73853",
-      "matched_terms": [
-        "safe harbors"
-      ],
-      "position": 19,
-      "sentence_id": "0001045810-26-000021:26:9",
-      "source": "phrase",
-      "status": "modified",
-      "text": "A number of countries in which we conduct business have enacted, or are in the process of enacting, elements of the Pillar Two rules, including the recently released \"side-by-side\" framework, which provides certain additional safe harbors and coordination mechanisms.",
-      "ticker": "NVDA",
-      "topic": "safe harbor"
-    },
-    {
-      "added_spans": [
-        [
-          34,
-          57
-        ],
-        [
-          66,
-          78
-        ]
-      ],
-      "change_id": "8910beb6333642bd",
-      "matched_terms": [
-        "data protection incidents"
-      ],
-      "position": 5,
-      "sentence_id": "0001045810-26-000021:3:2",
-      "source": "phrase",
-      "status": "modified",
-      "text": "Product, system security and data protection incidents or breaches, as well as cyber-attacks could disrupt our operations and adversely affect our financial condition, stock price and reputation.",
-      "ticker": "NVDA",
-      "topic": "data protection incident"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          145
-        ]
-      ],
-      "change_id": "8910beb6333642bd",
-      "matched_terms": [
-        "counterparty risks"
-      ],
-      "position": 14,
-      "sentence_id": "0001045810-26-000021:3:7",
-      "source": "lexicon",
-      "status": "added",
-      "text": "Commercial arrangements expose us to counterparty risks, which may negatively impact our business, financial condition, or results of operations.",
-      "ticker": "NVDA",
-      "topic": "Counterparty and credit risk"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          145
-        ]
-      ],
-      "change_id": "8910beb6333642bd",
-      "matched_terms": [
-        "Commercial arrangements"
-      ],
-      "position": 14,
-      "sentence_id": "0001045810-26-000021:3:7",
-      "source": "phrase",
-      "status": "added",
-      "text": "Commercial arrangements expose us to counterparty risks, which may negatively impact our business, financial condition, or results of operations.",
-      "ticker": "NVDA",
-      "topic": "commercial arrangement"
-    },
-    {
-      "added_spans": [
-        [
-          54,
-          56
-        ],
-        [
-          68,
-          90
-        ]
-      ],
-      "change_id": "ad4f3805e248f79e",
-      "matched_terms": [
-        "sustainability-related laws"
-      ],
-      "position": 17,
-      "sentence_id": "0001045810-26-000021:14:8",
-      "source": "phrase",
-      "status": "modified",
-      "text": "Our business and those of our suppliers and customers is subject to sustainability-related laws, regulations and lawsuits.",
-      "ticker": "NVDA",
-      "topic": "sustainability related law"
     }
   ],
   "total_changes": 29

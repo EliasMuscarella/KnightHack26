@@ -435,7 +435,7 @@
   ],
   "cik": "0000720672",
   "company_name": "STIFEL FINANCIAL CORP",
-  "derivation": "1.1.0+topics1",
+  "derivation": "1.2.1+topics1",
   "new_accession": "0001193125-26-067130",
   "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/720672/000119312526067130/sf-20251231.htm",
   "new_fiscal_year": 2025,
@@ -620,45 +620,6 @@
     {
       "added_spans": [
         [
-          54,
-          65
-        ],
-        [
-          156,
-          162
-        ],
-        [
-          261,
-          273
-        ],
-        [
-          295,
-          319
-        ],
-        [
-          457,
-          477
-        ],
-        [
-          482,
-          500
-        ]
-      ],
-      "change_id": "3b93c57e20a358e4",
-      "matched_terms": [
-        "supply-chain attacks"
-      ],
-      "position": 40,
-      "sentence_id": "0001193125-26-067130:14:21",
-      "source": "phrase",
-      "status": "modified",
-      "text": "Despite our implementation of protective measures and our efforts to modify them as circumstances warrant, our computer systems, software, and networks may remain vulnerable to human error, equipment failure, natural disasters, power loss, unauthorized access, supply-chain attacks, distributed denial-of-service (DDoS) attacks, zero-day vulnerabilities, computer viruses and other malicious code, and other events that could result in significant liability, reputational harm, and ongoing disruption to our operations.",
-      "ticker": "SF",
-      "topic": "supply chain attack"
-    },
-    {
-      "added_spans": [
-        [
           34,
           47
         ],
@@ -702,100 +663,6 @@
       "text": "In addition, although we maintain cybersecurity insurance as one component of our broader risk-mitigation strategy, coverage is subject to policy terms, exclusions, and limits and may be insufficient to cover all losses, including litigation costs or losses that exceed policy limits or are otherwise excluded.",
       "ticker": "SF",
       "topic": "broader risk mitigation strategy"
-    },
-    {
-      "added_spans": [
-        [
-          34,
-          47
-        ],
-        [
-          58,
-          115
-        ],
-        [
-          125,
-          127
-        ],
-        [
-          139,
-          145
-        ],
-        [
-          151,
-          164
-        ],
-        [
-          169,
-          175
-        ],
-        [
-          221,
-          230
-        ],
-        [
-          291,
-          309
-        ]
-      ],
-      "change_id": "3b93c57e20a358e4",
-      "matched_terms": [
-        "cybersecurity insurance"
-      ],
-      "position": 42,
-      "sentence_id": "0001193125-26-067130:14:22",
-      "source": "phrase",
-      "status": "modified",
-      "text": "In addition, although we maintain cybersecurity insurance as one component of our broader risk-mitigation strategy, coverage is subject to policy terms, exclusions, and limits and may be insufficient to cover all losses, including litigation costs or losses that exceed policy limits or are otherwise excluded.",
-      "ticker": "SF",
-      "topic": "cybersecurity insurance"
-    },
-    {
-      "added_spans": [
-        [
-          34,
-          47
-        ],
-        [
-          58,
-          115
-        ],
-        [
-          125,
-          127
-        ],
-        [
-          139,
-          145
-        ],
-        [
-          151,
-          164
-        ],
-        [
-          169,
-          175
-        ],
-        [
-          221,
-          230
-        ],
-        [
-          291,
-          309
-        ]
-      ],
-      "change_id": "3b93c57e20a358e4",
-      "matched_terms": [
-        "policy terms"
-      ],
-      "position": 42,
-      "sentence_id": "0001193125-26-067130:14:22",
-      "source": "phrase",
-      "status": "modified",
-      "text": "In addition, although we maintain cybersecurity insurance as one component of our broader risk-mitigation strategy, coverage is subject to policy terms, exclusions, and limits and may be insufficient to cover all losses, including litigation costs or losses that exceed policy limits or are otherwise excluded.",
-      "ticker": "SF",
-      "topic": "policy term"
     },
     {
       "added_spans": [
@@ -894,37 +761,6 @@
       ],
       "change_id": "3b93c57e20a358e4",
       "matched_terms": [
-        "high transaction volumes"
-      ],
-      "position": 57,
-      "sentence_id": "0001193125-26-067130:14:28",
-      "source": "phrase",
-      "status": "modified",
-      "text": "Given our high transaction volumes, remote-work environment, and the large number of clients, partners, and counterparties we serve, a cyber attack could occur.",
-      "ticker": "SF",
-      "topic": "high transaction volume"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          9
-        ],
-        [
-          15,
-          34
-        ],
-        [
-          36,
-          64
-        ],
-        [
-          123,
-          131
-        ]
-      ],
-      "change_id": "3b93c57e20a358e4",
-      "matched_terms": [
         "remote-work environment"
       ],
       "position": 57,
@@ -934,37 +770,6 @@
       "text": "Given our high transaction volumes, remote-work environment, and the large number of clients, partners, and counterparties we serve, a cyber attack could occur.",
       "ticker": "SF",
       "topic": "remote work environment"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          43
-        ],
-        [
-          48,
-          57
-        ],
-        [
-          76,
-          87
-        ],
-        [
-          112,
-          120
-        ]
-      ],
-      "change_id": "3b93c57e20a358e4",
-      "matched_terms": [
-        "complete and reliable information"
-      ],
-      "position": 61,
-      "sentence_id": "0001193125-26-067130:14:30",
-      "source": "phrase",
-      "status": "modified",
-      "text": "Investigations can require substantial time and resources, and there may be significant delays before we obtain complete and reliable information.",
-      "ticker": "SF",
-      "topic": "complete and reliable information"
     },
     {
       "added_spans": [
@@ -1039,49 +844,6 @@
       "text": "During an extended investigation, we may not know the full extent of the harm or the optimal remediation path, and certain errors or malicious actions could be repeated or compounded before they are identified and remediated, which could significantly increase the costs and consequences of such an attack.",
       "ticker": "SF",
       "topic": "extended investigation"
-    },
-    {
-      "added_spans": [
-        [
-          7,
-          32
-        ],
-        [
-          37,
-          40
-        ],
-        [
-          54,
-          58
-        ],
-        [
-          81,
-          109
-        ],
-        [
-          133,
-          142
-        ],
-        [
-          199,
-          209
-        ],
-        [
-          232,
-          251
-        ]
-      ],
-      "change_id": "3b93c57e20a358e4",
-      "matched_terms": [
-        "malicious actions"
-      ],
-      "position": 63,
-      "sentence_id": "0001193125-26-067130:14:31",
-      "source": "phrase",
-      "status": "modified",
-      "text": "During an extended investigation, we may not know the full extent of the harm or the optimal remediation path, and certain errors or malicious actions could be repeated or compounded before they are identified and remediated, which could significantly increase the costs and consequences of such an attack.",
-      "ticker": "SF",
-      "topic": "malicious action"
     },
     {
       "added_spans": [
@@ -1368,33 +1130,6 @@
       "text": "These laws and regulations are increasing in complexity and may impose obligations related to data security, breach notification, cross-border data transfers, data subject rights, and recordkeeping.",
       "ticker": "SF",
       "topic": "data subject right"
-    },
-    {
-      "added_spans": [
-        [
-          25,
-          71
-        ],
-        [
-          198,
-          203
-        ],
-        [
-          286,
-          295
-        ]
-      ],
-      "change_id": "3b93c57e20a358e4",
-      "matched_terms": [
-        "criminal penalties"
-      ],
-      "position": 73,
-      "sentence_id": "0001193125-26-067130:14:36",
-      "source": "phrase",
-      "status": "modified",
-      "text": "If any person, including an associate or a third-party service provider, negligently disregards or intentionally breaches our controls or otherwise mismanages or misappropriates such data, we could incur significant monetary damages, regulatory enforcement actions, fines, and criminal penalties.",
-      "ticker": "SF",
-      "topic": "criminal penalty"
     },
     {
       "added_spans": [
@@ -2360,37 +2095,6 @@
     {
       "added_spans": [
         [
-          0,
-          2
-        ],
-        [
-          87,
-          95
-        ],
-        [
-          100,
-          107
-        ],
-        [
-          260,
-          297
-        ]
-      ],
-      "change_id": "61ffb76925cf3bc2",
-      "matched_terms": [
-        "foreign regulatory authorities"
-      ],
-      "position": 4,
-      "sentence_id": "0001193125-26-067130:20:1",
-      "source": "phrase",
-      "status": "modified",
-      "text": "We have multiple stakeholders, including our shareholders, clients, associates, federal, state, and foreign regulatory authorities, and the communities in which we operate, and these stakeholders will often have differing priorities and expectations regarding environmental, social, and governance matters.",
-      "ticker": "SF",
-      "topic": "foreign regulatory authority"
-    },
-    {
-      "added_spans": [
-        [
           164,
           286
         ]
@@ -2566,33 +2270,6 @@
       "text": "In addition, our results of operations may be impacted by governmental policy changes and/or regulatory reform in multiple areas, including tax, international trade, immigration, healthcare, labor, infrastructure, and energy.",
       "ticker": "SF",
       "topic": "Immigration policy"
-    },
-    {
-      "added_spans": [
-        [
-          58,
-          77
-        ],
-        [
-          86,
-          213
-        ],
-        [
-          218,
-          224
-        ]
-      ],
-      "change_id": "faa01310d8a450a6",
-      "matched_terms": [
-        "governmental policy changes"
-      ],
-      "position": 11,
-      "sentence_id": "0001193125-26-067130:5:5",
-      "source": "phrase",
-      "status": "modified",
-      "text": "In addition, our results of operations may be impacted by governmental policy changes and/or regulatory reform in multiple areas, including tax, international trade, immigration, healthcare, labor, infrastructure, and energy.",
-      "ticker": "SF",
-      "topic": "governmental policy change"
     },
     {
       "added_spans": [
@@ -2811,289 +2488,6 @@
       "text": "For example, our investment banking business often requires that we appropriately manage the use of our institutional clients’ non-public, confidential information.",
       "ticker": "SF",
       "topic": "institutional client"
-    },
-    {
-      "added_spans": [
-        [
-          68,
-          138
-        ],
-        [
-          152,
-          163
-        ]
-      ],
-      "change_id": "db2dc1bfc373add1",
-      "matched_terms": [
-        "non-public, confidential information"
-      ],
-      "position": 5,
-      "sentence_id": "0001193125-26-067130:18:2",
-      "source": "phrase",
-      "status": "modified",
-      "text": "For example, our investment banking business often requires that we appropriately manage the use of our institutional clients’ non-public, confidential information.",
-      "ticker": "SF",
-      "topic": "non public confidential information"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          22
-        ],
-        [
-          34,
-          88
-        ],
-        [
-          105,
-          129
-        ],
-        [
-          134,
-          144
-        ],
-        [
-          165,
-          186
-        ],
-        [
-          199,
-          202
-        ],
-        [
-          207,
-          210
-        ]
-      ],
-      "change_id": "db2dc1bfc373add1",
-      "matched_terms": [
-        "clients’ confidential information"
-      ],
-      "position": 8,
-      "sentence_id": "0001193125-26-067130:18:3",
-      "source": "phrase",
-      "status": "modified",
-      "text": "Similarly, many of our associates interact routinely with clients and counterparties and are expected to comply with our policies and procedures to protect both our clients’ confidential information and our own.",
-      "ticker": "SF",
-      "topic": "client confidential information"
-    },
-    {
-      "added_spans": [
-        [
-          27,
-          73
-        ],
-        [
-          77,
-          90
-        ],
-        [
-          126,
-          132
-        ]
-      ],
-      "change_id": "db2dc1bfc373add1",
-      "matched_terms": [
-        "regulatory action"
-      ],
-      "position": 10,
-      "sentence_id": "0001193125-26-067130:18:4",
-      "source": "phrase",
-      "status": "modified",
-      "text": "If confidential information, for example, is improperly used or disclosed by any associate, we could be subject to regulatory action and suffer serious harm to our reputation, financial position, current client relationships, and ability to attract future clients.",
-      "ticker": "SF",
-      "topic": "regulatory action"
-    },
-    {
-      "added_spans": [
-        [
-          223,
-          231
-        ]
-      ],
-      "change_id": "cdde20b394f48139",
-      "matched_terms": [
-        "DOL"
-      ],
-      "position": 7,
-      "sentence_id": "0001193125-26-067130:21:3",
-      "source": "entity",
-      "status": "modified",
-      "text": "The financial services industry has experienced an extended period of significant change in laws and regulations, as well as a high degree of scrutiny from various regulators, including the SEC, the Fed, the FDIC, the OCC, the DOL, and the CFPB, in addition to stock exchanges, FINRA, and governmental authorities, such as state attorneys general.",
-      "ticker": "SF",
-      "topic": "DOL"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          185
-        ]
-      ],
-      "change_id": "cdde20b394f48139",
-      "matched_terms": [
-        "banking regulators"
-      ],
-      "position": 39,
-      "sentence_id": "0001193125-26-067130:21:18",
-      "source": "phrase",
-      "status": "added",
-      "text": "In particular, the banking regulators have broad enforcement power over bank holding companies and banks, including with respect to unsafe or unsound practices or violations of the law.",
-      "ticker": "SF",
-      "topic": "banking regulator"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          185
-        ]
-      ],
-      "change_id": "cdde20b394f48139",
-      "matched_terms": [
-        "enforcement power"
-      ],
-      "position": 39,
-      "sentence_id": "0001193125-26-067130:21:18",
-      "source": "phrase",
-      "status": "added",
-      "text": "In particular, the banking regulators have broad enforcement power over bank holding companies and banks, including with respect to unsafe or unsound practices or violations of the law.",
-      "ticker": "SF",
-      "topic": "enforcement power"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          185
-        ]
-      ],
-      "change_id": "cdde20b394f48139",
-      "matched_terms": [
-        "unsafe or unsound practices"
-      ],
-      "position": 39,
-      "sentence_id": "0001193125-26-067130:21:18",
-      "source": "phrase",
-      "status": "added",
-      "text": "In particular, the banking regulators have broad enforcement power over bank holding companies and banks, including with respect to unsafe or unsound practices or violations of the law.",
-      "ticker": "SF",
-      "topic": "unsafe or unsound practice"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          126
-        ]
-      ],
-      "change_id": "004fde9f3c9e2280",
-      "matched_terms": [
-        "firm policies"
-      ],
-      "position": 12,
-      "sentence_id": "0001193125-26-067130:22:6",
-      "source": "phrase",
-      "status": "added",
-      "text": "Unauthorized or illegal acts or noncompliance with firm policies by our associates could also result in substantial liability.",
-      "ticker": "SF",
-      "topic": "firm policy"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          126
-        ]
-      ],
-      "change_id": "004fde9f3c9e2280",
-      "matched_terms": [
-        "substantial liability"
-      ],
-      "position": 12,
-      "sentence_id": "0001193125-26-067130:22:6",
-      "source": "phrase",
-      "status": "added",
-      "text": "Unauthorized or illegal acts or noncompliance with firm policies by our associates could also result in substantial liability.",
-      "ticker": "SF",
-      "topic": "substantial liability"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          126
-        ]
-      ],
-      "change_id": "004fde9f3c9e2280",
-      "matched_terms": [
-        "Unauthorized or illegal acts"
-      ],
-      "position": 12,
-      "sentence_id": "0001193125-26-067130:22:6",
-      "source": "phrase",
-      "status": "added",
-      "text": "Unauthorized or illegal acts or noncompliance with firm policies by our associates could also result in substantial liability.",
-      "ticker": "SF",
-      "topic": "unauthorized or illegal act"
-    },
-    {
-      "added_spans": [
-        [
-          77,
-          151
-        ]
-      ],
-      "change_id": "1860d97fe1f9183e",
-      "matched_terms": [
-        "technology solutions"
-      ],
-      "position": 3,
-      "sentence_id": "0001193125-26-067130:13:1",
-      "source": "phrase",
-      "status": "modified",
-      "text": "Our businesses rely extensively on data processing and communications systems, including both third-party and internally developed technology solutions.",
-      "ticker": "SF",
-      "topic": "technology solution"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          113
-        ]
-      ],
-      "change_id": "fa831ff1fb46062f",
-      "matched_terms": [
-        "fund banking clients"
-      ],
-      "position": 26,
-      "sentence_id": "0001193125-26-067130:1:13",
-      "source": "phrase",
-      "status": "added",
-      "text": "During 2025, we have seen an increase in deposits from our commercial, venture banking, and fund banking clients.",
-      "ticker": "SF",
-      "topic": "fund banking client"
-    },
-    {
-      "added_spans": [
-        [
-          0,
-          113
-        ]
-      ],
-      "change_id": "fa831ff1fb46062f",
-      "matched_terms": [
-        "venture banking"
-      ],
-      "position": 26,
-      "sentence_id": "0001193125-26-067130:1:13",
-      "source": "phrase",
-      "status": "added",
-      "text": "During 2025, we have seen an increase in deposits from our commercial, venture banking, and fund banking clients.",
-      "ticker": "SF",
-      "topic": "venture banking"
     }
   ],
   "total_changes": 28
