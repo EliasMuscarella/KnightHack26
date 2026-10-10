@@ -10,6 +10,7 @@ import type { Change, Comparison, Highlight } from "@/types/comparison";
 
 import { Quote } from "@/components/Quote";
 import { ChangeBadge, FilingLink } from "@/components/ui";
+import { neutralizeCaseOnly } from "@/lib/diffDisplay";
 import { textFragmentUrl } from "@/lib/format";
 import { displayName } from "@/lib/names";
 import { quoteSource } from "@/lib/sentences";
@@ -54,15 +55,25 @@ export function BeforeAfter({
   oldFY: number;
   newFY: number;
 }) {
+  // Both sides at hand: an edit of case, spacing or punctuation only is drawn as plain text on both.
+  const pair = oldText?.status === "modified" && newText?.status === "modified" ? neutralizeCaseOnly(oldText.spans, newText.spans) : null;
   return (
     <div className="grid gap-x-10 gap-y-4 min-[900px]:grid-cols-2">
       <div className="min-w-0">
         <p className="mb-1.5 text-sm text-ink-secondary">Last year, FY{oldFY}</p>
-        {oldText ? <Quote text={oldText.text} side="old" status={oldText.status} spans={oldText.spans} /> : <p className="text-base text-ink-muted">{absentOld}</p>}
+        {oldText ? (
+          <Quote text={oldText.text} side="old" status={oldText.status} spans={pair ? pair.old : oldText.spans} sourceSpans={oldText.spans} />
+        ) : (
+          <p className="text-base text-ink-muted">{absentOld}</p>
+        )}
       </div>
       <div className="min-w-0">
         <p className="mb-1.5 text-sm text-ink-secondary">This year, FY{newFY}</p>
-        {newText ? <Quote text={newText.text} side="new" status={newText.status} spans={newText.spans} /> : <p className="text-base text-ink-muted">{absentNew}</p>}
+        {newText ? (
+          <Quote text={newText.text} side="new" status={newText.status} spans={pair ? pair.new : newText.spans} sourceSpans={newText.spans} />
+        ) : (
+          <p className="text-base text-ink-muted">{absentNew}</p>
+        )}
       </div>
     </div>
   );
@@ -112,7 +123,7 @@ export function HighlightCard({ change, facts, comparison, variant = "card", sou
   const oldLink = facts.map((h) => textOf(h.old_sentence_id)).find((t): t is string => t !== null) ?? null;
   const linkText = newLink ?? oldLink;
   const filing = newLink !== null ? comparison.new_filing : comparison.old_filing;
-  const title = displayTitle(change.short_title, change.title);
+  const title = displayTitle(change.short_title, change.title, comparison.company.name);
   const company = displayName(comparison.company.name);
   // "New risk" as the change type and "New risk" as the fact would show the same badge twice.
   const factBadge = first && highlightKindVocab(first.kind, isFigureChanged(first)).label !== changeTypeVocab(change.change_type).label;

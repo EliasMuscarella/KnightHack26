@@ -9,11 +9,14 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
+import { SectionBoundary } from "@/components/SectionBoundary";
 import { ChangeBadge, EmptyState, FilingLink, PageContainer, SectionTitle, Skeleton } from "@/components/ui";
 import { parseTrends } from "@/lib/api";
+import { hasWordChars, neutralizeRangePair } from "@/lib/diffDisplay";
 import { categoryLabel, textFragmentUrl } from "@/lib/format";
 import { displayName } from "@/lib/names";
-import { trimQuote } from "@/lib/quote";
+import { QUOTE_MAX_CHARS } from "@/lib/quote";
+import { actualSnippets, snippet, TOPIC_EXAMPLE_MAX, topicEvidence } from "@/lib/snippet";
 import { buildHeatmap, cellDescription, cellIntensity, cellTone, headlineTopic, type HeatCell, MIX_TYPES, mixTotal, OTHER_CATEGORY, rankTopics, sourceLine, TOP_TOPICS } from "@/lib/trends";
 import type { TrendsActual, TrendsCompany, TrendsPayload, TrendsTopic, TrendsTopicExample } from "@/lib/types";
 
@@ -27,21 +30,45 @@ const RETRY_FOR_MS = 60_000;
 // Small pieces
 // ---------------------------------------------------------------------------------------
 
-/** A verbatim sentence with the highlighter (or the strike) over the character ranges the diff marked. */
-function SpanMarked({ text, spans, limit, mode = "hl" }: { text: string; spans: [number, number][]; limit?: number; mode?: "hl" | "strike" }) {
-  const shown = limit !== undefined && limit < text.length ? text.slice(0, limit) : text;
+/**
+ * A verbatim sentence with the highlighter (or the strike) over the character ranges the diff
+ * marked, shown as the exact window [start, end) with a visible ellipsis on each trimmed side.
+ * Ranges without letters or digits (punctuation or spacing only) are drawn as plain text.
+ */
+function SpanMarked({
+  text,
+  spans,
+  start = 0,
+  end,
+  mode = "hl",
+}: {
+  text: string;
+  spans: readonly [number, number][] | null | undefined;
+  start?: number;
+  end?: number;
+  mode?: "hl" | "strike";
+}) {
+  const n = text.length;
+  const from = Math.max(0, Math.min(start, n));
+  const to = Math.max(from, Math.min(end ?? n, n));
   const parts: { t: string; hl: boolean }[] = [];
-  let pos = 0;
-  for (const [a, b] of spans) {
-    const start = Math.min(Math.max(a, pos), shown.length);
-    const end = Math.min(b, shown.length);
-    if (start > pos) parts.push({ t: shown.slice(pos, start), hl: false });
-    if (end > start) parts.push({ t: shown.slice(start, end), hl: true });
-    pos = Math.max(pos, end);
+  let pos = from;
+  for (const [a, b] of [...(spans ?? [])].sort((p, q) => p[0] - q[0])) {
+    const s0 = Math.min(Math.max(a, pos), to);
+    const e0 = Math.min(b, to);
+    if (s0 > pos) parts.push({ t: text.slice(pos, s0), hl: false });
+    if (e0 > s0) parts.push({ t: text.slice(s0, e0), hl: hasWordChars(text.slice(s0, e0)) });
+    pos = Math.max(pos, e0);
   }
-  if (pos < shown.length) parts.push({ t: shown.slice(pos), hl: false });
+  if (pos < to) parts.push({ t: text.slice(pos, to), hl: false });
   return (
     <>
+      {from > 0 ? (
+        <span className="font-sans text-ink-secondary">
+          {"… "}
+          <span className="sr-only">(sentence begins earlier) </span>
+        </span>
+      ) : null}
       {parts.map((p, i) =>
         p.hl ? (
           mode === "hl" ? (
@@ -59,6 +86,12 @@ function SpanMarked({ text, spans, limit, mode = "hl" }: { text: string; spans: 
           <span key={i}>{p.t}</span>
         ),
       )}
+      {to < n ? (
+        <span className="font-sans text-ink-secondary">
+          {" …"}
+          <span className="sr-only"> (sentence continues)</span>
+        </span>
+      ) : null}
     </>
   );
 }
@@ -118,7 +151,9 @@ function Headline({ data }: { data: TrendsPayload }) {
 // ---------------------------------------------------------------------------------------
 
 function TopicExample({ ex, company }: { ex: TrendsTopicExample; company: TrendsCompany | undefined }) {
-  const { head, trimmed } = trimQuote(ex.text, 320);
+  // The window always contains the topic term (inside the newly added words).
+  const win = snippet(ex.text, topicEvidence(ex.text, ex.matched_terms, ex.added_spans), TOPIC_EXAMPLE_MAX);
+  const title = displayTitle(ex.short_title, null, company?.name);
   const url = edgarUrl(company, "new");
   return (
     <li className="min-w-0">
@@ -126,12 +161,11 @@ function TopicExample({ ex, company }: { ex: TrendsTopicExample; company: Trends
         <Link href={`/c/${encodeURIComponent(ex.ticker)}`} className="font-medium text-ink underline-offset-2 hover:underline">
           {displayName(company?.name) || ex.ticker}
         </Link>
-        {ex.short_title ? `, ${displayTitle(ex.short_title, null)}` : ""}
+        {title ? `, ${title}` : ""}
       </p>
       <blockquote className="quote is-new mt-1.5">
         <p>
-          <SpanMarked text={ex.text} spans={ex.added_spans} limit={trimmed ? head.length : undefined} />
-          {trimmed ? <span className="font-sans text-ink-secondary"> …</span> : null}
+          <SpanMarked text={ex.text} spans={ex.added_spans} start={win.start} end={win.end} />
         </p>
       </blockquote>
       <p className="mt-2 flex flex-wrap gap-x-5 text-sm">
@@ -297,7 +331,12 @@ function Heatmap({ data }: { data: TrendsPayload }) {
                     {names.get(r.ticker) ?? r.ticker}
                   </Link>
                 </th>
-                {hm.columns.map((c) => {
+                {r.total === 0 ? (
+                  <td colSpan={hm.columns.length} className="h-11 rounded-sm bg-surface px-3 text-sm text-ink-secondary">
+                    No changed sentences
+                  </td>
+                ) : null}
+                {r.total === 0 ? null : hm.columns.map((c) => {
                   const cell = r.cells.get(c);
                   const style = cellStyle(cell, hm.maxActivity);
                   if (!cell || cell.activity === 0) {
@@ -340,10 +379,10 @@ function Heatmap({ data }: { data: TrendsPayload }) {
 
 function ActualItem({ a, company }: { a: TrendsActual; company: TrendsCompany | undefined }) {
   const name = displayName(company?.name || a.company_name) || a.ticker;
-  // Keep the marked words inside the window: extend the trim to the last marked span.
-  const lastEnd = (spans: [number, number][]) => spans.reduce((m, [, b]) => Math.max(m, b), 0);
-  const oldQ = a.old_text ? trimQuote(a.old_text, Math.max(200, Math.min(600, lastEnd(a.old_spans) + 40))) : null;
-  const newQ = a.new_text ? trimQuote(a.new_text, Math.max(200, Math.min(600, lastEnd(a.new_spans) + 40))) : null;
+  // Each side's window contains its own marked words; rows without span fields still render.
+  const win = actualSnippets(a, QUOTE_MAX_CHARS);
+  // Both sides at hand: an edit of case, spacing or punctuation only is drawn as plain text.
+  const marks = neutralizeRangePair(a.old_text, a.old_spans ?? [], a.new_text, a.new_spans ?? []);
   return (
     <li className="border-t border-line py-5">
       <div className="flex flex-wrap items-center gap-3">
@@ -354,17 +393,16 @@ function ActualItem({ a, company }: { a: TrendsActual; company: TrendsCompany | 
       </div>
       <h3 className="mt-2 text-base font-medium text-ink">
         <Link href={`/c/${encodeURIComponent(a.ticker)}/${encodeURIComponent(a.change_id)}`} className="underline-offset-2 hover:underline">
-          {displayTitle(a.short_title, null) || "See the change"}
+          {displayTitle(a.short_title, null, company?.name ?? a.company_name) || "See the change"}
         </Link>
       </h3>
       <div className="mt-3 grid gap-x-10 gap-y-3 min-[900px]:grid-cols-2">
         <div>
           <p className="mb-1 text-sm text-ink-secondary">Last year</p>
-          {oldQ ? (
+          {win.old ? (
             <blockquote className="quote is-old text-base">
               <p>
-                <SpanMarked text={a.old_text ?? ""} spans={a.old_spans} limit={oldQ.trimmed ? oldQ.head.length : undefined} mode="strike" />
-                {oldQ.trimmed ? " …" : ""}
+                <SpanMarked text={a.old_text ?? ""} spans={marks.old} start={win.old.start} end={win.old.end} mode="strike" />
               </p>
             </blockquote>
           ) : (
@@ -373,11 +411,10 @@ function ActualItem({ a, company }: { a: TrendsActual; company: TrendsCompany | 
         </div>
         <div>
           <p className="mb-1 text-sm text-ink-secondary">This year</p>
-          {newQ ? (
+          {win.new ? (
             <blockquote className="quote is-new text-base">
               <p>
-                <SpanMarked text={a.new_text ?? ""} spans={a.new_spans} limit={newQ.trimmed ? newQ.head.length : undefined} />
-                {newQ.trimmed ? " …" : ""}
+                <SpanMarked text={a.new_text ?? ""} spans={marks.new} start={win.new.start} end={win.new.end} />
               </p>
             </blockquote>
           ) : (
@@ -525,11 +562,21 @@ export function TrendsView({ initial }: { initial: TrendsPayload | null }) {
   if (hasContent(data) && data.companies.length >= 2) {
     body = (
       <div className="space-y-12">
-        <Headline data={data} />
-        <SharedTopics data={data} />
-        <Heatmap data={data} />
-        <PotentialToActual data={data} />
-        <ChangeMix data={data} />
+        <SectionBoundary name="headline">
+          <Headline data={data} />
+        </SectionBoundary>
+        <SectionBoundary name="shared topics">
+          <SharedTopics data={data} />
+        </SectionBoundary>
+        <SectionBoundary name="heatmap">
+          <Heatmap data={data} />
+        </SectionBoundary>
+        <SectionBoundary name="potential to actual">
+          <PotentialToActual data={data} />
+        </SectionBoundary>
+        <SectionBoundary name="change mix">
+          <ChangeMix data={data} />
+        </SectionBoundary>
         <p className="border-t border-line pt-4 text-sm text-ink-secondary">{sourceLine(data)}</p>
       </div>
     );
