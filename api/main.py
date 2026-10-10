@@ -75,8 +75,8 @@ TRENDS_TTL_SECONDS = 60.0  # a remote trends result older than this is refreshed
 TRENDS_FAIL_RETRY_SECONDS = 20.0  # after a failed refresh, wait this long before the next one
 TRENDS_COLD_WAIT_SECONDS = 2.0  # store ok + nothing cached: wait this long for the first result
 REMOTE_REFRESH_WAIT_SECONDS = 200.0  # background only: a cold warehouse may take minutes
-TRENDS_CACHE_VERSION = 2  # bump when the /trends body changes shape (old disk caches are ignored)
-TRENDS_AGGREGATE_VERSION = 1  # bump when aggregate.py changes what it computes
+TRENDS_CACHE_VERSION = 3  # bump when the /trends body changes shape (old disk caches are ignored)
+TRENDS_AGGREGATE_VERSION = 2  # bump when aggregate.py changes what it computes
 
 FRIENDLY: dict[str, str] = {
     "invalid_ticker": "That does not look like a ticker. Use 1-6 letters, '.', or '-'.",
@@ -360,11 +360,16 @@ class TrendsService:
         remote: RemoteLibrary,
         local_fn: Callable[[], tuple[str, dict]],
         remote_fn: Callable[[Any, list[dict]], dict],
+        library_fn: Callable[[], str] | None = None,
     ):
         self.settings = settings
         self.remote = remote
         self._local_fn = local_fn  # () -> (fingerprint, body); body computed only when needed
         self._remote_fn = remote_fn  # (store, current report rows) -> body
+        # () -> key of the current merged library (the /companies set); a remote result computed
+        # for another set is stale, so /trends and /companies never list different companies
+        # for longer than one refresh
+        self._library_fn = library_fn
         self.lock = threading.Lock()
         self._local_lock = threading.Lock()
         self._disk_loaded = False
@@ -452,6 +457,7 @@ class TrendsService:
                 "store_key": self.remote.settings_key(),
                 "computed_at": _utc_now_iso(),
                 "epoch": time.time(),
+                "library": library_key(body.get("companies") or []),
                 "body": body,
             }
             with self.lock:
@@ -496,7 +502,7 @@ class TrendsService:
             return {"status": status, "source": "local", "computed_at": computed_at, **body}
         self._load_disk()
         entry = self._remote_cached()
-        if entry is None or time.time() - float(entry.get("epoch") or 0) >= TRENDS_TTL_SECONDS:
+        if entry is None or self._remote_is_stale(entry):
             th = self.kick_remote()
             if entry is None and status == "ok" and th is not None:
                 th.join(timeout=TRENDS_COLD_WAIT_SECONDS)
@@ -513,6 +519,17 @@ class TrendsService:
         if not body["companies"] and status in ("connecting", "ok"):
             return {"status": status, "source": None, "computed_at": None, **body}
         return {"status": status, "source": "local", "computed_at": computed_at, **body}
+
+    def _remote_is_stale(self, entry: dict) -> bool:
+        if time.time() - float(entry.get("epoch") or 0) >= TRENDS_TTL_SECONDS:
+            return True
+        if self._library_fn is None:
+            return False
+        try:
+            return entry.get("library") != self._library_fn()
+        except Exception as e:  # noqa: BLE001
+            log.warning("library key failed: %s", type(e).__name__)
+            return False
 
     def warm(self) -> None:
         """Startup: compute (or load) the local aggregate and start the first remote refresh."""
@@ -538,7 +555,17 @@ class AppState:
         self._cards_cache: dict[str, tuple[float, CompanyCard, str, str, str]] = {}
         self.remote = RemoteLibrary(store_factory)
         self.trends = TrendsService(
-            settings, self.remote, lambda: local_trends_inputs(self), remote_trends_body
+            settings,
+            self.remote,
+            lambda: local_trends_inputs(self),
+            lambda store, rows: remote_trends_body(
+                store,
+                rows,
+                local_cards=list_local(self),
+                derived_dir=derive.derived_dir_for(settings.data_dir),
+                published_dir=settings.published_dir,
+            ),
+            lambda: library_key(current_library(self)),
         )
 
 
@@ -773,80 +800,169 @@ def list_local(state: AppState) -> list[dict]:
     return sorted(out, key=lambda c: c["ticker"])
 
 
+def current_library(state: AppState, local: list[dict] | None = None) -> list[dict]:
+    """The current report library: local files merged with the shared store's current reports,
+    one per ticker (newest filing pair). The ONE company set /companies and /trends both list
+    (cards keep their accession pair here)."""
+    if local is None:
+        local = list_local(state)
+    cards, _ = merge_library(local, state.remote.current_rows(), keep_accessions=True)
+    return cards
+
+
+def library_key(cards: list[dict]) -> str:
+    return "\n".join(sorted(f"{c['ticker']}|{c['analysis_id']}" for c in cards))
+
+
+def _facts_for_card(
+    card: dict, derived_dir: Path, published_dir: Path, *, missing: str
+) -> tuple[derive.TrendFacts | None, str | None]:
+    """(facts, warning) for one library card: the current derived file, else derived (and written)
+    from the local published file when the card is local. `missing` says why a report that is not
+    on this machine has no facts. Never raises."""
+    ticker, aid = card["ticker"], str(card["analysis_id"])
+    try:
+        facts = derive.load_facts(derived_dir, aid)
+    except ValueError:
+        facts = None
+    if facts is not None and facts.ticker == ticker:
+        return facts, None
+    if card.get("source") != "local" or not card.get("file"):
+        return None, (
+            f"{ticker}: no trend facts of derivation {derive.derivation_id()} for this report "
+            f"({missing}); it is listed without topics or activity."
+        )
+    try:
+        comp = load_published(published_dir / str(card["file"]))
+        if comp.analysis_id != aid or comp.company.ticker != ticker:
+            raise ValueError("the published file is not this card's report")
+        return derive.ensure_facts(comp, derived_dir), None
+    except Exception as e:  # noqa: BLE001
+        log.warning("no trend facts for %s: %s", ticker, type(e).__name__)
+        return None, (
+            f"{ticker}: trend facts could not be derived for this report ({type(e).__name__}); "
+            f"it is listed without topics or activity."
+        )
+
+
 def local_trends_inputs(state: AppState) -> tuple[str, Callable[[], dict]]:
-    """(fingerprint, compute) for the local trends aggregate over the current local reports
-    (newest filing pair per ticker, the same rule as /companies). A derived file is a pure
-    function of (analysis_id, derivation), so the fingerprint needs no file reads; compute loads
-    data/derived/{analysis_id}.trends.json and derives (and writes) any that is missing or stale."""
-    cards = list_local(state)
+    """(fingerprint, compute) for the local trends aggregate over the current library: exactly
+    the /companies set (`current_library`: local files merged with the store's current reports,
+    newest filing pair per ticker). A derived file is a pure function of (analysis_id,
+    derivation), so the fingerprint needs no file reads; compute loads
+    data/derived/{analysis_id}.trends.json and derives (and writes) any local one that is missing
+    or stale. A company whose facts are unavailable or cannot be derived is still listed (no
+    topics or activity) and named in `warnings`; it never disappears from the page."""
+    cards = current_library(state)
     derivation = (
         f"{derive.derivation_id()}|{derive.phrase_model_id()}|agg{TRENDS_AGGREGATE_VERSION}"
     )
-    parts = [derivation] + sorted(f"{c['ticker']}|{c['analysis_id']}" for c in cards)
+    parts = [derivation] + sorted(
+        f"{c['ticker']}|{c['analysis_id']}|{c.get('source')}" for c in cards
+    )
     fingerprint = hashlib.sha256("\n".join(parts).encode("utf-8")).hexdigest()
 
     def compute() -> dict:
         ddir = derive.derived_dir_for(state.settings.data_dir)
-        facts = []
+        facts, companies, warnings = [], [], []
         for c in cards:
-            f = derive.load_facts(ddir, c["analysis_id"])
-            if f is None:
-                try:
-                    comp = load_published(state.settings.published_dir / c["file"])
-                    f = derive.ensure_facts(comp, ddir)
-                except Exception as e:  # noqa: BLE001
-                    log.warning("no trend facts for %s: %s", c["ticker"], type(e).__name__)
-                    continue
-            facts.append(f)
-        return aggregate.body_from_facts(facts)
+            f, warning = _facts_for_card(
+                c,
+                ddir,
+                state.settings.published_dir,
+                missing="the report is in the shared store but not on this machine yet",
+            )
+            if f is not None:
+                facts.append(f)
+                companies.append(aggregate.company_from_facts(f))
+            else:
+                companies.append(aggregate.company_from_card(c))
+                warnings.append(warning)
+        return aggregate.body_from_facts(facts, companies=companies, warnings=warnings)
 
     return fingerprint, compute
 
 
-def remote_trends_body(store: Any, rows: list[dict]) -> dict:
-    """The trends body from the shared store: companies from its current-report rows (one per
-    ticker), then three parameterized row queries over exactly those analysis_ids."""
-    companies = []
-    for r in rows:
-        try:
-            companies.append(
-                aggregate.company_entry(
-                    ticker=normalize_ticker(str(r.get("ticker"))),
-                    name=str(r.get("company_name") or ""),
-                    analysis_id=str(r["analysis_id"]),
-                    old_fiscal_year=int(r.get("old_fiscal_year") or 0),
-                    new_fiscal_year=int(r.get("new_fiscal_year") or 0),
-                    total_changes=int(r.get("total_changes") or 0),
-                    by_change_type={ct: int(r.get(f"n_{ct}") or 0) for ct in CHANGE_TYPES},
-                    cik=r.get("cik"),
-                    old_accession=r.get("old_accession"),
-                    new_accession=r.get("new_accession"),
-                )
-            )
-        except Exception as e:  # noqa: BLE001
-            log.warning("skipping unusable reports row: %s", type(e).__name__)
-    if not companies:
+def remote_trends_body(
+    store: Any,
+    rows: list[dict],
+    *,
+    local_cards: list[dict] | None = None,
+    derived_dir: Path | None = None,
+    published_dir: Path | None = None,
+) -> dict:
+    """The trends body when the shared store is configured. The company set is the same merged
+    library as /companies (`merge_library` over the local cards and the store's current rows).
+    Facts of an analysis come from the store's rows of the CURRENT derivation (`:derivation`);
+    an analysis with none there (not synced yet, or written by older code) uses its local derived
+    facts when this machine has them, else it is listed with no facts and a warning. At most three
+    parameterized queries: activity (which also tells which analyses have facts), then topics and
+    potential->actual over exactly those analyses."""
+    cards, _ = merge_library(local_cards or [], rows, keep_accessions=True)
+    if not cards:
         return aggregate.build_body([])
     s = store.settings
-    ids = json.dumps(sorted(c["analysis_id"] for c in companies))
-    topic_rows = store.execute(
-        tables.trends_topics_sql(s),
-        {
-            "current": True,
-            "ids": ids,
-            "phrase": "phrase",
-            "min_companies": aggregate.PHRASE_MIN_COMPANIES,
-        },
+    derivation = derive.derivation_id()
+    row_ids = {str(r.get("analysis_id")) for r in rows}
+    store_ids = sorted(c["analysis_id"] for c in cards if c["analysis_id"] in row_ids)
+    activity_rows: list[dict] = []
+    if store_ids:
+        activity_rows = store.execute(
+            tables.trends_activity_sql(s),
+            {"current": True, "ids": json.dumps(store_ids), "derivation": derivation},
+        )
+    # every change has >= 1 category, so an analysis with changes and no activity row has no
+    # facts of this derivation in the store
+    present = {str(r.get("analysis_id")) for r in activity_rows}
+    present |= {
+        c["analysis_id"]
+        for c in cards
+        if c["analysis_id"] in store_ids and not int(c.get("total_changes") or 0)
+    }
+    local_facts, companies, warnings = [], [], []
+    for c in cards:
+        if c["analysis_id"] in present:
+            companies.append(aggregate.company_from_card(c))
+            continue
+        missing = "the shared store has none and the report is not on this machine"
+        f, warning = (
+            _facts_for_card(c, derived_dir, published_dir or Path("."), missing=missing)
+            if derived_dir is not None
+            else (None, f"{c['ticker']}: no trend facts for this report ({missing}).")
+        )
+        if f is not None:
+            local_facts.append(f)
+            companies.append(aggregate.company_from_facts(f))
+        else:
+            companies.append(aggregate.company_from_card(c))
+            warnings.append(warning)
+    ids = json.dumps(sorted(present))
+    topic_rows: list[dict] = []
+    p2a_rows: list[dict] = []
+    if present:
+        topic_rows = store.execute(
+            tables.trends_topics_sql(s),
+            {
+                "current": True,
+                "ids": ids,
+                "derivation": derivation,
+                "phrase": "phrase",
+                # companies served from local facts can complete a phrase's company count
+                "min_companies": max(1, aggregate.PHRASE_MIN_COMPANIES - len(local_facts)),
+            },
+        )
+        p2a_rows = store.execute(
+            tables.trends_potential_to_actual_sql(s),
+            {"current": True, "ids": ids, "kind": "potential_became_actual"},
+        )
+    return aggregate.body_from_rows(
+        companies,
+        topic_rows,
+        [r for r in activity_rows if str(r.get("analysis_id")) in present],
+        p2a_rows,
+        local_facts=local_facts,
+        warnings=warnings,
     )
-    activity_rows = store.execute(
-        tables.trends_activity_sql(s),
-        {"current": True, "ids": ids, "unchanged": aggregate.UNCHANGED},
-    )
-    p2a_rows = store.execute(
-        tables.trends_potential_to_actual_sql(s),
-        {"current": True, "ids": ids, "kind": "potential_became_actual"},
-    )
-    return aggregate.body_from_rows(companies, topic_rows, activity_rows, p2a_rows)
 
 
 def card_from_row(row: dict) -> dict | None:
@@ -881,7 +997,9 @@ def card_from_row(row: dict) -> dict | None:
     }
 
 
-def merge_library(local: list[dict], remote_rows: list[dict]) -> tuple[list[dict], list[dict]]:
+def merge_library(
+    local: list[dict], remote_rows: list[dict], *, keep_accessions: bool = False
+) -> tuple[list[dict], list[dict]]:
     """Local cards + the store's current reports, one per ticker, deduplicated by analysis_id.
     The same analysis on both sides is one local card carrying the store's publisher/date. When
     the store's current report for a ticker is a different analysis of the same (or a newer)
@@ -907,9 +1025,10 @@ def merge_library(local: list[dict], remote_rows: list[dict]) -> tuple[list[dict
             out[rc["ticker"]] = rc
             stale.append(row)
     cards = sorted(out.values(), key=lambda c: c["ticker"])
-    for c in cards:
-        c.pop("old_accession", None)
-        c.pop("new_accession", None)
+    if not keep_accessions:
+        for c in cards:
+            c.pop("old_accession", None)
+            c.pop("new_accession", None)
     return cards, stale
 
 

@@ -62,7 +62,13 @@ def git_user_name() -> str:
 
 def merge_trend_tables(store: DatabricksStore, facts: TrendFacts) -> int:
     """Insert-if-absent MERGEs of the derived trend facts (topic_mentions, category_activity),
-    chunked so each JSON parameter stays small. Returns the number of rows sent."""
+    chunked so each JSON parameter stays small. Returns the number of rows sent.
+
+    Every row carries `facts.derivation`, which is part of the key: rows written by an older
+    derivation stay in the tables but are never read (/trends filters on the running
+    derivation), and this derivation's rows are inserted next to them. topic_mentions is written
+    before category_activity, so an analysis with activity rows of a derivation also has its
+    mention rows (the API uses activity rows to tell which analyses have facts)."""
     s = store.settings
     sent = 0
     for table, rows in (

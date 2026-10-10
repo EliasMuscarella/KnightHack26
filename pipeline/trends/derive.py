@@ -1,9 +1,16 @@
 """Derive trend facts from one published report. Pure and deterministic (same report + same
 TRENDS_VERSION/TOPICS_VERSION + same spaCy model -> byte-identical file); no LLM, no network.
 
-A topic counts for a company only when it is NEWLY ADDED LANGUAGE: it appears in this year's added
-or modified sentences of a risk factor and none of its terms appears anywhere in that risk
-factor's last-year text (`change.old_text`, case-insensitive, whole words). Three sources:
+A topic counts for a company only when it is NEWLY ADDED LANGUAGE (TRENDS_VERSION 1.2.0):
+* the risk factor changed meaningfully (`change_type != "largely_unchanged"`): a small insertion in
+  an essentially unchanged risk factor is never counted as a trend;
+* at least one occurrence of the matched term (whole word, case-insensitive, `term_regex`) lies
+  WHOLLY inside the inserted text of this year's sentence (the whole sentence for an added one, an
+  insert span for a modified one), so words that were already there last year never count; and
+* the term (and, for lexicon topics, every synonym of the topic) appears nowhere in that risk
+  factor's last-year text (`last_year_text`: `change.old_text` plus the change's old-side
+  sentences; the old-side sentences alone when `old_text` is absent).
+Three sources:
 
 1. lexicon  curated topics in topics.yml (whole-word, case-insensitive, multi-word synonyms).
 2. entity   `change.signals.new_entities` (already "new this year" by construction), normalized
@@ -100,6 +107,62 @@ def find_terms(pattern: re.Pattern[str], text: str) -> list[str]:
     return out
 
 
+@lru_cache(maxsize=4096)
+def _term_pattern(term: str) -> re.Pattern[str]:
+    return re.compile(term_regex(term), re.IGNORECASE)
+
+
+def _inside(a: int, b: int, spans: list[tuple[int, int]]) -> bool:
+    return any(x <= a and b <= y for x, y in spans)
+
+
+def term_inserted(term: str, text: str, spans: list[tuple[int, int]]) -> bool:
+    """True when at least one whole-word occurrence of `term` lies wholly inside one span."""
+    try:
+        rx = _term_pattern(term)
+    except re.error:
+        return False
+    return any(_inside(m.start(), m.end(), spans) for m in rx.finditer(text))
+
+
+def term_in(term: str, text: str) -> bool:
+    """Whole-word, case-insensitive occurrence of `term` anywhere in `text`."""
+    if not text:
+        return False
+    try:
+        return _term_pattern(term).search(text) is not None
+    except re.error:
+        return False
+
+
+def inserted_terms(topic: Topic, text: str, spans: list[tuple[int, int]]) -> list[str]:
+    """Verbatim matches (whitespace collapsed) of a topic's synonyms that lie wholly inside one of
+    `spans`, in text order, deduplicated case-insensitively. Each synonym is searched on its own
+    (an inserted "tariffs" is found even where a longer synonym also matches across the boundary
+    of the insertion); a match inside a longer kept match is dropped."""
+    if not spans:
+        return []
+    hits: list[tuple[int, int, str]] = []
+    for syn in topic.synonyms:
+        for m in _term_pattern(syn).finditer(text):
+            if _inside(m.start(), m.end(), spans):
+                hits.append((m.start(), m.end(), m.group(0)))
+    hits.sort(key=lambda h: (h[0], -(h[1] - h[0])))
+    kept: list[tuple[int, int, str]] = []
+    for a, b, t in hits:
+        if any(x <= a and b <= y for x, y, _ in kept):
+            continue
+        kept.append((a, b, t))
+    out: list[str] = []
+    seen: set[str] = set()
+    for _, _, t in kept:
+        t = re.sub(r"\s+", " ", t)
+        if t.casefold() not in seen:
+            seen.add(t.casefold())
+            out.append(t)
+    return out
+
+
 def lexicon_topic_for(text: str) -> Topic | None:
     """The first lexicon topic (file order) any of whose synonyms occurs in `text`."""
     _, topics = load_lexicon()
@@ -167,6 +230,9 @@ ENTITY_STOP_PATTERNS: tuple[re.Pattern[str], ...] = (
     re.compile(r"^(?:19|20)\d{2}$"),
     re.compile(rf"^(?:{_MONTHS})(?: \d{{1,2}})?,?(?: (?:19|20)\d{{2}})?$"),
     re.compile(r"^(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)$"),
+    # a government administration named by one name ("Trump Administration", "Biden-Harris
+    # Administration") is not a newly named party; agencies ("Federal Aviation Administration") are
+    re.compile(r"^(?:the )?[a-z]+(?:-[a-z]+)? administration$"),
 )
 _CORP_SUFFIX_RE = re.compile(
     r"(?:,?\s+(?:inc|incorporated|corp|corporation|co|company|llc|l\.l\.c|ltd|limited|plc|"
@@ -435,31 +501,47 @@ def _mention(
     )
 
 
+UNCHANGED = "largely_unchanged"
+
+
+def last_year_text(c: Change) -> str:
+    """Last year's text of a risk factor: `old_text` (heading + body) plus the change's old-side
+    sentences, or the old-side sentences alone when `old_text` is absent (it is optional in the
+    contract). Empty for a new risk factor."""
+    parts = [c.old_text] if c.old_text else []
+    parts.extend(s.text for s in c.sentences if s.side == "old")
+    return "\n".join(parts)
+
+
 def topic_mentions(comp: Comparison, nlp=None) -> list[TopicMention]:
+    """Newly added language per risk factor (see the module docstring for the three rules)."""
     _, topics = load_lexicon()
     ticker = comp.company.ticker
     ident, all_tokens = own_name_tokens(comp.company.name, ticker)
     out = _Mentions()
     # sentences to parse for phrases, in a fixed order (deterministic batches)
-    phrase_jobs: list[tuple[Change, int, Sentence, str, frozenset[str]]] = []
+    phrase_jobs: list[tuple[Change, int, Sentence, str, frozenset[str], list]] = []
     for c in comp.changes:
-        old = c.old_text or ""
+        if c.change_type == UNCHANGED:
+            continue  # an essentially unchanged risk factor never contributes a trend
+        old = last_year_text(c)
         new_sents = [
-            (pos, s)
+            (pos, s, added_spans(s))
             for pos, s in enumerate(c.sentences)
             if s.side == "new" and s.status in ("added", "modified")
         ]
+        new_sents = [(pos, s, sp) for pos, s, sp in new_sents if sp]
         if not new_sents:
             continue
         fresh = [t for t in topics if not (old and t.pattern.search(old))]
-        # 1. lexicon
-        for pos, s in new_sents:
+        # 1. lexicon: a synonym inside the inserted text
+        for pos, s, spans in new_sents:
             for t in fresh:
-                terms = find_terms(t.pattern, s.text)
+                terms = inserted_terms(t, s.text, spans)
                 if terms:
                     out.add(_mention(ticker, c, pos, s, t.name, "lexicon", terms))
-        # 2. new named entities
-        by_id = dict((s.id, (pos, s)) for pos, s in new_sents)
+        # 2. new named entities: the entity's own words inside the inserted text
+        by_id = {s.id: (pos, s, spans) for pos, s, spans in new_sents}
         fresh_names = {t.name for t in fresh}
         entity_keys: set[str] = set()
         for hit in c.signals.new_entities:
@@ -467,37 +549,39 @@ def topic_mentions(comp: Comparison, nlp=None) -> list[TopicMention]:
             entity_keys.update({key, hit.value.casefold()})
             if not key or is_stop_entity(key, ident, all_tokens):
                 continue
+            if term_in(hit.value, old):
+                continue  # the entity's words were already in last year's text
             lex = lexicon_topic_for(display) or lexicon_topic_for(hit.value)
             if lex is not None:
                 if lex.name not in fresh_names:
                     continue  # the topic was already in last year's text
                 topic, source = lex.name, "lexicon"
             else:
-                if old and re.search(term_regex(display), old, re.IGNORECASE):
+                if term_in(display, old):
                     continue
                 topic, source = display, "entity"
             for sid in hit.new_sentence_ids:
                 if sid in by_id:
-                    pos, s = by_id[sid]
-                    out.add(_mention(ticker, c, pos, s, topic, source, [hit.value]))
-        for pos, s in new_sents:
-            phrase_jobs.append((c, pos, s, old, frozenset(entity_keys)))
-    # 3. key phrases
+                    pos, s, spans = by_id[sid]
+                    if term_inserted(hit.value, s.text, spans):
+                        out.add(_mention(ticker, c, pos, s, topic, source, [hit.value]))
+        for pos, s, spans in new_sents:
+            phrase_jobs.append((c, pos, s, old, frozenset(entity_keys), spans))
+    # 3. key phrases: the noun chunk's words inside the inserted text
     if phrase_jobs:
         nlp = nlp or get_phrase_nlp()
         docs = nlp.pipe([j[2].text for j in phrase_jobs], batch_size=64)
-        for (c, pos, s, old, entity_keys), doc in zip(phrase_jobs, docs, strict=True):
+        for (c, pos, s, old, entity_keys, spans), doc in zip(phrase_jobs, docs, strict=True):
             for phrase, surface in phrases_in(doc):
+                if not term_inserted(surface, s.text, spans):
+                    continue  # (partly) words that were already in the sentence last year
                 if lexicon_topic_for(surface) is not None:
                     continue  # a curated topic already covers it
                 if set(phrase.split()) & ident:
                     continue  # the company's own name
                 if phrase in entity_keys or surface.casefold() in entity_keys:
                     continue  # the same words are already an entity of this risk factor
-                if old and (
-                    re.search(term_regex(surface), old, re.IGNORECASE)
-                    or re.search(term_regex(phrase), old, re.IGNORECASE)
-                ):
+                if term_in(surface, old) or term_in(phrase, old):
                     continue
                 out.add(_mention(ticker, c, pos, s, phrase, "phrase", [surface]))
     order = {c.id: i for i, c in enumerate(comp.changes)}
@@ -507,7 +591,21 @@ def topic_mentions(comp: Comparison, nlp=None) -> list[TopicMention]:
     )
 
 
+def aligned_pair(old_s: Sentence | None, new_s: Sentence | None) -> bool:
+    """The two sentences are a rewritten pair of the diff: the new one is `modified` and its
+    counterpart is the old one."""
+    return (
+        old_s is not None
+        and new_s is not None
+        and new_s.side == "new"
+        and new_s.status == "modified"
+        and new_s.counterpart_id == old_s.id
+    )
+
+
 def potential_to_actual(comp: Comparison) -> list[PotentialToActual]:
+    """`potential_became_actual` highlights whose two sentences are an aligned pair of the diff
+    (a hedge and an unrelated sentence elsewhere in the risk factor are never shown as one)."""
     idx = comp.sentence_index
     scores = {c.id: c.score for c in comp.changes}
     sentences = {s.id: s for c in comp.changes for s in c.sentences}
@@ -518,6 +616,8 @@ def potential_to_actual(comp: Comparison) -> list[PotentialToActual]:
         if h.old_sentence_id not in idx or h.new_sentence_id not in idx:
             continue
         old_s, new_s = sentences.get(h.old_sentence_id), sentences.get(h.new_sentence_id)
+        if not aligned_pair(old_s, new_s):
+            continue
         out.append(
             PotentialToActual(
                 ticker=comp.company.ticker,
@@ -529,8 +629,8 @@ def potential_to_actual(comp: Comparison) -> list[PotentialToActual]:
                 old_text=idx[h.old_sentence_id].text,
                 new_text=idx[h.new_sentence_id].text,
                 score=scores.get(h.change_id, 0),
-                old_spans=removed_spans(old_s) if old_s else [],
-                new_spans=added_spans(new_s) if new_s else [],
+                old_spans=removed_spans(old_s),
+                new_spans=added_spans(new_s),
             )
         )
     return out
