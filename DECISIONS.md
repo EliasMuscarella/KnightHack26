@@ -527,7 +527,56 @@ Data and process:
 - `@playwright/test` 1.63.0 was added as a pinned dev dependency so the required smoke test can run;
   it uses the Chromium already in the environment (no download).
 
-## D-026 Short-titles batch overlapped with stage 7 (P2)
+## D-026 Home-page market ticker tape (Finnhub)
+- Context: the team asked for a scrolling stock tape (about 50 popular stocks, current price, up/down)
+  on the home page only, using Finnhub if it can be made reliable.
+- Decisions (confirmed with the team): Finnhub free tier via the API process; top 50 US-listed
+  companies by market cap as a fixed, hand-refreshed list (`api/ticker_tape.py`); up/down use the
+  existing blue/orange direction tokens with ▲/▼ and a sign, not green/red (DESIGN.md); branch `slider`.
+- Reliability: the browser never calls Finnhub. One background thread refreshes one symbol about every
+  1.2 s (about 50 calls/min, under the free limit of 60/min), backs off on 429 and on repeated failures,
+  stops on a rejected key, keeps the last good quote per symbol, and persists the snapshot to
+  `data/cache/ticker_tape.json` so a restart shows last prices (marked stale) immediately.
+  `GET /ticker-tape` reads the in-memory snapshot and never fails; the tape hides itself when there is
+  no data, so the home page never depends on Finnhub.
+- Scope: market prices are display context only. They never enter a comparison, a score or an
+  `analysis_id`, and the tape carries no advice or risk language.
+- Security: `finnhub.io` added to the outbound allowlist in CLAUDE.md; key only from `FINNHUB_API_KEY`,
+  sent in the `X-Finnhub-Token` header (not the URL), never logged or returned; symbols come only from
+  the fixed list (no user input, no SSRF).
+- Reverse: unset `FINNHUB_API_KEY` (the tape disappears), or remove `<TickerTape>` from the home page.
+
+## D-027 Stage 3 no longer computes unused full-text block vectors
+- Context: `embed_segments` embedded heading, body and full text for every block, but only heading
+  and body are read (stage 4 matching). The full-text pass was about 45% of stage-3 compute, and stage 3
+  is the slowest step of a live run on CPU.
+- Decision: drop the full-text pass and the `full` field of `BlockEmbeddings`. `from_dict` ignores a
+  `full` key in older stage-3 cache entries. `embed.STAGE_VERSION` is not bumped: the vectors that are
+  used are bit-identical, and a bump would change `stage_versions` in published reports.
+- Verified by an independent check: no reader of `full` anywhere; on the lexical backend and on an
+  offline dense sentence-transformers proxy (chunking exercised), heading/body vectors, stage-5/6
+  vectors and the published JSON are byte-identical except `code_fingerprint`/`analysis_id`, which
+  hash every `pipeline/*.py` file and change with any code edit by design. Old cache entries load and
+  give byte-identical output. `embed_segments` time fell 45–50% on the proxy. Not run on real bge-m3
+  (huggingface.co blocked in the sandbox).
+- Caveat: code from before this change crashes on a stage-3 cache entry written after it (missing
+  `full`); use `--no-cache` or clear `data/cache/` when running an older checkout on the same data dir.
+- Reverse: restore the full-text pass and field.
+
+## D-028 Theme toggle flips the theme on screen (2 states, not a 3-state cycle)
+- Context: `ThemeToggle` cycled system -> light -> dark -> system. One of those steps always matched the
+  theme already shown (system -> light on a light OS, dark -> system on a dark OS), so a click changed
+  only the icon and users had to click twice to reach dark mode.
+- Decision: every click stores the opposite of the resolved theme (`data-theme` on `<html>`), so each
+  click visibly flips the page. Until the first click nothing is stored and the page follows the OS,
+  live. The localStorage key and values (`riskdiff-theme` = `light` | `dark`) are unchanged, so the
+  pre-paint script in `layout.tsx` needed no edit. The icon shows the theme on screen (sun = light,
+  moon = dark); both icons are server-rendered and picked by the `dark:` variant, so the right one shows
+  at first paint. The "system" icon is gone; the only way back to following the OS is clearing site data.
+- DESIGN.md "Dark mode" updated to match: the toggle "flips light/dark; it follows the OS until first used".
+- Reverse: restore the 3-state cycle in `web/src/components/ThemeToggle.tsx`.
+
+## D-029 Short-titles batch overlapped with stage 7 (P2)
 
 P1's decisions (parallel stage-7 calls, cache I/O on the calling thread, cancel polled every 0.5 s) were
 committed as D-024 in 49ea521; that number was reused by the integrity session in a merge, so the text

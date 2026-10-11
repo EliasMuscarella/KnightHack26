@@ -119,12 +119,32 @@ client; the one-time steps for the team are in REPORT.md §11 and README "Shared
 | UX12 | Trends page | done (UI) | headline, shared topics with quotes, blue-orange heatmap, potential→actual list, change mix, source line, skeleton + retry |
 | UX13 | Verification and outside review | done | 204 pytest + 13 node tests, ruff, build/typecheck/lint, FIXTUR byte-identical cached vs `--no-cache`, code fingerprint unchanged (`e94330fb…`), no horizontal scroll and nothing under 14px at 1440 and 1280; two review rounds (reverse-squint 6/10 → 6/10, judge → 7/10) with verdicts and responses in REPORT.md §12 |
 
+## Frontend session (Oct 10)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| FE1 | Dark mode + theme toggle | done | D-028; same token names under `[data-theme="dark"]`, system/light/dark toggle, no flash before paint |
+| FE2 | Company logos | done | D-027; genuine SVGs for AAPL, AMZN, NVDA, SF, CRWD in `web/public/logos/` (sources in `SOURCES.md`), monogram for every other ticker |
+| FE3 | Market-style polish | done | identity rows, filing strip, stat rows on cards, table-aligned change list; no green/red, no arrows |
+| FE4 | Merge with UX13 | done | five conflicts resolved keeping both sides; pushed to `main` |
+| FE5 | Heatmap contrast (light) | done | D-026; every cell number >= 4.5:1 in both themes, checked by math and in Chrome by a second, independent agent |
+
+Open, found in a browser review of both themes (not fixed):
+- NVDA and SF still need the re-run below (preamble ranked as a New risk, "z ECCNs" fragment, older prompt).
+- `displayTitle` (`web/src/lib/vocabulary.ts`) cuts headings into fragments such as "The technology industry, including".
+- Trends topic quotes can hide the topic word behind "…" (Tariffs: the Apple and Amazon quotes never show "tariffs").
+- Amazon: Trends lists it as newly adding tariff language while its page says 0 of 24 changed meaningfully, with an empty table.
+- Library cards from the shared store (GOOGL, MSFT, TSLA) have no "Top change" and no bundled logo.
+- CRWD reads "FY2024 and FY2026": the filer's own `dei:DocumentFiscalYearFocus` says 2024 for the year ended Jan 31, 2025 (`sec_fetch.fiscal_year_from_html` trusts it).
+- Dark mode only: a faint gray heatmap cell is nearly indistinguishable from an empty cell (ΔE 1.3).
+- `tests/test_web_units.py` looks for TAP output (`# fail 0`); Node 24 prints its spec format, so it fails while all 13 tests pass. Fix: add `--test-reporter=tap`.
+
 ## Performance session (P-tasks, Oct 10)
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
 | P1 | Parallel LLM calls + per-stage timings | done, tested | `RISKDIFF_LLM_CONCURRENCY` (default 6); timing table on stderr after `python -m pipeline.run`; see D-024. Not timed on a real ticker here (no SEC/HF access) |
-| P2 | Short-titles LLM batch overlapped with stage 7 | done, tested | sent on its own thread alongside the interpretation calls when stage 7 calls anyway; same key/prompt/result; FIXTUR fake-client stages 7+8 0.62 s → 0.42 s; output identical except `code_fingerprint`/`analysis_id` (source hash, D-016); see D-026 |
+| P2 | Short-titles LLM batch overlapped with stage 7 | done, tested | sent on its own thread alongside the interpretation calls when stage 7 calls anyway; same key/prompt/result; FIXTUR fake-client stages 7+8 0.62 s → 0.42 s; output identical except `code_fingerprint`/`analysis_id` (source hash, D-016); see D-029 |
 
 ## What's next
 
@@ -159,3 +179,24 @@ instances named in the brief are proven as mechanisms in code and on NVDA/SF, ne
 | T9 | Trends cold-start bug | done, tested | root cause in DECISIONS D-021; four health states, SWR `/trends` with disk cache, local fallback |
 | T10 | Derive trend facts at publish time | done, tested | `pipeline/trends/derive.py` + `topics.yml` (31 topics); `data/derived/*.trends.json` committed for NVDA + SF; hook in the publisher (run.py untouched: it feeds analysis_id) |
 | T11 | Store and serve trend facts | done, tested (fake SDK + simulated tables) | `topic_mentions` + `category_activity` tables and MERGEs, three parameterized `/trends` queries, shared `pipeline/trends/aggregate.py`, `scripts/derive_trends.py`; Databricks body == local body on NVDA + SF (simulated); never run against a real warehouse |
+
+## Ticker tape session (branch `slider`, Oct 10)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| K1 | Finnhub quote service + `GET /ticker-tape` | done, tested | `api/ticker_tape.py` (50 symbols, throttled background poller, backoff, disk cache), 28 tests with fake fetch/clock; conftest strips `FINNHUB_API_KEY` so tests never poll; D-026 |
+| K2 | Home-page tape | done, tested | `web/src/components/TickerTape.tsx`, `lib/tickerTape.ts` (+8 node tests), same-origin proxy `/api/ticker-tape`; home page only |
+| K3 | Verify | done | pytest (all pass except `test_trends.py::test_databricks_trends_match_the_local_aggregate`, a pre-existing timing flake that also fails 2/8 on unchanged main), ruff, typecheck, lint, 37 node tests, build; live smoke: API + production web, unreachable Finnhub → tape hidden, page 200, key never logged; restart with cached quotes → 50 items shown as "last updated" |
+
+Blocker: this sandbox's network policy denies `finnhub.io`, so real quotes were never fetched here.
+To see live prices: put `FINNHUB_API_KEY` (free at finnhub.io) in `.env` and run `./scripts/dev.sh`.
+
+## Stage 3 speedup (Oct 11)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| E1 | Drop unused full-text block vectors | done, independently verified | about 45–50% less stage-3 compute; published content byte-identical apart from `code_fingerprint`/`analysis_id` (D-027) |
+
+Not done (changes embedding bits, so needs a stage-3 version bump and re-publish): length-aware batching of
+long blocks (another ~50% on long filings) and running on a GPU (see the research summary in the session).
+

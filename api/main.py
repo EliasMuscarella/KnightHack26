@@ -8,14 +8,17 @@ GET  /comparison/{ticker}    the published Comparison JSON (read-through cache: 
 GET  /store/health           {"remote": "disabled" | "connecting" | "ok" | "offline", "warehouse_state"}
 GET  /trends                 cross-company trends (stale-while-revalidate: the shared store's
                              aggregates when available, else the local derived facts)
+GET  /ticker-tape            home-page market tape: last known Finnhub quotes for a fixed list of
+                             large US stocks (polled in the background; requests never call out)
 POST /analyze {"ticker"}     runs the pipeline, streaming StageEvents over SSE; serves a cached
                              result (all stages reported as "cached") when one is published
 
 Security posture: strict ticker validation, CORS restricted to the local frontend origin, one
 analysis at a time, a per-analysis timeout, and no stack traces in responses. Databricks is
 optional: with no DATABRICKS_* variables everything is local; when it is configured but
-unreachable, local reports keep being served and /store/health says "offline". Credentials
-never leave the Python process.
+unreachable, local reports keep being served and /store/health says "offline". The ticker tape is
+optional too: without FINNHUB_API_KEY no poller starts and /ticker-tape reports "unavailable".
+Credentials never leave the Python process.
 """
 
 from __future__ import annotations
@@ -40,6 +43,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
+from api.ticker_tape import TickerTapeService, unavailable_body
 from pipeline.config import (
     PIPELINE_VERSION,
     Settings,
@@ -567,6 +571,11 @@ class AppState:
             ),
             lambda: library_key(current_library(self)),
         )
+        # market quotes for the home-page tape; the key stays in this object, never in a response
+        self.ticker_tape = TickerTapeService(
+            settings.data_dir / "cache" / "ticker_tape.json",
+            os.environ.get("FINNHUB_API_KEY") or None,
+        )
 
 
 def create_app(
@@ -595,7 +604,9 @@ def create_app(
             target=lambda: state.remote.ensure_fresh(0), name="store-warmup", daemon=True
         ).start()
         threading.Thread(target=state.trends.warm, name="trends-warmup", daemon=True).start()
+        state.ticker_tape.start()  # no-op without FINNHUB_API_KEY
         yield
+        state.ticker_tape.stop()  # flush the last quotes to disk
 
     app = FastAPI(
         title="RiskDiff API",
@@ -688,6 +699,14 @@ def create_app(
             except Exception:  # noqa: BLE001
                 status = "offline"
             return {"status": status, "source": None, "computed_at": None, **aggregate.empty_body()}
+
+    @app.get("/ticker-tape")
+    async def ticker_tape() -> dict[str, Any]:
+        try:
+            return await asyncio.to_thread(state.ticker_tape.snapshot)
+        except Exception as e:  # noqa: BLE001  (never a 5xx: the tape is decoration)
+            log.warning("ticker tape failed: %s", type(e).__name__)
+            return unavailable_body()
 
     @app.post("/analyze")
     async def analyze(req: AnalyzeRequest, request: Request):
