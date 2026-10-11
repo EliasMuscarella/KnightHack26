@@ -563,3 +563,15 @@ Data and process:
   `full`); use `--no-cache` or clear `data/cache/` when running an older checkout on the same data dir.
 - Reverse: restore the full-text pass and field.
 
+## D-028 Theme toggle flips the theme on screen (2 states, not a 3-state cycle)
+- Context: `ThemeToggle` cycled system -> light -> dark -> system. One of those steps always matched the
+  theme already shown (system -> light on a light OS, dark -> system on a dark OS), so a click changed
+  only the icon and users had to click twice to reach dark mode.
+- Decision: every click stores the opposite of the resolved theme (`data-theme` on `<html>`), so each
+  click visibly flips the page. Until the first click nothing is stored and the page follows the OS,
+  live. The localStorage key and values (`riskdiff-theme` = `light` | `dark`) are unchanged, so the
+  pre-paint script in `layout.tsx` needed no edit. The icon shows the theme on screen (sun = light,
+  moon = dark); both icons are server-rendered and picked by the `dark:` variant, so the right one shows
+  at first paint. The "system" icon is gone; the only way back to following the OS is clearing site data.
+- DESIGN.md "Dark mode" updated to match: the toggle "flips light/dark; it follows the OS until first used".
+- Reverse: restore the 3-state cycle in `web/src/components/ThemeToggle.tsx`.
