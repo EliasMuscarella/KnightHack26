@@ -209,6 +209,12 @@ Not done (changes embedding bits, so needs a stage-3 version bump and re-publish
 long blocks (another ~50% on long filings) and running on a GPU (see the research summary in the session).
 
 
+## Logos, hero slideshow, briefing links (L-tasks, Oct 11)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| L1 | Adobe + Lockheed Martin logos | done (Opus subagent, verified) | D-036; team-supplied rasters, crop-only PNGs (`ADBE.png` 800x233, `LMT.png` 800x148), `RASTER_LOGOS`, SOURCES.md rows; tile checked on a scratch page in both themes; 79 node tests, typecheck, lint green |
+
 ## Cleanup audit (Oct 11)
 
 | # | Task | Status | Notes |

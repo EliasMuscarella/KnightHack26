@@ -757,3 +757,19 @@ _D-030 to D-032 were first recorded as D-026 to D-028 on Oct 10 and were lost in
   still work). Slide 1 is server-rendered.
 - Every sentence is verbatim from a filing with the diff's own marks; the card links each slide to its change page.
   `getHero` / `pickHero` (lib/hero.ts) are no longer used by the home page and are kept with their tests.
+
+## D-036 Team-supplied logos for Adobe (ADBE) and Lockheed Martin (LMT)
+
+- The team supplied official raster logos (an Adobe JPEG, a transparent Lockheed Martin PNG). They were not looked
+  up on Wikidata/Commons; they ship as hand-added PNGs in `RASTER_LOGOS` (`web/src/lib/logos.ts`), which
+  `scripts/fetch_logos.py` never replaces (the script's own `rewrite_manifest`/`rewrite_sources` round-trip the
+  edited files unchanged).
+- Processing is crop-only (Pillow, run ad hoc with `uv run --with pillow`, not a project dependency): composite onto
+  pure `#FFFFFF`, flatten near-white JPEG noise (darkest channel >= 240) to white, crop to the artwork with a uniform
+  margin of 2% of the artwork width, then a Lanczos downscale to 800 px wide (ADBE 800x233, 3.43:1; LMT 800x148,
+  5.41:1). Nothing is traced or redrawn (D-034). Both are wider than 1.6:1, so both are "wordmark" in the shared
+  1.75:1 white tile (D-031, D-034). Rows in `web/public/logos/SOURCES.md` carry the SEC name and CIK.
+- Limits: rasters, not genuine SVGs, so they are sharp only up to about 8x the lg tile width; the thin Lockheed
+  Martin wordmark, like Johnson & Johnson's, is recognizable but hard to read at the sm tile. Neither company is in
+  the local report library yet; the tiles were checked on a scratch page against AMD, NVIDIA, Alphabet, J&J and
+  Microsoft in both themes.
