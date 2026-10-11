@@ -5,7 +5,7 @@
 import type { BeforeAfterQuote, BriefingModel, QuietCompany, RiskListItem } from "@/lib/briefing/types";
 import { CHANGE_TONE } from "@/lib/vocabulary";
 
-import { ActualBadge, BeforeAfter, BriefingPage, detailLabel, EvidenceHead, FilingQuote, fmt, Pill, SecLink } from "./parts";
+import { ActualBadge, BeforeAfter, BriefingPage, detailLabel, EvidenceHead, FilingQuote, fmt, Pill, QuoteLink } from "./parts";
 
 function Actuals({ items }: { items: BeforeAfterQuote[] }) {
   return (
@@ -18,8 +18,8 @@ function Actuals({ items }: { items: BeforeAfterQuote[] }) {
       </div>
       {items.map((a) => (
         <div key={`${a.ticker}-${a.changeId}`} className="bf-pair">
-          <EvidenceHead name={a.name} sub={a.shortTitle} link={<SecLink href={a.newEdgarUrl} isFixture={a.isFixture} compact />} />
-          <BeforeAfter old={a.old} now={a.new} />
+          <EvidenceHead name={a.name} sub={a.shortTitle} />
+          <BeforeAfter old={a.old} now={a.new} isFixture={a.isFixture} />
         </div>
       ))}
     </section>
@@ -39,10 +39,10 @@ function Figures({ items }: { items: BeforeAfterQuote[] }) {
             <EvidenceHead
               name={f.name}
               sub={f.detail ? `${label}: ${detailLabel(f.detail)}` : label}
-              link={<SecLink href={f.newEdgarUrl} isFixture={f.isFixture} compact />}
+              link={f.figureChanged ? null : <QuoteLink quote={f.new} isFixture={f.isFixture} />}
             />
             {f.figureChanged ? (
-              <BeforeAfter old={f.old} now={f.new} />
+              <BeforeAfter old={f.old} now={f.new} isFixture={f.isFixture} />
             ) : f.new ? (
               <FilingQuote quote={f.new} side="new" />
             ) : null}

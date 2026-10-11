@@ -757,3 +757,61 @@ _D-030 to D-032 were first recorded as D-026 to D-028 on Oct 10 and were lost in
   still work). Slide 1 is server-rendered.
 - Every sentence is verbatim from a filing with the diff's own marks; the card links each slide to its change page.
   `getHero` / `pickHero` (lib/hero.ts) are no longer used by the home page and are kept with their tests.
+
+## D-036 Team-supplied logos for Adobe (ADBE) and Lockheed Martin (LMT)
+
+- The team supplied official raster logos (an Adobe JPEG, a transparent Lockheed Martin PNG). They were not looked
+  up on Wikidata/Commons; they ship as hand-added PNGs in `RASTER_LOGOS` (`web/src/lib/logos.ts`), which
+  `scripts/fetch_logos.py` never replaces (the script's own `rewrite_manifest`/`rewrite_sources` round-trip the
+  edited files unchanged).
+- Processing is crop-only (Pillow, run ad hoc with `uv run --with pillow`, not a project dependency): composite onto
+  pure `#FFFFFF`, flatten near-white JPEG noise (darkest channel >= 240) to white, crop to the artwork with a uniform
+  margin of 2% of the artwork width, then a Lanczos downscale to 800 px wide (ADBE 800x233, 3.43:1; LMT 800x148,
+  5.41:1). Nothing is traced or redrawn (D-034). Both are wider than 1.6:1, so both are "wordmark" in the shared
+  1.75:1 white tile (D-031, D-034). Rows in `web/public/logos/SOURCES.md` carry the SEC name and CIK.
+- Limits: rasters, not genuine SVGs, so they are sharp only up to about 8x the lg tile width; the thin Lockheed
+  Martin wordmark, like Johnson & Johnson's, is recognizable but hard to read at the sm tile. Neither company is in
+  the local report library yet; the tiles were checked on a scratch page against AMD, NVIDIA, Alphabet, J&J and
+  Microsoft in both themes.
+
+## D-037 Home specimens and "Top change" from API-only reports
+
+- Symptom: a frontend with no local `data/published` (its library served entirely by `GET /companies`, as on a
+  deployed web next to the containerized API) showed no hero slideshow and no "Top change" on its cards, because
+  `getSpecimens` and `topHighlight` were computed only from local files. The component and picker were never lost
+  (the one git stash holds package-lock churn); reproduced with an empty `RISKDIFF_PUBLISHED_DIR`.
+- `web/src/lib/data.ts` now also fetches the full comparisons of API-only tickers (`getComparisonFromApi`, at most
+  4 in parallel, ticker `^[A-Z.\-]{1,6}$`, payload kept only if `looksLikeComparison`, not a fixture, same ticker
+  and the listing's `analysis_id`). They are held in one process-wide memo (`web/src/lib/remoteComparisons.ts`,
+  on `globalThis` so dev hot reloads share it), one record per ticker keyed by analysis_id, 10-minute TTL
+  (failures retried after 60 s), one shared fetch per ticker, stale-while-revalidate refresh, capped at 60 reports
+  (first by ticker). A request waits at most 4 s from when a fetch was requested, then renders with what has
+  arrived; the fetch keeps filling the memo for later requests.
+- Local published files always win for their ticker; one comparison per ticker, merged in ticker order, so
+  `pickSpecimens` (still the only picker) gives the same slides for the same reports. Measured: cold
+  `/comparison` 0.6 to 1.4 s each, first home request about 2.3 s on the empty-published server, 0.16 s after.
+- Limits: a cold start can render part of the library, or none of it (the next request completes it); reports past
+  the 60 cap get no specimens or "Top change"; the memo is in memory and lost on restart; `listCompanies` shares
+  the bounded wait, so the briefing picker can also wait up to 4 s once per cold start.
+
+## D-038 Briefing: no word counts; every quote links to its sentence in the 10-K
+
+- Readers do not use section length, so the word-count tile, the "Words this year" column with its +/- figure, the
+  caption sentence and the four model fields (`wordsThisYear`, `wordsLastYear`, `readingHours`, `wordsDelta`) are
+  removed; the summary keeps three tiles (changed, new/dropped, new figures) on a three-column grid. The company
+  count and fiscal years already appear in the subtitle and the Coverage table, so no fourth tile replaced it.
+- Every quoted filing sentence now carries `href` and `fiscalYear`, built in the model by `sentenceSource`
+  (`web/src/lib/briefing/quotes.ts`) with the existing `textFragmentUrl`: last year's sentence links into the old
+  10-K, this year's into the new, with a URL text fragment (`#:~:text=first six words,last four words`) that makes
+  Chrome, Edge, Safari and recent Firefox scroll to and highlight it. The link is a pure function of the report data
+  and is tested. "View in the FY20xx 10-K" sits on the line above each quote (the "Last year" / "This year" label
+  row, or the card head for a single quote, replacing the card-level "SEC filing" link), so page counts are
+  unchanged (1 company 4 pages, 3 companies 4, 8 companies 8 on today's library). Fixtures and non-sec.gov URLs
+  never link; the audit-trail whole-filing links are unchanged.
+- Verified: Chromium keeps the full fragment in the PDF's link annotations (checked with pypdf: `%2C`, `%E2%80%99`
+  and the `#:~:text=` part intact), and one Microsoft link was opened in headless Chrome against sec.gov (one
+  request, `SEC_USER_AGENT`): the page scrolled to the sentence and highlighted it.
+- `BRIEFING_TEMPLATE_VERSION` 1.0.0 -> 1.1.0, so briefing ids change. Limits: browsers without text-fragment
+  support open the whole document; a sentence whose whitespace or characters differ in the SEC HTML may not be
+  found; a sentence that also appears earlier in the document (for example in Item 1) highlights that first
+  occurrence.

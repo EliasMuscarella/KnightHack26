@@ -19,13 +19,6 @@ export function fmt(n: number): string {
   return n.toLocaleString("en-US");
 }
 
-/** "+239", "−1,204" (a true minus sign), "0". Never arrows. */
-export function signed(n: number): string {
-  if (n > 0) return `+${fmt(n)}`;
-  if (n < 0) return `−${fmt(Math.abs(n))}`;
-  return "0";
-}
-
 /** Signal values arrive as "may -> experienced"; the arrow is a data label, so it prints as "→". */
 export function detailLabel(detail: string): string {
   return detail.replace(/\s*->\s*/g, " → ");
@@ -152,6 +145,23 @@ function statusOf(q: MarkedQuote, side: "old" | "new"): MarkStatus {
 }
 
 /**
+ * "View in the FY2025 10-K": the quote's deep link to exactly that sentence on sec.gov (a URL text
+ * fragment, built in the model; see `sentenceSource` in lib/briefing/quotes.ts). Chromium keeps it as
+ * a clickable link in the PDF. It sits on the line right above its quote (the card head or the
+ * "Last year" / "This year" label), so it costs no extra line. Fixtures print as disabled text; a
+ * quote with no link prints nothing.
+ */
+export function QuoteLink({ quote, isFixture }: { quote: MarkedQuote | null; isFixture: boolean }) {
+  if (!quote || (!quote.href && !isFixture)) return null;
+  const label = quote.fiscalYear ? `View in the FY${quote.fiscalYear} 10-K` : "View in the 10-K";
+  return (
+    <SecLink href={quote.href ?? ""} isFixture={isFixture} compact>
+      {label}
+    </SecLink>
+  );
+}
+
+/**
  * A verbatim filing sentence in the serif, printed in full (no trimming, no controls: this is
  * paper). The marks come from the deterministic diff only.
  */
@@ -164,8 +174,8 @@ export function FilingQuote({ quote, side, status }: { quote: MarkedQuote; side:
 }
 
 /**
- * The "SEC filing" link on a card. FilingLink renders fixture and non-sec.gov URLs as disabled
- * text; on a card head its long fixture note would crowd the company name, so `compact` shortens it.
+ * A link to an SEC document. FilingLink renders fixture and non-sec.gov URLs as disabled text; next
+ * to a quote or in a table cell its long fixture note would crowd the line, so `compact` shortens it.
  */
 export function SecLink({
   href,
@@ -192,29 +202,38 @@ export function SecLink({
   );
 }
 
-/** Company + title on the left, the filing link on the right. */
-export function EvidenceHead({ name, sub, link }: { name: string; sub: ReactNode; link: ReactNode }) {
+/** Company + title on the left; on the right, the link to the single quote below (QuoteLink), if any. */
+export function EvidenceHead({ name, sub, link = null }: { name: string; sub: ReactNode; link?: ReactNode }) {
   return (
     <div className="bf-evhead">
       <p>
         <span className="bf-strong">{name}</span>
         {sub ? <span className="bf-secondary"> {sub}</span> : null}
       </p>
-      <span className="bf-evlink">{link}</span>
+      {link ? <span className="bf-evlink">{link}</span> : null}
     </div>
   );
 }
 
-/** "Last year" (muted, strikes) beside "This year" (ink, highlighter). Either side may be absent. */
-export function BeforeAfter({ old, now }: { old: MarkedQuote | null; now: MarkedQuote | null }) {
+/**
+ * "Last year" (muted, strikes) beside "This year" (ink, highlighter). Either side may be absent.
+ * Each side links into its own filing: last year's sentence into the old 10-K, this year's into the new.
+ */
+export function BeforeAfter({ old, now, isFixture }: { old: MarkedQuote | null; now: MarkedQuote | null; isFixture: boolean }) {
   return (
     <div className="bf-pair-cols">
       <div>
-        <p className="bf-collabel">Last year</p>
+        <p className="bf-collabel">
+          <span>Last year</span>
+          <QuoteLink quote={old} isFixture={isFixture} />
+        </p>
         {old ? <FilingQuote quote={old} side="old" /> : <p className="bf-secondary">Not in last year&apos;s filing.</p>}
       </div>
       <div>
-        <p className="bf-collabel">This year</p>
+        <p className="bf-collabel">
+          <span>This year</span>
+          <QuoteLink quote={now} isFixture={isFixture} />
+        </p>
         {now ? <FilingQuote quote={now} side="new" /> : <p className="bf-secondary">Not in this year&apos;s filing.</p>}
       </div>
     </div>

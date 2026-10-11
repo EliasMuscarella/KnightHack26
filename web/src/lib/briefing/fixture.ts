@@ -24,12 +24,17 @@ function mq(id: string, parts: string[]): MarkedQuote {
   const spans: DiffSpan[] = parts.map((p) =>
     p.startsWith("+") ? { op: "insert", text: p.slice(1) } : p.startsWith("-") ? { op: "delete", text: p.slice(1) } : { op: "equal", text: p },
   );
-  return { sentenceId: id, text: spans.map((s) => s.text).join(""), spans };
+  return { sentenceId: id, text: spans.map((s) => s.text).join(""), spans, href: null, fiscalYear: null };
 }
 
 /** A whole sentence new this year (no spans: the highlighter covers it). */
 function whole(id: string, text: string): MarkedQuote {
-  return { sentenceId: id, text, spans: null };
+  return { sentenceId: id, text, spans: null, href: null, fiscalYear: null };
+}
+
+/** Fixture quotes never link (no real filing); they carry the fiscal year for the link label only. */
+function inYear(q: MarkedQuote | null, fiscalYear: number): MarkedQuote | null {
+  return q ? { ...q, fiscalYear } : null;
 }
 
 type Mix = Record<ChangeType, number>;
@@ -42,19 +47,17 @@ interface Seed {
   periodEnd: string;
   filed: string;
   mix: Mix;
-  wordsLast: number;
-  wordsThis: number;
 }
 
 const SEEDS: Seed[] = [
-  { ticker: "FXAA", name: "FIXTURE Alder", oldFY: 2025, newFY: 2026, periodEnd: "2026-01-25", filed: "2026-02-25", mix: { new: 4, expanded: 9, materially_reworded: 6, reduced: 2, removed: 3, largely_unchanged: 21 }, wordsLast: 12341, wordsThis: 12580 },
-  { ticker: "FXBB", name: "FIXTURE Birch", oldFY: 2024, newFY: 2025, periodEnd: "2025-09-27", filed: "2025-10-31", mix: { new: 2, expanded: 5, materially_reworded: 3, reduced: 1, removed: 1, largely_unchanged: 24 }, wordsLast: 9874, wordsThis: 10112 },
-  { ticker: "FXCC", name: "FIXTURE Cedar", oldFY: 2024, newFY: 2025, periodEnd: "2025-12-31", filed: "2026-02-06", mix: { new: 3, expanded: 7, materially_reworded: 4, reduced: 3, removed: 2, largely_unchanged: 30 }, wordsLast: 15020, wordsThis: 15433 },
-  { ticker: "FXDD", name: "FIXTURE Dogwood", oldFY: 2025, newFY: 2026, periodEnd: "2026-01-31", filed: "2026-03-10", mix: { new: 2, expanded: 6, materially_reworded: 5, reduced: 2, removed: 1, largely_unchanged: 19 }, wordsLast: 11205, wordsThis: 11690 },
-  { ticker: "FXEE", name: "FIXTURE Elm", oldFY: 2024, newFY: 2025, periodEnd: "2025-12-31", filed: "2026-01-29", mix: { new: 1, expanded: 4, materially_reworded: 7, reduced: 4, removed: 2, largely_unchanged: 16 }, wordsLast: 13402, wordsThis: 12755 },
-  { ticker: "FXFF", name: "FIXTURE Fir", oldFY: 2024, newFY: 2025, periodEnd: "2025-12-31", filed: "2026-02-04", mix: { new: 1, expanded: 3, materially_reworded: 2, reduced: 1, removed: 0, largely_unchanged: 28 }, wordsLast: 8920, wordsThis: 9013 },
-  { ticker: "FXGG", name: "FIXTURE Ginkgo", oldFY: 2025, newFY: 2026, periodEnd: "2026-03-31", filed: "2026-05-20", mix: { new: 0, expanded: 1, materially_reworded: 1, reduced: 0, removed: 0, largely_unchanged: 31 }, wordsLast: 10450, wordsThis: 10478 },
-  { ticker: "FXHH", name: "FIXTURE Hazel", oldFY: 2024, newFY: 2025, periodEnd: "2025-12-31", filed: "2026-02-18", mix: { new: 0, expanded: 0, materially_reworded: 0, reduced: 0, removed: 0, largely_unchanged: 24 }, wordsLast: 7611, wordsThis: 7611 },
+  { ticker: "FXAA", name: "FIXTURE Alder", oldFY: 2025, newFY: 2026, periodEnd: "2026-01-25", filed: "2026-02-25", mix: { new: 4, expanded: 9, materially_reworded: 6, reduced: 2, removed: 3, largely_unchanged: 21 } },
+  { ticker: "FXBB", name: "FIXTURE Birch", oldFY: 2024, newFY: 2025, periodEnd: "2025-09-27", filed: "2025-10-31", mix: { new: 2, expanded: 5, materially_reworded: 3, reduced: 1, removed: 1, largely_unchanged: 24 } },
+  { ticker: "FXCC", name: "FIXTURE Cedar", oldFY: 2024, newFY: 2025, periodEnd: "2025-12-31", filed: "2026-02-06", mix: { new: 3, expanded: 7, materially_reworded: 4, reduced: 3, removed: 2, largely_unchanged: 30 } },
+  { ticker: "FXDD", name: "FIXTURE Dogwood", oldFY: 2025, newFY: 2026, periodEnd: "2026-01-31", filed: "2026-03-10", mix: { new: 2, expanded: 6, materially_reworded: 5, reduced: 2, removed: 1, largely_unchanged: 19 } },
+  { ticker: "FXEE", name: "FIXTURE Elm", oldFY: 2024, newFY: 2025, periodEnd: "2025-12-31", filed: "2026-01-29", mix: { new: 1, expanded: 4, materially_reworded: 7, reduced: 4, removed: 2, largely_unchanged: 16 } },
+  { ticker: "FXFF", name: "FIXTURE Fir", oldFY: 2024, newFY: 2025, periodEnd: "2025-12-31", filed: "2026-02-04", mix: { new: 1, expanded: 3, materially_reworded: 2, reduced: 1, removed: 0, largely_unchanged: 28 } },
+  { ticker: "FXGG", name: "FIXTURE Ginkgo", oldFY: 2025, newFY: 2026, periodEnd: "2026-03-31", filed: "2026-05-20", mix: { new: 0, expanded: 1, materially_reworded: 1, reduced: 0, removed: 0, largely_unchanged: 31 } },
+  { ticker: "FXHH", name: "FIXTURE Hazel", oldFY: 2024, newFY: 2025, periodEnd: "2025-12-31", filed: "2026-02-18", mix: { new: 0, expanded: 0, materially_reworded: 0, reduced: 0, removed: 0, largely_unchanged: 24 } },
 ];
 
 function total(m: Mix): number {
@@ -83,8 +86,6 @@ const companies: BriefingCompany[] = SEEDS.map((s, i) => {
     byChangeType: s.mix,
     newCount: s.mix.new,
     droppedCount: s.mix.removed,
-    wordsThisYear: s.wordsThis,
-    wordsLastYear: s.wordsLast,
     interpretationStatus: "ok",
   };
 });
@@ -101,8 +102,6 @@ const coverage: CoverageRow[] = companies.map((c) => ({
   mix: c.byChangeType,
   newCount: c.newCount,
   droppedCount: c.droppedCount,
-  wordsThisYear: c.wordsThisYear,
-  wordsDelta: c.wordsThisYear - c.wordsLastYear,
 }));
 
 const audit: AuditRow[] = companies.map((c) => ({
@@ -117,7 +116,7 @@ const audit: AuditRow[] = companies.map((c) => ({
 }));
 
 function themeQuote(ticker: string, changeId: string, shortTitle: string, changeType: ChangeType, quote: MarkedQuote) {
-  return { ticker, name: nameOf(ticker), changeId, shortTitle, changeType, quote, edgarUrl: "FIXTURE no filing", isFixture: true };
+  return { ticker, name: nameOf(ticker), changeId, shortTitle, changeType, quote: inYear(quote, byTicker[ticker].newFiscalYear)!, edgarUrl: "FIXTURE no filing", isFixture: true };
 }
 
 function ba(
@@ -130,7 +129,21 @@ function ba(
   old: MarkedQuote | null,
   now: MarkedQuote | null,
 ): BeforeAfterQuote {
-  return { ticker, name: nameOf(ticker), changeId, shortTitle, kind, detail, figureChanged, old, new: now, oldEdgarUrl: "FIXTURE no filing", newEdgarUrl: "FIXTURE no filing", isFixture: true };
+  const c = byTicker[ticker];
+  return {
+    ticker,
+    name: nameOf(ticker),
+    changeId,
+    shortTitle,
+    kind,
+    detail,
+    figureChanged,
+    old: inYear(old, c.oldFiscalYear),
+    new: inYear(now, c.newFiscalYear),
+    oldEdgarUrl: "FIXTURE no filing",
+    newEdgarUrl: "FIXTURE no filing",
+    isFixture: true,
+  };
 }
 
 function risk(ticker: string, changeId: string, shortTitle: string, changeType: ChangeType, note: string | null = null): RiskListItem {
@@ -139,13 +152,12 @@ function risk(ticker: string, changeId: string, shortTitle: string, changeType: 
 
 const totals = companies.reduce(
   (s, c) => ({
-    words: s.words + c.wordsThisYear,
     changed: s.changed + c.meaningfulChanges,
     total: s.total + c.totalRiskFactors,
     newCount: s.newCount + c.newCount,
     dropped: s.dropped + c.droppedCount,
   }),
-  { words: 0, changed: 0, total: 0, newCount: 0, dropped: 0 },
+  { changed: 0, total: 0, newCount: 0, dropped: 0 },
 );
 
 export const FIXTURE_BRIEFING: BriefingModel = {
@@ -157,8 +169,6 @@ export const FIXTURE_BRIEFING: BriefingModel = {
   preparedFor: "FIXTURE Investment committee",
   companies,
   headline: {
-    wordsThisYear: totals.words,
-    readingHours: Math.round((totals.words / 250 / 60) * 10) / 10,
     changed: totals.changed,
     totalRiskFactors: totals.total,
     unchanged: totals.total - totals.changed,

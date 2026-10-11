@@ -16,6 +16,7 @@ Wikidata column is the CIK-matched item, and Stifel has no CIK on Wikidata.
 | Ticker | Company | Wikidata | Commons file | License | Property |
 |---|---|---|---|---|---|
 | AAPL | Apple Inc. | [Q312](https://www.wikidata.org/wiki/Q312) | [Apple logo black.svg](https://commons.wikimedia.org/wiki/File:Apple_logo_black.svg) | Public domain (Artist: Original: Rob Janoff) | P154 |
+| ADBE | Adobe Inc. | not used | ADBE.png: the official "A" mark and "Adobe" wordmark, supplied by the team as a JPEG; cropped to the artwork with a 2% white margin, background flattened to white, downscaled to 800 px wide (SEC: ADOBE INC., CIK 0000796343) | Trademark of Adobe Inc. | manual |
 | AMD | AMD | [Q128896](https://www.wikidata.org/wiki/Q128896) | [AMD Logo.svg](https://commons.wikimedia.org/wiki/File:AMD_Logo.svg) | Public domain (Artist: Advanced Micro Devices, Inc.; Credit: amd.com) | P154 |
 | AMZN | Amazon | [Q3884](https://www.wikidata.org/wiki/Q3884) | [Amazon icon.svg](https://commons.wikimedia.org/wiki/File:Amazon_icon.svg) | Public domain (Artist: Amazon.com, Inc.) | manual |
 | BY | Byline Bancorp, Inc. | none | BY.png: the circle mark cropped from the official logo image, supplied by the team (Commons has none) | Trademark of Byline Bancorp, Inc. | manual |
@@ -23,6 +24,7 @@ Wikidata column is the CIK-matched item, and Stifel has no CIK on Wikidata.
 | GOOGL | Alphabet Inc. | [Q20800404](https://www.wikidata.org/wiki/Q20800404) | [Alphabet Inc Logo 2015.svg](https://commons.wikimedia.org/wiki/File:Alphabet_Inc_Logo_2015.svg) | Public domain (Credit: https://abc.xyz/investor/pdf/2017_alphabet_proxy_statement.pdf) | P154 |
 | JNJ | Johnson & Johnson | [Q333718](https://www.wikidata.org/wiki/Q333718) | [JNJ Logo New.svg](https://commons.wikimedia.org/wiki/File:JNJ_Logo_New.svg) | Public domain (Artist: Johnson & Johnson Services, Inc.; Credit: https://jnj-content-lab2.brightspotcdn.com/ac/25/bd2078f54d5992dd486ed26140ce/johnson-johnson-logo.svg) | P154 |
 | LLY | Eli Lilly and Company | [Q632240](https://www.wikidata.org/wiki/Q632240) | [Eli Lilly and Company.svg](https://commons.wikimedia.org/wiki/File:Eli_Lilly_and_Company.svg) | Public domain (Artist: Eli Lilly and Company, converted to PNG by Huwmanbeing; Credit: The Eli Lilly and Company website at www.lilly.com) | P154 |
+| LMT | Lockheed Martin Corporation | not used | LMT.png: the official "LOCKHEED MARTIN" wordmark with the star, supplied by the team as a transparent PNG; composited on white, cropped to the artwork with a 2% white margin, downscaled to 800 px wide (SEC: LOCKHEED MARTIN CORP, CIK 0000936468) | Trademark of Lockheed Martin Corporation | manual |
 | MA | Mastercard | [Q489921](https://www.wikidata.org/wiki/Q489921) | [Mastercard 2019 logo.svg](https://commons.wikimedia.org/wiki/File:Mastercard_2019_logo.svg) | Public domain (Artist: Mastercard Incorporated; Credit: Own work using: https://brand.mastercard.com/brandcenter/mastercard-brand-mark/downloads.html) | P8972 |
 | META | Meta Platforms | [Q380](https://www.wikidata.org/wiki/Q380) | [Meta Platforms Inc. logo (cropped).svg](https://commons.wikimedia.org/wiki/File:Meta_Platforms_Inc._logo_(cropped).svg) | Public domain (Artist: Meta Platforms; Credit: about.facebook.com ( direct link )) | P8972 |
 | MSFT | Microsoft | [Q2283](https://www.wikidata.org/wiki/Q2283) | [Microsoft icon.svg](https://commons.wikimedia.org/wiki/File:Microsoft_icon.svg) | Public domain (Artist: Ariesk47 Original: Microsoft; Credit: Own work based on: File:Microsoft.svg) | P8972 |
@@ -39,5 +41,6 @@ Add a logo: run `uv run python scripts/fetch_logos.py --dry-run`, then without `
 company the script cannot find, put a genuine SVG here as `{TICKER}.svg`, add a row above by hand and add
 the ticker to the generated block in `web/src/lib/logos.ts` (tickers not listed there render a monogram and
 never request an image).
-When only a raster image exists (Byline Bancorp), save a tight square PNG crop as `{TICKER}.png` and also add
-the ticker to `RASTER_LOGOS` in `logos.ts`; the script never replaces a hand-added PNG.
+When only a raster image exists (Byline Bancorp), or the team supplies one (Adobe, Lockheed Martin), save a
+tight PNG crop on a white background as `{TICKER}.png` and also add the ticker to `RASTER_LOGOS` in `logos.ts`;
+the script never replaces a hand-added PNG.

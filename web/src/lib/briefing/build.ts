@@ -17,7 +17,7 @@ import type { Change, ChangeType, Comparison, Highlight } from "@/types/comparis
 import type { BriefingInput } from "./load";
 import { cmpDesc, cmpFigure, cmpName, cmpStr } from "./order";
 import { buildQuestions } from "./questions";
-import { quoteById, spansFromOffsets } from "./quotes";
+import { quoteById, sentenceSource, spansFromOffsets } from "./quotes";
 import { compareTopics, filterTrends, topicLabel, type FilteredTopic } from "./trendsFilter";
 import {
   BRIEFING_TEMPLATE_VERSION,
@@ -106,8 +106,6 @@ function companyOf(c: Comparison): BriefingCompany {
     byChangeType: by,
     newCount: by.new,
     droppedCount: by.removed,
-    wordsThisYear: c.new_filing.item_1a_word_count,
-    wordsLastYear: c.old_filing.item_1a_word_count,
     interpretationStatus: c.summary.interpretation_status,
   };
 }
@@ -350,7 +348,8 @@ function buildTheme(t: FilteredTopic, byTicker: Map<string, Ctx>): Theme {
     }
     if (!best) continue;
     const { ex } = best;
-    const text = ctx.comp.sentence_index[ex.sentence_id].text;
+    const loc = ctx.comp.sentence_index[ex.sentence_id];
+    const text = loc.text;
     const change = ctx.changes.get(ex.change_id);
     candidates.push({
       score: best.score,
@@ -360,7 +359,12 @@ function buildTheme(t: FilteredTopic, byTicker: Map<string, Ctx>): Theme {
         changeId: ex.change_id,
         shortTitle: change ? shortTitleOf(ctx, change) : displayTitle(ex.short_title, null, ctx.comp.company.name),
         changeType: change?.change_type ?? null,
-        quote: { sentenceId: ex.sentence_id, text, spans: text === ex.text ? spansFromOffsets(text, ex.added_spans) : null },
+        quote: {
+          sentenceId: ex.sentence_id,
+          text,
+          spans: text === ex.text ? spansFromOffsets(text, ex.added_spans) : null,
+          ...sentenceSource(ctx.comp, loc),
+        },
         edgarUrl: ctx.company.newEdgarUrl,
         isFixture: ctx.company.isFixture,
       },
@@ -497,7 +501,6 @@ export function buildBriefing(input: BriefingInput): BriefingModel {
   const nameOf = new Map(companies.map((c) => [c.ticker, c.name] as const));
 
   // Headline.
-  const wordsThisYear = companies.reduce((s, x) => s + x.wordsThisYear, 0);
   const changed = companies.reduce((s, x) => s + x.meaningfulChanges, 0);
   const total = companies.reduce((s, x) => s + x.totalRiskFactors, 0);
   const appeared = highlightsOf(ctxs, "new_figure").filter((r) => figureAppeared(r.h) && usableFigure(r)).sort(cmpFigureRef);
@@ -509,8 +512,6 @@ export function buildBriefing(input: BriefingInput): BriefingModel {
     if (d && d.includes("$") && !figureExamples.includes(d) && figureExamples.length < LIMITS.figureExamples) figureExamples.push(d);
   }
   const headline: HeadlineStats = {
-    wordsThisYear,
-    readingHours: Math.round((wordsThisYear / 250 / 60) * 10) / 10,
     changed,
     totalRiskFactors: total,
     unchanged: total - changed,
@@ -534,8 +535,6 @@ export function buildBriefing(input: BriefingInput): BriefingModel {
       mix: { ...x.byChangeType },
       newCount: x.newCount,
       droppedCount: x.droppedCount,
-      wordsThisYear: x.wordsThisYear,
-      wordsDelta: x.wordsThisYear - x.wordsLastYear,
     }));
 
   const themes = topics.slice(0, LIMITS.themes).map((t) => buildTheme(t, byTicker));

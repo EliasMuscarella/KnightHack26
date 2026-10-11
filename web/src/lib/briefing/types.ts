@@ -17,7 +17,7 @@ import type { ChangeType, DiffSpan, Highlight } from "@/types/comparison";
 export type HighlightKind = Highlight["kind"];
 
 /** Bump when the briefing's content rules change (what is included, ranked or worded). */
-export const BRIEFING_TEMPLATE_VERSION = "1.0.0";
+export const BRIEFING_TEMPLATE_VERSION = "1.1.0";
 
 /**
  * Upper bound on companies in one briefing: bounds the render and keeps the PDF a document rather than
@@ -50,8 +50,6 @@ export interface BriefingCompany {
   byChangeType: Record<ChangeType, number>;
   newCount: number;
   droppedCount: number;
-  wordsThisYear: number;
-  wordsLastYear: number;
   interpretationStatus: string;
 }
 
@@ -60,12 +58,17 @@ export interface MarkedQuote {
   sentenceId: string | null;
   text: string;
   spans: DiffSpan[] | null;
+  /**
+   * Deep link to exactly this sentence in its 10-K on sec.gov: the filing's EDGAR URL plus a URL text
+   * fragment built from `text` (`textFragmentUrl` in lib/format.ts), so supporting browsers scroll to
+   * and highlight it. Null for FIXTURE data or a filing URL outside https://www.sec.gov/.
+   */
+  href: string | null;
+  /** Fiscal year of the filing the sentence comes from (for "View in the FY2025 10-K"); null if unknown. */
+  fiscalYear: number | null;
 }
 
 export interface HeadlineStats {
-  wordsThisYear: number;
-  /** wordsThisYear / 250 words per minute / 60, rounded to one decimal. */
-  readingHours: number;
   changed: number;
   totalRiskFactors: number;
   unchanged: number;
@@ -101,9 +104,6 @@ export interface CoverageRow {
   mix: Record<ChangeType, number>;
   newCount: number;
   droppedCount: number;
-  wordsThisYear: number;
-  /** wordsThisYear - wordsLastYear. */
-  wordsDelta: number;
 }
 
 export interface ThemeQuote {
@@ -113,6 +113,7 @@ export interface ThemeQuote {
   shortTitle: string;
   changeType: ChangeType | null;
   quote: MarkedQuote;
+  /** The new filing's EDGAR URL (the quote's own deep link is `quote.href`). */
   edgarUrl: string;
   isFixture: boolean;
 }

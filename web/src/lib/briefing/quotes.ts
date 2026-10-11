@@ -3,9 +3,27 @@
  * by sentence id; marks come only from the deterministic diff (a sentence's `diff_spans`) or from
  * the trends payload's character offsets of newly added words. Nothing is paraphrased.
  */
-import type { Change, Comparison, DiffSpan } from "@/types/comparison";
+import { textFragmentUrl } from "@/lib/format";
+import type { Change, Comparison, DiffSpan, SentenceLocation } from "@/types/comparison";
 
 import type { MarkedQuote } from "./types";
+
+/** Only filings on the SEC's own site are ever linked (FilingLink applies the same rule). */
+const SEC_DOCUMENT = /^https:\/\/www\.sec\.gov\//;
+
+/**
+ * Where a quoted sentence lives: a deep link to exactly that sentence in its own filing (the old
+ * filing for a last-year sentence, the new filing for a this-year one, by the sentence's `side`)
+ * and that filing's fiscal year. The link is the filing's EDGAR URL plus a URL text fragment of the
+ * sentence (`textFragmentUrl`), so a supporting browser scrolls to and highlights it; others open
+ * the document. No link for FIXTURE data or a URL outside https://www.sec.gov/.
+ */
+export function sentenceSource(comparison: Comparison, loc: Pick<SentenceLocation, "side" | "text">): Pick<MarkedQuote, "href" | "fiscalYear"> {
+  const filing = loc.side === "old" ? comparison.old_filing : comparison.new_filing;
+  const url = filing?.edgar_url ?? "";
+  const linkable = comparison.is_fixture !== true && SEC_DOCUMENT.test(url) && loc.text.trim() !== "";
+  return { href: linkable ? textFragmentUrl(url, loc.text) : null, fiscalYear: filing?.fiscal_year ?? null };
+}
 
 /**
  * `[start, end)` character offsets of marked words -> `DiffSpan[]` segments that cover the whole
@@ -58,5 +76,5 @@ export function quoteById(comparison: Comparison, change: Change | undefined, id
       spans = [{ op: "delete", text }];
     }
   }
-  return { sentenceId: id, text, spans };
+  return { sentenceId: id, text, spans, ...sentenceSource(comparison, loc) };
 }

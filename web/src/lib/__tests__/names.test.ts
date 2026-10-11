@@ -21,6 +21,8 @@ test("keeps acronyms and house styles", () => {
   assert.equal(displayName("CrowdStrike Holdings, Inc."), "CrowdStrike");
   assert.equal(displayName("TAKE TWO INTERACTIVE SOFTWARE INC"), "Take-Two Interactive");
   assert.equal(displayName("ELI LILLY & Co"), "Eli Lilly");
+  assert.equal(displayName("ADOBE INC."), "Adobe");
+  assert.equal(displayName("LOCKHEED MARTIN CORP"), "Lockheed Martin");
   // A suffix drop never leaves a dangling ampersand behind.
   assert.equal(displayName("SMITH & CO"), "Smith");
 });

@@ -1,7 +1,7 @@
 /** Page 2 of the Disclosure Briefing: shared themes (verbatim quotes) and the topic matrix. */
 import type { BriefingModel, Theme, TopicMatrix } from "@/lib/briefing/types";
 
-import { BriefingPage, changeLabel, Dot, EvidenceHead, FilingQuote, joinAnd, RULE_CLASS, SecLink } from "./parts";
+import { BriefingPage, changeLabel, Dot, EvidenceHead, FilingQuote, joinAnd, QuoteLink, RULE_CLASS } from "./parts";
 
 function ThemeBlock({ theme, n }: { theme: Theme; n: number }) {
   const id = `bf-theme-${theme.topic.replace(/[^A-Za-z0-9_-]/g, "-")}`;
@@ -16,11 +16,7 @@ function ThemeBlock({ theme, n }: { theme: Theme; n: number }) {
           const type = changeLabel(q.changeType);
           return (
             <div key={`${q.ticker}-${q.changeId}`} className={`bf-card ${q.changeType ? RULE_CLASS[q.changeType] : "border-line"}`}>
-              <EvidenceHead
-                name={q.name}
-                sub={null}
-                link={<SecLink href={q.edgarUrl} isFixture={q.isFixture} compact />}
-              />
+              <EvidenceHead name={q.name} sub={null} link={<QuoteLink quote={q.quote} isFixture={q.isFixture} />} />
               <p className="bf-secondary bf-cardtitle">{type ? `${type}: ${q.shortTitle}` : q.shortTitle}</p>
               <FilingQuote quote={q.quote} side="new" status={q.quote.spans && q.quote.spans.length > 0 ? "modified" : "added"} />
             </div>
