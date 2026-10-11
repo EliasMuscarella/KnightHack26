@@ -58,8 +58,7 @@ export default async function HomePage() {
         </SectionTitle>
         {companies.length === 0 ? (
           <EmptyState title="No published comparisons yet.">
-            <p>Enter a ticker above to compare a company live, or publish one from the command line.</p>
-            <p className="mt-2 font-mono text-sm text-ink">uv run python -m pipeline.run NVDA</p>
+            <p>Enter a ticker above to compare a company live</p>
           </EmptyState>
         ) : (
           <div className="mt-4">
