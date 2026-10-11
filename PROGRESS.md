@@ -124,6 +124,7 @@ client; the one-time steps for the team are in REPORT.md §11 and README "Shared
 | # | Task | Status | Notes |
 |---|------|--------|-------|
 | P1 | Parallel LLM calls + per-stage timings | done, tested | `RISKDIFF_LLM_CONCURRENCY` (default 6); timing table on stderr after `python -m pipeline.run`; see D-024. Not timed on a real ticker here (no SEC/HF access) |
+| P2 | Short-titles LLM batch overlapped with stage 7 | done, tested | sent on its own thread alongside the interpretation calls when stage 7 calls anyway; same key/prompt/result; FIXTUR fake-client stages 7+8 0.62 s → 0.42 s; output identical except `code_fingerprint`/`analysis_id` (source hash, D-016); see D-026 |
 
 ## What's next
 
