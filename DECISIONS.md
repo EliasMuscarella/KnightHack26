@@ -793,3 +793,25 @@ _D-030 to D-032 were first recorded as D-026 to D-028 on Oct 10 and were lost in
 - Limits: a cold start can render part of the library, or none of it (the next request completes it); reports past
   the 60 cap get no specimens or "Top change"; the memo is in memory and lost on restart; `listCompanies` shares
   the bounded wait, so the briefing picker can also wait up to 4 s once per cold start.
+
+## D-038 Briefing: no word counts; every quote links to its sentence in the 10-K
+
+- Readers do not use section length, so the word-count tile, the "Words this year" column with its +/- figure, the
+  caption sentence and the four model fields (`wordsThisYear`, `wordsLastYear`, `readingHours`, `wordsDelta`) are
+  removed; the summary keeps three tiles (changed, new/dropped, new figures) on a three-column grid. The company
+  count and fiscal years already appear in the subtitle and the Coverage table, so no fourth tile replaced it.
+- Every quoted filing sentence now carries `href` and `fiscalYear`, built in the model by `sentenceSource`
+  (`web/src/lib/briefing/quotes.ts`) with the existing `textFragmentUrl`: last year's sentence links into the old
+  10-K, this year's into the new, with a URL text fragment (`#:~:text=first six words,last four words`) that makes
+  Chrome, Edge, Safari and recent Firefox scroll to and highlight it. The link is a pure function of the report data
+  and is tested. "View in the FY20xx 10-K" sits on the line above each quote (the "Last year" / "This year" label
+  row, or the card head for a single quote, replacing the card-level "SEC filing" link), so page counts are
+  unchanged (1 company 4 pages, 3 companies 4, 8 companies 8 on today's library). Fixtures and non-sec.gov URLs
+  never link; the audit-trail whole-filing links are unchanged.
+- Verified: Chromium keeps the full fragment in the PDF's link annotations (checked with pypdf: `%2C`, `%E2%80%99`
+  and the `#:~:text=` part intact), and one Microsoft link was opened in headless Chrome against sec.gov (one
+  request, `SEC_USER_AGENT`): the page scrolled to the sentence and highlighted it.
+- `BRIEFING_TEMPLATE_VERSION` 1.0.0 -> 1.1.0, so briefing ids change. Limits: browsers without text-fragment
+  support open the whole document; a sentence whose whitespace or characters differ in the SEC HTML may not be
+  found; a sentence that also appears earlier in the document (for example in Item 1) highlights that first
+  occurrence.

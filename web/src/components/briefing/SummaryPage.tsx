@@ -2,7 +2,7 @@
 import type { BriefingModel } from "@/lib/briefing/types";
 import { formatDate } from "@/lib/format";
 
-import { BriefingPage, fmt, joinAnd, MixBar, MixLegend, ReadFirstBadge, signed } from "./parts";
+import { BriefingPage, fmt, joinAnd, MixBar, MixLegend, ReadFirstBadge } from "./parts";
 
 function Tile({ value, caption }: { value: string; caption: string }) {
   return (
@@ -15,11 +15,9 @@ function Tile({ value, caption }: { value: string; caption: string }) {
 
 function StatTiles({ model }: { model: BriefingModel }) {
   const h = model.headline;
-  const hours = h.readingHours === 1 ? "hour" : "hours";
   const figures = h.newFigures.count === 0 ? "no new figures disclosed" : `newly disclosed figures: ${joinAnd(h.newFigures.examples)}`;
   return (
     <div className="bf-tiles">
-      <Tile value={fmt(h.wordsThisYear)} caption={`words this year, about ${h.readingHours} ${hours} of reading`} />
       <Tile
         value={`${fmt(h.changed)} of ${fmt(h.totalRiskFactors)}`}
         caption={`risk factors changed meaningfully; ${fmt(h.unchanged)} are essentially unchanged`}
@@ -89,9 +87,6 @@ function Coverage({ model }: { model: BriefingModel }) {
             <th scope="col" className="is-num">
               Dropped
             </th>
-            <th scope="col" className="is-num">
-              Words this year
-            </th>
           </tr>
         </thead>
         <tbody>
@@ -111,12 +106,6 @@ function Coverage({ model }: { model: BriefingModel }) {
               </td>
               <td className="is-num">{fmt(r.newCount)}</td>
               <td className="is-num">{fmt(r.droppedCount)}</td>
-              <td className="is-num bf-nowrap">
-                {fmt(r.wordsThisYear)}
-                <span className="bf-delta" aria-label={`, ${signed(r.wordsDelta)} words from last year`}>
-                  {signed(r.wordsDelta)}
-                </span>
-              </td>
             </tr>
           ))}
         </tbody>
@@ -124,7 +113,7 @@ function Coverage({ model }: { model: BriefingModel }) {
       <MixLegend />
       <p className="bf-caption">
         Blue is more disclosure language, orange is less, gray is rewritten both ways. Colors show the direction of the wording, never
-        whether a change is good or bad. The small figure after each word count is the change in section length from last year.
+        whether a change is good or bad.
       </p>
     </section>
   );

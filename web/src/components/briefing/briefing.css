@@ -203,7 +203,7 @@
 
 .briefing .bf-tiles {
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr) minmax(0, 1.3fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1.05fr);
   margin-top: 12px;
   border-top: 1px solid var(--color-line);
   border-bottom: 1px solid var(--color-line);
@@ -306,10 +306,6 @@
 }
 .briefing .bf-coverage td:nth-child(3) {
   width: 100%;
-}
-.briefing .bf-delta {
-  margin-left: 6px;
-  color: var(--color-ink-secondary);
 }
 .briefing .bf-questions th {
   width: 18%;
@@ -457,9 +453,18 @@
 .briefing .bf-pair-cols .bf-quote.is-old {
   border-left-color: var(--color-ink-muted);
 }
+/* "Last year" on the left, "View in the FY2024 10-K" (the deep link to the quote below) on the right. */
 .briefing .bf-collabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
   margin-bottom: 2px;
   color: var(--color-ink-secondary);
+}
+.briefing .bf-collabel > :last-child:not(:first-child) {
+  flex: none;
+  white-space: nowrap;
 }
 .briefing .bf-seclink {
   color: var(--color-accent);

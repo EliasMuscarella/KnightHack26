@@ -9,6 +9,9 @@ const { filterTrends, topicLabel } = await import("../briefing/trendsFilter.ts")
 const { spansFromOffsets } = await import("../briefing/quotes.ts");
 const { buildQuestions } = await import("../briefing/questions.ts");
 const { cmpFigure } = await import("../briefing/order.ts");
+const { textFragmentUrl } = await import("../format.ts");
+const { BRIEFING_TEMPLATE_VERSION } = await import("../briefing/types.ts");
+const { FIXTURE_BRIEFING } = await import("../briefing/fixture.ts");
 
 type Input = Parameters<typeof buildBriefing>[0];
 type Comparison = Input["comparisons"][number];
@@ -259,7 +262,13 @@ test("evidence quotes are verbatim sentence-index text with the diff's spans", a
   const removed = FIXTURE.changes.find((c) => c.change_type === "removed")!;
   const s = removed.sentences[0];
   const { quoteById } = await import("../briefing/quotes.ts");
-  assert.deepEqual(quoteById(FIXTURE, removed, s.id), { sentenceId: s.id, text: s.text, spans: [{ op: "delete", text: s.text }] });
+  assert.deepEqual(quoteById(FIXTURE, removed, s.id), {
+    sentenceId: s.id,
+    text: s.text,
+    spans: [{ op: "delete", text: s.text }],
+    href: null, // FIXTURE data never links
+    fiscalYear: FIXTURE.old_filing.fiscal_year,
+  });
   assert.equal(quoteById(FIXTURE, removed, "missing:0:0"), null);
 });
 
@@ -296,4 +305,66 @@ test("a heading that is only the company name falls back to the section group", 
   assert.equal(buildBriefing(input([c], null)).newRisks[0].shortTitle, ch.section_group);
   ch.section_group = null;
   assert.equal(buildBriefing(input([c], null)).newRisks[0].shortTitle, UNTITLED_RISK);
+});
+
+/** A copy of the fixture that passes as a real filing pair on sec.gov (for the link rules only). */
+function real(ticker: string): Comparison {
+  const c = comp(ticker);
+  c.is_fixture = false;
+  c.old_filing = { ...c.old_filing, edgar_url: "https://www.sec.gov/Archives/edgar/data/1/000000000024000001/old-10k.htm" };
+  c.new_filing = { ...c.new_filing, edgar_url: "https://www.sec.gov/Archives/edgar/data/1/000000000025000001/new-10k.htm" };
+  return c;
+}
+
+test("every quote links to exactly its sentence in its own filing (text fragment on sec.gov)", () => {
+  const c = real("AAA");
+  const t = trends([topic("Tariffs", ["AAA", "BBB"], 4)], ["AAA", "BBB"]);
+  const m = buildBriefing(input([c], t));
+  const quotes = [...m.actuals, ...m.figures].flatMap((x) => [
+    { q: x.old, url: c.old_filing.edgar_url, fy: c.old_filing.fiscal_year },
+    { q: x.new, url: c.new_filing.edgar_url, fy: c.new_filing.fiscal_year },
+  ]);
+  assert.ok(quotes.filter((x) => x.q).length >= 4);
+  for (const { q, url, fy } of quotes) {
+    if (!q) continue;
+    assert.equal(q.href, textFragmentUrl(url, q.text));
+    assert.match(q.href!, /^https:\/\/www\.sec\.gov\/.+\.htm#:~:text=/);
+    assert.equal(q.fiscalYear, fy);
+  }
+  // Last year's sentence goes into the old 10-K, this year's into the new one.
+  const a = m.actuals[0];
+  assert.ok(a.old!.href!.startsWith(`${c.old_filing.edgar_url}#:~:text=`));
+  assert.ok(a.new!.href!.startsWith(`${c.new_filing.edgar_url}#:~:text=`));
+  // Theme quotes are new-filing sentences.
+  const tq = m.themes[0].quotes[0].quote;
+  assert.equal(tq.href, textFragmentUrl(c.new_filing.edgar_url, ADDED_TEXT));
+  assert.equal(tq.fiscalYear, c.new_filing.fiscal_year);
+  // The fragment starts with the sentence's first words.
+  const first = encodeURIComponent(ADDED_TEXT.split(/\s+/)[0]).replace(/-/g, "%2D").replace(/,/g, "%2C");
+  assert.ok(tq.href!.includes(`#:~:text=${first}`));
+});
+
+test("no quote links for FIXTURE data or a filing URL outside sec.gov", () => {
+  const fixture = buildBriefing(input([comp("AAA")], trends([topic("Tariffs", ["AAA"], 1)], ["AAA"])));
+  const all = [...fixture.actuals, ...fixture.figures].flatMap((x) => [x.old, x.new]).concat(fixture.themes.flatMap((th) => th.quotes.map((q) => q.quote)));
+  assert.ok(all.length > 0);
+  for (const q of all) if (q) assert.equal(q.href, null);
+  const offsite = real("BBB");
+  offsite.new_filing = { ...offsite.new_filing, edgar_url: "https://example.com/new-10k.htm" };
+  const m = buildBriefing(input([offsite], null));
+  assert.equal(m.actuals[0].new!.href, null);
+  assert.ok(m.actuals[0].old!.href); // the old filing is still on sec.gov
+  // The hand-made preview never links either.
+  for (const x of [...FIXTURE_BRIEFING.actuals, ...FIXTURE_BRIEFING.figures]) for (const q of [x.old, x.new]) if (q) assert.equal(q.href, null);
+});
+
+test("the briefing carries no word counts; the template version changed with the document", () => {
+  const m = buildBriefing(input([comp("AAA"), comp("BBB")], null));
+  const words = /words|readingHours/i;
+  for (const obj of [m.headline, ...m.coverage, ...m.companies, FIXTURE_BRIEFING.headline, ...FIXTURE_BRIEFING.coverage, ...FIXTURE_BRIEFING.companies]) {
+    assert.deepEqual(Object.keys(obj).filter((k) => words.test(k)), []);
+  }
+  assert.equal(BRIEFING_TEMPLATE_VERSION, "1.1.0");
+  assert.equal(m.templateVersion, "1.1.0");
+  assert.notEqual(m.briefingId, briefingId(m.companies.map((c) => c.analysisId), "1.0.0"));
 });
