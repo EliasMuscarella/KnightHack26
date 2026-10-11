@@ -223,7 +223,6 @@ class BlockEmbeddings:
     truncation_count: int
     heading: dict[str, list[list[float]]]  # side -> [n_blocks, dim]
     body: dict[str, list[list[float]]]
-    full: dict[str, list[list[float]]]
 
     def to_dict(self) -> dict:
         return {
@@ -233,12 +232,13 @@ class BlockEmbeddings:
             "truncation_count": self.truncation_count,
             "heading": self.heading,
             "body": self.body,
-            "full": self.full,
         }
 
     @staticmethod
     def from_dict(d: dict) -> BlockEmbeddings:
-        return BlockEmbeddings(**d)
+        # stage-3 cache entries written before the unused full-text vectors were dropped still
+        # carry a "full" key; ignore it (heading/body are unchanged, so the entry stays valid)
+        return BlockEmbeddings(**{k: v for k, v in d.items() if k != "full"})
 
 
 def _needs_chunking(embedder: Embedder, text: str) -> bool:
@@ -259,16 +259,14 @@ def embed_segments(segs: dict[str, SegmentedFiling], embedder: Embedder) -> Bloc
     embedder.fit(corpus)
     heading: dict[str, list[list[float]]] = {}
     body: dict[str, list[list[float]]] = {}
-    full: dict[str, list[list[float]]] = {}
     before = embedder.truncation_count
+    # Only heading and body vectors are used downstream (stage 4 matching). Full-text vectors were
+    # computed here until 2026-10 but never read; each embed() call batches independently, so
+    # dropping that pass leaves the heading/body vectors bit-identical (DECISIONS D-027).
     for side in ("old", "new"):
         blocks = segs[side].blocks
         heading[side] = _round(embedder.embed([b.heading for b in blocks]))
         body[side] = _round(embedder.embed([b.body or b.heading for b in blocks]))
-        full_start = embedder.truncation_count
-        full[side] = _round(embedder.embed([b.full_text for b in blocks]))
-        # count each block once: the full-text pass is the superset of what got chunked
-        embedder.truncation_count = full_start + (embedder.truncation_count - full_start)
     truncated = (
         sum(
             1
@@ -299,5 +297,4 @@ def embed_segments(segs: dict[str, SegmentedFiling], embedder: Embedder) -> Bloc
         truncation_count=truncated,
         heading=heading,
         body=body,
-        full=full,
     )

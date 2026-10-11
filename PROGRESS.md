@@ -190,3 +190,12 @@ instances named in the brief are proven as mechanisms in code and on NVDA/SF, ne
 Blocker: this sandbox's network policy denies `finnhub.io`, so real quotes were never fetched here.
 To see live prices: put `FINNHUB_API_KEY` (free at finnhub.io) in `.env` and run `./scripts/dev.sh`.
 
+## Stage 3 speedup (Oct 11)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| E1 | Drop unused full-text block vectors | done, independently verified | about 45–50% less stage-3 compute; published content byte-identical apart from `code_fingerprint`/`analysis_id` (D-027) |
+
+Not done (changes embedding bits, so needs a stage-3 version bump and re-publish): length-aware batching of
+long blocks (another ~50% on long filings) and running on a GPU (see the research summary in the session).
+
