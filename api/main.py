@@ -49,6 +49,7 @@ from pipeline.config import (
     Settings,
     get_databricks_settings,
     get_settings,
+    load_env,
     normalize_ticker,
 )
 from pipeline.errors import InvalidTicker, PipelineError
@@ -60,6 +61,8 @@ from pipeline.trends import aggregate, derive
 
 log = logging.getLogger("api")
 
+# The constants below read os.environ at import time, so .env must be loaded first.
+load_env()
 ANALYZE_TIMEOUT_SECONDS = int(os.environ.get("RISKDIFF_ANALYZE_TIMEOUT", "1500"))
 ALLOW_FIXTURE = os.environ.get("RISKDIFF_ALLOW_FIXTURE", "") == "1"
 ALLOWED_HOSTS = [

@@ -27,7 +27,7 @@ SENTENCE_SPLITTER_ID = "pysbd@0.3.4"
 _loaded = False
 
 
-def _load_env() -> None:
+def load_env() -> None:
     global _loaded
     if not _loaded:
         load_dotenv(ROOT / ".env", override=False)
@@ -67,7 +67,7 @@ class Settings:
 
 
 def get_settings() -> Settings:
-    _load_env()
+    load_env()
     data_dir = Path(os.environ.get("RISKDIFF_DATA_DIR", str(ROOT / "data")))
     ua = (os.environ.get("SEC_USER_AGENT") or "").strip() or None
     return Settings(
@@ -154,7 +154,7 @@ def _ident(name: str, default: str, var: str) -> str:
 
 
 def get_databricks_settings() -> DatabricksSettings:
-    _load_env()
+    load_env()
     host = (os.environ.get("DATABRICKS_HOST") or "").strip() or None
     if host:
         host = validate_databricks_host(host)
