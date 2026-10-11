@@ -17,6 +17,9 @@ import type {
   TrendsTopic,
   TrendsTopicExample,
 } from "@/lib/types";
+import { parseTickerTape, type TickerTapePayload } from "@/lib/tickerTape";
+
+export type { TapeQuote, TickerTapePayload } from "@/lib/tickerTape";
 
 export const API_BASE = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(
   /\/+$/,
@@ -265,6 +268,21 @@ export async function getTrendsFromApi(timeoutMs = 4000): Promise<TrendsPayload 
     const res = await fetchWithTimeout(`${API_BASE}/trends`, { cache: "no-store", timeoutMs });
     if (!res.ok) return null;
     return parseTrends(await res.json());
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * GET /ticker-tape: delayed market quotes the API caches from Finnhub (the browser never calls
+ * Finnhub and holds no key). Never throws: null when the API is down, slow, or the body is
+ * malformed; malformed quotes are dropped (see lib/tickerTape.ts).
+ */
+export async function getTickerTapeFromApi(timeoutMs = 1500): Promise<TickerTapePayload | null> {
+  try {
+    const res = await fetchWithTimeout(`${API_BASE}/ticker-tape`, { cache: "no-store", timeoutMs });
+    if (!res.ok) return null;
+    return parseTickerTape(await res.json());
   } catch {
     return null;
   }

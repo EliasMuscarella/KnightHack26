@@ -117,7 +117,6 @@ def test_threshold_rejects_weak_assignments():
         truncation_count=0,
         heading={"old": [[1, 0], [0, 1]], "new": [[1, 0], [0.2, 0.98]]},
         body={"old": [[1, 0], [0, 1]], "new": [[1, 0], [0.9, 0.1]]},
-        full={"old": [[1, 0], [0, 1]], "new": [[1, 0], [0.9, 0.1]]},
     )
     res = match_blocks(emb, MatchParams(match_threshold=0.8))
     assert [(p.old_index, p.new_index) for p in res.pairs] == [(0, 0)]

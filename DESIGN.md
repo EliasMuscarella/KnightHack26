@@ -108,7 +108,7 @@ Same token names, redefined under `:root[data-theme="dark"]` in `globals.css`; c
 theme. The look is a calm financial terminal: near-black blue-gray page, slightly lighter surfaces, crisp light
 ink. Meanings do not change: blue = more language, orange = less, amber = potential became actual, no green/red.
 The inline script in `layout.tsx` sets `data-theme` before paint (stored choice under `riskdiff-theme`, else
-`prefers-color-scheme`); `ThemeToggle` in the header cycles system, light, dark. Tailwind's `dark:` variant
+`prefers-color-scheme`); `ThemeToggle` in the header flips light/dark; it follows the OS until first used. Tailwind's `dark:` variant
 follows `data-theme`. Text on filled controls uses `on-accent` / `on-ink`, never `text-white`.
 
 | Token | Dark | Measured contrast |
@@ -129,10 +129,17 @@ follows `data-theme`. Text on filled controls uses `on-accent` / `on-ink`, never
 | `strike` | `#E08A52` | (decoration) |
 | `accent` / `accent-strong` / `accent-bg` | `#86B6EC` / `#B9D6F7` / `#142A43` | 8.7 paper, 7.9 surface, 6.9 on accent-bg |
 | `on-accent`, `on-ink` | `#0F151D` | 8.7 on accent, 12.3 on accent-strong, 15.0 on ink |
-| `heat-more` / `heat-less` / `heat-rewrite` | `#3266A6` / `#9A5225` / `#5A697F` | ink text >= 4.6 at every intensity |
+| `heat-more` / `heat-less` / `heat-rewrite` | `#3266A6` / `#9A5225` / `#5A697F` | ink text >= 4.58 at every intensity (4.80 / 4.77 / 4.58 at full strength) |
 
-Heatmap cells in dark mode keep light ink at every intensity (the tones are deep enough that a text flip is not
-needed); the legend says "stronger color" rather than "darker" so it reads in both themes.
+Light-theme heat tones (`:root`): `heat-more` / `heat-less` / `heat-rewrite` = `#4E8BDC` / `#CE713A` / `#848B93`,
+navy ink (`#14213D`) >= 4.60 at every intensity (4.60 / 4.60 / 4.64 at full strength; D-026). The orange sits at
+the limit, so any change to a heat tone must be re-measured.
+
+Heatmap cells keep one text color per theme at every intensity, `heat-text`: navy ink in light, light ink in
+dark. Each theme's tones are chosen so that color passes 4.5:1 even at full strength, so the text never flips.
+Light-theme tones are mid tones (blue, orange, slate gray); dark-theme tones are deep. Intensity (0.15 to 1)
+mixes the tone toward transparent over the page. The legend says "stronger color" rather than "darker" so it
+reads in both themes.
 
 ## Components
 
@@ -146,6 +153,11 @@ needed); the legend says "stronger color" rather than "darker" so it reads in bo
   serif, thin muted left rule, removed words struck) and "This year" (ink serif, ink left rule,
   highlighter on changed words); "Open in SEC filing" and "See the full change" in the footer.
 * Legend: one line near the top of the company page explains blue, orange and amber once.
+* `TickerTape` (home page only): a full-width surface band under the header with a bottom rule. Delayed
+  market quotes scroll in a CSS marquee (pause on hover and keyboard focus; a still,
+  scrollable row under reduced motion). Price direction reuses the blue/orange families with ▲/▼ and
+  a sign (up `more-fg`, down `less-fg`, flat `ink-secondary`), never green/red. Without data it renders
+  nothing.
 
 ## Copy
 
