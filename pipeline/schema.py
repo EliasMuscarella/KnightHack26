@@ -90,17 +90,8 @@ HighlightKind = Literal[
     "removed_risk",
     "new_named_party",
 ]
-HIGHLIGHT_KINDS: tuple[str, ...] = (
-    "potential_became_actual",
-    "new_figure",
-    "new_risk",
-    "removed_risk",
-    "new_named_party",
-)
 MAX_SHORT_TITLE_WORDS = 10
 
-SENTENCE_ID_RE = re.compile(r"^\d{10}-\d{2}-\d{6}:\d+:\d+$")
-BLOCK_ID_RE = re.compile(r"^\d{10}-\d{2}-\d{6}:\d+$")
 TICKER_RE = re.compile(r"^[A-Z.\-]{1,6}$")
 
 

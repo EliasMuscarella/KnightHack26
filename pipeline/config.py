@@ -44,7 +44,6 @@ class Settings:
     llm_model: str
     gemini_model: str
     api_origin: str
-    hf_offline: bool = False
     extra: dict = field(default_factory=dict)
 
     @property
@@ -80,7 +79,6 @@ def get_settings() -> Settings:
         llm_model=os.environ.get("RISKDIFF_LLM_MODEL", DEFAULT_LLM_MODEL),
         gemini_model=os.environ.get("RISKDIFF_GEMINI_MODEL", DEFAULT_GEMINI_MODEL),
         api_origin=os.environ.get("RISKDIFF_API_ORIGIN", "http://localhost:3000"),
-        hf_offline=os.environ.get("HF_HUB_OFFLINE", "") == "1",
     )
 
 

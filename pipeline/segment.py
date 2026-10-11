@@ -101,7 +101,7 @@ def split_sentences(text: str) -> list[tuple[str, int, int]]:
         if merged and (
             (len(s.split()) <= 1 and not merged[-1][0].endswith(TERMINAL)) or s[0].islower()
         ):
-            ps, pa, _ = merged[-1]
+            _, pa, _ = merged[-1]
             merged[-1] = (text[pa:b].strip(), pa, b)
             continue
         merged.append((s, a, b))

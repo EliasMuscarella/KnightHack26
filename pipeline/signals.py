@@ -76,10 +76,6 @@ CONCLUDED_RE = re.compile(
     re.I,
 )
 
-YEAR_RE = re.compile(
-    r"\b(?:fiscal|calendar|in|during|since)\s+(?:year\s+)?(?:19|20)\d{2}\b|\b(?:19|20)\d{2}\b"
-)
-
 MONEY_RE = re.compile(
     r"\$\s?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*(?:thousand|million|billion|trillion))?", re.I
 )
@@ -90,7 +86,6 @@ UNIT_RE = re.compile(
     re.I,
 )
 BIGNUM_RE = re.compile(r"\b\d{1,3}(?:,\d{3})+\b")
-NUMBER_TOKEN_RE = re.compile(r"\$?\d[\d,]*(?:\.\d+)?%?")
 
 ENTITY_LABELS = frozenset({"GPE", "NORP", "ORG", "LAW", "LOC", "EVENT", "FAC"})
 
