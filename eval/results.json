@@ -1,24 +1,28 @@
 {
   "matcher": null,
   "consistency": {
-    "status": "blocked",
-    "reason": "LLM stage unavailable: HF_TOKEN is not set; GEMINI_API_KEY is not set",
-    "ticker": "FIXTUR"
+    "status": "skipped",
+    "reason": "Repeats stage 7 with live LLM calls; run `uv run python -m eval.eval --consistency-ticker NVDA --write`."
   },
   "determinism": {
     "status": "ok",
     "ticker": "FIXTUR",
     "byte_identical": true,
     "analysis_id_identical": true,
-    "analysis_id": "35e79963b8b5e819cfa83ad6e5a09afa03adb1a28a2fb6df841e990ff939d411",
-    "bytes": 161168,
+    "analysis_id": "29e66a6b5bda6e2d8fb40cf7651c32f3e5a4d33c41f05b01c0476b6206e6fc95",
+    "bytes": 160234,
     "second_run_cache_misses": [],
     "is_fixture": true
   },
   "validator": {
-    "files": 0,
-    "claims_total": 0,
-    "claims_dropped": 0,
-    "top_reasons": []
+    "files": 2,
+    "claims_total": 33,
+    "claims_dropped": 1,
+    "top_reasons": [
+      [
+        "banned language (advice wording)",
+        1
+      ]
+    ]
   }
 }

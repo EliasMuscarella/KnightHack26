@@ -87,7 +87,7 @@ decision, alternatives considered, how to reverse.
 - Hedge→actual no longer fires on bare was/were/did/currently insertions.
 - 10-K/A vs 10-K for the same period: the original wins.
 - Known, not fixed: cross-machine floating-point differences in dense similarities (4-decimal
-  rounding) are possible; byte-identity is guaranteed on one machine + one lockfile. Documented in REPORT.md.
+  rounding) are possible; byte-identity is guaranteed on one machine + one lockfile. Documented in docs/REPORT.md.
 
 ## D-016 Review round 2 (pipeline): fixes and policy
 - Three round-1 edits had silently failed to apply after code formatting (cancel check, `--force`,
@@ -210,7 +210,7 @@ decision, alternatives considered, how to reverse.
 - `published_by` is `git config user.name` of the publishing machine (fixed arguments, 3 s timeout) or
   "unknown". `published_at` is set at publish time in the table only; the JSON stays timestamp-free (D-012).
 - No real workspace was available in this sandbox: everything ran against a fake SDK client and simulated
-  tables; the real-workspace checklist is in REPORT.md.
+  tables; the real-workspace checklist is in docs/REPORT.md.
 
 ## D-021 Trends backend (T9–T11)
 
@@ -401,7 +401,7 @@ Only a store that is already `ok` gets a 2 s wait for its very first remote resu
 
 Method: `scripts/check_integrity.py` (I1) ran on the two real reports in the repo (NVDA FY2025→FY2026,
 SF FY2024→FY2025), the derived trend facts re-derived with the current code, and the running API.
-Baseline: 135 findings (`INTEGRITY_REPORT.before.md`). Each finding is classified by re-running the
+Baseline: 135 findings (`docs/INTEGRITY_REPORT.before.md`). Each finding is classified by re-running the
 current pipeline code on the report's own data: `stale` when the current code no longer produces it,
 `code` when it still does. The live site's other reports (AAPL, AMZN, GOOGL, CRWD) are not in this
 repository and the sandbox has no SEC or Databricks access, so for those the mechanism is proven in

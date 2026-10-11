@@ -1,15 +1,21 @@
-Context given by the team: NVDA was published on their machine and a finance-judge walkthrough found the
-screens too technical. The team later pushed `data/published/NVDA_2025_2026.json` and `SF_2024_2025.json`
-(produced by pipeline 0.1.0 / rubric 1.0.0, bge-m3 + Qwen2.5-72B). This sandbox still cannot re-run the
-pipeline (sec.gov and huggingface.co blocked, no stage caches, no `.env`), so those two files were upgraded to
-the current contract with `scripts/migrate_published.py` (derived `short_title` + `highlights` only; analysis
-untouched, see D-018) and the frontend/judge work below was verified on that real NVDA data. The J1–J3
-pipeline improvements only reach the NVDA file through the re-run documented below.
-
 # PROGRESS
 
 Hackathon: Knight Hacks 9. Submission due Sunday Oct 11, 2026, 10:30 AM ET.
 Build started: Sat Oct 10, 2026 (overnight, no human available).
+
+## Current state (Oct 11)
+
+The sections below are a log; this one is what holds now.
+
+- `data/published/` holds two real reports, `NVDA_2025_2026.json` and `SF_2024_2025.json`, pushed by the team
+  (pipeline 0.1.0 / rubric 1.0.0, bge-m3 + Qwen2.5-72B) and upgraded to the current contract with
+  `scripts/migrate_published.py` (derived `short_title` + `highlights` only; analysis untouched, D-018).
+- Both predate the current code (their `code_fingerprint` no longer matches), so the J1–J3, I2c and later
+  pipeline changes only reach them through `uv run python scripts/refresh_stale.py`.
+- With `SEC_USER_AGENT` set in `.env`, this cloud sandbox now reaches `data.sec.gov`, and `HF_TOKEN` is available,
+  so the re-run no longer has to happen on the team's machine. It has not been run yet.
+- `EVAL.md`: determinism (FIXTUR) and the citation audit of the two published reports ran; matcher
+  precision/recall needs a golden set and LLM consistency needs live LLM calls, so both are marked not run.
 
 ## Environment blockers found at start (Task 0)
 
@@ -21,8 +27,8 @@ Build started: Sat Oct 10, 2026 (overnight, no human available).
 | Reachable: PyPI, npm, GitHub release assets, `generativelanguage.googleapis.com` (no key though) | Dependencies install; spaCy model installs; Gemini client can be exercised only with a key | — |
 
 Consequence: everything is built and tested end-to-end against a clearly labeled synthetic
-FIXTURE filing pair (`contract/fixtures/`). `data/published/` stays empty until the team runs
-the pipeline with network access and `.env`. Nothing fake is ever published.
+FIXTURE filing pair (`contract/fixtures/`). Nothing fake is ever published. (The team later
+published NVDA and SF; see Current state.)
 
 ## Task status
 
@@ -47,7 +53,7 @@ the pipeline with network access and `.env`. Nothing fake is ever published.
 ## Judge-ready session (J-tasks, Oct 10 evening)
 
 Context given by the team: NVDA was published on their machine and a finance-judge walkthrough found the
-screens too technical. **That NVDA data is not in this repository or this sandbox** (no commits, no
+screens too technical. **At the time, that NVDA data was not in this repository or this sandbox** (no commits, no
 `data/published/NVDA_*.json`, no stage caches, sec.gov/huggingface.co still blocked, no `.env`), so every
 J-task was built and tested on synthetic cases that mirror the NVDA patterns quoted in the brief, and the
 NVDA re-run + judge verification must be done on the team's machine (commands below).
@@ -101,7 +107,7 @@ If one is missing, inspect `signals` of that change in the JSON and report.
 | D7 | Tests, docs, verification | done (mocks only) | 170 tests, ruff clean, web build/typecheck/lint clean, FIXTUR determinism unchanged, offline path measured with the real SDK against an unreachable host; README section, `.env.example`, DECISIONS D-020, REPORT §11 |
 
 No Databricks credentials exist in this sandbox: everything was built and tested against a mocked SDK
-client; the one-time steps for the team are in REPORT.md §11 and README "Shared report library".
+client; the one-time steps for the team are in docs/REPORT.md §11 and README "Shared report library".
 
 ## Design and Trends session (UX1–UX13, Oct 11)
 
@@ -114,7 +120,7 @@ client; the one-time steps for the team are in REPORT.md §11 and README "Shared
 | UX5 | Company page | done | clean names (`names.ts`), 22px summary statement, cards only for Biggest changes, rows for All changes, quiet audit trail |
 | UX6 | Change detail page | done | short title first, official heading under it, neutral AI panel with footnote citations, highlighter diff |
 | UX7 | Home page | done | deterministic hero (`hero.ts`), no feature cards, library cards with display names and short titles |
-| UX8 | Amazon 0 meaningful changes | blocked here (no AMZN report, no SEC access) | diagnostic recipe and decision criteria in REPORT.md §12 |
+| UX8 | Amazon 0 meaningful changes | blocked here (no AMZN report, no SEC access) | diagnostic recipe and decision criteria in docs/REPORT.md §12 |
 | T9–T11 | Trends backend (subagent) | see its rows below / commits T9, T10, T11 | cold-start fix, derived facts, tables and serving |
 | UX12 | Trends page | done (UI) | headline, shared topics with quotes, blue-orange heatmap, potential→actual list, change mix, source line, skeleton + retry |
 | UX13 | Verification and outside review | done | 204 pytest + 13 node tests, ruff, build/typecheck/lint, FIXTUR byte-identical cached vs `--no-cache`, code fingerprint unchanged (`e94330fb…`), no horizontal scroll and nothing under 14px at 1440 and 1280; two review rounds (reverse-squint 6/10 → 6/10, judge → 7/10) with verdicts and responses in REPORT.md §12 |
@@ -149,7 +155,7 @@ Open, found in a browser review of both themes (not fixed):
 
 Team: `uv run python scripts/refresh_stale.py --check` on a machine with SEC and Hugging Face access re-runs NVDA and SF from their earliest changed stage (NVDA from segmentation, SF from the diff), republishes and re-derives trends; that clears the 30 remaining stale findings in INTEGRITY_REPORT.md. Then run the NVDA command above (it also removes the "The following risk factors…" preamble from the
 highlights and cleans the entity noise the reviewers saw), then `RISKDIFF_SHOW_FIXTURE= ./scripts/dev.sh`
-and walk the NVDA page as a judge. Smallest safe next task: REPORT.md §12, "Next smallest safe task".
+and walk the NVDA page as a judge. Smallest safe next task: docs/REPORT.md §12, "Next smallest safe task".
 
 ## How to resume
 
@@ -206,3 +212,4 @@ long blocks (another ~50% on long filings) and running on a GPU (see the researc
 |---|------|--------|-------|
 | C1 | Hand cursor on buttons | done | Tailwind v4 preflight leaves `<button>` on the arrow; one rule in `globals.css` gives every enabled button the pointer (checked in Chromium) |
 | C2 | Dead code + tooling | done | unused web exports (legacy badge wrappers, `Stat`, `CategoryChip`, `getHealth`, `trimQuote`, ...), `ink-faint` alias, 3 unused Python helpers outside `pipeline/*.py` (code fingerprint unchanged); `package-lock.json` re-synced (`npm ci` failed); `typecheck` runs `next typegen` first; tests strip `DATABRICKS_*`; node tests forced to TAP; unused Python `playwright` dev dep removed |
+| C3 | Docs | done | `REPORT.md`, `INTEGRITY_REPORT.md`, `INTEGRITY_REPORT.before.md` moved to `docs/`; duplicate `data/integrity/after.json` removed; `EVAL.md` and `DEMO.md` regenerated from the published reports (`build_demo.render_demo`, which also fixes a crash on highlight-picked moments); README, `data/published/README.md` and this file brought up to date; unused constants removed from `pipeline/*.py` (code fingerprint changes; NVDA/SF were already stale) |

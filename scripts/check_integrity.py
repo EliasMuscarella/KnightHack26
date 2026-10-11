@@ -1,12 +1,12 @@
 """Integrity checker: does every quote on the site visibly contain the evidence it claims?
 
     uv run python scripts/check_integrity.py [--api URL] [--no-api] [--published DIR]
-                                             [--out INTEGRITY_REPORT.md] [--json data/integrity/latest.json]
+                                             [--out docs/INTEGRITY_REPORT.md] [--json data/integrity/latest.json]
 
 Reads every published report (local `data/published/`, plus the Databricks `reports` table when
 configured), the derived trend facts (`data/derived/`, re-derived in memory with the current code so
 the checks see what the API would serve), and the `/companies`, `/trends` and `/store/health`
-responses when an API is running. Writes a readable INTEGRITY_REPORT.md and a machine-readable JSON,
+responses when an API is running. Writes a readable docs/INTEGRITY_REPORT.md and a machine-readable JSON,
 and exits 1 while any violation that is not an accepted exception remains.
 
 Every violation records: check id, ticker, analysis_id, change_id, sentence ids, a short evidence
@@ -1669,7 +1669,7 @@ def main(argv: list[str] | None = None) -> int:
         "--api", default=None, help="API base URL (default: RISKDIFF_API_URL, :8000, :8001)"
     )
     ap.add_argument("--no-api", action="store_true", help="Do not query a running API")
-    ap.add_argument("--out", default=str(ROOT / "INTEGRITY_REPORT.md"))
+    ap.add_argument("--out", default=str(ROOT / "docs" / "INTEGRITY_REPORT.md"))
     ap.add_argument("--json", default=str(ROOT / "data" / "integrity" / "latest.json"))
     ap.add_argument("--exceptions", default=str(ROOT / "data" / "integrity" / "exceptions.json"))
     ap.add_argument("-v", "--verbose", action="store_true")

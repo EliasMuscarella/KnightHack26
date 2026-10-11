@@ -6,12 +6,13 @@ with every claim cited to the original filing text.
 
 > Not investment advice. RiskDiff shows changes in disclosed risk language, not changes in actual risk.
 
-See `CLAUDE.md` for architecture and run commands, `REPORT.md` for the demo script and current
+See `CLAUDE.md` for architecture and run commands, `docs/REPORT.md` for the demo script and current
 status, `EVAL.md` for evaluation numbers, and `DEMO.md` for the demo dataset.
 
-Status after the overnight build: the full pipeline, API and UI work end to end on a synthetic
-fixture; real filings could not be fetched in the build sandbox (no `.env`, sec.gov and
-huggingface.co blocked). See `REPORT.md` for exactly what to run next.
+Status: the pipeline, API and UI work end to end. Real reports for NVIDIA (FY2025 → FY2026) and
+Stifel Financial (FY2024 → FY2025) are committed in `data/published/`; they predate the current
+pipeline version, so `uv run python scripts/refresh_stale.py` re-runs them (needs `SEC_USER_AGENT`
+and `HF_TOKEN` in `.env`). Build history and review notes: `docs/REPORT.md`.
 
 Quick start:
 

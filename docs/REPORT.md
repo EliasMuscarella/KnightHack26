@@ -591,8 +591,8 @@ walkthrough were proven as mechanisms in code and on NVDA/SF, never inspected li
 | HEATMAP | 0 | 0 | |
 | **Total** | **135** | **30** | **30 stale data, 0 code, 0 data** |
 
-Baseline: `INTEGRITY_REPORT.before.md` / `data/integrity/before.json`. Final: `INTEGRITY_REPORT.md` /
-`data/integrity/latest.json` (copy in `after.json`). The checker exits 1 while the 30 stale findings
+Baseline: `docs/INTEGRITY_REPORT.before.md` / `data/integrity/before.json`. Final: `docs/INTEGRITY_REPORT.md` /
+`data/integrity/latest.json`. The checker exits 1 while the 30 stale findings
 remain; they clear with the re-run below, not with code.
 
 ### 2. Root causes (one line each, with the proving example)
@@ -627,7 +627,7 @@ remain; they clear with the re-run below, not with code.
 
 - I1: `scripts/check_integrity.py`, `tests/test_integrity_checker.py`, `tests/fixtures/snippet_vectors.json`,
   `pipeline/schema.py` + `pipeline/stages_final.py` (`stage_versions` recorded), `contract/`,
-  `web/src/types/comparison.ts`, `INTEGRITY_REPORT.before.md`, `data/integrity/before.json`.
+  `web/src/types/comparison.ts`, `docs/INTEGRITY_REPORT.before.md`, `data/integrity/before.json`.
 - I2a (web): `web/src/lib/{snippet,diffDisplay,trends,vocabulary}.ts`,
   `web/src/components/{SectionBoundary,MarkedText,Quote,HighlightCard,ChangeDetail,TrendsView,ChangeList,CompanyGrid}.tsx`,
   the overview and change pages, `web/src/lib/__tests__/*`.
@@ -639,7 +639,7 @@ remain; they clear with the re-run below, not with code.
 - I3: `scripts/refresh_stale.py`, `scripts/migrate_published.py`, `data/published/*.json` (titles,
   highlights), `data/derived/*.trends.json`.
 - I4: `web/e2e/smoke.spec.ts`, `web/playwright.config.ts`, `web/package.json` (`test:e2e`,
-  `@playwright/test` 1.63.0), `INTEGRITY_REPORT.md`, `data/integrity/latest.json`, `DECISIONS.md`
+  `@playwright/test` 1.63.0), `docs/INTEGRITY_REPORT.md`, `data/integrity/latest.json`, `DECISIONS.md`
   (D-024, D-025), `PROGRESS.md`, this section.
 
 ### 4. Reports re-run

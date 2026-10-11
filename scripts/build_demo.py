@@ -70,6 +70,63 @@ def best_moment(comp: Comparison) -> dict | None:
     return None
 
 
+def render_demo(
+    keep: list[tuple[str, Comparison]],
+    failures: list[tuple[str, str]] = (),
+    dropped: list[tuple[str, Comparison]] = (),
+    intro: list[str] | None = None,
+) -> str:
+    """DEMO.md text: a summary table and one verbatim cited sentence per kept company."""
+    lines = ["# DEMO", ""] + (
+        intro
+        if intro is not None
+        else [
+            "Demo companies selected from REAL pipeline output (see `scripts/build_demo.py`). Selection rule: most",
+            "changes with score >= 30, then highest sum of the top-5 scores. Nothing below is hand-written: every quote",
+            "is the cited filing sentence copied from `sentence_index`.",
+        ]
+    )
+    lines += [
+        "",
+        "| Ticker | Company | Filings | Changes (new/removed/expanded/reduced/reworded) | Top score |",
+        "|---|---|---|---|---|",
+    ]
+    for t, comp in keep:
+        b = comp.summary.by_change_type
+        lines.append(
+            f"| {t} | {comp.company.name} | FY{comp.old_filing.fiscal_year} → FY{comp.new_filing.fiscal_year} | {comp.summary.total_changes} ({b['new']}/{b['removed']}/{b['expanded']}/{b['reduced']}/{b['materially_reworded']}) | {comp.summary.max_score} |"
+        )
+    lines.append("")
+    lines.append("## Candidate demo moments (one per company)")
+    for t, comp in keep:
+        m = best_moment(comp)
+        lines.append(f"\n### {t}: {comp.company.name}")
+        if not m:
+            lines.append("No scored change with a cited body sentence.")
+            continue
+        c = m["change"]
+        lines.append(
+            f"- Change #{c.rank}: **{c.title}** ({c.change_type}, score {c.score}, categories: {', '.join(c.categories)})"
+        )
+        if m["line"] is not None:
+            why = f"{m['line'].label} (+{m['line'].points})"
+        else:  # picked from highlights[], which carry a kind instead of a score line
+            why = f"highlight: {m['kind']}"
+        lines.append(f"- Why it stands out: {why}{' — ' + m['detail'] if m['detail'] else ''}")
+        fy = comp.new_filing.fiscal_year if m["side"] == "new" else comp.old_filing.fiscal_year
+        lines.append(f"- Cited sentence (FY{fy} 10-K, id `{m['sid']}`): “{m['text']}”")
+        lines.append(f"- Open: `/c/{t}/{c.id}`")
+    if failures:
+        lines.append("\n## Candidates that failed (not faked, not published)")
+        for t, why in failures:
+            lines.append(f"- {t}: {why}")
+    if dropped:
+        lines.append("\n## Ran but not selected (moved to data/scratch/)")
+        for t, comp in dropped:
+            lines.append(f"- {t}: substance {substance(comp)}")
+    return "\n".join(lines) + "\n"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--candidates", default=",".join(DEFAULT_CANDIDATES))
@@ -110,50 +167,12 @@ def main() -> int:
     scratch.mkdir(parents=True, exist_ok=True)
     for _ticker, _, path in dropped:
         shutil.move(str(path), str(scratch / path.name))
-    lines = [
-        "# DEMO",
-        "",
-        "Demo companies selected from REAL pipeline output (see `scripts/build_demo.py`). Selection rule: most",
-        "changes with score >= 30, then highest sum of the top-5 scores. Nothing below is hand-written: every quote",
-        "is the cited filing sentence copied from `sentence_index`.",
-        "",
-    ]
-    lines.append(
-        "| Ticker | Company | Filings | Changes (new/removed/expanded/reduced/reworded) | Top score |"
+    (ROOT / "DEMO.md").write_text(
+        render_demo(
+            [(t, comp) for t, comp, _ in keep], failures, [(t, comp) for t, comp, _ in dropped]
+        ),
+        encoding="utf-8",
     )
-    lines.append("|---|---|---|---|---|")
-    for t, comp, _ in keep:
-        b = comp.summary.by_change_type
-        lines.append(
-            f"| {t} | {comp.company.name} | FY{comp.old_filing.fiscal_year} → FY{comp.new_filing.fiscal_year} | {comp.summary.total_changes} ({b['new']}/{b['removed']}/{b['expanded']}/{b['reduced']}/{b['materially_reworded']}) | {comp.summary.max_score} |"
-        )
-    lines.append("")
-    lines.append("## Candidate demo moments (one per company)")
-    for t, comp, _ in keep:
-        m = best_moment(comp)
-        lines.append(f"\n### {t}: {comp.company.name}")
-        if not m:
-            lines.append("No scored change with a cited body sentence.")
-            continue
-        c = m["change"]
-        lines.append(
-            f"- Change #{c.rank}: **{c.title}** ({c.change_type}, score {c.score}, categories: {', '.join(c.categories)})"
-        )
-        lines.append(
-            f"- Why it scored: {m['line'].label} (+{m['line'].points}){' — ' + m['line'].detail if m['line'].detail else ''}"
-        )
-        fy = comp.new_filing.fiscal_year if m["side"] == "new" else comp.old_filing.fiscal_year
-        lines.append(f"- Cited sentence (FY{fy} 10-K, id `{m['sid']}`): “{m['text']}”")
-        lines.append(f"- Open: `/c/{t}/{c.id}`")
-    if failures:
-        lines.append("\n## Candidates that failed (not faked, not published)")
-        for t, why in failures:
-            lines.append(f"- {t}: {why}")
-    if dropped:
-        lines.append("\n## Ran but not selected (moved to data/scratch/)")
-        for t, comp, _ in dropped:
-            lines.append(f"- {t}: substance {substance(comp)}")
-    (ROOT / "DEMO.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"kept {len(keep)} companies; wrote DEMO.md", file=sys.stderr)
     return 0
 

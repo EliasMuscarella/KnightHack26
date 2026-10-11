@@ -321,7 +321,7 @@ def render_markdown(res: dict) -> str:
     L.append("## 1. Risk matcher: precision / recall vs golden set\n")
     if not m:
         L.append(
-            "**Not run.** No golden set at `eval/golden_pairs.json` (it requires real filings, see PROGRESS.md blockers).\n"
+            "**Not run.** No golden set at `eval/golden_pairs.json` yet (labeling procedure: `eval/README.md`).\n"
         )
     elif m.get("errors") and not m["companies"]:
         L.append("**Blocked.** " + "; ".join(m["errors"]) + "\n")
@@ -354,7 +354,9 @@ def render_markdown(res: dict) -> str:
         )
     c = res.get("consistency")
     L.append("## 2. LLM rubric consistency (stage 7 repeated with the LLM cache bypassed)\n")
-    if not c or c.get("status") != "ok":
+    if c and c.get("status") == "skipped":
+        L.append(f"**Not run.** {c['reason']}\n")
+    elif not c or c.get("status") != "ok":
         L.append(f"**Blocked.** {c.get('reason') if c else 'not run'}\n")
     else:
         L.append(
@@ -372,7 +374,7 @@ def render_markdown(res: dict) -> str:
         L.append(f"**Blocked.** {d.get('reason') if d else 'not run'}\n")
     else:
         fx = (
-            " (FIXTURE: synthetic filing pair, because real filings are unavailable in this environment)"
+            " (FIXTURE: synthetic filing pair, so the check runs offline)"
             if d.get("is_fixture")
             else ""
         )
@@ -410,7 +412,13 @@ def main(argv: list[str] | None = None) -> int:
         res["matcher"] = eval_matcher(json.loads(gp.read_text()), settings)
     else:
         res["matcher"] = None
-    if not args.skip_consistency:
+    if args.skip_consistency:
+        res["consistency"] = {
+            "status": "skipped",
+            "reason": "Repeats stage 7 with live LLM calls; run "
+            "`uv run python -m eval.eval --consistency-ticker NVDA --write`.",
+        }
+    else:
         try:
             res["consistency"] = eval_consistency(
                 args.consistency_ticker, args.consistency_runs, settings

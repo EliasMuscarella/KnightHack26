@@ -228,7 +228,7 @@ def test_export_vs_Export_is_not_a_change(old_id, new_id):
 
 
 def test_case_only_findings_from_the_baseline_are_gone():
-    """The baseline's CASE findings (INTEGRITY_REPORT.before.md) that were pure case /
+    """The baseline's CASE findings (docs/INTEGRITY_REPORT.before.md) that were pure case /
     punctuation differences: the current diff marks no word the reference diff leaves equal."""
     pairs = [
         (NVDA, "0001045810-25-000023:19:55", "0001045810-26-000021:21:65"),
