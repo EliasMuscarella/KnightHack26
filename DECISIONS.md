@@ -546,3 +546,20 @@ Data and process:
   the fixed list (no user input, no SSRF).
 - Reverse: unset `FINNHUB_API_KEY` (the tape disappears), or remove `<TickerTape>` from the home page.
 
+## D-027 Stage 3 no longer computes unused full-text block vectors
+- Context: `embed_segments` embedded heading, body and full text for every block, but only heading
+  and body are read (stage 4 matching). The full-text pass was about 45% of stage-3 compute, and stage 3
+  is the slowest step of a live run on CPU.
+- Decision: drop the full-text pass and the `full` field of `BlockEmbeddings`. `from_dict` ignores a
+  `full` key in older stage-3 cache entries. `embed.STAGE_VERSION` is not bumped: the vectors that are
+  used are bit-identical, and a bump would change `stage_versions` in published reports.
+- Verified by an independent check: no reader of `full` anywhere; on the lexical backend and on an
+  offline dense sentence-transformers proxy (chunking exercised), heading/body vectors, stage-5/6
+  vectors and the published JSON are byte-identical except `code_fingerprint`/`analysis_id`, which
+  hash every `pipeline/*.py` file and change with any code edit by design. Old cache entries load and
+  give byte-identical output. `embed_segments` time fell 45–50% on the proxy. Not run on real bge-m3
+  (huggingface.co blocked in the sandbox).
+- Caveat: code from before this change crashes on a stage-3 cache entry written after it (missing
+  `full`); use `--no-cache` or clear `data/cache/` when running an older checkout on the same data dir.
+- Reverse: restore the full-text pass and field.
+
