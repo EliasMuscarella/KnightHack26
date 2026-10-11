@@ -119,6 +119,26 @@ client; the one-time steps for the team are in REPORT.md §11 and README "Shared
 | UX12 | Trends page | done (UI) | headline, shared topics with quotes, blue-orange heatmap, potential→actual list, change mix, source line, skeleton + retry |
 | UX13 | Verification and outside review | done | 204 pytest + 13 node tests, ruff, build/typecheck/lint, FIXTUR byte-identical cached vs `--no-cache`, code fingerprint unchanged (`e94330fb…`), no horizontal scroll and nothing under 14px at 1440 and 1280; two review rounds (reverse-squint 6/10 → 6/10, judge → 7/10) with verdicts and responses in REPORT.md §12 |
 
+## Frontend session (Oct 10)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| FE1 | Dark mode + theme toggle | done | D-028; same token names under `[data-theme="dark"]`, system/light/dark toggle, no flash before paint |
+| FE2 | Company logos | done | D-027; genuine SVGs for AAPL, AMZN, NVDA, SF, CRWD in `web/public/logos/` (sources in `SOURCES.md`), monogram for every other ticker |
+| FE3 | Market-style polish | done | identity rows, filing strip, stat rows on cards, table-aligned change list; no green/red, no arrows |
+| FE4 | Merge with UX13 | done | five conflicts resolved keeping both sides; pushed to `main` |
+| FE5 | Heatmap contrast (light) | done | D-026; every cell number >= 4.5:1 in both themes, checked by math and in Chrome by a second, independent agent |
+
+Open, found in a browser review of both themes (not fixed):
+- NVDA and SF still need the re-run below (preamble ranked as a New risk, "z ECCNs" fragment, older prompt).
+- `displayTitle` (`web/src/lib/vocabulary.ts`) cuts headings into fragments such as "The technology industry, including".
+- Trends topic quotes can hide the topic word behind "…" (Tariffs: the Apple and Amazon quotes never show "tariffs").
+- Amazon: Trends lists it as newly adding tariff language while its page says 0 of 24 changed meaningfully, with an empty table.
+- Library cards from the shared store (GOOGL, MSFT, TSLA) have no "Top change" and no bundled logo.
+- CRWD reads "FY2024 and FY2026": the filer's own `dei:DocumentFiscalYearFocus` says 2024 for the year ended Jan 31, 2025 (`sec_fetch.fiscal_year_from_html` trusts it).
+- Dark mode only: a faint gray heatmap cell is nearly indistinguishable from an empty cell (ΔE 1.3).
+- `tests/test_web_units.py` looks for TAP output (`# fail 0`); Node 24 prints its spec format, so it fails while all 13 tests pass. Fix: add `--test-reporter=tap`.
+
 ## Performance session (P-tasks, Oct 10)
 
 | # | Task | Status | Notes |
