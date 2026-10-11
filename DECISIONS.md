@@ -527,43 +527,22 @@ Data and process:
 - `@playwright/test` 1.63.0 was added as a pinned dev dependency so the required smoke test can run;
   it uses the Chromium already in the environment (no download).
 
-## D-026 Light-mode heatmap contrast
+## D-026 Home-page market ticker tape (Finnhub)
+- Context: the team asked for a scrolling stock tape (about 50 popular stocks, current price, up/down)
+  on the home page only, using Finnhub if it can be made reliable.
+- Decisions (confirmed with the team): Finnhub free tier via the API process; top 50 US-listed
+  companies by market cap as a fixed, hand-refreshed list (`api/ticker_tape.py`); up/down use the
+  existing blue/orange direction tokens with ▲/▼ and a sign, not green/red (DESIGN.md); branch `slider`.
+- Reliability: the browser never calls Finnhub. One background thread refreshes one symbol about every
+  1.2 s (about 50 calls/min, under the free limit of 60/min), backs off on 429 and on repeated failures,
+  stops on a rejected key, keeps the last good quote per symbol, and persists the snapshot to
+  `data/cache/ticker_tape.json` so a restart shows last prices (marked stale) immediately.
+  `GET /ticker-tape` reads the in-memory snapshot and never fails; the tape hides itself when there is
+  no data, so the home page never depends on Finnhub.
+- Scope: market prices are display context only. They never enter a comparison, a score or an
+  `analysis_id`, and the tape carries no advice or risk language.
+- Security: `finnhub.io` added to the outbound allowlist in CLAUDE.md; key only from `FINNHUB_API_KEY`,
+  sent in the `X-Finnhub-Token` header (not the URL), never logged or returned; symbols come only from
+  the fixed list (no user input, no SSRF).
+- Reverse: unset `FINNHUB_API_KEY` (the tape disappears), or remove `<TickerTape>` from the home page.
 
-- Resolves the heatmap gap listed in D-028 (dark mode) (the `ink-muted` on `sunken` gap there is unchanged). Before: light
-  cells flipped from navy to white text past 0.55 intensity, and just past the flip white text measured 2.30 to
-  2.55:1 on blue and orange cells and 3.82 to 4.02:1 on the navy rewrite cells. No single flip point could pass
-  everywhere (best possible worst case about 4.0:1).
-- Fix: light heat tones are now mid tones whose full-strength color still carries navy text, and light mode
-  always uses navy text, like dark mode's single light text color. The 0.55 flip and `heat-text-strong` are
-  removed. `heat-more` `#2C64A8` -> `#4E8BDC`, `heat-less` `#B5541C` -> `#CE713A`, `heat-rewrite` `#14213D` ->
-  `#848B93` (slate gray, matching the legend's "Gray"). `cellIntensity()` (0.15 to 1) and the dark values are
-  unchanged.
-- Measured with a script that parses `globals.css` and composites `color-mix(in srgb, tone p%, transparent)`
-  over the page (p from 0.15 to 1.00 in 0.01 steps plus the legend's 0.4/0.6/0.9, on paper and surface). Worst
-  case is at full strength: light 4.60 (blue), 4.60 (orange), 4.64 (gray); dark unchanged at 4.80, 4.77, 4.58.
-- Distinguishability (CIEDE2000 over paper, same intensity), light: at 0.4 blue/orange 26.6, blue/gray 11.1,
-  orange/gray 16.9; at 0.9 43.2, 16.8, 28.2 (before: blue/navy-rewrite 9.9 at 0.4; dark blue/gray is 7.3).
-  Magnitude: each light tone spans about 2.8:1 in luminance from 0.15 to 1.0 (dE00 25 to 33), close to dark
-  mode's 2.5 to 2.9:1. The darkest light cell is lighter than before, so the light heatmap has less range than
-  the old navy-to-white one, but the number in each cell carries the exact count.
-
-## D-027 Company logos
-
-- Logos for the published tickers (AAPL, AMZN, NVDA, CRWD, SF) are genuine Wikimedia Commons SVGs, downloaded
-  once, sanitized, and served from `web/public/logos/` (sources in `web/public/logos/SOURCES.md`). Tickers not
-  in the manifest `web/src/lib/logos.ts` get a token-colored monogram and never request an image. The logo
-  tile is white in every theme (brand marks are drawn for a light background); the monogram uses tokens only.
-
-## D-028 Dark mode
-
-- Dark mode is class-based: `data-theme="light" | "dark"` on `<html>`, set before paint by a fixed inline script
-  in `web/src/app/layout.tsx` (stored choice in localStorage `riskdiff-theme`, else `prefers-color-scheme`).
-  Default is "system"; "system" is stored as no key. Every storage read/write is in try/catch; if storage is
-  blocked the choice lasts for the page only. No-JS visitors get the light theme.
-- The dark palette redefines the existing token names (DESIGN.md "Dark mode"); every text/background pair was
-  measured with a WCAG script, all >= 4.5:1. New tokens: `on-accent`, `on-ink` (replace `text-white` on filled
-  controls) and `heat-*` (Trends heatmap tones and cell text, read via `var()`).
-- The highlighter in dark mode is a deep amber (`#5E4B12`) under light ink, not the bright yellow: a bright
-  marker would need dark text, and the glyph tops above the stroke would then sit dark on dark.
-- Known pre-existing light-mode gaps left unchanged (out of scope, not a dark-mode need): heatmap cell text
-  near the 0.55 intensity flip drops to about 2.3 to 3.8:1, and `ink-muted` on `sunken` is 4.4:1.

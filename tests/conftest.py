@@ -12,6 +12,12 @@ warnings.filterwarnings("ignore", category=SyntaxWarning)
 os.environ.setdefault("RISKDIFF_EMBED_BACKEND", "lexical")
 
 
+@pytest.fixture(autouse=True)
+def _no_ticker_tape_network(monkeypatch):
+    """A developer's FINNHUB_API_KEY (shell or .env) must never start the real quote poller in tests."""
+    monkeypatch.delenv("FINNHUB_API_KEY", raising=False)
+
+
 @pytest.fixture()
 def settings(tmp_path, monkeypatch):
     from pipeline.config import Settings
