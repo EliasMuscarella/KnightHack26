@@ -12,6 +12,7 @@ import type { Comparison } from "@/types/comparison";
 import { pickHero, type HeroPick } from "@/lib/hero";
 import { displayName } from "@/lib/names";
 import { pickSpecimens, type Specimen } from "@/lib/specimen";
+import { createRemoteMemo, mergeComparisons, remoteRefs, type RemoteMemo } from "@/lib/remoteComparisons";
 import {
   ApiUnreachableError,
   getComparisonFromApi,
@@ -181,7 +182,70 @@ function libraryFields(card: CompanyCard): LibraryFields {
   return out;
 }
 
+/** GET /companies once per request (null when the API is down, slow or answers badly). */
+const getApiCards = cache(async (): Promise<CompanyCard[] | null> => {
+  try {
+    return await getCompaniesFromApi();
+  } catch {
+    return null;
+  }
+});
+
+/** The local published comparisons (newest pair per ticker), once per request. Never fixtures. */
+const getLocalComparisons = cache(async (): Promise<Comparison[]> => {
+  const out: Comparison[] = [];
+  for (const entry of await listPublishedEntries()) {
+    const c = await readPublishedFile(entry);
+    if (c) out.push(c);
+  }
+  return out;
+});
+
+/** Longest a request waits for API-only comparisons that are not in memory yet (cold start). */
+const REMOTE_WAIT_MS = 4000;
+const REMOTE_MEMO_KEY = Symbol.for("riskdiff.remoteComparisonMemo");
+
+/**
+ * The process-wide memo of API-only comparisons (lib/remoteComparisons.ts). Kept on globalThis so
+ * every route bundle and dev hot reload shares one memo instead of refetching.
+ */
+function remoteMemo(): RemoteMemo {
+  const g = globalThis as unknown as Record<symbol, RemoteMemo | undefined>;
+  let memo = g[REMOTE_MEMO_KEY];
+  if (!memo) {
+    memo = createRemoteMemo({
+      // Only tickers matching ^[A-Z.\-]{1,6}$ reach here (remoteRefs); the payload is validated there too.
+      fetcher: async (ticker) => {
+        try {
+          return await getComparisonFromApi(ticker);
+        } catch (err) {
+          if (!(err instanceof ApiUnreachableError)) {
+            console.warn(`[riskdiff] API comparison for ${ticker} failed: ${(err as Error).message}`);
+          }
+          throw err;
+        }
+      },
+      validate: looksLikeComparison,
+    });
+    g[REMOTE_MEMO_KEY] = memo;
+  }
+  return memo;
+}
+
+/**
+ * Full comparisons of the reports that only the API has (shared library), for the specimens and the
+ * cards' "Top change". Waits at most REMOTE_WAIT_MS on a cold memo, then renders with what is there.
+ */
+const getRemoteComparisons = cache(async (): Promise<Comparison[]> => {
+  const [cards, local] = await Promise.all([getApiCards(), getLocalComparisons()]);
+  if (!cards) return [];
+  const refs = remoteRefs(cards.filter(isUsableCard), new Set(local.map((c) => c.company.ticker)));
+  if (refs.length === 0) return [];
+  return remoteMemo().get(refs, REMOTE_WAIT_MS);
+});
+
 export const listCompanies = cache(async (): Promise<CompanyListing[]> => {
+  const remotePromise = getRemoteComparisons();
   const out: CompanyListing[] = [];
   const seen = new Set<string>();
   for (const entry of await listPublishedEntries()) {
@@ -190,44 +254,50 @@ export const listCompanies = cache(async (): Promise<CompanyListing[]> => {
     out.push(toListing(c, entry.name, "published"));
     seen.add(entry.ticker);
   }
-  try {
-    for (const card of await getCompaniesFromApi()) {
-      if (!isUsableCard(card)) continue;
-      const lib = libraryFields(card);
-      if (seen.has(card.ticker)) {
-        // Local file already listed: attach the API's library metadata, but only when the
-        // card describes the same comparison (same fiscal-year pair and, when both carry
-        // one, the same analysis id), so "Published by" never labels a different report.
-        const i = out.findIndex((l) => l.ticker === card.ticker);
-        if (i < 0) continue;
-        const local = out[i];
-        const sameReport =
-          local.old_fiscal_year === card.old_fiscal_year &&
-          local.new_fiscal_year === card.new_fiscal_year &&
-          (!lib.analysis_id || !local.analysis_id || lib.analysis_id === local.analysis_id);
-        if (sameReport) out[i] = { ...local, ...lib };
-        continue;
-      }
-      out.push({
-        ticker: card.ticker,
-        name: card.name,
-        cik: card.cik,
-        old_fiscal_year: card.old_fiscal_year,
-        new_fiscal_year: card.new_fiscal_year,
-        old_filing_date: card.old_filing_date,
-        new_filing_date: card.new_filing_date,
-        total_changes: card.total_changes,
-        by_change_type: card.by_change_type,
-        max_score: card.max_score,
-        file: card.file,
-        is_fixture: false,
-        source: "api",
-        ...lib,
-      });
-      seen.add(card.ticker);
+  const cards = await getApiCards();
+  const remote = new Map((await remotePromise).map((c) => [c.company.ticker, c] as const));
+  for (const card of cards ?? []) {
+    if (!isUsableCard(card)) continue;
+    const lib = libraryFields(card);
+    if (seen.has(card.ticker)) {
+      // Local file already listed: attach the API's library metadata, but only when the
+      // card describes the same comparison (same fiscal-year pair and, when both carry
+      // one, the same analysis id), so "Published by" never labels a different report.
+      const i = out.findIndex((l) => l.ticker === card.ticker);
+      if (i < 0) continue;
+      const local = out[i];
+      const sameReport =
+        local.old_fiscal_year === card.old_fiscal_year &&
+        local.new_fiscal_year === card.new_fiscal_year &&
+        (!lib.analysis_id || !local.analysis_id || lib.analysis_id === local.analysis_id);
+      if (sameReport) out[i] = { ...local, ...lib };
+      continue;
     }
-  } catch {
-    // API down: cached mode only.
+    // "Top change" only from the full comparison of this very report (same pair, same analysis id).
+    const full = remote.get(card.ticker);
+    const matches =
+      !!full &&
+      full.old_filing.fiscal_year === card.old_fiscal_year &&
+      full.new_filing.fiscal_year === card.new_fiscal_year &&
+      (!lib.analysis_id || full.analysis_id === lib.analysis_id);
+    out.push({
+      ticker: card.ticker,
+      name: card.name,
+      cik: card.cik,
+      old_fiscal_year: card.old_fiscal_year,
+      new_fiscal_year: card.new_fiscal_year,
+      old_filing_date: card.old_filing_date,
+      new_filing_date: card.new_filing_date,
+      total_changes: card.total_changes,
+      by_change_type: card.by_change_type,
+      max_score: card.max_score,
+      file: card.file,
+      is_fixture: false,
+      source: "api",
+      ...(full && matches ? { top_highlight: topHighlight(full) } : {}),
+      ...lib,
+    });
+    seen.add(card.ticker);
   }
   if (fixtureEnabled()) {
     const fx = await readComparisonFile(fixturePath());
@@ -339,24 +409,15 @@ export async function getEvalMarkdown(): Promise<string | null> {
  * The home hero's before/after: the top "Potential became actual" highlight across the local
  * published reports (lib/hero.ts). Fixture data is never used, even when it is listed.
  */
-export const getHero = cache(async (): Promise<HeroPick | null> => {
-  const comparisons: Comparison[] = [];
-  for (const entry of await listPublishedEntries()) {
-    const c = await readPublishedFile(entry);
-    if (c) comparisons.push(c);
-  }
-  return pickHero(comparisons);
-});
+export const getHero = cache(async (): Promise<HeroPick | null> => pickHero(await getLocalComparisons()));
 
 /**
  * The home hero's rotating before/after examples: one real change per kind of highlight across the
- * local published reports (lib/specimen.ts), with display names. Fixture data is never used.
+ * library (lib/specimen.ts), with display names. The library is the local published reports plus the
+ * API-only ones (a local file always wins for its ticker); fixture data is never used. Same reports
+ * in, same slides out; on a cold memo the first request may see only part of the API-only reports.
  */
 export const getSpecimens = cache(async (): Promise<Specimen[]> => {
-  const comparisons: Comparison[] = [];
-  for (const entry of await listPublishedEntries()) {
-    const c = await readPublishedFile(entry);
-    if (c) comparisons.push(c);
-  }
-  return pickSpecimens(comparisons).map((x) => ({ ...x, company: displayName(x.company) || x.ticker }));
+  const [local, remote] = await Promise.all([getLocalComparisons(), getRemoteComparisons()]);
+  return pickSpecimens(mergeComparisons(local, remote)).map((x) => ({ ...x, company: displayName(x.company) || x.ticker }));
 });

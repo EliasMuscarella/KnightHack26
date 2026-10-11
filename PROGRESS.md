@@ -214,6 +214,7 @@ long blocks (another ~50% on long filings) and running on a GPU (see the researc
 | # | Task | Status | Notes |
 |---|------|--------|-------|
 | L1 | Adobe + Lockheed Martin logos | done (Opus subagent, verified) | D-036; team-supplied rasters, crop-only PNGs (`ADBE.png` 800x233, `LMT.png` 800x148), `RASTER_LOGOS`, SOURCES.md rows; tile checked on a scratch page in both themes; 79 node tests, typecheck, lint green |
+| L2 | Home hero slideshow missing on an API-only frontend | done (Opus subagent, verified) | D-037; code was intact (stash held only package-lock churn); root cause: specimens and "Top change" read local files only; `lib/remoteComparisons.ts` memo + API fallback, 11 new node tests; API-only cards (ABBV, BAC, STT) now show "Top change" too |
 
 ## Cleanup audit (Oct 11)
 

@@ -773,3 +773,23 @@ _D-030 to D-032 were first recorded as D-026 to D-028 on Oct 10 and were lost in
   Martin wordmark, like Johnson & Johnson's, is recognizable but hard to read at the sm tile. Neither company is in
   the local report library yet; the tiles were checked on a scratch page against AMD, NVIDIA, Alphabet, J&J and
   Microsoft in both themes.
+
+## D-037 Home specimens and "Top change" from API-only reports
+
+- Symptom: a frontend with no local `data/published` (its library served entirely by `GET /companies`, as on a
+  deployed web next to the containerized API) showed no hero slideshow and no "Top change" on its cards, because
+  `getSpecimens` and `topHighlight` were computed only from local files. The component and picker were never lost
+  (the one git stash holds package-lock churn); reproduced with an empty `RISKDIFF_PUBLISHED_DIR`.
+- `web/src/lib/data.ts` now also fetches the full comparisons of API-only tickers (`getComparisonFromApi`, at most
+  4 in parallel, ticker `^[A-Z.\-]{1,6}$`, payload kept only if `looksLikeComparison`, not a fixture, same ticker
+  and the listing's `analysis_id`). They are held in one process-wide memo (`web/src/lib/remoteComparisons.ts`,
+  on `globalThis` so dev hot reloads share it), one record per ticker keyed by analysis_id, 10-minute TTL
+  (failures retried after 60 s), one shared fetch per ticker, stale-while-revalidate refresh, capped at 60 reports
+  (first by ticker). A request waits at most 4 s from when a fetch was requested, then renders with what has
+  arrived; the fetch keeps filling the memo for later requests.
+- Local published files always win for their ticker; one comparison per ticker, merged in ticker order, so
+  `pickSpecimens` (still the only picker) gives the same slides for the same reports. Measured: cold
+  `/comparison` 0.6 to 1.4 s each, first home request about 2.3 s on the empty-published server, 0.16 s after.
+- Limits: a cold start can render part of the library, or none of it (the next request completes it); reports past
+  the 60 cap get no specimens or "Top change"; the memo is in memory and lost on restart; `listCompanies` shares
+  the bounded wait, so the briefing picker can also wait up to 4 s once per cold start.
