@@ -249,6 +249,18 @@ def stage7_llm(
                 else:
                     todo.append((i, key, old, new, title, sentences))
             calls = len(todo)
+            # Stage 8's short-titles batch depends only on the headings and the client, so when
+            # calls go out anyway (and the run reaches stage 8) it is looked up here and, on a
+            # miss, sent alongside the interpretation calls. Same key, prompt and caching rule as
+            # `short_titles_for`, which then uses this result instead of calling again.
+            titles_job: tuple[str, list[tuple[str, str]]] | None = None
+            if todo and ctx.until_stage >= 8:
+                t_items, t_key = _short_titles_request(ctx, records, segs, client)
+                t_raw = None if ctx.refresh_llm else ctx.cache.get("llm", t_key)
+                if t_raw is not None:
+                    ctx.outputs["short_titles_prefetch"] = (t_key, t_raw)
+                else:
+                    titles_job = (t_key, t_items)
             ctx.check_cancelled()
 
             def call(item):
@@ -257,21 +269,41 @@ def stage7_llm(
                     client, title, old, new, sentences, fetch.old.fiscal_year, fetch.new.fiscal_year
                 )
 
+            def wait(fut):
+                while True:
+                    try:
+                        return fut.result(timeout=0.5)
+                    except FuturesTimeout:
+                        ctx.check_cancelled()
+
             # Calls are independent and each result keeps its record's slot, so running them
-            # concurrently changes wall time only, never the output.
+            # concurrently changes wall time only, never the output. The short-titles batch runs
+            # on its own single-thread executor: it never queues behind interpretation calls, and
+            # its thread never picks up interpretation work, so those stay capped at
+            # RISKDIFF_LLM_CONCURRENCY (at most one request in flight beyond it).
             workers = max(1, min(llm_concurrency(), len(todo) or 1))
-            log.info("LLM stage: %d calls, %d at a time", len(todo), workers)
+            log.info(
+                "LLM stage: %d calls, %d at a time%s",
+                len(todo),
+                workers,
+                " (+ short-titles batch alongside)" if titles_job else "",
+            )
+            titles_pool = (
+                ThreadPoolExecutor(max_workers=1, thread_name_prefix="llm-titles")
+                if titles_job
+                else None
+            )
+            titles_future = (
+                titles_pool.submit(_short_titles_call, client, titles_job[1])
+                if titles_pool
+                else None
+            )
             pool = ThreadPoolExecutor(max_workers=workers, thread_name_prefix="llm")
             futures = [pool.submit(call, item) for item in todo]
             finished = False
             try:
                 for (i, key, *_rest), fut in zip(todo, futures, strict=True):
-                    while True:
-                        try:
-                            res = fut.result(timeout=0.5)
-                            break
-                        except FuturesTimeout:
-                            ctx.check_cancelled()
+                    res = wait(fut)
                     row = {
                         "status": res.status,
                         "model_id": res.model_id,
@@ -283,10 +315,19 @@ def stage7_llm(
                     if res.status != "error":
                         ctx.cache.put("llm", key, row)
                     results[i] = row
+                if titles_job is not None:
+                    # cache I/O stays on this thread; a failed batch (None) is not cached and
+                    # becomes the heading fallback in stage 8, exactly as before
+                    t_raw = wait(titles_future)
+                    if t_raw is not None:
+                        ctx.cache.put("llm", titles_job[0], t_raw)
+                    ctx.outputs["short_titles_prefetch"] = (titles_job[0], t_raw)
                 finished = True
             finally:
                 # on cancel/error, drop queued calls and do not wait for in-flight ones
                 pool.shutdown(wait=finished, cancel_futures=True)
+                if titles_pool is not None:
+                    titles_pool.shutdown(wait=finished, cancel_futures=True)
         ctx.outputs["llm_calls"] = calls
     return results, info
 
@@ -355,15 +396,10 @@ def _filing_meta(rec: FilingRecord, section, seg: SegmentedFiling) -> FilingMeta
     )
 
 
-def short_titles_for(
-    ctx: RunContext, records: list[dict], segs: dict[str, SegmentedFiling], llm_info: dict
-) -> dict[str, str]:
-    """change_id -> LLM short title (raw, cached); empty when no provider. One batch call."""
-    from pipeline.score import change_id
-
-    client = ctx.outputs.get("llm_client")
-    if client is None:
-        return {}
+def _short_titles_request(
+    ctx: RunContext, records: list[dict], segs: dict[str, SegmentedFiling], client
+) -> tuple[list[tuple[str, str]], str]:
+    """(sorted (change_id, heading) items, cache key) of the short-titles batch for `client`."""
     items = []
     for r in records:
         old, new = _blocks(segs, r)
@@ -379,12 +415,39 @@ def short_titles_for(
             "items": items,
         },
     )
-    raw = None if ctx.refresh_llm else ctx.cache.get("llm", key)
-    if raw is None:
-        raw = llm_mod.short_titles_raw(client, items)
+    return items, key
+
+
+def _short_titles_call(client, items: list[tuple[str, str]]) -> dict | None:
+    """Worker-thread body for the batch sent during stage 7: never raises (None = fallback)."""
+    try:
+        return llm_mod.short_titles_raw(client, items)
+    except Exception as e:  # noqa: BLE001
+        log.warning("short titles: call failed: %s", type(e).__name__)
+        return None
+
+
+def short_titles_for(
+    ctx: RunContext, records: list[dict], segs: dict[str, SegmentedFiling], llm_info: dict
+) -> dict[str, str]:
+    """change_id -> LLM short title (raw, cached); empty when no provider. One batch call, made
+    here unless stage 7 already looked it up or sent it alongside its own calls."""
+    client = ctx.outputs.get("llm_client")
+    if client is None:
+        return {}
+    items, key = _short_titles_request(ctx, records, segs, client)
+    prefetched = ctx.outputs.get("short_titles_prefetch")
+    if prefetched is not None and prefetched[0] == key:
+        raw = prefetched[1]  # already cached when not None; a failed batch is not retried
         if raw is None:
             return {}
-        ctx.cache.put("llm", key, raw)
+    else:
+        raw = None if ctx.refresh_llm else ctx.cache.get("llm", key)
+        if raw is None:
+            raw = llm_mod.short_titles_raw(client, items)
+            if raw is None:
+                return {}
+            ctx.cache.put("llm", key, raw)
     return {t["change_id"]: t["short_title"] for t in raw.get("titles", []) if isinstance(t, dict)}
 
 

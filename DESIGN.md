@@ -106,7 +106,7 @@ Same token names, redefined under `:root[data-theme="dark"]` in `globals.css`; c
 theme. The look is a calm financial terminal: near-black blue-gray page, slightly lighter surfaces, crisp light
 ink. Meanings do not change: blue = more language, orange = less, amber = potential became actual, no green/red.
 The inline script in `layout.tsx` sets `data-theme` before paint (stored choice under `riskdiff-theme`, else
-`prefers-color-scheme`); `ThemeToggle` in the header cycles system, light, dark. Tailwind's `dark:` variant
+`prefers-color-scheme`); `ThemeToggle` in the header flips light/dark; it follows the OS until first used. Tailwind's `dark:` variant
 follows `data-theme`. Text on filled controls uses `on-accent` / `on-ink`, never `text-white`.
 
 | Token | Dark | Measured contrast |
