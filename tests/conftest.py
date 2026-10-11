@@ -18,6 +18,15 @@ def _no_ticker_tape_network(monkeypatch):
     monkeypatch.delenv("FINNHUB_API_KEY", raising=False)
 
 
+@pytest.fixture(autouse=True)
+def _no_databricks_env(monkeypatch):
+    """A developer's DATABRICKS_* settings must neither reach a real warehouse nor change the
+    defaults tests assert; tests that need the store set these themselves."""
+    for name in list(os.environ):
+        if name.startswith("DATABRICKS_"):
+            monkeypatch.delenv(name)
+
+
 @pytest.fixture()
 def settings(tmp_path, monkeypatch):
     from pipeline.config import Settings

@@ -95,18 +95,6 @@ def derivation_id() -> str:
     return f"{TRENDS_VERSION}+topics{version}"
 
 
-def find_terms(pattern: re.Pattern[str], text: str) -> list[str]:
-    """Verbatim matches (whitespace collapsed), deduplicated case-insensitively, in text order."""
-    out: list[str] = []
-    seen: set[str] = set()
-    for m in pattern.finditer(text):
-        t = re.sub(r"\s+", " ", m.group(0))
-        if t.casefold() not in seen:
-            seen.add(t.casefold())
-            out.append(t)
-    return out
-
-
 @lru_cache(maxsize=4096)
 def _term_pattern(term: str) -> re.Pattern[str]:
     return re.compile(term_regex(term), re.IGNORECASE)

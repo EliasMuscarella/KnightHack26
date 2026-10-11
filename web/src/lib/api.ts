@@ -74,12 +74,6 @@ export async function readDetail(res: Response): Promise<string> {
   return `HTTP ${res.status}`;
 }
 
-export async function getHealth(): Promise<{ status: string; model_warm: boolean }> {
-  const res = await fetchWithTimeout(`${API_BASE}/health`, { cache: "no-store", timeoutMs: 2000 });
-  if (!res.ok) throw new ApiHttpError(res.status, await readDetail(res));
-  return res.json();
-}
-
 export async function getCompaniesFromApi(timeoutMs = 1500): Promise<CompanyCard[]> {
   const res = await fetchWithTimeout(`${API_BASE}/companies`, { cache: "no-store", timeoutMs });
   if (!res.ok) throw new ApiHttpError(res.status, await readDetail(res));

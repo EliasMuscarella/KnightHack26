@@ -137,7 +137,6 @@ Open, found in a browser review of both themes (not fixed):
 - Library cards from the shared store (GOOGL, MSFT, TSLA) have no "Top change" and no bundled logo.
 - CRWD reads "FY2024 and FY2026": the filer's own `dei:DocumentFiscalYearFocus` says 2024 for the year ended Jan 31, 2025 (`sec_fetch.fiscal_year_from_html` trusts it).
 - Dark mode only: a faint gray heatmap cell is nearly indistinguishable from an empty cell (ΔE 1.3).
-- `tests/test_web_units.py` looks for TAP output (`# fail 0`); Node 24 prints its spec format, so it fails while all 13 tests pass. Fix: add `--test-reporter=tap`.
 
 ## Performance session (P-tasks, Oct 10)
 
@@ -199,3 +198,10 @@ To see live prices: put `FINNHUB_API_KEY` (free at finnhub.io) in `.env` and run
 Not done (changes embedding bits, so needs a stage-3 version bump and re-publish): length-aware batching of
 long blocks (another ~50% on long filings) and running on a GPU (see the research summary in the session).
 
+
+## Cleanup audit (Oct 11)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| C1 | Hand cursor on buttons | done | Tailwind v4 preflight leaves `<button>` on the arrow; one rule in `globals.css` gives every enabled button the pointer (checked in Chromium) |
+| C2 | Dead code + tooling | done | unused web exports (legacy badge wrappers, `Stat`, `CategoryChip`, `getHealth`, `trimQuote`, ...), `ink-faint` alias, 3 unused Python helpers outside `pipeline/*.py` (code fingerprint unchanged); `package-lock.json` re-synced (`npm ci` failed); `typecheck` runs `next typegen` first; tests strip `DATABRICKS_*`; node tests forced to TAP; unused Python `playwright` dev dep removed |

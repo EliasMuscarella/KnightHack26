@@ -62,8 +62,6 @@ heavy weights.
 | `paper` | `#F5F7FA` | page background |
 | `surface` | `#FFFFFF` | cards, header, footer |
 
-`ink-faint` is a legacy alias of `ink-secondary`; do not use it in new code.
-
 ### Direction of change
 
 | Token pair | Text | Background | Label |

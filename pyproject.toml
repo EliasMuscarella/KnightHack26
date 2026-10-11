@@ -35,7 +35,6 @@ dev = [
   "pytest-asyncio~=1.4",
   "respx~=0.23",
   "ruff~=0.17",
-  "playwright~=1.63",
 ]
 
 [build-system]

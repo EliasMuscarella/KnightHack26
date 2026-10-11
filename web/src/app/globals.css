@@ -11,7 +11,6 @@
   --color-ink: #14213d;
   --color-ink-secondary: #3e4a5f;
   --color-ink-muted: #627187; /* last-year text and disabled states only (4.6:1 on paper; the brief's #6B7A90 was 4.1:1) */
-  --color-ink-faint: #3e4a5f; /* legacy alias of ink-secondary; do not use in new code */
   --color-line: #d9dfe7;
   --color-line-strong: #b9c3d0; /* legacy; rules should use --color-line */
   --color-line-input: #627187; /* form-control borders (non-text contrast >= 3:1) */
@@ -161,7 +160,6 @@
   --color-ink: #e4e9f0;
   --color-ink-secondary: #b3becc;
   --color-ink-muted: #8d9aab;
-  --color-ink-faint: #b3becc;
   --color-line: #2b3747;
   --color-line-strong: #3a4759;
   --color-line-input: #7a889a;
@@ -394,6 +392,12 @@ details[open] > :not(summary) {
 }
 details > summary [aria-hidden="true"] {
   transition: transform 160ms ease;
+}
+
+/* Tailwind v4's preflight leaves buttons on the default arrow; clickable controls show the hand. */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
 }
 
 /* Hover and focus states glide instead of snapping. */

@@ -523,5 +523,3 @@ export const AI_SUMMARY = {
   label: "AI summary",
   helper: "Generated from the two filings. Every point cites the sentences it is based on.",
 } as const;
-
-export const RISK_FACTORS = "Risk Factors";

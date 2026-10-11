@@ -15,7 +15,13 @@ ROOT = Path(__file__).resolve().parents[1]
 @pytest.mark.skipif(shutil.which("node") is None, reason="node is not installed")
 def test_web_unit_tests_pass():
     out = subprocess.run(
-        ["node", "--experimental-strip-types", "--test", "src/lib/__tests__/*.test.ts"],
+        [
+            "node",
+            "--experimental-strip-types",
+            "--test",
+            "--test-reporter=tap",
+            "src/lib/__tests__/*.test.ts",
+        ],
         cwd=ROOT / "web",
         capture_output=True,
         text=True,

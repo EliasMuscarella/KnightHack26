@@ -246,16 +246,6 @@ def trim_quote(text: str, mx: int = QUOTE_MAX_CHARS) -> tuple[str, bool]:
     return re.sub(r"[\s,;:—–-]+$", "", text[:cut]), True
 
 
-def last_marked_offset(spans: list[dict] | None) -> int:
-    """Port of `lastMarkedOffset`: end offset of the last non-equal span."""
-    pos = last = 0
-    for sp in spans or []:
-        pos += len(sp["text"])
-        if sp["op"] != "equal":
-            last = pos
-    return last
-
-
 def legacy_window(
     text: str, evidence: list[tuple[int, int]], mx: int, extend: bool
 ) -> tuple[int, int]:

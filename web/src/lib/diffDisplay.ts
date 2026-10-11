@@ -48,17 +48,6 @@ export function rewrittenIds(sentences: Sentence[]): Set<string> {
   return out;
 }
 
-/** Character offset just past the last changed span (insert or delete), or 0 when none. */
-export function lastMarkedOffset(spans: DiffSpan[] | null | undefined): number {
-  let pos = 0;
-  let last = 0;
-  for (const s of spans ?? []) {
-    pos += s.text.length;
-    if (s.op !== "equal") last = pos;
-  }
-  return last;
-}
-
 /**
  * Merges runs of same-op changed spans that are separated only by whitespace, so a changed
  * phrase gets one marker instead of one per word. Concatenated text is unchanged.

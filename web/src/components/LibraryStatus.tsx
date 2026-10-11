@@ -6,7 +6,7 @@ export function LibraryStatusLine({ status, size = "xs" }: { status: LibraryStat
   const text = LIBRARY_STATUS_COPY[status];
   if (!text) return null;
   return (
-    <p className={`${size === "sm" ? "text-sm" : "text-xs"} text-ink-faint`} data-library-status={status}>
+    <p className={`${size === "sm" ? "text-sm" : "text-xs"} text-ink-secondary`} data-library-status={status}>
       {text}
     </p>
   );

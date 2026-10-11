@@ -146,9 +146,3 @@ export function displayName(official: string | null | undefined): string {
   const out = words.map((w, i) => titleWord(w, i === 0)).filter(Boolean).join(" ");
   return out || raw;
 }
-
-/** "NVIDIA (NVDA)" style label for places that need both. */
-export function nameWithTicker(official: string | null | undefined, ticker: string): string {
-  const name = displayName(official);
-  return name && name.toUpperCase() !== ticker ? `${name} (${ticker})` : ticker;
-}

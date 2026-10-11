@@ -23,7 +23,6 @@ HIGHLIGHTS = "highlights"
 TOPIC_MENTIONS = "topic_mentions"  # derived trend facts (D-021), one row per sentence + topic
 CATEGORY_ACTIVITY = "category_activity"  # derived trend facts, one row per change + category
 TABLES = (REPORTS, CHANGES, HIGHLIGHTS, TOPIC_MENTIONS, CATEGORY_ACTIVITY)
-TREND_TABLES = (TOPIC_MENTIONS, CATEGORY_ACTIVITY)
 MERGE_CHUNK_ROWS = 500  # rows per MERGE statement (keeps each JSON parameter small)
 
 # (column, SQL type) in table order; the struct schema for from_json is derived from this.

@@ -5,7 +5,6 @@
  */
 import type { ReactNode } from "react";
 
-import { categoryLabel } from "@/lib/format";
 import { FIXTURE_BANNER } from "@/lib/copy";
 import {
   CHANGE_LEVEL,
@@ -67,13 +66,6 @@ export function ChangeBadge({
   return <Badge label={v.label} helper={v.helper} tone={changeTone(type ?? "largely_unchanged")} size={size} />;
 }
 
-/** Legacy names, kept as thin wrappers. */
-export function ChangeTypeBadge({ type, size = "md" }: { type: string; size?: "sm" | "md" }) {
-  return <ChangeBadge type={type} size={size} />;
-}
-export function HighlightKindBadge({ kind, size = "md", figureChanged = false }: { kind: string; size?: "sm" | "md"; figureChanged?: boolean }) {
-  return <ChangeBadge kind={kind} size={size} figureChanged={figureChanged} />;
-}
 
 // ---------------------------------------------------------------------------------------
 // Change level: a 3-segment meter. Ink only: the fill is magnitude; direction lives in the badge
@@ -101,11 +93,6 @@ export function ChangeLevel({ score, changeType = "largely_unchanged", size = "m
       </span>
     </span>
   );
-}
-
-/** Legacy name. */
-export function ChangeLevelTag({ score, changeType }: { score: number; changeType?: string }) {
-  return <ChangeLevel score={score} changeType={changeType} />;
 }
 
 // ---------------------------------------------------------------------------------------
@@ -138,10 +125,6 @@ export function Legend({ className = "" }: { className?: string }) {
   );
 }
 
-export function CategoryChip({ category }: { category: string }) {
-  return <span className="inline-flex items-center rounded-sm bg-signal-bg px-2 py-0.5 text-xs font-medium text-ink-secondary">{categoryLabel(category)}</span>;
-}
-
 // ---------------------------------------------------------------------------------------
 // Layout helpers
 // ---------------------------------------------------------------------------------------
@@ -159,16 +142,6 @@ export function SectionTitle({ id, children, aside }: { id?: string; children: R
       </h2>
       {aside ? <div className="text-sm text-ink-secondary">{aside}</div> : null}
     </div>
-  );
-}
-
-/** A labeled figure: the number in ink, the label in secondary. */
-export function Stat({ value, label }: { value: ReactNode; label: string }) {
-  return (
-    <span className="inline-flex items-baseline gap-1.5">
-      <span className="text-base font-medium text-ink">{value}</span>
-      <span className="text-sm text-ink-secondary">{label}</span>
-    </span>
   );
 }
 

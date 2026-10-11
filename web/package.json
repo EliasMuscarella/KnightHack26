@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "gen:types": "json2ts -i ../contract/.comparison.ts-input.schema.json -o src/types/comparison.ts --bannerComment \"/* eslint-disable */\n/** GENERATED from contract/comparison.schema.json by scripts/regen_contract.py. Do not edit. */\" --no-additionalProperties",
     "test:unit": "node --experimental-strip-types --test \"src/lib/__tests__/*.test.ts\"",
     "test:e2e": "playwright test"

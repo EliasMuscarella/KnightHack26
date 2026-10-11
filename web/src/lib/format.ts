@@ -1,4 +1,4 @@
-import type { Category, FilingSide } from "@/types/comparison";
+import type { Category } from "@/types/comparison";
 
 const CATEGORY_LABELS: Partial<Record<Category, string>> = {
   artificial_intelligence: "Artificial intelligence",
@@ -26,10 +26,6 @@ export function formatDate(iso: string | null | undefined): string {
   const month = MONTHS[Number(m[2]) - 1];
   if (!month) return iso;
   return `${month} ${Number(m[3])}, ${m[1]}`;
-}
-
-export function sideLabel(side: FilingSide, oldFY: number, newFY: number): string {
-  return side === "old" ? `FY${oldFY}` : `FY${newFY}`;
 }
 
 export function formatRatio(x: number | null | undefined, digits = 2): string {
