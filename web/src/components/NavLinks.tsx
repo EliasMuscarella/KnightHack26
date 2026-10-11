@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const NAV = [
   ["/", "Home"],
   ["/trends", "Trends"],
+  ["/briefing", "Briefing"],
   ["/methodology", "Methodology"],
 ] as const;
 

@@ -140,7 +140,7 @@
   color-scheme: light;
 
   /* ---- heatmap (Trends, read via var() in TrendsView.tsx, so outside @theme): tone colors mixed toward transparent by intensity.
-     Mid tones so navy cell text stays >= 4.5:1 at every intensity (worst 4.60, at full strength; D-026) ---- */
+     Mid tones so navy cell text stays >= 4.5:1 at every intensity (worst 4.60, at full strength; D-030) ---- */
   --color-heat-more: #4e8bdc;
   --color-heat-less: #ce713a;
   --color-heat-rewrite: #848b93; /* slate gray, the legend's "Gray" */

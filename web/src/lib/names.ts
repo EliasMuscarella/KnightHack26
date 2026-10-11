@@ -70,6 +70,9 @@ const EXCEPTIONS: Record<string, string> = {
   "WALMART INC.": "Walmart",
   "HOME DEPOT, INC.": "Home Depot",
   "STIFEL FINANCIAL CORP": "Stifel",
+  "CROWDSTRIKE HOLDINGS, INC.": "CrowdStrike",
+  "TAKE TWO INTERACTIVE SOFTWARE INC": "Take-Two Interactive",
+  "ELI LILLY & CO": "Eli Lilly",
 };
 
 /** Corporate suffixes dropped from the END of a display name, repeatedly. */
@@ -139,7 +142,11 @@ export function displayName(official: string | null | undefined): string {
   if (exact) return exact;
   const words = raw.split(" ");
   // Drop trailing suffixes ("INC", "CORP", "COM", "/DE/") but never the whole name.
-  while (words.length > 1 && SUFFIXES.has(words[words.length - 1].toUpperCase().replace(/[,.]+$/g, ""))) {
+  // A dropped suffix can leave a dangling "&" ("ELI LILLY & Co" -> "Eli Lilly"), which goes too.
+  while (
+    words.length > 1 &&
+    (SUFFIXES.has(words[words.length - 1].toUpperCase().replace(/[,.]+$/g, "")) || words[words.length - 1] === "&")
+  ) {
     words.pop();
   }
   // "NEW" in "AMAZON COM INC /NEW/"-style tails is covered above; plain "NEW" alone is kept.

@@ -256,7 +256,7 @@ function SharedTopics({ data }: { data: TrendsPayload }) {
 // ---------------------------------------------------------------------------------------
 
 // Heat tones are theme tokens (globals.css); intensity mixes them toward transparent. Each theme has one cell
-// text color (`heat-text`) that stays >= 4.5:1 on its tones at every intensity, so the text never flips (D-026).
+// text color (`heat-text`) that stays >= 4.5:1 on its tones at every intensity, so the text never flips (D-030).
 const HEAT_VAR = { more: "var(--color-heat-more)", less: "var(--color-heat-less)", rewrite: "var(--color-heat-rewrite)" } as const;
 const heat = (tone: keyof typeof HEAT_VAR, a: number) => `color-mix(in srgb, ${HEAT_VAR[tone]} ${Math.round(a * 100)}%, transparent)`;
 
