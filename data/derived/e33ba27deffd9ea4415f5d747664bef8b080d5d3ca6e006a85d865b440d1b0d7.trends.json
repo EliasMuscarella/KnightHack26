@@ -1,0 +1,1045 @@
+{
+  "analysis_id": "e33ba27deffd9ea4415f5d747664bef8b080d5d3ca6e006a85d865b440d1b0d7",
+  "by_change_type": {
+    "expanded": 2,
+    "largely_unchanged": 38,
+    "materially_reworded": 1,
+    "new": 0,
+    "reduced": 1,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 2,
+      "added_words": 72,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "e249578d42bd28b1",
+      "change_type": "expanded",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 28,
+      "short_title": "We rely on our bottling partners for a significant portion"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 26,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "43918de7930ef556",
+      "change_type": "expanded",
+      "modified_sentences": 2,
+      "modified_words": 37,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 23,
+      "short_title": "Obesity and other health-related concerns"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 22,
+      "categories": [
+        "supply_chain",
+        "regulation"
+      ],
+      "change_id": "c9fe12cd70b5bd37",
+      "change_type": "materially_reworded",
+      "modified_sentences": 4,
+      "modified_words": 110,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 20,
+      "short_title": "Product safety and quality concerns could negatively affect our business"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "f5f984fb7f8c503c",
+      "change_type": "reduced",
+      "modified_sentences": 3,
+      "modified_words": 92,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 10,
+      "short_title": "If we are unable to attract, retain"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "foreign_exchange"
+      ],
+      "change_id": "c1501b298726d17c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 5,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "Fluctuations in foreign currency exchange rates"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 74,
+      "categories": [
+        "regulation",
+        "litigation"
+      ],
+      "change_id": "1181699287f0bcd8",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 36,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Increases in income tax rates, changes in income tax"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "0058780fbd398ba0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we are not successful in our innovation activities"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "05777836ad26fb15",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 7,
+      "modified_words": 18,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Disruption of our supply chain, including increased commodity, raw material"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "0582d396334ea76f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we do not successfully manage the potential negative consequences"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "2a1653cc23ff52f2",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Changes in laws and regulations relating to beverage containers"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "339f181a4b03ced0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we fail to comply with privacy and data protection"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "4915846988846798",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Adverse weather conditions could reduce the demand for our products"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "5b2065d8f682ae4b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Changes in, or failure to comply"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "5eef3a02453820d0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Increased competition could hurt our business"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "interest_rates",
+        "liquidity"
+      ],
+      "change_id": "6546d39b58ab460c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If interest rates increase, our net income"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "competition"
+      ],
+      "change_id": "669b6178c316aa11",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we are unable to successfully manage new product launches"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "67929c1dffb193bb",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we are unable to achieve our overall long-term growth"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic",
+        "geopolitical"
+      ],
+      "change_id": "6bffb2dd576e7f40",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 30,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Unfavorable general economic and geopolitical conditions"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "6d1d2babf4ef2735",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Water scarcity and poor quality"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "73616b4c52093df2",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Public debate and concern about perceived negative health consequences"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "75f05d73f55054a3",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Default by or failure of one"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "7a74576e31947f39",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we are unable to protect our information systems against"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "7f42a0797fbc6163",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we are unable to renew collective bargaining agreements"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "8648d8b23e787110",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we are unable to expand our business in emerging"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "8d5796c0ee8852c1",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may from time to time engage in refranchising activities"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity",
+        "regulation"
+      ],
+      "change_id": "93f79f3f72dc7222",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If our third-party service providers"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "a413def8d6e86325",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Increased or new indirect taxes could negatively affect our business"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate",
+        "regulation"
+      ],
+      "change_id": "a6e0d452b39addc3",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Increasing concerns about the environmental impact of plastic bottles"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "a9aebae715ab3ba2",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we are not successful in our efforts to digitalize"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "supply_chain"
+      ],
+      "change_id": "ab785437636fe7e9",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 1,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Increased demand for food products, decreased agricultural productivity"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "litigation"
+      ],
+      "change_id": "b367ceb98d78866b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We conduct business in markets with high-risk legal compliance environments"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "b3a6536f29d17058",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may be required to recognize impairment charges"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "customer_concentration"
+      ],
+      "change_id": "b8a87be6ad42898c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 23,
+      "removed_sentences": 1,
+      "removed_words": 20,
+      "score": 0,
+      "short_title": "Changes in the retail landscape"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "bc60792ce03bc147",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we do not successfully integrate"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "bca0e2e90f127ece",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Failure to adequately protect, or disputes relating to, trademarks, formulas"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "c84891c532fe1e8e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If our bottling partners’ financial condition deteriorates, our business"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 24,
+      "categories": [
+        "competition",
+        "supply_chain"
+      ],
+      "change_id": "ceb36eb3b52644ed",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 12,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we do not address evolving consumer product"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "d25059da4b134b56",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Litigation claims or legal proceedings"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "e1dfb3929de16b6c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Climate change and legal or regulatory responses thereto"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "f0304577fb2468fa",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 1,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If negative publicity, whether or not warranted, concerning product safety"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "f35d81767aa4f5dc",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Significant additional labeling or warning requirements"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "climate"
+      ],
+      "change_id": "f47a1f2c460a1330",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 14,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business is subject to evolving sustainability regulatory requirements"
+    }
+  ],
+  "cik": "0000021344",
+  "company_name": "COCA COLA CO",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0001628280-26-010047",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0000021344-25-000011",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "KO",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          0,
+          167
+        ]
+      ],
+      "change_id": "e249578d42bd28b1",
+      "matched_terms": [
+        "Asia Pacific"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-010047:18:2",
+      "source": "entity",
+      "status": "added",
+      "text": "For the year ended December 31, 2025, one bottler accounted for 10% of our net operating revenues, which are reflected in our EMEA and Asia Pacific operating segments.",
+      "ticker": "KO",
+      "topic": "Asia Pacific"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          167
+        ]
+      ],
+      "change_id": "e249578d42bd28b1",
+      "matched_terms": [
+        "EMEA"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-010047:18:2",
+      "source": "entity",
+      "status": "added",
+      "text": "For the year ended December 31, 2025, one bottler accounted for 10% of our net operating revenues, which are reflected in our EMEA and Asia Pacific operating segments.",
+      "ticker": "KO",
+      "topic": "EMEA"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          167
+        ]
+      ],
+      "change_id": "e249578d42bd28b1",
+      "matched_terms": [
+        "Asia Pacific operating segments"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-010047:18:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "For the year ended December 31, 2025, one bottler accounted for 10% of our net operating revenues, which are reflected in our EMEA and Asia Pacific operating segments.",
+      "ticker": "KO",
+      "topic": "asia pacific operating segment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          324
+        ]
+      ],
+      "change_id": "e249578d42bd28b1",
+      "matched_terms": [
+        "consumer perception"
+      ],
+      "position": 11,
+      "sentence_id": "0001628280-26-010047:18:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, actions by our bottling partners, including related to product quality, safety, marketing practices, labor relations, regulatory compliance, sustainability, or other matters could adversely affect the reputation, consumer perception, or value of our brands, even if we are not directly responsible for such actions.",
+      "ticker": "KO",
+      "topic": "consumer perception"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          324
+        ]
+      ],
+      "change_id": "e249578d42bd28b1",
+      "matched_terms": [
+        "labor relations"
+      ],
+      "position": 11,
+      "sentence_id": "0001628280-26-010047:18:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, actions by our bottling partners, including related to product quality, safety, marketing practices, labor relations, regulatory compliance, sustainability, or other matters could adversely affect the reputation, consumer perception, or value of our brands, even if we are not directly responsible for such actions.",
+      "ticker": "KO",
+      "topic": "labor relation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          324
+        ]
+      ],
+      "change_id": "e249578d42bd28b1",
+      "matched_terms": [
+        "marketing practices"
+      ],
+      "position": 11,
+      "sentence_id": "0001628280-26-010047:18:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, actions by our bottling partners, including related to product quality, safety, marketing practices, labor relations, regulatory compliance, sustainability, or other matters could adversely affect the reputation, consumer perception, or value of our brands, even if we are not directly responsible for such actions.",
+      "ticker": "KO",
+      "topic": "marketing practice"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          324
+        ]
+      ],
+      "change_id": "e249578d42bd28b1",
+      "matched_terms": [
+        "product quality"
+      ],
+      "position": 11,
+      "sentence_id": "0001628280-26-010047:18:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, actions by our bottling partners, including related to product quality, safety, marketing practices, labor relations, regulatory compliance, sustainability, or other matters could adversely affect the reputation, consumer perception, or value of our brands, even if we are not directly responsible for such actions.",
+      "ticker": "KO",
+      "topic": "product quality"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          324
+        ]
+      ],
+      "change_id": "e249578d42bd28b1",
+      "matched_terms": [
+        "regulatory compliance"
+      ],
+      "position": 11,
+      "sentence_id": "0001628280-26-010047:18:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, actions by our bottling partners, including related to product quality, safety, marketing practices, labor relations, regulatory compliance, sustainability, or other matters could adversely affect the reputation, consumer perception, or value of our brands, even if we are not directly responsible for such actions.",
+      "ticker": "KO",
+      "topic": "regulatory compliance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          174
+        ]
+      ],
+      "change_id": "43918de7930ef556",
+      "matched_terms": [
+        "childhood chronic diseases"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-010047:11:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "Recent activities and proposals by U.S. federal and state government agencies and initiatives have focused on potential drivers behind the rise in childhood chronic diseases.",
+      "ticker": "KO",
+      "topic": "childhood chronic disease"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          174
+        ]
+      ],
+      "change_id": "43918de7930ef556",
+      "matched_terms": [
+        "Recent activities"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-010047:11:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "Recent activities and proposals by U.S. federal and state government agencies and initiatives have focused on potential drivers behind the rise in childhood chronic diseases.",
+      "ticker": "KO",
+      "topic": "recent activity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          60
+        ],
+        [
+          683,
+          857
+        ]
+      ],
+      "change_id": "43918de7930ef556",
+      "matched_terms": [
+        "Supplemental Nutrition Assistance Program"
+      ],
+      "position": 6,
+      "sentence_id": "0001628280-26-010047:11:3",
+      "source": "entity",
+      "status": "modified",
+      "text": "Continued governmental focus on such initiatives, as well as ongoing public concern about obesity; other health-related public concerns surrounding consumption of sweetened beverages; the effects or perceived effects of the usage of weight-loss drugs on consumption patterns; potential new or increased taxes on sweetened beverages by government entities to reduce consumption or to raise revenue; potential new or increased governmental regulations on particular ingredients or additives in our beverages and packaging, or on manufacturing processes; additional governmental regulations concerning the advertising, marketing, labeling, packaging or sale of our sweetened beverages; changes in funding for or restrictions on the inclusion of our products in benefit programs, such as the Supplemental Nutrition Assistance Program (SNAP) in the United States; and negative publicity resulting from actual or threatened legal actions against us or other companies in our industry relating to the marketing, labeling or sale of sweetened beverages may reduce demand for, or increase the cost of, our sweetened beverages, which could adversely affect our profitability.",
+      "ticker": "KO",
+      "topic": "Supplemental Nutrition Assistance Program"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          60
+        ],
+        [
+          683,
+          857
+        ]
+      ],
+      "change_id": "43918de7930ef556",
+      "matched_terms": [
+        "benefit programs"
+      ],
+      "position": 6,
+      "sentence_id": "0001628280-26-010047:11:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Continued governmental focus on such initiatives, as well as ongoing public concern about obesity; other health-related public concerns surrounding consumption of sweetened beverages; the effects or perceived effects of the usage of weight-loss drugs on consumption patterns; potential new or increased taxes on sweetened beverages by government entities to reduce consumption or to raise revenue; potential new or increased governmental regulations on particular ingredients or additives in our beverages and packaging, or on manufacturing processes; additional governmental regulations concerning the advertising, marketing, labeling, packaging or sale of our sweetened beverages; changes in funding for or restrictions on the inclusion of our products in benefit programs, such as the Supplemental Nutrition Assistance Program (SNAP) in the United States; and negative publicity resulting from actual or threatened legal actions against us or other companies in our industry relating to the marketing, labeling or sale of sweetened beverages may reduce demand for, or increase the cost of, our sweetened beverages, which could adversely affect our profitability.",
+      "ticker": "KO",
+      "topic": "benefit program"
+    },
+    {
+      "added_spans": [
+        [
+          26,
+          51
+        ],
+        [
+          57,
+          65
+        ],
+        [
+          71,
+          76
+        ],
+        [
+          108,
+          130
+        ],
+        [
+          134,
+          264
+        ],
+        [
+          282,
+          292
+        ]
+      ],
+      "change_id": "c9fe12cd70b5bd37",
+      "matched_terms": [
+        "actual or alleged mislabeling"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-010047:13:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We, our bottling partners or contract manufacturers have recalled, and could in the future recall, products due to product quality or safety issues, including actual or alleged mislabeling, misbranding, spoilage, undeclared allergens, contamination or adulteration by any means, or failure to meet applicable regulatory requirements.",
+      "ticker": "KO",
+      "topic": "actual or alleged mislabeling"
+    },
+    {
+      "added_spans": [
+        [
+          26,
+          51
+        ],
+        [
+          57,
+          65
+        ],
+        [
+          71,
+          76
+        ],
+        [
+          108,
+          130
+        ],
+        [
+          134,
+          264
+        ],
+        [
+          282,
+          292
+        ]
+      ],
+      "change_id": "c9fe12cd70b5bd37",
+      "matched_terms": [
+        "undeclared allergens"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-010047:13:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We, our bottling partners or contract manufacturers have recalled, and could in the future recall, products due to product quality or safety issues, including actual or alleged mislabeling, misbranding, spoilage, undeclared allergens, contamination or adulteration by any means, or failure to meet applicable regulatory requirements.",
+      "ticker": "KO",
+      "topic": "undeclared allergen"
+    },
+    {
+      "added_spans": [
+        [
+          9,
+          24
+        ],
+        [
+          28,
+          73
+        ],
+        [
+          81,
+          122
+        ],
+        [
+          259,
+          288
+        ]
+      ],
+      "change_id": "c9fe12cd70b5bd37",
+      "matched_terms": [
+        "consumer demand"
+      ],
+      "position": 14,
+      "sentence_id": "0001628280-26-010047:13:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "A recall or any decrease in production resulting from remediation efforts due to quality or safety issues may also lead to lost sales due to the unavailability of product for a period of time, and could also subject us to liability claims, negative publicity or changes in consumer demand, all of which could cause our business to suffer.",
+      "ticker": "KO",
+      "topic": "consumer demand"
+    },
+    {
+      "added_spans": [
+        [
+          9,
+          24
+        ],
+        [
+          28,
+          73
+        ],
+        [
+          81,
+          122
+        ],
+        [
+          259,
+          288
+        ]
+      ],
+      "change_id": "c9fe12cd70b5bd37",
+      "matched_terms": [
+        "remediation efforts"
+      ],
+      "position": 14,
+      "sentence_id": "0001628280-26-010047:13:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "A recall or any decrease in production resulting from remediation efforts due to quality or safety issues may also lead to lost sales due to the unavailability of product for a period of time, and could also subject us to liability claims, negative publicity or changes in consumer demand, all of which could cause our business to suffer.",
+      "ticker": "KO",
+      "topic": "remediation effort"
+    }
+  ],
+  "total_changes": 42
+}

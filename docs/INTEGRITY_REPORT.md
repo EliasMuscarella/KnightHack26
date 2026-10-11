@@ -1,18 +1,18 @@
 # Integrity report
 
-Generated 2026-10-10T22:00:38Z by `scripts/check_integrity.py`. Exit code 1.
+Generated 2026-10-10T22:25:12Z by `scripts/check_integrity.py`. Exit code 1.
 
 ## Sources
 
-- local published: 2 files, 2 current (NVDA, SF) in /home/user/KnightHack26/data/published
-- API: http://127.0.0.1:8000 (store health {'remote': 'disabled', 'warehouse_state': None})
-- /trends: status disabled, source local, 2 companies
-- Databricks: not configured (DATABRICKS_HOST / TOKEN / WAREHOUSE_ID unset)
-- derived trend facts: 2 of 2 current reports have a current file in /home/user/KnightHack26/data/derived; all re-derived in memory with the current code
+- local published: 9 files, 9 current (AAPL, AMZN, GOOGL, META, MSFT, NVDA, SF, TSLA, TTWO) in C:\Users\antho\Documents\GitHub\KnightHack26\data\published
+- API: not running (checked --api, RISKDIFF_API_URL, :8000, :8001)
+- Databricks: 10 current rows
+- derived trend facts: 2 of 9 current reports have a current file in C:\Users\antho\Documents\GitHub\KnightHack26\data\derived; all re-derived in memory with the current code
+- /trends: API not running: local aggregate of the current derivation
 
 ## Current code
 
-- pipeline 0.2.0, rubric 1.1.0, code fingerprint `4797c77d2bda`, stage 0 sec_fetch 0.1.1, stage 1 extract 0.2.1, stage 2 segment 0.2.2, stage 3 embed 0.1.0, stage 4 match 0.1.0, stage 5 diff 0.1.3, stage 6 signals 0.2.2
+- pipeline 0.2.0, rubric 1.1.0, code fingerprint `00da51cb9add`, stage 0 sec_fetch 0.1.1, stage 1 extract 0.2.1, stage 2 segment 0.2.2, stage 3 embed 0.1.0, stage 4 match 0.1.0, stage 5 diff 0.1.3, stage 6 signals 0.2.2
 - display rule checked: `window`
 
 ## Summary
@@ -24,27 +24,174 @@ Generated 2026-10-10T22:00:38Z by `scripts/check_integrity.py`. Exit code 1.
 | TOPIC-NEW | 0 | 0 | 0 | 0 | 0 |
 | TOPIC-MEANINGFUL | 0 | 0 | 0 | 0 | 0 |
 | PAIR | 0 | 0 | 0 | 0 | 0 |
-| CASE | 21 | 21 | 0 | 0 | 0 |
+| CASE | 114 | 106 | 8 | 0 | 0 |
 | YEARS | 0 | 0 | 0 | 0 | 0 |
-| COUNTS | 0 | 0 | 0 | 0 | 0 |
-| TITLES | 0 | 0 | 0 | 0 | 0 |
+| COUNTS | 8 | 0 | 8 | 0 | 0 |
+| TITLES | 240 | 227 | 13 | 0 | 0 |
 | PREAMBLE | 1 | 1 | 0 | 0 | 0 |
-| ENTITY | 6 | 6 | 0 | 0 | 0 |
-| STALE | 2 | 2 | 0 | 0 | 0 |
+| ENTITY | 20 | 17 | 3 | 0 | 0 |
+| STALE | 9 | 9 | 0 | 0 | 0 |
 | HEATMAP | 0 | 0 | 0 | 0 | 0 |
-| **Total** | **30** | 30 | 0 | 0 | 0 |
+| **Total** | **392** | 360 | 32 | 0 | 0 |
 
 ## Reports
 
 | Ticker | analysis_id | pipeline | rubric | current code | earliest stage to re-run |
 |--------|-------------|----------|--------|--------------|--------------------------|
+| AAPL | `2102fd9a354e` | 0.1.0 | 1.1.0 | no | 5 (diff) |
+| AMZN | `fe265664c891` | 0.1.0 | 1.1.0 | no | 5 (diff) |
+| GOOGL | `0ca41330aa97` | 0.1.0 | 1.1.0 | no | 5 (diff) |
+| META | `f5e502b186bb` | 0.1.0 | 1.1.0 | no | 2 (segment) |
+| MSFT | `55325d203331` | 0.1.0 | 1.1.0 | no | 5 (diff) |
 | NVDA | `13acfdfe2afd` | 0.1.0 | 1.0.0 | no | 2 (segment) |
 | SF | `c07038f75e99` | 0.1.0 | 1.0.0 | no | 5 (diff) |
+| TSLA | `10365cfa2729` | 0.1.0 | 1.1.0 | no | 5 (diff) |
+| TTWO | `489c7414b68d` | 0.1.0 | 1.1.0 | no | 2 (segment) |
 
 ## Violations
 
-### CASE (21)
+### CASE (114)
 
+- **AAPL** change `9f07868507890f8c`, sentences `0000320193-24-000123:20:15`, `0000320193-25-000079:19:23`: highlighted though only case/space/punctuation differ: business, company’s
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `f62ab814bf6c23c5`, sentences `0000320193-24-000123:1:6`, `0000320193-25-000079:1:6`: highlighted though only case/space/punctuation differ: affected, applications, business, company, customers, distribute, offer, operations, relationships, require, suppliers, 
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `9c818b121bdfed8c`, sentences `0000320193-24-000123:3:2`, `0000320193-25-000079:3:3`: highlighted though only case/space/punctuation differ: ability, anticipated, application, appropriate, associated, availability, commitments, company’s, company’s, costs, dema
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `9c818b121bdfed8c`, sentences `0000320193-24-000123:3:4`, `0000320193-25-000079:3:6`: highlighted though only case/space/punctuation differ: company, future, introductions, manage, products, services, successfully, transitions
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `f3489ea43c2d7c2d`, sentences `0000320193-24-000123:11:4`, `0000320193-25-000079:11:6`: highlighted though only case/space/punctuation differ: flexibility, operational
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `bb29dff53444fe06`, sentences `0000320193-24-000123:19:0`, `0000320193-25-000079:18:0`: highlighted though only case/space/punctuation differ: expectations
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `bb29dff53444fe06`, sentences `0000320193-24-000123:19:1`, `0000320193-25-000079:18:1`: highlighted though only case/space/punctuation differ: social
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `bb29dff53444fe06`, sentences `0000320193-24-000123:19:3`, `0000320193-25-000079:18:3`: highlighted though only case/space/punctuation differ: control, data, investments, outside, part, performance, risks, that, third-party, uncertainties
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `bb29dff53444fe06`, sentences `0000320193-24-000123:19:6`, `0000320193-25-000079:18:4`: highlighted though only case/space/punctuation differ: against, any, legal, proceedings, regulatory, result
+  - *code*: current diff reproduces it
+- **AAPL** change `c9c79ab3093b2041`, sentences `0000320193-24-000123:9:2`, `0000320193-25-000079:9:2`: highlighted though only case/space/punctuation differ: third-party
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `c9c79ab3093b2041`, sentences `0000320193-24-000123:9:4`, `0000320193-25-000079:9:4`: highlighted though only case/space/punctuation differ: android, benefits, company’s, compared, competitors, computers, depends, gaming, nintendo, personal, platforms, playstat
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `08d66de4463156b6`, sentences `0000320193-24-000123:5:10`, `0000320193-25-000079:5:8`: highlighted though only case/space/punctuation differ: common, company’s, components, concentrate, customized, decide, instead, meet, production, requirements
+  - *code*: current diff reproduces it
+- **AAPL** change `08d66de4463156b6`, sentences `0000320193-24-000123:5:11`, `0000320193-25-000079:5:9`: highlighted though only case/space/punctuation differ: company
+  - *code*: current diff reproduces it
+- **AAPL** change `6e7acf9aa50b23fb`, sentences `0000320193-24-000123:2:1`, `0000320193-25-000079:2:2`: highlighted though only case/space/punctuation differ: continual, improvement, performance
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `6e7acf9aa50b23fb`, sentences `0000320193-24-000123:2:5`, `0000320193-25-000079:2:7`: highlighted though only case/space/punctuation differ: achieve, company, expected, investments, returns, these
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `6e7acf9aa50b23fb`, sentences `0000320193-24-000123:2:12`, `0000320193-25-000079:2:19`: highlighted though only case/space/punctuation differ: some
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `6e7acf9aa50b23fb`, sentences `0000320193-24-000123:2:15`, `0000320193-25-000079:2:22`: highlighted though only case/space/punctuation differ: some
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `f7888b6bd8cf139e`, sentences `0000320193-24-000123:21:7`, `0000320193-25-000079:20:7`: highlighted though only case/space/punctuation differ: notices, other, policy, press, privacy, provided, statements, through, website
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `f7888b6bd8cf139e`, sentences `0000320193-24-000123:21:10`, `0000320193-25-000079:20:11`: highlighted though only case/space/punctuation differ: also, company, obligations, relating, specific, subject
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `f7888b6bd8cf139e`, sentences `0000320193-24-000123:21:15`, `0000320193-25-000079:20:15`: highlighted though only case/space/punctuation differ: data, security
+  - *code*: current diff reproduces it
+- **AAPL** change `56a542d073cdca3e`, sentences `0000320193-24-000123:15:4`, `0000320193-25-000079:15:4`: highlighted though only case/space/punctuation differ: new
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `c23bd2d6a194fceb`, sentences `0000320193-24-000123:17:2`, `0000320193-25-000079:16:2`: highlighted though only case/space/punctuation differ: company, include, indemnification, provisions, subject
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `c23bd2d6a194fceb`, sentences `0000320193-24-000123:17:10`, `0000320193-25-000079:16:11`: highlighted though only case/space/punctuation differ: agreements, such
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `c23bd2d6a194fceb`, sentences `0000320193-24-000123:17:11`, `0000320193-25-000079:16:13`: highlighted though only case/space/punctuation differ: business, change, company, limit, practices, require
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `876847844c558c67`, sentences `0000320193-24-000123:7:3`, `0000320193-25-000079:7:2`: highlighted though only case/space/punctuation differ: assets, capital, circumstances, events, facilities, held, impairment, including, indicate, inventory, prepayments, suppl
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `57c6f364608b51a0`, sentences `0000320193-24-000123:6:9`, `0000320193-25-000079:6:9`: highlighted though only case/space/punctuation differ: able, all, company, defects, detect, fix, hardware, offers, software
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `73f184e8b0162c0b`, sentences `0000320193-24-000123:14:9`, `0000320193-25-000079:14:10`: highlighted though only case/space/punctuation differ: attacks
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AAPL** change `ab8f66997aeaef3b`, sentences `0000320193-24-000123:0:5`, `0000320193-25-000079:0:5`: highlighted though only case/space/punctuation differ: about, conditions, decline, economic, global, regional, significant, uncertainty
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AMZN** change `948d3a870f08c607`, sentences `0001018724-25-000004:8:24`, `0001018724-26-000004:8:24`: highlighted though only case/space/punctuation differ: charge, customers, fees, successfully
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **AMZN** change `e5056001c3100c51`, sentences `0001018724-25-000004:13:3`, `0001018724-26-000004:13:3`: highlighted though only case/space/punctuation differ: alternatives, crises, disasters, events, from, geopolitical, health, human-caused, including, natural, other, procure, p
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **GOOGL** change `3418487267eef22d`, sentences `0001652044-25-000014:1:6`, `0001652044-26-000018:28:22`: highlighted though only case/space/punctuation differ: harm
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **GOOGL** change `2ab3f5adee7a7cf4`, sentences `0001652044-25-000014:10:12`, `0001652044-26-000018:4:6`: highlighted though only case/space/punctuation differ: harm, products, services
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **GOOGL** change `8d91c0d23adbb17c`, sentences `0001652044-25-000014:5:1`, `0001652044-26-000018:5:1`: highlighted though only case/space/punctuation differ: decreases, lower, ongoing, policy, priced, pricing, product, products, services, shifts
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **GOOGL** change `8d91c0d23adbb17c`, sentences `0001652044-25-000014:5:2`, `0001652044-26-000018:5:5`: highlighted though only case/space/punctuation differ: business, consumer, continued, devices, expansion, fields, from, from, including, increase, into, lower-margin, margin, 
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **GOOGL** change `307c2a49cf85d241`, sentences `0001652044-25-000014:14:3`, `0001652044-26-000018:14:4`: highlighted though only case/space/punctuation differ: gains
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **GOOGL** change `4274c2ba002765bf`, sentences `0001652044-25-000014:28:8`, `0001652044-26-000018:27:3`: highlighted though only case/space/punctuation differ: if, unsuccessful
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **GOOGL** change `4a1563db4ff50e1e`, sentences `0001652044-25-000014:15:1`, `0001652044-26-000018:16:1`: highlighted though only case/space/punctuation differ: people
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **GOOGL** change `39dae11030e797ff`, sentences `0001652044-25-000014:2:13`, `0001652044-26-000018:3:13`: highlighted though only case/space/punctuation differ: products, services
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **GOOGL** change `5aeef714c94bf5f4`, sentences `0001652044-25-000014:7:7`, `0001652044-26-000018:6:5`: highlighted though only case/space/punctuation differ: issued, patent
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **GOOGL** change `5aeef714c94bf5f4`, sentences `0001652044-25-000014:7:16`, `0001652044-26-000018:6:13`: highlighted though only case/space/punctuation differ: any, business, expensive, harm, make, more
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **GOOGL** change `81b4758d33a85ba5`, sentences `0001652044-25-000014:4:12`, `0001652044-26-000018:2:6`: highlighted though only case/space/punctuation differ: delivery, models
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **GOOGL** change `5345beac6ca3e327`, sentences `0001652044-25-000014:35:3`, `0001652044-26-000018:34:3`: highlighted though only case/space/punctuation differ: cash, cash, dividend, dividends, program, regular
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **META** change `4b373e1be309ec6c`, sentences `0001326801-25-000017:41:6`, `0001628280-26-003942:41:7`: highlighted though only case/space/punctuation differ: there
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **META** change `e3514cbaf9f56dca`, sentences `0001326801-25-000017:4:12`, `0001628280-26-003942:4:12`: highlighted though only case/space/punctuation differ: ai, cost-effective, deploy, features, other, similar, superior, technologies, technologies
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **META** change `52d36844525ff3b2`, sentences `0001326801-25-000017:8:3`, `0001628280-26-003942:8:4`: highlighted though only case/space/punctuation differ: developers
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **META** change `c192cae79e81dc9e`, sentences `0001326801-25-000017:32:65`, `0001628280-26-003942:32:66`: highlighted though only case/space/punctuation differ: new
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **META** change `c192cae79e81dc9e`, sentences `0001326801-25-000017:32:70`, `0001628280-26-003942:32:73`: highlighted though only case/space/punctuation differ: activities, additional, allegedly, business, cause, changes, compliance, costs, fines, fraudulent, illegal, incur, legis
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **META** change `9c56235151ed87e9`, sentences `0001326801-25-000017:1:35`, `0001628280-26-003942:1:35`: highlighted though only case/space/punctuation differ: users
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **META** change `dd76b9ecb44f0b4b`, sentences `0001326801-25-000017:35:8`, `0001628280-26-003942:35:8`: highlighted though only case/space/punctuation differ: brazilian, court, supreme
+  - *code*: current diff reproduces it
+- **META** change `5d0458b5c18e83dd`, sentences `0001326801-25-000017:11:3`, `0001628280-26-003942:11:3`: highlighted though only case/space/punctuation differ: content, hate, other, speech
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **META** change `849f496ffcc2bb38`, sentences `0001326801-25-000017:15:6`, `0001628280-26-003942:15:6`: highlighted though only case/space/punctuation differ: ability, components, continue, controls, eliminate, export, import, international, key, limit, manufacture, manufacturer
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **META** change `bdb8ce0fbd56c98a`, sentences `0001326801-25-000017:25:12`, `0001628280-26-003942:25:13`: highlighted though only case/space/punctuation differ: these
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **META** change `dbe95f8fa878d16a`, sentences `0001326801-25-000017:7:14`, `0001628280-26-003942:7:14`: highlighted though only case/space/punctuation differ: content, hate, other, speech
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `119f5bb5335ecda7`, sentences `0000950170-25-100235:15:6`, `0001193125-26-323660:16:10`: highlighted though only case/space/punctuation differ: chain, supply, xbox
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `f1a6ed1c5344642b`, sentences `0000950170-25-100235:12:1`, `0001193125-26-323660:13:1`: highlighted though only case/space/punctuation differ: content, disseminate, find, generate, harmful, illegal, store, used, violation
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `f1a6ed1c5344642b`, sentences `0000950170-25-100235:12:3`, `0001193125-26-323660:13:3`: highlighted though only case/space/punctuation differ: affect, content, negatively
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `d7c61aee81343fc5`, sentences `0000950170-25-100235:13:12`, `0001193125-26-323660:14:10`: highlighted though only case/space/punctuation differ: affect
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `d7c61aee81343fc5`, sentences `0000950170-25-100235:13:23`, `0001193125-26-323660:14:23`: highlighted though only case/space/punctuation differ: economic, employment, human, issues, other, political, privacy, rights, social
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `86254bf6b03f665c`, sentences `0000950170-25-100235:4:13`, `0001193125-26-323660:5:14`: highlighted though only case/space/punctuation differ: ai, cloud-based, services
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `86254bf6b03f665c`, sentences `0000950170-25-100235:4:14`, `0001193125-26-323660:5:15`: highlighted though only case/space/punctuation differ: adverse, impacts, reputational
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `084ca7a5fe6a4ea9`, sentences `0000950170-25-100235:3:13`, `0001193125-26-323660:3:13`: highlighted though only case/space/punctuation differ: ai, available, cost, developing, end, little, making, models, software, that, users, using
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `1b7868f35687cc8c`, sentences `0000950170-25-100235:6:3`, `0001193125-26-323660:7:3`: highlighted though only case/space/punctuation differ: partnership, strategic
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `478c4a235d601288`, sentences `0000950170-25-100235:10:3`, `0001193125-26-323660:11:3`: highlighted though only case/space/punctuation differ: controls, customer, data, data, data, disclosure, employees, follow, improper, misuse, other, over, parties, personal, p
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `478c4a235d601288`, sentences `0000950170-25-100235:10:4`, `0001193125-26-323660:11:4`: highlighted though only case/space/punctuation differ: activities, fail, identify, insider, lead, misuse, mitigate, that, threat
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `478c4a235d601288`, sentences `0000950170-25-100235:10:10`, `0001193125-26-323660:11:10`: highlighted though only case/space/punctuation differ: adoption, collection, information, inhibit, limit, perceptions, personal, products, protected, retention, sales, satisfa
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `478c4a235d601288`, sentences `0000950170-25-100235:10:15`, `0001193125-26-323660:11:15`: highlighted though only case/space/punctuation differ: ability, adversely, affect, benefit, bots, content, from, gathering, information, measures, other, own, parties, prevent
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `7b81daf5f9cda115`, sentences `0000950170-25-100235:7:8`, `0001193125-26-323660:8:8`: highlighted though only case/space/punctuation differ: continue, due, intensify, partners, transparency
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `b30a6911b537a3e4`, sentences `0000950170-25-100235:8:11`, `0001193125-26-323660:9:12`: highlighted though only case/space/punctuation differ: weaknesses
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `b30a6911b537a3e4`, sentences `0000950170-25-100235:8:18`, `0001193125-26-323660:9:21`: highlighted though only case/space/punctuation differ: customers
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **MSFT** change `07190c2f519a71f4`, sentences `0000950170-25-100235:2:4`, `0001193125-26-323660:2:4`: highlighted though only case/space/punctuation differ: firms
+  - *stale*, re-run from stage 5: current diff no longer marks these words
 - **NVDA** change `a4156a06454f6dfd`, sentences `0001045810-25-000023:19:95`, `0001045810-26-000021:21:91`: highlighted though only case/space/punctuation differ: export
   - *stale*, re-run from stage 5: current diff no longer marks these words
 - **NVDA** change `a4156a06454f6dfd`, sentences `0001045810-25-000023:19:96`, `0001045810-26-000021:21:92`: highlighted though only case/space/punctuation differ: export
@@ -87,14 +234,576 @@ Generated 2026-10-10T22:00:38Z by `scripts/check_integrity.py`. Exit code 1.
   - *stale*, re-run from stage 5: current diff no longer marks these words
 - **SF** change `db2dc1bfc373add1`, sentences `0000950170-25-027702:18:9`, `0001193125-26-067130:18:5`: highlighted though only case/space/punctuation differ: associate
   - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TSLA** change `a8abd55c25baf1e9`, sentences `0001628280-25-003063:31:13`, `0001628280-26-003952:30:13`: highlighted though only case/space/punctuation differ: certain, components, concerning, customers, electrical, electricity, electricity, electricity, equipment, export, federa
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TSLA** change `dedd3eb119fdccf2`, sentences `0001628280-25-003063:10:2`, `0001628280-26-003952:11:3`: highlighted though only case/space/punctuation differ: engaged
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TSLA** change `43a645d6d91f3fe3`, sentences `0001628280-25-003063:5:1`, `0001628280-26-003952:5:1`: highlighted though only case/space/punctuation differ: compete, decreases, demand, develop, develops, each, electric, expect, expect, general, if, if, market, markets, more, o
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TSLA** change `6de9a5242a697b4d`, sentences `0001628280-25-003063:0:4`, `0001628280-26-003952:0:2`: highlighted though only case/space/punctuation differ: able, guarantee, introduce, scale, successfully, timely
+  - *code*: current diff reproduces it
+- **TSLA** change `01e53e597004432c`, sentences `0001628280-25-003063:15:3`, `0001628280-26-003952:15:3`: highlighted though only case/space/punctuation differ: neuralink
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TSLA** change `0910b7fdc864e083`, sentences `0001628280-25-003063:12:14`, `0001628280-26-003952:13:14`: highlighted though only case/space/punctuation differ: sales
+  - *code*: current diff reproduces it
+- **TSLA** change `4a64ae927a50f7d1`, sentences `0001628280-25-003063:20:5`, `0001628280-26-003952:20:5`: highlighted though only case/space/punctuation differ: bear, electricity, guarantees, other, production, risk
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TSLA** change `e9589be82885dd6a`, sentences `0001628280-25-003063:9:5`, `0001628280-26-003952:10:5`: highlighted though only case/space/punctuation differ: control, defects, detect, unable
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `99ea8c56a7e50136`, sentences `0001628280-25-026694:38:31`, `0001628280-26-037434:37:31`: highlighted though only case/space/punctuation differ: additional, corporate, expense, extent, jurisdiction, liability, liability, over, particular, pillar, regular, result, t
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `99ea8c56a7e50136`, sentences `0001628280-25-026694:38:33`, `0001628280-26-037434:37:33`: highlighted though only case/space/punctuation differ: pillar, two
+  - *code*: current diff reproduces it
+- **TTWO** change `69cfe07b0b6f8df2`, sentences `0001628280-25-026694:35:4`, `0001628280-26-037434:33:3`: highlighted though only case/space/punctuation differ: because, certain, e, entities, individuals, information, information, local, maintain, personal, personal, process, proc
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `69cfe07b0b6f8df2`, sentences `0001628280-25-026694:35:38`, `0001628280-26-037434:33:44`: highlighted though only case/space/punctuation differ: changes
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `4bfdb1d4cd947f23`, sentences `0001628280-25-026694:3:2`, `0001628280-26-037434:5:2`: highlighted though only case/space/punctuation differ: commercial, early, stages, use, wider-spread
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `4bfdb1d4cd947f23`, sentences `0001628280-25-026694:3:4`, `0001628280-26-037434:5:7`: highlighted though only case/space/punctuation differ: additional, development, protections, require, safeguards, uncertainty
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `4bfdb1d4cd947f23`, sentences `0001628280-25-026694:3:6`, `0001628280-26-037434:5:12`: highlighted though only case/space/punctuation differ: delays, experience, integrating, these
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `7130478ec3da71b1`, sentences `0001628280-25-026694:17:5`, `0001628280-26-037434:17:7`: highlighted though only case/space/punctuation differ: significant, such, tariffs
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `fbecd8e99b729d9e`, sentences `0001628280-25-026694:34:14`, `0001628280-26-037434:32:15`: highlighted though only case/space/punctuation differ: children's, privacy
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `359bce0e08f6ecff`, sentences `0001628280-25-026694:16:17`, `0001628280-26-037434:16:17`: highlighted though only case/space/punctuation differ: equity, equity-linked, potentially, securities
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `637dc57a025f0fe1`, sentences `0001628280-25-026694:26:2`, `0001628280-26-037434:25:2`: highlighted though only case/space/punctuation differ: 10, accounting, apple, each, google, microsoft, more, net, revenue, sony, than
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `4300073c42061055`, sentences `0001628280-25-026694:8:18`, `0001628280-26-037434:8:18`: highlighted though only case/space/punctuation differ: additional, certain, consultants, costs, data, efforts, expect, experts, immaterial, incremental, incur, incurred, one-t
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `4300073c42061055`, sentences `0001628280-25-026694:8:22`, `0001628280-26-037434:8:22`: highlighted though only case/space/punctuation differ: cybersecurity
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `5e6b6c0b91fdf986`, sentences `0001628280-25-026694:0:2`, `0001628280-26-037434:0:3`: highlighted though only case/space/punctuation differ: apple, companies, competition, developers, distributors, expanded, face, focused, from, gaming, google, high-profile, in
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+- **TTWO** change `e9d78312d7e9264f`, sentences `0001628280-25-026694:9:5`, `0001628280-26-037434:9:5`: highlighted though only case/space/punctuation differ: any, breach, compel, comply, costs, disparate, increased, information, laws, laws, liability, locations, loss, notificat
+  - *stale*, re-run from stage 5: current diff no longer marks these words
+
+### COUNTS (8)
+
+- **AAPL** change —, sentences —: missing from ['derived trend facts']
+  - *code*: the Trends company set must come from the same source as /companies; a report without derived facts is dropped from Trends
+- **AMZN** change —, sentences —: missing from ['derived trend facts']
+  - *code*: the Trends company set must come from the same source as /companies; a report without derived facts is dropped from Trends
+- **CRWD** change —, sentences —: missing from ['local published files', 'derived trend facts']
+  - *code*: the Trends company set must come from the same source as /companies; a report without derived facts is dropped from Trends
+- **GOOGL** change —, sentences —: missing from ['derived trend facts']
+  - *code*: the Trends company set must come from the same source as /companies; a report without derived facts is dropped from Trends
+- **META** change —, sentences —: missing from ['derived trend facts']
+  - *code*: the Trends company set must come from the same source as /companies; a report without derived facts is dropped from Trends
+- **MSFT** change —, sentences —: missing from ['derived trend facts']
+  - *code*: the Trends company set must come from the same source as /companies; a report without derived facts is dropped from Trends
+- **TSLA** change —, sentences —: missing from ['derived trend facts']
+  - *code*: the Trends company set must come from the same source as /companies; a report without derived facts is dropped from Trends
+- **TTWO** change —, sentences —: missing from ['derived trend facts']
+  - *code*: the Trends company set must come from the same source as /companies; a report without derived facts is dropped from Trends
+
+### TITLES (240)
+
+- **AAPL** change `9f07868507890f8c`, sentences —: 'The technology industry, including, in some instances…': ends with an ellipsis (truncated heading) (heading: 'The technology industry, including, in some instances, the Company, is subject to intense media, po…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The technology industry, including, in some instances, the Company'
+- **AAPL** change `f62ab814bf6c23c5`, sentences —: 'The Company’s business can be impacted by…': ends with an ellipsis (truncated heading); ends mid-clause on 'by' (heading: 'The Company’s business can be impacted by political events, trade and other international disputes,…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company’s business can be impacted by political events, trade'
+- **AAPL** change `5e69fd94790b4f3f`, sentences —: 'The Company depends on the performance of…': ends with an ellipsis (truncated heading); ends mid-clause on 'of' (heading: 'The Company depends on the performance of carriers and other resellers.')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company depends on the performance of carriers'
+- **AAPL** change `9c818b121bdfed8c`, sentences —: 'To remain competitive and stimulate customer demand…': ends with an ellipsis (truncated heading) (heading: 'To remain competitive and stimulate customer demand, the Company must successfully manage frequent…')
+  - *stale*, re-run from stage 8: the current fallback gives 'To remain competitive and stimulate customer demand'
+- **AAPL** change `f3489ea43c2d7c2d`, sentences —: 'The Company’s success depends largely on the…': ends with an ellipsis (truncated heading); ends mid-clause on 'the' (heading: 'The Company’s success depends largely on the talents and efforts of its team members, the continued…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company’s success depends largely on the talents'
+- **AAPL** change `bb29dff53444fe06`, sentences —: 'Varied stakeholder expectations about social and other…': ends with an ellipsis (truncated heading); ends mid-clause on 'other' (heading: 'Varied stakeholder expectations about social and other issues expose the Company to potential liabi…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Varied stakeholder expectations about social'
+- **AAPL** change `e35c8e4c612d7d41`, sentences —: 'The Company is subject to complex and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'The Company is subject to complex and changing laws and regulations worldwide, which exposes the Co…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company is subject to complex'
+- **AAPL** change `c9c79ab3093b2041`, sentences —: 'The Company’s future performance depends in part…': ends with an ellipsis (truncated heading) (heading: 'The Company’s future performance depends in part on support from third-party software developers.')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company’s future performance depends in part on support'
+- **AAPL** change `d006730befbf7840`, sentences —: 'The Company’s retail stores are subject to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'The Company’s retail stores are subject to numerous risks and uncertainties.')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company’s retail stores are subject to numerous risks'
+- **AAPL** change `08d66de4463156b6`, sentences —: 'Future operating results depend upon the Company’s…': ends with an ellipsis (truncated heading) (heading: 'Future operating results depend upon the Company’s ability to obtain components in sufficient quant…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Future operating results depend upon the Company’s ability to obtain'
+- **AAPL** change `6e7acf9aa50b23fb`, sentences —: 'Global markets for the Company’s products and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'Global markets for the Company’s products and services are highly competitive and subject to rapid…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Global markets for the Company’s products'
+- **AAPL** change `acf7025cebf3eea9`, sentences —: 'The Company’s net sales and gross margins…': ends with an ellipsis (truncated heading) (heading: 'The Company’s net sales and gross margins are subject to volatility and downward pressure due to a…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company’s net sales'
+- **AAPL** change `6e91f8b4efb996b9`, sentences —: 'The Company relies on access to third-party…': ends with an ellipsis (truncated heading) (heading: 'The Company relies on access to third-party intellectual property, which may not be available to th…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company relies on access to third-party intellectual property'
+- **AAPL** change `f7888b6bd8cf139e`, sentences —: 'The Company’s business is subject to a…': ends with an ellipsis (truncated heading); ends mid-clause on 'a' (heading: 'The Company’s business is subject to a variety of U.S. and international laws, rules, policies and…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company’s business is subject to a variety of U.S.'
+- **AAPL** change `3638bcc922d09d2a`, sentences —: 'Failure to obtain or create digital content…': ends with an ellipsis (truncated heading) (heading: 'Failure to obtain or create digital content that appeals to the Company’s customers, or to make suc…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Failure to obtain or create digital content'
+- **AAPL** change `89bf7dac651b8bb1`, sentences —: 'The Company depends on component and product…': ends with an ellipsis (truncated heading) (heading: 'The Company depends on component and product manufacturing and logistical services provided by outs…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company depends on component and product manufacturing'
+- **AAPL** change `56a542d073cdca3e`, sentences —: 'Investment in new business strategies, commercial relationships…': ends with an ellipsis (truncated heading) (heading: 'Investment in new business strategies, commercial relationships and acquisitions could disrupt the…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Investment in new business strategies, commercial relationships and acquisitions'
+- **AAPL** change `c23bd2d6a194fceb`, sentences —: 'The Company’s business, results of operations and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'The Company’s business, results of operations and financial condition could be adversely impacted b…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company’s business, results of operations and financial condition'
+- **AAPL** change `876847844c558c67`, sentences —: 'The Company is exposed to the risk…': ends with an ellipsis (truncated heading) (heading: 'The Company is exposed to the risk of write-downs on the value of its inventory and other assets, i…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company is exposed to the risk of write-downs'
+- **AAPL** change `08f6ff3083a1137a`, sentences —: 'The Company is exposed to credit risk…': ends with an ellipsis (truncated heading) (heading: 'The Company is exposed to credit risk on its trade accounts receivable, vendor non-trade receivable…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company is exposed to credit risk on its trade'
+- **AAPL** change `57c6f364608b51a0`, sentences —: 'The Company’s products and services may be…': ends with an ellipsis (truncated heading); ends mid-clause on 'be' (heading: 'The Company’s products and services may be affected from time to time by design and manufacturing d…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company’s products and services'
+- **AAPL** change `660955d420e7133c`, sentences —: 'The Company’s financial performance is subject to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'The Company’s financial performance is subject to risks associated with changes in the value of the…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company’s financial performance is subject to risks associated'
+- **AAPL** change `73f184e8b0162c0b`, sentences —: 'Losses or unauthorized access to or releases…': ends with an ellipsis (truncated heading) (heading: 'Losses or unauthorized access to or releases of confidential information, including personal inform…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Losses or unauthorized access to or releases of confidential information'
+- **AAPL** change `8ebf026e60fa97f4`, sentences —: 'The Company is exposed to credit risk…': ends with an ellipsis (truncated heading) (heading: 'The Company is exposed to credit risk and fluctuations in the values of its investment portfolio.')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company is exposed to credit risk'
+- **AAPL** change `ab8f66997aeaef3b`, sentences —: 'The Company’s operations and performance depend significantly…': ends with an ellipsis (truncated heading) (heading: 'The Company’s operations and performance depend significantly on global and regional economic condi…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company’s operations and performance depend significantly on global'
+- **AAPL** change `c1f7d2a5b5855ad2`, sentences —: 'The Company is subject to changes in…': ends with an ellipsis (truncated heading); ends mid-clause on 'in' (heading: 'The Company is subject to changes in tax rates, the adoption of new U.S. or international tax legis…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company is subject to changes in tax rates'
+- **AAPL** change `ebda85215ccb87e2`, sentences —: 'The Company’s business and reputation are impacted…': ends with an ellipsis (truncated heading) (heading: 'The Company’s business and reputation are impacted by information technology system failures and ne…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Company’s business and reputation are impacted by information technology'
+- **AAPL** change `fd4ab729312a7019`, sentences —: 'The price of the Company’s stock is…': ends with an ellipsis (truncated heading); ends mid-clause on 'is' (heading: 'The price of the Company’s stock is subject to volatility.')
+  - *stale*, re-run from stage 8: the current fallback gives 'The price of the Company’s stock is subject to volatility'
+- **AMZN** change `174d0b39b070bdd6`, sentences —: 'Our Commercial Agreements, Strategic Alliances, and Other…': ends with an ellipsis (truncated heading); ends mid-clause on 'other' (heading: 'Our Commercial Agreements, Strategic Alliances, and Other Business Relationships Expose Us to Risks')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our Commercial Agreements, Strategic Alliances'
+- **AMZN** change `26e0a789783a157b`, sentences —: 'We Are Subject to Risks Related to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'We Are Subject to Risks Related to Government Contracts and Related Procurement Regulations')
+  - *stale*, re-run from stage 8: the current fallback gives 'We Are Subject to Risks Related to Government Contracts'
+- **AMZN** change `2d15f32a730c9e04`, sentences —: 'Our Business Suffers When We Are Unsuccessful…': ends with an ellipsis (truncated heading) (heading: 'Our Business Suffers When We Are Unsuccessful in Making, Integrating, and Maintaining Acquisitions…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our Business Suffers When We Are Unsuccessful in Making, Integrating'
+- **AMZN** change `34fe10967840d5c1`, sentences —: 'We Are Impacted by Fraudulent or Unlawful…': ends with an ellipsis (truncated heading) (heading: 'We Are Impacted by Fraudulent or Unlawful Activities of Sellers')
+  - *stale*, re-run from stage 8: the current fallback gives 'We Are Impacted by Fraudulent or Unlawful Activities of Sellers'
+- **AMZN** change `42eb3a1d9aaca776`, sentences —: 'Our Expansion into New Products, Services, Technologies…': ends with an ellipsis (truncated heading) (heading: 'Our Expansion into New Products, Services, Technologies, and Geographic Regions Subjects Us to Addi…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our Expansion into New Products, Services, Technologies'
+- **AMZN** change `49d4da90c22d8933`, sentences —: 'We Face Risks Related to System Interruption…': ends with an ellipsis (truncated heading) (heading: 'We Face Risks Related to System Interruption and Lack of Redundancy')
+  - *stale*, re-run from stage 8: the current fallback gives 'We Face Risks Related to System Interruption'
+- **AMZN** change `5817baef9c1df6aa`, sentences —: 'We Face Risks Related to Successfully Optimizing…': ends with an ellipsis (truncated heading) (heading: 'We Face Risks Related to Successfully Optimizing and Operating Our Fulfillment Network and Data Cen…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We Face Risks Related to Successfully Optimizing'
+- **AMZN** change `59106137a4fdd72e`, sentences —: 'We Have a Rapidly Evolving Business Model…': ends with an ellipsis (truncated heading) (heading: 'We Have a Rapidly Evolving Business Model and Our Stock Price Is Highly Volatile')
+  - *stale*, re-run from stage 8: the current fallback gives 'We Have a Rapidly Evolving Business Model'
+- **AMZN** change `5d4ebbd25afe684f`, sentences —: 'The Variability in Our Retail Business Places…': ends with an ellipsis (truncated heading) (heading: 'The Variability in Our Retail Business Places Increased Strain on Our Operations')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Variability in Our Retail Business Places Increased Strain'
+- **AMZN** change `707c6a42d6435cd4`, sentences —: 'Our Expansion Places a Significant Strain on…': ends with an ellipsis (truncated heading); ends mid-clause on 'on' (heading: 'Our Expansion Places a Significant Strain on our Management, Operational, Financial, and Other Reso…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our Expansion Places a Significant Strain on our Management, Operational'
+- **AMZN** change `73f00f9851ebd410`, sentences —: 'We Are Subject to Product Liability Claims…': ends with an ellipsis (truncated heading) (heading: 'We Are Subject to Product Liability Claims When People or Property Are Harmed by the Products We Se…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We Are Subject to Product Liability Claims When People'
+- **AMZN** change `8cfce906f4d50983`, sentences —: 'Government Regulation Is Evolving and Unfavorable Changes…': ends with an ellipsis (truncated heading) (heading: 'Government Regulation Is Evolving and Unfavorable Changes Could Harm Our Business')
+  - *stale*, re-run from stage 8: the current fallback gives 'Government Regulation Is Evolving and Unfavorable Changes'
+- **AMZN** change `948d3a870f08c607`, sentences —: 'We Experience Significant Fluctuations in Our Operating…': ends with an ellipsis (truncated heading) (heading: 'We Experience Significant Fluctuations in Our Operating Results and Growth Rate')
+  - *stale*, re-run from stage 8: the current fallback gives 'We Experience Significant Fluctuations in Our Operating Results'
+- **AMZN** change `a5ba7418b0bd5946`, sentences —: 'We Could Be Harmed by Data Loss…': ends with an ellipsis (truncated heading) (heading: 'We Could Be Harmed by Data Loss or Other Security Incidents')
+  - *stale*, re-run from stage 8: the current fallback gives 'We Could Be Harmed by Data Loss'
+- **AMZN** change `bc0438f5e382249a`, sentences —: 'Our International Operations Expose Us to a…': ends with an ellipsis (truncated heading); ends mid-clause on 'a' (heading: 'Our International Operations Expose Us to a Number of Risks')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our International Operations Expose Us to a Number of Risks'
+- **AMZN** change `cab16c128eac4ba0`, sentences —: 'We Face Risks Related to Adequately Protecting…': ends with an ellipsis (truncated heading) (heading: 'We Face Risks Related to Adequately Protecting Our Intellectual Property Rights and Being Accused o…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We Face Risks Related to Adequately Protecting Our Intellectual Property'
+- **AMZN** change `e5056001c3100c51`, sentences —: 'Our Supplier Relationships Subject Us to a…': ends with an ellipsis (truncated heading); ends mid-clause on 'a' (heading: 'Our Supplier Relationships Subject Us to a Number of Risks')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our Supplier Relationships Subject Us to a Number of Risks'
+- **AMZN** change `e91711dcfc154ee5`, sentences —: 'Claims, Litigation, Government Investigations, and Other Proceedings…': ends with an ellipsis (truncated heading) (heading: 'Claims, Litigation, Government Investigations, and Other Proceedings May Adversely Affect Our Busin…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Claims, Litigation, Government Investigations, and Other Proceedings'
+- **AMZN** change `e9c885da48650175`, sentences —: 'The Loss of Key Senior Management Personnel…': ends with an ellipsis (truncated heading) (heading: 'The Loss of Key Senior Management Personnel or the Failure to Hire and Retain Highly Skilled and Ot…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The Loss of Key Senior Management Personnel'
+- **GOOGL** change `3418487267eef22d`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `0c8797811789225a`, sentences —: 'We could be subject to changes in…': ends with an ellipsis (truncated heading); ends mid-clause on 'in' (heading: 'We could be subject to changes in tax rates, the adoption of new US or international tax legislatio…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We could be subject to changes in tax rates'
+- **GOOGL** change `4c7d19ecc45ac279`, sentences —: 'We face a number of manufacturing and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'We face a number of manufacturing and supply chain risks that could affect our ability to supply ou…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We face a number of manufacturing and supply chain risks'
+- **GOOGL** change `75484f6359f0d1cf`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `c229d4d6c3d7a60f`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `2ab3f5adee7a7cf4`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `3d980fd2bbe0a1c6`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `d9aadcab49fc2a88`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `2e4c41c47478ca20`, sentences —: 'Our increasing investment in new businesses, products…': ends with an ellipsis (truncated heading) (heading: 'Our increasing investment in new businesses, products, services, and technologies is inherently ris…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our increasing investment in new businesses, products, services'
+- **GOOGL** change `4d494f549540a5a1`, sentences —: 'We face, and may continue to face…': ends with an ellipsis (truncated heading) (heading: 'We face, and may continue to face, intellectual property infringement or misappropriation, violatio…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We face, and may continue to face, intellectual property infringement'
+- **GOOGL** change `54b589f7d7db9a1d`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `8b985fdadd353ad9`, sentences —: 'Disruptions in our ability to access future…': ends with an ellipsis (truncated heading) (heading: 'Disruptions in our ability to access future financing or manage our indebtedness could adversely af…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Disruptions in our ability to access future financing'
+- **GOOGL** change `10b79a896b2c0ea3`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `210d718aeb4f3c9a`, sentences —: 'Provisions in our charter documents and under…': ends with an ellipsis (truncated heading) (heading: 'Provisions in our charter documents and under Delaware law could discourage a takeover that stockho…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Provisions in our charter documents and under Delaware'
+- **GOOGL** change `98227e6c912a3ee9`, sentences —: 'Our international operations expose us to additional…': ends with an ellipsis (truncated heading) (heading: 'Our international operations expose us to additional risks that could harm our business, reputation…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our international operations expose us to additional risks'
+- **GOOGL** change `e0e29a6ce9aedd5c`, sentences —: 'The trading price for our Class A…': ends with an ellipsis (truncated heading); ends mid-clause on 'a' (heading: 'The trading price for our Class A stock and non-voting Class C stock may continue to be volatile.')
+  - *stale*, re-run from stage 8: the current fallback gives 'The trading price for our Class A stock'
+- **GOOGL** change `e7249e7578aa4420`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `0b67cc36a3a6fa50`, sentences —: 'We are subject to a variety of…': ends with an ellipsis (truncated heading); ends mid-clause on 'of' (heading: 'We are subject to a variety of new, existing, and changing laws and regulations worldwide that coul…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are subject to a variety of new, existing'
+- **GOOGL** change `394fc161361a209b`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `8d91c0d23adbb17c`, sentences —: 'Our revenue growth rate could decline over…': ends with an ellipsis (truncated heading) (heading: 'Our revenue growth rate could decline over time, and we may experience downward pressure on our ope…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our revenue growth rate could decline over time'
+- **GOOGL** change `db4be94dc8f471c0`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `ea451b559d70fd0e`, sentences —: 'We generate a significant portion of our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'We generate a significant portion of our revenues from advertising. Reduced spending by advertisers…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We generate a significant portion of our revenues from advertising.'
+- **GOOGL** change `feda5700d3992c20`, sentences —: 'The concentration of our stock ownership limits…': ends with an ellipsis (truncated heading) (heading: "The concentration of our stock ownership limits our stockholders' ability to influence corporate ma…")
+  - *stale*, re-run from stage 8: the current fallback gives "The concentration of our stock ownership limits our stockholders' ability"
+- **GOOGL** change `307c2a49cf85d241`, sentences —: 'We are exposed to fluctuations in the…': ends with an ellipsis (truncated heading); ends mid-clause on 'the' (heading: 'We are exposed to fluctuations in the fair values of our investments and, in some instances, our fi…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are exposed to fluctuations in the fair values'
+- **GOOGL** change `4274c2ba002765bf`, sentences —: 'We are and may continue to be…': ends with an ellipsis (truncated heading); ends mid-clause on 'be' (heading: 'We are and may continue to be subject to claims, lawsuits, regulatory and government inquiries and…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are and may continue to be subject to claims'
+- **GOOGL** change `4a1563db4ff50e1e`, sentences —: 'People access our products and services through…': ends with an ellipsis (truncated heading) (heading: 'People access our products and services through a variety of platforms and devices that continue to…')
+  - *stale*, re-run from stage 8: the current fallback gives 'People access our products'
+- **GOOGL** change `39dae11030e797ff`, sentences —: 'We face intense competition. If we do…': ends with an ellipsis (truncated heading) (heading: 'We face intense competition. If we do not continue to innovate and provide products and services th…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We face intense competition.'
+- **GOOGL** change `3bd8c619f4af0cd2`, sentences —: 'Problematic content on our platforms, including low-quality…': ends with an ellipsis (truncated heading) (heading: 'Problematic content on our platforms, including low-quality user-generated content, web spam, conte…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Problematic content on our platforms, including low-quality user-generated content'
+- **GOOGL** change `53b7baba44a17518`, sentences —: 'Our business depends on strong brands, and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'Our business depends on strong brands, and failing to maintain and enhance our brands would hurt ou…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business depends on strong brands, and failing to maintain'
+- **GOOGL** change `5aeef714c94bf5f4`, sentences —: 'Our intellectual property rights are valuable, and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'Our intellectual property rights are valuable, and any inability to protect them could reduce the v…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our intellectual property rights are valuable'
+- **GOOGL** change `5d462be5f6991fd0`, sentences —: 'Issues in the development and use of…': ends with an ellipsis (truncated heading); ends mid-clause on 'of' (heading: 'Issues in the development and use of AI may result in reputational harm and increased liability exp…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Issues in the development and use of AI'
+- **GOOGL** change `8ef6b84ba6554180`, sentences —: 'Privacy, data protection, data usage, and portability…': ends with an ellipsis (truncated heading) (heading: 'Privacy, data protection, data usage, and portability regulations are complex and rapidly evolving…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Privacy, data protection, data usage, and portability regulations are complex'
+- **GOOGL** change `db0b57f73e3aa7de`, sentences —: 'Acquisitions, joint ventures, investments, and divestitures could…': ends with an ellipsis (truncated heading); ends mid-clause on 'could' (heading: 'Acquisitions, joint ventures, investments, and divestitures could result in operating difficulties,…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Acquisitions, joint ventures, investments, and divestitures'
+- **GOOGL** change `81b4758d33a85ba5`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `56f568124bee6191`, sentences —: 'Our international operations expose us to additional…': ends with an ellipsis (truncated heading) (heading: 'Our international operations expose us to additional risks that could harm our business, reputation…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our international operations expose us to additional risks'
+- **GOOGL** change `31d3b93b4e59e448`, sentences —: 'Our ongoing investments in safety, security, and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'Our ongoing investments in safety, security, and content review will likely continue to identify ab…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our ongoing investments in safety, security, and content review'
+- **GOOGL** change `5345beac6ca3e327`, sentences —: 'We cannot guarantee that any share repurchase…': ends with an ellipsis (truncated heading) (heading: 'We cannot guarantee that any share repurchase program or dividend program will be continuously acti…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We cannot guarantee that any share repurchase program'
+- **GOOGL** change `98aadfda15b19970`, sentences —: 'We rely on highly skilled personnel and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'We rely on highly skilled personnel and, if we are unable to retain or motivate key personnel, hire…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We rely on highly skilled personnel'
+- **GOOGL** change `aca108df6b6e872f`, sentences —: 'Our business depends on continued and unimpeded…': ends with an ellipsis (truncated heading) (heading: 'Our business depends on continued and unimpeded access to the Internet by us and our users. Interne…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business depends on continued'
+- **GOOGL** change `c701d8e281eca547`, sentences —: 'Alphabet Inc': ends mid-clause on 'inc'; is just the company name (heading: 'Alphabet Inc.')
+  - *code*: the current fallback still gives 'Alphabet Inc'
+- **GOOGL** change `ece07416a79da09e`, sentences —: 'Interruption to, interference with, or failure of…': ends with an ellipsis (truncated heading); ends mid-clause on 'of' (heading: 'Interruption to, interference with, or failure of our complex information technology and communicat…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Interruption to, interference with, or failure of our complex information'
+- **GOOGL** change `fe25b7d6d8b57267`, sentences —: 'Our operating results may fluctuate, which makes…': ends with an ellipsis (truncated heading) (heading: 'Our operating results may fluctuate, which makes our results difficult to predict and could cause o…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our operating results may fluctuate'
+- **META** change `4b373e1be309ec6c`, sentences —: 'We are currently, and expect to be…': ends with an ellipsis (truncated heading); ends mid-clause on 'be' (heading: 'We are currently, and expect to be in the future, party to patent, trademark, and copyright lawsuit…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are currently, and expect to be in the future'
+- **META** change `63fa4511923830e6`, sentences —: 'Given our levels of share-based compensation, our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'Given our levels of share-based compensation, our tax rate has in the past varied, and may in the f…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Given our levels of share-based compensation'
+- **META** change `9b2342a58cbe6acc`, sentences —: 'We incur significant expenses in operating our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'We incur significant expenses in operating our business, and some of our investments, particularly…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We incur significant expenses in operating our business'
+- **META** change `e3514cbaf9f56dca`, sentences —: 'We may not be successful in our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'We may not be successful in our artificial intelligence initiatives, which could adversely affect o…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may not be successful in our artificial intelligence initiatives'
+- **META** change `52d36844525ff3b2`, sentences —: 'We may not be able to continue…': ends with an ellipsis (truncated heading) (heading: 'We may not be able to continue to successfully maintain or grow engaging third-party content on our…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may not be able to continue to successfully maintain'
+- **META** change `c192cae79e81dc9e`, sentences —: 'Actions by governments that restrict access to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'Actions by governments that restrict access to Facebook or our other products in their countries, c…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Actions by governments that restrict access to Facebook'
+- **META** change `fc1e8fb604011a48`, sentences —: 'Real or perceived inaccuracies in our community…': ends with an ellipsis (truncated heading) (heading: 'Real or perceived inaccuracies in our community and other metrics may harm our reputation and negat…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Real or perceived inaccuracies in our community and other metrics'
+- **META** change `fd6a56709cdbabd0`, sentences —: 'The trading price of our Class A…': ends with an ellipsis (truncated heading); ends mid-clause on 'a' (heading: 'The trading price of our Class A common stock has been and will likely continue to be volatile.')
+  - *stale*, re-run from stage 8: the current fallback gives 'The trading price of our Class A common stock has'
+- **META** change `225900988b9c7ff9`, sentences —: 'Compliance with our FTC consent order, the…': ends with an ellipsis (truncated heading); ends mid-clause on 'the' (heading: 'Compliance with our FTC consent order, the GDPR, U.S. state privacy laws, youth social media laws,…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Compliance with our FTC consent order, the GDPR'
+- **META** change `9c56235151ed87e9`, sentences —: 'We generate substantially all of our revenue…': ends with an ellipsis (truncated heading) (heading: 'We generate substantially all of our revenue from advertising. The loss of marketers, or reduction…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We generate substantially all of our revenue from advertising.'
+- **META** change `dd76b9ecb44f0b4b`, sentences —: 'We may incur liability as a result…': ends with an ellipsis (truncated heading) (heading: 'We may incur liability as a result of information retrieved from or transmitted over the internet o…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may incur liability as a result of information retrieved'
+- **META** change `0f23a0747240f2f7`, sentences —: 'Our financial results will fluctuate from quarter…': ends with an ellipsis (truncated heading) (heading: 'Our financial results will fluctuate from quarter to quarter and are difficult to predict.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our financial results will fluctuate from quarter to quarter'
+- **META** change `120f29821be13875`, sentences —: 'If we are unable to protect our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'If we are unable to protect our intellectual property, the value of our brands and other intangible…')
+  - *stale*, re-run from stage 8: the current fallback gives 'If we are unable to protect our intellectual property'
+- **META** change `13917fa9f3eba407`, sentences —: 'We are subject to the risk of…': ends with an ellipsis (truncated heading); ends mid-clause on 'of' (heading: 'We are subject to the risk of catastrophic events and crises, which may have a significant adverse…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are subject to the risk of catastrophic events'
+- **META** change `25b6a16cfc7cbd19`, sentences —: 'The dual class structure of our common…': ends with an ellipsis (truncated heading) (heading: 'The dual class structure of our common stock has the effect of concentrating voting control with ou…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The dual class structure of our common stock has'
+- **META** change `26003526dae30683`, sentences —: 'Intentional misuse of our services and user…': ends with an ellipsis (truncated heading) (heading: 'Intentional misuse of our services and user data and other undesirable activity by third parties on…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Intentional misuse of our services and user data'
+- **META** change `2992350d105735a9`, sentences —: 'We have had, and may in the…': ends with an ellipsis (truncated heading); ends mid-clause on 'the' (heading: 'We have had, and may in the future have, exposure to greater than anticipated tax liabilities.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We have had, and may in the future have'
+- **META** change `3aa4ea564a7398cb`, sentences —: 'We cannot guarantee that our share repurchase…': ends with an ellipsis (truncated heading) (heading: 'We cannot guarantee that our share repurchase program will be fully consummated or that it will enh…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We cannot guarantee that our share repurchase program'
+- **META** change `3fa82389eb1c1b60`, sentences —: 'We face inventory risk with respect to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'We face inventory risk with respect to our consumer hardware products.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We face inventory risk with respect to our consumer hardware'
+- **META** change `459f465d4b024df8`, sentences —: 'We face design, manufacturing, and supply chain…': ends with an ellipsis (truncated heading) (heading: 'We face design, manufacturing, and supply chain risks with respect to our consumer hardware product…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We face design, manufacturing'
+- **META** change `49b0532555a50064`, sentences —: 'If we fail to retain existing users…': ends with an ellipsis (truncated heading) (heading: 'If we fail to retain existing users or add new users, or if our users decrease their level of engag…')
+  - *stale*, re-run from stage 8: the current fallback gives 'If we fail to retain existing users'
+- **META** change `4d79d0d3909d71ad`, sentences —: 'We have significant international operations, which subject…': ends with an ellipsis (truncated heading) (heading: 'We have significant international operations, which subject us to increased business, economic, and…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We have significant international operations'
+- **META** change `5abb72cd1f0db7f6`, sentences —: 'We may not be successful in our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'We may not be successful in our Reality Labs strategy and investments, which could adversely affect…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may not be successful in our Reality Labs strategy'
+- **META** change `6a4369497ef97806`, sentences —: 'We are involved in numerous class action…': ends with an ellipsis (truncated heading) (heading: 'We are involved in numerous class action lawsuits and other litigation matters that are expensive a…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are involved in numerous class action lawsuits'
+- **META** change `6f7bd968d7461dbe`, sentences —: 'We plan to continue to make acquisitions…': ends with an ellipsis (truncated heading) (heading: 'We plan to continue to make acquisitions and pursue other strategic transactions, which could impac…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We plan to continue to make acquisitions'
+- **META** change `762c0d70e82d1983`, sentences —: 'We cannot assure you that we will…': ends with an ellipsis (truncated heading); ends mid-clause on 'will' (heading: 'We cannot assure you that we will effectively manage our scale.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We cannot assure you'
+- **META** change `79191bf52a4ed829`, sentences —: 'We have been and remain subject to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'We have been and remain subject to regulatory and other government investigations, enforcement acti…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We have been and remain subject to regulatory'
+- **META** change `7baf8d88c4e69018`, sentences —: 'We may not be able to successfully…': ends with an ellipsis (truncated heading) (heading: 'We may not be able to successfully integrate our acquisitions, and we incur significant costs to in…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may not be able to successfully integrate our acquisitions'
+- **META** change `849f496ffcc2bb38`, sentences —: 'We have experienced, and could experience in…': ends with an ellipsis (truncated heading); ends mid-clause on 'in' (heading: 'We have experienced, and could experience in the future, difficulties in building and operating key…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We have experienced, and could experience in the future'
+- **META** change `8b5d519291dd9d07`, sentences —: 'We make product and investment decisions that…': ends with an ellipsis (truncated heading); ends mid-clause on 'that' (heading: 'We make product and investment decisions that may not prioritize short-term financial results and m…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We make product and investment decisions'
+- **META** change `940a3e64d1fd1daa`, sentences —: 'Our new products and changes to existing…': ends with an ellipsis (truncated heading) (heading: 'Our new products and changes to existing products could fail to attract or retain users or generate…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our new products and changes to existing products'
+- **META** change `945756d5da2b451f`, sentences —: 'Our business is dependent on our ability…': ends with an ellipsis (truncated heading) (heading: 'Our business is dependent on our ability to maintain and scale our technical infrastructure, and an…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business is dependent on our ability to maintain'
+- **META** change `a8f7fbb741e10b59`, sentences —: 'Our status as a "controlled company" could…': ends with an ellipsis (truncated heading); ends mid-clause on 'could' (heading: 'Our status as a "controlled company" could make our Class A common stock less attractive to some in…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our status as a "controlled company"'
+- **META** change `aae0d8f0caa0056b`, sentences —: 'The loss of one or more of…': ends with an ellipsis (truncated heading); ends mid-clause on 'of' (heading: 'The loss of one or more of our key personnel, or our failure to attract and retain other highly qua…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The loss of one or more of our key personnel'
+- **META** change `b2c1a10884718177`, sentences —: 'Our CEO has control over key decision…': ends with an ellipsis (truncated heading) (heading: 'Our CEO has control over key decision making as a result of his control of a majority of the voting…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our CEO has control over key decision making'
+- **META** change `b9810c78d9d6f92a`, sentences —: 'Our business is highly competitive. Competition presents…': ends with an ellipsis (truncated heading) (heading: 'Our business is highly competitive. Competition presents an ongoing threat to the success of our bu…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business is highly competitive. Competition presents an ongoing threat'
+- **META** change `b9e158e2d5152eee`, sentences —: 'Security breaches, improper access to or disclosure…': ends with an ellipsis (truncated heading) (heading: 'Security breaches, improper access to or disclosure of our data or user data, other hacking and phi…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Security breaches, improper access to or disclosure of our data'
+- **META** change `bdb8ce0fbd56c98a`, sentences —: 'Changes in tax laws or tax rulings…': ends with an ellipsis (truncated heading) (heading: 'Changes in tax laws or tax rulings could materially affect our financial position, results of opera…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Changes in tax laws or tax rulings'
+- **META** change `c45d755e75b6e8ab`, sentences —: 'There can be no assurance that we…': ends with an ellipsis (truncated heading); ends mid-clause on 'we' (heading: 'There can be no assurance that we will continue to declare cash dividends.')
+  - *stale*, re-run from stage 8: the current fallback gives 'There can be no assurance'
+- **META** change `c6664e5d4edc2ed0`, sentences —: 'Our user growth, engagement, and monetization on…': ends with an ellipsis (truncated heading); ends mid-clause on 'on' (heading: 'Our user growth, engagement, and monetization on mobile devices depend upon effective operation wit…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our user growth, engagement'
+- **META** change `d2b46f893625a00d`, sentences —: 'If our goodwill or intangible assets become…': ends with an ellipsis (truncated heading) (heading: 'If our goodwill or intangible assets become impaired, we may be required to record a significant ch…')
+  - *stale*, re-run from stage 8: the current fallback gives 'If our goodwill or intangible assets become impaired'
+- **META** change `d585675beb534b88`, sentences —: 'Payment-related activities may subject us to additional…': ends with an ellipsis (truncated heading) (heading: 'Payment-related activities may subject us to additional regulatory requirements, regulatory actions…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Payment-related activities may subject us to additional regulatory requirements'
+- **META** change `dbe95f8fa878d16a`, sentences —: 'If we are not able to maintain…': ends with an ellipsis (truncated heading) (heading: 'If we are not able to maintain and enhance our brands, our ability to maintain or expand our base o…')
+  - *stale*, re-run from stage 8: the current fallback gives 'If we are not able to maintain'
+- **META** change `dd045fc6f1b8b439`, sentences —: 'Delaware law and provisions in our certificate…': ends with an ellipsis (truncated heading) (heading: 'Delaware law and provisions in our certificate of incorporation and bylaws could make a merger, ten…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Delaware law and provisions in our certificate of incorporation'
+- **META** change `e495c61d5976bd75`, sentences —: 'Our products and internal systems rely on…': ends with an ellipsis (truncated heading); ends mid-clause on 'on' (heading: 'Our products and internal systems rely on software and hardware that is highly technical, and any e…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our products and internal systems rely on software and hardware'
+- **MSFT** change `454a3251bd520ad4`, sentences —: 'We may be unable to develop and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'We may be unable to develop and expand adequate infrastructure.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may be unable to develop and expand adequate infrastructure'
+- **MSFT** change `648f8366bf4c7e3f`, sentences —: 'Our cloud and AI strategy requires substantial…': ends with an ellipsis (truncated heading) (heading: 'Our cloud and AI strategy requires substantial investments and depends on evolving customer demand,…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our cloud and AI strategy requires substantial investments'
+- **MSFT** change `d7c61aee81343fc5`, sentences —: 'Our products and services, how they are…': ends with an ellipsis (truncated heading); ends mid-clause on 'are' (heading: 'Our products and services, how they are used by customers, and how third-party products and service…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our products and services, how they are used by customers'
+- **MSFT** change `86254bf6b03f665c`, sentences —: 'Our success depends on our ability to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'Our success depends on our ability to develop, deliver, and maintain competitive cloud-based and AI…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our success depends on our ability to develop, deliver'
+- **MSFT** change `952fe3899dd265ae`, sentences —: 'We may experience outages, disruptions, or capacity…': ends with an ellipsis (truncated heading) (heading: 'We may experience outages, disruptions, or capacity constraints if we fail to maintain and operate…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may experience outages, disruptions, or capacity constraints'
+- **MSFT** change `1b7868f35687cc8c`, sentences —: 'Acquisitions, joint ventures, and strategic alliances could…': ends with an ellipsis (truncated heading); ends mid-clause on 'could' (heading: 'Acquisitions, joint ventures, and strategic alliances could have an adverse effect on our business.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Acquisitions, joint ventures, and strategic alliances'
+- **MSFT** change `478c4a235d601288`, sentences —: 'Disclosure and misuse of personal data could…': ends with an ellipsis (truncated heading); ends mid-clause on 'could' (heading: 'Disclosure and misuse of personal data could result in liability and harm our reputation.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Disclosure and misuse of personal data could result in liability'
+- **MSFT** change `b30a6911b537a3e4`, sentences —: 'Security of our products, services, devices, and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'Security of our products, services, devices, and customers’ data')
+  - *stale*, re-run from stage 8: the current fallback gives 'Security of our products, services, devices, and customers’ data'
+- **MSFT** change `be087d2cba6ec3d9`, sentences —: 'We face risks related to the protection…': ends with an ellipsis (truncated heading) (heading: 'We face risks related to the protection and utilization of our intellectual property that may resul…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We face risks related to the protection'
+- **MSFT** change `6fdcb1de23380597`, sentences —: 'Catastrophic events or geopolitical conditions could disrupt…': ends with an ellipsis (truncated heading) (heading: 'Catastrophic events or geopolitical conditions could disrupt our business.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Catastrophic events or geopolitical conditions could disrupt our business'
+- **MSFT** change `0479f4e006c6c5ce`, sentences —: 'Third parties may claim that we infringe…': ends with an ellipsis (truncated heading) (heading: 'Third parties may claim that we infringe their intellectual property.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Third parties may claim that we infringe their intellectual property'
+- **MSFT** change `4b4bafd86d6c74bb`, sentences —: 'We make significant investments in products and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'We make significant investments in products and services that may not achieve expected returns.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We make significant investments in products and services'
+- **MSFT** change `5ff299c469d0dda6`, sentences —: 'Our business with government customers may present…': ends with an ellipsis (truncated heading) (heading: 'Our business with government customers may present additional uncertainties.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business with government customers may present additional uncertainties'
+- **MSFT** change `7b013dadd5e7ec16`, sentences —: 'Our global business exposes us to operational…': ends with an ellipsis (truncated heading) (heading: 'Our global business exposes us to operational and economic risks.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our global business exposes us to operational and economic risks'
+- **MSFT** change `aa0fa6b60e8f203e`, sentences —: 'Adverse economic or market conditions could harm…': ends with an ellipsis (truncated heading) (heading: 'Adverse economic or market conditions could harm our business.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Adverse economic or market conditions could harm our business'
+- **MSFT** change `abf8d51d6e922964`, sentences —: 'We have claims and lawsuits against us…': ends with an ellipsis (truncated heading) (heading: 'We have claims and lawsuits against us that may result in adverse outcomes.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We have claims and lawsuits against us'
+- **MSFT** change `b5fee1f6a27ea72b`, sentences —: 'Our business depends on our ability to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'Our business depends on our ability to attract and retain talented employees.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business depends on our ability to attract'
+- **MSFT** change `bd0f67d9ad31605f`, sentences —: 'We are subject to a variety of…': ends with an ellipsis (truncated heading); ends mid-clause on 'of' (heading: 'We are subject to a variety of new, existing, and evolving legal and regulatory requirements that c…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are subject to a variety of new, existing'
+- **TSLA** change `433a68de8aaa0c99`, sentences —: 'We face risks associated with maintaining and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'We face risks associated with maintaining and expanding our international operations, including unf…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We face risks associated with maintaining'
+- **TSLA** change `613de11c77435f30`, sentences —: 'Growth of our business is also dependent…': ends with an ellipsis (truncated heading) (heading: 'Growth of our business is also dependent upon our ability to develop and commercialize Bots, includ…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Growth of our business is also dependent upon our ability'
+- **TSLA** change `95d9c58d7e240534`, sentences —: 'Demand for our products and services may…': ends with an ellipsis (truncated heading); ends mid-clause on 'may' (heading: 'Demand for our products and services may be impacted by the status of government and economic incen…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Demand for our products and services'
+- **TSLA** change `a8abd55c25baf1e9`, sentences —: 'We are subject to evolving laws and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'We are subject to evolving laws and regulations that could impose substantial costs, legal prohibit…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are subject to evolving laws and regulations'
+- **TSLA** change `dedd3eb119fdccf2`, sentences —: 'We may be required to defend or…': ends with an ellipsis (truncated heading); ends mid-clause on 'or' (heading: 'We may be required to defend or insure against product liability claims.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may be required to defend'
+- **TSLA** change `43a645d6d91f3fe3`, sentences —: 'Our future growth and success are dependent…': ends with an ellipsis (truncated heading) (heading: 'Our future growth and success are dependent upon demand for our electric vehicles and adoption of a…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our future growth and success are dependent upon demand'
+- **TSLA** change `6de9a5242a697b4d`, sentences —: 'We may experience issues or delays in…': ends with an ellipsis (truncated heading); ends mid-clause on 'in' (heading: 'We may experience issues or delays in developing, launching and ramping the production of our produ…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may experience issues or delays in developing, launching'
+- **TSLA** change `4d16055e814616e1`, sentences —: 'There is a risk that the technologies…': ends with an ellipsis (truncated heading) (heading: 'There is a risk that the technologies and initiatives associated with the 2025 CEO Performance Awar…')
+  - *stale*, re-run from stage 8: the current fallback gives 'There is a risk that the technologies'
+- **TSLA** change `83f50f9fbb60bc98`, sentences —: 'Increased scrutiny and changing expectations from stakeholders…': ends with an ellipsis (truncated heading) (heading: 'Increased scrutiny and changing expectations from stakeholders with respect to the Company’s ESG pr…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Increased scrutiny and changing expectations from stakeholders with respect'
+- **TSLA** change `befeb21aacdb7fdf`, sentences —: 'We must manage ongoing obligations under our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'We must manage ongoing obligations under our agreement with the Research Foundation for the State U…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We must manage ongoing obligations under our agreement'
+- **TSLA** change `e41171605360ee4d`, sentences —: 'If Elon Musk were forced to sell…': ends with an ellipsis (truncated heading) (heading: 'If Elon Musk were forced to sell shares of our common stock, either that he has the ability to pled…')
+  - *stale*, re-run from stage 8: the current fallback gives 'If Elon Musk were forced to sell shares'
+- **TSLA** change `881d59868716b51c`, sentences —: 'Our operations could be adversely affected by…': ends with an ellipsis (truncated heading); ends mid-clause on 'by' (heading: 'Our operations could be adversely affected by events outside of our control, such as natural disast…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our operations could be adversely affected by events outside'
+- **TSLA** change `ffd1c496871eae7c`, sentences —: 'The trading price of our common stock…': ends with an ellipsis (truncated heading) (heading: 'The trading price of our common stock is likely to continue to be volatile.')
+  - *stale*, re-run from stage 8: the current fallback gives 'The trading price of our common stock is likely'
+- **TSLA** change `4e76e06e64873fa0`, sentences —: 'We may be unable to meet our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'We may be unable to meet our projected construction timelines, costs and production ramps at new fa…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may be unable to meet our projected construction timelines'
+- **TSLA** change `c3f85e44bbbff735`, sentences —: 'There is no guarantee that we will…': ends with an ellipsis (truncated heading); ends mid-clause on 'will' (heading: 'There is no guarantee that we will have sufficient cash flow from our business to pay our indebtedn…')
+  - *stale*, re-run from stage 8: the current fallback gives 'There is no guarantee'
+- **TSLA** change `01e53e597004432c`, sentences —: 'We are highly dependent on the services…': ends with an ellipsis (truncated heading) (heading: 'We are highly dependent on the services of Elon Musk, Technoking of Tesla and our Chief Executive O…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are highly dependent on the services of Elon Musk'
+- **TSLA** change `0910b7fdc864e083`, sentences —: 'We may be unable to effectively grow…': ends with an ellipsis (truncated heading) (heading: 'We may be unable to effectively grow, or manage the compliance, residual value, financing and credi…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may be unable to effectively grow'
+- **TSLA** change `0d00bfc49fb06c76`, sentences —: 'Any failure by us to comply with…': ends with an ellipsis (truncated heading); ends mid-clause on 'with' (heading: 'Any failure by us to comply with a variety of U.S. and international privacy and consumer protectio…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Any failure by us to comply with a variety'
+- **TSLA** change `387d6c41c27a604d`, sentences —: 'Our suppliers may fail to deliver components…': ends with an ellipsis (truncated heading) (heading: 'Our suppliers may fail to deliver components according to schedules, prices, quality and volumes th…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our suppliers may fail to deliver components according to schedules'
+- **TSLA** change `45ae06691a1e82d6`, sentences —: 'Additional funds may not be available to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'Additional funds may not be available to us when we need or want them.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Additional funds may not be available to us'
+- **TSLA** change `0475a186f0ad9dc6`, sentences —: 'We are exposed to fluctuations in currency…': ends with an ellipsis (truncated heading) (heading: 'We are exposed to fluctuations in currency exchange rates.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are exposed to fluctuations in currency exchange rates'
+- **TSLA** change `07d8fd8a28fd8ad1`, sentences —: 'We may experience issues with lithium-ion cells…': ends with an ellipsis (truncated heading) (heading: 'We may experience issues with lithium-ion cells or other components manufactured at our Gigafactori…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may experience issues with lithium-ion cells'
+- **TSLA** change `189362b565789d72`, sentences —: 'We will need to maintain and significantly…': ends with an ellipsis (truncated heading) (heading: 'We will need to maintain and significantly grow our access to battery cells, including through the…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We will need to maintain'
+- **TSLA** change `2a87a3ddbc71b27e`, sentences —: 'Our debt agreements contain covenant restrictions that…': ends with an ellipsis (truncated heading); ends mid-clause on 'that' (heading: 'Our debt agreements contain covenant restrictions that may limit our ability to operate our busines…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our debt agreements contain covenant restrictions'
+- **TSLA** change `2c836ee994c21720`, sentences —: 'We could be subject to liability, penalties…': ends with an ellipsis (truncated heading) (heading: 'We could be subject to liability, penalties and other restrictive sanctions and adverse consequence…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We could be subject to liability, penalties'
+- **TSLA** change `40a013b6237f505d`, sentences —: 'We will need to maintain public credibility…': ends with an ellipsis (truncated heading) (heading: 'We will need to maintain public credibility and confidence in our long-term business prospects in o…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We will need to maintain public credibility'
+- **TSLA** change `45b624cd380e5a51`, sentences —: 'We may not be able to adequately…': ends with an ellipsis (truncated heading) (heading: 'We may not be able to adequately protect or defend ourselves against intellectual property infringe…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may not be able to adequately protect'
+- **TSLA** change `47d42c414b8dd056`, sentences —: 'We may face regulatory challenges to or…': ends with an ellipsis (truncated heading); ends mid-clause on 'or' (heading: 'We may face regulatory challenges to or limitations on our ability to sell vehicles directly.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may face regulatory challenges'
+- **TSLA** change `47f5bffe607eb36d`, sentences —: 'We may fail to meet our publicly…': ends with an ellipsis (truncated heading) (heading: 'We may fail to meet our publicly announced guidance or other expectations about our business, which…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may fail to meet our publicly announced guidance'
+- **TSLA** change `4a64ae927a50f7d1`, sentences —: 'Our current and future warranty reserves may…': ends with an ellipsis (truncated heading); ends mid-clause on 'may' (heading: 'Our current and future warranty reserves may be insufficient to cover future warranty claims.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our current and future warranty reserves'
+- **TSLA** change `6089c2741eae3f2c`, sentences —: 'Our financial results may vary significantly from…': ends with an ellipsis (truncated heading); ends mid-clause on 'from' (heading: 'Our financial results may vary significantly from period to period due to fluctuations in our opera…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our financial results may vary significantly from period to period'
+- **TSLA** change `7e18b9dc9016c701`, sentences —: 'If we are unable to attract, hire…': ends with an ellipsis (truncated heading) (heading: 'If we are unable to attract, hire and retain key employees and qualified personnel, our ability to…')
+  - *stale*, re-run from stage 8: the current fallback gives 'If we are unable to attract, hire'
+- **TSLA** change `82dd74989fa5c277`, sentences —: 'Our information technology systems or data, or…': ends with an ellipsis (truncated heading); ends mid-clause on 'or' (heading: 'Our information technology systems or data, or those of our service providers or customers or users…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our information technology systems'
+- **TSLA** change `87beb7ecd687c66e`, sentences —: 'Any unauthorized control or manipulation of our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'Any unauthorized control or manipulation of our products’ systems could result in loss of confidenc…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Any unauthorized control or manipulation of our products’ systems'
+- **TSLA** change `8ff27a2829727666`, sentences —: 'We may choose to or be compelled…': ends with an ellipsis (truncated heading) (heading: 'We may choose to or be compelled to undertake product recalls or take other similar actions.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may choose to or be compelled to undertake product'
+- **TSLA** change `9294a3c3a853c8fc`, sentences —: 'Our insurance coverage strategy may not be…': ends with an ellipsis (truncated heading); ends mid-clause on 'be' (heading: 'Our insurance coverage strategy may not be adequate to protect us from all business risks.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our insurance coverage strategy'
+- **TSLA** change `b183b05921d96f24`, sentences —: 'Anti-takeover provisions contained in our governing documents…': ends with an ellipsis (truncated heading) (heading: 'Anti-takeover provisions contained in our governing documents, applicable laws and certain of our d…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Anti-takeover provisions contained in our governing documents, applicable'
+- **TSLA** change `ccd4c960ea4b42f4`, sentences —: 'We face strong competition for our products…': ends with an ellipsis (truncated heading) (heading: 'We face strong competition for our products and services from a growing list of established and new…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We face strong competition for our products'
+- **TSLA** change `ce1a5348d90caf10`, sentences —: 'We may be unable to grow our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'We may be unable to grow our global product sales, delivery and installation capabilities and our s…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may be unable to grow our global product sales'
+- **TSLA** change `dde269521e0afa24`, sentences —: 'Our business may be adversely affected by…': ends with an ellipsis (truncated heading); ends mid-clause on 'by' (heading: 'Our business may be adversely affected by any disruptions caused by union activities.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business may be adversely affected by any disruptions caused'
+- **TSLA** change `e9589be82885dd6a`, sentences —: 'Our business may suffer if our products…': ends with an ellipsis (truncated heading) (heading: 'Our business may suffer if our products or features contain defects, fail to perform as expected or…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business may suffer if our products'
+- **TSLA** change `f884897d04c9f655`, sentences —: 'We may be negatively impacted by any…': ends with an ellipsis (truncated heading); ends mid-clause on 'any' (heading: 'We may be negatively impacted by any early obsolescence of our manufacturing and other equipment.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may be negatively impacted by any early obsolescence'
+- **TTWO** change `99ea8c56a7e50136`, sentences —: 'Changes in our tax rates or exposure…': ends with an ellipsis (truncated heading) (heading: 'Changes in our tax rates or exposure to additional tax liabilities could adversely affect our earni…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Changes in our tax rates'
+- **TTWO** change `186e47ace348329e`, sentences —: 'Our ability to use net operating loss…': ends with an ellipsis (truncated heading) (heading: "Our ability to use net operating loss and tax credit carryforwards to reduce future years' taxes co…")
+  - *stale*, re-run from stage 8: the current fallback gives 'Our ability to use net operating loss'
+- **TTWO** change `69cfe07b0b6f8df2`, sentences —: 'The laws and regulations concerning data privacy…': ends with an ellipsis (truncated heading) (heading: 'The laws and regulations concerning data privacy, consumer protection, and certain other aspects of…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The laws and regulations concerning data privacy, consumer protection'
+- **TTWO** change `b8a62063f1fe1533`, sentences —: 'Our business is subject to our ability…': ends with an ellipsis (truncated heading) (heading: 'Our business is subject to our ability to develop commercially successful products for the current…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business is subject to our ability to develop commercially'
+- **TTWO** change `4bfdb1d4cd947f23`, sentences —: 'The development, use, and incorporation of artificial…': ends with an ellipsis (truncated heading) (heading: 'The development, use, and incorporation of artificial intelligence (“AI”) into our products and wit…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The development, use, and incorporation of artificial intelligence (“AI”)'
+- **TTWO** change `28ec6f2564d2a08e`, sentences —: 'If the use of mobile devices as…': ends with an ellipsis (truncated heading); ends mid-clause on 'as' (heading: 'If the use of mobile devices as game platforms and the proliferation of mobile devices generally do…')
+  - *stale*, re-run from stage 8: the current fallback gives 'If the use of mobile devices as game platforms'
+- **TTWO** change `e9a8de586ec673f7`, sentences —: 'The increasing importance of digital sales and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'The increasing importance of digital sales and free-to-play games to our business exposes us to the…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The increasing importance of digital sales'
+- **TTWO** change `cb3084480a09152a`, sentences —: 'Increased competition for limited promotional support from…': ends with an ellipsis (truncated heading); ends mid-clause on 'from' (heading: 'Increased competition for limited promotional support from retailers could affect the success of ou…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Increased competition for limited promotional support from retailers'
+- **TTWO** change `fbecd8e99b729d9e`, sentences —: 'Our business and products are subject to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'Our business and products are subject to a variety of existing U.S. and foreign laws and regulation…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business and products are subject to a variety'
+- **TTWO** change `a500a85ed17e9ebf`, sentences —: 'We are dependent on the future success…': ends with an ellipsis (truncated heading) (heading: 'We are dependent on the future success of our Grand Theft Auto products and other hit titles, and w…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are dependent on the future success of our Grand'
+- **TTWO** change `e955727b0a880bbe`, sentences —: 'We have a significant amount of outstanding…': ends with an ellipsis (truncated heading) (heading: 'We have a significant amount of outstanding indebtedness, and may incur other indebtedness in the f…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We have a significant amount of outstanding indebtedness'
+- **TTWO** change `0bbfc591a7d3bf42`, sentences —: 'We are subject to risks and uncertainties…': ends with an ellipsis (truncated heading) (heading: 'We are subject to risks and uncertainties of international trade, including fluctuations in the val…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are subject to risks and uncertainties of international trade'
+- **TTWO** change `359bce0e08f6ecff`, sentences —: 'If we acquire or invest in other…': ends with an ellipsis (truncated heading); ends mid-clause on 'other' (heading: 'If we acquire or invest in other businesses, intellectual properties, or other assets, we may be un…')
+  - *stale*, re-run from stage 8: the current fallback gives 'If we acquire or invest in other businesses, intellectual properties'
+- **TTWO** change `637dc57a025f0fe1`, sentences —: 'A limited number of customers account for…': ends with an ellipsis (truncated heading); ends mid-clause on 'for' (heading: 'A limited number of customers account for a significant portion of our sales. The loss of a princip…')
+  - *stale*, re-run from stage 8: the current fallback gives 'A limited number of customers account for a significant portion'
+- **TTWO** change `e0649954580d8b5b`, sentences —: 'Additional issuances or sales of equity securities…': ends with an ellipsis (truncated heading) (heading: 'Additional issuances or sales of equity securities by us would dilute the ownership of our existing…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Additional issuances or sales of equity securities by us'
+- **TTWO** change `0eeee6826ce2bba3`, sentences —: 'Catastrophic events and climate change may have…': ends with an ellipsis (truncated heading) (heading: 'Catastrophic events and climate change may have a long-term impact on our business.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Catastrophic events and climate change'
+- **TTWO** change `4300073c42061055`, sentences —: 'We rely on complex information technology systems…': ends with an ellipsis (truncated heading) (heading: 'We rely on complex information technology systems and networks to operate our business. Any signifi…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We rely on complex information technology systems'
+- **TTWO** change `8117613316d1b282`, sentences —: 'We may be adversely affected by the…': ends with an ellipsis (truncated heading); ends mid-clause on 'the' (heading: 'We may be adversely affected by the effects of inflation.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may be adversely affected by the effects of inflation'
+- **TTWO** change `e9d78312d7e9264f`, sentences —: 'Our business could be adversely affected if…': ends with an ellipsis (truncated heading); ends mid-clause on 'if' (heading: 'Our business could be adversely affected if our consumer data protection measures are not seen as a…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business could be adversely affected'
+- **TTWO** change `0c7f760ed8c3f150`, sentences —: 'We depend on servers and Internet bandwidth…': ends with an ellipsis (truncated heading) (heading: 'We depend on servers and Internet bandwidth to operate our games and digital services with online f…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We depend on servers'
+- **TTWO** change `19e23877cea47334`, sentences —: 'Delaware law, our charter documents, and provisions…': ends with an ellipsis (truncated heading) (heading: 'Delaware law, our charter documents, and provisions of our debt agreements may impede or discourage…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Delaware law, our charter documents'
+- **TTWO** change `2d2576fa4a019282`, sentences —: 'We are and may become involved in…': ends with an ellipsis (truncated heading); ends mid-clause on 'in' (heading: 'We are and may become involved in legal proceedings that may result in adverse outcomes.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are and may become involved in legal proceedings'
+- **TTWO** change `324c0745296af780`, sentences —: 'The inability of our products to achieve…': ends with an ellipsis (truncated heading) (heading: 'The inability of our products to achieve significant market acceptance, the failure to retain exist…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The inability of our products to achieve significant market acceptance'
+- **TTWO** change `33dfefbb4cc5b664`, sentences —: 'We are subject to product development risks…': ends with an ellipsis (truncated heading) (heading: 'We are subject to product development risks which could result in delays and additional costs, and…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are subject to product development risks'
+- **TTWO** change `3a56472fa7104f46`, sentences —: 'Price protection granted to our customers and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'Price protection granted to our customers and returns of our published titles by our customers may…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Price protection granted to our customers'
+- **TTWO** change `3d30d6b91fd2eb99`, sentences —: 'We cannot publish our titles without the…': ends with an ellipsis (truncated heading); ends mid-clause on 'the' (heading: 'We cannot publish our titles without the approval of hardware licensors that are also our competito…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We cannot publish our titles without the approval of hardware'
+- **TTWO** change `4be043b14ca14198`, sentences —: 'Our software is susceptible to errors, which…': ends with an ellipsis (truncated heading); ends mid-clause on 'which' (heading: 'Our software is susceptible to errors, which can harm our financial results and reputation.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our software is susceptible to errors'
+- **TTWO** change `52abc9fce6695b9e`, sentences —: 'Our business may be harmed if our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'Our business may be harmed if our distributors, retailers, development, and licensing partners, or…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business may be harmed if our distributors, retailers, development'
+- **TTWO** change `6067604da4177209`, sentences —: 'If we infringe on or are alleged…': ends with an ellipsis (truncated heading) (heading: 'If we infringe on or are alleged to infringe on the intellectual property rights of third parties,…')
+  - *stale*, re-run from stage 8: the current fallback gives 'If we infringe on or are alleged to infringe'
+- **TTWO** change `617790ba31e6f142`, sentences —: 'Some of our players may make sales…': ends with an ellipsis (truncated heading) (heading: 'Some of our players may make sales or purchases of virtual items used in our games through unauthor…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Some of our players may make sales'
+- **TTWO** change `65cf98bdeed6e0bd`, sentences —: 'Content policies adopted by retailers, consumer opposition…': ends with an ellipsis (truncated heading) (heading: 'Content policies adopted by retailers, consumer opposition and litigation could negatively affect s…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Content policies adopted by retailers, consumer opposition and litigation'
+- **TTWO** change `66231a8b8e419215`, sentences —: 'Declines in consumer spending and other adverse…': ends with an ellipsis (truncated heading) (heading: 'Declines in consumer spending and other adverse changes in the economy could have a material advers…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Declines in consumer spending'
+- **TTWO** change `6853b25883d05a5d`, sentences —: 'Our ability to acquire and maintain licenses…': ends with an ellipsis (truncated heading) (heading: 'Our ability to acquire and maintain licenses to intellectual property, especially for sports titles…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our ability to acquire and maintain licenses to intellectual property'
+- **TTWO** change `7f9115d1722891c0`, sentences —: 'If we are unable to protect the…': ends with an ellipsis (truncated heading); ends mid-clause on 'the' (heading: 'If we are unable to protect the intellectual property relating to our software, the commercial valu…')
+  - *stale*, re-run from stage 8: the current fallback gives 'If we are unable to protect the intellectual property relating'
+- **TTWO** change `80bfe79181e7f5d2`, sentences —: 'We depend on our key management and…': ends with an ellipsis (truncated heading); ends mid-clause on 'and' (heading: 'We depend on our key management and product development personnel.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We depend on our key management and product development personnel'
+- **TTWO** change `833a8e0891049087`, sentences —: 'We submit our products for rating by…': ends with an ellipsis (truncated heading); ends mid-clause on 'by' (heading: 'We submit our products for rating by the ESRB in the U.S. and other voluntary or government ratings…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We submit our products for rating by the ESRB'
+- **TTWO** change `8f6648be58bac9c7`, sentences —: 'Our reported financial results could be adversely…': ends with an ellipsis (truncated heading) (heading: 'Our reported financial results could be adversely affected by the application of existing or future…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our reported financial results'
+- **TTWO** change `9517d41b90e4694d`, sentences —: 'Attracting, managing and retaining our talent is…': ends with an ellipsis (truncated heading); ends mid-clause on 'is' (heading: 'Attracting, managing and retaining our talent is critical to our success.')
+  - *stale*, re-run from stage 8: the current fallback gives 'Attracting, managing and retaining our talent is critical'
+- **TTWO** change `a0336ba1a40bf2ad`, sentences —: 'We use open-source software in connection with…': ends with an ellipsis (truncated heading); ends mid-clause on 'with' (heading: 'We use open-source software in connection with certain of our games and services, which may pose pa…')
+  - *stale*, re-run from stage 8: the current fallback gives 'We use open-source software in connection'
+- **TTWO** change `a4644cec771f0ff8`, sentences —: 'Our results of operations or reputation may…': ends with an ellipsis (truncated heading); ends mid-clause on 'may' (heading: 'Our results of operations or reputation may be harmed as a result of offensive or potentially dange…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our results of operations or reputation may be harmed'
+- **TTWO** change `ab3b97492c822a0a`, sentences —: 'Companies and governmental agencies may restrict access…': ends with an ellipsis (truncated heading) (heading: 'Companies and governmental agencies may restrict access to platforms, our website, mobile applicati…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Companies and governmental agencies may restrict access to platforms'
+- **TTWO** change `c9247d392660a02e`, sentences —: 'We may experience declines or fluctuations in…': ends with an ellipsis (truncated heading); ends mid-clause on 'in' (heading: 'We may experience declines or fluctuations in the recurring portion of our business.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We may experience declines'
+- **TTWO** change `f32e01a6f9f316a4`, sentences —: 'We are subject to risks related to…': ends with an ellipsis (truncated heading); ends mid-clause on 'to' (heading: 'We are subject to risks related to corporate and social responsibility and reputation.')
+  - *stale*, re-run from stage 8: the current fallback gives 'We are subject to risks related to corporate'
+- **TTWO** change `f4fab530244f1e7c`, sentences —: 'The value of our virtual items is…': ends with an ellipsis (truncated heading); ends mid-clause on 'is' (heading: 'The value of our virtual items is highly dependent on how we manage the economies in our games. If…')
+  - *stale*, re-run from stage 8: the current fallback gives 'The value of our virtual items is highly dependent'
+- **TTWO** change `f88f347ebefbff3f`, sentences —: 'Our business is partly dependent on our…': ends with an ellipsis (truncated heading); ends mid-clause on 'our' (heading: 'Our business is partly dependent on our ability to enter into successful software development arran…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our business is partly dependent on our ability to enter'
+- **TTWO** change `faa9b9c7bc3eb514`, sentences —: 'Our quarterly and annual operating results are…': ends with an ellipsis (truncated heading); ends mid-clause on 'are' (heading: 'Our quarterly and annual operating results are dependent on the release of hit titles and therefore…')
+  - *stale*, re-run from stage 8: the current fallback gives 'Our quarterly and annual operating results are dependent'
 
 ### PREAMBLE (1)
 
 - **NVDA** change `692187bd48c050c3`, sentences `0001045810-26-000021:0:0`: 'The following risk factors should be considered in addition to the other information in this Annual Report on Form 10-K.': heading is the Item 1A introduction
   - *stale*, re-run from stage 2: segment 0.2.2 skips intro and summary units; confirmed only by a re-run from stage 2
 
-### ENTITY (6)
+### ENTITY (20)
 
+- **AAPL** change `9f07868507890f8c`, sentences `0000320193-25-000079:19:21`: 'DOJ': generic body or regulator (signals stoplist); on the trends entity stoplist
+  - *stale*, re-run from stage 6: current entity code no longer emits it
+- **AAPL** change `9f07868507890f8c`, sentences `0000320193-25-000079:19:20`: 'U.S. Department of Justice': generic body or regulator (signals stoplist); on the trends entity stoplist
+  - *stale*, re-run from stage 6: current entity code no longer emits it
+- **AAPL** change `f62ab814bf6c23c5`, sentences `0000320193-25-000079:1:11`: 'European Union': generic body or regulator (signals stoplist); on the trends entity stoplist
+  - *stale*, re-run from stage 6: current entity code no longer emits it
+- **GOOGL** change `3418487267eef22d`, sentences `0001652044-26-000018:28:1`, `0001652044-26-000018:28:4`, `0001652044-26-000018:28:6`, `0001652044-26-000018:28:7`, `0001652044-26-000018:28:9`, `0001652044-26-000018:28:12`: 'DOJ': generic body or regulator (signals stoplist); on the trends entity stoplist
+  - *stale*, re-run from stage 6: current entity code no longer emits it
+- **META** change `4b373e1be309ec6c`, sentences `0001628280-26-003942:41:6`, `0001628280-26-003942:41:12`: 'United States': generic body or regulator (signals stoplist); on the trends entity stoplist
+  - *stale*, re-run from stage 6: current entity code no longer emits it
+- **META** change `e3514cbaf9f56dca`, sentences `0001628280-26-003942:4:8`: 'Congress': generic body or regulator (signals stoplist); on the trends entity stoplist
+  - *stale*, re-run from stage 6: current entity code no longer emits it
+- **META** change `e3514cbaf9f56dca`, sentences `0001628280-26-003942:4:8`: 'FTC': generic body or regulator (signals stoplist); on the trends entity stoplist
+  - *stale*, re-run from stage 6: current entity code no longer emits it
 - **NVDA** change `a4156a06454f6dfd`, sentences `0001045810-26-000021:21:64`: 'AI Diffusion IFR in': post-filter changes it to 'AI Diffusion IFR' (trailing/leading stopword); trailing preposition
   - *stale*, re-run from stage 6: current entity code no longer emits it
 - **NVDA** change `a4156a06454f6dfd`, sentences `0001045810-26-000021:21:71`: 'Biden Administration': bare government administration; generic body or regulator (signals stoplist); on the trends entity stoplist
@@ -107,11 +816,39 @@ Generated 2026-10-10T22:00:38Z by `scripts/check_integrity.py`. Exit code 1.
   - *stale*, re-run from stage 6: current entity code no longer emits it
 - **SF** change `61ffb76925cf3bc2`, sentences `0001193125-26-067130:20:2`, `0001193125-26-067130:20:11`: 'SEC': generic body or regulator (signals stoplist); on the trends entity stoplist
   - *stale*, re-run from stage 6: current entity code no longer emits it
+- **TSLA** change `433a68de8aaa0c99`, sentences `0001628280-26-003952:9:5`, `0001628280-26-003952:9:8`, `0001628280-26-003952:9:9`, `0001628280-26-003952:9:10`: 'United States': generic body or regulator (signals stoplist); on the trends entity stoplist
+  - *stale*, re-run from stage 6: current entity code no longer emits it
+- **TSLA** change `4e76e06e64873fa0`, sentences `0001628280-26-003952:2:5`: 'Tesla': on the trends entity stoplist
+  - *code*: current entity code still emits it
+- **TSLA** change `0910b7fdc864e083`, sentences `0001628280-26-003952:13:11`: 'Tesla': on the trends entity stoplist
+  - *code*: current entity code still emits it
+- **TSLA** change `387d6c41c27a604d`, sentences `0001628280-26-003952:1:6`: 'Tesla': on the trends entity stoplist
+  - *code*: current entity code still emits it
+- **TTWO** change `4bfdb1d4cd947f23`, sentences `0001628280-26-037434:5:5`: 'European Union': generic body or regulator (signals stoplist); on the trends entity stoplist
+  - *stale*, re-run from stage 6: current entity code no longer emits it
+- **TTWO** change `7130478ec3da71b1`, sentences `0001628280-26-037434:17:4`, `0001628280-26-037434:17:5`: 'U.S. Supreme Court': generic body or regulator (signals stoplist); on the trends entity stoplist
+  - *stale*, re-run from stage 6: current entity code no longer emits it
+- **TTWO** change `fbecd8e99b729d9e`, sentences `0001628280-26-037434:32:15`: 'U.S. Federal Trade Commission': generic body or regulator (signals stoplist); on the trends entity stoplist
+  - *stale*, re-run from stage 6: current entity code no longer emits it
 
-### STALE (2)
+### STALE (9)
 
-- **NVDA** change —, sentences —: pipeline 0.1.0 != 0.2.0; rubric 1.0.0 != 1.1.0; code fingerprint f7ef0450bbe6 != current 4797c77d2bda
-  - *stale*, re-run from stage 2: stage versions are not recorded in this report; the earliest stage is inferred from the other findings
-- **SF** change —, sentences —: pipeline 0.1.0 != 0.2.0; rubric 1.0.0 != 1.1.0; code fingerprint f7ef0450bbe6 != current 4797c77d2bda
+- **AAPL** change —, sentences —: pipeline 0.1.0 != 0.2.0; code fingerprint a972e1a8e036 != current 00da51cb9add
   - *stale*, re-run from stage 5: stage versions are not recorded in this report; the earliest stage is inferred from the other findings
+- **AMZN** change —, sentences —: pipeline 0.1.0 != 0.2.0; code fingerprint a972e1a8e036 != current 00da51cb9add
+  - *stale*, re-run from stage 5: stage versions are not recorded in this report; the earliest stage is inferred from the other findings
+- **GOOGL** change —, sentences —: pipeline 0.1.0 != 0.2.0; code fingerprint a972e1a8e036 != current 00da51cb9add
+  - *stale*, re-run from stage 5: stage versions are not recorded in this report; the earliest stage is inferred from the other findings
+- **META** change —, sentences —: pipeline 0.1.0 != 0.2.0; stage 2 segment 0.2.1 != 0.2.2; stage 5 diff 0.1.2 != 0.1.3; stage 6 signals 0.2.1 != 0.2.2; code fingerprint 88afb295d7e0 != current 00da51cb9add
+  - *stale*, re-run from stage 2: stage versions recorded in the report
+- **MSFT** change —, sentences —: pipeline 0.1.0 != 0.2.0; code fingerprint a972e1a8e036 != current 00da51cb9add
+  - *stale*, re-run from stage 5: stage versions are not recorded in this report; the earliest stage is inferred from the other findings
+- **NVDA** change —, sentences —: pipeline 0.1.0 != 0.2.0; rubric 1.0.0 != 1.1.0; code fingerprint f7ef0450bbe6 != current 00da51cb9add
+  - *stale*, re-run from stage 2: stage versions are not recorded in this report; the earliest stage is inferred from the other findings
+- **SF** change —, sentences —: pipeline 0.1.0 != 0.2.0; rubric 1.0.0 != 1.1.0; code fingerprint f7ef0450bbe6 != current 00da51cb9add
+  - *stale*, re-run from stage 5: stage versions are not recorded in this report; the earliest stage is inferred from the other findings
+- **TSLA** change —, sentences —: pipeline 0.1.0 != 0.2.0; code fingerprint a972e1a8e036 != current 00da51cb9add
+  - *stale*, re-run from stage 5: stage versions are not recorded in this report; the earliest stage is inferred from the other findings
+- **TTWO** change —, sentences —: pipeline 0.1.0 != 0.2.0; stage 2 segment 0.2.1 != 0.2.2; stage 5 diff 0.1.2 != 0.1.3; stage 6 signals 0.2.1 != 0.2.2; code fingerprint db762b671400 != current 00da51cb9add
+  - *stale*, re-run from stage 2: stage versions recorded in the report
 

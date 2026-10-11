@@ -1,0 +1,2008 @@
+{
+  "analysis_id": "27222215d18aacb1f8645a083a345558f913cc4c45b6b90f6367d789c16fcfa6",
+  "by_change_type": {
+    "expanded": 1,
+    "largely_unchanged": 16,
+    "materially_reworded": 3,
+    "new": 0,
+    "reduced": 2,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 4,
+      "added_words": 100,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "cd0a94eec735bf4a",
+      "change_type": "materially_reworded",
+      "modified_sentences": 6,
+      "modified_words": 214,
+      "removed_sentences": 2,
+      "removed_words": 70,
+      "score": 40,
+      "short_title": "Changes in tax and trade laws, regulations and interpretations"
+    },
+    {
+      "added_sentences": 8,
+      "added_words": 224,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "change_type": "materially_reworded",
+      "modified_sentences": 7,
+      "modified_words": 172,
+      "removed_sentences": 23,
+      "removed_words": 956,
+      "score": 30,
+      "short_title": "We are subject to risks related to litigation claims"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 54,
+      "categories": [
+        "supply_chain",
+        "artificial_intelligence"
+      ],
+      "change_id": "f30b4c5537a52c9f",
+      "change_type": "materially_reworded",
+      "modified_sentences": 4,
+      "modified_words": 80,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 20,
+      "short_title": "Failure to successfully execute our omnichannel strategy"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 92,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "270ffdc3606d7a3b",
+      "change_type": "expanded",
+      "modified_sentences": 7,
+      "modified_words": 49,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 15,
+      "short_title": "We face strong competition from other retailers, wholesale club operators"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "a3462abd2d404071",
+      "change_type": "reduced",
+      "modified_sentences": 6,
+      "modified_words": 321,
+      "removed_sentences": 5,
+      "removed_words": 247,
+      "score": 10,
+      "short_title": "Natural disasters, climate change, geopolitical events, catastrophic and other events"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "cccbc7bf7712fa11",
+      "change_type": "reduced",
+      "modified_sentences": 1,
+      "modified_words": 42,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 10,
+      "short_title": "Global or regional health pandemics or epidemics"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "642cccd61ec0ea0a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "Our international operations subject us to legislative, judicial, accounting, legal"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "5746eba76d70b4f5",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 10,
+      "modified_words": 127,
+      "removed_sentences": 6,
+      "removed_words": 162,
+      "score": 4,
+      "short_title": "Changes in and/or failure to comply with other laws, regulations"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 131,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "ed197de24d2af572",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 11,
+      "modified_words": 157,
+      "removed_sentences": 2,
+      "removed_words": 42,
+      "score": 4,
+      "short_title": "If the technology-based systems"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "competition"
+      ],
+      "change_id": "0c08055e57ffbabb",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 22,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Changes in third-party reimbursements and contracts, type"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "intellectual_property"
+      ],
+      "change_id": "10298c5a022dc8ab",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If the quality or safety of products offered for sale"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "15d32809fd791595",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our failure to attract and retain qualified associates"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate",
+        "regulation"
+      ],
+      "change_id": "1aad2fc2d1879931",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 20,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Not satisfying stakeholder expectations with respect to our social"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 31,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "244f27dbd3148752",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 92,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Risks associated with our suppliers"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation",
+        "regulation"
+      ],
+      "change_id": "2a8391b412e71658",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Illegal or inappropriate activity of our independent contractors"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "2b7a7ae5646049c9",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 6,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The performance of strategic alliances"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "foreign_exchange"
+      ],
+      "change_id": "34544f4e12b385b9",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Fluctuations in foreign exchange rates"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "501dacee8efe4284",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Failure to meet market expectations for our financial performance"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 39,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "7596c3f2877da28c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 29,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we do not timely identify"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "b6dbe6186764d670",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 13,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "General or macro-economic factors, both domestically and internationally"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "bb26207936e5055d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 36,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We rely extensively on information"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain",
+        "regulation"
+      ],
+      "change_id": "f91415db1a137c7e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If the quality or safety of products we sell"
+    }
+  ],
+  "cik": "0000104169",
+  "company_name": "Walmart Inc.",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0000104169-26-000055",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm",
+  "new_fiscal_year": 2026,
+  "old_accession": "0000104169-25-000021",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000021/wmt-20250131.htm",
+  "old_fiscal_year": 2025,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "WMT",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          0,
+          45
+        ],
+        [
+          66,
+          395
+        ],
+        [
+          408,
+          411
+        ],
+        [
+          475,
+          509
+        ],
+        [
+          514,
+          641
+        ]
+      ],
+      "change_id": "cd0a94eec735bf4a",
+      "matched_terms": [
+        "business and profit margins"
+      ],
+      "position": 8,
+      "sentence_id": "0000104169-26-000055:18:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Significant changes in tax and trade policies, including tariffs, trade barriers, other restrictions on the exportation and importation of goods and government regulations affecting trade between the U.S. and other countries where we source many of the products we sell can impact, and have impacted, our business and profit margins, including through increases in the costs at which we purchase merchandise and the prices at which we sell such merchandise to our customers, and the costs we incur in pursuing our strategic initiatives, including those set forth under the headings Strategic Risks and Operational Risks above in this Item 1A.",
+      "ticker": "WMT",
+      "topic": "business and profit margin"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          45
+        ],
+        [
+          66,
+          395
+        ],
+        [
+          408,
+          411
+        ],
+        [
+          475,
+          509
+        ],
+        [
+          514,
+          641
+        ]
+      ],
+      "change_id": "cd0a94eec735bf4a",
+      "matched_terms": [
+        "Operational Risks"
+      ],
+      "position": 8,
+      "sentence_id": "0000104169-26-000055:18:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Significant changes in tax and trade policies, including tariffs, trade barriers, other restrictions on the exportation and importation of goods and government regulations affecting trade between the U.S. and other countries where we source many of the products we sell can impact, and have impacted, our business and profit margins, including through increases in the costs at which we purchase merchandise and the prices at which we sell such merchandise to our customers, and the costs we incur in pursuing our strategic initiatives, including those set forth under the headings Strategic Risks and Operational Risks above in this Item 1A.",
+      "ticker": "WMT",
+      "topic": "operational risks"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          45
+        ],
+        [
+          66,
+          395
+        ],
+        [
+          408,
+          411
+        ],
+        [
+          475,
+          509
+        ],
+        [
+          514,
+          641
+        ]
+      ],
+      "change_id": "cd0a94eec735bf4a",
+      "matched_terms": [
+        "strategic initiatives"
+      ],
+      "position": 8,
+      "sentence_id": "0000104169-26-000055:18:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Significant changes in tax and trade policies, including tariffs, trade barriers, other restrictions on the exportation and importation of goods and government regulations affecting trade between the U.S. and other countries where we source many of the products we sell can impact, and have impacted, our business and profit margins, including through increases in the costs at which we purchase merchandise and the prices at which we sell such merchandise to our customers, and the costs we incur in pursuing our strategic initiatives, including those set forth under the headings Strategic Risks and Operational Risks above in this Item 1A.",
+      "ticker": "WMT",
+      "topic": "strategic initiative"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          45
+        ],
+        [
+          66,
+          395
+        ],
+        [
+          408,
+          411
+        ],
+        [
+          475,
+          509
+        ],
+        [
+          514,
+          641
+        ]
+      ],
+      "change_id": "cd0a94eec735bf4a",
+      "matched_terms": [
+        "Strategic Risks"
+      ],
+      "position": 8,
+      "sentence_id": "0000104169-26-000055:18:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Significant changes in tax and trade policies, including tariffs, trade barriers, other restrictions on the exportation and importation of goods and government regulations affecting trade between the U.S. and other countries where we source many of the products we sell can impact, and have impacted, our business and profit margins, including through increases in the costs at which we purchase merchandise and the prices at which we sell such merchandise to our customers, and the costs we incur in pursuing our strategic initiatives, including those set forth under the headings Strategic Risks and Operational Risks above in this Item 1A.",
+      "ticker": "WMT",
+      "topic": "strategic risks"
+    },
+    {
+      "added_spans": [
+        [
+          158,
+          166
+        ],
+        [
+          171,
+          224
+        ]
+      ],
+      "change_id": "cd0a94eec735bf4a",
+      "matched_terms": [
+        "temporary and permanent measures"
+      ],
+      "position": 31,
+      "sentence_id": "0000104169-26-000055:18:16",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, legislatures and taxing authorities in many jurisdictions in which we operate may enact changes to, or seek to enforce novel interpretations of, existing tax laws, including both temporary and permanent measures.",
+      "ticker": "WMT",
+      "topic": "temporary and permanent measure"
+    },
+    {
+      "added_spans": [
+        [
+          46,
+          68
+        ],
+        [
+          101,
+          106
+        ],
+        [
+          118,
+          197
+        ]
+      ],
+      "change_id": "cd0a94eec735bf4a",
+      "matched_terms": [
+        "legislative and administrative guidance"
+      ],
+      "position": 36,
+      "sentence_id": "0000104169-26-000055:18:18",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In particular, the OECD's Global Minimum Tax (Pillar Two) has become effective in many jurisdictions where we operate and continues to evolve through ongoing legislative and administrative guidance.",
+      "ticker": "WMT",
+      "topic": "legislative and administrative guidance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          97
+        ]
+      ],
+      "change_id": "cd0a94eec735bf4a",
+      "matched_terms": [
+        "process changes"
+      ],
+      "position": 37,
+      "sentence_id": "0000104169-26-000055:18:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "These rules are complex, and may require significant data, systems and process changes to comply.",
+      "ticker": "WMT",
+      "topic": "process change"
+    },
+    {
+      "added_spans": [
+        [
+          20,
+          32
+        ],
+        [
+          93,
+          97
+        ],
+        [
+          150,
+          172
+        ],
+        [
+          192,
+          322
+        ]
+      ],
+      "change_id": "cd0a94eec735bf4a",
+      "matched_terms": [
+        "cash taxes"
+      ],
+      "position": 39,
+      "sentence_id": "0000104169-26-000055:18:20",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The impact of these developments, as well as other changes in domestic and international tax laws and regulations could have a material effect on our cash taxes, affect our effective tax rate and increase our compliance, audit and controversy costs, any of which could materially adversely affect our financial performance.",
+      "ticker": "WMT",
+      "topic": "cash taxis"
+    },
+    {
+      "added_spans": [
+        [
+          20,
+          32
+        ],
+        [
+          93,
+          97
+        ],
+        [
+          150,
+          172
+        ],
+        [
+          192,
+          322
+        ]
+      ],
+      "change_id": "cd0a94eec735bf4a",
+      "matched_terms": [
+        "controversy costs"
+      ],
+      "position": 39,
+      "sentence_id": "0000104169-26-000055:18:20",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The impact of these developments, as well as other changes in domestic and international tax laws and regulations could have a material effect on our cash taxes, affect our effective tax rate and increase our compliance, audit and controversy costs, any of which could materially adversely affect our financial performance.",
+      "ticker": "WMT",
+      "topic": "controversy cost"
+    },
+    {
+      "added_spans": [
+        [
+          122,
+          149
+        ],
+        [
+          189,
+          200
+        ],
+        [
+          211,
+          214
+        ],
+        [
+          232,
+          307
+        ],
+        [
+          336,
+          360
+        ],
+        [
+          364,
+          387
+        ],
+        [
+          413,
+          442
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "incorrect weight"
+      ],
+      "position": 7,
+      "sentence_id": "0000104169-26-000055:20:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We may also be involved in legal proceedings brought by regulatory authorities, organizations and individuals relating to products, product claims or product packaging, including that such products or packaging are made of plastic, do not meet required safety standards, contain PFAS or other chemicals, are not appropriately disposed, contain incorrect weight or measurement, or contain misrepresentations about country of origin or assembly, recyclability, compostability, biodegradability or reusability.",
+      "ticker": "WMT",
+      "topic": "incorrect weight"
+    },
+    {
+      "added_spans": [
+        [
+          122,
+          149
+        ],
+        [
+          189,
+          200
+        ],
+        [
+          211,
+          214
+        ],
+        [
+          232,
+          307
+        ],
+        [
+          336,
+          360
+        ],
+        [
+          364,
+          387
+        ],
+        [
+          413,
+          442
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "product claims"
+      ],
+      "position": 7,
+      "sentence_id": "0000104169-26-000055:20:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We may also be involved in legal proceedings brought by regulatory authorities, organizations and individuals relating to products, product claims or product packaging, including that such products or packaging are made of plastic, do not meet required safety standards, contain PFAS or other chemicals, are not appropriately disposed, contain incorrect weight or measurement, or contain misrepresentations about country of origin or assembly, recyclability, compostability, biodegradability or reusability.",
+      "ticker": "WMT",
+      "topic": "product claim"
+    },
+    {
+      "added_spans": [
+        [
+          122,
+          149
+        ],
+        [
+          189,
+          200
+        ],
+        [
+          211,
+          214
+        ],
+        [
+          232,
+          307
+        ],
+        [
+          336,
+          360
+        ],
+        [
+          364,
+          387
+        ],
+        [
+          413,
+          442
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "required safety standards"
+      ],
+      "position": 7,
+      "sentence_id": "0000104169-26-000055:20:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We may also be involved in legal proceedings brought by regulatory authorities, organizations and individuals relating to products, product claims or product packaging, including that such products or packaging are made of plastic, do not meet required safety standards, contain PFAS or other chemicals, are not appropriately disposed, contain incorrect weight or measurement, or contain misrepresentations about country of origin or assembly, recyclability, compostability, biodegradability or reusability.",
+      "ticker": "WMT",
+      "topic": "required safety standard"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          225
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "acetaminophen"
+      ],
+      "position": 14,
+      "sentence_id": "0000104169-26-000055:20:7",
+      "source": "entity",
+      "status": "added",
+      "text": "For example, we are increasingly named as a defendant in cases that allege novel theories of personal injury or economic loss from consumer products, including multidistrict litigation relating to acetaminophen and baby food.",
+      "ticker": "WMT",
+      "topic": "acetaminophen"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          225
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "acetaminophen and baby food"
+      ],
+      "position": 14,
+      "sentence_id": "0000104169-26-000055:20:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we are increasingly named as a defendant in cases that allege novel theories of personal injury or economic loss from consumer products, including multidistrict litigation relating to acetaminophen and baby food.",
+      "ticker": "WMT",
+      "topic": "acetaminophen and baby food"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          225
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "consumer products"
+      ],
+      "position": 14,
+      "sentence_id": "0000104169-26-000055:20:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we are increasingly named as a defendant in cases that allege novel theories of personal injury or economic loss from consumer products, including multidistrict litigation relating to acetaminophen and baby food.",
+      "ticker": "WMT",
+      "topic": "consumer product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          225
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "economic loss"
+      ],
+      "position": 14,
+      "sentence_id": "0000104169-26-000055:20:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we are increasingly named as a defendant in cases that allege novel theories of personal injury or economic loss from consumer products, including multidistrict litigation relating to acetaminophen and baby food.",
+      "ticker": "WMT",
+      "topic": "economic loss"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          225
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "novel theories"
+      ],
+      "position": 14,
+      "sentence_id": "0000104169-26-000055:20:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we are increasingly named as a defendant in cases that allege novel theories of personal injury or economic loss from consumer products, including multidistrict litigation relating to acetaminophen and baby food.",
+      "ticker": "WMT",
+      "topic": "novel theory"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          225
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "personal injury"
+      ],
+      "position": 14,
+      "sentence_id": "0000104169-26-000055:20:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we are increasingly named as a defendant in cases that allege novel theories of personal injury or economic loss from consumer products, including multidistrict litigation relating to acetaminophen and baby food.",
+      "ticker": "WMT",
+      "topic": "personal injury"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          164
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "retail prices"
+      ],
+      "position": 37,
+      "sentence_id": "0000104169-26-000055:20:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "We are increasingly named as a defendant in cases that involve allegations relating to the retail prices charged to customers and costs we negotiate with suppliers.",
+      "ticker": "WMT",
+      "topic": "retail price"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          271
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "retail sale"
+      ],
+      "position": 38,
+      "sentence_id": "0000104169-26-000055:20:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "These cases include purported class actions under federal and state antitrust and competition, consumer protection and related laws brought by customers, retailers and others, including cases related to our wholesale purchase and retail sale of batteries and soft drinks.",
+      "ticker": "WMT",
+      "topic": "retail sale"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          271
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "soft drinks"
+      ],
+      "position": 38,
+      "sentence_id": "0000104169-26-000055:20:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "These cases include purported class actions under federal and state antitrust and competition, consumer protection and related laws brought by customers, retailers and others, including cases related to our wholesale purchase and retail sale of batteries and soft drinks.",
+      "ticker": "WMT",
+      "topic": "soft drink"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          271
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "wholesale purchase"
+      ],
+      "position": 38,
+      "sentence_id": "0000104169-26-000055:20:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "These cases include purported class actions under federal and state antitrust and competition, consumer protection and related laws brought by customers, retailers and others, including cases related to our wholesale purchase and retail sale of batteries and soft drinks.",
+      "ticker": "WMT",
+      "topic": "wholesale purchase"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "auto liability"
+      ],
+      "position": 44,
+      "sentence_id": "0000104169-26-000055:20:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Claims for insurance-related liabilities, such as workers' compensation, general liability, auto liability, product liability and certain employee-related healthcare benefits, are funded predominantly through self-insurance.",
+      "ticker": "WMT",
+      "topic": "auto liability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "employee-related healthcare benefits"
+      ],
+      "position": 44,
+      "sentence_id": "0000104169-26-000055:20:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Claims for insurance-related liabilities, such as workers' compensation, general liability, auto liability, product liability and certain employee-related healthcare benefits, are funded predominantly through self-insurance.",
+      "ticker": "WMT",
+      "topic": "employee related healthcare benefit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "general liability"
+      ],
+      "position": 44,
+      "sentence_id": "0000104169-26-000055:20:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Claims for insurance-related liabilities, such as workers' compensation, general liability, auto liability, product liability and certain employee-related healthcare benefits, are funded predominantly through self-insurance.",
+      "ticker": "WMT",
+      "topic": "general liability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "insurance-related liabilities"
+      ],
+      "position": 44,
+      "sentence_id": "0000104169-26-000055:20:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Claims for insurance-related liabilities, such as workers' compensation, general liability, auto liability, product liability and certain employee-related healthcare benefits, are funded predominantly through self-insurance.",
+      "ticker": "WMT",
+      "topic": "insurance related liability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "product liability"
+      ],
+      "position": 44,
+      "sentence_id": "0000104169-26-000055:20:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Claims for insurance-related liabilities, such as workers' compensation, general liability, auto liability, product liability and certain employee-related healthcare benefits, are funded predominantly through self-insurance.",
+      "ticker": "WMT",
+      "topic": "product liability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "self-insurance"
+      ],
+      "position": 44,
+      "sentence_id": "0000104169-26-000055:20:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Claims for insurance-related liabilities, such as workers' compensation, general liability, auto liability, product liability and certain employee-related healthcare benefits, are funded predominantly through self-insurance.",
+      "ticker": "WMT",
+      "topic": "self insurance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "workers' compensation"
+      ],
+      "position": 44,
+      "sentence_id": "0000104169-26-000055:20:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Claims for insurance-related liabilities, such as workers' compensation, general liability, auto liability, product liability and certain employee-related healthcare benefits, are funded predominantly through self-insurance.",
+      "ticker": "WMT",
+      "topic": "worker compensation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          102
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "Insurance coverage"
+      ],
+      "position": 45,
+      "sentence_id": "0000104169-26-000055:20:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "Insurance coverage is maintained for certain risks to limit exposures arising from significant losses.",
+      "ticker": "WMT",
+      "topic": "insurance coverage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          178
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "market conditions"
+      ],
+      "position": 46,
+      "sentence_id": "0000104169-26-000055:20:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "The types and amounts of insurance may vary from time to time based on our risk-management strategy, risk tolerance, regulatory requirements, market conditions and other factors.",
+      "ticker": "WMT",
+      "topic": "market condition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          178
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "regulatory requirements"
+      ],
+      "position": 46,
+      "sentence_id": "0000104169-26-000055:20:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "The types and amounts of insurance may vary from time to time based on our risk-management strategy, risk tolerance, regulatory requirements, market conditions and other factors.",
+      "ticker": "WMT",
+      "topic": "regulatory requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          178
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "risk-management strategy"
+      ],
+      "position": 46,
+      "sentence_id": "0000104169-26-000055:20:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "The types and amounts of insurance may vary from time to time based on our risk-management strategy, risk tolerance, regulatory requirements, market conditions and other factors.",
+      "ticker": "WMT",
+      "topic": "risk management strategy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          178
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "risk tolerance"
+      ],
+      "position": 46,
+      "sentence_id": "0000104169-26-000055:20:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "The types and amounts of insurance may vary from time to time based on our risk-management strategy, risk tolerance, regulatory requirements, market conditions and other factors.",
+      "ticker": "WMT",
+      "topic": "risk tolerance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          101
+        ],
+        [
+          105,
+          142
+        ],
+        [
+          146,
+          182
+        ],
+        [
+          194,
+          196
+        ],
+        [
+          205,
+          211
+        ],
+        [
+          229,
+          238
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "health care"
+      ],
+      "position": 48,
+      "sentence_id": "0000104169-26-000055:20:16",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Significant claims or events, regulatory changes, a substantial rise in costs of health care or costs to maintain our insurance or the failure to maintain adequate insurance coverage could have an adverse impact on our financial condition and results of operations.",
+      "ticker": "WMT",
+      "topic": "health care"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          101
+        ],
+        [
+          105,
+          142
+        ],
+        [
+          146,
+          182
+        ],
+        [
+          194,
+          196
+        ],
+        [
+          205,
+          211
+        ],
+        [
+          229,
+          238
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "insurance coverage"
+      ],
+      "position": 48,
+      "sentence_id": "0000104169-26-000055:20:16",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Significant claims or events, regulatory changes, a substantial rise in costs of health care or costs to maintain our insurance or the failure to maintain adequate insurance coverage could have an adverse impact on our financial condition and results of operations.",
+      "ticker": "WMT",
+      "topic": "insurance coverage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          101
+        ],
+        [
+          105,
+          142
+        ],
+        [
+          146,
+          182
+        ],
+        [
+          194,
+          196
+        ],
+        [
+          205,
+          211
+        ],
+        [
+          229,
+          238
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "regulatory changes"
+      ],
+      "position": 48,
+      "sentence_id": "0000104169-26-000055:20:16",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Significant claims or events, regulatory changes, a substantial rise in costs of health care or costs to maintain our insurance or the failure to maintain adequate insurance coverage could have an adverse impact on our financial condition and results of operations.",
+      "ticker": "WMT",
+      "topic": "regulatory change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          101
+        ],
+        [
+          105,
+          142
+        ],
+        [
+          146,
+          182
+        ],
+        [
+          194,
+          196
+        ],
+        [
+          205,
+          211
+        ],
+        [
+          229,
+          238
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "substantial rise"
+      ],
+      "position": 48,
+      "sentence_id": "0000104169-26-000055:20:16",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Significant claims or events, regulatory changes, a substantial rise in costs of health care or costs to maintain our insurance or the failure to maintain adequate insurance coverage could have an adverse impact on our financial condition and results of operations.",
+      "ticker": "WMT",
+      "topic": "substantial rise"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          333
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "business interruption"
+      ],
+      "position": 51,
+      "sentence_id": "0000104169-26-000055:20:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although we maintain specific coverages for catastrophic property losses, we still bear a significant portion of the risk of losses incurred as a result of any physical damage to, or the destruction of, any stores, warehouses, depots, manufacturing or home office facilities, loss or spoilage of inventory, and business interruption.",
+      "ticker": "WMT",
+      "topic": "business interruption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          333
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "catastrophic property losses"
+      ],
+      "position": 51,
+      "sentence_id": "0000104169-26-000055:20:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although we maintain specific coverages for catastrophic property losses, we still bear a significant portion of the risk of losses incurred as a result of any physical damage to, or the destruction of, any stores, warehouses, depots, manufacturing or home office facilities, loss or spoilage of inventory, and business interruption.",
+      "ticker": "WMT",
+      "topic": "catastrophic property loss"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          333
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "home office facilities"
+      ],
+      "position": 51,
+      "sentence_id": "0000104169-26-000055:20:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although we maintain specific coverages for catastrophic property losses, we still bear a significant portion of the risk of losses incurred as a result of any physical damage to, or the destruction of, any stores, warehouses, depots, manufacturing or home office facilities, loss or spoilage of inventory, and business interruption.",
+      "ticker": "WMT",
+      "topic": "home office facility"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          333
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "physical damage"
+      ],
+      "position": 51,
+      "sentence_id": "0000104169-26-000055:20:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although we maintain specific coverages for catastrophic property losses, we still bear a significant portion of the risk of losses incurred as a result of any physical damage to, or the destruction of, any stores, warehouses, depots, manufacturing or home office facilities, loss or spoilage of inventory, and business interruption.",
+      "ticker": "WMT",
+      "topic": "physical damage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          333
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "specific coverages"
+      ],
+      "position": 51,
+      "sentence_id": "0000104169-26-000055:20:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although we maintain specific coverages for catastrophic property losses, we still bear a significant portion of the risk of losses incurred as a result of any physical damage to, or the destruction of, any stores, warehouses, depots, manufacturing or home office facilities, loss or spoilage of inventory, and business interruption.",
+      "ticker": "WMT",
+      "topic": "specific coverage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          20
+        ],
+        [
+          25,
+          58
+        ],
+        [
+          70,
+          77
+        ],
+        [
+          100,
+          222
+        ],
+        [
+          287,
+          288
+        ]
+      ],
+      "change_id": "82634a4c0dd049fb",
+      "matched_terms": [
+        "specific details"
+      ],
+      "position": 54,
+      "sentence_id": "0000104169-26-000055:20:19",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For specific details and information on certain claims and litigation matters to which we are party and that could impact our business, financial position, results of operations or cash flows, see the disclosures set forth below under the caption \"Item 3. Legal Proceedings\" and in Note 9 in the \"Notes to our Consolidated Financial Statements,\" which are part of this Annual Report on Form 10-K.",
+      "ticker": "WMT",
+      "topic": "specific detail"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          369
+        ]
+      ],
+      "change_id": "f30b4c5537a52c9f",
+      "matched_terms": [
+        "comparison shopping"
+      ],
+      "position": 10,
+      "sentence_id": "0000104169-26-000055:0:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers are using digital means, including websites, captive and third-party digital applications, social media, and emerging agentic platforms to shop with us and our competitors and to do comparison shopping, and we use these digital means along with digital advertising, text messages and email to interact with our customers and enhance their shopping experience.",
+      "ticker": "WMT",
+      "topic": "comparison shopping"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          369
+        ]
+      ],
+      "change_id": "f30b4c5537a52c9f",
+      "matched_terms": [
+        "digital advertising"
+      ],
+      "position": 10,
+      "sentence_id": "0000104169-26-000055:0:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers are using digital means, including websites, captive and third-party digital applications, social media, and emerging agentic platforms to shop with us and our competitors and to do comparison shopping, and we use these digital means along with digital advertising, text messages and email to interact with our customers and enhance their shopping experience.",
+      "ticker": "WMT",
+      "topic": "digital advertising"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          369
+        ]
+      ],
+      "change_id": "f30b4c5537a52c9f",
+      "matched_terms": [
+        "digital means"
+      ],
+      "position": 10,
+      "sentence_id": "0000104169-26-000055:0:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers are using digital means, including websites, captive and third-party digital applications, social media, and emerging agentic platforms to shop with us and our competitors and to do comparison shopping, and we use these digital means along with digital advertising, text messages and email to interact with our customers and enhance their shopping experience.",
+      "ticker": "WMT",
+      "topic": "digital mean"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          369
+        ]
+      ],
+      "change_id": "f30b4c5537a52c9f",
+      "matched_terms": [
+        "emerging agentic platforms"
+      ],
+      "position": 10,
+      "sentence_id": "0000104169-26-000055:0:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers are using digital means, including websites, captive and third-party digital applications, social media, and emerging agentic platforms to shop with us and our competitors and to do comparison shopping, and we use these digital means along with digital advertising, text messages and email to interact with our customers and enhance their shopping experience.",
+      "ticker": "WMT",
+      "topic": "emerging agentic platform"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          369
+        ]
+      ],
+      "change_id": "f30b4c5537a52c9f",
+      "matched_terms": [
+        "social media"
+      ],
+      "position": 10,
+      "sentence_id": "0000104169-26-000055:0:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers are using digital means, including websites, captive and third-party digital applications, social media, and emerging agentic platforms to shop with us and our competitors and to do comparison shopping, and we use these digital means along with digital advertising, text messages and email to interact with our customers and enhance their shopping experience.",
+      "ticker": "WMT",
+      "topic": "social medium"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          369
+        ]
+      ],
+      "change_id": "f30b4c5537a52c9f",
+      "matched_terms": [
+        "text messages"
+      ],
+      "position": 10,
+      "sentence_id": "0000104169-26-000055:0:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers are using digital means, including websites, captive and third-party digital applications, social media, and emerging agentic platforms to shop with us and our competitors and to do comparison shopping, and we use these digital means along with digital advertising, text messages and email to interact with our customers and enhance their shopping experience.",
+      "ticker": "WMT",
+      "topic": "text message"
+    },
+    {
+      "added_spans": [
+        [
+          99,
+          203
+        ]
+      ],
+      "change_id": "f30b4c5537a52c9f",
+      "matched_terms": [
+        "AI-enabled platforms"
+      ],
+      "position": 16,
+      "sentence_id": "0000104169-26-000055:0:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, a greater concentration of eCommerce sales, including increasing online grocery sales and the increasing role of AI-enabled platforms in product search, discovery, advertising and purchasing, could result in a reduction in the amount of traffic in our stores and clubs, which would, in turn, reduce the opportunities for cross-store or cross-club sales of merchandise that such traffic creates and could reduce our sales within our stores and clubs and materially adversely affect our financial performance.",
+      "ticker": "WMT",
+      "topic": "ai enabled platform"
+    },
+    {
+      "added_spans": [
+        [
+          99,
+          203
+        ]
+      ],
+      "change_id": "f30b4c5537a52c9f",
+      "matched_terms": [
+        "increasing role"
+      ],
+      "position": 16,
+      "sentence_id": "0000104169-26-000055:0:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, a greater concentration of eCommerce sales, including increasing online grocery sales and the increasing role of AI-enabled platforms in product search, discovery, advertising and purchasing, could result in a reduction in the amount of traffic in our stores and clubs, which would, in turn, reduce the opportunities for cross-store or cross-club sales of merchandise that such traffic creates and could reduce our sales within our stores and clubs and materially adversely affect our financial performance.",
+      "ticker": "WMT",
+      "topic": "increasing role"
+    },
+    {
+      "added_spans": [
+        [
+          99,
+          203
+        ]
+      ],
+      "change_id": "f30b4c5537a52c9f",
+      "matched_terms": [
+        "product search"
+      ],
+      "position": 16,
+      "sentence_id": "0000104169-26-000055:0:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, a greater concentration of eCommerce sales, including increasing online grocery sales and the increasing role of AI-enabled platforms in product search, discovery, advertising and purchasing, could result in a reduction in the amount of traffic in our stores and clubs, which would, in turn, reduce the opportunities for cross-store or cross-club sales of merchandise that such traffic creates and could reduce our sales within our stores and clubs and materially adversely affect our financial performance.",
+      "ticker": "WMT",
+      "topic": "product search"
+    },
+    {
+      "added_spans": [
+        [
+          222,
+          233
+        ],
+        [
+          324,
+          373
+        ]
+      ],
+      "change_id": "270ffdc3606d7a3b",
+      "matched_terms": [
+        "emerging agentic shopping tools"
+      ],
+      "position": 3,
+      "sentence_id": "0000104169-26-000055:2:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Each of our segments competes for customers, employees, digital prominence, products and services and in other important aspects of its business with many other local, regional, national and global physical, eCommerce and omnichannel retailers, social commerce platforms, wholesale club operators and retail intermediaries, and emerging agentic shopping tools and platforms, as well as companies that offer services in digital advertising, data analytics/insights, fulfillment and delivery services, health and wellness and financial services.",
+      "ticker": "WMT",
+      "topic": "emerging agentic shopping tool"
+    },
+    {
+      "added_spans": [
+        [
+          4,
+          15
+        ],
+        [
+          124,
+          259
+        ]
+      ],
+      "change_id": "270ffdc3606d7a3b",
+      "matched_terms": [
+        "agentic tools"
+      ],
+      "position": 5,
+      "sentence_id": "0000104169-26-000055:2:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The omnichannel retail landscape is highly competitive and rapidly evolving, and the entry of new, well-funded competitors, or more rapid development of AI capabilities and agentic tools by these competitors to enhance productivity and the shopping experience, may increase competitive pressures.",
+      "ticker": "WMT",
+      "topic": "agentic tool"
+    },
+    {
+      "added_spans": [
+        [
+          4,
+          15
+        ],
+        [
+          124,
+          259
+        ]
+      ],
+      "change_id": "270ffdc3606d7a3b",
+      "matched_terms": [
+        "AI capabilities"
+      ],
+      "position": 5,
+      "sentence_id": "0000104169-26-000055:2:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The omnichannel retail landscape is highly competitive and rapidly evolving, and the entry of new, well-funded competitors, or more rapid development of AI capabilities and agentic tools by these competitors to enhance productivity and the shopping experience, may increase competitive pressures.",
+      "ticker": "WMT",
+      "topic": "ai capability"
+    },
+    {
+      "added_spans": [
+        [
+          4,
+          15
+        ],
+        [
+          124,
+          259
+        ]
+      ],
+      "change_id": "270ffdc3606d7a3b",
+      "matched_terms": [
+        "rapid development"
+      ],
+      "position": 5,
+      "sentence_id": "0000104169-26-000055:2:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The omnichannel retail landscape is highly competitive and rapidly evolving, and the entry of new, well-funded competitors, or more rapid development of AI capabilities and agentic tools by these competitors to enhance productivity and the shopping experience, may increase competitive pressures.",
+      "ticker": "WMT",
+      "topic": "rapid development"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          159
+        ]
+      ],
+      "change_id": "270ffdc3606d7a3b",
+      "matched_terms": [
+        "domain names"
+      ],
+      "position": 14,
+      "sentence_id": "0000104169-26-000055:2:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the protection of our proprietary rights, including our trademarks, copyrights, domain names, patents and trade secrets, is important to our business.",
+      "ticker": "WMT",
+      "topic": "domain name"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          159
+        ]
+      ],
+      "change_id": "270ffdc3606d7a3b",
+      "matched_terms": [
+        "proprietary rights"
+      ],
+      "position": 14,
+      "sentence_id": "0000104169-26-000055:2:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the protection of our proprietary rights, including our trademarks, copyrights, domain names, patents and trade secrets, is important to our business.",
+      "ticker": "WMT",
+      "topic": "proprietary right"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          159
+        ]
+      ],
+      "change_id": "270ffdc3606d7a3b",
+      "matched_terms": [
+        "trade secrets"
+      ],
+      "position": 14,
+      "sentence_id": "0000104169-26-000055:2:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the protection of our proprietary rights, including our trademarks, copyrights, domain names, patents and trade secrets, is important to our business.",
+      "ticker": "WMT",
+      "topic": "trade secret"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          469
+        ]
+      ],
+      "change_id": "270ffdc3606d7a3b",
+      "matched_terms": [
+        "competitive advantage"
+      ],
+      "position": 15,
+      "sentence_id": "0000104169-26-000055:2:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Effective protection of our proprietary rights may not be available in every jurisdiction in which we offer our products and services, and we may not be able to prevent or deter third parties from infringing or misappropriating our intellectual property, or ensure that third parties will not independently develop equivalent or superior intellectual property rights, which could affect our ability to maintain a competitive advantage and adversely impact our business.",
+      "ticker": "WMT",
+      "topic": "competitive advantage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          469
+        ]
+      ],
+      "change_id": "270ffdc3606d7a3b",
+      "matched_terms": [
+        "Effective protection"
+      ],
+      "position": 15,
+      "sentence_id": "0000104169-26-000055:2:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Effective protection of our proprietary rights may not be available in every jurisdiction in which we offer our products and services, and we may not be able to prevent or deter third parties from infringing or misappropriating our intellectual property, or ensure that third parties will not independently develop equivalent or superior intellectual property rights, which could affect our ability to maintain a competitive advantage and adversely impact our business.",
+      "ticker": "WMT",
+      "topic": "effective protection"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          469
+        ]
+      ],
+      "change_id": "270ffdc3606d7a3b",
+      "matched_terms": [
+        "intellectual property"
+      ],
+      "position": 15,
+      "sentence_id": "0000104169-26-000055:2:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Effective protection of our proprietary rights may not be available in every jurisdiction in which we offer our products and services, and we may not be able to prevent or deter third parties from infringing or misappropriating our intellectual property, or ensure that third parties will not independently develop equivalent or superior intellectual property rights, which could affect our ability to maintain a competitive advantage and adversely impact our business.",
+      "ticker": "WMT",
+      "topic": "intellectual property"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          469
+        ]
+      ],
+      "change_id": "270ffdc3606d7a3b",
+      "matched_terms": [
+        "proprietary rights"
+      ],
+      "position": 15,
+      "sentence_id": "0000104169-26-000055:2:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Effective protection of our proprietary rights may not be available in every jurisdiction in which we offer our products and services, and we may not be able to prevent or deter third parties from infringing or misappropriating our intellectual property, or ensure that third parties will not independently develop equivalent or superior intellectual property rights, which could affect our ability to maintain a competitive advantage and adversely impact our business.",
+      "ticker": "WMT",
+      "topic": "proprietary right"
+    },
+    {
+      "added_spans": [
+        [
+          240,
+          259
+        ],
+        [
+          273,
+          283
+        ],
+        [
+          307,
+          314
+        ],
+        [
+          318,
+          331
+        ],
+        [
+          360,
+          370
+        ]
+      ],
+      "change_id": "a3462abd2d404071",
+      "matched_terms": [
+        "similar disruptions"
+      ],
+      "position": 6,
+      "sentence_id": "0000104169-26-000055:6:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Moreover, geopolitical tensions or events such as war; civil unrest (including theft, looting or vandalism); terrorist attacks; acts of violence, including active shooter situations (such as those that have occurred in our U.S. stores); or similar disruptions in countries or regions in which our suppliers operate or through which goods are transported could materially adversely affect our operations and financial performance.",
+      "ticker": "WMT",
+      "topic": "similar disruption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          14
+        ],
+        [
+          18,
+          23
+        ],
+        [
+          47,
+          109
+        ],
+        [
+          219,
+          226
+        ],
+        [
+          244,
+          278
+        ],
+        [
+          282,
+          300
+        ],
+        [
+          610,
+          613
+        ]
+      ],
+      "change_id": "a3462abd2d404071",
+      "matched_terms": [
+        "labor availability"
+      ],
+      "position": 10,
+      "sentence_id": "0000104169-26-000055:6:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The occurrence of these events could result in immediate and longer-term impacts on our operations, including physical damage or loss of properties, the closure of stores, clubs and distribution or fulfillment centers, limited operating hours, workforce shortages and challenges in labor availability, the inability of customers and associates to reach or have transportation to our stores and clubs affected by such events, the evacuation of the populace from areas in which our stores, clubs and distribution and fulfillment centers are located, the unavailability of our digital platforms to our customers, and changes in the purchasing patterns of consumers (including the frequency of visits by consumers to physical retail locations, whether as a result of limitations on large gatherings, travel and movement limitations or otherwise).",
+      "ticker": "WMT",
+      "topic": "labor availability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          14
+        ],
+        [
+          18,
+          23
+        ],
+        [
+          47,
+          109
+        ],
+        [
+          219,
+          226
+        ],
+        [
+          244,
+          278
+        ],
+        [
+          282,
+          300
+        ],
+        [
+          610,
+          613
+        ]
+      ],
+      "change_id": "a3462abd2d404071",
+      "matched_terms": [
+        "workforce shortages"
+      ],
+      "position": 10,
+      "sentence_id": "0000104169-26-000055:6:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The occurrence of these events could result in immediate and longer-term impacts on our operations, including physical damage or loss of properties, the closure of stores, clubs and distribution or fulfillment centers, limited operating hours, workforce shortages and challenges in labor availability, the inability of customers and associates to reach or have transportation to our stores and clubs affected by such events, the evacuation of the populace from areas in which our stores, clubs and distribution and fulfillment centers are located, the unavailability of our digital platforms to our customers, and changes in the purchasing patterns of consumers (including the frequency of visits by consumers to physical retail locations, whether as a result of limitations on large gatherings, travel and movement limitations or otherwise).",
+      "ticker": "WMT",
+      "topic": "workforce shortage"
+    },
+    {
+      "added_spans": [
+        [
+          8,
+          64
+        ],
+        [
+          202,
+          243
+        ]
+      ],
+      "change_id": "a3462abd2d404071",
+      "matched_terms": [
+        "transportation vehicles"
+      ],
+      "position": 18,
+      "sentence_id": "0000104169-26-000055:6:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We bear the majority of the costs associated with adaptation and the risk of losses incurred as a result of physical damage to, or destruction of, any stores, clubs, distribution or fulfillment centers and transportation vehicles and equipment; theft, loss or spoilage of inventory; and business interruption caused by such events.",
+      "ticker": "WMT",
+      "topic": "transportation vehicle"
+    }
+  ],
+  "total_changes": 22
+}

@@ -1,0 +1,3609 @@
+{
+  "analysis_id": "019a6b0a852e3b6568d197351840d4af82ba60c1b3558cc5f16249e7f90d0460",
+  "by_change_type": {
+    "expanded": 0,
+    "largely_unchanged": 11,
+    "materially_reworded": 8,
+    "new": 0,
+    "reduced": 2,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 10,
+      "added_words": 326,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "change_type": "materially_reworded",
+      "modified_sentences": 34,
+      "modified_words": 306,
+      "removed_sentences": 6,
+      "removed_words": 111,
+      "score": 42,
+      "short_title": "Increased scrutiny and regulation of the global payments industry"
+    },
+    {
+      "added_sentences": 14,
+      "added_words": 391,
+      "categories": [
+        "regulation",
+        "artificial_intelligence"
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "change_type": "materially_reworded",
+      "modified_sentences": 13,
+      "modified_words": 245,
+      "removed_sentences": 8,
+      "removed_words": 202,
+      "score": 37,
+      "short_title": "Laws and regulations regarding the handling of personal data"
+    },
+    {
+      "added_sentences": 6,
+      "added_words": 221,
+      "categories": [
+        "geopolitical",
+        "macroeconomic"
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "change_type": "materially_reworded",
+      "modified_sentences": 7,
+      "modified_words": 148,
+      "removed_sentences": 5,
+      "removed_words": 243,
+      "score": 33,
+      "short_title": "Global economic, political, market, health and social events or conditions"
+    },
+    {
+      "added_sentences": 12,
+      "added_words": 396,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "739123552d0056f6",
+      "change_type": "materially_reworded",
+      "modified_sentences": 9,
+      "modified_words": 77,
+      "removed_sentences": 12,
+      "removed_words": 463,
+      "score": 32,
+      "short_title": "We face intense competition in our industry"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 159,
+      "categories": [
+        "regulation",
+        "climate"
+      ],
+      "change_id": "5abc9712243f3ed0",
+      "change_type": "materially_reworded",
+      "modified_sentences": 7,
+      "modified_words": 165,
+      "removed_sentences": 8,
+      "removed_words": 257,
+      "score": 29,
+      "short_title": "Our ability to adjust to evolving corporate responsibility"
+    },
+    {
+      "added_sentences": 8,
+      "added_words": 271,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "13b75160aef77698",
+      "change_type": "materially_reworded",
+      "modified_sentences": 12,
+      "modified_words": 115,
+      "removed_sentences": 5,
+      "removed_words": 215,
+      "score": 28,
+      "short_title": "A disruption, failure or breach of our networks or systems"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "0f18272720d19b7f",
+      "change_type": "materially_reworded",
+      "modified_sentences": 2,
+      "modified_words": 115,
+      "removed_sentences": 4,
+      "removed_words": 100,
+      "score": 25,
+      "short_title": "Delaware law, provisions in our certificate of incorporation"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 106,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "853e4f5f31492234",
+      "change_type": "materially_reworded",
+      "modified_sentences": 6,
+      "modified_words": 17,
+      "removed_sentences": 3,
+      "removed_words": 109,
+      "score": 20,
+      "short_title": "Our net revenue and profits are dependent on our client"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "59ef8760c6a299d1",
+      "change_type": "reduced",
+      "modified_sentences": 3,
+      "modified_words": 53,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 16,
+      "short_title": "We may be unable to attract, hire"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 15,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "c596e5feab7a4ed2",
+      "change_type": "reduced",
+      "modified_sentences": 4,
+      "modified_words": 26,
+      "removed_sentences": 1,
+      "removed_words": 93,
+      "score": 10,
+      "short_title": "We are subject to complex and evolving global regulations"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 72,
+      "categories": [
+        "geopolitical"
+      ],
+      "change_id": "866dad2cd75c67a0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 16,
+      "modified_words": 152,
+      "removed_sentences": 2,
+      "removed_words": 52,
+      "score": 8,
+      "short_title": "Government-imposed obligations and/or restrictions on international payments systems"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "7d89a15b838a8874",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 25,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Failure to anticipate, adapt to, or keep pace"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 36,
+      "categories": [
+        "litigation",
+        "regulation"
+      ],
+      "change_id": "8ddf054d8ffed59a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 7,
+      "modified_words": 53,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Sellers’ and processors’ continued push to lower acceptance costs"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "1ea219c34a6383d2",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 6,
+      "modified_words": 13,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We depend on relationships with financial institutions, acquirers, processors, sellers"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "1fd61110013d951d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may be subject to tax examinations"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "247a240b7a6230e4",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 8,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Holders of our class B-1, B-2 and C common stock"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "39bfebd519330e39",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 5,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business could be harmed"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "6c83fd78538ae866",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 12,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may be adversely affected by the outcome of litigation"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "d43bc280bcc913e4",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 5,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The conversions of our class B-1, B-2"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation",
+        "regulation"
+      ],
+      "change_id": "ddbcafddb5683af0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may not achieve the anticipated benefits of our acquisitions"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 21,
+      "categories": [
+        "litigation",
+        "liquidity"
+      ],
+      "change_id": "ffb385c1ac5a1b1e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 3,
+      "removed_sentences": 1,
+      "removed_words": 21,
+      "score": 0,
+      "short_title": "Our indemnification obligation to fund settlement losses of our clients"
+    }
+  ],
+  "cik": "0001403161",
+  "company_name": "VISA INC.",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0001403161-25-000089",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316125000089/v-20250930.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0001403161-24-000058",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316124000058/v-20240930.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "V",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          0,
+          201
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "District Court"
+      ],
+      "position": 26,
+      "sentence_id": "0001403161-25-000089:1:13",
+      "source": "entity",
+      "status": "added",
+      "text": "Finally, in August 2025, the District Court for the District of North Dakota ruled that the Federal Reserve exceeded its authority in implementing Regulation II, which sets debit card interchange fees.",
+      "ticker": "V",
+      "topic": "District Court"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          201
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "District of North Dakota"
+      ],
+      "position": 26,
+      "sentence_id": "0001403161-25-000089:1:13",
+      "source": "entity",
+      "status": "added",
+      "text": "Finally, in August 2025, the District Court for the District of North Dakota ruled that the Federal Reserve exceeded its authority in implementing Regulation II, which sets debit card interchange fees.",
+      "ticker": "V",
+      "topic": "District of North Dakota"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          201
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "Regulation II"
+      ],
+      "position": 26,
+      "sentence_id": "0001403161-25-000089:1:13",
+      "source": "entity",
+      "status": "added",
+      "text": "Finally, in August 2025, the District Court for the District of North Dakota ruled that the Federal Reserve exceeded its authority in implementing Regulation II, which sets debit card interchange fees.",
+      "ticker": "V",
+      "topic": "Regulation II"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          201
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "debit card interchange fees"
+      ],
+      "position": 26,
+      "sentence_id": "0001403161-25-000089:1:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Finally, in August 2025, the District Court for the District of North Dakota ruled that the Federal Reserve exceeded its authority in implementing Regulation II, which sets debit card interchange fees.",
+      "ticker": "V",
+      "topic": "debit card interchange fee"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          201
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "North Dakota"
+      ],
+      "position": 26,
+      "sentence_id": "0001403161-25-000089:1:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Finally, in August 2025, the District Court for the District of North Dakota ruled that the Federal Reserve exceeded its authority in implementing Regulation II, which sets debit card interchange fees.",
+      "ticker": "V",
+      "topic": "north dakota"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          217
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "Durbin Amendment"
+      ],
+      "position": 27,
+      "sentence_id": "0001403161-25-000089:1:14",
+      "source": "entity",
+      "status": "added",
+      "text": "The court found the Federal Reserve improperly included various costs beyond what the Durbin Amendment allows, such as fraud losses, network fees and other fixed costs, when setting the debit interchange fee standard.",
+      "ticker": "V",
+      "topic": "Durbin Amendment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          217
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "debit interchange fee standard"
+      ],
+      "position": 27,
+      "sentence_id": "0001403161-25-000089:1:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "The court found the Federal Reserve improperly included various costs beyond what the Durbin Amendment allows, such as fraud losses, network fees and other fixed costs, when setting the debit interchange fee standard.",
+      "ticker": "V",
+      "topic": "debit interchange fee standard"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          217
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "fixed costs"
+      ],
+      "position": 27,
+      "sentence_id": "0001403161-25-000089:1:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "The court found the Federal Reserve improperly included various costs beyond what the Durbin Amendment allows, such as fraud losses, network fees and other fixed costs, when setting the debit interchange fee standard.",
+      "ticker": "V",
+      "topic": "fixed cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          217
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "fraud losses"
+      ],
+      "position": 27,
+      "sentence_id": "0001403161-25-000089:1:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "The court found the Federal Reserve improperly included various costs beyond what the Durbin Amendment allows, such as fraud losses, network fees and other fixed costs, when setting the debit interchange fee standard.",
+      "ticker": "V",
+      "topic": "fraud loss"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          78
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "Regulation II"
+      ],
+      "position": 28,
+      "sentence_id": "0001403161-25-000089:1:15",
+      "source": "entity",
+      "status": "added",
+      "text": "As a result, the court vacated Regulation II’s debit interchange fee standard.",
+      "ticker": "V",
+      "topic": "Regulation II"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          150
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "District Court"
+      ],
+      "position": 29,
+      "sentence_id": "0001403161-25-000089:1:16",
+      "source": "entity",
+      "status": "added",
+      "text": "Subsequently, however, the District Court in Kentucky ruled that the Federal Reserve acted within its discretion in setting the debit interchange cap.",
+      "ticker": "V",
+      "topic": "District Court"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          150
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "Kentucky"
+      ],
+      "position": 29,
+      "sentence_id": "0001403161-25-000089:1:16",
+      "source": "entity",
+      "status": "added",
+      "text": "Subsequently, however, the District Court in Kentucky ruled that the Federal Reserve acted within its discretion in setting the debit interchange cap.",
+      "ticker": "V",
+      "topic": "Kentucky"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          150
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "debit interchange cap"
+      ],
+      "position": 29,
+      "sentence_id": "0001403161-25-000089:1:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "Subsequently, however, the District Court in Kentucky ruled that the Federal Reserve acted within its discretion in setting the debit interchange cap.",
+      "ticker": "V",
+      "topic": "debit interchange cap"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          235
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "District Court"
+      ],
+      "position": 31,
+      "sentence_id": "0001403161-25-000089:1:17",
+      "source": "entity",
+      "status": "modified",
+      "text": "If the District Court of North Dakota’s decision is affirmed on appeal and ultimately prevails, it could potentially result in the Federal Reserve setting a significantly lower interchange cap for relevant debit transactions in the U.S. Separately, there continues to be interest in regulation of credit interchange fees and routing practices by members of Congress and state legislators.",
+      "ticker": "V",
+      "topic": "District Court"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          235
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "significantly lower interchange cap"
+      ],
+      "position": 31,
+      "sentence_id": "0001403161-25-000089:1:17",
+      "source": "phrase",
+      "status": "modified",
+      "text": "If the District Court of North Dakota’s decision is affirmed on appeal and ultimately prevails, it could potentially result in the Federal Reserve setting a significantly lower interchange cap for relevant debit transactions in the U.S. Separately, there continues to be interest in regulation of credit interchange fees and routing practices by members of Congress and state legislators.",
+      "ticker": "V",
+      "topic": "significantly lower interchange cap"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          152
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "Credit Card Competition Act"
+      ],
+      "position": 32,
+      "sentence_id": "0001403161-25-000089:1:18",
+      "source": "entity",
+      "status": "added",
+      "text": "It is possible that the Credit Card Competition Act may be reintroduced in Congress or attempted to be offered as an amendment to unrelated legislation.",
+      "ticker": "V",
+      "topic": "Credit Card Competition Act"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          152
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "unrelated legislation"
+      ],
+      "position": 32,
+      "sentence_id": "0001403161-25-000089:1:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "It is possible that the Credit Card Competition Act may be reintroduced in Congress or attempted to be offered as an amendment to unrelated legislation.",
+      "ticker": "V",
+      "topic": "unrelated legislation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          52
+        ],
+        [
+          56,
+          64
+        ],
+        [
+          75,
+          83
+        ],
+        [
+          104,
+          108
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "Previous versions"
+      ],
+      "position": 34,
+      "sentence_id": "0001403161-25-000089:1:19",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Previous versions of the legislation were introduced in 2022 and 2023, and required among other things, that large issuing banks offer a choice of at least two unaffiliated networks over which electronic credit transactions may be processed.",
+      "ticker": "V",
+      "topic": "previous version"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          61
+        ],
+        [
+          72,
+          107
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "Illinois law"
+      ],
+      "position": 42,
+      "sentence_id": "0001403161-25-000089:1:22",
+      "source": "phrase",
+      "status": "modified",
+      "text": "While the Illinois law remains subject to legal challenge, if such laws are allowed to go into effect, they may also impose significant technical and compliance burdens on our business.",
+      "ticker": "V",
+      "topic": "illinois law"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          61
+        ],
+        [
+          72,
+          107
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "legal challenge"
+      ],
+      "position": 42,
+      "sentence_id": "0001403161-25-000089:1:22",
+      "source": "phrase",
+      "status": "modified",
+      "text": "While the Illinois law remains subject to legal challenge, if such laws are allowed to go into effect, they may also impose significant technical and compliance burdens on our business.",
+      "ticker": "V",
+      "topic": "legal challenge"
+    },
+    {
+      "added_spans": [
+        [
+          162,
+          187
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "European Economic Area"
+      ],
+      "position": 44,
+      "sentence_id": "0001403161-25-000089:1:23",
+      "source": "entity",
+      "status": "modified",
+      "text": "In Europe, the EU’s IFR places an effective cap on consumer credit and consumer debit interchange fees for both domestic and cross-border transactions within the European Economic Area of 30 basis points and 20 basis points, respectively.",
+      "ticker": "V",
+      "topic": "European Economic Area"
+    },
+    {
+      "added_spans": [
+        [
+          90,
+          142
+        ],
+        [
+          146,
+          165
+        ],
+        [
+          172,
+          184
+        ],
+        [
+          189,
+          277
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "consumer and commercial transactions"
+      ],
+      "position": 52,
+      "sentence_id": "0001403161-25-000089:1:27",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In Asia Pacific, the Reserve Bank of Australia (RBA) which already regulates interchange, recently proposed reducing existing interchange caps on domestic credit and debit transactions and not allowing differential interchange treatment for consumer and commercial transactions.",
+      "ticker": "V",
+      "topic": "consumer and commercial transaction"
+    },
+    {
+      "added_spans": [
+        [
+          90,
+          142
+        ],
+        [
+          146,
+          165
+        ],
+        [
+          172,
+          184
+        ],
+        [
+          189,
+          277
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "differential interchange treatment"
+      ],
+      "position": 52,
+      "sentence_id": "0001403161-25-000089:1:27",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In Asia Pacific, the Reserve Bank of Australia (RBA) which already regulates interchange, recently proposed reducing existing interchange caps on domestic credit and debit transactions and not allowing differential interchange treatment for consumer and commercial transactions.",
+      "ticker": "V",
+      "topic": "differential interchange treatment"
+    },
+    {
+      "added_spans": [
+        [
+          90,
+          142
+        ],
+        [
+          146,
+          165
+        ],
+        [
+          172,
+          184
+        ],
+        [
+          189,
+          277
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "domestic credit"
+      ],
+      "position": 52,
+      "sentence_id": "0001403161-25-000089:1:27",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In Asia Pacific, the Reserve Bank of Australia (RBA) which already regulates interchange, recently proposed reducing existing interchange caps on domestic credit and debit transactions and not allowing differential interchange treatment for consumer and commercial transactions.",
+      "ticker": "V",
+      "topic": "domestic credit"
+    },
+    {
+      "added_spans": [
+        [
+          90,
+          142
+        ],
+        [
+          146,
+          165
+        ],
+        [
+          172,
+          184
+        ],
+        [
+          189,
+          277
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "existing interchange caps"
+      ],
+      "position": 52,
+      "sentence_id": "0001403161-25-000089:1:27",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In Asia Pacific, the Reserve Bank of Australia (RBA) which already regulates interchange, recently proposed reducing existing interchange caps on domestic credit and debit transactions and not allowing differential interchange treatment for consumer and commercial transactions.",
+      "ticker": "V",
+      "topic": "existing interchange cap"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          27,
+          84
+        ],
+        [
+          101,
+          113
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "Commerce Commission"
+      ],
+      "position": 54,
+      "sentence_id": "0001403161-25-000089:1:28",
+      "source": "entity",
+      "status": "modified",
+      "text": "Similarly, in New Zealand, the Commerce Commission recently lowered existing caps on domestic credit transactions.",
+      "ticker": "V",
+      "topic": "Commerce Commission"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          27,
+          84
+        ],
+        [
+          101,
+          113
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "existing caps"
+      ],
+      "position": 54,
+      "sentence_id": "0001403161-25-000089:1:28",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Similarly, in New Zealand, the Commerce Commission recently lowered existing caps on domestic credit transactions.",
+      "ticker": "V",
+      "topic": "existing cap"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          263
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "e-commerce transactions"
+      ],
+      "position": 66,
+      "sentence_id": "0001403161-25-000089:1:34",
+      "source": "phrase",
+      "status": "added",
+      "text": "In June 2022, the UK’s PSR initiated a market review focusing on post-Brexit increases in interchange rates for e-commerce transactions between the UK and Europe and is proposing to cap cross-border interchange on certain transactions in that geographic corridor.",
+      "ticker": "V",
+      "topic": "e commerce transaction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          263
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "geographic corridor"
+      ],
+      "position": 66,
+      "sentence_id": "0001403161-25-000089:1:34",
+      "source": "phrase",
+      "status": "added",
+      "text": "In June 2022, the UK’s PSR initiated a market review focusing on post-Brexit increases in interchange rates for e-commerce transactions between the UK and Europe and is proposing to cap cross-border interchange on certain transactions in that geographic corridor.",
+      "ticker": "V",
+      "topic": "geographic corridor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          136
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "commercial credit transactions"
+      ],
+      "position": 67,
+      "sentence_id": "0001403161-25-000089:1:35",
+      "source": "phrase",
+      "status": "added",
+      "text": "Most recently, in July 2025, New Zealand adopted interchange caps on cross-border transactions including commercial credit transactions.",
+      "ticker": "V",
+      "topic": "commercial credit transaction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          599
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "business and financial results"
+      ],
+      "position": 140,
+      "sentence_id": "0001403161-25-000089:1:71",
+      "source": "phrase",
+      "status": "added",
+      "text": "The evolving and increasing regulatory focus on the payments industry could negatively impact or reduce the number of Visa products our clients issue, the volume of payments we process, our net revenue, our brands, our competitive positioning, our ability to use our intellectual property to differentiate our products and services, the quality and types of products and services we offer, the countries in which our products and services are used, and the types of consumers and sellers who can obtain or accept our products and services, all of which could harm our business and financial results.",
+      "ticker": "V",
+      "topic": "business and financial result"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          599
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "clients issue"
+      ],
+      "position": 140,
+      "sentence_id": "0001403161-25-000089:1:71",
+      "source": "phrase",
+      "status": "added",
+      "text": "The evolving and increasing regulatory focus on the payments industry could negatively impact or reduce the number of Visa products our clients issue, the volume of payments we process, our net revenue, our brands, our competitive positioning, our ability to use our intellectual property to differentiate our products and services, the quality and types of products and services we offer, the countries in which our products and services are used, and the types of consumers and sellers who can obtain or accept our products and services, all of which could harm our business and financial results.",
+      "ticker": "V",
+      "topic": "client issue"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          599
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "competitive positioning"
+      ],
+      "position": 140,
+      "sentence_id": "0001403161-25-000089:1:71",
+      "source": "phrase",
+      "status": "added",
+      "text": "The evolving and increasing regulatory focus on the payments industry could negatively impact or reduce the number of Visa products our clients issue, the volume of payments we process, our net revenue, our brands, our competitive positioning, our ability to use our intellectual property to differentiate our products and services, the quality and types of products and services we offer, the countries in which our products and services are used, and the types of consumers and sellers who can obtain or accept our products and services, all of which could harm our business and financial results.",
+      "ticker": "V",
+      "topic": "competitive positioning"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "existing laws"
+      ],
+      "position": 145,
+      "sentence_id": "0001403161-25-000089:1:74",
+      "source": "phrase",
+      "status": "added",
+      "text": "Recent political developments around the world, including recent shifts in trade policy, have added additional uncertainty with respect to new laws and regulations or changes in the interpretations or enforcement of existing laws and regulations, and increased risk of financial regulatory fragmentation.",
+      "ticker": "V",
+      "topic": "existing law"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "increased risk"
+      ],
+      "position": 145,
+      "sentence_id": "0001403161-25-000089:1:74",
+      "source": "phrase",
+      "status": "added",
+      "text": "Recent political developments around the world, including recent shifts in trade policy, have added additional uncertainty with respect to new laws and regulations or changes in the interpretations or enforcement of existing laws and regulations, and increased risk of financial regulatory fragmentation.",
+      "ticker": "V",
+      "topic": "increased risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "Recent political developments"
+      ],
+      "position": 145,
+      "sentence_id": "0001403161-25-000089:1:74",
+      "source": "phrase",
+      "status": "added",
+      "text": "Recent political developments around the world, including recent shifts in trade policy, have added additional uncertainty with respect to new laws and regulations or changes in the interpretations or enforcement of existing laws and regulations, and increased risk of financial regulatory fragmentation.",
+      "ticker": "V",
+      "topic": "recent political development"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "recent shifts"
+      ],
+      "position": 145,
+      "sentence_id": "0001403161-25-000089:1:74",
+      "source": "phrase",
+      "status": "added",
+      "text": "Recent political developments around the world, including recent shifts in trade policy, have added additional uncertainty with respect to new laws and regulations or changes in the interpretations or enforcement of existing laws and regulations, and increased risk of financial regulatory fragmentation.",
+      "ticker": "V",
+      "topic": "recent shift"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "regulatory fragmentation"
+      ],
+      "position": 145,
+      "sentence_id": "0001403161-25-000089:1:74",
+      "source": "phrase",
+      "status": "added",
+      "text": "Recent political developments around the world, including recent shifts in trade policy, have added additional uncertainty with respect to new laws and regulations or changes in the interpretations or enforcement of existing laws and regulations, and increased risk of financial regulatory fragmentation.",
+      "ticker": "V",
+      "topic": "regulatory fragmentation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "b03b1589a26a9b99",
+      "matched_terms": [
+        "trade policy"
+      ],
+      "position": 145,
+      "sentence_id": "0001403161-25-000089:1:74",
+      "source": "phrase",
+      "status": "added",
+      "text": "Recent political developments around the world, including recent shifts in trade policy, have added additional uncertainty with respect to new laws and regulations or changes in the interpretations or enforcement of existing laws and regulations, and increased risk of financial regulatory fragmentation.",
+      "ticker": "V",
+      "topic": "trade policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          33
+        ],
+        [
+          38,
+          43
+        ],
+        [
+          48,
+          81
+        ],
+        [
+          108,
+          146
+        ],
+        [
+          161,
+          165
+        ],
+        [
+          170,
+          181
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "data transfer"
+      ],
+      "position": 5,
+      "sentence_id": "0001403161-25-000089:3:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Legislators and regulators around the world are increasingly adopting or revising privacy, data protection, data management, data transfer, AI and cybersecurity laws and regulations.",
+      "ticker": "V",
+      "topic": "data transfer"
+    },
+    {
+      "added_spans": [
+        [
+          61,
+          64
+        ],
+        [
+          253,
+          316
+        ],
+        [
+          327,
+          360
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "data processing practices"
+      ],
+      "position": 7,
+      "sentence_id": "0001403161-25-000089:3:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For example, our ongoing efforts to comply with complex U.S. and international privacy and data protection laws may increase the complexity of our compliance operations, entail substantial expenses, divert resources from other initiatives and projects, require us to modify our data processing practices, policies or services, and adversely impact our business.",
+      "ticker": "V",
+      "topic": "data processing practice"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          29,
+          258
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "Australia"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:3:4",
+      "source": "entity",
+      "status": "modified",
+      "text": "In addition, privacy laws in numerous jurisdictions, including but not limited to the U.S., China, India, Australia, New Zealand, Brazil, Kingdom of Saudi Arabia, Hong Kong and Japan, have established specific legal requirements for cross-border transfers of personal information and substantial compliance and audit obligations.",
+      "ticker": "V",
+      "topic": "Australia"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          29,
+          258
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "Brazil"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:3:4",
+      "source": "entity",
+      "status": "modified",
+      "text": "In addition, privacy laws in numerous jurisdictions, including but not limited to the U.S., China, India, Australia, New Zealand, Brazil, Kingdom of Saudi Arabia, Hong Kong and Japan, have established specific legal requirements for cross-border transfers of personal information and substantial compliance and audit obligations.",
+      "ticker": "V",
+      "topic": "Brazil"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          29,
+          258
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "Hong Kong"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:3:4",
+      "source": "entity",
+      "status": "modified",
+      "text": "In addition, privacy laws in numerous jurisdictions, including but not limited to the U.S., China, India, Australia, New Zealand, Brazil, Kingdom of Saudi Arabia, Hong Kong and Japan, have established specific legal requirements for cross-border transfers of personal information and substantial compliance and audit obligations.",
+      "ticker": "V",
+      "topic": "Hong Kong"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          29,
+          258
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "Japan"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:3:4",
+      "source": "entity",
+      "status": "modified",
+      "text": "In addition, privacy laws in numerous jurisdictions, including but not limited to the U.S., China, India, Australia, New Zealand, Brazil, Kingdom of Saudi Arabia, Hong Kong and Japan, have established specific legal requirements for cross-border transfers of personal information and substantial compliance and audit obligations.",
+      "ticker": "V",
+      "topic": "Japan"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          29,
+          258
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "Kingdom of Saudi Arabia"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:3:4",
+      "source": "entity",
+      "status": "modified",
+      "text": "In addition, privacy laws in numerous jurisdictions, including but not limited to the U.S., China, India, Australia, New Zealand, Brazil, Kingdom of Saudi Arabia, Hong Kong and Japan, have established specific legal requirements for cross-border transfers of personal information and substantial compliance and audit obligations.",
+      "ticker": "V",
+      "topic": "Kingdom of Saudi Arabia"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          29,
+          258
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "New Zealand"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:3:4",
+      "source": "entity",
+      "status": "modified",
+      "text": "In addition, privacy laws in numerous jurisdictions, including but not limited to the U.S., China, India, Australia, New Zealand, Brazil, Kingdom of Saudi Arabia, Hong Kong and Japan, have established specific legal requirements for cross-border transfers of personal information and substantial compliance and audit obligations.",
+      "ticker": "V",
+      "topic": "New Zealand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          29,
+          258
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "cross-border transfers"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:3:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, privacy laws in numerous jurisdictions, including but not limited to the U.S., China, India, Australia, New Zealand, Brazil, Kingdom of Saudi Arabia, Hong Kong and Japan, have established specific legal requirements for cross-border transfers of personal information and substantial compliance and audit obligations.",
+      "ticker": "V",
+      "topic": "cross border transfer"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          29,
+          258
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "Saudi Arabia"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:3:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, privacy laws in numerous jurisdictions, including but not limited to the U.S., China, India, Australia, New Zealand, Brazil, Kingdom of Saudi Arabia, Hong Kong and Japan, have established specific legal requirements for cross-border transfers of personal information and substantial compliance and audit obligations.",
+      "ticker": "V",
+      "topic": "saudi arabia"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          29,
+          258
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "specific legal requirements"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:3:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, privacy laws in numerous jurisdictions, including but not limited to the U.S., China, India, Australia, New Zealand, Brazil, Kingdom of Saudi Arabia, Hong Kong and Japan, have established specific legal requirements for cross-border transfers of personal information and substantial compliance and audit obligations.",
+      "ticker": "V",
+      "topic": "specific legal requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          153
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "data localization"
+      ],
+      "position": 10,
+      "sentence_id": "0001403161-25-000089:3:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Certain countries have also established specific legal requirements for data localization, such as where personal data must remain stored in the country.",
+      "ticker": "V",
+      "topic": "data localization"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          153
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "specific legal requirements"
+      ],
+      "position": 10,
+      "sentence_id": "0001403161-25-000089:3:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Certain countries have also established specific legal requirements for data localization, such as where personal data must remain stored in the country.",
+      "ticker": "V",
+      "topic": "specific legal requirement"
+    },
+    {
+      "added_spans": [
+        [
+          119,
+          143
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "legal interpretations"
+      ],
+      "position": 12,
+      "sentence_id": "0001403161-25-000089:3:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The global proliferation of new privacy and data protection laws may lead to inconsistent and conflicting requirements or legal interpretations, which create an uncertain regulatory environment.",
+      "ticker": "V",
+      "topic": "legal interpretation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          318
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "confidential information"
+      ],
+      "position": 34,
+      "sentence_id": "0001403161-25-000089:3:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "The increased risk of inadvertent disclosure of confidential information or personal data in connection with the utilization of AI technologies may result in stronger regulatory scrutiny, leading to legal and regulatory investigations and enforcement actions that may negatively affect our business, even if unfounded.",
+      "ticker": "V",
+      "topic": "confidential information"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          318
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "inadvertent disclosure"
+      ],
+      "position": 34,
+      "sentence_id": "0001403161-25-000089:3:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "The increased risk of inadvertent disclosure of confidential information or personal data in connection with the utilization of AI technologies may result in stronger regulatory scrutiny, leading to legal and regulatory investigations and enforcement actions that may negatively affect our business, even if unfounded.",
+      "ticker": "V",
+      "topic": "inadvertent disclosure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          318
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "increased risk"
+      ],
+      "position": 34,
+      "sentence_id": "0001403161-25-000089:3:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "The increased risk of inadvertent disclosure of confidential information or personal data in connection with the utilization of AI technologies may result in stronger regulatory scrutiny, leading to legal and regulatory investigations and enforcement actions that may negatively affect our business, even if unfounded.",
+      "ticker": "V",
+      "topic": "increased risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          318
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "legal and regulatory investigations"
+      ],
+      "position": 34,
+      "sentence_id": "0001403161-25-000089:3:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "The increased risk of inadvertent disclosure of confidential information or personal data in connection with the utilization of AI technologies may result in stronger regulatory scrutiny, leading to legal and regulatory investigations and enforcement actions that may negatively affect our business, even if unfounded.",
+      "ticker": "V",
+      "topic": "legal and regulatory investigation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          318
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "stronger regulatory scrutiny"
+      ],
+      "position": 34,
+      "sentence_id": "0001403161-25-000089:3:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "The increased risk of inadvertent disclosure of confidential information or personal data in connection with the utilization of AI technologies may result in stronger regulatory scrutiny, leading to legal and regulatory investigations and enforcement actions that may negatively affect our business, even if unfounded.",
+      "ticker": "V",
+      "topic": "stronger regulatory scrutiny"
+    },
+    {
+      "added_spans": [
+        [
+          52,
+          74
+        ],
+        [
+          218,
+          296
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "regulatory schemes"
+      ],
+      "position": 36,
+      "sentence_id": "0001403161-25-000089:3:19",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In the context of use and deployment, risks include technical, operational and compliance considerations, and our ability to monitor and safely deploy AI systems throughout the organization with appropriate safeguards and in compliance with the various regulatory schemes related to AI technology.",
+      "ticker": "V",
+      "topic": "regulatory scheme"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "AI agents"
+      ],
+      "position": 37,
+      "sentence_id": "0001403161-25-000089:3:20",
+      "source": "lexicon",
+      "status": "added",
+      "text": "In particular, the adoption of agentic commerce, in which autonomous AI agents initiate and execute transactions on behalf of users, presents novel and complex regulatory, privacy and cybersecurity risks.",
+      "ticker": "V",
+      "topic": "Generative AI"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "agentic commerce"
+      ],
+      "position": 37,
+      "sentence_id": "0001403161-25-000089:3:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "In particular, the adoption of agentic commerce, in which autonomous AI agents initiate and execute transactions on behalf of users, presents novel and complex regulatory, privacy and cybersecurity risks.",
+      "ticker": "V",
+      "topic": "agentic commerce"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          116
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "autonomous agents"
+      ],
+      "position": 38,
+      "sentence_id": "0001403161-25-000089:3:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "Legal frameworks governing such autonomous agents remain nascent, with limited direct guidance specific to payments.",
+      "ticker": "V",
+      "topic": "autonomous agent"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          116
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "direct guidance"
+      ],
+      "position": 38,
+      "sentence_id": "0001403161-25-000089:3:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "Legal frameworks governing such autonomous agents remain nascent, with limited direct guidance specific to payments.",
+      "ticker": "V",
+      "topic": "direct guidance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          116
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "Legal frameworks"
+      ],
+      "position": 38,
+      "sentence_id": "0001403161-25-000089:3:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "Legal frameworks governing such autonomous agents remain nascent, with limited direct guidance specific to payments.",
+      "ticker": "V",
+      "topic": "legal framework"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          292
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "agentic commerce ecosystem"
+      ],
+      "position": 39,
+      "sentence_id": "0001403161-25-000089:3:22",
+      "source": "phrase",
+      "status": "added",
+      "text": "The interplay between payments regulations, data privacy laws and evolving AI regulations may create uncertainty around compliance obligations and potential liability exposure as more participants (including sellers, fintechs, AI developers and enablers) enter the agentic commerce ecosystem.",
+      "ticker": "V",
+      "topic": "agentic commerce ecosystem"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          292
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "AI developers"
+      ],
+      "position": 39,
+      "sentence_id": "0001403161-25-000089:3:22",
+      "source": "phrase",
+      "status": "added",
+      "text": "The interplay between payments regulations, data privacy laws and evolving AI regulations may create uncertainty around compliance obligations and potential liability exposure as more participants (including sellers, fintechs, AI developers and enablers) enter the agentic commerce ecosystem.",
+      "ticker": "V",
+      "topic": "ai developer"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          292
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "compliance obligations"
+      ],
+      "position": 39,
+      "sentence_id": "0001403161-25-000089:3:22",
+      "source": "phrase",
+      "status": "added",
+      "text": "The interplay between payments regulations, data privacy laws and evolving AI regulations may create uncertainty around compliance obligations and potential liability exposure as more participants (including sellers, fintechs, AI developers and enablers) enter the agentic commerce ecosystem.",
+      "ticker": "V",
+      "topic": "compliance obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          292
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "liability exposure"
+      ],
+      "position": 39,
+      "sentence_id": "0001403161-25-000089:3:22",
+      "source": "phrase",
+      "status": "added",
+      "text": "The interplay between payments regulations, data privacy laws and evolving AI regulations may create uncertainty around compliance obligations and potential liability exposure as more participants (including sellers, fintechs, AI developers and enablers) enter the agentic commerce ecosystem.",
+      "ticker": "V",
+      "topic": "liability exposure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          292
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "payments regulations"
+      ],
+      "position": 39,
+      "sentence_id": "0001403161-25-000089:3:22",
+      "source": "phrase",
+      "status": "added",
+      "text": "The interplay between payments regulations, data privacy laws and evolving AI regulations may create uncertainty around compliance obligations and potential liability exposure as more participants (including sellers, fintechs, AI developers and enablers) enter the agentic commerce ecosystem.",
+      "ticker": "V",
+      "topic": "payment regulation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          160
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "agentic commerce solutions scale"
+      ],
+      "position": 41,
+      "sentence_id": "0001403161-25-000089:3:24",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, as agentic commerce solutions scale, we may see increased instances of erroneous or disputed payments, increased chargebacks and reputational harm.",
+      "ticker": "V",
+      "topic": "agentic commerce solution scale"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          160
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "erroneous or disputed payments"
+      ],
+      "position": 41,
+      "sentence_id": "0001403161-25-000089:3:24",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, as agentic commerce solutions scale, we may see increased instances of erroneous or disputed payments, increased chargebacks and reputational harm.",
+      "ticker": "V",
+      "topic": "erroneous or disputed payment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          160
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "increased chargebacks"
+      ],
+      "position": 41,
+      "sentence_id": "0001403161-25-000089:3:24",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, as agentic commerce solutions scale, we may see increased instances of erroneous or disputed payments, increased chargebacks and reputational harm.",
+      "ticker": "V",
+      "topic": "increased chargeback"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          160
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "increased instances"
+      ],
+      "position": 41,
+      "sentence_id": "0001403161-25-000089:3:24",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, as agentic commerce solutions scale, we may see increased instances of erroneous or disputed payments, increased chargebacks and reputational harm.",
+      "ticker": "V",
+      "topic": "increased instance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          160
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "reputational harm"
+      ],
+      "position": 41,
+      "sentence_id": "0001403161-25-000089:3:24",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, as agentic commerce solutions scale, we may see increased instances of erroneous or disputed payments, increased chargebacks and reputational harm.",
+      "ticker": "V",
+      "topic": "reputational harm"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          176
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "agentic AI"
+      ],
+      "position": 42,
+      "sentence_id": "0001403161-25-000089:3:25",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Furthermore, reliance on agentic AI introduces challenges in monitoring cross-border, prohibited or high-risk transactions, where conflicting regulatory requirements may apply.",
+      "ticker": "V",
+      "topic": "Generative AI"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          176
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "conflicting regulatory requirements"
+      ],
+      "position": 42,
+      "sentence_id": "0001403161-25-000089:3:25",
+      "source": "phrase",
+      "status": "added",
+      "text": "Furthermore, reliance on agentic AI introduces challenges in monitoring cross-border, prohibited or high-risk transactions, where conflicting regulatory requirements may apply.",
+      "ticker": "V",
+      "topic": "conflicting regulatory requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          356
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "AI and inconsistent requirements"
+      ],
+      "position": 43,
+      "sentence_id": "0001403161-25-000089:3:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "The fragmented regulatory landscape for emerging technologies such as AI and inconsistent requirements across legal frameworks may amplify difficulties in identifying, preventing or mitigating risk with a single global approach, potentially increasing our compliance costs or stratifying our ability to leverage certain data or technologies for innovation.",
+      "ticker": "V",
+      "topic": "ai and inconsistent requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          356
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "emerging technologies"
+      ],
+      "position": 43,
+      "sentence_id": "0001403161-25-000089:3:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "The fragmented regulatory landscape for emerging technologies such as AI and inconsistent requirements across legal frameworks may amplify difficulties in identifying, preventing or mitigating risk with a single global approach, potentially increasing our compliance costs or stratifying our ability to leverage certain data or technologies for innovation.",
+      "ticker": "V",
+      "topic": "emerging technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          356
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "fragmented regulatory landscape"
+      ],
+      "position": 43,
+      "sentence_id": "0001403161-25-000089:3:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "The fragmented regulatory landscape for emerging technologies such as AI and inconsistent requirements across legal frameworks may amplify difficulties in identifying, preventing or mitigating risk with a single global approach, potentially increasing our compliance costs or stratifying our ability to leverage certain data or technologies for innovation.",
+      "ticker": "V",
+      "topic": "fragmented regulatory landscape"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          356
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "legal frameworks"
+      ],
+      "position": 43,
+      "sentence_id": "0001403161-25-000089:3:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "The fragmented regulatory landscape for emerging technologies such as AI and inconsistent requirements across legal frameworks may amplify difficulties in identifying, preventing or mitigating risk with a single global approach, potentially increasing our compliance costs or stratifying our ability to leverage certain data or technologies for innovation.",
+      "ticker": "V",
+      "topic": "legal framework"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          356
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "single global approach"
+      ],
+      "position": 43,
+      "sentence_id": "0001403161-25-000089:3:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "The fragmented regulatory landscape for emerging technologies such as AI and inconsistent requirements across legal frameworks may amplify difficulties in identifying, preventing or mitigating risk with a single global approach, potentially increasing our compliance costs or stratifying our ability to leverage certain data or technologies for innovation.",
+      "ticker": "V",
+      "topic": "single global approach"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          61,
+          72
+        ],
+        [
+          110,
+          178
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "high-risk AI systems"
+      ],
+      "position": 45,
+      "sentence_id": "0001403161-25-000089:3:27",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For instance, the EU has adopted a comprehensive AI Act that establishes harmonized rules across Europe, with key provisions for high-risk AI systems taking effect in August 2026.",
+      "ticker": "V",
+      "topic": "high risk ai system"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          195
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "California"
+      ],
+      "position": 47,
+      "sentence_id": "0001403161-25-000089:3:28",
+      "source": "entity",
+      "status": "added",
+      "text": "Meanwhile, several U.S. states, including California, Colorado and Utah, have adopted AI-specific frameworks or are considering applying existing consumer and data protection laws to regulate AI.",
+      "ticker": "V",
+      "topic": "California"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          195
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "Colorado"
+      ],
+      "position": 47,
+      "sentence_id": "0001403161-25-000089:3:28",
+      "source": "entity",
+      "status": "added",
+      "text": "Meanwhile, several U.S. states, including California, Colorado and Utah, have adopted AI-specific frameworks or are considering applying existing consumer and data protection laws to regulate AI.",
+      "ticker": "V",
+      "topic": "Colorado"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          195
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "Utah"
+      ],
+      "position": 47,
+      "sentence_id": "0001403161-25-000089:3:28",
+      "source": "entity",
+      "status": "added",
+      "text": "Meanwhile, several U.S. states, including California, Colorado and Utah, have adopted AI-specific frameworks or are considering applying existing consumer and data protection laws to regulate AI.",
+      "ticker": "V",
+      "topic": "Utah"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          195
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "AI-specific frameworks"
+      ],
+      "position": 47,
+      "sentence_id": "0001403161-25-000089:3:28",
+      "source": "phrase",
+      "status": "added",
+      "text": "Meanwhile, several U.S. states, including California, Colorado and Utah, have adopted AI-specific frameworks or are considering applying existing consumer and data protection laws to regulate AI.",
+      "ticker": "V",
+      "topic": "ai specific framework"
+    },
+    {
+      "added_spans": [
+        [
+          17,
+          44
+        ],
+        [
+          75,
+          83
+        ],
+        [
+          105,
+          112
+        ],
+        [
+          138,
+          171
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "different regulations"
+      ],
+      "position": 49,
+      "sentence_id": "0001403161-25-000089:3:29",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Depending on how these different regulations are interpreted and enforced, they may limit the ability to develop and deploy AI systems or significantly increase associated compliance costs.",
+      "ticker": "V",
+      "topic": "different regulation"
+    },
+    {
+      "added_spans": [
+        [
+          60,
+          127
+        ]
+      ],
+      "change_id": "338fbe2c525a04ce",
+      "matched_terms": [
+        "emerging laws"
+      ],
+      "position": 51,
+      "sentence_id": "0001403161-25-000089:3:30",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our development and implementation of governance frameworks aimed at complying with emerging laws and regulations applicable to our AI and machine learning systems may not be successful in mitigating all of these emerging risks.",
+      "ticker": "V",
+      "topic": "emerging law"
+    },
+    {
+      "added_spans": [
+        [
+          144,
+          168
+        ],
+        [
+          301,
+          314
+        ],
+        [
+          332,
+          371
+        ],
+        [
+          471,
+          493
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "government shutdowns"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:11:4",
+      "source": "lexicon",
+      "status": "modified",
+      "text": "Adverse macroeconomic conditions within the U.S. or internationally, including but not limited to recessions, inflation, rising interest rates, increase in tariff rates, high unemployment, currency fluctuations, actual or anticipated large-scale defaults or failures, rising energy prices, a slowdown or disruption of global trade, trade retaliation, government shutdowns, and reduced consumer, small business, government, and corporate spending, have a direct impact on international commerce.",
+      "ticker": "V",
+      "topic": "Government shutdown"
+    },
+    {
+      "added_spans": [
+        [
+          144,
+          168
+        ],
+        [
+          301,
+          314
+        ],
+        [
+          332,
+          371
+        ],
+        [
+          471,
+          493
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "international commerce"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:11:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Adverse macroeconomic conditions within the U.S. or internationally, including but not limited to recessions, inflation, rising interest rates, increase in tariff rates, high unemployment, currency fluctuations, actual or anticipated large-scale defaults or failures, rising energy prices, a slowdown or disruption of global trade, trade retaliation, government shutdowns, and reduced consumer, small business, government, and corporate spending, have a direct impact on international commerce.",
+      "ticker": "V",
+      "topic": "international commerce"
+    },
+    {
+      "added_spans": [
+        [
+          144,
+          168
+        ],
+        [
+          301,
+          314
+        ],
+        [
+          332,
+          371
+        ],
+        [
+          471,
+          493
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "trade retaliation"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:11:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Adverse macroeconomic conditions within the U.S. or internationally, including but not limited to recessions, inflation, rising interest rates, increase in tariff rates, high unemployment, currency fluctuations, actual or anticipated large-scale defaults or failures, rising energy prices, a slowdown or disruption of global trade, trade retaliation, government shutdowns, and reduced consumer, small business, government, and corporate spending, have a direct impact on international commerce.",
+      "ticker": "V",
+      "topic": "trade retaliation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          127
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "free flow"
+      ],
+      "position": 10,
+      "sentence_id": "0001403161-25-000089:11:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our business depends on the smooth functioning of international financial systems and the free flow of commerce across borders.",
+      "ticker": "V",
+      "topic": "free flow"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          127
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "international financial systems"
+      ],
+      "position": 10,
+      "sentence_id": "0001403161-25-000089:11:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our business depends on the smooth functioning of international financial systems and the free flow of commerce across borders.",
+      "ticker": "V",
+      "topic": "international financial system"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          127
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "smooth functioning"
+      ],
+      "position": 10,
+      "sentence_id": "0001403161-25-000089:11:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our business depends on the smooth functioning of international financial systems and the free flow of commerce across borders.",
+      "ticker": "V",
+      "topic": "smooth functioning"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "client relationships"
+      ],
+      "position": 11,
+      "sentence_id": "0001403161-25-000089:11:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any restrictions on the activities of multinational businesses, disruptions to global trade, or deterioration in international relations could materially and adversely affect our payments volume, transactions, client relationships, and net revenue.",
+      "ticker": "V",
+      "topic": "client relationship"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "international relations"
+      ],
+      "position": 11,
+      "sentence_id": "0001403161-25-000089:11:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any restrictions on the activities of multinational businesses, disruptions to global trade, or deterioration in international relations could materially and adversely affect our payments volume, transactions, client relationships, and net revenue.",
+      "ticker": "V",
+      "topic": "international relation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "multinational businesses"
+      ],
+      "position": 11,
+      "sentence_id": "0001403161-25-000089:11:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any restrictions on the activities of multinational businesses, disruptions to global trade, or deterioration in international relations could materially and adversely affect our payments volume, transactions, client relationships, and net revenue.",
+      "ticker": "V",
+      "topic": "multinational business"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "payments volume"
+      ],
+      "position": 11,
+      "sentence_id": "0001403161-25-000089:11:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any restrictions on the activities of multinational businesses, disruptions to global trade, or deterioration in international relations could materially and adversely affect our payments volume, transactions, client relationships, and net revenue.",
+      "ticker": "V",
+      "topic": "payment volume"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          110
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "geopolitical conditions"
+      ],
+      "position": 27,
+      "sentence_id": "0001403161-25-000089:11:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in geopolitical conditions also increase the security risks described elsewhere in these risk factors.",
+      "ticker": "V",
+      "topic": "geopolitical condition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          110
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "security risks"
+      ],
+      "position": 27,
+      "sentence_id": "0001403161-25-000089:11:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in geopolitical conditions also increase the security risks described elsewhere in these risk factors.",
+      "ticker": "V",
+      "topic": "security risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          237
+        ]
+      ],
+      "change_id": "6f9acfdfce3b8ef4",
+      "matched_terms": [
+        "cross-border volume"
+      ],
+      "position": 29,
+      "sentence_id": "0001403161-25-000089:11:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any decline in cross-border travel and spend would impact our cross-border volume, the number of cross-border transactions we process and our currency exchange activities, which in turn would reduce our international transaction revenue.",
+      "ticker": "V",
+      "topic": "cross border volume"
+    },
+    {
+      "added_spans": [
+        [
+          333,
+          336
+        ],
+        [
+          341,
+          344
+        ],
+        [
+          415,
+          418
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "CMS"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:6:4",
+      "source": "entity",
+      "status": "modified",
+      "text": "As the global payments space becomes more complex, we face increasing competition from our clients, other emerging payment providers such as fintechs, other digital payments, technology companies that have developed payments systems enabled through online activity in ecommerce, social media, and mobile channels, other providers of CMS and VAS offerings, as well as governments in a number of jurisdictions (e.g., U.S., Brazil and India), that are developing, supporting and/or operating national schemes, RTP networks and other payment platforms.",
+      "ticker": "V",
+      "topic": "CMS"
+    },
+    {
+      "added_spans": [
+        [
+          333,
+          336
+        ],
+        [
+          341,
+          344
+        ],
+        [
+          415,
+          418
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "VAS"
+      ],
+      "position": 9,
+      "sentence_id": "0001403161-25-000089:6:4",
+      "source": "entity",
+      "status": "modified",
+      "text": "As the global payments space becomes more complex, we face increasing competition from our clients, other emerging payment providers such as fintechs, other digital payments, technology companies that have developed payments systems enabled through online activity in ecommerce, social media, and mobile channels, other providers of CMS and VAS offerings, as well as governments in a number of jurisdictions (e.g., U.S., Brazil and India), that are developing, supporting and/or operating national schemes, RTP networks and other payment platforms.",
+      "ticker": "V",
+      "topic": "VAS"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          450
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "GenAI",
+        "agentic AI"
+      ],
+      "position": 22,
+      "sentence_id": "0001403161-25-000089:6:11",
+      "source": "lexicon",
+      "status": "added",
+      "text": "We expect to face more competition as AI continues to advance and GenAI and agentic AI capabilities become integrated into payments and related services in two main ways: first, by competitors successfully enhancing their products, services and external offerings with AI to achieve greater and faster product adoption; and second, by competitors providing internal AI tools to upskill their employees for greater operational efficiencies and impact.",
+      "ticker": "V",
+      "topic": "Generative AI"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          450
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "external offerings"
+      ],
+      "position": 22,
+      "sentence_id": "0001403161-25-000089:6:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "We expect to face more competition as AI continues to advance and GenAI and agentic AI capabilities become integrated into payments and related services in two main ways: first, by competitors successfully enhancing their products, services and external offerings with AI to achieve greater and faster product adoption; and second, by competitors providing internal AI tools to upskill their employees for greater operational efficiencies and impact.",
+      "ticker": "V",
+      "topic": "external offering"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          450
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "greater operational efficiencies"
+      ],
+      "position": 22,
+      "sentence_id": "0001403161-25-000089:6:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "We expect to face more competition as AI continues to advance and GenAI and agentic AI capabilities become integrated into payments and related services in two main ways: first, by competitors successfully enhancing their products, services and external offerings with AI to achieve greater and faster product adoption; and second, by competitors providing internal AI tools to upskill their employees for greater operational efficiencies and impact.",
+      "ticker": "V",
+      "topic": "greater operational efficiency"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          450
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "internal AI tools"
+      ],
+      "position": 22,
+      "sentence_id": "0001403161-25-000089:6:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "We expect to face more competition as AI continues to advance and GenAI and agentic AI capabilities become integrated into payments and related services in two main ways: first, by competitors successfully enhancing their products, services and external offerings with AI to achieve greater and faster product adoption; and second, by competitors providing internal AI tools to upskill their employees for greater operational efficiencies and impact.",
+      "ticker": "V",
+      "topic": "internal ai tool"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          450
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "main ways"
+      ],
+      "position": 22,
+      "sentence_id": "0001403161-25-000089:6:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "We expect to face more competition as AI continues to advance and GenAI and agentic AI capabilities become integrated into payments and related services in two main ways: first, by competitors successfully enhancing their products, services and external offerings with AI to achieve greater and faster product adoption; and second, by competitors providing internal AI tools to upskill their employees for greater operational efficiencies and impact.",
+      "ticker": "V",
+      "topic": "main way"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          244
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "AI-based offerings"
+      ],
+      "position": 23,
+      "sentence_id": "0001403161-25-000089:6:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, our competitors may have, or in the future may obtain, proprietary rights that would prevent, limit or interfere with our ability to design, use or sell our own AI-based offerings or services to our clients and other third parties.",
+      "ticker": "V",
+      "topic": "ai based offering"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          244
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "proprietary rights"
+      ],
+      "position": 23,
+      "sentence_id": "0001403161-25-000089:6:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, our competitors may have, or in the future may obtain, proprietary rights that would prevent, limit or interfere with our ability to design, use or sell our own AI-based offerings or services to our clients and other third parties.",
+      "ticker": "V",
+      "topic": "proprietary right"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          279
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "AI-based initiatives"
+      ],
+      "position": 24,
+      "sentence_id": "0001403161-25-000089:6:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we do not continue to invest in developing and supporting our AI-based initiatives, we may fall behind technological developments and evolving industry standards, which would likewise harm our reputation and ability to effectively compete, retain clients or grow our business.",
+      "ticker": "V",
+      "topic": "ai based initiative"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          279
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "technological developments"
+      ],
+      "position": 24,
+      "sentence_id": "0001403161-25-000089:6:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we do not continue to invest in developing and supporting our AI-based initiatives, we may fall behind technological developments and evolving industry standards, which would likewise harm our reputation and ability to effectively compete, retain clients or grow our business.",
+      "ticker": "V",
+      "topic": "technological development"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          177
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "Item 1—Government Regulation and Item 1A"
+      ],
+      "position": 42,
+      "sentence_id": "0001403161-25-000089:6:20",
+      "source": "entity",
+      "status": "added",
+      "text": "For more information on government actions, initiatives or regulations that could impact competition, please see Item 1—Government Regulation and Item 1A—Regulatory Risks above.",
+      "ticker": "V",
+      "topic": "Item 1—Government Regulation and Item 1A"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          177
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "Regulatory Risks"
+      ],
+      "position": 42,
+      "sentence_id": "0001403161-25-000089:6:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "For more information on government actions, initiatives or regulations that could impact competition, please see Item 1—Government Regulation and Item 1A—Regulatory Risks above.",
+      "ticker": "V",
+      "topic": "regulatory risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "Establishing National Innovation"
+      ],
+      "position": 57,
+      "sentence_id": "0001403161-25-000089:6:25",
+      "source": "entity",
+      "status": "added",
+      "text": "In July 2025, the U.S. enacted the Guiding and Establishing National Innovation for U.S. Stablecoins Act (GENIUS Act), establishing a comprehensive framework for regulating stablecoins.",
+      "ticker": "V",
+      "topic": "Establishing National Innovation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "comprehensive framework"
+      ],
+      "position": 57,
+      "sentence_id": "0001403161-25-000089:6:25",
+      "source": "phrase",
+      "status": "added",
+      "text": "In July 2025, the U.S. enacted the Guiding and Establishing National Innovation for U.S. Stablecoins Act (GENIUS Act), establishing a comprehensive framework for regulating stablecoins.",
+      "ticker": "V",
+      "topic": "comprehensive framework"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "GENIUS Act"
+      ],
+      "position": 57,
+      "sentence_id": "0001403161-25-000089:6:25",
+      "source": "phrase",
+      "status": "added",
+      "text": "In July 2025, the U.S. enacted the Guiding and Establishing National Innovation for U.S. Stablecoins Act (GENIUS Act), establishing a comprehensive framework for regulating stablecoins.",
+      "ticker": "V",
+      "topic": "genius act"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          84
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "European Union"
+      ],
+      "position": 58,
+      "sentence_id": "0001403161-25-000089:6:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "Similarly, the European Union has adopted its own legal framework for crypto assets.",
+      "ticker": "V",
+      "topic": "european union"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          84
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "legal framework"
+      ],
+      "position": 58,
+      "sentence_id": "0001403161-25-000089:6:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "Similarly, the European Union has adopted its own legal framework for crypto assets.",
+      "ticker": "V",
+      "topic": "legal framework"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          190
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "Hong Kong"
+      ],
+      "position": 59,
+      "sentence_id": "0001403161-25-000089:6:27",
+      "source": "entity",
+      "status": "added",
+      "text": "Many other countries, including the U.K., Japan, United Arab Emirates, Hong Kong and Singapore, are at varying stages of adopting stablecoin and digital assets-related regulatory frameworks.",
+      "ticker": "V",
+      "topic": "Hong Kong"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          190
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "Japan"
+      ],
+      "position": 59,
+      "sentence_id": "0001403161-25-000089:6:27",
+      "source": "entity",
+      "status": "added",
+      "text": "Many other countries, including the U.K., Japan, United Arab Emirates, Hong Kong and Singapore, are at varying stages of adopting stablecoin and digital assets-related regulatory frameworks.",
+      "ticker": "V",
+      "topic": "Japan"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          190
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "Singapore"
+      ],
+      "position": 59,
+      "sentence_id": "0001403161-25-000089:6:27",
+      "source": "entity",
+      "status": "added",
+      "text": "Many other countries, including the U.K., Japan, United Arab Emirates, Hong Kong and Singapore, are at varying stages of adopting stablecoin and digital assets-related regulatory frameworks.",
+      "ticker": "V",
+      "topic": "Singapore"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          190
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "United Arab Emirates"
+      ],
+      "position": 59,
+      "sentence_id": "0001403161-25-000089:6:27",
+      "source": "entity",
+      "status": "added",
+      "text": "Many other countries, including the U.K., Japan, United Arab Emirates, Hong Kong and Singapore, are at varying stages of adopting stablecoin and digital assets-related regulatory frameworks.",
+      "ticker": "V",
+      "topic": "United Arab Emirates"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          184
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "regulatory certainty"
+      ],
+      "position": 60,
+      "sentence_id": "0001403161-25-000089:6:28",
+      "source": "phrase",
+      "status": "added",
+      "text": "With more regulatory certainty and permissive or favorable regulations, stablecoins could potentially disrupt existing payment networks, including in cross-border and B2B transactions.",
+      "ticker": "V",
+      "topic": "regulatory certainty"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          149
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "asset value"
+      ],
+      "position": 61,
+      "sentence_id": "0001403161-25-000089:6:29",
+      "source": "phrase",
+      "status": "added",
+      "text": "In countries facing currency instability and controls, stablecoins could increasingly be used as an alternative to preserve and transfer asset value.",
+      "ticker": "V",
+      "topic": "asset value"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          149
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "currency instability"
+      ],
+      "position": 61,
+      "sentence_id": "0001403161-25-000089:6:29",
+      "source": "phrase",
+      "status": "added",
+      "text": "In countries facing currency instability and controls, stablecoins could increasingly be used as an alternative to preserve and transfer asset value.",
+      "ticker": "V",
+      "topic": "currency instability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          252
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "closed loop systems"
+      ],
+      "position": 62,
+      "sentence_id": "0001403161-25-000089:6:30",
+      "source": "phrase",
+      "status": "added",
+      "text": "In more mature markets, stablecoins could achieve broad adoption through regulated issuance by traditional banks, fintechs and other new entrants, as well as by being integrated in closed loop systems operated by large digital ecosystems and platforms.",
+      "ticker": "V",
+      "topic": "closed loop system"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          252
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "large digital ecosystems"
+      ],
+      "position": 62,
+      "sentence_id": "0001403161-25-000089:6:30",
+      "source": "phrase",
+      "status": "added",
+      "text": "In more mature markets, stablecoins could achieve broad adoption through regulated issuance by traditional banks, fintechs and other new entrants, as well as by being integrated in closed loop systems operated by large digital ecosystems and platforms.",
+      "ticker": "V",
+      "topic": "large digital ecosystem"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          252
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "mature markets"
+      ],
+      "position": 62,
+      "sentence_id": "0001403161-25-000089:6:30",
+      "source": "phrase",
+      "status": "added",
+      "text": "In more mature markets, stablecoins could achieve broad adoption through regulated issuance by traditional banks, fintechs and other new entrants, as well as by being integrated in closed loop systems operated by large digital ecosystems and platforms.",
+      "ticker": "V",
+      "topic": "mature market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          252
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "regulated issuance"
+      ],
+      "position": 62,
+      "sentence_id": "0001403161-25-000089:6:30",
+      "source": "phrase",
+      "status": "added",
+      "text": "In more mature markets, stablecoins could achieve broad adoption through regulated issuance by traditional banks, fintechs and other new entrants, as well as by being integrated in closed loop systems operated by large digital ecosystems and platforms.",
+      "ticker": "V",
+      "topic": "regulated issuance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          252
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "traditional banks"
+      ],
+      "position": 62,
+      "sentence_id": "0001403161-25-000089:6:30",
+      "source": "phrase",
+      "status": "added",
+      "text": "In more mature markets, stablecoins could achieve broad adoption through regulated issuance by traditional banks, fintechs and other new entrants, as well as by being integrated in closed loop systems operated by large digital ecosystems and platforms.",
+      "ticker": "V",
+      "topic": "traditional bank"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          233
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "processors processing transactions"
+      ],
+      "position": 67,
+      "sentence_id": "0001403161-25-000089:6:33",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, parties may agree not to use our payments network for processing transactions resulting in sellers processing transactions directly with issuers, or processors processing transactions directly with issuers and acquirers.",
+      "ticker": "V",
+      "topic": "processor processing transaction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          233
+        ]
+      ],
+      "change_id": "739123552d0056f6",
+      "matched_terms": [
+        "sellers processing transactions"
+      ],
+      "position": 67,
+      "sentence_id": "0001403161-25-000089:6:33",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, parties may agree not to use our payments network for processing transactions resulting in sellers processing transactions directly with issuers, or processors processing transactions directly with issuers and acquirers.",
+      "ticker": "V",
+      "topic": "seller processing transaction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          198
+        ]
+      ],
+      "change_id": "5abc9712243f3ed0",
+      "matched_terms": [
+        "equal opportunity"
+      ],
+      "position": 4,
+      "sentence_id": "0001403161-25-000089:12:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "This includes, but is not limited to, matters that touch upon sustainability, climate change, people and talent management, equal opportunity and inclusion, supply chain management and human rights.",
+      "ticker": "V",
+      "topic": "equal opportunity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          198
+        ]
+      ],
+      "change_id": "5abc9712243f3ed0",
+      "matched_terms": [
+        "supply chain management"
+      ],
+      "position": 4,
+      "sentence_id": "0001403161-25-000089:12:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "This includes, but is not limited to, matters that touch upon sustainability, climate change, people and talent management, equal opportunity and inclusion, supply chain management and human rights.",
+      "ticker": "V",
+      "topic": "supply chain management"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          198
+        ]
+      ],
+      "change_id": "5abc9712243f3ed0",
+      "matched_terms": [
+        "talent management"
+      ],
+      "position": 4,
+      "sentence_id": "0001403161-25-000089:12:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "This includes, but is not limited to, matters that touch upon sustainability, climate change, people and talent management, equal opportunity and inclusion, supply chain management and human rights.",
+      "ticker": "V",
+      "topic": "talent management"
+    },
+    {
+      "added_spans": [
+        [
+          53,
+          78
+        ],
+        [
+          122,
+          134
+        ],
+        [
+          174,
+          315
+        ]
+      ],
+      "change_id": "5abc9712243f3ed0",
+      "matched_terms": [
+        "disclosure practices"
+      ],
+      "position": 6,
+      "sentence_id": "0001403161-25-000089:12:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "A wide range of stakeholders, including governments, NGOs, consumers, partners, employees and investors, are increasingly attentive to these corporate responsibility matters and are developing expectations which at times may be discordant with each other and with Visa’s existing strategies and disclosure practices.",
+      "ticker": "V",
+      "topic": "disclosure practice"
+    },
+    {
+      "added_spans": [
+        [
+          24,
+          59
+        ],
+        [
+          64,
+          70
+        ]
+      ],
+      "change_id": "5abc9712243f3ed0",
+      "matched_terms": [
+        "sufficient progress"
+      ],
+      "position": 11,
+      "sentence_id": "0001403161-25-000089:12:5",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our ability to achieve, or make sufficient progress towards any of our CRS objectives is subject to numerous risks, many of which are outside of our control, including the evolving legal environment and regulatory requirements for the tracking and reporting of CRS standards or disclosures and the actions of suppliers, partners, and other third parties.",
+      "ticker": "V",
+      "topic": "sufficient progress"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          259
+        ]
+      ],
+      "change_id": "5abc9712243f3ed0",
+      "matched_terms": [
+        "publicly stated goals"
+      ],
+      "position": 15,
+      "sentence_id": "0001403161-25-000089:12:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Accordingly, our goals may evolve from time to time, implementation of these goals may require considerable investments, and ultimately, we cannot guarantee our ability to achieve or to make sufficient progress toward, any or all of our publicly stated goals.",
+      "ticker": "V",
+      "topic": "publicly stated goal"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          259
+        ]
+      ],
+      "change_id": "5abc9712243f3ed0",
+      "matched_terms": [
+        "sufficient progress"
+      ],
+      "position": 15,
+      "sentence_id": "0001403161-25-000089:12:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Accordingly, our goals may evolve from time to time, implementation of these goals may require considerable investments, and ultimately, we cannot guarantee our ability to achieve or to make sufficient progress toward, any or all of our publicly stated goals.",
+      "ticker": "V",
+      "topic": "sufficient progress"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          222
+        ],
+        [
+          229,
+          287
+        ],
+        [
+          302,
+          333
+        ],
+        [
+          367,
+          369
+        ],
+        [
+          381,
+          391
+        ]
+      ],
+      "change_id": "5abc9712243f3ed0",
+      "matched_terms": [
+        "conflicting directives"
+      ],
+      "position": 25,
+      "sentence_id": "0001403161-25-000089:12:10",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Because our stakeholders often hold differing views on our CRS-related goals and initiatives and we face conflicting directives from U.S. and international regulatory authorities, any failure, or perceived failure, to meet these evolving and varied stakeholder expectations and standards may result in negative attention in the media, reputational impacts, including an inaccurate perception or misrepresentation of our actual CRS practices, diversion of management’s attention and resources, and proxy fights, among other material adverse impacts on our business.",
+      "ticker": "V",
+      "topic": "conflicting directive"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          268
+        ]
+      ],
+      "change_id": "5abc9712243f3ed0",
+      "matched_terms": [
+        "government authorities"
+      ],
+      "position": 27,
+      "sentence_id": "0001403161-25-000089:12:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, the goals or initiatives themselves could potentially subject us to litigation or investigations initiated by government authorities or private actors alleging that our activities related to CRS are anti-competitive, discriminatory or otherwise unlawful.",
+      "ticker": "V",
+      "topic": "government authority"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          268
+        ]
+      ],
+      "change_id": "5abc9712243f3ed0",
+      "matched_terms": [
+        "private actors"
+      ],
+      "position": 27,
+      "sentence_id": "0001403161-25-000089:12:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, the goals or initiatives themselves could potentially subject us to litigation or investigations initiated by government authorities or private actors alleging that our activities related to CRS are anti-competitive, discriminatory or otherwise unlawful.",
+      "ticker": "V",
+      "topic": "private actor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          188
+        ]
+      ],
+      "change_id": "13b75160aef77698",
+      "matched_terms": [
+        "cybersecurity attack surface"
+      ],
+      "position": 6,
+      "sentence_id": "0001403161-25-000089:15:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our own use and deployment of GenAI technologies could expand our cybersecurity attack surface, increasing exposure to breaches, fraud, unauthorized transactions and other vulnerabilities.",
+      "ticker": "V",
+      "topic": "cybersecurity attack surface"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          188
+        ]
+      ],
+      "change_id": "13b75160aef77698",
+      "matched_terms": [
+        "unauthorized transactions"
+      ],
+      "position": 6,
+      "sentence_id": "0001403161-25-000089:15:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our own use and deployment of GenAI technologies could expand our cybersecurity attack surface, increasing exposure to breaches, fraud, unauthorized transactions and other vulnerabilities.",
+      "ticker": "V",
+      "topic": "unauthorized transaction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          345
+        ]
+      ],
+      "change_id": "13b75160aef77698",
+      "matched_terms": [
+        "common systems"
+      ],
+      "position": 11,
+      "sentence_id": "0001403161-25-000089:15:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, due to the interconnectivity and complexity of information systems and their reliance on common systems, software and vendors, disruptions or degradations have had, and will likely continue to have, wide-reaching consequences, including the potential to disrupt the overall financial system and other key systems in the global economy.",
+      "ticker": "V",
+      "topic": "common system"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          345
+        ]
+      ],
+      "change_id": "13b75160aef77698",
+      "matched_terms": [
+        "global economy"
+      ],
+      "position": 11,
+      "sentence_id": "0001403161-25-000089:15:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, due to the interconnectivity and complexity of information systems and their reliance on common systems, software and vendors, disruptions or degradations have had, and will likely continue to have, wide-reaching consequences, including the potential to disrupt the overall financial system and other key systems in the global economy.",
+      "ticker": "V",
+      "topic": "global economy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          345
+        ]
+      ],
+      "change_id": "13b75160aef77698",
+      "matched_terms": [
+        "information systems"
+      ],
+      "position": 11,
+      "sentence_id": "0001403161-25-000089:15:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, due to the interconnectivity and complexity of information systems and their reliance on common systems, software and vendors, disruptions or degradations have had, and will likely continue to have, wide-reaching consequences, including the potential to disrupt the overall financial system and other key systems in the global economy.",
+      "ticker": "V",
+      "topic": "information system"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          345
+        ]
+      ],
+      "change_id": "13b75160aef77698",
+      "matched_terms": [
+        "overall financial system"
+      ],
+      "position": 11,
+      "sentence_id": "0001403161-25-000089:15:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, due to the interconnectivity and complexity of information systems and their reliance on common systems, software and vendors, disruptions or degradations have had, and will likely continue to have, wide-reaching consequences, including the potential to disrupt the overall financial system and other key systems in the global economy.",
+      "ticker": "V",
+      "topic": "overall financial system"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          345
+        ]
+      ],
+      "change_id": "13b75160aef77698",
+      "matched_terms": [
+        "wide-reaching consequences"
+      ],
+      "position": 11,
+      "sentence_id": "0001403161-25-000089:15:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, due to the interconnectivity and complexity of information systems and their reliance on common systems, software and vendors, disruptions or degradations have had, and will likely continue to have, wide-reaching consequences, including the potential to disrupt the overall financial system and other key systems in the global economy.",
+      "ticker": "V",
+      "topic": "wide reaching consequence"
+    },
+    {
+      "added_spans": [
+        [
+          22,
+          38
+        ],
+        [
+          50,
+          62
+        ],
+        [
+          67,
+          82
+        ]
+      ],
+      "change_id": "13b75160aef77698",
+      "matched_terms": [
+        "mobile channels"
+      ],
+      "position": 22,
+      "sentence_id": "0001403161-25-000089:15:13",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Given the increase in payments through ecommerce, social media and mobile channels, we continue to see increased cyber and payment fraud activity, as cybercriminals attempt phishing and social engineering scams, distributed denial of service attacks and other disruptive actions.",
+      "ticker": "V",
+      "topic": "mobile channel"
+    },
+    {
+      "added_spans": [
+        [
+          22,
+          38
+        ],
+        [
+          50,
+          62
+        ],
+        [
+          67,
+          82
+        ]
+      ],
+      "change_id": "13b75160aef77698",
+      "matched_terms": [
+        "social media"
+      ],
+      "position": 22,
+      "sentence_id": "0001403161-25-000089:15:13",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Given the increase in payments through ecommerce, social media and mobile channels, we continue to see increased cyber and payment fraud activity, as cybercriminals attempt phishing and social engineering scams, distributed denial of service attacks and other disruptive actions.",
+      "ticker": "V",
+      "topic": "social medium"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          178
+        ]
+      ],
+      "change_id": "13b75160aef77698",
+      "matched_terms": [
+        "critical infrastructure cybersecurity laws"
+      ],
+      "position": 36,
+      "sentence_id": "0001403161-25-000089:15:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, governments around the world have recently passed or are considering new critical infrastructure cybersecurity laws and regulations, some of which may apply to Visa.",
+      "ticker": "V",
+      "topic": "critical infrastructure cybersecurity law"
+    },
+    {
+      "added_spans": [
+        [
+          99,
+          218
+        ],
+        [
+          485,
+          529
+        ],
+        [
+          910,
+          1008
+        ]
+      ],
+      "change_id": "13b75160aef77698",
+      "matched_terms": [
+        "fraudulent transactions"
+      ],
+      "position": 46,
+      "sentence_id": "0001403161-25-000089:15:23",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Any of these events, individually or in the aggregate, could significantly disrupt our operations; impact the availability and integrity of our systems, applications, or the systems of our third-party service providers; result in the unauthorized disclosure, release, gathering, monitoring, misuse, loss or destruction of confidential, proprietary, sensitive and personal information (including account data information) or data security compromises; impact our clients and consumers; increase the risk of fraudulent transactions; damage our reputation and brand; result in litigation or claims, violations of applicable privacy and other laws, and increased regulatory review or scrutiny, investigations, actions, fines or penalties; result in damages or changes to our business practices; decrease the overall use and acceptance of our products; decrease our volume, net revenue and future growth prospects; financial losses to Visa’s financial institution clients, sellers or third-party service providers, and be costly, time consuming and difficult to remedy.",
+      "ticker": "V",
+      "topic": "fraudulent transaction"
+    },
+    {
+      "added_spans": [
+        [
+          231,
+          303
+        ]
+      ],
+      "change_id": "13b75160aef77698",
+      "matched_terms": [
+        "affected third parties"
+      ],
+      "position": 49,
+      "sentence_id": "0001403161-25-000089:15:25",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In the event of damage or disruption to our business due to these occurrences, we may not be able to successfully and quickly recover all of our critical business functions, assets, and data through our business continuity program and we may not be able to notify affected third parties when appropriate.",
+      "ticker": "V",
+      "topic": "affected third party"
+    },
+    {
+      "added_spans": [
+        [
+          41,
+          60
+        ]
+      ],
+      "change_id": "853e4f5f31492234",
+      "matched_terms": [
+        "Segment Information"
+      ],
+      "position": 11,
+      "sentence_id": "0001403161-25-000089:7:5",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For more information, please see Note 14—Segment Information to our consolidated financial statements included in Item 8 of this report.",
+      "ticker": "V",
+      "topic": "segment information"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          112
+        ]
+      ],
+      "change_id": "c596e5feab7a4ed2",
+      "matched_terms": [
+        "heightened geopolitical tensions"
+      ],
+      "position": 4,
+      "sentence_id": "0001403161-25-000089:0:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "Such regulations may increase in quantity, complexity and scope in response to heightened geopolitical tensions.",
+      "ticker": "V",
+      "topic": "heightened geopolitical tension"
+    }
+  ],
+  "total_changes": 21
+}

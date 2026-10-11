@@ -1,0 +1,390 @@
+{
+  "analysis_id": "fe265664c89152deab7f8ab6aeb6c8508b5892a5a1e1271ed39353b8dffc58ad",
+  "by_change_type": {
+    "expanded": 0,
+    "largely_unchanged": 24,
+    "materially_reworded": 0,
+    "new": 0,
+    "reduced": 0,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "1427ba05ae100750",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Face Additional Tax Liabilities and Collection Obligations"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor",
+        "supply_chain"
+      ],
+      "change_id": "174d0b39b070bdd6",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our Commercial Agreements, Strategic Alliances, and Other…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "26e0a789783a157b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Are Subject to Risks Related to…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "2d15f32a730c9e04",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our Business Suffers When We Are Unsuccessful…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "34fe10967840d5c1",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Are Impacted by Fraudulent or Unlawful…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "42eb3a1d9aaca776",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 17,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our Expansion into New Products, Services, Technologies…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "49d4da90c22d8933",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Face Risks Related to System Interruption…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "5170cbd6632d344f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Are Subject to Payments-Related Risks"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "5817baef9c1df6aa",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Face Risks Related to Successfully Optimizing…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "59106137a4fdd72e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 7,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Have a Rapidly Evolving Business Model…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "5d4ebbd25afe684f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 8,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Variability in Our Retail Business Places…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "707c6a42d6435cd4",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 15,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our Expansion Places a Significant Strain on…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "73f00f9851ebd410",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Are Subject to Product Liability Claims…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "foreign_exchange"
+      ],
+      "change_id": "8283baac34aa76ce",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Have Foreign Exchange Risk"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "8cfce906f4d50983",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 5,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Government Regulation Is Evolving and Unfavorable Changes…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "948d3a870f08c607",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 54,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Experience Significant Fluctuations in Our Operating…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "a5ba7418b0bd5946",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 17,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Could Be Harmed by Data Loss…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "b11b7ef7c8e8f718",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 11,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Face Intense Competition"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "geopolitical"
+      ],
+      "change_id": "bc0438f5e382249a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 13,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our International Operations Expose Us to a…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "cab16c128eac4ba0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Face Risks Related to Adequately Protecting…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "e5056001c3100c51",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 55,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our Supplier Relationships Subject Us to a…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation",
+        "regulation"
+      ],
+      "change_id": "e91711dcfc154ee5",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Claims, Litigation, Government Investigations, and Other Proceedings…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "e9c885da48650175",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 8,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Loss of Key Senior Management Personnel…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "f6250f1f620b1c0f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 8,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We Face Significant Inventory Risk"
+    }
+  ],
+  "cik": "0001018724",
+  "company_name": "AMAZON COM INC",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0001018724-26-000004",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0001018724-25-000004",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "AMZN",
+  "topic_mentions": [],
+  "total_changes": 24
+}

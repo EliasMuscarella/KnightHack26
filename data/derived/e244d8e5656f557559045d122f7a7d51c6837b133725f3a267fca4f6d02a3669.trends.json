@@ -1,0 +1,2420 @@
+{
+  "analysis_id": "e244d8e5656f557559045d122f7a7d51c6837b133725f3a267fca4f6d02a3669",
+  "by_change_type": {
+    "expanded": 5,
+    "largely_unchanged": 28,
+    "materially_reworded": 0,
+    "new": 2,
+    "reduced": 1,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 14,
+      "added_words": 426,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 52,
+      "short_title": "Our consolidated assets are expected to exceed $10 billion"
+    },
+    {
+      "added_sentences": 9,
+      "added_words": 209,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 30,
+      "short_title": "AI and our ability to implement"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "fd5ae511a0894c3d",
+      "change_type": "reduced",
+      "modified_sentences": 2,
+      "modified_words": 13,
+      "removed_sentences": 1,
+      "removed_words": 69,
+      "score": 21,
+      "short_title": "Our principal stockholder, MBG Investors I"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 145,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "0889009f68998047",
+      "change_type": "expanded",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 19,
+      "short_title": "We operate in a highly competitive and changing industry"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 26,
+      "categories": [
+        "regulation",
+        "interest_rates"
+      ],
+      "change_id": "b3beab3a684dfc42",
+      "change_type": "expanded",
+      "modified_sentences": 2,
+      "modified_words": 51,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 19,
+      "short_title": "Monetary policies and regulations of the FRB"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "56c6d496345e9603",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 20,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 15,
+      "short_title": "Our business is significantly dependent on the real estate markets"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 18,
+      "categories": [
+        "competition",
+        "regulation"
+      ],
+      "change_id": "658489da370b3613",
+      "change_type": "expanded",
+      "modified_sentences": 2,
+      "modified_words": 32,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 15,
+      "short_title": "We continually encounter technological change"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 139,
+      "categories": [
+        "regulation",
+        "cybersecurity"
+      ],
+      "change_id": "7e2f8aa9eb96af1d",
+      "change_type": "expanded",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 15,
+      "short_title": "We depend on information technology"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 57,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "8791abcf623be78c",
+      "change_type": "expanded",
+      "modified_sentences": 6,
+      "modified_words": 39,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 15,
+      "short_title": "New lines of business, products, product enhancements"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "8611324a0c6c00f2",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 8,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 10,
+      "short_title": "Our goodwill may become impaired"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 47,
+      "categories": [
+        "interest_rates"
+      ],
+      "change_id": "b5d35538ee30ada1",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 26,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 10,
+      "short_title": "Our business is subject to interest rate risk"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity",
+        "interest_rates"
+      ],
+      "change_id": "2004cd3ca1f3fa54",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "Loss of deposits could increase our funding costs"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "3efa98aeeff58b0a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 7,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "Our liquidity is dependent on dividends from Byline Bank"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "88352d1fc8e9078f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 9,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "The recognition of gains on the sale of loans"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "7e2e8a68e0af5c37",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 8,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "A lack of liquidity could affect operations"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "896df39ff5d69bec",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Our business, profitability, and liquidity"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "09d4e5875fe071b1",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Non-compliance with the USA PATRIOT Act, the Bank Secrecy Act"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "0ac0bb5e0b602b08",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Regulations relating to privacy, information security, and data protection"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit",
+        "regulation"
+      ],
+      "change_id": "1f1b196fc1bf3650",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our accounting estimates and risk management processes"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity",
+        "competition"
+      ],
+      "change_id": "27f3c2a0c1b31c6f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may need to raise additional capital in the future"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "4c224fb81fb83d65",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business depends on our ability to successfully manage credit"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "4fc6f28f22b3a024",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 12,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "There is uncertainty surrounding the potential legal, regulatory"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic",
+        "credit"
+      ],
+      "change_id": "53dabc57ede6a9e0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 7,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business may be adversely affected by conditions"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "interest_rates",
+        "labor"
+      ],
+      "change_id": "61d553ff41091661",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may not be able to implement our growth strategy"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "interest_rates"
+      ],
+      "change_id": "67bf2c264edf7e85",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our ability to recognize the benefits of deferred tax assets"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "75877ead2149f2d8",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We depend on the accuracy"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "947017c8b173a93c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The value of the financial instruments we own"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit",
+        "regulation"
+      ],
+      "change_id": "9adb9ab508e2e807",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 13,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Small Business Administration lending"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "a4db95eb117228c8",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may underestimate the credit losses inherent in our loan"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "a54bcb08a09214c5",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are subject to numerous laws designed to protect consumers"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "ae9c4320d63dfe96",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Certain activities are restricted"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "b628e267e8c3ab3e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may be adversely affected by risks associated with completed"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "d42504933b7acf0f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 1,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Future sales of our common stock in the public market"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "d62e60a028ff8dc1",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Litigation and regulatory actions, including possible enforcement actions"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 14,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "f9a293badfb9f975",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The occurrence of fraudulent activity, breaches"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "fbb3020f2107bc61",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The accounting for loans acquired in connection with our recapitalization"
+    }
+  ],
+  "cik": "0001702750",
+  "company_name": "BYLINE BANCORP, INC.",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0001193125-26-083194",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/1702750/000119312526083194/by-20251231.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0000950170-25-030118",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/1702750/000095017025030118/by-20241231.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "BY",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          0,
+          194
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "consolidated assets"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-083194:30:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our consolidated assets are expected to exceed $10 billion, which may result in increased regulation and supervision of Byline Bank and may also result in increased costs and/or reduced revenue.",
+      "ticker": "BY",
+      "topic": "consolidated asset"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          194
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "increased costs"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-083194:30:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our consolidated assets are expected to exceed $10 billion, which may result in increased regulation and supervision of Byline Bank and may also result in increased costs and/or reduced revenue.",
+      "ticker": "BY",
+      "topic": "increased cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          194
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "increased regulation"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-083194:30:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our consolidated assets are expected to exceed $10 billion, which may result in increased regulation and supervision of Byline Bank and may also result in increased costs and/or reduced revenue.",
+      "ticker": "BY",
+      "topic": "increased regulation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          194
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "reduced revenue"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-083194:30:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our consolidated assets are expected to exceed $10 billion, which may result in increased regulation and supervision of Byline Bank and may also result in increased costs and/or reduced revenue.",
+      "ticker": "BY",
+      "topic": "reduced revenue"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          74
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "total consolidated assets"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-083194:30:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "As of December 31, 2025, we had total consolidated assets of $9.7 billion.",
+      "ticker": "BY",
+      "topic": "total consolidated asset"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          125
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "growth trajectory"
+      ],
+      "position": 2,
+      "sentence_id": "0001193125-26-083194:30:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "Based on our current growth trajectory, we expect that we will exceed $10 billion in total consolidated assets in the future.",
+      "ticker": "BY",
+      "topic": "growth trajectory"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          125
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "total consolidated assets"
+      ],
+      "position": 2,
+      "sentence_id": "0001193125-26-083194:30:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "Based on our current growth trajectory, we expect that we will exceed $10 billion in total consolidated assets in the future.",
+      "ticker": "BY",
+      "topic": "total consolidated asset"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          256
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "depository institution"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-083194:30:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Upon crossing this threshold, we will become subject to certain laws, regulations and supervisory requirements that apply to depository institution holding companies and insured depository institutions with total consolidated assets of $10 billion or more.",
+      "ticker": "BY",
+      "topic": "depository institution"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          256
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "insured depository institutions"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-083194:30:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Upon crossing this threshold, we will become subject to certain laws, regulations and supervisory requirements that apply to depository institution holding companies and insured depository institutions with total consolidated assets of $10 billion or more.",
+      "ticker": "BY",
+      "topic": "insured depository institution"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          256
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "supervisory requirements"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-083194:30:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Upon crossing this threshold, we will become subject to certain laws, regulations and supervisory requirements that apply to depository institution holding companies and insured depository institutions with total consolidated assets of $10 billion or more.",
+      "ticker": "BY",
+      "topic": "supervisory requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          256
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "total consolidated assets"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-083194:30:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Upon crossing this threshold, we will become subject to certain laws, regulations and supervisory requirements that apply to depository institution holding companies and insured depository institutions with total consolidated assets of $10 billion or more.",
+      "ticker": "BY",
+      "topic": "total consolidated asset"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          174
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "operational flexibility"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-083194:30:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Compliance with these requirements could result in increased regulatory, operational and compliance costs and could affect our revenues, earnings and operational flexibility.",
+      "ticker": "BY",
+      "topic": "operational flexibility"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "Section 1075"
+      ],
+      "position": 5,
+      "sentence_id": "0001193125-26-083194:30:5",
+      "source": "entity",
+      "status": "added",
+      "text": "If we exceed $10 billion in total consolidated assets, we will no longer qualify for the exemption from debit card interchange restrictions under Section 1075 of the Dodd-Frank Wall Street Reform and Consumer Protection Act.",
+      "ticker": "BY",
+      "topic": "Section 1075"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "debit card interchange restrictions"
+      ],
+      "position": 5,
+      "sentence_id": "0001193125-26-083194:30:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we exceed $10 billion in total consolidated assets, we will no longer qualify for the exemption from debit card interchange restrictions under Section 1075 of the Dodd-Frank Wall Street Reform and Consumer Protection Act.",
+      "ticker": "BY",
+      "topic": "debit card interchange restriction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "total consolidated assets"
+      ],
+      "position": 5,
+      "sentence_id": "0001193125-26-083194:30:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we exceed $10 billion in total consolidated assets, we will no longer qualify for the exemption from debit card interchange restrictions under Section 1075 of the Dodd-Frank Wall Street Reform and Consumer Protection Act.",
+      "ticker": "BY",
+      "topic": "total consolidated asset"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "FRB"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-083194:30:6",
+      "source": "entity",
+      "status": "added",
+      "text": "These provisions, as implemented by regulations of the FRB, cap the maximum interchange fee that a debit card issuer may receive per transaction, subject to limited adjustments for fraud prevention measures.",
+      "ticker": "BY",
+      "topic": "FRB"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "debit card issuer"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-083194:30:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "These provisions, as implemented by regulations of the FRB, cap the maximum interchange fee that a debit card issuer may receive per transaction, subject to limited adjustments for fraud prevention measures.",
+      "ticker": "BY",
+      "topic": "debit card issuer"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "fraud prevention measures"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-083194:30:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "These provisions, as implemented by regulations of the FRB, cap the maximum interchange fee that a debit card issuer may receive per transaction, subject to limited adjustments for fraud prevention measures.",
+      "ticker": "BY",
+      "topic": "fraud prevention measure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "maximum interchange fee"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-083194:30:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "These provisions, as implemented by regulations of the FRB, cap the maximum interchange fee that a debit card issuer may receive per transaction, subject to limited adjustments for fraud prevention measures.",
+      "ticker": "BY",
+      "topic": "maximum interchange fee"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          232
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "CFPB"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-083194:30:7",
+      "source": "entity",
+      "status": "added",
+      "text": "In addition, insured depository institutions with total consolidated assets of $10 billion or more are subject to supervision, examination and enforcement with respect to federal consumer protection laws and regulations by the CFPB.",
+      "ticker": "BY",
+      "topic": "CFPB"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          232
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "federal consumer protection laws"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-083194:30:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, insured depository institutions with total consolidated assets of $10 billion or more are subject to supervision, examination and enforcement with respect to federal consumer protection laws and regulations by the CFPB.",
+      "ticker": "BY",
+      "topic": "federal consumer protection law"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          232
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "insured depository institutions"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-083194:30:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, insured depository institutions with total consolidated assets of $10 billion or more are subject to supervision, examination and enforcement with respect to federal consumer protection laws and regulations by the CFPB.",
+      "ticker": "BY",
+      "topic": "insured depository institution"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          232
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "total consolidated assets"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-083194:30:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, insured depository institutions with total consolidated assets of $10 billion or more are subject to supervision, examination and enforcement with respect to federal consumer protection laws and regulations by the CFPB.",
+      "ticker": "BY",
+      "topic": "total consolidated asset"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "CFPB"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-083194:30:8",
+      "source": "entity",
+      "status": "added",
+      "text": "While the scope and priorities of the CFPB’s activities have diminished significantly in the past year under the current presidential administration, exceeding the $10 billion in consolidated asset threshold will subject us to CFPB oversight and potential additional compliance obligations in the future.",
+      "ticker": "BY",
+      "topic": "CFPB"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "CFPB oversight"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-083194:30:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "While the scope and priorities of the CFPB’s activities have diminished significantly in the past year under the current presidential administration, exceeding the $10 billion in consolidated asset threshold will subject us to CFPB oversight and potential additional compliance obligations in the future.",
+      "ticker": "BY",
+      "topic": "cfpb oversight"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "compliance obligations"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-083194:30:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "While the scope and priorities of the CFPB’s activities have diminished significantly in the past year under the current presidential administration, exceeding the $10 billion in consolidated asset threshold will subject us to CFPB oversight and potential additional compliance obligations in the future.",
+      "ticker": "BY",
+      "topic": "compliance obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "consolidated asset threshold"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-083194:30:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "While the scope and priorities of the CFPB’s activities have diminished significantly in the past year under the current presidential administration, exceeding the $10 billion in consolidated asset threshold will subject us to CFPB oversight and potential additional compliance obligations in the future.",
+      "ticker": "BY",
+      "topic": "consolidated asset threshold"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "past year"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-083194:30:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "While the scope and priorities of the CFPB’s activities have diminished significantly in the past year under the current presidential administration, exceeding the $10 billion in consolidated asset threshold will subject us to CFPB oversight and potential additional compliance obligations in the future.",
+      "ticker": "BY",
+      "topic": "past year"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "presidential administration"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-083194:30:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "While the scope and priorities of the CFPB’s activities have diminished significantly in the past year under the current presidential administration, exceeding the $10 billion in consolidated asset threshold will subject us to CFPB oversight and potential additional compliance obligations in the future.",
+      "ticker": "BY",
+      "topic": "presidential administration"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          434
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "Volcker Rule"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-083194:30:9",
+      "source": "entity",
+      "status": "added",
+      "text": "Further, banking organizations with total consolidated assets of less than $10 billion may qualify for certain regulatory relief under the Economic Growth, Regulatory Relief and Consumer Protection Act, including relief from certain aspects of risk-based capital requirements, restrictions on proprietary trading and investment activities under the Volcker Rule, and other regulatory, subject to satisfaction of applicable conditions.",
+      "ticker": "BY",
+      "topic": "Volcker Rule"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          434
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "banking organizations"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-083194:30:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, banking organizations with total consolidated assets of less than $10 billion may qualify for certain regulatory relief under the Economic Growth, Regulatory Relief and Consumer Protection Act, including relief from certain aspects of risk-based capital requirements, restrictions on proprietary trading and investment activities under the Volcker Rule, and other regulatory, subject to satisfaction of applicable conditions.",
+      "ticker": "BY",
+      "topic": "banking organization"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          434
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "Economic Growth"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-083194:30:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, banking organizations with total consolidated assets of less than $10 billion may qualify for certain regulatory relief under the Economic Growth, Regulatory Relief and Consumer Protection Act, including relief from certain aspects of risk-based capital requirements, restrictions on proprietary trading and investment activities under the Volcker Rule, and other regulatory, subject to satisfaction of applicable conditions.",
+      "ticker": "BY",
+      "topic": "economic growth"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          434
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "regulatory relief"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-083194:30:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, banking organizations with total consolidated assets of less than $10 billion may qualify for certain regulatory relief under the Economic Growth, Regulatory Relief and Consumer Protection Act, including relief from certain aspects of risk-based capital requirements, restrictions on proprietary trading and investment activities under the Volcker Rule, and other regulatory, subject to satisfaction of applicable conditions.",
+      "ticker": "BY",
+      "topic": "regulatory relief"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          434
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "risk-based capital requirements"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-083194:30:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, banking organizations with total consolidated assets of less than $10 billion may qualify for certain regulatory relief under the Economic Growth, Regulatory Relief and Consumer Protection Act, including relief from certain aspects of risk-based capital requirements, restrictions on proprietary trading and investment activities under the Volcker Rule, and other regulatory, subject to satisfaction of applicable conditions.",
+      "ticker": "BY",
+      "topic": "risk based capital requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          434
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "total consolidated assets"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-083194:30:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, banking organizations with total consolidated assets of less than $10 billion may qualify for certain regulatory relief under the Economic Growth, Regulatory Relief and Consumer Protection Act, including relief from certain aspects of risk-based capital requirements, restrictions on proprietary trading and investment activities under the Volcker Rule, and other regulatory, subject to satisfaction of applicable conditions.",
+      "ticker": "BY",
+      "topic": "total consolidated asset"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          134
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "regulatory accommodations"
+      ],
+      "position": 10,
+      "sentence_id": "0001193125-26-083194:30:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Upon exceeding $10 billion in total consolidated assets, we will no longer be eligible for certain of these regulatory accommodations.",
+      "ticker": "BY",
+      "topic": "regulatory accommodation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          134
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "total consolidated assets"
+      ],
+      "position": 10,
+      "sentence_id": "0001193125-26-083194:30:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Upon exceeding $10 billion in total consolidated assets, we will no longer be eligible for certain of these regulatory accommodations.",
+      "ticker": "BY",
+      "topic": "total consolidated asset"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "Congressional"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-083194:30:11",
+      "source": "entity",
+      "status": "added",
+      "text": "Although the federal banking supervisory agencies have initiated proposals to raise the $10 billion asset threshold for certain regulatory purposes, many of the regulatory consequences of this asset threshold were established by statute and likely require Congressional action to facilitate such regulatory relief.",
+      "ticker": "BY",
+      "topic": "Congressional"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "asset threshold"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-083194:30:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although the federal banking supervisory agencies have initiated proposals to raise the $10 billion asset threshold for certain regulatory purposes, many of the regulatory consequences of this asset threshold were established by statute and likely require Congressional action to facilitate such regulatory relief.",
+      "ticker": "BY",
+      "topic": "asset threshold"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "Congressional action"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-083194:30:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although the federal banking supervisory agencies have initiated proposals to raise the $10 billion asset threshold for certain regulatory purposes, many of the regulatory consequences of this asset threshold were established by statute and likely require Congressional action to facilitate such regulatory relief.",
+      "ticker": "BY",
+      "topic": "congressional action"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "federal banking supervisory agencies"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-083194:30:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although the federal banking supervisory agencies have initiated proposals to raise the $10 billion asset threshold for certain regulatory purposes, many of the regulatory consequences of this asset threshold were established by statute and likely require Congressional action to facilitate such regulatory relief.",
+      "ticker": "BY",
+      "topic": "federal banking supervisory agency"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "regulatory consequences"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-083194:30:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although the federal banking supervisory agencies have initiated proposals to raise the $10 billion asset threshold for certain regulatory purposes, many of the regulatory consequences of this asset threshold were established by statute and likely require Congressional action to facilitate such regulatory relief.",
+      "ticker": "BY",
+      "topic": "regulatory consequence"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "regulatory purposes"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-083194:30:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although the federal banking supervisory agencies have initiated proposals to raise the $10 billion asset threshold for certain regulatory purposes, many of the regulatory consequences of this asset threshold were established by statute and likely require Congressional action to facilitate such regulatory relief.",
+      "ticker": "BY",
+      "topic": "regulatory purpose"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "regulatory relief"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-083194:30:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although the federal banking supervisory agencies have initiated proposals to raise the $10 billion asset threshold for certain regulatory purposes, many of the regulatory consequences of this asset threshold were established by statute and likely require Congressional action to facilitate such regulatory relief.",
+      "ticker": "BY",
+      "topic": "regulatory relief"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          177
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "asset threshold"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-083194:30:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Congress and/or regulatory agencies may also impose additional requirements, assessment or regulatory obligations on institutions that exceed this asset threshold in the future.",
+      "ticker": "BY",
+      "topic": "asset threshold"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          177
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "regulatory agencies"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-083194:30:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Congress and/or regulatory agencies may also impose additional requirements, assessment or regulatory obligations on institutions that exceed this asset threshold in the future.",
+      "ticker": "BY",
+      "topic": "regulatory agency"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          177
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "regulatory obligations"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-083194:30:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Congress and/or regulatory agencies may also impose additional requirements, assessment or regulatory obligations on institutions that exceed this asset threshold in the future.",
+      "ticker": "BY",
+      "topic": "regulatory obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          120
+        ]
+      ],
+      "change_id": "400ea8b0b049b21d",
+      "matched_terms": [
+        "cumulative effect"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-083194:30:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "The cumulative effect of these factors could adversely affect our business, financial condition or results of operation.",
+      "ticker": "BY",
+      "topic": "cumulative effect"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "competitive risks"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-083194:16:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI and our ability to implement and leverage AI to deliver new products and services to our customers present competitive risks.",
+      "ticker": "BY",
+      "topic": "competitive risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "leverage AI"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-083194:16:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI and our ability to implement and leverage AI to deliver new products and services to our customers present competitive risks.",
+      "ticker": "BY",
+      "topic": "leverage ai"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          174
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "generative AI",
+        "agentic AI"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-083194:16:1",
+      "source": "lexicon",
+      "status": "added",
+      "text": "The financial services industry is experiencing and will continue to experience rapid technological change due to the emergence of AI, including generative AI and agentic AI.",
+      "ticker": "BY",
+      "topic": "Generative AI"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          174
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "rapid technological change"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-083194:16:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "The financial services industry is experiencing and will continue to experience rapid technological change due to the emergence of AI, including generative AI and agentic AI.",
+      "ticker": "BY",
+      "topic": "rapid technological change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          174
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "services industry"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-083194:16:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "The financial services industry is experiencing and will continue to experience rapid technological change due to the emergence of AI, including generative AI and agentic AI.",
+      "ticker": "BY",
+      "topic": "service industry"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          107
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "effective use"
+      ],
+      "position": 2,
+      "sentence_id": "0001193125-26-083194:16:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The effective use of AI enables financial institutions to better serve their customers and reduce expenses.",
+      "ticker": "BY",
+      "topic": "effective use"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          210
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "customer preferences"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-083194:16:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our success and competitiveness may depend in part on our ability to adopt such technology and deliver our products and services in a manner consistent with evolving customer preferences and industry standards.",
+      "ticker": "BY",
+      "topic": "customer preference"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          210
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "industry standards"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-083194:16:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our success and competitiveness may depend in part on our ability to adopt such technology and deliver our products and services in a manner consistent with evolving customer preferences and industry standards.",
+      "ticker": "BY",
+      "topic": "industry standard"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          54
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "unique risks"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-083194:16:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "At the same time, the use of AI presents unique risks.",
+      "ticker": "BY",
+      "topic": "unique risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          145
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "AI models"
+      ],
+      "position": 5,
+      "sentence_id": "0001193125-26-083194:16:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI models, which are primarily developed and managed by third parties, introduce risks related to model development, implementation and training.",
+      "ticker": "BY",
+      "topic": "ai model"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          145
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "model development"
+      ],
+      "position": 5,
+      "sentence_id": "0001193125-26-083194:16:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI models, which are primarily developed and managed by third parties, introduce risks related to model development, implementation and training.",
+      "ticker": "BY",
+      "topic": "model development"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          154
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "biased results"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-083194:16:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI may also produce incorrect outputs or biased results, disclose personal or confidential information, or otherwise cause issues for us or our customers.",
+      "ticker": "BY",
+      "topic": "biased result"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          154
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "incorrect outputs"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-083194:16:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI may also produce incorrect outputs or biased results, disclose personal or confidential information, or otherwise cause issues for us or our customers.",
+      "ticker": "BY",
+      "topic": "incorrect output"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          154
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "personal or confidential information"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-083194:16:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI may also produce incorrect outputs or biased results, disclose personal or confidential information, or otherwise cause issues for us or our customers.",
+      "ticker": "BY",
+      "topic": "personal or confidential information"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          162
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "compliance costs"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-083194:16:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, the legal and regulatory landscape for AI is uncertain and continuously evolving, which may increase our compliance costs and risk of non-compliance.",
+      "ticker": "BY",
+      "topic": "compliance cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          162
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "legal and regulatory landscape"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-083194:16:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, the legal and regulatory landscape for AI is uncertain and continuously evolving, which may increase our compliance costs and risk of non-compliance.",
+      "ticker": "BY",
+      "topic": "legal and regulatory landscape"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          226
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "AI tools"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-083194:16:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Failure to adopt AI tools that match our customer expectations and needs or failure to properly manage risks associated with AI could have a material adverse effect on our business, financial condition or results of operation.",
+      "ticker": "BY",
+      "topic": "ai tool"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          226
+        ]
+      ],
+      "change_id": "665ac33a0f854fb1",
+      "matched_terms": [
+        "customer expectations"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-083194:16:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Failure to adopt AI tools that match our customer expectations and needs or failure to properly manage risks associated with AI could have a material adverse effect on our business, financial condition or results of operation.",
+      "ticker": "BY",
+      "topic": "customer expectation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          231
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "digital assets",
+        "cryptocurrencies",
+        "blockchain"
+      ],
+      "position": 18,
+      "sentence_id": "0001193125-26-083194:33:9",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Further, alternative methods of conducting financial transactions, including digital assets, cryptocurrencies, blockchain-based payment systems, and other emerging financial technologies, have developed and may continue to develop.",
+      "ticker": "BY",
+      "topic": "Digital assets"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          231
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "alternative methods"
+      ],
+      "position": 18,
+      "sentence_id": "0001193125-26-083194:33:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, alternative methods of conducting financial transactions, including digital assets, cryptocurrencies, blockchain-based payment systems, and other emerging financial technologies, have developed and may continue to develop.",
+      "ticker": "BY",
+      "topic": "alternative method"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          231
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "emerging financial technologies"
+      ],
+      "position": 18,
+      "sentence_id": "0001193125-26-083194:33:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, alternative methods of conducting financial transactions, including digital assets, cryptocurrencies, blockchain-based payment systems, and other emerging financial technologies, have developed and may continue to develop.",
+      "ticker": "BY",
+      "topic": "emerging financial technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          337
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "digital asset"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-083194:33:10",
+      "source": "lexicon",
+      "status": "added",
+      "text": "As set forth in the Executive Order Strengthening American Leadership in Digital Financial Technology, dated January 23, 2025, the current presidential administration has expressed support for the growth of the digital asset industry and advancements in financial technology, which could encourage broader adoption of these alternatives.",
+      "ticker": "BY",
+      "topic": "Digital assets"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          337
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "Digital Financial Technology"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-083194:33:10",
+      "source": "entity",
+      "status": "added",
+      "text": "As set forth in the Executive Order Strengthening American Leadership in Digital Financial Technology, dated January 23, 2025, the current presidential administration has expressed support for the growth of the digital asset industry and advancements in financial technology, which could encourage broader adoption of these alternatives.",
+      "ticker": "BY",
+      "topic": "Digital Financial Technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          337
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "American Leadership"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-083194:33:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "As set forth in the Executive Order Strengthening American Leadership in Digital Financial Technology, dated January 23, 2025, the current presidential administration has expressed support for the growth of the digital asset industry and advancements in financial technology, which could encourage broader adoption of these alternatives.",
+      "ticker": "BY",
+      "topic": "american leadership"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          337
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "broader adoption"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-083194:33:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "As set forth in the Executive Order Strengthening American Leadership in Digital Financial Technology, dated January 23, 2025, the current presidential administration has expressed support for the growth of the digital asset industry and advancements in financial technology, which could encourage broader adoption of these alternatives.",
+      "ticker": "BY",
+      "topic": "broader adoption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          337
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "Executive Order"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-083194:33:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "As set forth in the Executive Order Strengthening American Leadership in Digital Financial Technology, dated January 23, 2025, the current presidential administration has expressed support for the growth of the digital asset industry and advancements in financial technology, which could encourage broader adoption of these alternatives.",
+      "ticker": "BY",
+      "topic": "executive order"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          337
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "presidential administration"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-083194:33:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "As set forth in the Executive Order Strengthening American Leadership in Digital Financial Technology, dated January 23, 2025, the current presidential administration has expressed support for the growth of the digital asset industry and advancements in financial technology, which could encourage broader adoption of these alternatives.",
+      "ticker": "BY",
+      "topic": "presidential administration"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          210
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "competitive dynamics"
+      ],
+      "position": 20,
+      "sentence_id": "0001193125-26-083194:33:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "The adoption and growth of such technologies could alter customer preferences, reduce demand for traditional banking products and services, or change the competitive dynamics of the financial services industry.",
+      "ticker": "BY",
+      "topic": "competitive dynamic"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          210
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "traditional banking products"
+      ],
+      "position": 20,
+      "sentence_id": "0001193125-26-083194:33:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "The adoption and growth of such technologies could alter customer preferences, reduce demand for traditional banking products and services, or change the competitive dynamics of the financial services industry.",
+      "ticker": "BY",
+      "topic": "traditional banking product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          297
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "customer relationships"
+      ],
+      "position": 21,
+      "sentence_id": "0001193125-26-083194:33:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "The timing, extent and potential economic impact of these developments are uncertain, and it is not possible at this time to predict how these trends, or the presidential administration’s support of them, may affect our business, customer relationships, financial condition or result of operation.",
+      "ticker": "BY",
+      "topic": "customer relationship"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          297
+        ]
+      ],
+      "change_id": "0889009f68998047",
+      "matched_terms": [
+        "economic impact"
+      ],
+      "position": 21,
+      "sentence_id": "0001193125-26-083194:33:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "The timing, extent and potential economic impact of these developments are uncertain, and it is not possible at this time to predict how these trends, or the presidential administration’s support of them, may affect our business, customer relationships, financial condition or result of operation.",
+      "ticker": "BY",
+      "topic": "economic impact"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          62
+        ]
+      ],
+      "change_id": "b3beab3a684dfc42",
+      "matched_terms": [
+        "FRB Chair"
+      ],
+      "position": 14,
+      "sentence_id": "0001193125-26-083194:24:7",
+      "source": "entity",
+      "status": "added",
+      "text": "The current term of FRB Chair is scheduled to end in May 2026.",
+      "ticker": "BY",
+      "topic": "FRB Chair"
+    },
+    {
+      "added_spans": [
+        [
+          4,
+          51
+        ],
+        [
+          55,
+          240
+        ],
+        [
+          275,
+          277
+        ],
+        [
+          289,
+          298
+        ]
+      ],
+      "change_id": "b3beab3a684dfc42",
+      "matched_terms": [
+        "monetary policy decisions"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-083194:24:9",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The extent to which the nomination and confirmation of the next Chair of the FRB may alter monetary policy decisions of the FRB, or the timing and magnitude of any changes to the federal funds rate, is uncertain, and the potential impact on our business, financial condition or results of operation cannot be predicted.",
+      "ticker": "BY",
+      "topic": "monetary policy decision"
+    },
+    {
+      "added_spans": [
+        [
+          161,
+          347
+        ]
+      ],
+      "change_id": "658489da370b3613",
+      "matched_terms": [
+        "established and growing demand"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-083194:15:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The financial services industry is continually undergoing rapid technological change with frequent introductions of new, technology-driven products and services and an established and growing demand for mobile banking and payment systems and applications, necessary to allow companies to interact with customers and to review, analyze and use data.",
+      "ticker": "BY",
+      "topic": "established and growing demand"
+    },
+    {
+      "added_spans": [
+        [
+          161,
+          347
+        ]
+      ],
+      "change_id": "658489da370b3613",
+      "matched_terms": [
+        "mobile banking"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-083194:15:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The financial services industry is continually undergoing rapid technological change with frequent introductions of new, technology-driven products and services and an established and growing demand for mobile banking and payment systems and applications, necessary to allow companies to interact with customers and to review, analyze and use data.",
+      "ticker": "BY",
+      "topic": "mobile banking"
+    },
+    {
+      "added_spans": [
+        [
+          161,
+          347
+        ]
+      ],
+      "change_id": "658489da370b3613",
+      "matched_terms": [
+        "payment systems"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-083194:15:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The financial services industry is continually undergoing rapid technological change with frequent introductions of new, technology-driven products and services and an established and growing demand for mobile banking and payment systems and applications, necessary to allow companies to interact with customers and to review, analyze and use data.",
+      "ticker": "BY",
+      "topic": "payment system"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          131
+        ]
+      ],
+      "change_id": "658489da370b3613",
+      "matched_terms": [
+        "effective use"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-083194:15:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The effective use of technology increases efficiency and enables financial institutions to better serve customers and reduce costs.",
+      "ticker": "BY",
+      "topic": "effective use"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          167
+        ]
+      ],
+      "change_id": "7e2f8aa9eb96af1d",
+      "matched_terms": [
+        "human error"
+      ],
+      "position": 15,
+      "sentence_id": "0001193125-26-083194:13:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result, we are subject to vulnerabilities resulting from the reliance on third-party employees, which range from human error to misconduct, malfeasance and fraud.",
+      "ticker": "BY",
+      "topic": "human error"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          278
+        ]
+      ],
+      "change_id": "7e2f8aa9eb96af1d",
+      "matched_terms": [
+        "internal controls"
+      ],
+      "position": 16,
+      "sentence_id": "0001193125-26-083194:13:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have internal controls and procedures to address these vulnerabilities, but we may fail to successfully implement and maintain such controls and procedures or our controls and procedures may not be adequate to prevent adverse consequences resulting from such vulnerabilities.",
+      "ticker": "BY",
+      "topic": "internal control"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          325
+        ]
+      ],
+      "change_id": "7e2f8aa9eb96af1d",
+      "matched_terms": [
+        "business activities"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-083194:13:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any of the foregoing may lead to the incurrence of remediation costs, regulatory fines, penalties or enforcement actions, litigation, limitations on our business activities and growth, as well as undermining customer confidence, any of which could negatively impact our business, financial condition or results of operations.",
+      "ticker": "BY",
+      "topic": "business activity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          325
+        ]
+      ],
+      "change_id": "7e2f8aa9eb96af1d",
+      "matched_terms": [
+        "customer confidence"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-083194:13:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any of the foregoing may lead to the incurrence of remediation costs, regulatory fines, penalties or enforcement actions, litigation, limitations on our business activities and growth, as well as undermining customer confidence, any of which could negatively impact our business, financial condition or results of operations.",
+      "ticker": "BY",
+      "topic": "customer confidence"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          325
+        ]
+      ],
+      "change_id": "7e2f8aa9eb96af1d",
+      "matched_terms": [
+        "enforcement actions"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-083194:13:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any of the foregoing may lead to the incurrence of remediation costs, regulatory fines, penalties or enforcement actions, litigation, limitations on our business activities and growth, as well as undermining customer confidence, any of which could negatively impact our business, financial condition or results of operations.",
+      "ticker": "BY",
+      "topic": "enforcement action"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          325
+        ]
+      ],
+      "change_id": "7e2f8aa9eb96af1d",
+      "matched_terms": [
+        "regulatory fines"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-083194:13:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any of the foregoing may lead to the incurrence of remediation costs, regulatory fines, penalties or enforcement actions, litigation, limitations on our business activities and growth, as well as undermining customer confidence, any of which could negatively impact our business, financial condition or results of operations.",
+      "ticker": "BY",
+      "topic": "regulatory fine"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          325
+        ]
+      ],
+      "change_id": "7e2f8aa9eb96af1d",
+      "matched_terms": [
+        "remediation costs"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-083194:13:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any of the foregoing may lead to the incurrence of remediation costs, regulatory fines, penalties or enforcement actions, litigation, limitations on our business activities and growth, as well as undermining customer confidence, any of which could negatively impact our business, financial condition or results of operations.",
+      "ticker": "BY",
+      "topic": "remediation cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          223
+        ]
+      ],
+      "change_id": "8791abcf623be78c",
+      "matched_terms": [
+        "AI\"), automation"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-083194:10:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "We may also implement new technologies, such as those related to artificial intelligence (\"AI\"), automation and algorithms, in order to create efficiencies, access and use data and enhance our customers’ engagement with us.",
+      "ticker": "BY",
+      "topic": "ai automation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          223
+        ]
+      ],
+      "change_id": "8791abcf623be78c",
+      "matched_terms": [
+        "artificial intelligence"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-083194:10:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "We may also implement new technologies, such as those related to artificial intelligence (\"AI\"), automation and algorithms, in order to create efficiencies, access and use data and enhance our customers’ engagement with us.",
+      "ticker": "BY",
+      "topic": "artificial intelligence"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          175
+        ]
+      ],
+      "change_id": "8791abcf623be78c",
+      "matched_terms": [
+        "unintended consequences"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-083194:10:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Also, the implementation of certain new technologies may have unintended consequences due to their limitations, potential manipulation, or our failure to use them effectively.",
+      "ticker": "BY",
+      "topic": "unintended consequence"
+    },
+    {
+      "added_spans": [
+        [
+          109,
+          140
+        ],
+        [
+          275,
+          294
+        ]
+      ],
+      "change_id": "8791abcf623be78c",
+      "matched_terms": [
+        "general economic conditions"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-083194:10:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "External factors, such as compliance with regulations, competitive alternatives, shifting market preferences and general economic conditions, may also affect the ultimate implementation of a new line of business or offerings of new products, product enhancements or services and/or technologies.",
+      "ticker": "BY",
+      "topic": "general economic condition"
+    }
+  ],
+  "total_changes": 36
+}

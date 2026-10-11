@@ -1,0 +1,884 @@
+{
+  "analysis_id": "a4daff1e9f57431c2352d108a36bc52b591e164fd418906f75858e665ea52428",
+  "by_change_type": {
+    "expanded": 0,
+    "largely_unchanged": 20,
+    "materially_reworded": 0,
+    "new": 3,
+    "reduced": 0,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 6,
+      "added_words": 160,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 39,
+      "short_title": "The planned separation of the Company's Orthopaedics business"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 88,
+      "categories": [
+        "other"
+      ],
+      "change_id": "1fad8dcc2c689455",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 30,
+      "short_title": "Following the planned separation"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 97,
+      "categories": [
+        "other"
+      ],
+      "change_id": "ff25f6406f986410",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 30,
+      "short_title": "The costs to complete the planned separation"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "geopolitical"
+      ],
+      "change_id": "d4b50b3ee5197971",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 45,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 20,
+      "short_title": "Due to the international nature of the Company's business, geopolitical"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "0312279e3411c836",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Interruptions and delays in manufacturing operations"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "foreign_exchange"
+      ],
+      "change_id": "07863739e3b535ff",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 12,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company faces a variety of financial, economic, legal, social"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "litigation"
+      ],
+      "change_id": "08177cabc1518edc",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company faces significant regulatory scrutiny"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "18254f0662afaf68",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 43,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Changes in tax laws or exposures to additional tax liabilities"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "20e5033fe9e8c26b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company faces increased challenges to intellectual property rights central"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "3cba4b0a7fe77d88",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 15,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "An information security incident, including a cybersecurity breach"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence",
+        "competition"
+      ],
+      "change_id": "3fa413632236ae4d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Significant challenges or delays in the Company’s innovation, development"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "3fdabe55cba7f473",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 12,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company is subject to an increasing number of costly"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "4877dfff846d0ea5",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Weak financial performance, failure to maintain a satisfactory credit rating"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "4fdf17d57f190a72",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company’s businesses operate in highly competitive product markets"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "56c1532eb42d8bc3",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "A breach of privacy laws or unauthorized access, loss"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "678dea47f459e296",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Global health crises, pandemics, epidemics, or other outbreaks"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "68886c34926d3270",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business depends on our ability to recruit"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "6a69d72889639ef4",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company relies on third parties to manufacture"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "71708401be7bd3bf",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company is subject to significant legal proceedings"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "979655df0129946e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 5,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Counterfeit versions of our products could harm our patients"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "dcdc787c7081614a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Climate change or legal, regulatory"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "competition"
+      ],
+      "change_id": "ee11c6a3ac2fc2cf",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Global sales in the Company’s Innovative Medicine and MedTech segments"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation",
+        "regulation"
+      ],
+      "change_id": "f57060e8e8cc9750",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Product reliability, safety and effectiveness concerns"
+    }
+  ],
+  "cik": "0000200406",
+  "company_name": "JOHNSON & JOHNSON",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0000200406-26-000016",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0000200406-25-000038",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/200406/000020040625000038/jnj-20241229.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [
+    {
+      "change_id": "d4b50b3ee5197971",
+      "company_name": "JOHNSON & JOHNSON",
+      "new_sentence_id": "0000200406-26-000016:14:8",
+      "new_spans": [
+        [
+          33,
+          51
+        ],
+        [
+          101,
+          125
+        ]
+      ],
+      "new_text": "In addition, the U.S. government has imposed and/or announced the potential imposition of tariffs on products manufactured in other jurisdictions.",
+      "old_sentence_id": "0000200406-25-000038:14:8",
+      "old_spans": [
+        [
+          33,
+          41
+        ],
+        [
+          52,
+          183
+        ]
+      ],
+      "old_text": "In addition, the U.S. government recently announced tariffs on products manufactured in several jurisdictions, including China, Mexico and Canada, and has made announcements regarding the potential imposition of tariffs on other jurisdictions.",
+      "score": 20,
+      "short_title": "Due to the international nature of the Company's business, geopolitical",
+      "ticker": "JNJ"
+    }
+  ],
+  "ticker": "JNJ",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          0,
+          183
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "planned separation"
+      ],
+      "position": 0,
+      "sentence_id": "0000200406-26-000016:16:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "The planned separation of the Company's Orthopaedics business may not be completed on the terms or timeline currently contemplated, if at all, and may not achieve the expected results",
+      "ticker": "JNJ",
+      "topic": "planned separation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          108
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "initial announcement"
+      ],
+      "position": 2,
+      "sentence_id": "0000200406-26-000016:16:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The Company is targeting completion of the planned separation in 18 to 24 months after initial announcement.",
+      "ticker": "JNJ",
+      "topic": "initial announcement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          108
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "planned separation"
+      ],
+      "position": 2,
+      "sentence_id": "0000200406-26-000016:16:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The Company is targeting completion of the planned separation in 18 to 24 months after initial announcement.",
+      "ticker": "JNJ",
+      "topic": "planned separation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          311
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "Company's Board of Directors"
+      ],
+      "position": 3,
+      "sentence_id": "0000200406-26-000016:16:3",
+      "source": "entity",
+      "status": "added",
+      "text": "Completion of the planned separation will be subject to the satisfaction of certain conditions, including, among others, consultations with works councils and other employee representative bodies, as may be required, final approval of the Company's Board of Directors, and receipt of other regulatory approvals.",
+      "ticker": "JNJ",
+      "topic": "Company's Board of Directors"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          311
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "employee representative bodies"
+      ],
+      "position": 3,
+      "sentence_id": "0000200406-26-000016:16:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Completion of the planned separation will be subject to the satisfaction of certain conditions, including, among others, consultations with works councils and other employee representative bodies, as may be required, final approval of the Company's Board of Directors, and receipt of other regulatory approvals.",
+      "ticker": "JNJ",
+      "topic": "employee representative body"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          311
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "final approval"
+      ],
+      "position": 3,
+      "sentence_id": "0000200406-26-000016:16:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Completion of the planned separation will be subject to the satisfaction of certain conditions, including, among others, consultations with works councils and other employee representative bodies, as may be required, final approval of the Company's Board of Directors, and receipt of other regulatory approvals.",
+      "ticker": "JNJ",
+      "topic": "final approval"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          311
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "planned separation"
+      ],
+      "position": 3,
+      "sentence_id": "0000200406-26-000016:16:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Completion of the planned separation will be subject to the satisfaction of certain conditions, including, among others, consultations with works councils and other employee representative bodies, as may be required, final approval of the Company's Board of Directors, and receipt of other regulatory approvals.",
+      "ticker": "JNJ",
+      "topic": "planned separation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          311
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "regulatory approvals"
+      ],
+      "position": 3,
+      "sentence_id": "0000200406-26-000016:16:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Completion of the planned separation will be subject to the satisfaction of certain conditions, including, among others, consultations with works councils and other employee representative bodies, as may be required, final approval of the Company's Board of Directors, and receipt of other regulatory approvals.",
+      "ticker": "JNJ",
+      "topic": "regulatory approval"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          311
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "works councils"
+      ],
+      "position": 3,
+      "sentence_id": "0000200406-26-000016:16:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Completion of the planned separation will be subject to the satisfaction of certain conditions, including, among others, consultations with works councils and other employee representative bodies, as may be required, final approval of the Company's Board of Directors, and receipt of other regulatory approvals.",
+      "ticker": "JNJ",
+      "topic": "work council"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          124
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "planned separation"
+      ],
+      "position": 4,
+      "sentence_id": "0000200406-26-000016:16:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "There can be no assurance regarding the ultimate timing of the planned separation or that such separation will be completed.",
+      "ticker": "JNJ",
+      "topic": "planned separation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          124
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "ultimate timing"
+      ],
+      "position": 4,
+      "sentence_id": "0000200406-26-000016:16:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "There can be no assurance regarding the ultimate timing of the planned separation or that such separation will be completed.",
+      "ticker": "JNJ",
+      "topic": "ultimate timing"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          273
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "planned separation"
+      ],
+      "position": 5,
+      "sentence_id": "0000200406-26-000016:16:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Unanticipated developments could delay, prevent or otherwise adversely affect the planned separation, including but not limited to disruptions in general or financial market conditions or potential problems or delays in obtaining various regulatory approvals or clearances.",
+      "ticker": "JNJ",
+      "topic": "planned separation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          273
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "regulatory approvals"
+      ],
+      "position": 5,
+      "sentence_id": "0000200406-26-000016:16:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Unanticipated developments could delay, prevent or otherwise adversely affect the planned separation, including but not limited to disruptions in general or financial market conditions or potential problems or delays in obtaining various regulatory approvals or clearances.",
+      "ticker": "JNJ",
+      "topic": "regulatory approval"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          273
+        ]
+      ],
+      "change_id": "86ad6c10e1acd735",
+      "matched_terms": [
+        "Unanticipated developments"
+      ],
+      "position": 5,
+      "sentence_id": "0000200406-26-000016:16:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Unanticipated developments could delay, prevent or otherwise adversely affect the planned separation, including but not limited to disruptions in general or financial market conditions or potential problems or delays in obtaining various regulatory approvals or clearances.",
+      "ticker": "JNJ",
+      "topic": "unanticipated development"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          111
+        ]
+      ],
+      "change_id": "1fad8dcc2c689455",
+      "matched_terms": [
+        "planned separation"
+      ],
+      "position": 0,
+      "sentence_id": "0000200406-26-000016:18:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Following the planned separation, the price of shares of the Company's common stock may fluctuate significantly",
+      "ticker": "JNJ",
+      "topic": "planned separation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          285
+        ]
+      ],
+      "change_id": "1fad8dcc2c689455",
+      "matched_terms": [
+        "market value"
+      ],
+      "position": 1,
+      "sentence_id": "0000200406-26-000016:18:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "The Company cannot predict the effect of the planned separation on the trading price of shares of its common stock, and market value of shares of its common stock may be less than, equal to or greater than the market value of shares of its common stock prior to the planned separation.",
+      "ticker": "JNJ",
+      "topic": "market value"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          285
+        ]
+      ],
+      "change_id": "1fad8dcc2c689455",
+      "matched_terms": [
+        "planned separation"
+      ],
+      "position": 1,
+      "sentence_id": "0000200406-26-000016:18:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "The Company cannot predict the effect of the planned separation on the trading price of shares of its common stock, and market value of shares of its common stock may be less than, equal to or greater than the market value of shares of its common stock prior to the planned separation.",
+      "ticker": "JNJ",
+      "topic": "planned separation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          285
+        ]
+      ],
+      "change_id": "1fad8dcc2c689455",
+      "matched_terms": [
+        "trading price"
+      ],
+      "position": 1,
+      "sentence_id": "0000200406-26-000016:18:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "The Company cannot predict the effect of the planned separation on the trading price of shares of its common stock, and market value of shares of its common stock may be less than, equal to or greater than the market value of shares of its common stock prior to the planned separation.",
+      "ticker": "JNJ",
+      "topic": "trading price"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          116
+        ]
+      ],
+      "change_id": "1fad8dcc2c689455",
+      "matched_terms": [
+        "planned separation"
+      ],
+      "position": 2,
+      "sentence_id": "0000200406-26-000016:18:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, the price of the Company's common stock may be more volatile around the time of the planned separation.",
+      "ticker": "JNJ",
+      "topic": "planned separation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          254
+        ]
+      ],
+      "change_id": "ff25f6406f986410",
+      "matched_terms": [
+        "planned separation"
+      ],
+      "position": 0,
+      "sentence_id": "0000200406-26-000016:17:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "The costs to complete the planned separation will be significant. In addition, the Company may be unable to achieve some of the strategic and financial benefits that it expects to achieve from the planned separation of the Company's Orthopaedics business",
+      "ticker": "JNJ",
+      "topic": "planned separation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          254
+        ]
+      ],
+      "change_id": "ff25f6406f986410",
+      "matched_terms": [
+        "strategic and financial benefits"
+      ],
+      "position": 0,
+      "sentence_id": "0000200406-26-000016:17:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "The costs to complete the planned separation will be significant. In addition, the Company may be unable to achieve some of the strategic and financial benefits that it expects to achieve from the planned separation of the Company's Orthopaedics business",
+      "ticker": "JNJ",
+      "topic": "strategic and financial benefit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          86
+        ]
+      ],
+      "change_id": "ff25f6406f986410",
+      "matched_terms": [
+        "planned separation"
+      ],
+      "position": 1,
+      "sentence_id": "0000200406-26-000016:17:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "The Company will incur significant expenses in connection with the planned separation.",
+      "ticker": "JNJ",
+      "topic": "planned separation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          150
+        ]
+      ],
+      "change_id": "ff25f6406f986410",
+      "matched_terms": [
+        "planned separation"
+      ],
+      "position": 2,
+      "sentence_id": "0000200406-26-000016:17:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, the Company may not be able to achieve the full strategic and financial benefits that are expected to result from the planned separation.",
+      "ticker": "JNJ",
+      "topic": "planned separation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          150
+        ]
+      ],
+      "change_id": "ff25f6406f986410",
+      "matched_terms": [
+        "strategic and financial benefits"
+      ],
+      "position": 2,
+      "sentence_id": "0000200406-26-000016:17:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, the Company may not be able to achieve the full strategic and financial benefits that are expected to result from the planned separation.",
+      "ticker": "JNJ",
+      "topic": "strategic and financial benefit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          123
+        ]
+      ],
+      "change_id": "ff25f6406f986410",
+      "matched_terms": [
+        "planned separation"
+      ],
+      "position": 3,
+      "sentence_id": "0000200406-26-000016:17:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "The anticipated benefits of the planned separation are based on a number of assumptions, some of which may prove incorrect.",
+      "ticker": "JNJ",
+      "topic": "planned separation"
+    }
+  ],
+  "total_changes": 23
+}

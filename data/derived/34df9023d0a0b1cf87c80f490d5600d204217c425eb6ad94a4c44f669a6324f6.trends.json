@@ -1,0 +1,4192 @@
+{
+  "analysis_id": "34df9023d0a0b1cf87c80f490d5600d204217c425eb6ad94a4c44f669a6324f6",
+  "by_change_type": {
+    "expanded": 4,
+    "largely_unchanged": 29,
+    "materially_reworded": 5,
+    "new": 1,
+    "reduced": 3,
+    "removed": 3
+  },
+  "category_activity": [
+    {
+      "added_sentences": 43,
+      "added_words": 1261,
+      "categories": [
+        "regulation",
+        "geopolitical"
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "change_type": "materially_reworded",
+      "modified_sentences": 16,
+      "modified_words": 395,
+      "removed_sentences": 8,
+      "removed_words": 253,
+      "score": 62,
+      "short_title": "Government actions and regulations such as export regulations, import tariffs"
+    },
+    {
+      "added_sentences": 10,
+      "added_words": 322,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "change_type": "materially_reworded",
+      "modified_sentences": 6,
+      "modified_words": 291,
+      "removed_sentences": 13,
+      "removed_words": 386,
+      "score": 53,
+      "short_title": "The markets in which our products are sold are highly"
+    },
+    {
+      "added_sentences": 7,
+      "added_words": 177,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "change_type": "expanded",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 1,
+      "removed_words": 17,
+      "score": 42,
+      "short_title": "Uncertainties involving the ordering and shipment of our products"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 123,
+      "categories": [
+        "regulation",
+        "litigation"
+      ],
+      "change_id": "b4d2fa23cfb26df4",
+      "change_type": "materially_reworded",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 2,
+      "removed_words": 77,
+      "score": 40,
+      "short_title": "Our business is subject to potential tax liabilities"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "4939cf90560b0eac",
+      "change_type": "expanded",
+      "modified_sentences": 3,
+      "modified_words": 55,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 33,
+      "short_title": "Our stock price is subject to volatility"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 96,
+      "categories": [
+        "macroeconomic",
+        "credit"
+      ],
+      "change_id": "0349486f7cf1dde0",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 30,
+      "short_title": "We may be required to satisfy financial obligations under guarantees"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 123,
+      "categories": [
+        "geopolitical"
+      ],
+      "change_id": "c2b84a35a6e3cc13",
+      "change_type": "materially_reworded",
+      "modified_sentences": 5,
+      "modified_words": 113,
+      "removed_sentences": 2,
+      "removed_words": 74,
+      "score": 29,
+      "short_title": "Our worldwide operations are subject to political, legal"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "9d4fd4e4c25fdd49",
+      "change_type": "removed",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 7,
+      "removed_words": 223,
+      "score": 26,
+      "short_title": "Intel Corporation’s dominance of the microprocessor market"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "be389f1b0eedc374",
+      "change_type": "removed",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 10,
+      "removed_words": 368,
+      "score": 26,
+      "short_title": "Our ability to complete the acquisition of ZT Systems"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "dee270a71ed9bd02",
+      "change_type": "removed",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 5,
+      "removed_words": 153,
+      "score": 26,
+      "short_title": "Nvidia’s dominance in the graphics processing unit market"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 120,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "change_type": "materially_reworded",
+      "modified_sentences": 3,
+      "modified_words": 54,
+      "removed_sentences": 1,
+      "removed_words": 38,
+      "score": 25,
+      "short_title": "Our inability to effectively control the sales of our products"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 64,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "77a8962b75144de6",
+      "change_type": "expanded",
+      "modified_sentences": 7,
+      "modified_words": 47,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 23,
+      "short_title": "Our inability to continue to attract and retain key employees"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "ceff50432ff5bf49",
+      "change_type": "reduced",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 2,
+      "removed_words": 69,
+      "score": 16,
+      "short_title": "If we cannot realize our deferred tax assets"
+    },
+    {
+      "added_sentences": 5,
+      "added_words": 122,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "6f9e68316466878f",
+      "change_type": "expanded",
+      "modified_sentences": 6,
+      "modified_words": 27,
+      "removed_sentences": 1,
+      "removed_words": 17,
+      "score": 15,
+      "short_title": "The demand for our products depends in part"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic",
+        "climate"
+      ],
+      "change_id": "985f8eaa80af955b",
+      "change_type": "reduced",
+      "modified_sentences": 7,
+      "modified_words": 167,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 10,
+      "short_title": "Any impairment of our tangible, definite-lived intangible"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "caecedf0b8133c98",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 20,
+      "removed_sentences": 1,
+      "removed_words": 35,
+      "score": 10,
+      "short_title": "The agreements governing our notes"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 55,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "ee5a4cc8e06b651d",
+      "change_type": "reduced",
+      "modified_sentences": 16,
+      "modified_words": 224,
+      "removed_sentences": 1,
+      "removed_words": 34,
+      "score": 10,
+      "short_title": "Climate change may have an impact on our business"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 32,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "062e7a6cbf9a6bc9",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The semiconductor industry is highly cyclical"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 22,
+      "categories": [
+        "climate",
+        "regulation"
+      ],
+      "change_id": "06d203e50d2d6a24",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 9,
+      "modified_words": 47,
+      "removed_sentences": 1,
+      "removed_words": 26,
+      "score": 0,
+      "short_title": "Evolving expectations from governments, investors, customers"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "foreign_exchange"
+      ],
+      "change_id": "08ac4512502a6904",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 12,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Unfavorable currency exchange rate fluctuations could adversely affect us"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity",
+        "litigation"
+      ],
+      "change_id": "0b45d311f064720f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our products may be subject to security vulnerabilities"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "195fc987c95779e5",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Issues related to the responsible use of AI"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property",
+        "regulation"
+      ],
+      "change_id": "2a76e332918eae50",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we lose Microsoft Corporation’s support for our products"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "34088b208d5e9527",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our operating results are subject to quarterly"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 52,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "3d86b47317977a93",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 39,
+      "removed_sentences": 2,
+      "removed_words": 40,
+      "score": 0,
+      "short_title": "Economic and market uncertainty may adversely impact our business"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain",
+        "cybersecurity"
+      ],
+      "change_id": "417b83430a7a2dbb",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We outsource to third parties certain supply-chain logistics functions"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property",
+        "regulation"
+      ],
+      "change_id": "47a0555a34c81725",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may incur future impairments of our technology license purchases"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "498ddbdedb66bf6b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 1,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We depend on third-party companies for the design, manufacture"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "62c26585e52ef569",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If our products are not compatible with some"
+    },
+    {
+      "added_sentences": 5,
+      "added_words": 128,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "6411469ecbac5140",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 9,
+      "modified_words": 78,
+      "removed_sentences": 2,
+      "removed_words": 39,
+      "score": 0,
+      "short_title": "The success of our business depends on our ability"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "6e98cb21076d367b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Failure to achieve expected manufacturing yields for our products"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation",
+        "intellectual_property"
+      ],
+      "change_id": "71b6406c0b5a073a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are party to litigation"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "7f3d0b3a278d7407",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 28,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are subject to environmental laws, conflict minerals regulations"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "customer_concentration"
+      ],
+      "change_id": "808479883a5a5cdd",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The loss of a significant customer"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "91536db6dd35e2d7",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Costs related to defective products"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 28,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "a5deb4b5141fcfd8",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 5,
+      "modified_words": 36,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "IT outages, data loss, data breaches and cyberattacks"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "aa7c130d3e4a0140",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business depends on the proper functioning of our internal"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "b7f8e30b01b3d6eb",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our reliance on third-party distributors"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 31,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "c22870d24fe8cee3",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If essential equipment, materials, substrates"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "df4d314296bb7883",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our ability to design"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 113,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "e594925be9268e63",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 10,
+      "modified_words": 176,
+      "removed_sentences": 1,
+      "removed_words": 8,
+      "score": 0,
+      "short_title": "Acquisitions, joint ventures, and/or investments"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "e7eed537d65a182a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we fail to maintain the efficiency of our supply"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "ef83eeb332d3c119",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we cannot adequately protect our technology"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "f493e72f4fb1071a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We rely on third parties to manufacture our products"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "f95d3c36d6e9498f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our revenue from our semi-custom SoC products is dependent upon"
+    }
+  ],
+  "cik": "0000002488",
+  "company_name": "ADVANCED MICRO DEVICES INC",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0000002488-26-000018",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0000002488-25-000012",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000012/amd-20241228.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "AMD",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          0,
+          177
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "semiconductor exports"
+      ],
+      "position": 9,
+      "sentence_id": "0000002488-26-000018:27:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Evolving U.S. government policy toward semiconductor exports, particularly in the context of national security and foreign policy priorities could adversely affect our business.",
+      "ticker": "AMD",
+      "topic": "semiconductor export"
+    },
+    {
+      "added_spans": [
+        [
+          4,
+          103
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "export requirements"
+      ],
+      "position": 17,
+      "sentence_id": "0000002488-26-000018:27:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "BIS may not timely update performance-based licensing thresholds in the 2023 export requirements and/or may issue new licensing requirements and regulatory controls in the future.",
+      "ticker": "AMD",
+      "topic": "export requirement"
+    },
+    {
+      "added_spans": [
+        [
+          4,
+          103
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "performance-based licensing thresholds"
+      ],
+      "position": 17,
+      "sentence_id": "0000002488-26-000018:27:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "BIS may not timely update performance-based licensing thresholds in the 2023 export requirements and/or may issue new licensing requirements and regulatory controls in the future.",
+      "ticker": "AMD",
+      "topic": "performance based licensing threshold"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          291
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "semiconductor technology"
+      ],
+      "position": 20,
+      "sentence_id": "0000002488-26-000018:27:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "U.S. export restrictions on semiconductors and semiconductor technology to China and Chinese customers negatively impact our ability to sell to customers in China and make it easier for our China-based competitors to develop and sell their own solutions and reduce the need for our products.",
+      "ticker": "AMD",
+      "topic": "semiconductor technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          228
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "license requirement"
+      ],
+      "position": 21,
+      "sentence_id": "0000002488-26-000018:27:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "In April 2025, the U.S. government implemented a new license requirement for the export of certain semiconductor products to a D5 Country, and to companies headquartered in, or with an ultimate parent located in such D5 Country.",
+      "ticker": "AMD",
+      "topic": "license requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          228
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "semiconductor products"
+      ],
+      "position": 21,
+      "sentence_id": "0000002488-26-000018:27:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "In April 2025, the U.S. government implemented a new license requirement for the export of certain semiconductor products to a D5 Country, and to companies headquartered in, or with an ultimate parent located in such D5 Country.",
+      "ticker": "AMD",
+      "topic": "semiconductor product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          134
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "inventory and related charges"
+      ],
+      "position": 23,
+      "sentence_id": "0000002488-26-000018:27:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result of the restriction, we incurred approximately $800 million in inventory and related charges in the second quarter of 2025.",
+      "ticker": "AMD",
+      "topic": "inventory and related charge"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          134
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "second quarter"
+      ],
+      "position": 23,
+      "sentence_id": "0000002488-26-000018:27:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result of the restriction, we incurred approximately $800 million in inventory and related charges in the second quarter of 2025.",
+      "ticker": "AMD",
+      "topic": "second quarter"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          158
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "fourth quarter"
+      ],
+      "position": 25,
+      "sentence_id": "0000002488-26-000018:27:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "During the fourth quarter of fiscal year 2025, we began shipping products and reversed approximately $360 million of the charges recorded earlier in the year.",
+      "ticker": "AMD",
+      "topic": "fourth quarter"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          130
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "customer demand"
+      ],
+      "position": 26,
+      "sentence_id": "0000002488-26-000018:27:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "Sales of our MI308 products into China depend on customer demand, China’s import control rules and our ability to obtain licenses.",
+      "ticker": "AMD",
+      "topic": "customer demand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          218
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "benefit competitors"
+      ],
+      "position": 29,
+      "sentence_id": "0000002488-26-000018:27:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any request for a percentage of the revenue by the U.S. government could subject us to litigation, increase our costs and harm our competitive position and benefit competitors that are not subject to such arrangements.",
+      "ticker": "AMD",
+      "topic": "benefit competitor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          218
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "competitive position"
+      ],
+      "position": 29,
+      "sentence_id": "0000002488-26-000018:27:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any request for a percentage of the revenue by the U.S. government could subject us to litigation, increase our costs and harm our competitive position and benefit competitors that are not subject to such arrangements.",
+      "ticker": "AMD",
+      "topic": "competitive position"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          122
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "onerous conditions"
+      ],
+      "position": 32,
+      "sentence_id": "0000002488-26-000018:27:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Even if we are granted licenses, the licenses may be temporary or could impose onerous conditions for us or our customers.",
+      "ticker": "AMD",
+      "topic": "onerous condition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          149
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "competitive product"
+      ],
+      "position": 33,
+      "sentence_id": "0000002488-26-000018:27:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we are not granted licenses, we may be unable to develop a competitive product for the China market that is not subject to licensing requirements.",
+      "ticker": "AMD",
+      "topic": "competitive product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          227
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "competitive position"
+      ],
+      "position": 34,
+      "sentence_id": "0000002488-26-000018:27:22",
+      "source": "phrase",
+      "status": "added",
+      "text": "Limits on sales of our offerings in the China market due to export controls could impact our competitive position compared to domestic Chinese competitors and other companies or competitors not subject to the same restrictions.",
+      "ticker": "AMD",
+      "topic": "competitive position"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "market position"
+      ],
+      "position": 35,
+      "sentence_id": "0000002488-26-000018:27:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "As such, we could lose market position and our business, operating results, and financial condition would be adversely impacted.",
+      "ticker": "AMD",
+      "topic": "market position"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          237
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "final rule"
+      ],
+      "position": 36,
+      "sentence_id": "0000002488-26-000018:27:24",
+      "source": "phrase",
+      "status": "added",
+      "text": "In January 2025, BIS issued a final rule, commonly referred to as the “AI Diffusion Rule,” that would have imposed new restrictions on the export, reexport and in-country transfer of certain advanced semiconductor devices and technology.",
+      "ticker": "AMD",
+      "topic": "final rule"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          166
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "replacement rules"
+      ],
+      "position": 37,
+      "sentence_id": "0000002488-26-000018:27:25",
+      "source": "phrase",
+      "status": "added",
+      "text": "In May 2025, BIS announced its intention to rescind the AI Diffusion Rule, publish a regulation formalizing the rescission, and issue replacement rules in the future.",
+      "ticker": "AMD",
+      "topic": "replacement rule"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          237
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "business transactions"
+      ],
+      "position": 38,
+      "sentence_id": "0000002488-26-000018:27:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "The replacement rules may limit our ability to engage in certain business transactions, require new export licenses, delay shipments, or necessitate changes in our compliance processes and product designs to ensure regulatory compliance.",
+      "ticker": "AMD",
+      "topic": "business transaction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          237
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "compliance processes"
+      ],
+      "position": 38,
+      "sentence_id": "0000002488-26-000018:27:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "The replacement rules may limit our ability to engage in certain business transactions, require new export licenses, delay shipments, or necessitate changes in our compliance processes and product designs to ensure regulatory compliance.",
+      "ticker": "AMD",
+      "topic": "compliance process"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          237
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "necessitate changes"
+      ],
+      "position": 38,
+      "sentence_id": "0000002488-26-000018:27:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "The replacement rules may limit our ability to engage in certain business transactions, require new export licenses, delay shipments, or necessitate changes in our compliance processes and product designs to ensure regulatory compliance.",
+      "ticker": "AMD",
+      "topic": "necessitate change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          237
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "product designs"
+      ],
+      "position": 38,
+      "sentence_id": "0000002488-26-000018:27:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "The replacement rules may limit our ability to engage in certain business transactions, require new export licenses, delay shipments, or necessitate changes in our compliance processes and product designs to ensure regulatory compliance.",
+      "ticker": "AMD",
+      "topic": "product design"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          237
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "regulatory compliance"
+      ],
+      "position": 38,
+      "sentence_id": "0000002488-26-000018:27:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "The replacement rules may limit our ability to engage in certain business transactions, require new export licenses, delay shipments, or necessitate changes in our compliance processes and product designs to ensure regulatory compliance.",
+      "ticker": "AMD",
+      "topic": "regulatory compliance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          237
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "replacement rules"
+      ],
+      "position": 38,
+      "sentence_id": "0000002488-26-000018:27:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "The replacement rules may limit our ability to engage in certain business transactions, require new export licenses, delay shipments, or necessitate changes in our compliance processes and product designs to ensure regulatory compliance.",
+      "ticker": "AMD",
+      "topic": "replacement rule"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          238
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "specific products"
+      ],
+      "position": 39,
+      "sentence_id": "0000002488-26-000018:27:27",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, BIS’s announced plans introduce uncertainty as we evaluate whether specific products, technologies, or software fall within the scope of any new restrictions, and whether BIS will grant licenses in a timely matter or at all.",
+      "ticker": "AMD",
+      "topic": "specific product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          238
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "timely matter"
+      ],
+      "position": 39,
+      "sentence_id": "0000002488-26-000018:27:27",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, BIS’s announced plans introduce uncertainty as we evaluate whether specific products, technologies, or software fall within the scope of any new restrictions, and whether BIS will grant licenses in a timely matter or at all.",
+      "ticker": "AMD",
+      "topic": "timely matter"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          212
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "competitive positioning"
+      ],
+      "position": 40,
+      "sentence_id": "0000002488-26-000018:27:28",
+      "source": "phrase",
+      "status": "added",
+      "text": "Compliance with the planned or existing rules could result in increased costs, disruption of key customer and supplier relationships, loss of competitive positioning in international markets or reputational harm.",
+      "ticker": "AMD",
+      "topic": "competitive positioning"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          212
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "customer and supplier relationships"
+      ],
+      "position": 40,
+      "sentence_id": "0000002488-26-000018:27:28",
+      "source": "phrase",
+      "status": "added",
+      "text": "Compliance with the planned or existing rules could result in increased costs, disruption of key customer and supplier relationships, loss of competitive positioning in international markets or reputational harm.",
+      "ticker": "AMD",
+      "topic": "customer and supplier relationship"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          212
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "increased costs"
+      ],
+      "position": 40,
+      "sentence_id": "0000002488-26-000018:27:28",
+      "source": "phrase",
+      "status": "added",
+      "text": "Compliance with the planned or existing rules could result in increased costs, disruption of key customer and supplier relationships, loss of competitive positioning in international markets or reputational harm.",
+      "ticker": "AMD",
+      "topic": "increased cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          212
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "international markets"
+      ],
+      "position": 40,
+      "sentence_id": "0000002488-26-000018:27:28",
+      "source": "phrase",
+      "status": "added",
+      "text": "Compliance with the planned or existing rules could result in increased costs, disruption of key customer and supplier relationships, loss of competitive positioning in international markets or reputational harm.",
+      "ticker": "AMD",
+      "topic": "international market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          212
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "planned or existing rules"
+      ],
+      "position": 40,
+      "sentence_id": "0000002488-26-000018:27:28",
+      "source": "phrase",
+      "status": "added",
+      "text": "Compliance with the planned or existing rules could result in increased costs, disruption of key customer and supplier relationships, loss of competitive positioning in international markets or reputational harm.",
+      "ticker": "AMD",
+      "topic": "planned or existing rule"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          212
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "reputational harm"
+      ],
+      "position": 40,
+      "sentence_id": "0000002488-26-000018:27:28",
+      "source": "phrase",
+      "status": "added",
+      "text": "Compliance with the planned or existing rules could result in increased costs, disruption of key customer and supplier relationships, loss of competitive positioning in international markets or reputational harm.",
+      "ticker": "AMD",
+      "topic": "reputational harm"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          251
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "government regulations"
+      ],
+      "position": 43,
+      "sentence_id": "0000002488-26-000018:27:30",
+      "source": "phrase",
+      "status": "added",
+      "text": "The U.S. government has instituted or proposed changes in trade policies that include higher tariffs on imports into the U.S. and other government regulations affecting trade between the United States and other countries where we conduct our business.",
+      "ticker": "AMD",
+      "topic": "government regulation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          251
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "trade policies"
+      ],
+      "position": 43,
+      "sentence_id": "0000002488-26-000018:27:30",
+      "source": "phrase",
+      "status": "added",
+      "text": "The U.S. government has instituted or proposed changes in trade policies that include higher tariffs on imports into the U.S. and other government regulations affecting trade between the United States and other countries where we conduct our business.",
+      "ticker": "AMD",
+      "topic": "trade policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          178
+        ],
+        [
+          182,
+          336
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "affected countries"
+      ],
+      "position": 45,
+      "sentence_id": "0000002488-26-000018:27:31",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Such changes to U.S. trade policy have the potential to adversely impact the U.S. economy or sectors thereof and could significantly impact our business, in particular the import of products used in our business that are manufactured outside the U.S. Any retaliatory actions by affected countries and foreign governments could result in tariffs, trade protection measures or other restrictions imposed on our current and future products.",
+      "ticker": "AMD",
+      "topic": "affected country"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          60
+        ],
+        [
+          67,
+          83
+        ],
+        [
+          99,
+          126
+        ],
+        [
+          130,
+          158
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "customer demand"
+      ],
+      "position": 49,
+      "sentence_id": "0000002488-26-000018:27:33",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As such, customer demand for our products may decline, which could adversely impact our ability to generate revenue and result in inventory impairment changes.",
+      "ticker": "AMD",
+      "topic": "customer demand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          60
+        ],
+        [
+          67,
+          83
+        ],
+        [
+          99,
+          126
+        ],
+        [
+          130,
+          158
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "inventory impairment changes"
+      ],
+      "position": 49,
+      "sentence_id": "0000002488-26-000018:27:33",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As such, customer demand for our products may decline, which could adversely impact our ability to generate revenue and result in inventory impairment changes.",
+      "ticker": "AMD",
+      "topic": "inventory impairment change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          171
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "AI infrastructure investments"
+      ],
+      "position": 51,
+      "sentence_id": "0000002488-26-000018:27:34",
+      "source": "phrase",
+      "status": "added",
+      "text": "For instance, tariffs on hardware required for data centers could raise costs for our customers, potentially causing them to delay or cancel AI infrastructure investments.",
+      "ticker": "AMD",
+      "topic": "ai infrastructure investment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          171
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "data centers"
+      ],
+      "position": 51,
+      "sentence_id": "0000002488-26-000018:27:34",
+      "source": "phrase",
+      "status": "added",
+      "text": "For instance, tariffs on hardware required for data centers could raise costs for our customers, potentially causing them to delay or cancel AI infrastructure investments.",
+      "ticker": "AMD",
+      "topic": "data center"
+    },
+    {
+      "added_spans": [
+        [
+          22,
+          65
+        ],
+        [
+          185,
+          323
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "unlicensed sale"
+      ],
+      "position": 55,
+      "sentence_id": "0000002488-26-000018:27:36",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The United States and other countries’ export control regulations continue to focus on targeting semiconductors associated with AI, including GPUs and associated products and services, by restricting or prohibiting their unlicensed sale or supply to U.S. embargoed or sanctioned countries, governments, persons and entities.",
+      "ticker": "AMD",
+      "topic": "unlicensed sale"
+    },
+    {
+      "added_spans": [
+        [
+          138,
+          205
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "controls’ changes"
+      ],
+      "position": 61,
+      "sentence_id": "0000002488-26-000018:27:39",
+      "source": "phrase",
+      "status": "modified",
+      "text": "If export controls targeting semiconductors associated with AI including GPUs and associated products and services are further tightened, or the classification of our products under those controls’ changes, our ability to export our technology, products or services could be further restricted.",
+      "ticker": "AMD",
+      "topic": "control change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          270
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "compliance burdens"
+      ],
+      "position": 68,
+      "sentence_id": "0000002488-26-000018:27:44",
+      "source": "phrase",
+      "status": "added",
+      "text": "Continued changes to export control regulations that we are subject to, or changes to their interpretation and enforcement, could result in greater compliance costs and other compliance burdens on our business and our customers which could adversely impact our business.",
+      "ticker": "AMD",
+      "topic": "compliance burden"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          270
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "Continued changes"
+      ],
+      "position": 68,
+      "sentence_id": "0000002488-26-000018:27:44",
+      "source": "phrase",
+      "status": "added",
+      "text": "Continued changes to export control regulations that we are subject to, or changes to their interpretation and enforcement, could result in greater compliance costs and other compliance burdens on our business and our customers which could adversely impact our business.",
+      "ticker": "AMD",
+      "topic": "continued change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          270
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "greater compliance costs"
+      ],
+      "position": 68,
+      "sentence_id": "0000002488-26-000018:27:44",
+      "source": "phrase",
+      "status": "added",
+      "text": "Continued changes to export control regulations that we are subject to, or changes to their interpretation and enforcement, could result in greater compliance costs and other compliance burdens on our business and our customers which could adversely impact our business.",
+      "ticker": "AMD",
+      "topic": "greater compliance cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "compliance burdens"
+      ],
+      "position": 69,
+      "sentence_id": "0000002488-26-000018:27:45",
+      "source": "phrase",
+      "status": "added",
+      "text": "Export controls have and may continue to encourage customers in China and other markets subject to those controls to pursue alternatives to U.S. semiconductors for their product designs to limit compliance burdens and potential impact on their product roadmaps.",
+      "ticker": "AMD",
+      "topic": "compliance burden"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "product designs"
+      ],
+      "position": 69,
+      "sentence_id": "0000002488-26-000018:27:45",
+      "source": "phrase",
+      "status": "added",
+      "text": "Export controls have and may continue to encourage customers in China and other markets subject to those controls to pursue alternatives to U.S. semiconductors for their product designs to limit compliance burdens and potential impact on their product roadmaps.",
+      "ticker": "AMD",
+      "topic": "product design"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          147
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "competitive advantage"
+      ],
+      "position": 70,
+      "sentence_id": "0000002488-26-000018:27:46",
+      "source": "phrase",
+      "status": "added",
+      "text": "From time to time, governments provide incentives or make other investments that could benefit and give a competitive advantage to our competitors.",
+      "ticker": "AMD",
+      "topic": "competitive advantage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          79
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "acceptable terms"
+      ],
+      "position": 71,
+      "sentence_id": "0000002488-26-000018:27:47",
+      "source": "phrase",
+      "status": "added",
+      "text": "Government incentives may not be available to us on acceptable terms or at all.",
+      "ticker": "AMD",
+      "topic": "acceptable term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          79
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "Government incentives"
+      ],
+      "position": 71,
+      "sentence_id": "0000002488-26-000018:27:47",
+      "source": "phrase",
+      "status": "added",
+      "text": "Government incentives may not be available to us on acceptable terms or at all.",
+      "ticker": "AMD",
+      "topic": "government incentive"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          184
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "competitors’ relative position"
+      ],
+      "position": 72,
+      "sentence_id": "0000002488-26-000018:27:48",
+      "source": "phrase",
+      "status": "added",
+      "text": "If our competitors can benefit from such government incentives and we cannot, it could strengthen our competitors’ relative position and have a material adverse effect on our business.",
+      "ticker": "AMD",
+      "topic": "competitor relative position"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          184
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "government incentives"
+      ],
+      "position": 72,
+      "sentence_id": "0000002488-26-000018:27:48",
+      "source": "phrase",
+      "status": "added",
+      "text": "If our competitors can benefit from such government incentives and we cannot, it could strengthen our competitors’ relative position and have a material adverse effect on our business.",
+      "ticker": "AMD",
+      "topic": "government incentive"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          284
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "contractual obligations"
+      ],
+      "position": 77,
+      "sentence_id": "0000002488-26-000018:27:53",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, as the U.S. government continues adding companies to the Entity List, our supply chain may be negatively impacted as we may be required to suspend purchasing from such suppliers or selling to such customers or otherwise unable to fulfill our contractual obligations to them.",
+      "ticker": "AMD",
+      "topic": "contractual obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          284
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "supply chain"
+      ],
+      "position": 77,
+      "sentence_id": "0000002488-26-000018:27:53",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, as the U.S. government continues adding companies to the Entity List, our supply chain may be negatively impacted as we may be required to suspend purchasing from such suppliers or selling to such customers or otherwise unable to fulfill our contractual obligations to them.",
+      "ticker": "AMD",
+      "topic": "supply chain"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          316
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "listed “military end users"
+      ],
+      "position": 78,
+      "sentence_id": "0000002488-26-000018:27:54",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, in September 2025, BIS issued a new rule designating any entity that is at least 50% owned by one or more entities on the Entity List will be subject to Entity List restrictions and this rule similarly applies to entities at least 50% owned by listed “military end users” and certain sanctioned parties.",
+      "ticker": "AMD",
+      "topic": "listed military end user"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "restrictive governmental actions"
+      ],
+      "position": 81,
+      "sentence_id": "0000002488-26-000018:27:57",
+      "source": "phrase",
+      "status": "added",
+      "text": "These restrictive governmental actions and any similar measures that may be imposed on U.S. companies by other governments, especially in light of ongoing trade tensions with U.S. trading partners, will likely limit or prevent us from doing business with certain of our customers or suppliers and harm our ability to compete effectively or otherwise negatively affect our ability to sell our products.",
+      "ticker": "AMD",
+      "topic": "restrictive governmental action"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "similar measures"
+      ],
+      "position": 81,
+      "sentence_id": "0000002488-26-000018:27:57",
+      "source": "phrase",
+      "status": "added",
+      "text": "These restrictive governmental actions and any similar measures that may be imposed on U.S. companies by other governments, especially in light of ongoing trade tensions with U.S. trading partners, will likely limit or prevent us from doing business with certain of our customers or suppliers and harm our ability to compete effectively or otherwise negatively affect our ability to sell our products.",
+      "ticker": "AMD",
+      "topic": "similar measure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "fbdbc9227df4a830",
+      "matched_terms": [
+        "trade tensions"
+      ],
+      "position": 81,
+      "sentence_id": "0000002488-26-000018:27:57",
+      "source": "phrase",
+      "status": "added",
+      "text": "These restrictive governmental actions and any similar measures that may be imposed on U.S. companies by other governments, especially in light of ongoing trade tensions with U.S. trading partners, will likely limit or prevent us from doing business with certain of our customers or suppliers and harm our ability to compete effectively or otherwise negatively affect our ability to sell our products.",
+      "ticker": "AMD",
+      "topic": "trade tension"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          88
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "latest and best products"
+      ],
+      "position": 3,
+      "sentence_id": "0000002488-26-000018:0:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Delivering the latest and best products to market on time is critical to revenue growth.",
+      "ticker": "AMD",
+      "topic": "latest and best product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "design wins"
+      ],
+      "position": 7,
+      "sentence_id": "0000002488-26-000018:0:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Some of our competitors may possess stronger market positions, larger customer bases, more design wins, and greater financial, sales, marketing, and distribution resources than us.",
+      "ticker": "AMD",
+      "topic": "design win"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "distribution resources"
+      ],
+      "position": 7,
+      "sentence_id": "0000002488-26-000018:0:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Some of our competitors may possess stronger market positions, larger customer bases, more design wins, and greater financial, sales, marketing, and distribution resources than us.",
+      "ticker": "AMD",
+      "topic": "distribution resource"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "larger customer bases"
+      ],
+      "position": 7,
+      "sentence_id": "0000002488-26-000018:0:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Some of our competitors may possess stronger market positions, larger customer bases, more design wins, and greater financial, sales, marketing, and distribution resources than us.",
+      "ticker": "AMD",
+      "topic": "larger customer basis"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "stronger market positions"
+      ],
+      "position": 7,
+      "sentence_id": "0000002488-26-000018:0:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Some of our competitors may possess stronger market positions, larger customer bases, more design wins, and greater financial, sales, marketing, and distribution resources than us.",
+      "ticker": "AMD",
+      "topic": "stronger market position"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          17
+        ],
+        [
+          33,
+          83
+        ],
+        [
+          90,
+          140
+        ],
+        [
+          146,
+          200
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "market opportunities"
+      ],
+      "position": 9,
+      "sentence_id": "0000002488-26-000018:0:5",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As a result, they may be able to acquire market share or limit our ability to do so, more effectively capitalize on new market opportunities, and transition their products more efficiently than we can.",
+      "ticker": "AMD",
+      "topic": "market opportunity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          17
+        ],
+        [
+          33,
+          83
+        ],
+        [
+          90,
+          140
+        ],
+        [
+          146,
+          200
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "market share"
+      ],
+      "position": 9,
+      "sentence_id": "0000002488-26-000018:0:5",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As a result, they may be able to acquire market share or limit our ability to do so, more effectively capitalize on new market opportunities, and transition their products more efficiently than we can.",
+      "ticker": "AMD",
+      "topic": "market share"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          214
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "alternative computing architectures"
+      ],
+      "position": 13,
+      "sentence_id": "0000002488-26-000018:0:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Some competitors are pursuing alternative computing architectures, such as Arm, which could grow the Arm ecosystem and increase competition in consumer, commercial and data center, reducing demand for our products.",
+      "ticker": "AMD",
+      "topic": "alternative computing architecture"
+    },
+    {
+      "added_spans": [
+        [
+          16,
+          59
+        ],
+        [
+          70,
+          72
+        ],
+        [
+          80,
+          159
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "market position"
+      ],
+      "position": 23,
+      "sentence_id": "0000002488-26-000018:0:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our competitors may use their market position and financial resources to market and price their products in a way to dissuade customers from purchasing from us.",
+      "ticker": "AMD",
+      "topic": "market position"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          184
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "Intel"
+      ],
+      "position": 24,
+      "sentence_id": "0000002488-26-000018:0:9",
+      "source": "entity",
+      "status": "added",
+      "text": "For example, Intel Corporation (Intel) uses its microprocessor market position to price its products aggressively and target our customers and channel partners with special incentives.",
+      "ticker": "AMD",
+      "topic": "Intel"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          184
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "channel partners"
+      ],
+      "position": 24,
+      "sentence_id": "0000002488-26-000018:0:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, Intel Corporation (Intel) uses its microprocessor market position to price its products aggressively and target our customers and channel partners with special incentives.",
+      "ticker": "AMD",
+      "topic": "channel partner"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          184
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "Intel Corporation"
+      ],
+      "position": 24,
+      "sentence_id": "0000002488-26-000018:0:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, Intel Corporation (Intel) uses its microprocessor market position to price its products aggressively and target our customers and channel partners with special incentives.",
+      "ticker": "AMD",
+      "topic": "intel corporation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          184
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "microprocessor market position"
+      ],
+      "position": 24,
+      "sentence_id": "0000002488-26-000018:0:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, Intel Corporation (Intel) uses its microprocessor market position to price its products aggressively and target our customers and channel partners with special incentives.",
+      "ticker": "AMD",
+      "topic": "microprocessor market position"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          184
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "special incentives"
+      ],
+      "position": 24,
+      "sentence_id": "0000002488-26-000018:0:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, Intel Corporation (Intel) uses its microprocessor market position to price its products aggressively and target our customers and channel partners with special incentives.",
+      "ticker": "AMD",
+      "topic": "special incentive"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "aggressive activities"
+      ],
+      "position": 25,
+      "sentence_id": "0000002488-26-000018:0:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "These aggressive activities have reduced and may reduce our unit sales and average selling prices for many of our products, adversely affecting our business.",
+      "ticker": "AMD",
+      "topic": "aggressive activity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "average selling prices"
+      ],
+      "position": 25,
+      "sentence_id": "0000002488-26-000018:0:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "These aggressive activities have reduced and may reduce our unit sales and average selling prices for many of our products, adversely affecting our business.",
+      "ticker": "AMD",
+      "topic": "average selling price"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "unit sales"
+      ],
+      "position": 25,
+      "sentence_id": "0000002488-26-000018:0:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "These aggressive activities have reduced and may reduce our unit sales and average selling prices for many of our products, adversely affecting our business.",
+      "ticker": "AMD",
+      "topic": "unit sale"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          217
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "data center GPU"
+      ],
+      "position": 26,
+      "sentence_id": "0000002488-26-000018:0:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Similarly, Nvidia Corporation (Nvidia) leverages its market position in data center GPU, financial resources, and proprietary software ecosystem to promote its systems and influences customers who do business with us.",
+      "ticker": "AMD",
+      "topic": "data center gpu"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          217
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "market position"
+      ],
+      "position": 26,
+      "sentence_id": "0000002488-26-000018:0:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Similarly, Nvidia Corporation (Nvidia) leverages its market position in data center GPU, financial resources, and proprietary software ecosystem to promote its systems and influences customers who do business with us.",
+      "ticker": "AMD",
+      "topic": "market position"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          217
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "proprietary software ecosystem"
+      ],
+      "position": 26,
+      "sentence_id": "0000002488-26-000018:0:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Similarly, Nvidia Corporation (Nvidia) leverages its market position in data center GPU, financial resources, and proprietary software ecosystem to promote its systems and influences customers who do business with us.",
+      "ticker": "AMD",
+      "topic": "proprietary software ecosystem"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          217
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "systems and influences customers"
+      ],
+      "position": 26,
+      "sentence_id": "0000002488-26-000018:0:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Similarly, Nvidia Corporation (Nvidia) leverages its market position in data center GPU, financial resources, and proprietary software ecosystem to promote its systems and influences customers who do business with us.",
+      "ticker": "AMD",
+      "topic": "system and influence customer"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "allocation strategies"
+      ],
+      "position": 27,
+      "sentence_id": "0000002488-26-000018:0:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our competitors’ business practices, including allocation strategies, pricing actions, product mix and introduction schedules, licensing terms, marketing arrangements, product bundling strategies, lack of software inoperability and business acquisitions can limit customers’ ability to choose alternative products, including ours.",
+      "ticker": "AMD",
+      "topic": "allocation strategy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "alternative products"
+      ],
+      "position": 27,
+      "sentence_id": "0000002488-26-000018:0:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our competitors’ business practices, including allocation strategies, pricing actions, product mix and introduction schedules, licensing terms, marketing arrangements, product bundling strategies, lack of software inoperability and business acquisitions can limit customers’ ability to choose alternative products, including ours.",
+      "ticker": "AMD",
+      "topic": "alternative product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "business acquisitions"
+      ],
+      "position": 27,
+      "sentence_id": "0000002488-26-000018:0:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our competitors’ business practices, including allocation strategies, pricing actions, product mix and introduction schedules, licensing terms, marketing arrangements, product bundling strategies, lack of software inoperability and business acquisitions can limit customers’ ability to choose alternative products, including ours.",
+      "ticker": "AMD",
+      "topic": "business acquisition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "competitors’ business practices"
+      ],
+      "position": 27,
+      "sentence_id": "0000002488-26-000018:0:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our competitors’ business practices, including allocation strategies, pricing actions, product mix and introduction schedules, licensing terms, marketing arrangements, product bundling strategies, lack of software inoperability and business acquisitions can limit customers’ ability to choose alternative products, including ours.",
+      "ticker": "AMD",
+      "topic": "competitor business practice"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "introduction schedules"
+      ],
+      "position": 27,
+      "sentence_id": "0000002488-26-000018:0:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our competitors’ business practices, including allocation strategies, pricing actions, product mix and introduction schedules, licensing terms, marketing arrangements, product bundling strategies, lack of software inoperability and business acquisitions can limit customers’ ability to choose alternative products, including ours.",
+      "ticker": "AMD",
+      "topic": "introduction schedule"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "licensing terms"
+      ],
+      "position": 27,
+      "sentence_id": "0000002488-26-000018:0:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our competitors’ business practices, including allocation strategies, pricing actions, product mix and introduction schedules, licensing terms, marketing arrangements, product bundling strategies, lack of software inoperability and business acquisitions can limit customers’ ability to choose alternative products, including ours.",
+      "ticker": "AMD",
+      "topic": "licensing term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "marketing arrangements"
+      ],
+      "position": 27,
+      "sentence_id": "0000002488-26-000018:0:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our competitors’ business practices, including allocation strategies, pricing actions, product mix and introduction schedules, licensing terms, marketing arrangements, product bundling strategies, lack of software inoperability and business acquisitions can limit customers’ ability to choose alternative products, including ours.",
+      "ticker": "AMD",
+      "topic": "marketing arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "pricing actions"
+      ],
+      "position": 27,
+      "sentence_id": "0000002488-26-000018:0:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our competitors’ business practices, including allocation strategies, pricing actions, product mix and introduction schedules, licensing terms, marketing arrangements, product bundling strategies, lack of software inoperability and business acquisitions can limit customers’ ability to choose alternative products, including ours.",
+      "ticker": "AMD",
+      "topic": "pricing action"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "product mix"
+      ],
+      "position": 27,
+      "sentence_id": "0000002488-26-000018:0:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our competitors’ business practices, including allocation strategies, pricing actions, product mix and introduction schedules, licensing terms, marketing arrangements, product bundling strategies, lack of software inoperability and business acquisitions can limit customers’ ability to choose alternative products, including ours.",
+      "ticker": "AMD",
+      "topic": "product mix"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "software inoperability"
+      ],
+      "position": 27,
+      "sentence_id": "0000002488-26-000018:0:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our competitors’ business practices, including allocation strategies, pricing actions, product mix and introduction schedules, licensing terms, marketing arrangements, product bundling strategies, lack of software inoperability and business acquisitions can limit customers’ ability to choose alternative products, including ours.",
+      "ticker": "AMD",
+      "topic": "software inoperability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          133
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "market share"
+      ],
+      "position": 28,
+      "sentence_id": "0000002488-26-000018:0:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "This may limit our market share and decrease our margins and profitability, which may have a material adverse effect on our business.",
+      "ticker": "AMD",
+      "topic": "market share"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          92
+        ],
+        [
+          113,
+          137
+        ],
+        [
+          148,
+          154
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "business collaborations"
+      ],
+      "position": 30,
+      "sentence_id": "0000002488-26-000018:0:14",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, strategic partnerships, acquisitions and business collaborations by and between our competitors may increase competition and adversely affect our business.",
+      "ticker": "AMD",
+      "topic": "business collaboration"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          92
+        ],
+        [
+          113,
+          137
+        ],
+        [
+          148,
+          154
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "strategic partnerships"
+      ],
+      "position": 30,
+      "sentence_id": "0000002488-26-000018:0:14",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, strategic partnerships, acquisitions and business collaborations by and between our competitors may increase competition and adversely affect our business.",
+      "ticker": "AMD",
+      "topic": "strategic partnership"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          146
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "Intel"
+      ],
+      "position": 34,
+      "sentence_id": "0000002488-26-000018:0:15",
+      "source": "entity",
+      "status": "added",
+      "text": "For example, in September 2025, Nvidia announced a partnership and investment in Intel to partner on new data center and client platform products.",
+      "ticker": "AMD",
+      "topic": "Intel"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          77
+        ],
+        [
+          82,
+          110
+        ],
+        [
+          116,
+          159
+        ],
+        [
+          166,
+          193
+        ],
+        [
+          208,
+          239
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "increased competition"
+      ],
+      "position": 36,
+      "sentence_id": "0000002488-26-000018:0:16",
+      "source": "phrase",
+      "status": "modified",
+      "text": "This partnership may result in increased competition and pricing pressure for our products or could prevent us from participating in other opportunities, which could materially adversely impact our business, financial condition and margins.",
+      "ticker": "AMD",
+      "topic": "increased competition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          77
+        ],
+        [
+          82,
+          110
+        ],
+        [
+          116,
+          159
+        ],
+        [
+          166,
+          193
+        ],
+        [
+          208,
+          239
+        ]
+      ],
+      "change_id": "9e8fe44bee1890b1",
+      "matched_terms": [
+        "pricing pressure"
+      ],
+      "position": 36,
+      "sentence_id": "0000002488-26-000018:0:16",
+      "source": "phrase",
+      "status": "modified",
+      "text": "This partnership may result in increased competition and pricing pressure for our products or could prevent us from participating in other opportunities, which could materially adversely impact our business, financial condition and margins.",
+      "ticker": "AMD",
+      "topic": "pricing pressure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          328
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "good availability"
+      ],
+      "position": 16,
+      "sentence_id": "0000002488-26-000018:15:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "As product complexity has increased, manufacturing lead times have extended and longer production cycles, combined with short product cycles, increase the risk that customer demand for products may change between wafer order and finished good availability, which could result in significant mismatches between supply and demand.",
+      "ticker": "AMD",
+      "topic": "good availability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          328
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "manufacturing lead times"
+      ],
+      "position": 16,
+      "sentence_id": "0000002488-26-000018:15:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "As product complexity has increased, manufacturing lead times have extended and longer production cycles, combined with short product cycles, increase the risk that customer demand for products may change between wafer order and finished good availability, which could result in significant mismatches between supply and demand.",
+      "ticker": "AMD",
+      "topic": "manufacturing lead time"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          328
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "product complexity"
+      ],
+      "position": 16,
+      "sentence_id": "0000002488-26-000018:15:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "As product complexity has increased, manufacturing lead times have extended and longer production cycles, combined with short product cycles, increase the risk that customer demand for products may change between wafer order and finished good availability, which could result in significant mismatches between supply and demand.",
+      "ticker": "AMD",
+      "topic": "product complexity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          328
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "short product cycles"
+      ],
+      "position": 16,
+      "sentence_id": "0000002488-26-000018:15:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "As product complexity has increased, manufacturing lead times have extended and longer production cycles, combined with short product cycles, increase the risk that customer demand for products may change between wafer order and finished good availability, which could result in significant mismatches between supply and demand.",
+      "ticker": "AMD",
+      "topic": "short product cycle"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          328
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "wafer order"
+      ],
+      "position": 16,
+      "sentence_id": "0000002488-26-000018:15:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "As product complexity has increased, manufacturing lead times have extended and longer production cycles, combined with short product cycles, increase the risk that customer demand for products may change between wafer order and finished good availability, which could result in significant mismatches between supply and demand.",
+      "ticker": "AMD",
+      "topic": "wafer order"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "China"
+      ],
+      "position": 24,
+      "sentence_id": "0000002488-26-000018:15:12",
+      "source": "lexicon",
+      "status": "added",
+      "text": "In April 2025, the U.S. government implemented a new license requirement for the export of certain semiconductor products to China (including Hong Kong and Macau) and D5 countries, or to companies headquartered in or with an ultimate parent located in such countries.",
+      "ticker": "AMD",
+      "topic": "China"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "Hong Kong"
+      ],
+      "position": 24,
+      "sentence_id": "0000002488-26-000018:15:12",
+      "source": "entity",
+      "status": "added",
+      "text": "In April 2025, the U.S. government implemented a new license requirement for the export of certain semiconductor products to China (including Hong Kong and Macau) and D5 countries, or to companies headquartered in or with an ultimate parent located in such countries.",
+      "ticker": "AMD",
+      "topic": "Hong Kong"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "Macau"
+      ],
+      "position": 24,
+      "sentence_id": "0000002488-26-000018:15:12",
+      "source": "entity",
+      "status": "added",
+      "text": "In April 2025, the U.S. government implemented a new license requirement for the export of certain semiconductor products to China (including Hong Kong and Macau) and D5 countries, or to companies headquartered in or with an ultimate parent located in such countries.",
+      "ticker": "AMD",
+      "topic": "Macau"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "license requirement"
+      ],
+      "position": 24,
+      "sentence_id": "0000002488-26-000018:15:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "In April 2025, the U.S. government implemented a new license requirement for the export of certain semiconductor products to China (including Hong Kong and Macau) and D5 countries, or to companies headquartered in or with an ultimate parent located in such countries.",
+      "ticker": "AMD",
+      "topic": "license requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "semiconductor products"
+      ],
+      "position": 24,
+      "sentence_id": "0000002488-26-000018:15:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "In April 2025, the U.S. government implemented a new license requirement for the export of certain semiconductor products to China (including Hong Kong and Macau) and D5 countries, or to companies headquartered in or with an ultimate parent located in such countries.",
+      "ticker": "AMD",
+      "topic": "semiconductor product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "ultimate parent"
+      ],
+      "position": 24,
+      "sentence_id": "0000002488-26-000018:15:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "In April 2025, the U.S. government implemented a new license requirement for the export of certain semiconductor products to China (including Hong Kong and Macau) and D5 countries, or to companies headquartered in or with an ultimate parent located in such countries.",
+      "ticker": "AMD",
+      "topic": "ultimate parent"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          134
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "inventory and related charges"
+      ],
+      "position": 26,
+      "sentence_id": "0000002488-26-000018:15:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result of the restriction, we incurred approximately $800 million in inventory and related charges in the second quarter of 2025.",
+      "ticker": "AMD",
+      "topic": "inventory and related charge"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          134
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "second quarter"
+      ],
+      "position": 26,
+      "sentence_id": "0000002488-26-000018:15:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result of the restriction, we incurred approximately $800 million in inventory and related charges in the second quarter of 2025.",
+      "ticker": "AMD",
+      "topic": "second quarter"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          143
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "China"
+      ],
+      "position": 27,
+      "sentence_id": "0000002488-26-000018:15:15",
+      "source": "lexicon",
+      "status": "added",
+      "text": "We applied for and were granted some licenses by the U.S. government that allow us to ship our MI308 products to certain China-based customers.",
+      "ticker": "AMD",
+      "topic": "China"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          130
+        ]
+      ],
+      "change_id": "4d75bc8bdfd46a24",
+      "matched_terms": [
+        "China"
+      ],
+      "position": 28,
+      "sentence_id": "0000002488-26-000018:15:16",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Sales of our MI308 products into China depend on customer demand, China’s import control rules and our ability to obtain licenses.",
+      "ticker": "AMD",
+      "topic": "China"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          202
+        ]
+      ],
+      "change_id": "b4d2fa23cfb26df4",
+      "matched_terms": [
+        "safe harbors"
+      ],
+      "position": 22,
+      "sentence_id": "0000002488-26-000018:29:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "In January 2026, the OECD released a \"side-by-side\" package introducing new safe harbors and providing an exemption for U.S.-based multinational companies from parts of the global minimum tax framework.",
+      "ticker": "AMD",
+      "topic": "safe harbor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          265
+        ]
+      ],
+      "change_id": "b4d2fa23cfb26df4",
+      "matched_terms": [
+        "QDMTT"
+      ],
+      "position": 23,
+      "sentence_id": "0000002488-26-000018:29:11",
+      "source": "entity",
+      "status": "added",
+      "text": "This guidance is intended to simplify compliance with a permanent simplified Effective Tax Rate safe harbor, a one-year extension of the transitional Country-by-Country Reporting safe harbor and reinforce the role of Qualified Domestic Minimum Top-up Taxes (QDMTT).",
+      "ticker": "AMD",
+      "topic": "QDMTT"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "b4d2fa23cfb26df4",
+      "matched_terms": [
+        "accounting purposes"
+      ],
+      "position": 24,
+      "sentence_id": "0000002488-26-000018:29:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "While these rules are generally favorable to the Company, they need to be adopted by each country to be considered enacted for financial accounting purposes.",
+      "ticker": "AMD",
+      "topic": "accounting purpose"
+    },
+    {
+      "added_spans": [
+        [
+          172,
+          225
+        ],
+        [
+          420,
+          441
+        ],
+        [
+          502,
+          539
+        ],
+        [
+          563,
+          585
+        ],
+        [
+          600,
+          769
+        ]
+      ],
+      "change_id": "4939cf90560b0eac",
+      "matched_terms": [
+        "tariffs"
+      ],
+      "position": 5,
+      "sentence_id": "0000002488-26-000018:41:2",
+      "source": "lexicon",
+      "status": "modified",
+      "text": "The trading price of our stock may fluctuate widely due to various factors including: actual or anticipated fluctuations in our financial conditions and operating results; failure to meet expectations related to future growth; changes in financial estimates by us or financial estimates and ratings by securities analysts; changes in our capital structure, including issuance of additional debt or equity to the public; competitive landscape; news regarding our products or products of our competitors or other actions taken by competitors; broad market industry and competitor-related fluctuations; and general economic, political and market conditions, including imposition of new or increased tariffs and other trade restrictions, interest rate changes and inflation.",
+      "ticker": "AMD",
+      "topic": "Tariffs"
+    },
+    {
+      "added_spans": [
+        [
+          172,
+          225
+        ],
+        [
+          420,
+          441
+        ],
+        [
+          502,
+          539
+        ],
+        [
+          563,
+          585
+        ],
+        [
+          600,
+          769
+        ]
+      ],
+      "change_id": "4939cf90560b0eac",
+      "matched_terms": [
+        "competitive landscape"
+      ],
+      "position": 5,
+      "sentence_id": "0000002488-26-000018:41:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The trading price of our stock may fluctuate widely due to various factors including: actual or anticipated fluctuations in our financial conditions and operating results; failure to meet expectations related to future growth; changes in financial estimates by us or financial estimates and ratings by securities analysts; changes in our capital structure, including issuance of additional debt or equity to the public; competitive landscape; news regarding our products or products of our competitors or other actions taken by competitors; broad market industry and competitor-related fluctuations; and general economic, political and market conditions, including imposition of new or increased tariffs and other trade restrictions, interest rate changes and inflation.",
+      "ticker": "AMD",
+      "topic": "competitive landscape"
+    },
+    {
+      "added_spans": [
+        [
+          172,
+          225
+        ],
+        [
+          420,
+          441
+        ],
+        [
+          502,
+          539
+        ],
+        [
+          563,
+          585
+        ],
+        [
+          600,
+          769
+        ]
+      ],
+      "change_id": "4939cf90560b0eac",
+      "matched_terms": [
+        "trade restrictions"
+      ],
+      "position": 5,
+      "sentence_id": "0000002488-26-000018:41:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The trading price of our stock may fluctuate widely due to various factors including: actual or anticipated fluctuations in our financial conditions and operating results; failure to meet expectations related to future growth; changes in financial estimates by us or financial estimates and ratings by securities analysts; changes in our capital structure, including issuance of additional debt or equity to the public; competitive landscape; news regarding our products or products of our competitors or other actions taken by competitors; broad market industry and competitor-related fluctuations; and general economic, political and market conditions, including imposition of new or increased tariffs and other trade restrictions, interest rate changes and inflation.",
+      "ticker": "AMD",
+      "topic": "trade restriction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          102
+        ]
+      ],
+      "change_id": "0349486f7cf1dde0",
+      "matched_terms": [
+        "commercial commitments"
+      ],
+      "position": 0,
+      "sentence_id": "0000002488-26-000018:35:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "We may be required to satisfy financial obligations under guarantees and other commercial commitments.",
+      "ticker": "AMD",
+      "topic": "commercial commitment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          210
+        ]
+      ],
+      "change_id": "0349486f7cf1dde0",
+      "matched_terms": [
+        "commercial arrangements"
+      ],
+      "position": 1,
+      "sentence_id": "0000002488-26-000018:35:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "From time to time, we enter into commercial arrangements such as long-term capacity purchase agreements, financial guarantees and leases to support customers’ or commercial partners’ infrastructure development.",
+      "ticker": "AMD",
+      "topic": "commercial arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          210
+        ]
+      ],
+      "change_id": "0349486f7cf1dde0",
+      "matched_terms": [
+        "commercial partners"
+      ],
+      "position": 1,
+      "sentence_id": "0000002488-26-000018:35:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "From time to time, we enter into commercial arrangements such as long-term capacity purchase agreements, financial guarantees and leases to support customers’ or commercial partners’ infrastructure development.",
+      "ticker": "AMD",
+      "topic": "commercial partner"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          210
+        ]
+      ],
+      "change_id": "0349486f7cf1dde0",
+      "matched_terms": [
+        "infrastructure development"
+      ],
+      "position": 1,
+      "sentence_id": "0000002488-26-000018:35:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "From time to time, we enter into commercial arrangements such as long-term capacity purchase agreements, financial guarantees and leases to support customers’ or commercial partners’ infrastructure development.",
+      "ticker": "AMD",
+      "topic": "infrastructure development"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          219
+        ]
+      ],
+      "change_id": "0349486f7cf1dde0",
+      "matched_terms": [
+        "counterparty risk"
+      ],
+      "position": 2,
+      "sentence_id": "0000002488-26-000018:35:2",
+      "source": "lexicon",
+      "status": "added",
+      "text": "These arrangements may increase our exposure to counterparty risk, such as their inability to secure the necessary capital or financing, delays in project execution and downturns in their business, including insolvency.",
+      "ticker": "AMD",
+      "topic": "Counterparty and credit risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          219
+        ]
+      ],
+      "change_id": "0349486f7cf1dde0",
+      "matched_terms": [
+        "project execution"
+      ],
+      "position": 2,
+      "sentence_id": "0000002488-26-000018:35:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "These arrangements may increase our exposure to counterparty risk, such as their inability to secure the necessary capital or financing, delays in project execution and downturns in their business, including insolvency.",
+      "ticker": "AMD",
+      "topic": "project execution"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          176
+        ]
+      ],
+      "change_id": "0349486f7cf1dde0",
+      "matched_terms": [
+        "commercial arrangements"
+      ],
+      "position": 3,
+      "sentence_id": "0000002488-26-000018:35:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we are required to satisfy our financial obligations under these commercial arrangements, our business, operating results, financial and condition may be adversely affected.",
+      "ticker": "AMD",
+      "topic": "commercial arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          312,
+          590
+        ],
+        [
+          743,
+          785
+        ]
+      ],
+      "change_id": "c2b84a35a6e3cc13",
+      "matched_terms": [
+        "immigration"
+      ],
+      "position": 17,
+      "sentence_id": "0000002488-26-000018:38:8",
+      "source": "lexicon",
+      "status": "modified",
+      "text": "The political, legal and economic risks associated with our worldwide operations include, without limitation: expropriation; changes in a specific country’s or region’s political or economic conditions; changes in tax laws, trade protection measures and import or export licensing requirements and restrictions; imposition of new and increased tariffs; worsening trade relationship between the United States and China (or other countries); volatile global economic conditions, including downturns or recessions in which some competitors may become more aggressive in their pricing practices; difficulties in protecting our intellectual property; difficulties in managing staffing and exposure to different employment practices and labor laws; changes in immigration law and regulations; changes in foreign currency exchange rates; restrictions on transfers of funds and other assets of our subsidiaries between jurisdictions; changes in freight rates; changes to macroeconomic conditions, including interest rates, inflation and recession; transportation restrictions or disruptions; loss or modification of exemptions for taxes and tariffs; and compliance with U.S. laws and regulations related to international operations, including export control and economic sanctions laws and regulations and the Foreign Corrupt Practices Act.",
+      "ticker": "AMD",
+      "topic": "Immigration policy"
+    },
+    {
+      "added_spans": [
+        [
+          312,
+          590
+        ],
+        [
+          743,
+          785
+        ]
+      ],
+      "change_id": "c2b84a35a6e3cc13",
+      "matched_terms": [
+        "pricing practices"
+      ],
+      "position": 17,
+      "sentence_id": "0000002488-26-000018:38:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The political, legal and economic risks associated with our worldwide operations include, without limitation: expropriation; changes in a specific country’s or region’s political or economic conditions; changes in tax laws, trade protection measures and import or export licensing requirements and restrictions; imposition of new and increased tariffs; worsening trade relationship between the United States and China (or other countries); volatile global economic conditions, including downturns or recessions in which some competitors may become more aggressive in their pricing practices; difficulties in protecting our intellectual property; difficulties in managing staffing and exposure to different employment practices and labor laws; changes in immigration law and regulations; changes in foreign currency exchange rates; restrictions on transfers of funds and other assets of our subsidiaries between jurisdictions; changes in freight rates; changes to macroeconomic conditions, including interest rates, inflation and recession; transportation restrictions or disruptions; loss or modification of exemptions for taxes and tariffs; and compliance with U.S. laws and regulations related to international operations, including export control and economic sanctions laws and regulations and the Foreign Corrupt Practices Act.",
+      "ticker": "AMD",
+      "topic": "pricing practice"
+    },
+    {
+      "added_spans": [
+        [
+          312,
+          590
+        ],
+        [
+          743,
+          785
+        ]
+      ],
+      "change_id": "c2b84a35a6e3cc13",
+      "matched_terms": [
+        "trade relationship"
+      ],
+      "position": 17,
+      "sentence_id": "0000002488-26-000018:38:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The political, legal and economic risks associated with our worldwide operations include, without limitation: expropriation; changes in a specific country’s or region’s political or economic conditions; changes in tax laws, trade protection measures and import or export licensing requirements and restrictions; imposition of new and increased tariffs; worsening trade relationship between the United States and China (or other countries); volatile global economic conditions, including downturns or recessions in which some competitors may become more aggressive in their pricing practices; difficulties in protecting our intellectual property; difficulties in managing staffing and exposure to different employment practices and labor laws; changes in immigration law and regulations; changes in foreign currency exchange rates; restrictions on transfers of funds and other assets of our subsidiaries between jurisdictions; changes in freight rates; changes to macroeconomic conditions, including interest rates, inflation and recession; transportation restrictions or disruptions; loss or modification of exemptions for taxes and tariffs; and compliance with U.S. laws and regulations related to international operations, including export control and economic sanctions laws and regulations and the Foreign Corrupt Practices Act.",
+      "ticker": "AMD",
+      "topic": "trade relationship"
+    },
+    {
+      "added_spans": [
+        [
+          312,
+          590
+        ],
+        [
+          743,
+          785
+        ]
+      ],
+      "change_id": "c2b84a35a6e3cc13",
+      "matched_terms": [
+        "volatile global economic conditions"
+      ],
+      "position": 17,
+      "sentence_id": "0000002488-26-000018:38:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The political, legal and economic risks associated with our worldwide operations include, without limitation: expropriation; changes in a specific country’s or region’s political or economic conditions; changes in tax laws, trade protection measures and import or export licensing requirements and restrictions; imposition of new and increased tariffs; worsening trade relationship between the United States and China (or other countries); volatile global economic conditions, including downturns or recessions in which some competitors may become more aggressive in their pricing practices; difficulties in protecting our intellectual property; difficulties in managing staffing and exposure to different employment practices and labor laws; changes in immigration law and regulations; changes in foreign currency exchange rates; restrictions on transfers of funds and other assets of our subsidiaries between jurisdictions; changes in freight rates; changes to macroeconomic conditions, including interest rates, inflation and recession; transportation restrictions or disruptions; loss or modification of exemptions for taxes and tariffs; and compliance with U.S. laws and regulations related to international operations, including export control and economic sanctions laws and regulations and the Foreign Corrupt Practices Act.",
+      "ticker": "AMD",
+      "topic": "volatile global economic condition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          175
+        ]
+      ],
+      "change_id": "c2b84a35a6e3cc13",
+      "matched_terms": [
+        "public perception"
+      ],
+      "position": 20,
+      "sentence_id": "0000002488-26-000018:38:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in the public perception of the U.S. government in the regions where we operate or plan to operate could also negatively impact our business and results of operations.",
+      "ticker": "AMD",
+      "topic": "public perception"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          30
+        ],
+        [
+          64,
+          77
+        ]
+      ],
+      "change_id": "c2b84a35a6e3cc13",
+      "matched_terms": [
+        "Venezuela"
+      ],
+      "position": 22,
+      "sentence_id": "0000002488-26-000018:38:10",
+      "source": "entity",
+      "status": "modified",
+      "text": "Geopolitical tensions, such as the Ukraine-Russia, Israel-Hamas and Venezuela conflicts, could escalate and expand, which in turn could have negative impacts on the global economy and financial markets.",
+      "ticker": "AMD",
+      "topic": "Venezuela"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          30
+        ],
+        [
+          64,
+          77
+        ]
+      ],
+      "change_id": "c2b84a35a6e3cc13",
+      "matched_terms": [
+        "Geopolitical tensions"
+      ],
+      "position": 22,
+      "sentence_id": "0000002488-26-000018:38:10",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Geopolitical tensions, such as the Ukraine-Russia, Israel-Hamas and Venezuela conflicts, could escalate and expand, which in turn could have negative impacts on the global economy and financial markets.",
+      "ticker": "AMD",
+      "topic": "geopolitical tension"
+    },
+    {
+      "added_spans": [
+        [
+          32,
+          110
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "authorized distributors"
+      ],
+      "position": 3,
+      "sentence_id": "0000002488-26-000018:25:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We market and sell our products through a global, multi-tier network of authorized distributors, resellers and OEMs.",
+      "ticker": "AMD",
+      "topic": "authorized distributor"
+    },
+    {
+      "added_spans": [
+        [
+          32,
+          110
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "global, multi-tier network"
+      ],
+      "position": 3,
+      "sentence_id": "0000002488-26-000018:25:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We market and sell our products through a global, multi-tier network of authorized distributors, resellers and OEMs.",
+      "ticker": "AMD",
+      "topic": "global multi tier network"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          66
+        ],
+        [
+          72,
+          103
+        ],
+        [
+          109,
+          164
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "contractual restrictions"
+      ],
+      "position": 5,
+      "sentence_id": "0000002488-26-000018:25:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Despite programmatic controls, audits and contractual restrictions, our pricing programs may be misused, and unauthorized resellers or unauthorized resale can occur on the “gray market”.",
+      "ticker": "AMD",
+      "topic": "contractual restriction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          66
+        ],
+        [
+          72,
+          103
+        ],
+        [
+          109,
+          164
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "pricing programs"
+      ],
+      "position": 5,
+      "sentence_id": "0000002488-26-000018:25:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Despite programmatic controls, audits and contractual restrictions, our pricing programs may be misused, and unauthorized resellers or unauthorized resale can occur on the “gray market”.",
+      "ticker": "AMD",
+      "topic": "pricing program"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          66
+        ],
+        [
+          72,
+          103
+        ],
+        [
+          109,
+          164
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "programmatic controls"
+      ],
+      "position": 5,
+      "sentence_id": "0000002488-26-000018:25:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Despite programmatic controls, audits and contractual restrictions, our pricing programs may be misused, and unauthorized resellers or unauthorized resale can occur on the “gray market”.",
+      "ticker": "AMD",
+      "topic": "programmatic control"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          66
+        ],
+        [
+          72,
+          103
+        ],
+        [
+          109,
+          164
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "unauthorized resale"
+      ],
+      "position": 5,
+      "sentence_id": "0000002488-26-000018:25:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Despite programmatic controls, audits and contractual restrictions, our pricing programs may be misused, and unauthorized resellers or unauthorized resale can occur on the “gray market”.",
+      "ticker": "AMD",
+      "topic": "unauthorized resale"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          66
+        ],
+        [
+          72,
+          103
+        ],
+        [
+          109,
+          164
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "unauthorized resellers"
+      ],
+      "position": 5,
+      "sentence_id": "0000002488-26-000018:25:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Despite programmatic controls, audits and contractual restrictions, our pricing programs may be misused, and unauthorized resellers or unauthorized resale can occur on the “gray market”.",
+      "ticker": "AMD",
+      "topic": "unauthorized reseller"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          186
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "brand protection risks"
+      ],
+      "position": 9,
+      "sentence_id": "0000002488-26-000018:25:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "These substandard gray market products may have higher-than-expected failure rates and as a result, we may face brand protection risks, reputational harm or unauthorized warranty claims.",
+      "ticker": "AMD",
+      "topic": "brand protection risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          186
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "reputational harm"
+      ],
+      "position": 9,
+      "sentence_id": "0000002488-26-000018:25:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "These substandard gray market products may have higher-than-expected failure rates and as a result, we may face brand protection risks, reputational harm or unauthorized warranty claims.",
+      "ticker": "AMD",
+      "topic": "reputational harm"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          186
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "substandard gray market products"
+      ],
+      "position": 9,
+      "sentence_id": "0000002488-26-000018:25:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "These substandard gray market products may have higher-than-expected failure rates and as a result, we may face brand protection risks, reputational harm or unauthorized warranty claims.",
+      "ticker": "AMD",
+      "topic": "substandard gray market product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          186
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "unauthorized warranty claims"
+      ],
+      "position": 9,
+      "sentence_id": "0000002488-26-000018:25:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "These substandard gray market products may have higher-than-expected failure rates and as a result, we may face brand protection risks, reputational harm or unauthorized warranty claims.",
+      "ticker": "AMD",
+      "topic": "unauthorized warranty claim"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          127
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "product diversion"
+      ],
+      "position": 14,
+      "sentence_id": "0000002488-26-000018:25:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "We also face risks of product diversion into restricted markets, including reexports or sales to prohibited end users/end uses.",
+      "ticker": "AMD",
+      "topic": "product diversion"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          127
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "restricted markets"
+      ],
+      "position": 14,
+      "sentence_id": "0000002488-26-000018:25:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "We also face risks of product diversion into restricted markets, including reexports or sales to prohibited end users/end uses.",
+      "ticker": "AMD",
+      "topic": "restricted market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          281
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "export control"
+      ],
+      "position": 16,
+      "sentence_id": "0000002488-26-000018:25:9",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Despite our compliance programs and procedures for mitigating these risks through customer and transaction screening, distributor audits, law enforcement and NGO cooperation and export control compliance (including licensing where required), we may not fully eliminate these risks.",
+      "ticker": "AMD",
+      "topic": "Export controls"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          281
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "compliance programs"
+      ],
+      "position": 16,
+      "sentence_id": "0000002488-26-000018:25:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Despite our compliance programs and procedures for mitigating these risks through customer and transaction screening, distributor audits, law enforcement and NGO cooperation and export control compliance (including licensing where required), we may not fully eliminate these risks.",
+      "ticker": "AMD",
+      "topic": "compliance program"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          281
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "customer and transaction screening"
+      ],
+      "position": 16,
+      "sentence_id": "0000002488-26-000018:25:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Despite our compliance programs and procedures for mitigating these risks through customer and transaction screening, distributor audits, law enforcement and NGO cooperation and export control compliance (including licensing where required), we may not fully eliminate these risks.",
+      "ticker": "AMD",
+      "topic": "customer and transaction screening"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          281
+        ]
+      ],
+      "change_id": "bbfaf0d97a451fe9",
+      "matched_terms": [
+        "distributor audits"
+      ],
+      "position": 16,
+      "sentence_id": "0000002488-26-000018:25:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Despite our compliance programs and procedures for mitigating these risks through customer and transaction screening, distributor audits, law enforcement and NGO cooperation and export control compliance (including licensing where required), we may not fully eliminate these risks.",
+      "ticker": "AMD",
+      "topic": "distributor audit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          166
+        ]
+      ],
+      "change_id": "77a8962b75144de6",
+      "matched_terms": [
+        "immigration"
+      ],
+      "position": 15,
+      "sentence_id": "0000002488-26-000018:40:8",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Our ability to attract and retain qualified employees could also be impacted by changes in immigration law and regulations, or interpretation of new or existing laws.",
+      "ticker": "AMD",
+      "topic": "Immigration policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          166
+        ]
+      ],
+      "change_id": "77a8962b75144de6",
+      "matched_terms": [
+        "existing laws"
+      ],
+      "position": 15,
+      "sentence_id": "0000002488-26-000018:40:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to attract and retain qualified employees could also be impacted by changes in immigration law and regulations, or interpretation of new or existing laws.",
+      "ticker": "AMD",
+      "topic": "existing law"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          162
+        ]
+      ],
+      "change_id": "77a8962b75144de6",
+      "matched_terms": [
+        "immigration"
+      ],
+      "position": 16,
+      "sentence_id": "0000002488-26-000018:40:9",
+      "source": "lexicon",
+      "status": "added",
+      "text": "United States immigration controls could affect the employment status of key technical and professional employees, as well as our ability to hire talent globally.",
+      "ticker": "AMD",
+      "topic": "Immigration policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          162
+        ]
+      ],
+      "change_id": "77a8962b75144de6",
+      "matched_terms": [
+        "employment status"
+      ],
+      "position": 16,
+      "sentence_id": "0000002488-26-000018:40:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "United States immigration controls could affect the employment status of key technical and professional employees, as well as our ability to hire talent globally.",
+      "ticker": "AMD",
+      "topic": "employment status"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          162
+        ]
+      ],
+      "change_id": "77a8962b75144de6",
+      "matched_terms": [
+        "technical and professional employees"
+      ],
+      "position": 16,
+      "sentence_id": "0000002488-26-000018:40:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "United States immigration controls could affect the employment status of key technical and professional employees, as well as our ability to hire talent globally.",
+      "ticker": "AMD",
+      "topic": "technical and professional employee"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "6f9e68316466878f",
+      "matched_terms": [
+        "data center capacity"
+      ],
+      "position": 10,
+      "sentence_id": "0000002488-26-000018:2:5",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Some customers in AI markets may be unable to secure access to internal and external infrastructure, including availability of sufficient data center capacity or energy for the buildout of data centers that use our products.",
+      "ticker": "AMD",
+      "topic": "Energy and power for data centers"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "6f9e68316466878f",
+      "matched_terms": [
+        "AI markets"
+      ],
+      "position": 10,
+      "sentence_id": "0000002488-26-000018:2:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Some customers in AI markets may be unable to secure access to internal and external infrastructure, including availability of sufficient data center capacity or energy for the buildout of data centers that use our products.",
+      "ticker": "AMD",
+      "topic": "ai market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          224
+        ]
+      ],
+      "change_id": "6f9e68316466878f",
+      "matched_terms": [
+        "internal and external infrastructure"
+      ],
+      "position": 10,
+      "sentence_id": "0000002488-26-000018:2:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Some customers in AI markets may be unable to secure access to internal and external infrastructure, including availability of sufficient data center capacity or energy for the buildout of data centers that use our products.",
+      "ticker": "AMD",
+      "topic": "internal and external infrastructure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          118
+        ]
+      ],
+      "change_id": "6f9e68316466878f",
+      "matched_terms": [
+        "construction delays"
+      ],
+      "position": 11,
+      "sentence_id": "0000002488-26-000018:2:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, construction delays in the scheduled buildout of data centers could impact the timing of customer demand.",
+      "ticker": "AMD",
+      "topic": "construction delay"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          118
+        ]
+      ],
+      "change_id": "6f9e68316466878f",
+      "matched_terms": [
+        "customer demand"
+      ],
+      "position": 11,
+      "sentence_id": "0000002488-26-000018:2:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, construction delays in the scheduled buildout of data centers could impact the timing of customer demand.",
+      "ticker": "AMD",
+      "topic": "customer demand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          118
+        ]
+      ],
+      "change_id": "6f9e68316466878f",
+      "matched_terms": [
+        "scheduled buildout"
+      ],
+      "position": 11,
+      "sentence_id": "0000002488-26-000018:2:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, construction delays in the scheduled buildout of data centers could impact the timing of customer demand.",
+      "ticker": "AMD",
+      "topic": "scheduled buildout"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          145
+        ]
+      ],
+      "change_id": "6f9e68316466878f",
+      "matched_terms": [
+        "growth strategy"
+      ],
+      "position": 12,
+      "sentence_id": "0000002488-26-000018:2:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Such delays in the buildout of data centers could have a material adverse effect on our business, financial condition and future growth strategy.",
+      "ticker": "AMD",
+      "topic": "growth strategy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          196
+        ]
+      ],
+      "change_id": "6f9e68316466878f",
+      "matched_terms": [
+        "alternative financing"
+      ],
+      "position": 13,
+      "sentence_id": "0000002488-26-000018:2:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers may also lack, or be unable to, secure capital to fund their required AI infrastructure and may request alternative financing or deferred‑payment arrangements from vendors and suppliers.",
+      "ticker": "AMD",
+      "topic": "alternative financing"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          196
+        ]
+      ],
+      "change_id": "6f9e68316466878f",
+      "matched_terms": [
+        "required AI infrastructure"
+      ],
+      "position": 13,
+      "sentence_id": "0000002488-26-000018:2:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers may also lack, or be unable to, secure capital to fund their required AI infrastructure and may request alternative financing or deferred‑payment arrangements from vendors and suppliers.",
+      "ticker": "AMD",
+      "topic": "required ai infrastructure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          3
+        ],
+        [
+          13,
+          16
+        ],
+        [
+          59,
+          69
+        ],
+        [
+          81,
+          136
+        ],
+        [
+          142,
+          187
+        ]
+      ],
+      "change_id": "985f8eaa80af955b",
+      "matched_terms": [
+        "carrying amounts"
+      ],
+      "position": 13,
+      "sentence_id": "0000002488-26-000018:37:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "All tangible and intangible assets including goodwill, are subject to impairment testing when events or changes in circumstances suggest that their carrying amounts may not be recoverable.",
+      "ticker": "AMD",
+      "topic": "carrying amount"
+    },
+    {
+      "added_spans": [
+        [
+          54,
+          120
+        ],
+        [
+          405,
+          459
+        ]
+      ],
+      "change_id": "985f8eaa80af955b",
+      "matched_terms": [
+        "macroeconomic trends"
+      ],
+      "position": 17,
+      "sentence_id": "0000002488-26-000018:37:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We monitor for any events or changes in circumstances that may be indicators of impairment, including but not limited to: significant adverse changes in business climate or operating results; changes in management’s business strategy; an inability to successfully introduce new products in the marketplace; an inability to successfully achieve internal forecasts; significant declines in our stock price; significant negative industry; or macroeconomic trends.",
+      "ticker": "AMD",
+      "topic": "macroeconomic trend"
+    },
+    {
+      "added_spans": [
+        [
+          54,
+          120
+        ],
+        [
+          405,
+          459
+        ]
+      ],
+      "change_id": "985f8eaa80af955b",
+      "matched_terms": [
+        "negative industry"
+      ],
+      "position": 17,
+      "sentence_id": "0000002488-26-000018:37:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We monitor for any events or changes in circumstances that may be indicators of impairment, including but not limited to: significant adverse changes in business climate or operating results; changes in management’s business strategy; an inability to successfully introduce new products in the marketplace; an inability to successfully achieve internal forecasts; significant declines in our stock price; significant negative industry; or macroeconomic trends.",
+      "ticker": "AMD",
+      "topic": "negative industry"
+    },
+    {
+      "added_spans": [
+        [
+          23,
+          32
+        ],
+        [
+          51,
+          70
+        ],
+        [
+          75,
+          103
+        ],
+        [
+          125,
+          131
+        ],
+        [
+          153,
+          160
+        ],
+        [
+          226,
+          235
+        ]
+      ],
+      "change_id": "ee5a4cc8e06b651d",
+      "matched_terms": [
+        "product shipments"
+      ],
+      "position": 14,
+      "sentence_id": "0000002488-26-000018:26:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Such disruptions could interrupt our supply chain, delay manufacturing and product shipments, lead to a loss of business and higher costs to maintain or restore operations, any of which could adversely affect our business and operating results.",
+      "ticker": "AMD",
+      "topic": "product shipment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          158
+        ]
+      ],
+      "change_id": "ee5a4cc8e06b651d",
+      "matched_terms": [
+        "complicated, multi-year process"
+      ],
+      "position": 19,
+      "sentence_id": "0000002488-26-000018:26:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers’ ability to obtain sufficient energy capacity to meet demand is a complicated, multi-year process that involves regulatory and technical challenges.",
+      "ticker": "AMD",
+      "topic": "complicated multi year process"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          158
+        ]
+      ],
+      "change_id": "ee5a4cc8e06b651d",
+      "matched_terms": [
+        "regulatory and technical challenges"
+      ],
+      "position": 19,
+      "sentence_id": "0000002488-26-000018:26:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers’ ability to obtain sufficient energy capacity to meet demand is a complicated, multi-year process that involves regulatory and technical challenges.",
+      "ticker": "AMD",
+      "topic": "regulatory and technical challenge"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          158
+        ]
+      ],
+      "change_id": "ee5a4cc8e06b651d",
+      "matched_terms": [
+        "sufficient energy capacity"
+      ],
+      "position": 19,
+      "sentence_id": "0000002488-26-000018:26:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers’ ability to obtain sufficient energy capacity to meet demand is a complicated, multi-year process that involves regulatory and technical challenges.",
+      "ticker": "AMD",
+      "topic": "sufficient energy capacity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          206
+        ]
+      ],
+      "change_id": "ee5a4cc8e06b651d",
+      "matched_terms": [
+        "experience outages"
+      ],
+      "position": 20,
+      "sentence_id": "0000002488-26-000018:26:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "If customers cannot secure sufficient power or water, or experience outages or shortages of these resources, they may be unable to expand their data center capacity and may reduce or stop purchases from us.",
+      "ticker": "AMD",
+      "topic": "experience outage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          206
+        ]
+      ],
+      "change_id": "ee5a4cc8e06b651d",
+      "matched_terms": [
+        "sufficient power"
+      ],
+      "position": 20,
+      "sentence_id": "0000002488-26-000018:26:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "If customers cannot secure sufficient power or water, or experience outages or shortages of these resources, they may be unable to expand their data center capacity and may reduce or stop purchases from us.",
+      "ticker": "AMD",
+      "topic": "sufficient power"
+    }
+  ],
+  "total_changes": 45
+}

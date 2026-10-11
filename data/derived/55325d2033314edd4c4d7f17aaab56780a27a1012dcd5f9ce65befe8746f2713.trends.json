@@ -1,0 +1,5485 @@
+{
+  "analysis_id": "55325d2033314edd4c4d7f17aaab56780a27a1012dcd5f9ce65befe8746f2713",
+  "by_change_type": {
+    "expanded": 4,
+    "largely_unchanged": 17,
+    "materially_reworded": 7,
+    "new": 3,
+    "reduced": 1,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 4,
+      "added_words": 103,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "change_type": "materially_reworded",
+      "modified_sentences": 7,
+      "modified_words": 153,
+      "removed_sentences": 12,
+      "removed_words": 248,
+      "score": 41,
+      "short_title": "We may experience supply problems"
+    },
+    {
+      "added_sentences": 13,
+      "added_words": 247,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "3755ee2196325fd3",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 38,
+      "short_title": "We may experience other quality problems"
+    },
+    {
+      "added_sentences": 19,
+      "added_words": 464,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "454a3251bd520ad4",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 38,
+      "short_title": "We may be unable to develop and…"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 69,
+      "categories": [
+        "regulation",
+        "artificial_intelligence"
+      ],
+      "change_id": "f1a6ed1c5344642b",
+      "change_type": "materially_reworded",
+      "modified_sentences": 3,
+      "modified_words": 73,
+      "removed_sentences": 4,
+      "removed_words": 80,
+      "score": 33,
+      "short_title": "Other digital safety abuses"
+    },
+    {
+      "added_sentences": 24,
+      "added_words": 635,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 30,
+      "short_title": "Our cloud and AI strategy requires substantial…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 62,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "change_type": "materially_reworded",
+      "modified_sentences": 10,
+      "modified_words": 234,
+      "removed_sentences": 2,
+      "removed_words": 35,
+      "score": 30,
+      "short_title": "Our products and services, how they are…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 42,
+      "categories": [
+        "regulation",
+        "climate"
+      ],
+      "change_id": "25d3f1bb5b9e3da8",
+      "change_type": "expanded",
+      "modified_sentences": 2,
+      "modified_words": 9,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 25,
+      "short_title": "Environmental, Social, and Governance"
+    },
+    {
+      "added_sentences": 5,
+      "added_words": 117,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "86254bf6b03f665c",
+      "change_type": "materially_reworded",
+      "modified_sentences": 10,
+      "modified_words": 264,
+      "removed_sentences": 4,
+      "removed_words": 63,
+      "score": 25,
+      "short_title": "Our success depends on our ability to…"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 115,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "952fe3899dd265ae",
+      "change_type": "materially_reworded",
+      "modified_sentences": 3,
+      "modified_words": 52,
+      "removed_sentences": 7,
+      "removed_words": 187,
+      "score": 25,
+      "short_title": "We may experience outages, disruptions, or capacity…"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 62,
+      "categories": [
+        "competition",
+        "artificial_intelligence"
+      ],
+      "change_id": "084ca7a5fe6a4ea9",
+      "change_type": "materially_reworded",
+      "modified_sentences": 4,
+      "modified_words": 51,
+      "removed_sentences": 3,
+      "removed_words": 72,
+      "score": 20,
+      "short_title": "Business model competition"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "artificial_intelligence"
+      ],
+      "change_id": "1b7868f35687cc8c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 38,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 20,
+      "short_title": "Acquisitions, joint ventures, and strategic alliances could…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "478c4a235d601288",
+      "change_type": "materially_reworded",
+      "modified_sentences": 4,
+      "modified_words": 268,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 20,
+      "short_title": "Disclosure and misuse of personal data could…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 55,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "ca816ea3a757b931",
+      "change_type": "expanded",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 20,
+      "short_title": "ITEM 1A. RISK FACTORS"
+    },
+    {
+      "added_sentences": 6,
+      "added_words": 187,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "7b81daf5f9cda115",
+      "change_type": "expanded",
+      "modified_sentences": 9,
+      "modified_words": 135,
+      "removed_sentences": 4,
+      "removed_words": 116,
+      "score": 15,
+      "short_title": "Security of our information technology"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 86,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "b30a6911b537a3e4",
+      "change_type": "expanded",
+      "modified_sentences": 8,
+      "modified_words": 69,
+      "removed_sentences": 1,
+      "removed_words": 13,
+      "score": 15,
+      "short_title": "Security of our products, services, devices, and…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "be087d2cba6ec3d9",
+      "change_type": "reduced",
+      "modified_sentences": 3,
+      "modified_words": 28,
+      "removed_sentences": 3,
+      "removed_words": 55,
+      "score": 10,
+      "short_title": "We face risks related to the protection…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "geopolitical",
+        "climate"
+      ],
+      "change_id": "6fdcb1de23380597",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 5,
+      "modified_words": 20,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Catastrophic events or geopolitical conditions could disrupt…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 37,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "cf3bdead30339279",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 6,
+      "modified_words": 57,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Competition laws and new market regulation"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "0479f4e006c6c5ce",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 1,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Third parties may claim that we infringe…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "07190c2f519a71f4",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 63,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Competition among platform-based ecosystems"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "2ec2bc5d3eb9f4b2",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Advertising, professional, marketplace, and gaming platform abuses"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence",
+        "regulation"
+      ],
+      "change_id": "4b4bafd86d6c74bb",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We make significant investments in products and…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "5ff299c469d0dda6",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business with government customers may present…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "60f49cff05e8438e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 1,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Handling of personal data"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "geopolitical",
+        "foreign_exchange"
+      ],
+      "change_id": "7b013dadd5e7ec16",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 16,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our global business exposes us to operational…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "aa0fa6b60e8f203e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 29,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Adverse economic or market conditions could harm…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "abf8d51d6e922964",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We have claims and lawsuits against us…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "b5fee1f6a27ea72b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business depends on our ability to…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "bd0f67d9ad31605f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are subject to a variety of…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "litigation"
+      ],
+      "change_id": "bf6b5e1d4653489a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 8,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may have additional tax liabilities"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "dab1a6dece1044f3",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 23,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Development and deployment of defensive measures"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "df3bf0433cbe4244",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 7,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Competition in the technology sector"
+    }
+  ],
+  "cik": "0000789019",
+  "company_name": "MICROSOFT CORP",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0001193125-26-323660",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+  "new_fiscal_year": 2026,
+  "old_accession": "0000950170-25-100235",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+  "old_fiscal_year": 2025,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "MSFT",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          40,
+          48
+        ],
+        [
+          81,
+          119
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "short supply"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-323660:16:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "There are limited suppliers for certain critical device and datacenter components, and those items are in short supply.",
+      "ticker": "MSFT",
+      "topic": "short supply"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          154
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "critical hardware"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-323660:16:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "We depend on the timely availability of critical hardware, equipment, and components used to construct and operate datacenters and related infrastructure.",
+      "ticker": "MSFT",
+      "topic": "critical hardware"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          154
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "timely availability"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-323660:16:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "We depend on the timely availability of critical hardware, equipment, and components used to construct and operate datacenters and related infrastructure.",
+      "ticker": "MSFT",
+      "topic": "timely availability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          191
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "networking equipment"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-323660:16:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have experienced and may continue to experience supply constraints, including shortages of semiconductors, networking equipment, power systems, cooling equipment, and other key components.",
+      "ticker": "MSFT",
+      "topic": "networking equipment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          191
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "power systems"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-323660:16:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have experienced and may continue to experience supply constraints, including shortages of semiconductors, networking equipment, power systems, cooling equipment, and other key components.",
+      "ticker": "MSFT",
+      "topic": "power system"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "multi-year lead times"
+      ],
+      "position": 10,
+      "sentence_id": "0001193125-26-323660:16:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Expanding manufacturing or supply capacity for certain components may require significant investments and multi-year lead times.",
+      "ticker": "MSFT",
+      "topic": "multi year lead time"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "supply capacity"
+      ],
+      "position": 10,
+      "sentence_id": "0001193125-26-323660:16:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Expanding manufacturing or supply capacity for certain components may require significant investments and multi-year lead times.",
+      "ticker": "MSFT",
+      "topic": "supply capacity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          48,
+          65
+        ],
+        [
+          194,
+          416
+        ],
+        [
+          482,
+          718
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "natural disasters"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:16:7",
+      "source": "lexicon",
+      "status": "modified",
+      "text": "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, geopolitical tensions, trade restrictions, tariffs, transportation disruptions, supplier financial distress, natural disasters, public health events, instability in regions important to our or our suppliers’ supply chains, or other reasons, we may not obtain timely replacement supplies, or may be able to obtain supplies only by entering into long-term purchase commitments, price commitments, paying prices above prevailing market rates, or other arrangements on terms that are less favorable than prevailing market terms.",
+      "ticker": "MSFT",
+      "topic": "Natural disasters"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          48,
+          65
+        ],
+        [
+          194,
+          416
+        ],
+        [
+          482,
+          718
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "tariffs"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:16:7",
+      "source": "lexicon",
+      "status": "modified",
+      "text": "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, geopolitical tensions, trade restrictions, tariffs, transportation disruptions, supplier financial distress, natural disasters, public health events, instability in regions important to our or our suppliers’ supply chains, or other reasons, we may not obtain timely replacement supplies, or may be able to obtain supplies only by entering into long-term purchase commitments, price commitments, paying prices above prevailing market rates, or other arrangements on terms that are less favorable than prevailing market terms.",
+      "ticker": "MSFT",
+      "topic": "Tariffs"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          48,
+          65
+        ],
+        [
+          194,
+          416
+        ],
+        [
+          482,
+          718
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "geopolitical tensions"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:16:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, geopolitical tensions, trade restrictions, tariffs, transportation disruptions, supplier financial distress, natural disasters, public health events, instability in regions important to our or our suppliers’ supply chains, or other reasons, we may not obtain timely replacement supplies, or may be able to obtain supplies only by entering into long-term purchase commitments, price commitments, paying prices above prevailing market rates, or other arrangements on terms that are less favorable than prevailing market terms.",
+      "ticker": "MSFT",
+      "topic": "geopolitical tension"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          48,
+          65
+        ],
+        [
+          194,
+          416
+        ],
+        [
+          482,
+          718
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "long-term purchase commitments"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:16:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, geopolitical tensions, trade restrictions, tariffs, transportation disruptions, supplier financial distress, natural disasters, public health events, instability in regions important to our or our suppliers’ supply chains, or other reasons, we may not obtain timely replacement supplies, or may be able to obtain supplies only by entering into long-term purchase commitments, price commitments, paying prices above prevailing market rates, or other arrangements on terms that are less favorable than prevailing market terms.",
+      "ticker": "MSFT",
+      "topic": "long term purchase commitment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          48,
+          65
+        ],
+        [
+          194,
+          416
+        ],
+        [
+          482,
+          718
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "prevailing market rates"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:16:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, geopolitical tensions, trade restrictions, tariffs, transportation disruptions, supplier financial distress, natural disasters, public health events, instability in regions important to our or our suppliers’ supply chains, or other reasons, we may not obtain timely replacement supplies, or may be able to obtain supplies only by entering into long-term purchase commitments, price commitments, paying prices above prevailing market rates, or other arrangements on terms that are less favorable than prevailing market terms.",
+      "ticker": "MSFT",
+      "topic": "prevailing market rate"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          48,
+          65
+        ],
+        [
+          194,
+          416
+        ],
+        [
+          482,
+          718
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "prevailing market terms"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:16:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, geopolitical tensions, trade restrictions, tariffs, transportation disruptions, supplier financial distress, natural disasters, public health events, instability in regions important to our or our suppliers’ supply chains, or other reasons, we may not obtain timely replacement supplies, or may be able to obtain supplies only by entering into long-term purchase commitments, price commitments, paying prices above prevailing market rates, or other arrangements on terms that are less favorable than prevailing market terms.",
+      "ticker": "MSFT",
+      "topic": "prevailing market term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          48,
+          65
+        ],
+        [
+          194,
+          416
+        ],
+        [
+          482,
+          718
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "price commitments"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:16:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, geopolitical tensions, trade restrictions, tariffs, transportation disruptions, supplier financial distress, natural disasters, public health events, instability in regions important to our or our suppliers’ supply chains, or other reasons, we may not obtain timely replacement supplies, or may be able to obtain supplies only by entering into long-term purchase commitments, price commitments, paying prices above prevailing market rates, or other arrangements on terms that are less favorable than prevailing market terms.",
+      "ticker": "MSFT",
+      "topic": "price commitment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          48,
+          65
+        ],
+        [
+          194,
+          416
+        ],
+        [
+          482,
+          718
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "public health events"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:16:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, geopolitical tensions, trade restrictions, tariffs, transportation disruptions, supplier financial distress, natural disasters, public health events, instability in regions important to our or our suppliers’ supply chains, or other reasons, we may not obtain timely replacement supplies, or may be able to obtain supplies only by entering into long-term purchase commitments, price commitments, paying prices above prevailing market rates, or other arrangements on terms that are less favorable than prevailing market terms.",
+      "ticker": "MSFT",
+      "topic": "public health event"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          48,
+          65
+        ],
+        [
+          194,
+          416
+        ],
+        [
+          482,
+          718
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "supplier financial distress"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:16:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, geopolitical tensions, trade restrictions, tariffs, transportation disruptions, supplier financial distress, natural disasters, public health events, instability in regions important to our or our suppliers’ supply chains, or other reasons, we may not obtain timely replacement supplies, or may be able to obtain supplies only by entering into long-term purchase commitments, price commitments, paying prices above prevailing market rates, or other arrangements on terms that are less favorable than prevailing market terms.",
+      "ticker": "MSFT",
+      "topic": "supplier financial distress"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          48,
+          65
+        ],
+        [
+          194,
+          416
+        ],
+        [
+          482,
+          718
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "suppliers’ supply chains"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:16:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, geopolitical tensions, trade restrictions, tariffs, transportation disruptions, supplier financial distress, natural disasters, public health events, instability in regions important to our or our suppliers’ supply chains, or other reasons, we may not obtain timely replacement supplies, or may be able to obtain supplies only by entering into long-term purchase commitments, price commitments, paying prices above prevailing market rates, or other arrangements on terms that are less favorable than prevailing market terms.",
+      "ticker": "MSFT",
+      "topic": "supplier supply chain"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          48,
+          65
+        ],
+        [
+          194,
+          416
+        ],
+        [
+          482,
+          718
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "trade restrictions"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:16:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, geopolitical tensions, trade restrictions, tariffs, transportation disruptions, supplier financial distress, natural disasters, public health events, instability in regions important to our or our suppliers’ supply chains, or other reasons, we may not obtain timely replacement supplies, or may be able to obtain supplies only by entering into long-term purchase commitments, price commitments, paying prices above prevailing market rates, or other arrangements on terms that are less favorable than prevailing market terms.",
+      "ticker": "MSFT",
+      "topic": "trade restriction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          2
+        ],
+        [
+          48,
+          65
+        ],
+        [
+          194,
+          416
+        ],
+        [
+          482,
+          718
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "transportation disruptions"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:16:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, geopolitical tensions, trade restrictions, tariffs, transportation disruptions, supplier financial distress, natural disasters, public health events, instability in regions important to our or our suppliers’ supply chains, or other reasons, we may not obtain timely replacement supplies, or may be able to obtain supplies only by entering into long-term purchase commitments, price commitments, paying prices above prevailing market rates, or other arrangements on terms that are less favorable than prevailing market terms.",
+      "ticker": "MSFT",
+      "topic": "transportation disruption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "acceptable terms"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:16:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any delay or inability to obtain necessary equipment, hardware, or components on acceptable terms and timelines could delay infrastructure deployments, result in reduced sales, higher costs, or inadequate datacenter capacity to support the delivery and continued development of our products and services.",
+      "ticker": "MSFT",
+      "topic": "acceptable term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "higher costs"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:16:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any delay or inability to obtain necessary equipment, hardware, or components on acceptable terms and timelines could delay infrastructure deployments, result in reduced sales, higher costs, or inadequate datacenter capacity to support the delivery and continued development of our products and services.",
+      "ticker": "MSFT",
+      "topic": "higher cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "infrastructure deployments"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:16:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any delay or inability to obtain necessary equipment, hardware, or components on acceptable terms and timelines could delay infrastructure deployments, result in reduced sales, higher costs, or inadequate datacenter capacity to support the delivery and continued development of our products and services.",
+      "ticker": "MSFT",
+      "topic": "infrastructure deployment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          58
+        ],
+        [
+          109,
+          118
+        ],
+        [
+          130,
+          157
+        ]
+      ],
+      "change_id": "119f5bb5335ecda7",
+      "matched_terms": [
+        "chain challenges"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-323660:16:10",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition to infrastructure, other products such as XBOX consoles, Surface devices, and other hardware are similarly subject to supply chain challenges and disruptions, resulting in shortages which could adversely affect our business, operations, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "chain challenge"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          41
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "quality problems"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-323660:18:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "We may experience other quality problems.",
+      "ticker": "MSFT",
+      "topic": "quality problem"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          123
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "software products"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-323660:18:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our AI and other software products and services also have and may in the future experience quality or reliability problems.",
+      "ticker": "MSFT",
+      "topic": "software product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          109
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "intended operation"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-323660:18:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Like all software, our software contains bugs and other defects that interfere with their intended operation.",
+      "ticker": "MSFT",
+      "topic": "intended operation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          80
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "critical business functions"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:18:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our customers rely on us for critical business functions and multiple workloads.",
+      "ticker": "MSFT",
+      "topic": "critical business function"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          94
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "quality or reliability issues"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-323660:18:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Each of these circumstances potentially magnifies the impact of quality or reliability issues.",
+      "ticker": "MSFT",
+      "topic": "quality or reliability issue"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          357
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "legal liability"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-323660:18:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Weaknesses in our processes could result in defects we do not detect and fix in pre-release testing, which could cause reduced sales, damage to our reputation, repair or remediation costs, delays in the release of new products or versions, or legal liability, any of which could adversely affect our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "legal liability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          357
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "pre-release testing"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-323660:18:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Weaknesses in our processes could result in defects we do not detect and fix in pre-release testing, which could cause reduced sales, damage to our reputation, repair or remediation costs, delays in the release of new products or versions, or legal liability, any of which could adversely affect our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "pre release testing"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          357
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "reduced sales"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-323660:18:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Weaknesses in our processes could result in defects we do not detect and fix in pre-release testing, which could cause reduced sales, damage to our reputation, repair or remediation costs, delays in the release of new products or versions, or legal liability, any of which could adversely affect our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "reduced sale"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          357
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "remediation costs"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-323660:18:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Weaknesses in our processes could result in defects we do not detect and fix in pre-release testing, which could cause reduced sales, damage to our reputation, repair or remediation costs, delays in the release of new products or versions, or legal liability, any of which could adversely affect our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "remediation cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          163
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "legal challenge"
+      ],
+      "position": 10,
+      "sentence_id": "0001193125-26-323660:18:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although our license agreements typically contain provisions that eliminate or limit our exposure to liability, these provisions may not withstand legal challenge.",
+      "ticker": "MSFT",
+      "topic": "legal challenge"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          163
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "license agreements"
+      ],
+      "position": 10,
+      "sentence_id": "0001193125-26-323660:18:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Although our license agreements typically contain provisions that eliminate or limit our exposure to liability, these provisions may not withstand legal challenge.",
+      "ticker": "MSFT",
+      "topic": "license agreement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          140
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "Surface"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:18:11",
+      "source": "entity",
+      "status": "added",
+      "text": "Our datacenters and our hardware products such as XBOX consoles, Surface devices, and other devices we design and market are highly complex.",
+      "ticker": "MSFT",
+      "topic": "Surface"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          140
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "XBOX"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:18:11",
+      "source": "entity",
+      "status": "added",
+      "text": "Our datacenters and our hardware products such as XBOX consoles, Surface devices, and other devices we design and market are highly complex.",
+      "ticker": "MSFT",
+      "topic": "XBOX"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          140
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "hardware products"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:18:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our datacenters and our hardware products such as XBOX consoles, Surface devices, and other devices we design and market are highly complex.",
+      "ticker": "MSFT",
+      "topic": "hardware product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          140
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "Surface devices"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:18:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our datacenters and our hardware products such as XBOX consoles, Surface devices, and other devices we design and market are highly complex.",
+      "ticker": "MSFT",
+      "topic": "surface device"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          140
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "XBOX consoles"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:18:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our datacenters and our hardware products such as XBOX consoles, Surface devices, and other devices we design and market are highly complex.",
+      "ticker": "MSFT",
+      "topic": "xbox console"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          156
+        ]
+      ],
+      "change_id": "3755ee2196325fd3",
+      "matched_terms": [
+        "associated software"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:18:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Failure to prevent, detect, or address defects in design, manufacture, or associated software could adversely affect our business and results of operations.",
+      "ticker": "MSFT",
+      "topic": "associated software"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "computing power"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-323660:15:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our increasing user traffic, our growth in services, and the complexity of our products and services demand more infrastructure capacity and computing power.",
+      "ticker": "MSFT",
+      "topic": "computing power"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "increasing user traffic"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-323660:15:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our increasing user traffic, our growth in services, and the complexity of our products and services demand more infrastructure capacity and computing power.",
+      "ticker": "MSFT",
+      "topic": "increasing user traffic"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "infrastructure capacity"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-323660:15:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our increasing user traffic, our growth in services, and the complexity of our products and services demand more infrastructure capacity and computing power.",
+      "ticker": "MSFT",
+      "topic": "infrastructure capacity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          173
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "substantial amounts"
+      ],
+      "position": 2,
+      "sentence_id": "0001193125-26-323660:15:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have spent and will continue to spend substantial amounts to build, purchase, or lease datacenters and equipment and to upgrade our technology and network infrastructure.",
+      "ticker": "MSFT",
+      "topic": "substantial amount"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          173
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "technology and network infrastructure"
+      ],
+      "position": 2,
+      "sentence_id": "0001193125-26-323660:15:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have spent and will continue to spend substantial amounts to build, purchase, or lease datacenters and equipment and to upgrade our technology and network infrastructure.",
+      "ticker": "MSFT",
+      "topic": "technology and network infrastructure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          215
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "graphics processing units"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-323660:15:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our infrastructure capacity depends on the availability of permitted and buildable land, predictable and affordable energy, networking supplies, and servers, including graphics processing units and other components.",
+      "ticker": "MSFT",
+      "topic": "graphic processing unit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          215
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "infrastructure capacity"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-323660:15:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our infrastructure capacity depends on the availability of permitted and buildable land, predictable and affordable energy, networking supplies, and servers, including graphics processing units and other components.",
+      "ticker": "MSFT",
+      "topic": "infrastructure capacity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          215
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "permitted and buildable land"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-323660:15:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our infrastructure capacity depends on the availability of permitted and buildable land, predictable and affordable energy, networking supplies, and servers, including graphics processing units and other components.",
+      "ticker": "MSFT",
+      "topic": "permitted and buildable land"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          215
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "predictable and affordable energy"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-323660:15:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our infrastructure capacity depends on the availability of permitted and buildable land, predictable and affordable energy, networking supplies, and servers, including graphics processing units and other components.",
+      "ticker": "MSFT",
+      "topic": "predictable and affordable energy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          215
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "AI features"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:15:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "These demands continue to increase as we introduce new products and services and support the growth and the augmentation of existing services, and scale further the incorporation of AI features and/or functionality.",
+      "ticker": "MSFT",
+      "topic": "ai feature"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          215
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "existing services"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:15:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "These demands continue to increase as we introduce new products and services and support the growth and the augmentation of existing services, and scale further the incorporation of AI features and/or functionality.",
+      "ticker": "MSFT",
+      "topic": "existing service"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          139
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "end users"
+      ],
+      "position": 5,
+      "sentence_id": "0001193125-26-323660:15:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "We are rapidly growing our business of providing a platform and back-end hosting for services provided by third parties to their end users.",
+      "ticker": "MSFT",
+      "topic": "end user"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          123
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "electrical power"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-323660:15:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "The availability, reliability, and cost of electrical power are critical to the operation and expansion of our datacenters.",
+      "ticker": "MSFT",
+      "topic": "electrical power"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          146
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "electricity"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-323660:15:9",
+      "source": "lexicon",
+      "status": "added",
+      "text": "In many regions, electricity generation, transmission, and distribution infrastructure is experiencing increasing demand and capacity constraints.",
+      "ticker": "MSFT",
+      "topic": "Energy and power for data centers"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          146
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "capacity constraints"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-323660:15:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "In many regions, electricity generation, transmission, and distribution infrastructure is experiencing increasing demand and capacity constraints.",
+      "ticker": "MSFT",
+      "topic": "capacity constraint"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          146
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "distribution infrastructure"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-323660:15:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "In many regions, electricity generation, transmission, and distribution infrastructure is experiencing increasing demand and capacity constraints.",
+      "ticker": "MSFT",
+      "topic": "distribution infrastructure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          146
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "increasing demand"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-323660:15:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "In many regions, electricity generation, transmission, and distribution infrastructure is experiencing increasing demand and capacity constraints.",
+      "ticker": "MSFT",
+      "topic": "increasing demand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          265
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "power availability",
+        "energy costs"
+      ],
+      "position": 10,
+      "sentence_id": "0001193125-26-323660:15:10",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Limitations in power availability, delays in obtaining power connections, outages, shortages, increased energy costs, or requirements imposed by utilities, regulators, or other market participants could restrict our ability to develop or expand datacenter capacity.",
+      "ticker": "MSFT",
+      "topic": "Energy and power for data centers"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          265
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "datacenter capacity"
+      ],
+      "position": 10,
+      "sentence_id": "0001193125-26-323660:15:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Limitations in power availability, delays in obtaining power connections, outages, shortages, increased energy costs, or requirements imposed by utilities, regulators, or other market participants could restrict our ability to develop or expand datacenter capacity.",
+      "ticker": "MSFT",
+      "topic": "datacenter capacity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          265
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "market participants"
+      ],
+      "position": 10,
+      "sentence_id": "0001193125-26-323660:15:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Limitations in power availability, delays in obtaining power connections, outages, shortages, increased energy costs, or requirements imposed by utilities, regulators, or other market participants could restrict our ability to develop or expand datacenter capacity.",
+      "ticker": "MSFT",
+      "topic": "market participant"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          265
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "power connections"
+      ],
+      "position": 10,
+      "sentence_id": "0001193125-26-323660:15:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Limitations in power availability, delays in obtaining power connections, outages, shortages, increased energy costs, or requirements imposed by utilities, regulators, or other market participants could restrict our ability to develop or expand datacenter capacity.",
+      "ticker": "MSFT",
+      "topic": "power connection"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "alternative energy sources"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:15:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, alternative energy sources and other emerging solutions may not be available in sufficient quantities, may not timely scale to meet our requirements, or may be available only at higher costs.",
+      "ticker": "MSFT",
+      "topic": "alternative energy source"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "emerging solutions"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:15:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, alternative energy sources and other emerging solutions may not be available in sufficient quantities, may not timely scale to meet our requirements, or may be available only at higher costs.",
+      "ticker": "MSFT",
+      "topic": "emerging solution"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "higher costs"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:15:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, alternative energy sources and other emerging solutions may not be available in sufficient quantities, may not timely scale to meet our requirements, or may be available only at higher costs.",
+      "ticker": "MSFT",
+      "topic": "higher cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "sufficient quantities"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:15:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, alternative energy sources and other emerging solutions may not be available in sufficient quantities, may not timely scale to meet our requirements, or may be available only at higher costs.",
+      "ticker": "MSFT",
+      "topic": "sufficient quantity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "commercially reasonable terms"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:15:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we are unable to secure adequate power resources on commercially reasonable terms, our ability to support customer demand and execute our growth strategy could be adversely affected.",
+      "ticker": "MSFT",
+      "topic": "commercially reasonable term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "customer demand"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:15:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we are unable to secure adequate power resources on commercially reasonable terms, our ability to support customer demand and execute our growth strategy could be adversely affected.",
+      "ticker": "MSFT",
+      "topic": "customer demand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "growth strategy"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:15:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we are unable to secure adequate power resources on commercially reasonable terms, our ability to support customer demand and execute our growth strategy could be adversely affected.",
+      "ticker": "MSFT",
+      "topic": "growth strategy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "power resources"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:15:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we are unable to secure adequate power resources on commercially reasonable terms, our ability to support customer demand and execute our growth strategy could be adversely affected.",
+      "ticker": "MSFT",
+      "topic": "power resource"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          181
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "environmental reviews"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:15:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to develop additional capacity is also subject to land availability, zoning restrictions, environmental reviews, permitting requirements, and other regulatory approvals.",
+      "ticker": "MSFT",
+      "topic": "environmental review"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          181
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "land availability"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:15:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to develop additional capacity is also subject to land availability, zoning restrictions, environmental reviews, permitting requirements, and other regulatory approvals.",
+      "ticker": "MSFT",
+      "topic": "land availability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          181
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "regulatory approvals"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:15:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to develop additional capacity is also subject to land availability, zoning restrictions, environmental reviews, permitting requirements, and other regulatory approvals.",
+      "ticker": "MSFT",
+      "topic": "regulatory approval"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          181
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "zoning restrictions"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:15:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to develop additional capacity is also subject to land availability, zoning restrictions, environmental reviews, permitting requirements, and other regulatory approvals.",
+      "ticker": "MSFT",
+      "topic": "zoning restriction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "compliance obligations"
+      ],
+      "position": 14,
+      "sentence_id": "0001193125-26-323660:15:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in governmental policies, permitting processes, environmental regulations, sustainability requirements, building standards, energy regulations, or other factors beyond our control may delay projects, restrict development opportunities, impose additional compliance obligations, or increase costs.",
+      "ticker": "MSFT",
+      "topic": "compliance obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "development opportunities"
+      ],
+      "position": 14,
+      "sentence_id": "0001193125-26-323660:15:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in governmental policies, permitting processes, environmental regulations, sustainability requirements, building standards, energy regulations, or other factors beyond our control may delay projects, restrict development opportunities, impose additional compliance obligations, or increase costs.",
+      "ticker": "MSFT",
+      "topic": "development opportunity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "governmental policies"
+      ],
+      "position": 14,
+      "sentence_id": "0001193125-26-323660:15:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in governmental policies, permitting processes, environmental regulations, sustainability requirements, building standards, energy regulations, or other factors beyond our control may delay projects, restrict development opportunities, impose additional compliance obligations, or increase costs.",
+      "ticker": "MSFT",
+      "topic": "governmental policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          291
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "advocacy groups"
+      ],
+      "position": 15,
+      "sentence_id": "0001193125-26-323660:15:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "We also face community opposition, state and local moratoriums, and hyper-local dissent, as well as increasingly coordinated opposition to infrastructure development across jurisdictions, including through the involvement or influence of elected officials, policymakers, and advocacy groups.",
+      "ticker": "MSFT",
+      "topic": "advocacy group"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          291
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "elected officials"
+      ],
+      "position": 15,
+      "sentence_id": "0001193125-26-323660:15:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "We also face community opposition, state and local moratoriums, and hyper-local dissent, as well as increasingly coordinated opposition to infrastructure development across jurisdictions, including through the involvement or influence of elected officials, policymakers, and advocacy groups.",
+      "ticker": "MSFT",
+      "topic": "elected official"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          291
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "hyper-local dissent"
+      ],
+      "position": 15,
+      "sentence_id": "0001193125-26-323660:15:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "We also face community opposition, state and local moratoriums, and hyper-local dissent, as well as increasingly coordinated opposition to infrastructure development across jurisdictions, including through the involvement or influence of elected officials, policymakers, and advocacy groups.",
+      "ticker": "MSFT",
+      "topic": "hyper local dissent"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          291
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "increasingly coordinated opposition"
+      ],
+      "position": 15,
+      "sentence_id": "0001193125-26-323660:15:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "We also face community opposition, state and local moratoriums, and hyper-local dissent, as well as increasingly coordinated opposition to infrastructure development across jurisdictions, including through the involvement or influence of elected officials, policymakers, and advocacy groups.",
+      "ticker": "MSFT",
+      "topic": "increasingly coordinated opposition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          291
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "infrastructure development"
+      ],
+      "position": 15,
+      "sentence_id": "0001193125-26-323660:15:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "We also face community opposition, state and local moratoriums, and hyper-local dissent, as well as increasingly coordinated opposition to infrastructure development across jurisdictions, including through the involvement or influence of elected officials, policymakers, and advocacy groups.",
+      "ticker": "MSFT",
+      "topic": "infrastructure development"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          177
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "compliance obligations"
+      ],
+      "position": 16,
+      "sentence_id": "0001193125-26-323660:15:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our failure to navigate successfully any of these challenges may delay projects, restrict development opportunities, impose additional compliance obligations, or increase costs.",
+      "ticker": "MSFT",
+      "topic": "compliance obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          177
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "development opportunities"
+      ],
+      "position": 16,
+      "sentence_id": "0001193125-26-323660:15:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our failure to navigate successfully any of these challenges may delay projects, restrict development opportunities, impose additional compliance obligations, or increase costs.",
+      "ticker": "MSFT",
+      "topic": "development opportunity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          155
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "operational personnel"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-323660:15:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "The construction and operation of datacenters also requires significant numbers of skilled technical, engineering, construction, and operational personnel.",
+      "ticker": "MSFT",
+      "topic": "operational personnel"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          308
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "immigration"
+      ],
+      "position": 18,
+      "sentence_id": "0001193125-26-323660:15:18",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Labor shortages, competition for talent, wage inflation, labor disputes, immigration restrictions, or shortages of specialized contractors could increase operating and construction costs, extend project timelines, and adversely affect our ability to deploy infrastructure at the pace required to meet demand.",
+      "ticker": "MSFT",
+      "topic": "Immigration policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          308
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "inflation"
+      ],
+      "position": 18,
+      "sentence_id": "0001193125-26-323660:15:18",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Labor shortages, competition for talent, wage inflation, labor disputes, immigration restrictions, or shortages of specialized contractors could increase operating and construction costs, extend project timelines, and adversely affect our ability to deploy infrastructure at the pace required to meet demand.",
+      "ticker": "MSFT",
+      "topic": "Inflation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          308
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "Labor shortages"
+      ],
+      "position": 18,
+      "sentence_id": "0001193125-26-323660:15:18",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Labor shortages, competition for talent, wage inflation, labor disputes, immigration restrictions, or shortages of specialized contractors could increase operating and construction costs, extend project timelines, and adversely affect our ability to deploy infrastructure at the pace required to meet demand.",
+      "ticker": "MSFT",
+      "topic": "Labor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          308
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "labor disputes"
+      ],
+      "position": 18,
+      "sentence_id": "0001193125-26-323660:15:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "Labor shortages, competition for talent, wage inflation, labor disputes, immigration restrictions, or shortages of specialized contractors could increase operating and construction costs, extend project timelines, and adversely affect our ability to deploy infrastructure at the pace required to meet demand.",
+      "ticker": "MSFT",
+      "topic": "labor dispute"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          308
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "operating and construction costs"
+      ],
+      "position": 18,
+      "sentence_id": "0001193125-26-323660:15:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "Labor shortages, competition for talent, wage inflation, labor disputes, immigration restrictions, or shortages of specialized contractors could increase operating and construction costs, extend project timelines, and adversely affect our ability to deploy infrastructure at the pace required to meet demand.",
+      "ticker": "MSFT",
+      "topic": "operating and construction cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          308
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "project timelines"
+      ],
+      "position": 18,
+      "sentence_id": "0001193125-26-323660:15:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "Labor shortages, competition for talent, wage inflation, labor disputes, immigration restrictions, or shortages of specialized contractors could increase operating and construction costs, extend project timelines, and adversely affect our ability to deploy infrastructure at the pace required to meet demand.",
+      "ticker": "MSFT",
+      "topic": "project timeline"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          308
+        ]
+      ],
+      "change_id": "454a3251bd520ad4",
+      "matched_terms": [
+        "specialized contractors"
+      ],
+      "position": 18,
+      "sentence_id": "0001193125-26-323660:15:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "Labor shortages, competition for talent, wage inflation, labor disputes, immigration restrictions, or shortages of specialized contractors could increase operating and construction costs, extend project timelines, and adversely affect our ability to deploy infrastructure at the pace required to meet demand.",
+      "ticker": "MSFT",
+      "topic": "specialized contractor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          129
+        ]
+      ],
+      "change_id": "f1a6ed1c5344642b",
+      "matched_terms": [
+        "platform providers"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:13:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Regulatory enforcement is increasingly focused on product design, safety-by-design, and the responsibility of platform providers.",
+      "ticker": "MSFT",
+      "topic": "platform provider"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          129
+        ]
+      ],
+      "change_id": "f1a6ed1c5344642b",
+      "matched_terms": [
+        "product design"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:13:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Regulatory enforcement is increasingly focused on product design, safety-by-design, and the responsibility of platform providers.",
+      "ticker": "MSFT",
+      "topic": "product design"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          129
+        ]
+      ],
+      "change_id": "f1a6ed1c5344642b",
+      "matched_terms": [
+        "Regulatory enforcement"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:13:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Regulatory enforcement is increasingly focused on product design, safety-by-design, and the responsibility of platform providers.",
+      "ticker": "MSFT",
+      "topic": "regulatory enforcement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "f1a6ed1c5344642b",
+      "matched_terms": [
+        "age-appropriate design"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:13:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "At the same time, laws designed to reduce risks to children are driving new obligations for age-assurance systems, age-appropriate design, and parental controls across the online ecosystem, including within app stores and operating systems.",
+      "ticker": "MSFT",
+      "topic": "age appropriate design"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "f1a6ed1c5344642b",
+      "matched_terms": [
+        "age-assurance systems"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:13:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "At the same time, laws designed to reduce risks to children are driving new obligations for age-assurance systems, age-appropriate design, and parental controls across the online ecosystem, including within app stores and operating systems.",
+      "ticker": "MSFT",
+      "topic": "age assurance system"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "f1a6ed1c5344642b",
+      "matched_terms": [
+        "app stores"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:13:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "At the same time, laws designed to reduce risks to children are driving new obligations for age-assurance systems, age-appropriate design, and parental controls across the online ecosystem, including within app stores and operating systems.",
+      "ticker": "MSFT",
+      "topic": "app store"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "f1a6ed1c5344642b",
+      "matched_terms": [
+        "online ecosystem"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:13:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "At the same time, laws designed to reduce risks to children are driving new obligations for age-assurance systems, age-appropriate design, and parental controls across the online ecosystem, including within app stores and operating systems.",
+      "ticker": "MSFT",
+      "topic": "online ecosystem"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "f1a6ed1c5344642b",
+      "matched_terms": [
+        "operating systems"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:13:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "At the same time, laws designed to reduce risks to children are driving new obligations for age-assurance systems, age-appropriate design, and parental controls across the online ecosystem, including within app stores and operating systems.",
+      "ticker": "MSFT",
+      "topic": "operating system"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "f1a6ed1c5344642b",
+      "matched_terms": [
+        "parental controls"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:13:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "At the same time, laws designed to reduce risks to children are driving new obligations for age-assurance systems, age-appropriate design, and parental controls across the online ecosystem, including within app stores and operating systems.",
+      "ticker": "MSFT",
+      "topic": "parental control"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          155
+        ]
+      ],
+      "change_id": "f1a6ed1c5344642b",
+      "matched_terms": [
+        "AI technologies"
+      ],
+      "position": 14,
+      "sentence_id": "0001193125-26-323660:13:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, certain AI technologies, including conversational or emotionally engaging AI systems, may present distinct risks for children and adolescents.",
+      "ticker": "MSFT",
+      "topic": "ai technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          155
+        ]
+      ],
+      "change_id": "f1a6ed1c5344642b",
+      "matched_terms": [
+        "distinct risks"
+      ],
+      "position": 14,
+      "sentence_id": "0001193125-26-323660:13:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, certain AI technologies, including conversational or emotionally engaging AI systems, may present distinct risks for children and adolescents.",
+      "ticker": "MSFT",
+      "topic": "distinct risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "AI strategy"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-323660:4:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our cloud and AI strategy requires substantial investments and depends on evolving customer demand, technological developments, competitive dynamics, and regulatory conditions, any of which could adversely affect our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "ai strategy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "competitive dynamics"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-323660:4:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our cloud and AI strategy requires substantial investments and depends on evolving customer demand, technological developments, competitive dynamics, and regulatory conditions, any of which could adversely affect our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "competitive dynamic"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "customer demand"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-323660:4:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our cloud and AI strategy requires substantial investments and depends on evolving customer demand, technological developments, competitive dynamics, and regulatory conditions, any of which could adversely affect our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "customer demand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "regulatory conditions"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-323660:4:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our cloud and AI strategy requires substantial investments and depends on evolving customer demand, technological developments, competitive dynamics, and regulatory conditions, any of which could adversely affect our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "regulatory condition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "substantial investments"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-323660:4:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our cloud and AI strategy requires substantial investments and depends on evolving customer demand, technological developments, competitive dynamics, and regulatory conditions, any of which could adversely affect our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "substantial investment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "technological developments"
+      ],
+      "position": 0,
+      "sentence_id": "0001193125-26-323660:4:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our cloud and AI strategy requires substantial investments and depends on evolving customer demand, technological developments, competitive dynamics, and regulatory conditions, any of which could adversely affect our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "technological development"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          279
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "AI models"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-323660:4:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have made and are continuing to make significant capital and operational investments to develop, train, deploy, and support AI models and related cloud-based services, including building and expanding datacenters, acquiring necessary components, and securing energy resources.",
+      "ticker": "MSFT",
+      "topic": "ai model"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          279
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "energy resources"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-323660:4:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have made and are continuing to make significant capital and operational investments to develop, train, deploy, and support AI models and related cloud-based services, including building and expanding datacenters, acquiring necessary components, and securing energy resources.",
+      "ticker": "MSFT",
+      "topic": "energy resource"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          279
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "operational investments"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-323660:4:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have made and are continuing to make significant capital and operational investments to develop, train, deploy, and support AI models and related cloud-based services, including building and expanding datacenters, acquiring necessary components, and securing energy resources.",
+      "ticker": "MSFT",
+      "topic": "operational investment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          279
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "related cloud-based services"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-323660:4:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have made and are continuing to make significant capital and operational investments to develop, train, deploy, and support AI models and related cloud-based services, including building and expanding datacenters, acquiring necessary components, and securing energy resources.",
+      "ticker": "MSFT",
+      "topic": "related cloud based service"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          229
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "accelerated timeline"
+      ],
+      "position": 2,
+      "sentence_id": "0001193125-26-323660:4:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "These investments are being made at significant scale and on an accelerated timeline, require substantial and increasing capital expenditures and continued access to capital, and are in advance of fully developed revenue streams.",
+      "ticker": "MSFT",
+      "topic": "accelerated timeline"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          229
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "continued access"
+      ],
+      "position": 2,
+      "sentence_id": "0001193125-26-323660:4:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "These investments are being made at significant scale and on an accelerated timeline, require substantial and increasing capital expenditures and continued access to capital, and are in advance of fully developed revenue streams.",
+      "ticker": "MSFT",
+      "topic": "continued access"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          229
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "fully developed revenue streams"
+      ],
+      "position": 2,
+      "sentence_id": "0001193125-26-323660:4:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "These investments are being made at significant scale and on an accelerated timeline, require substantial and increasing capital expenditures and continued access to capital, and are in advance of fully developed revenue streams.",
+      "ticker": "MSFT",
+      "topic": "fully developed revenue stream"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          92
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "associated revenue"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-323660:4:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "The associated revenue may not be realized in the expected timeframes or at expected levels.",
+      "ticker": "MSFT",
+      "topic": "associated revenue"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          92
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "expected timeframes"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-323660:4:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "The associated revenue may not be realized in the expected timeframes or at expected levels.",
+      "ticker": "MSFT",
+      "topic": "expected timeframe"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          196
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "increased compliance risks"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:4:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our capital and operational investments are complex and involve projects in multiple locations around the world that expose us to increased compliance risks and political challenges, among others.",
+      "ticker": "MSFT",
+      "topic": "increased compliance risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          196
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "operational investments"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:4:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our capital and operational investments are complex and involve projects in multiple locations around the world that expose us to increased compliance risks and political challenges, among others.",
+      "ticker": "MSFT",
+      "topic": "operational investment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          196
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "political challenges"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:4:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our capital and operational investments are complex and involve projects in multiple locations around the world that expose us to increased compliance risks and political challenges, among others.",
+      "ticker": "MSFT",
+      "topic": "political challenge"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          136
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "acceptable terms"
+      ],
+      "position": 5,
+      "sentence_id": "0001193125-26-323660:4:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to fund these investments depends on our ability to generate sufficient cash flows and obtain financing on acceptable terms.",
+      "ticker": "MSFT",
+      "topic": "acceptable term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          136
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "sufficient cash flows"
+      ],
+      "position": 5,
+      "sentence_id": "0001193125-26-323660:4:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to fund these investments depends on our ability to generate sufficient cash flows and obtain financing on acceptable terms.",
+      "ticker": "MSFT",
+      "topic": "sufficient cash flow"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          234
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "credit markets"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-323660:4:6",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Adverse changes in interest rates, credit markets, investor sentiment, our credit ratings, or other factors affecting capital availability could increase our cost of capital or limit our ability to execute our infrastructure strategy.",
+      "ticker": "MSFT",
+      "topic": "Debt and credit markets"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          234
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "interest rates"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-323660:4:6",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Adverse changes in interest rates, credit markets, investor sentiment, our credit ratings, or other factors affecting capital availability could increase our cost of capital or limit our ability to execute our infrastructure strategy.",
+      "ticker": "MSFT",
+      "topic": "Interest rates"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          234
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "capital availability"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-323660:4:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Adverse changes in interest rates, credit markets, investor sentiment, our credit ratings, or other factors affecting capital availability could increase our cost of capital or limit our ability to execute our infrastructure strategy.",
+      "ticker": "MSFT",
+      "topic": "capital availability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          234
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "credit ratings"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-323660:4:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Adverse changes in interest rates, credit markets, investor sentiment, our credit ratings, or other factors affecting capital availability could increase our cost of capital or limit our ability to execute our infrastructure strategy.",
+      "ticker": "MSFT",
+      "topic": "credit rating"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          234
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "infrastructure strategy"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-323660:4:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Adverse changes in interest rates, credit markets, investor sentiment, our credit ratings, or other factors affecting capital availability could increase our cost of capital or limit our ability to execute our infrastructure strategy.",
+      "ticker": "MSFT",
+      "topic": "infrastructure strategy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          234
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "investor sentiment"
+      ],
+      "position": 6,
+      "sentence_id": "0001193125-26-323660:4:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Adverse changes in interest rates, credit markets, investor sentiment, our credit ratings, or other factors affecting capital availability could increase our cost of capital or limit our ability to execute our infrastructure strategy.",
+      "ticker": "MSFT",
+      "topic": "investor sentiment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          402
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "AI workloads"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-323660:4:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "The financial success of these investments depends on a number of uncertain factors, including customer demand for cloud-based and AI products and services and continued customer use of Azure to build, train, deploy, and run AI workloads, our ability to price and monetize those services at levels sufficient to recover our costs, competitive dynamics affecting pricing, and the pace of adoption of AI.",
+      "ticker": "MSFT",
+      "topic": "ai workload"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          402
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "competitive dynamics"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-323660:4:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "The financial success of these investments depends on a number of uncertain factors, including customer demand for cloud-based and AI products and services and continued customer use of Azure to build, train, deploy, and run AI workloads, our ability to price and monetize those services at levels sufficient to recover our costs, competitive dynamics affecting pricing, and the pace of adoption of AI.",
+      "ticker": "MSFT",
+      "topic": "competitive dynamic"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          402
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "continued customer use"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-323660:4:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "The financial success of these investments depends on a number of uncertain factors, including customer demand for cloud-based and AI products and services and continued customer use of Azure to build, train, deploy, and run AI workloads, our ability to price and monetize those services at levels sufficient to recover our costs, competitive dynamics affecting pricing, and the pace of adoption of AI.",
+      "ticker": "MSFT",
+      "topic": "continued customer use"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          402
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "customer demand"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-323660:4:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "The financial success of these investments depends on a number of uncertain factors, including customer demand for cloud-based and AI products and services and continued customer use of Azure to build, train, deploy, and run AI workloads, our ability to price and monetize those services at levels sufficient to recover our costs, competitive dynamics affecting pricing, and the pace of adoption of AI.",
+      "ticker": "MSFT",
+      "topic": "customer demand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          402
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "uncertain factors"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-323660:4:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "The financial success of these investments depends on a number of uncertain factors, including customer demand for cloud-based and AI products and services and continued customer use of Azure to build, train, deploy, and run AI workloads, our ability to price and monetize those services at levels sufficient to recover our costs, competitive dynamics affecting pricing, and the pace of adoption of AI.",
+      "ticker": "MSFT",
+      "topic": "uncertain factor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          131
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "competing platforms"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-323660:4:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers may reduce, delay, or shift AI workloads to competing platforms, on-premises or local deployments, or other alternatives.",
+      "ticker": "MSFT",
+      "topic": "competing platform"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          131
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "local deployments"
+      ],
+      "position": 8,
+      "sentence_id": "0001193125-26-323660:4:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Customers may reduce, delay, or shift AI workloads to competing platforms, on-premises or local deployments, or other alternatives.",
+      "ticker": "MSFT",
+      "topic": "local deployment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          215
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "AI services"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-323660:4:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "If adoption of our AI services develops more slowly than expected, or if customers do not continue to utilize Azure for AI workloads at anticipated levels, we may not realize the expected returns on our investments.",
+      "ticker": "MSFT",
+      "topic": "ai service"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          215
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "expected returns"
+      ],
+      "position": 9,
+      "sentence_id": "0001193125-26-323660:4:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "If adoption of our AI services develops more slowly than expected, or if customers do not continue to utilize Azure for AI workloads at anticipated levels, we may not realize the expected returns on our investments.",
+      "ticker": "MSFT",
+      "topic": "expected return"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          172
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "balance sheet"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:4:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Overestimation of demand or misalignment of capacity investments may result in underutilization of infrastructure and may lead to impairment of assets on our balance sheet.",
+      "ticker": "MSFT",
+      "topic": "balance sheet"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          172
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "capacity investments"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:4:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Overestimation of demand or misalignment of capacity investments may result in underutilization of infrastructure and may lead to impairment of assets on our balance sheet.",
+      "ticker": "MSFT",
+      "topic": "capacity investment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          109
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "available capacity"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:4:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Conversely, demand exceeding available capacity limits our ability to meet customer needs in a timely manner.",
+      "ticker": "MSFT",
+      "topic": "available capacity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          109
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "customer needs"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:4:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Conversely, demand exceeding available capacity limits our ability to meet customer needs in a timely manner.",
+      "ticker": "MSFT",
+      "topic": "customer need"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          109
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "timely manner"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:4:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "Conversely, demand exceeding available capacity limits our ability to meet customer needs in a timely manner.",
+      "ticker": "MSFT",
+      "topic": "timely manner"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          210
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "energy costs"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:4:13",
+      "source": "lexicon",
+      "status": "added",
+      "text": "The cost structure for AI products and services is subject to significant uncertainty, including with respect to model training and inference costs, the availability and pricing of components, and energy costs.",
+      "ticker": "MSFT",
+      "topic": "Energy and power for data centers"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          210
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "AI products"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:4:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "The cost structure for AI products and services is subject to significant uncertainty, including with respect to model training and inference costs, the availability and pricing of components, and energy costs.",
+      "ticker": "MSFT",
+      "topic": "ai product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          210
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "cost structure"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:4:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "The cost structure for AI products and services is subject to significant uncertainty, including with respect to model training and inference costs, the availability and pricing of components, and energy costs.",
+      "ticker": "MSFT",
+      "topic": "cost structure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          271
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "AI products"
+      ],
+      "position": 14,
+      "sentence_id": "0001193125-26-323660:4:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "If these costs increase, remain elevated, or fail to decline, or if pricing for AI products and services declines as a result of competition, commoditization, or other market forces, our margins, financial condition, and results of operations could be adversely affected.",
+      "ticker": "MSFT",
+      "topic": "ai product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          271
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "market forces"
+      ],
+      "position": 14,
+      "sentence_id": "0001193125-26-323660:4:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "If these costs increase, remain elevated, or fail to decline, or if pricing for AI products and services declines as a result of competition, commoditization, or other market forces, our margins, financial condition, and results of operations could be adversely affected.",
+      "ticker": "MSFT",
+      "topic": "market force"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          168
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "AI strategy"
+      ],
+      "position": 15,
+      "sentence_id": "0001193125-26-323660:4:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our AI strategy also depends in part on strategic relationships with third parties that provide technologies, models, products, and services that enhance our offerings.",
+      "ticker": "MSFT",
+      "topic": "ai strategy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          168
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "strategic relationships"
+      ],
+      "position": 15,
+      "sentence_id": "0001193125-26-323660:4:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our AI strategy also depends in part on strategic relationships with third parties that provide technologies, models, products, and services that enhance our offerings.",
+      "ticker": "MSFT",
+      "topic": "strategic relationship"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          206
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "AI products"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-323660:4:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in strategic priorities, contractual arrangements, our access to third-party technologies, or key commercial relationships could adversely affect the competitiveness of our AI products and services.",
+      "ticker": "MSFT",
+      "topic": "ai product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          206
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "commercial relationships"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-323660:4:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in strategic priorities, contractual arrangements, our access to third-party technologies, or key commercial relationships could adversely affect the competitiveness of our AI products and services.",
+      "ticker": "MSFT",
+      "topic": "commercial relationship"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          206
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "contractual arrangements"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-323660:4:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in strategic priorities, contractual arrangements, our access to third-party technologies, or key commercial relationships could adversely affect the competitiveness of our AI products and services.",
+      "ticker": "MSFT",
+      "topic": "contractual arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          206
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "strategic priorities"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-323660:4:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in strategic priorities, contractual arrangements, our access to third-party technologies, or key commercial relationships could adversely affect the competitiveness of our AI products and services.",
+      "ticker": "MSFT",
+      "topic": "strategic priority"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          89
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "cloud services"
+      ],
+      "position": 18,
+      "sentence_id": "0001193125-26-323660:4:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "In some cases, these parties are significant customers of Azure and other cloud services.",
+      "ticker": "MSFT",
+      "topic": "cloud service"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          186
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "Azure consumption"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-323660:4:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "The economic benefits we expect to derive from these relationships, including through commercial arrangements, technology access, and Azure consumption, may not be realized or sustained.",
+      "ticker": "MSFT",
+      "topic": "azure consumption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          186
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "commercial arrangements"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-323660:4:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "The economic benefits we expect to derive from these relationships, including through commercial arrangements, technology access, and Azure consumption, may not be realized or sustained.",
+      "ticker": "MSFT",
+      "topic": "commercial arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          186
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "economic benefits"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-323660:4:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "The economic benefits we expect to derive from these relationships, including through commercial arrangements, technology access, and Azure consumption, may not be realized or sustained.",
+      "ticker": "MSFT",
+      "topic": "economic benefit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          186
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "technology access"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-323660:4:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "The economic benefits we expect to derive from these relationships, including through commercial arrangements, technology access, and Azure consumption, may not be realized or sustained.",
+      "ticker": "MSFT",
+      "topic": "technology access"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "capacity allocations"
+      ],
+      "position": 20,
+      "sentence_id": "0001193125-26-323660:4:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "As we manage infrastructure capacity constraints and evolving customer demand, we may modify capacity allocations, deployment priorities, pricing, or other commercial arrangements.",
+      "ticker": "MSFT",
+      "topic": "capacity allocation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "commercial arrangements"
+      ],
+      "position": 20,
+      "sentence_id": "0001193125-26-323660:4:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "As we manage infrastructure capacity constraints and evolving customer demand, we may modify capacity allocations, deployment priorities, pricing, or other commercial arrangements.",
+      "ticker": "MSFT",
+      "topic": "commercial arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "customer demand"
+      ],
+      "position": 20,
+      "sentence_id": "0001193125-26-323660:4:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "As we manage infrastructure capacity constraints and evolving customer demand, we may modify capacity allocations, deployment priorities, pricing, or other commercial arrangements.",
+      "ticker": "MSFT",
+      "topic": "customer demand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "deployment priorities"
+      ],
+      "position": 20,
+      "sentence_id": "0001193125-26-323660:4:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "As we manage infrastructure capacity constraints and evolving customer demand, we may modify capacity allocations, deployment priorities, pricing, or other commercial arrangements.",
+      "ticker": "MSFT",
+      "topic": "deployment priority"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "infrastructure capacity constraints"
+      ],
+      "position": 20,
+      "sentence_id": "0001193125-26-323660:4:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "As we manage infrastructure capacity constraints and evolving customer demand, we may modify capacity allocations, deployment priorities, pricing, or other commercial arrangements.",
+      "ticker": "MSFT",
+      "topic": "infrastructure capacity constraint"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          169
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "anticipated use"
+      ],
+      "position": 21,
+      "sentence_id": "0001193125-26-323660:4:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "Strategic partners and other customers may likewise adjust their purchasing decisions, deployment strategies, workloads, or anticipated use of our products and services.",
+      "ticker": "MSFT",
+      "topic": "anticipated use"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          169
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "deployment strategies"
+      ],
+      "position": 21,
+      "sentence_id": "0001193125-26-323660:4:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "Strategic partners and other customers may likewise adjust their purchasing decisions, deployment strategies, workloads, or anticipated use of our products and services.",
+      "ticker": "MSFT",
+      "topic": "deployment strategy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          169
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "purchasing decisions"
+      ],
+      "position": 21,
+      "sentence_id": "0001193125-26-323660:4:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "Strategic partners and other customers may likewise adjust their purchasing decisions, deployment strategies, workloads, or anticipated use of our products and services.",
+      "ticker": "MSFT",
+      "topic": "purchasing decision"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          169
+        ]
+      ],
+      "change_id": "648f8366bf4c7e3f",
+      "matched_terms": [
+        "Strategic partners"
+      ],
+      "position": 21,
+      "sentence_id": "0001193125-26-323660:4:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "Strategic partners and other customers may likewise adjust their purchasing decisions, deployment strategies, workloads, or anticipated use of our products and services.",
+      "ticker": "MSFT",
+      "topic": "strategic partner"
+    },
+    {
+      "added_spans": [
+        [
+          7,
+          26
+        ],
+        [
+          30,
+          36
+        ],
+        [
+          51,
+          120
+        ],
+        [
+          125,
+          135
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "AI-based solutions"
+      ],
+      "position": 17,
+      "sentence_id": "0001193125-26-323660:14:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We are providing access to AI across our offerings and enabling customers and partners to build AI-based solutions using our platforms.",
+      "ticker": "MSFT",
+      "topic": "ai based solution"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          18
+        ],
+        [
+          52,
+          104
+        ],
+        [
+          109,
+          118
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "increasing part"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-323660:14:9",
+      "source": "phrase",
+      "status": "modified",
+      "text": "These capabilities may be developed by Microsoft or third parties and are becoming an increasing part of our business.",
+      "ticker": "MSFT",
+      "topic": "increasing part"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          36
+        ],
+        [
+          40,
+          49
+        ],
+        [
+          66,
+          120
+        ],
+        [
+          127,
+          181
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "increasing scale"
+      ],
+      "position": 23,
+      "sentence_id": "0001193125-26-323660:14:10",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The increasing scale and adoption of AI amplifies challenges that may affect its development, deployment, and use, which could give rise to reputational, competitive, or legal harm.",
+      "ticker": "MSFT",
+      "topic": "increasing scale"
+    },
+    {
+      "added_spans": [
+        [
+          43,
+          76
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "human oversight"
+      ],
+      "position": 33,
+      "sentence_id": "0001193125-26-323660:14:15",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Human review of certain inputs and outputs or other forms of human oversight may be required, including for agentic AI systems that can take actions autonomously.",
+      "ticker": "MSFT",
+      "topic": "human oversight"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          111
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "highly-personalized AI systems"
+      ],
+      "position": 34,
+      "sentence_id": "0001193125-26-323660:14:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "Companion or highly-personalized AI systems may result in over-reliance or dependence by users that is harmful.",
+      "ticker": "MSFT",
+      "topic": "highly personalized ai system"
+    },
+    {
+      "added_spans": [
+        [
+          44,
+          77
+        ],
+        [
+          115,
+          133
+        ],
+        [
+          178,
+          179
+        ],
+        [
+          187,
+          209
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "product liability"
+      ],
+      "position": 38,
+      "sentence_id": "0001193125-26-323660:14:18",
+      "source": "phrase",
+      "status": "modified",
+      "text": "These risks may stem from issues related to AI model and system capabilities, intellectual property, data privacy, product liability, and other claims associated with AI training, outputs, and system behavior.",
+      "ticker": "MSFT",
+      "topic": "product liability"
+    },
+    {
+      "added_spans": [
+        [
+          44,
+          77
+        ],
+        [
+          115,
+          133
+        ],
+        [
+          178,
+          179
+        ],
+        [
+          187,
+          209
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "system behavior"
+      ],
+      "position": 38,
+      "sentence_id": "0001193125-26-323660:14:18",
+      "source": "phrase",
+      "status": "modified",
+      "text": "These risks may stem from issues related to AI model and system capabilities, intellectual property, data privacy, product liability, and other claims associated with AI training, outputs, and system behavior.",
+      "ticker": "MSFT",
+      "topic": "system behavior"
+    },
+    {
+      "added_spans": [
+        [
+          98,
+          151
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "increased scrutiny"
+      ],
+      "position": 40,
+      "sentence_id": "0001193125-26-323660:14:19",
+      "source": "phrase",
+      "status": "modified",
+      "text": "They are further compounded by the evolving regulatory landscape, with new laws emerging globally and increased scrutiny from regulators and lawmakers.",
+      "ticker": "MSFT",
+      "topic": "increased scrutiny"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          7
+        ],
+        [
+          11,
+          37
+        ],
+        [
+          79,
+          88
+        ],
+        [
+          108,
+          144
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "vulnerable groups"
+      ],
+      "position": 42,
+      "sentence_id": "0001193125-26-323660:14:20",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Certain AI technologies and use cases present ethical issues or may have broad or uneven impacts on society or vulnerable groups within society.",
+      "ticker": "MSFT",
+      "topic": "vulnerable group"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          298
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "manner inconsistent"
+      ],
+      "position": 45,
+      "sentence_id": "0001193125-26-323660:14:22",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have experienced, and expect to continue to experience, instances in which the AI solutions we enable or offer produce unintended consequences, are used or customized in unforeseen ways by customers or partners, or operate in a manner inconsistent with our responsible AI policies and practices.",
+      "ticker": "MSFT",
+      "topic": "manner inconsistent"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          298
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "unforeseen ways"
+      ],
+      "position": 45,
+      "sentence_id": "0001193125-26-323660:14:22",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have experienced, and expect to continue to experience, instances in which the AI solutions we enable or offer produce unintended consequences, are used or customized in unforeseen ways by customers or partners, or operate in a manner inconsistent with our responsible AI policies and practices.",
+      "ticker": "MSFT",
+      "topic": "unforeseen way"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          214
+        ],
+        [
+          309,
+          310
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "public controversy"
+      ],
+      "position": 47,
+      "sentence_id": "0001193125-26-323660:14:23",
+      "source": "phrase",
+      "status": "modified",
+      "text": "These outcomes may give rise to public controversy, societal concerns, or regulatory actions relating to human rights, privacy, employment, or other social, economic, or political issues, and could adversely affect our reputation, competitive position, business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "public controversy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          214
+        ],
+        [
+          309,
+          310
+        ]
+      ],
+      "change_id": "d7c61aee81343fc5",
+      "matched_terms": [
+        "societal concerns"
+      ],
+      "position": 47,
+      "sentence_id": "0001193125-26-323660:14:23",
+      "source": "phrase",
+      "status": "modified",
+      "text": "These outcomes may give rise to public controversy, societal concerns, or regulatory actions relating to human rights, privacy, employment, or other social, economic, or political issues, and could adversely affect our reputation, competitive position, business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "societal concern"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          139
+        ]
+      ],
+      "change_id": "25d3f1bb5b9e3da8",
+      "matched_terms": [
+        "operational changes"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:22:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "These laws, regulations, and policies may require significant investments or operational changes and may result in new or unexpected costs.",
+      "ticker": "MSFT",
+      "topic": "operational change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          139
+        ]
+      ],
+      "change_id": "25d3f1bb5b9e3da8",
+      "matched_terms": [
+        "unexpected costs"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:22:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "These laws, regulations, and policies may require significant investments or operational changes and may result in new or unexpected costs.",
+      "ticker": "MSFT",
+      "topic": "unexpected cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          131
+        ]
+      ],
+      "change_id": "25d3f1bb5b9e3da8",
+      "matched_terms": [
+        "AI development"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-323660:22:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI development and deployment has and will likely continue to raise energy use and emissions, making it harder to meet these goals.",
+      "ticker": "MSFT",
+      "topic": "ai development"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          131
+        ]
+      ],
+      "change_id": "25d3f1bb5b9e3da8",
+      "matched_terms": [
+        "energy use"
+      ],
+      "position": 7,
+      "sentence_id": "0001193125-26-323660:22:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI development and deployment has and will likely continue to raise energy use and emissions, making it harder to meet these goals.",
+      "ticker": "MSFT",
+      "topic": "energy use"
+    },
+    {
+      "added_spans": [
+        [
+          4,
+          80
+        ],
+        [
+          100,
+          112
+        ],
+        [
+          122,
+          190
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "customer adoption"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-323660:5:0",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our success depends on our ability to develop, deliver, and maintain competitive cloud-based and AI products and services that achieve broad customer adoption and sustainable revenue growth.",
+      "ticker": "MSFT",
+      "topic": "customer adoption"
+    },
+    {
+      "added_spans": [
+        [
+          4,
+          80
+        ],
+        [
+          100,
+          112
+        ],
+        [
+          122,
+          190
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "sustainable revenue growth"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-323660:5:0",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our success depends on our ability to develop, deliver, and maintain competitive cloud-based and AI products and services that achieve broad customer adoption and sustainable revenue growth.",
+      "ticker": "MSFT",
+      "topic": "sustainable revenue growth"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          234
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "customer needs"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-323660:5:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to succeed depends on our ability to develop and deliver differentiated products and services that meet evolving customer needs, achieve broad adoption, maintain customer trust, and generate sustainable revenue and growth.",
+      "ticker": "MSFT",
+      "topic": "customer need"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          234
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "customer trust"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-323660:5:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to succeed depends on our ability to develop and deliver differentiated products and services that meet evolving customer needs, achieve broad adoption, maintain customer trust, and generate sustainable revenue and growth.",
+      "ticker": "MSFT",
+      "topic": "customer trust"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          234
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "differentiated products"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-323660:5:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to succeed depends on our ability to develop and deliver differentiated products and services that meet evolving customer needs, achieve broad adoption, maintain customer trust, and generate sustainable revenue and growth.",
+      "ticker": "MSFT",
+      "topic": "differentiated product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          234
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "sustainable revenue"
+      ],
+      "position": 3,
+      "sentence_id": "0001193125-26-323660:5:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to succeed depends on our ability to develop and deliver differentiated products and services that meet evolving customer needs, achieve broad adoption, maintain customer trust, and generate sustainable revenue and growth.",
+      "ticker": "MSFT",
+      "topic": "sustainable revenue"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          285
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "accelerating importance"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:5:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The markets for cloud-based and AI products and services are highly dynamic, characterized by shifting customer expectations, increasing regulatory and governmental scrutiny, intense competition, and rapid technological change, such as the accelerating importance of agentic computing.",
+      "ticker": "MSFT",
+      "topic": "accelerating importance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          285
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "agentic computing"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:5:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The markets for cloud-based and AI products and services are highly dynamic, characterized by shifting customer expectations, increasing regulatory and governmental scrutiny, intense competition, and rapid technological change, such as the accelerating importance of agentic computing.",
+      "ticker": "MSFT",
+      "topic": "agentic computing"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          285
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "customer expectations"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:5:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The markets for cloud-based and AI products and services are highly dynamic, characterized by shifting customer expectations, increasing regulatory and governmental scrutiny, intense competition, and rapid technological change, such as the accelerating importance of agentic computing.",
+      "ticker": "MSFT",
+      "topic": "customer expectation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          285
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "intense competition"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:5:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The markets for cloud-based and AI products and services are highly dynamic, characterized by shifting customer expectations, increasing regulatory and governmental scrutiny, intense competition, and rapid technological change, such as the accelerating importance of agentic computing.",
+      "ticker": "MSFT",
+      "topic": "intense competition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          285
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "rapid technological change"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:5:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The markets for cloud-based and AI products and services are highly dynamic, characterized by shifting customer expectations, increasing regulatory and governmental scrutiny, intense competition, and rapid technological change, such as the accelerating importance of agentic computing.",
+      "ticker": "MSFT",
+      "topic": "rapid technological change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          285
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "regulatory and governmental scrutiny"
+      ],
+      "position": 4,
+      "sentence_id": "0001193125-26-323660:5:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The markets for cloud-based and AI products and services are highly dynamic, characterized by shifting customer expectations, increasing regulatory and governmental scrutiny, intense competition, and rapid technological change, such as the accelerating importance of agentic computing.",
+      "ticker": "MSFT",
+      "topic": "regulatory and governmental scrutiny"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          47
+        ],
+        [
+          74,
+          86
+        ],
+        [
+          95,
+          96
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "customer adoption"
+      ],
+      "position": 10,
+      "sentence_id": "0001193125-26-323660:5:5",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Driving customer adoption, usage, and retention of our cloud-based and AI products and services.",
+      "ticker": "MSFT",
+      "topic": "customer adoption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          131
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "pricing models"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:5:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Effectively monetizing our cloud-based and AI products through pricing models that reflect their value while remaining competitive.",
+      "ticker": "MSFT",
+      "topic": "pricing model"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "customer acquisition"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-323660:5:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our success depends on our ability to execute effectively across product development, go-to-market, customer acquisition, and customer retention initiatives.",
+      "ticker": "MSFT",
+      "topic": "customer acquisition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "customer retention initiatives"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-323660:5:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our success depends on our ability to execute effectively across product development, go-to-market, customer acquisition, and customer retention initiatives.",
+      "ticker": "MSFT",
+      "topic": "customer retention initiative"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "product development"
+      ],
+      "position": 19,
+      "sentence_id": "0001193125-26-323660:5:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our success depends on our ability to execute effectively across product development, go-to-market, customer acquisition, and customer retention initiatives.",
+      "ticker": "MSFT",
+      "topic": "product development"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          73
+        ],
+        [
+          79,
+          116
+        ],
+        [
+          127,
+          128
+        ],
+        [
+          136,
+          159
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "malicious actors"
+      ],
+      "position": 28,
+      "sentence_id": "0001193125-26-323660:5:14",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our cloud-based and AI products and services may be misused by customers, users, or malicious actors for unintended, fraudulent, abusive, or unlawful purposes.",
+      "ticker": "MSFT",
+      "topic": "malicious actor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          44
+        ],
+        [
+          57,
+          184
+        ],
+        [
+          197,
+          219
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "regulatory scrutiny"
+      ],
+      "position": 30,
+      "sentence_id": "0001193125-26-323660:5:15",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our efforts to detect, prevent, and mitigate such misuse may not be successful, which could result in reputational harm, regulatory scrutiny, service disruptions, or adverse impacts on our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "regulatory scrutiny"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          44
+        ],
+        [
+          57,
+          184
+        ],
+        [
+          197,
+          219
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "reputational harm"
+      ],
+      "position": 30,
+      "sentence_id": "0001193125-26-323660:5:15",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our efforts to detect, prevent, and mitigate such misuse may not be successful, which could result in reputational harm, regulatory scrutiny, service disruptions, or adverse impacts on our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "reputational harm"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          44
+        ],
+        [
+          57,
+          184
+        ],
+        [
+          197,
+          219
+        ]
+      ],
+      "change_id": "86254bf6b03f665c",
+      "matched_terms": [
+        "service disruptions"
+      ],
+      "position": 30,
+      "sentence_id": "0001193125-26-323660:5:15",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our efforts to detect, prevent, and mitigate such misuse may not be successful, which could result in reputational harm, regulatory scrutiny, service disruptions, or adverse impacts on our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "service disruption"
+    },
+    {
+      "added_spans": [
+        [
+          7,
+          17
+        ],
+        [
+          38,
+          63
+        ],
+        [
+          87,
+          98
+        ],
+        [
+          123,
+          171
+        ]
+      ],
+      "change_id": "952fe3899dd265ae",
+      "matched_terms": [
+        "capacity constraints"
+      ],
+      "position": 1,
+      "sentence_id": "0001193125-26-323660:17:0",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We may experience outages, disruptions, or capacity constraints if we fail to maintain and operate adequate infrastructure or secure the resources necessary to support it.",
+      "ticker": "MSFT",
+      "topic": "capacity constraint"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          353
+        ]
+      ],
+      "change_id": "952fe3899dd265ae",
+      "matched_terms": [
+        "critical resources"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:17:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The cost or availability of critical resources necessary to support our infrastructure, including power, networking supplies, servers, graphics processing units, and other components, could be adversely affected by a variety of factors, including supply chain and energy issues, evolving environmental or other regulations, and geopolitical disruptions.",
+      "ticker": "MSFT",
+      "topic": "critical resource"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "952fe3899dd265ae",
+      "matched_terms": [
+        "colocation facilities"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:17:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition to datacenters we own or operate, we rely on third-party providers, including colocation facilities, leased datacenters, and cloud infrastructure providers, to support portions of our operations.",
+      "ticker": "MSFT",
+      "topic": "colocation facility"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "952fe3899dd265ae",
+      "matched_terms": [
+        "infrastructure providers"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:17:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition to datacenters we own or operate, we rely on third-party providers, including colocation facilities, leased datacenters, and cloud infrastructure providers, to support portions of our operations.",
+      "ticker": "MSFT",
+      "topic": "infrastructure provider"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "952fe3899dd265ae",
+      "matched_terms": [
+        "leased datacenters"
+      ],
+      "position": 12,
+      "sentence_id": "0001193125-26-323660:17:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition to datacenters we own or operate, we rely on third-party providers, including colocation facilities, leased datacenters, and cloud infrastructure providers, to support portions of our operations.",
+      "ticker": "MSFT",
+      "topic": "leased datacenter"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          323
+        ]
+      ],
+      "change_id": "952fe3899dd265ae",
+      "matched_terms": [
+        "cybersecurity incidents"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:17:4",
+      "source": "lexicon",
+      "status": "added",
+      "text": "If any of these providers fail to meet our requirements, or experience service interruptions, operational failures, capacity constraints, physical damage, cybersecurity incidents, or other disruptions, our ability to provide services, maintain system performance, or meet customer expectations could be negatively impacted.",
+      "ticker": "MSFT",
+      "topic": "Cybersecurity incidents"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          323
+        ]
+      ],
+      "change_id": "952fe3899dd265ae",
+      "matched_terms": [
+        "capacity constraints"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:17:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "If any of these providers fail to meet our requirements, or experience service interruptions, operational failures, capacity constraints, physical damage, cybersecurity incidents, or other disruptions, our ability to provide services, maintain system performance, or meet customer expectations could be negatively impacted.",
+      "ticker": "MSFT",
+      "topic": "capacity constraint"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          323
+        ]
+      ],
+      "change_id": "952fe3899dd265ae",
+      "matched_terms": [
+        "customer expectations"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:17:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "If any of these providers fail to meet our requirements, or experience service interruptions, operational failures, capacity constraints, physical damage, cybersecurity incidents, or other disruptions, our ability to provide services, maintain system performance, or meet customer expectations could be negatively impacted.",
+      "ticker": "MSFT",
+      "topic": "customer expectation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          323
+        ]
+      ],
+      "change_id": "952fe3899dd265ae",
+      "matched_terms": [
+        "experience service interruptions"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:17:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "If any of these providers fail to meet our requirements, or experience service interruptions, operational failures, capacity constraints, physical damage, cybersecurity incidents, or other disruptions, our ability to provide services, maintain system performance, or meet customer expectations could be negatively impacted.",
+      "ticker": "MSFT",
+      "topic": "experience service interruption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          323
+        ]
+      ],
+      "change_id": "952fe3899dd265ae",
+      "matched_terms": [
+        "physical damage"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:17:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "If any of these providers fail to meet our requirements, or experience service interruptions, operational failures, capacity constraints, physical damage, cybersecurity incidents, or other disruptions, our ability to provide services, maintain system performance, or meet customer expectations could be negatively impacted.",
+      "ticker": "MSFT",
+      "topic": "physical damage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          323
+        ]
+      ],
+      "change_id": "952fe3899dd265ae",
+      "matched_terms": [
+        "system performance"
+      ],
+      "position": 13,
+      "sentence_id": "0001193125-26-323660:17:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "If any of these providers fail to meet our requirements, or experience service interruptions, operational failures, capacity constraints, physical damage, cybersecurity incidents, or other disruptions, our ability to provide services, maintain system performance, or meet customer expectations could be negatively impacted.",
+      "ticker": "MSFT",
+      "topic": "system performance"
+    },
+    {
+      "added_spans": [
+        [
+          192,
+          291
+        ],
+        [
+          354,
+          373
+        ]
+      ],
+      "change_id": "952fe3899dd265ae",
+      "matched_terms": [
+        "inefficient operation"
+      ],
+      "position": 15,
+      "sentence_id": "0001193125-26-323660:17:5",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Inefficiencies or operational failures, including temporary or permanent loss of customer data, outages, insufficient Internet connectivity, insufficient or unavailable power or water supply, inefficient operation of our of our cloud-based and AI products and services on our infrastructure, or inadequate storage and compute capacity could diminish the actual or perceived quality of our products, services, and user experience, resulting in contractual liability, claims by customers and other third parties, regulatory actions, damage to our reputation, and loss of current and potential users, subscribers, and advertisers, each of which could adversely affect our business, operations, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "inefficient operation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          167
+        ]
+      ],
+      "change_id": "084ca7a5fe6a4ea9",
+      "matched_terms": [
+        "AI offerings"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:3:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our AI offerings compete with AI products from hyperscalers, open-source offerings, and frontier model providers, some of which are also current or potential partners.",
+      "ticker": "MSFT",
+      "topic": "ai offering"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          167
+        ]
+      ],
+      "change_id": "084ca7a5fe6a4ea9",
+      "matched_terms": [
+        "AI products"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:3:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our AI offerings compete with AI products from hyperscalers, open-source offerings, and frontier model providers, some of which are also current or potential partners.",
+      "ticker": "MSFT",
+      "topic": "ai product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          167
+        ]
+      ],
+      "change_id": "084ca7a5fe6a4ea9",
+      "matched_terms": [
+        "frontier model providers"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:3:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our AI offerings compete with AI products from hyperscalers, open-source offerings, and frontier model providers, some of which are also current or potential partners.",
+      "ticker": "MSFT",
+      "topic": "frontier model provider"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          167
+        ]
+      ],
+      "change_id": "084ca7a5fe6a4ea9",
+      "matched_terms": [
+        "open-source offerings"
+      ],
+      "position": 11,
+      "sentence_id": "0001193125-26-323660:3:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our AI offerings compete with AI products from hyperscalers, open-source offerings, and frontier model providers, some of which are also current or potential partners.",
+      "ticker": "MSFT",
+      "topic": "open source offering"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          210
+        ],
+        [
+          221,
+          222
+        ],
+        [
+          245,
+          302
+        ]
+      ],
+      "change_id": "478c4a235d601288",
+      "matched_terms": [
+        "agentic AI"
+      ],
+      "position": 31,
+      "sentence_id": "0001193125-26-323660:11:15",
+      "source": "lexicon",
+      "status": "modified",
+      "text": "Limitations on our ability to prevent third parties from scraping or gathering information or content through use of bots or other measures and using it for their own benefit due to, among other things, changes in the law, interpretations of law, or increasing use of agentic AI, could adversely affect our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "Generative AI"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          210
+        ],
+        [
+          221,
+          222
+        ],
+        [
+          245,
+          302
+        ]
+      ],
+      "change_id": "478c4a235d601288",
+      "matched_terms": [
+        "increasing use"
+      ],
+      "position": 31,
+      "sentence_id": "0001193125-26-323660:11:15",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Limitations on our ability to prevent third parties from scraping or gathering information or content through use of bots or other measures and using it for their own benefit due to, among other things, changes in the law, interpretations of law, or increasing use of agentic AI, could adversely affect our business, financial condition, and results of operations.",
+      "ticker": "MSFT",
+      "topic": "increasing use"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          188
+        ]
+      ],
+      "change_id": "ca816ea3a757b931",
+      "matched_terms": [
+        "complete listing"
+      ],
+      "position": 5,
+      "sentence_id": "0001193125-26-323660:0:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "References to past events are provided by way of example only and are not intended to be a complete listing or a representation as to whether or not such matters have occurred in the past.",
+      "ticker": "MSFT",
+      "topic": "complete listing"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          188
+        ]
+      ],
+      "change_id": "ca816ea3a757b931",
+      "matched_terms": [
+        "past events"
+      ],
+      "position": 5,
+      "sentence_id": "0001193125-26-323660:0:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "References to past events are provided by way of example only and are not intended to be a complete listing or a representation as to whether or not such matters have occurred in the past.",
+      "ticker": "MSFT",
+      "topic": "past event"
+    },
+    {
+      "added_spans": [
+        [
+          81,
+          486
+        ]
+      ],
+      "change_id": "7b81daf5f9cda115",
+      "matched_terms": [
+        "attack techniques"
+      ],
+      "position": 29,
+      "sentence_id": "0001193125-26-323660:8:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Threat actors also utilize emerging technologies such as AI and machine learning to, among other things, increase the speed and scale of attacks by generating and refining malicious content and code, automate reconnaissance and targeting, accelerate their ability to detect or exploit vulnerabilities, and rapidly iterate on attack techniques, which can broaden the scope, intensity, and sophistication of campaigns and reduce the time we have to identify and mitigate emerging threats.",
+      "ticker": "MSFT",
+      "topic": "attack technique"
+    },
+    {
+      "added_spans": [
+        [
+          81,
+          486
+        ]
+      ],
+      "change_id": "7b81daf5f9cda115",
+      "matched_terms": [
+        "automate reconnaissance"
+      ],
+      "position": 29,
+      "sentence_id": "0001193125-26-323660:8:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Threat actors also utilize emerging technologies such as AI and machine learning to, among other things, increase the speed and scale of attacks by generating and refining malicious content and code, automate reconnaissance and targeting, accelerate their ability to detect or exploit vulnerabilities, and rapidly iterate on attack techniques, which can broaden the scope, intensity, and sophistication of campaigns and reduce the time we have to identify and mitigate emerging threats.",
+      "ticker": "MSFT",
+      "topic": "automate reconnaissance"
+    },
+    {
+      "added_spans": [
+        [
+          81,
+          486
+        ]
+      ],
+      "change_id": "7b81daf5f9cda115",
+      "matched_terms": [
+        "emerging threats"
+      ],
+      "position": 29,
+      "sentence_id": "0001193125-26-323660:8:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Threat actors also utilize emerging technologies such as AI and machine learning to, among other things, increase the speed and scale of attacks by generating and refining malicious content and code, automate reconnaissance and targeting, accelerate their ability to detect or exploit vulnerabilities, and rapidly iterate on attack techniques, which can broaden the scope, intensity, and sophistication of campaigns and reduce the time we have to identify and mitigate emerging threats.",
+      "ticker": "MSFT",
+      "topic": "emerging threat"
+    },
+    {
+      "added_spans": [
+        [
+          81,
+          486
+        ]
+      ],
+      "change_id": "7b81daf5f9cda115",
+      "matched_terms": [
+        "malicious content"
+      ],
+      "position": 29,
+      "sentence_id": "0001193125-26-323660:8:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Threat actors also utilize emerging technologies such as AI and machine learning to, among other things, increase the speed and scale of attacks by generating and refining malicious content and code, automate reconnaissance and targeting, accelerate their ability to detect or exploit vulnerabilities, and rapidly iterate on attack techniques, which can broaden the scope, intensity, and sophistication of campaigns and reduce the time we have to identify and mitigate emerging threats.",
+      "ticker": "MSFT",
+      "topic": "malicious content"
+    },
+    {
+      "added_spans": [
+        [
+          76,
+          84
+        ],
+        [
+          93,
+          130
+        ]
+      ],
+      "change_id": "7b81daf5f9cda115",
+      "matched_terms": [
+        "evolving regulatory landscape"
+      ],
+      "position": 57,
+      "sentence_id": "0001193125-26-323660:8:26",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our business policies and internal security controls may not keep pace with emerging threats or the evolving regulatory landscape.",
+      "ticker": "MSFT",
+      "topic": "evolving regulatory landscape"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "7b81daf5f9cda115",
+      "matched_terms": [
+        "open-source software code"
+      ],
+      "position": 62,
+      "sentence_id": "0001193125-26-323660:8:31",
+      "source": "phrase",
+      "status": "added",
+      "text": "Malicious actors have and may continue to exploit the supply chain to compromise our systems by, for example, injecting malware, including through software updates or compromised supplier or open-source software code, accounts, or hardware.",
+      "ticker": "MSFT",
+      "topic": "open source software code"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "7b81daf5f9cda115",
+      "matched_terms": [
+        "customer environments"
+      ],
+      "position": 63,
+      "sentence_id": "0001193125-26-323660:8:32",
+      "source": "phrase",
+      "status": "added",
+      "text": "Incidents involving the supply chain, including third-party vendors, suppliers, service providers, open-source software, or customer environments, may adversely affect our systems and our products and services, even where our own systems are not directly compromised.",
+      "ticker": "MSFT",
+      "topic": "customer environment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "7b81daf5f9cda115",
+      "matched_terms": [
+        "open-source software"
+      ],
+      "position": 63,
+      "sentence_id": "0001193125-26-323660:8:32",
+      "source": "phrase",
+      "status": "added",
+      "text": "Incidents involving the supply chain, including third-party vendors, suppliers, service providers, open-source software, or customer environments, may adversely affect our systems and our products and services, even where our own systems are not directly compromised.",
+      "ticker": "MSFT",
+      "topic": "open source software"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "7b81daf5f9cda115",
+      "matched_terms": [
+        "service providers"
+      ],
+      "position": 63,
+      "sentence_id": "0001193125-26-323660:8:32",
+      "source": "phrase",
+      "status": "added",
+      "text": "Incidents involving the supply chain, including third-party vendors, suppliers, service providers, open-source software, or customer environments, may adversely affect our systems and our products and services, even where our own systems are not directly compromised.",
+      "ticker": "MSFT",
+      "topic": "service provider"
+    },
+    {
+      "added_spans": [
+        [
+          151,
+          236
+        ],
+        [
+          272,
+          273
+        ]
+      ],
+      "change_id": "b30a6911b537a3e4",
+      "matched_terms": [
+        "artificial intelligence"
+      ],
+      "position": 15,
+      "sentence_id": "0001193125-26-323660:9:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Product vulnerabilities can persist even after we have issued security patches if customers have not installed the most recent updates, or if attackers, potentially with the assistance of artificial intelligence, reconstruct and exploit the vulnerabilities before patching.",
+      "ticker": "MSFT",
+      "topic": "artificial intelligence"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          96
+        ]
+      ],
+      "change_id": "b30a6911b537a3e4",
+      "matched_terms": [
+        "undetected errors"
+      ],
+      "position": 29,
+      "sentence_id": "0001193125-26-323660:9:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "Accordingly, our products have and may continue to contain vulnerabilities or undetected errors.",
+      "ticker": "MSFT",
+      "topic": "undetected error"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          322
+        ]
+      ],
+      "change_id": "b30a6911b537a3e4",
+      "matched_terms": [
+        "AI technologies"
+      ],
+      "position": 38,
+      "sentence_id": "0001193125-26-323660:9:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the rapid evolution of AI technologies and use cases may outpace the development, deployment, and effectiveness of security products, controls, and industry standards, particularly in complex customer environments, increasing the risk that security measures will be insufficient to address newly emerging threats.",
+      "ticker": "MSFT",
+      "topic": "ai technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          322
+        ]
+      ],
+      "change_id": "b30a6911b537a3e4",
+      "matched_terms": [
+        "complex customer environments"
+      ],
+      "position": 38,
+      "sentence_id": "0001193125-26-323660:9:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the rapid evolution of AI technologies and use cases may outpace the development, deployment, and effectiveness of security products, controls, and industry standards, particularly in complex customer environments, increasing the risk that security measures will be insufficient to address newly emerging threats.",
+      "ticker": "MSFT",
+      "topic": "complex customer environment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          322
+        ]
+      ],
+      "change_id": "b30a6911b537a3e4",
+      "matched_terms": [
+        "industry standards"
+      ],
+      "position": 38,
+      "sentence_id": "0001193125-26-323660:9:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the rapid evolution of AI technologies and use cases may outpace the development, deployment, and effectiveness of security products, controls, and industry standards, particularly in complex customer environments, increasing the risk that security measures will be insufficient to address newly emerging threats.",
+      "ticker": "MSFT",
+      "topic": "industry standard"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          322
+        ]
+      ],
+      "change_id": "b30a6911b537a3e4",
+      "matched_terms": [
+        "newly emerging threats"
+      ],
+      "position": 38,
+      "sentence_id": "0001193125-26-323660:9:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the rapid evolution of AI technologies and use cases may outpace the development, deployment, and effectiveness of security products, controls, and industry standards, particularly in complex customer environments, increasing the risk that security measures will be insufficient to address newly emerging threats.",
+      "ticker": "MSFT",
+      "topic": "newly emerging threat"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          322
+        ]
+      ],
+      "change_id": "b30a6911b537a3e4",
+      "matched_terms": [
+        "rapid evolution"
+      ],
+      "position": 38,
+      "sentence_id": "0001193125-26-323660:9:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the rapid evolution of AI technologies and use cases may outpace the development, deployment, and effectiveness of security products, controls, and industry standards, particularly in complex customer environments, increasing the risk that security measures will be insufficient to address newly emerging threats.",
+      "ticker": "MSFT",
+      "topic": "rapid evolution"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          322
+        ]
+      ],
+      "change_id": "b30a6911b537a3e4",
+      "matched_terms": [
+        "security measures"
+      ],
+      "position": 38,
+      "sentence_id": "0001193125-26-323660:9:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the rapid evolution of AI technologies and use cases may outpace the development, deployment, and effectiveness of security products, controls, and industry standards, particularly in complex customer environments, increasing the risk that security measures will be insufficient to address newly emerging threats.",
+      "ticker": "MSFT",
+      "topic": "security measure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          322
+        ]
+      ],
+      "change_id": "b30a6911b537a3e4",
+      "matched_terms": [
+        "security products"
+      ],
+      "position": 38,
+      "sentence_id": "0001193125-26-323660:9:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the rapid evolution of AI technologies and use cases may outpace the development, deployment, and effectiveness of security products, controls, and industry standards, particularly in complex customer environments, increasing the risk that security measures will be insufficient to address newly emerging threats.",
+      "ticker": "MSFT",
+      "topic": "security product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          322
+        ]
+      ],
+      "change_id": "b30a6911b537a3e4",
+      "matched_terms": [
+        "use cases"
+      ],
+      "position": 38,
+      "sentence_id": "0001193125-26-323660:9:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the rapid evolution of AI technologies and use cases may outpace the development, deployment, and effectiveness of security products, controls, and industry standards, particularly in complex customer environments, increasing the risk that security measures will be insufficient to address newly emerging threats.",
+      "ticker": "MSFT",
+      "topic": "use case"
+    }
+  ],
+  "total_changes": 32
+}

@@ -285,11 +285,6 @@ function HeatmapLegend() {
           </li>
         ))}
       </ul>
-      <p>
-        Orange: more language removed than added in that area. Blue: more added. Gray: rewritten both ways. Stronger color means more sentences changed. The number in a
-        cell is sentences changed. A risk factor tagged with two areas counts under both. The Change mix bars below count whole risk factors by kind of change, so one
-        rewritten risk factor can add words in one area and remove them in another.
-      </p>
     </div>
   );
 }
@@ -308,7 +303,7 @@ function Heatmap({ data }: { data: TrendsPayload }) {
   }
   return (
     <section aria-labelledby="heatmap-heading" className="space-y-4">
-      <SectionTitle id="heatmap-heading" aside={<span>Companies by risk area; a cell opens that company filtered to the area</span>}>
+      <SectionTitle id="heatmap-heading" aside={<span>Companies by risk area</span>}>
         How each risk area changed
       </SectionTitle>
       <div className="overflow-x-auto">
@@ -433,7 +428,7 @@ function PotentialToActual({ data }: { data: TrendsPayload }) {
   const companies = useMemo(() => new Map(data.companies.map((c) => [c.ticker, c] as const)), [data.companies]);
   return (
     <section aria-labelledby="actual-heading" className="space-y-2">
-      <SectionTitle id="actual-heading" aside={<span>Something described last year as possible is described this year as having happened</span>}>
+      <SectionTitle id="actual-heading">
         Potential became actual, across the library
       </SectionTitle>
       {data.potential_to_actual.length === 0 ? (

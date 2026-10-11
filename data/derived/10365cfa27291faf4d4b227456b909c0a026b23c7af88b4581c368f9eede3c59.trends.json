@@ -1,0 +1,2585 @@
+{
+  "analysis_id": "10365cfa27291faf4d4b227456b909c0a026b23c7af88b4581c368f9eede3c59",
+  "by_change_type": {
+    "expanded": 2,
+    "largely_unchanged": 30,
+    "materially_reworded": 5,
+    "new": 2,
+    "reduced": 1,
+    "removed": 2
+  },
+  "category_activity": [
+    {
+      "added_sentences": 7,
+      "added_words": 228,
+      "categories": [
+        "regulation",
+        "geopolitical"
+      ],
+      "change_id": "433a68de8aaa0c99",
+      "change_type": "expanded",
+      "modified_sentences": 3,
+      "modified_words": 27,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 44,
+      "short_title": "We face risks associated with maintaining and…"
+    },
+    {
+      "added_sentences": 7,
+      "added_words": 184,
+      "categories": [
+        "competition",
+        "artificial_intelligence"
+      ],
+      "change_id": "613de11c77435f30",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 34,
+      "short_title": "Growth of our business is also dependent…"
+    },
+    {
+      "added_sentences": 5,
+      "added_words": 143,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "95d9c58d7e240534",
+      "change_type": "materially_reworded",
+      "modified_sentences": 1,
+      "modified_words": 5,
+      "removed_sentences": 3,
+      "removed_words": 85,
+      "score": 34,
+      "short_title": "Demand for our products and services may…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 9,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "a8abd55c25baf1e9",
+      "change_type": "materially_reworded",
+      "modified_sentences": 7,
+      "modified_words": 221,
+      "removed_sentences": 1,
+      "removed_words": 11,
+      "score": 34,
+      "short_title": "We are subject to evolving laws and…"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 71,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "dedd3eb119fdccf2",
+      "change_type": "materially_reworded",
+      "modified_sentences": 4,
+      "modified_words": 68,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 34,
+      "short_title": "We may be required to defend or…"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 94,
+      "categories": [
+        "competition",
+        "macroeconomic"
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "change_type": "expanded",
+      "modified_sentences": 2,
+      "modified_words": 111,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 33,
+      "short_title": "Our future growth and success are dependent…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 39,
+      "categories": [
+        "artificial_intelligence",
+        "supply_chain"
+      ],
+      "change_id": "6de9a5242a697b4d",
+      "change_type": "materially_reworded",
+      "modified_sentences": 5,
+      "modified_words": 114,
+      "removed_sentences": 2,
+      "removed_words": 60,
+      "score": 32,
+      "short_title": "We may experience issues or delays in…"
+    },
+    {
+      "added_sentences": 6,
+      "added_words": 272,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "4d16055e814616e1",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 30,
+      "short_title": "There is a risk that the technologies…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "83f50f9fbb60bc98",
+      "change_type": "removed",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 5,
+      "removed_words": 156,
+      "score": 26,
+      "short_title": "Increased scrutiny and changing expectations from stakeholders…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain",
+        "labor"
+      ],
+      "change_id": "befeb21aacdb7fdf",
+      "change_type": "removed",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 7,
+      "removed_words": 298,
+      "score": 26,
+      "short_title": "We must manage ongoing obligations under our…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 36,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "e41171605360ee4d",
+      "change_type": "materially_reworded",
+      "modified_sentences": 3,
+      "modified_words": 67,
+      "removed_sentences": 2,
+      "removed_words": 41,
+      "score": 20,
+      "short_title": "If Elon Musk were forced to sell…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate",
+        "geopolitical"
+      ],
+      "change_id": "881d59868716b51c",
+      "change_type": "reduced",
+      "modified_sentences": 2,
+      "modified_words": 18,
+      "removed_sentences": 1,
+      "removed_words": 60,
+      "score": 16,
+      "short_title": "Our operations could be adversely affected by…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "ffd1c496871eae7c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 10,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 10,
+      "short_title": "The trading price of our common stock…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 29,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "4e76e06e64873fa0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 5,
+      "modified_words": 17,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 8,
+      "short_title": "We may be unable to meet our…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "c3f85e44bbbff735",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 8,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "There is no guarantee that we will…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "01e53e597004432c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 15,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "We are highly dependent on the services…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "0910b7fdc864e083",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 21,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "We may be unable to effectively grow…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 26,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "0d00bfc49fb06c76",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 7,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Any failure by us to comply with…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 83,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "387d6c41c27a604d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Our suppliers may fail to deliver components…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity",
+        "artificial_intelligence"
+      ],
+      "change_id": "45ae06691a1e82d6",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 28,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Additional funds may not be available to…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "foreign_exchange"
+      ],
+      "change_id": "0475a186f0ad9dc6",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are exposed to fluctuations in currency…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "07d8fd8a28fd8ad1",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 8,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may experience issues with lithium-ion cells…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "189362b565789d72",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 5,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We will need to maintain and significantly…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "2a87a3ddbc71b27e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our debt agreements contain covenant restrictions that…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation",
+        "regulation"
+      ],
+      "change_id": "2c836ee994c21720",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We could be subject to liability, penalties…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "40a013b6237f505d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 23,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We will need to maintain public credibility…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "45b624cd380e5a51",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may not be able to adequately…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "47d42c414b8dd056",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may face regulatory challenges to or…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "47f5bffe607eb36d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 20,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may fail to meet our publicly…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "4a64ae927a50f7d1",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 29,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our current and future warranty reserves may…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "6089c2741eae3f2c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our financial results may vary significantly from…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "7e18b9dc9016c701",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 8,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we are unable to attract, hire…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "82dd74989fa5c277",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our information technology systems or data, or…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "87beb7ecd687c66e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Any unauthorized control or manipulation of our…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "supply_chain"
+      ],
+      "change_id": "8ff27a2829727666",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may choose to or be compelled…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor",
+        "litigation"
+      ],
+      "change_id": "9294a3c3a853c8fc",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our insurance coverage strategy may not be…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity",
+        "regulation"
+      ],
+      "change_id": "b183b05921d96f24",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Anti-takeover provisions contained in our governing documents…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "ccd4c960ea4b42f4",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 16,
+      "removed_sentences": 1,
+      "removed_words": 36,
+      "score": 0,
+      "short_title": "We face strong competition for our products…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 27,
+      "categories": [
+        "artificial_intelligence",
+        "regulation"
+      ],
+      "change_id": "ce1a5348d90caf10",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 1,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may be unable to grow our…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "dde269521e0afa24",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business may be adversely affected by…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "e9589be82885dd6a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 52,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business may suffer if our products…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "f884897d04c9f655",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 5,
+      "modified_words": 13,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may be negatively impacted by any…"
+    }
+  ],
+  "cik": "0001318605",
+  "company_name": "Tesla, Inc.",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0001628280-26-003952",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0001628280-25-003063",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025003063/tsla-20241231.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "TSLA",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          0,
+          221
+        ]
+      ],
+      "change_id": "433a68de8aaa0c99",
+      "matched_terms": [
+        "existing trade agreements"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-003952:9:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the United States has recently announced changes to U.S. trade policy, including increasing tariffs on imports, in many cases significantly, and potentially renegotiating or terminating existing trade agreements.",
+      "ticker": "TSLA",
+      "topic": "existing trade agreement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          170
+        ]
+      ],
+      "change_id": "433a68de8aaa0c99",
+      "matched_terms": [
+        "exact scope"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-003952:9:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "The exact scope of any such tariffs that will ultimately be implemented is not known at this time, and the impacts on our business and costs of our products is uncertain.",
+      "ticker": "TSLA",
+      "topic": "exact scope"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "433a68de8aaa0c99",
+      "matched_terms": [
+        "export controls"
+      ],
+      "position": 12,
+      "sentence_id": "0001628280-26-003952:9:8",
+      "source": "lexicon",
+      "status": "added",
+      "text": "We cannot predict whether, and to what extent, there may be changes to international trade agreements, such as those with China, or whether, or to what extent, quotas, duties, additional tariffs, export controls or other restrictions will be changed or imposed by the United States or by other countries.",
+      "ticker": "TSLA",
+      "topic": "Export controls"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "433a68de8aaa0c99",
+      "matched_terms": [
+        "international trade agreements"
+      ],
+      "position": 12,
+      "sentence_id": "0001628280-26-003952:9:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "We cannot predict whether, and to what extent, there may be changes to international trade agreements, such as those with China, or whether, or to what extent, quotas, duties, additional tariffs, export controls or other restrictions will be changed or imposed by the United States or by other countries.",
+      "ticker": "TSLA",
+      "topic": "international trade agreement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          195
+        ]
+      ],
+      "change_id": "433a68de8aaa0c99",
+      "matched_terms": [
+        "increased costs"
+      ],
+      "position": 13,
+      "sentence_id": "0001628280-26-003952:9:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Historically, U.S. special tariff actions have increased our costs for vehicles manufactured in the United States and increased costs for those same vehicles when exported from the United States.",
+      "ticker": "TSLA",
+      "topic": "increased cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          273
+        ]
+      ],
+      "change_id": "433a68de8aaa0c99",
+      "matched_terms": [
+        "electric vehicles"
+      ],
+      "position": 14,
+      "sentence_id": "0001628280-26-003952:9:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, as it pertains to electric vehicles and lithium-ion batteries for our energy storage products, while the Company has continuously aimed for a strong domestic supply chain, certain parts and components are difficult or impossible to source within the United States.",
+      "ticker": "TSLA",
+      "topic": "electric vehicle"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          273
+        ]
+      ],
+      "change_id": "433a68de8aaa0c99",
+      "matched_terms": [
+        "energy storage products"
+      ],
+      "position": 14,
+      "sentence_id": "0001628280-26-003952:9:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, as it pertains to electric vehicles and lithium-ion batteries for our energy storage products, while the Company has continuously aimed for a strong domestic supply chain, certain parts and components are difficult or impossible to source within the United States.",
+      "ticker": "TSLA",
+      "topic": "energy storage product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          273
+        ]
+      ],
+      "change_id": "433a68de8aaa0c99",
+      "matched_terms": [
+        "lithium-ion batteries"
+      ],
+      "position": 14,
+      "sentence_id": "0001628280-26-003952:9:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, as it pertains to electric vehicles and lithium-ion batteries for our energy storage products, while the Company has continuously aimed for a strong domestic supply chain, certain parts and components are difficult or impossible to source within the United States.",
+      "ticker": "TSLA",
+      "topic": "lithium ion battery"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          273
+        ]
+      ],
+      "change_id": "433a68de8aaa0c99",
+      "matched_terms": [
+        "strong domestic supply chain"
+      ],
+      "position": 14,
+      "sentence_id": "0001628280-26-003952:9:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, as it pertains to electric vehicles and lithium-ion batteries for our energy storage products, while the Company has continuously aimed for a strong domestic supply chain, certain parts and components are difficult or impossible to source within the United States.",
+      "ticker": "TSLA",
+      "topic": "strong domestic supply chain"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "Bots"
+      ],
+      "position": 0,
+      "sentence_id": "0001628280-26-003952:7:0",
+      "source": "entity",
+      "status": "added",
+      "text": "Growth of our business is also dependent upon our ability to develop and commercialize Bots, including Optimus, which is in a nascent industry that has yet to develop commercially.",
+      "ticker": "TSLA",
+      "topic": "Bots"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "nascent industry"
+      ],
+      "position": 0,
+      "sentence_id": "0001628280-26-003952:7:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Growth of our business is also dependent upon our ability to develop and commercialize Bots, including Optimus, which is in a nascent industry that has yet to develop commercially.",
+      "ticker": "TSLA",
+      "topic": "nascent industry"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          172
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "Bots"
+      ],
+      "position": 1,
+      "sentence_id": "0001628280-26-003952:7:1",
+      "source": "entity",
+      "status": "added",
+      "text": "We currently are developing Bots, including Optimus, and intend for these products, as well as accompanying services, to be an important part of our business going forward.",
+      "ticker": "TSLA",
+      "topic": "Bots"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          172
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "accompanying services"
+      ],
+      "position": 1,
+      "sentence_id": "0001628280-26-003952:7:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "We currently are developing Bots, including Optimus, and intend for these products, as well as accompanying services, to be an important part of our business going forward.",
+      "ticker": "TSLA",
+      "topic": "accompanying service"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          172
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "important part"
+      ],
+      "position": 1,
+      "sentence_id": "0001628280-26-003952:7:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "We currently are developing Bots, including Optimus, and intend for these products, as well as accompanying services, to be an important part of our business going forward.",
+      "ticker": "TSLA",
+      "topic": "important part"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          142
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "cash investments"
+      ],
+      "position": 2,
+      "sentence_id": "0001628280-26-003952:7:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "While this development requires significant cash investments and management resources, there is no guarantee this business will be successful.",
+      "ticker": "TSLA",
+      "topic": "cash investment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          142
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "management resources"
+      ],
+      "position": 2,
+      "sentence_id": "0001628280-26-003952:7:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "While this development requires significant cash investments and management resources, there is no guarantee this business will be successful.",
+      "ticker": "TSLA",
+      "topic": "management resource"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          135
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "Bots"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-003952:7:3",
+      "source": "entity",
+      "status": "added",
+      "text": "We have yet to commercialize Bots and cannot predict how demand for Bots will develop, either from commercial or consumer applications.",
+      "ticker": "TSLA",
+      "topic": "Bots"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          135
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "commercial or consumer applications"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-003952:7:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have yet to commercialize Bots and cannot predict how demand for Bots will develop, either from commercial or consumer applications.",
+      "ticker": "TSLA",
+      "topic": "commercial or consumer application"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          342
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "autonomous robots"
+      ],
+      "position": 5,
+      "sentence_id": "0001628280-26-003952:7:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our success will depend on various factors, including our ability to successfully apply our artificial neural network training experience to autonomous robots, to either source or custom develop the necessary technology and components, and the product’s cost-effectiveness, utility and competitive positioning relative to market alternatives.",
+      "ticker": "TSLA",
+      "topic": "autonomous robot"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          342
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "competitive positioning"
+      ],
+      "position": 5,
+      "sentence_id": "0001628280-26-003952:7:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our success will depend on various factors, including our ability to successfully apply our artificial neural network training experience to autonomous robots, to either source or custom develop the necessary technology and components, and the product’s cost-effectiveness, utility and competitive positioning relative to market alternatives.",
+      "ticker": "TSLA",
+      "topic": "competitive positioning"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          342
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "market alternatives"
+      ],
+      "position": 5,
+      "sentence_id": "0001628280-26-003952:7:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our success will depend on various factors, including our ability to successfully apply our artificial neural network training experience to autonomous robots, to either source or custom develop the necessary technology and components, and the product’s cost-effectiveness, utility and competitive positioning relative to market alternatives.",
+      "ticker": "TSLA",
+      "topic": "market alternative"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          173
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "Bots"
+      ],
+      "position": 6,
+      "sentence_id": "0001628280-26-003952:7:6",
+      "source": "entity",
+      "status": "added",
+      "text": "If our Bots program fails to develop as we expect, or progresses more slowly than expected, our business, prospects, financial condition and operating results may be harmed.",
+      "ticker": "TSLA",
+      "topic": "Bots"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          173
+        ]
+      ],
+      "change_id": "613de11c77435f30",
+      "matched_terms": [
+        "Bots program"
+      ],
+      "position": 6,
+      "sentence_id": "0001628280-26-003952:7:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "If our Bots program fails to develop as we expect, or progresses more slowly than expected, our business, prospects, financial condition and operating results may be harmed.",
+      "ticker": "TSLA",
+      "topic": "bots program"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          214
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "infrastructure tax credits"
+      ],
+      "position": 6,
+      "sentence_id": "0001628280-26-003952:29:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Specifically, recent governmental and regulatory actions have repealed and/or restricted consumer, manufacturing and charging infrastructure tax credits, and certain regulatory credit programs tied to our products.",
+      "ticker": "TSLA",
+      "topic": "infrastructure tax credit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          214
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "regulatory credit programs"
+      ],
+      "position": 6,
+      "sentence_id": "0001628280-26-003952:29:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Specifically, recent governmental and regulatory actions have repealed and/or restricted consumer, manufacturing and charging infrastructure tax credits, and certain regulatory credit programs tied to our products.",
+      "ticker": "TSLA",
+      "topic": "regulatory credit program"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          266
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "carbon offset mechanisms"
+      ],
+      "position": 7,
+      "sentence_id": "0001628280-26-003952:29:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "These, and any similar actions in the future, may affect demand for our vehicles, and harm our growth, prospects and operating results, and the loss of previously available tax credits and carbon offset mechanisms may further negatively impact our financial results.",
+      "ticker": "TSLA",
+      "topic": "carbon offset mechanism"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          266
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "previously available tax credits"
+      ],
+      "position": 7,
+      "sentence_id": "0001628280-26-003952:29:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "These, and any similar actions in the future, may affect demand for our vehicles, and harm our growth, prospects and operating results, and the loss of previously available tax credits and carbon offset mechanisms may further negatively impact our financial results.",
+      "ticker": "TSLA",
+      "topic": "previously available tax credit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          266
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "similar actions"
+      ],
+      "position": 7,
+      "sentence_id": "0001628280-26-003952:29:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "These, and any similar actions in the future, may affect demand for our vehicles, and harm our growth, prospects and operating results, and the loss of previously available tax credits and carbon offset mechanisms may further negatively impact our financial results.",
+      "ticker": "TSLA",
+      "topic": "similar action"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          136
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "OBBBA"
+      ],
+      "position": 16,
+      "sentence_id": "0001628280-26-003952:29:9",
+      "source": "lexicon",
+      "status": "added",
+      "text": "For example, provisions of the OBBBA could affect battery cell expenses and impact costs for our consumers, negatively impacting demand.",
+      "ticker": "TSLA",
+      "topic": "Taxes"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          136
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "battery cell expenses"
+      ],
+      "position": 16,
+      "sentence_id": "0001628280-26-003952:29:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, provisions of the OBBBA could affect battery cell expenses and impact costs for our consumers, negatively impacting demand.",
+      "ticker": "TSLA",
+      "topic": "battery cell expense"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          110
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "OBBBA"
+      ],
+      "position": 17,
+      "sentence_id": "0001628280-26-003952:29:10",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Compliance with evolving legislation, such as the OBBBA, also requires rigorous traceability of raw materials.",
+      "ticker": "TSLA",
+      "topic": "Taxes"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          110
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "raw materials"
+      ],
+      "position": 17,
+      "sentence_id": "0001628280-26-003952:29:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Compliance with evolving legislation, such as the OBBBA, also requires rigorous traceability of raw materials.",
+      "ticker": "TSLA",
+      "topic": "raw material"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          110
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "rigorous traceability"
+      ],
+      "position": 17,
+      "sentence_id": "0001628280-26-003952:29:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Compliance with evolving legislation, such as the OBBBA, also requires rigorous traceability of raw materials.",
+      "ticker": "TSLA",
+      "topic": "rigorous traceability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          269
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "critical minerals"
+      ],
+      "position": 18,
+      "sentence_id": "0001628280-26-003952:29:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we or our suppliers are unable to provide sufficient documentation to verify the origin of critical minerals, our products may lose eligibility for tax credits and incentives, directly increasing the effective price for our customers and potentially reducing demand.",
+      "ticker": "TSLA",
+      "topic": "critical mineral"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          269
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "effective price"
+      ],
+      "position": 18,
+      "sentence_id": "0001628280-26-003952:29:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we or our suppliers are unable to provide sufficient documentation to verify the origin of critical minerals, our products may lose eligibility for tax credits and incentives, directly increasing the effective price for our customers and potentially reducing demand.",
+      "ticker": "TSLA",
+      "topic": "effective price"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          269
+        ]
+      ],
+      "change_id": "95d9c58d7e240534",
+      "matched_terms": [
+        "sufficient documentation"
+      ],
+      "position": 18,
+      "sentence_id": "0001628280-26-003952:29:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "If we or our suppliers are unable to provide sufficient documentation to verify the origin of critical minerals, our products may lose eligibility for tax credits and incentives, directly increasing the effective price for our customers and potentially reducing demand.",
+      "ticker": "TSLA",
+      "topic": "sufficient documentation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          61
+        ]
+      ],
+      "change_id": "a8abd55c25baf1e9",
+      "matched_terms": [
+        "autonomous ride-hailing service"
+      ],
+      "position": 19,
+      "sentence_id": "0001628280-26-003952:30:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "We also launched our autonomous ride-hailing service in 2025.",
+      "ticker": "TSLA",
+      "topic": "autonomous ride hailing service"
+    },
+    {
+      "added_spans": [
+        [
+          105,
+          112
+        ],
+        [
+          129,
+          141
+        ],
+        [
+          190,
+          217
+        ],
+        [
+          225,
+          235
+        ],
+        [
+          247,
+          258
+        ],
+        [
+          267,
+          302
+        ]
+      ],
+      "change_id": "a8abd55c25baf1e9",
+      "matched_terms": [
+        "Robotaxi"
+      ],
+      "position": 21,
+      "sentence_id": "0001628280-26-003952:30:10",
+      "source": "entity",
+      "status": "modified",
+      "text": "There are a variety of international, federal and state regulations that may apply to, and may adversely inhibit, the design and capabilities, sale, marketing, registration and operation of driver assistance features, future autonomous capability on customer vehicles, as well as our Robotaxi business.",
+      "ticker": "TSLA",
+      "topic": "Robotaxi"
+    },
+    {
+      "added_spans": [
+        [
+          105,
+          112
+        ],
+        [
+          129,
+          141
+        ],
+        [
+          190,
+          217
+        ],
+        [
+          225,
+          235
+        ],
+        [
+          247,
+          258
+        ],
+        [
+          267,
+          302
+        ]
+      ],
+      "change_id": "a8abd55c25baf1e9",
+      "matched_terms": [
+        "driver assistance features"
+      ],
+      "position": 21,
+      "sentence_id": "0001628280-26-003952:30:10",
+      "source": "phrase",
+      "status": "modified",
+      "text": "There are a variety of international, federal and state regulations that may apply to, and may adversely inhibit, the design and capabilities, sale, marketing, registration and operation of driver assistance features, future autonomous capability on customer vehicles, as well as our Robotaxi business.",
+      "ticker": "TSLA",
+      "topic": "driver assistance feature"
+    },
+    {
+      "added_spans": [
+        [
+          105,
+          112
+        ],
+        [
+          129,
+          141
+        ],
+        [
+          190,
+          217
+        ],
+        [
+          225,
+          235
+        ],
+        [
+          247,
+          258
+        ],
+        [
+          267,
+          302
+        ]
+      ],
+      "change_id": "a8abd55c25baf1e9",
+      "matched_terms": [
+        "Robotaxi business"
+      ],
+      "position": 21,
+      "sentence_id": "0001628280-26-003952:30:10",
+      "source": "phrase",
+      "status": "modified",
+      "text": "There are a variety of international, federal and state regulations that may apply to, and may adversely inhibit, the design and capabilities, sale, marketing, registration and operation of driver assistance features, future autonomous capability on customer vehicles, as well as our Robotaxi business.",
+      "ticker": "TSLA",
+      "topic": "robotaxi business"
+    },
+    {
+      "added_spans": [
+        [
+          318,
+          339
+        ],
+        [
+          346,
+          384
+        ],
+        [
+          420,
+          475
+        ]
+      ],
+      "change_id": "a8abd55c25baf1e9",
+      "matched_terms": [
+        "Robotaxi"
+      ],
+      "position": 25,
+      "sentence_id": "0001628280-26-003952:30:12",
+      "source": "entity",
+      "status": "modified",
+      "text": "Such regulations, including their enforcement or the enforcement policy associated with the regulations, continue to rapidly change, which increases the likelihood of a patchwork of complex or conflicting regulations, or may delay, restrict or prohibit the availability of certain functionalities and vehicle designs, or affect the pace at which we expand our Robotaxi business, which could adversely affect our business, prospects, financial condition and operating results.",
+      "ticker": "TSLA",
+      "topic": "Robotaxi"
+    },
+    {
+      "added_spans": [
+        [
+          318,
+          339
+        ],
+        [
+          346,
+          384
+        ],
+        [
+          420,
+          475
+        ]
+      ],
+      "change_id": "a8abd55c25baf1e9",
+      "matched_terms": [
+        "Robotaxi business"
+      ],
+      "position": 25,
+      "sentence_id": "0001628280-26-003952:30:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Such regulations, including their enforcement or the enforcement policy associated with the regulations, continue to rapidly change, which increases the likelihood of a patchwork of complex or conflicting regulations, or may delay, restrict or prohibit the availability of certain functionalities and vehicle designs, or affect the pace at which we expand our Robotaxi business, which could adversely affect our business, prospects, financial condition and operating results.",
+      "ticker": "TSLA",
+      "topic": "robotaxi business"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          43
+        ],
+        [
+          53,
+          96
+        ],
+        [
+          106,
+          114
+        ],
+        [
+          119,
+          124
+        ],
+        [
+          315,
+          336
+        ]
+      ],
+      "change_id": "dedd3eb119fdccf2",
+      "matched_terms": [
+        "Robotaxi"
+      ],
+      "position": 6,
+      "sentence_id": "0001628280-26-003952:11:3",
+      "source": "entity",
+      "status": "modified",
+      "text": "Such collisions, whether involving Robotaxi vehicles or customer vehicles with driver assistance features engaged, are often subject of significant public attention, especially in light of NHTSA’s Standing General Order requiring reports regarding certain crashes involving vehicles with advanced driver assistance or autonomous driving systems.",
+      "ticker": "TSLA",
+      "topic": "Robotaxi"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          43
+        ],
+        [
+          53,
+          96
+        ],
+        [
+          106,
+          114
+        ],
+        [
+          119,
+          124
+        ],
+        [
+          315,
+          336
+        ]
+      ],
+      "change_id": "dedd3eb119fdccf2",
+      "matched_terms": [
+        "customer vehicles"
+      ],
+      "position": 6,
+      "sentence_id": "0001628280-26-003952:11:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Such collisions, whether involving Robotaxi vehicles or customer vehicles with driver assistance features engaged, are often subject of significant public attention, especially in light of NHTSA’s Standing General Order requiring reports regarding certain crashes involving vehicles with advanced driver assistance or autonomous driving systems.",
+      "ticker": "TSLA",
+      "topic": "customer vehicle"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          159
+        ]
+      ],
+      "change_id": "dedd3eb119fdccf2",
+      "matched_terms": [
+        "unfavorable outcome"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-003952:11:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "An unfavorable outcome in some or all of these proceedings could have a material adverse impact on results of operations or cash flows for a particular period.",
+      "ticker": "TSLA",
+      "topic": "unfavorable outcome"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          92
+        ]
+      ],
+      "change_id": "dedd3eb119fdccf2",
+      "matched_terms": [
+        "inherent uncertainties"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-003952:11:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our view of these matters is subject to inherent uncertainties and may change in the future.",
+      "ticker": "TSLA",
+      "topic": "inherent uncertainty"
+    },
+    {
+      "added_spans": [
+        [
+          60,
+          63
+        ],
+        [
+          86,
+          127
+        ]
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "matched_terms": [
+        "autonomous driving solutions"
+      ],
+      "position": 1,
+      "sentence_id": "0001628280-26-003952:5:0",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our future growth and success are dependent upon demand for our electric vehicles and adoption of autonomous driving solutions.",
+      "ticker": "TSLA",
+      "topic": "autonomous driving solution"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          189
+        ]
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "matched_terms": [
+        "Cybercab"
+      ],
+      "position": 30,
+      "sentence_id": "0001628280-26-003952:5:15",
+      "source": "entity",
+      "status": "added",
+      "text": "Upon launching our Robotaxi service in June 2025, we also entered into the autonomous ride-hailing service market, and have plans to mass produce Cybercab, a purpose-built Robotaxi product.",
+      "ticker": "TSLA",
+      "topic": "Cybercab"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          189
+        ]
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "matched_terms": [
+        "Robotaxi"
+      ],
+      "position": 30,
+      "sentence_id": "0001628280-26-003952:5:15",
+      "source": "entity",
+      "status": "added",
+      "text": "Upon launching our Robotaxi service in June 2025, we also entered into the autonomous ride-hailing service market, and have plans to mass produce Cybercab, a purpose-built Robotaxi product.",
+      "ticker": "TSLA",
+      "topic": "Robotaxi"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          189
+        ]
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "matched_terms": [
+        "purpose-built Robotaxi product"
+      ],
+      "position": 30,
+      "sentence_id": "0001628280-26-003952:5:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "Upon launching our Robotaxi service in June 2025, we also entered into the autonomous ride-hailing service market, and have plans to mass produce Cybercab, a purpose-built Robotaxi product.",
+      "ticker": "TSLA",
+      "topic": "purpose built robotaxi product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          189
+        ]
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "matched_terms": [
+        "Robotaxi service"
+      ],
+      "position": 30,
+      "sentence_id": "0001628280-26-003952:5:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "Upon launching our Robotaxi service in June 2025, we also entered into the autonomous ride-hailing service market, and have plans to mass produce Cybercab, a purpose-built Robotaxi product.",
+      "ticker": "TSLA",
+      "topic": "robotaxi service"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "matched_terms": [
+        "Robotaxi"
+      ],
+      "position": 31,
+      "sentence_id": "0001628280-26-003952:5:16",
+      "source": "entity",
+      "status": "added",
+      "text": "As we seek to expand the scope and geographical footprint of this business, our success will be dependent upon various factors, including the acceptance and adoption by consumers of autonomous driving solutions, and Robotaxi as a preferable option, amid growing competition.",
+      "ticker": "TSLA",
+      "topic": "Robotaxi"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "matched_terms": [
+        "autonomous driving solutions"
+      ],
+      "position": 31,
+      "sentence_id": "0001628280-26-003952:5:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "As we seek to expand the scope and geographical footprint of this business, our success will be dependent upon various factors, including the acceptance and adoption by consumers of autonomous driving solutions, and Robotaxi as a preferable option, amid growing competition.",
+      "ticker": "TSLA",
+      "topic": "autonomous driving solution"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "matched_terms": [
+        "geographical footprint"
+      ],
+      "position": 31,
+      "sentence_id": "0001628280-26-003952:5:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "As we seek to expand the scope and geographical footprint of this business, our success will be dependent upon various factors, including the acceptance and adoption by consumers of autonomous driving solutions, and Robotaxi as a preferable option, amid growing competition.",
+      "ticker": "TSLA",
+      "topic": "geographical footprint"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "matched_terms": [
+        "growing competition"
+      ],
+      "position": 31,
+      "sentence_id": "0001628280-26-003952:5:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "As we seek to expand the scope and geographical footprint of this business, our success will be dependent upon various factors, including the acceptance and adoption by consumers of autonomous driving solutions, and Robotaxi as a preferable option, amid growing competition.",
+      "ticker": "TSLA",
+      "topic": "growing competition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "matched_terms": [
+        "preferable option"
+      ],
+      "position": 31,
+      "sentence_id": "0001628280-26-003952:5:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "As we seek to expand the scope and geographical footprint of this business, our success will be dependent upon various factors, including the acceptance and adoption by consumers of autonomous driving solutions, and Robotaxi as a preferable option, amid growing competition.",
+      "ticker": "TSLA",
+      "topic": "preferable option"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          164
+        ]
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "matched_terms": [
+        "autonomous driving solutions"
+      ],
+      "position": 32,
+      "sentence_id": "0001628280-26-003952:5:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "If the uptake rate for autonomous driving solutions does not develop as we expect, our business, prospects, financial condition and operating results may be harmed.",
+      "ticker": "TSLA",
+      "topic": "autonomous driving solution"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          164
+        ]
+      ],
+      "change_id": "43a645d6d91f3fe3",
+      "matched_terms": [
+        "uptake rate"
+      ],
+      "position": 32,
+      "sentence_id": "0001628280-26-003952:5:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "If the uptake rate for autonomous driving solutions does not develop as we expect, our business, prospects, financial condition and operating results may be harmed.",
+      "ticker": "TSLA",
+      "topic": "uptake rate"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          21
+        ],
+        [
+          25,
+          142
+        ],
+        [
+          157,
+          186
+        ]
+      ],
+      "change_id": "6de9a5242a697b4d",
+      "matched_terms": [
+        "widespread consumer adoption"
+      ],
+      "position": 7,
+      "sentence_id": "0001628280-26-003952:0:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "There is no guarantee we will be able to successfully develop or timely introduce and scale these new products, services and features, or that there will be widespread consumer adoption.",
+      "ticker": "TSLA",
+      "topic": "widespread consumer adoption"
+    },
+    {
+      "added_spans": [
+        [
+          43,
+          127
+        ],
+        [
+          177,
+          234
+        ]
+      ],
+      "change_id": "6de9a5242a697b4d",
+      "matched_terms": [
+        "Cybercab"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-003952:0:4",
+      "source": "entity",
+      "status": "modified",
+      "text": "In particular, our future business depends on development of our driver assistance systems and autonomous driving solutions and increasing the production of mass-market vehicles, including Cybercab, our purpose-built Robotaxi product.",
+      "ticker": "TSLA",
+      "topic": "Cybercab"
+    },
+    {
+      "added_spans": [
+        [
+          43,
+          127
+        ],
+        [
+          177,
+          234
+        ]
+      ],
+      "change_id": "6de9a5242a697b4d",
+      "matched_terms": [
+        "Robotaxi"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-003952:0:4",
+      "source": "entity",
+      "status": "modified",
+      "text": "In particular, our future business depends on development of our driver assistance systems and autonomous driving solutions and increasing the production of mass-market vehicles, including Cybercab, our purpose-built Robotaxi product.",
+      "ticker": "TSLA",
+      "topic": "Robotaxi"
+    },
+    {
+      "added_spans": [
+        [
+          43,
+          127
+        ],
+        [
+          177,
+          234
+        ]
+      ],
+      "change_id": "6de9a5242a697b4d",
+      "matched_terms": [
+        "autonomous driving solutions"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-003952:0:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In particular, our future business depends on development of our driver assistance systems and autonomous driving solutions and increasing the production of mass-market vehicles, including Cybercab, our purpose-built Robotaxi product.",
+      "ticker": "TSLA",
+      "topic": "autonomous driving solution"
+    },
+    {
+      "added_spans": [
+        [
+          43,
+          127
+        ],
+        [
+          177,
+          234
+        ]
+      ],
+      "change_id": "6de9a5242a697b4d",
+      "matched_terms": [
+        "driver assistance systems"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-003952:0:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In particular, our future business depends on development of our driver assistance systems and autonomous driving solutions and increasing the production of mass-market vehicles, including Cybercab, our purpose-built Robotaxi product.",
+      "ticker": "TSLA",
+      "topic": "driver assistance system"
+    },
+    {
+      "added_spans": [
+        [
+          43,
+          127
+        ],
+        [
+          177,
+          234
+        ]
+      ],
+      "change_id": "6de9a5242a697b4d",
+      "matched_terms": [
+        "purpose-built Robotaxi product"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-003952:0:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In particular, our future business depends on development of our driver assistance systems and autonomous driving solutions and increasing the production of mass-market vehicles, including Cybercab, our purpose-built Robotaxi product.",
+      "ticker": "TSLA",
+      "topic": "purpose built robotaxi product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          154
+        ]
+      ],
+      "change_id": "6de9a5242a697b4d",
+      "matched_terms": [
+        "Bots"
+      ],
+      "position": 19,
+      "sentence_id": "0001628280-26-003952:0:9",
+      "source": "entity",
+      "status": "added",
+      "text": "Similarly, we are also developing Bots for future commercialization, and we may experience delays in launching and ramping the production of this product.",
+      "ticker": "TSLA",
+      "topic": "Bots"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          337
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "CEO Performance Award"
+      ],
+      "position": 0,
+      "sentence_id": "0001628280-26-003952:37:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "There is a risk that the technologies and initiatives associated with the 2025 CEO Performance Award, including the product goals, are misaligned with current or future consumer demand, resulting in our failure to invest in or pursue another opportunity that generates significant financial returns or leads to greater shareholder value.",
+      "ticker": "TSLA",
+      "topic": "ceo performance award"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          337
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "consumer demand"
+      ],
+      "position": 0,
+      "sentence_id": "0001628280-26-003952:37:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "There is a risk that the technologies and initiatives associated with the 2025 CEO Performance Award, including the product goals, are misaligned with current or future consumer demand, resulting in our failure to invest in or pursue another opportunity that generates significant financial returns or leads to greater shareholder value.",
+      "ticker": "TSLA",
+      "topic": "consumer demand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          337
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "greater shareholder value"
+      ],
+      "position": 0,
+      "sentence_id": "0001628280-26-003952:37:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "There is a risk that the technologies and initiatives associated with the 2025 CEO Performance Award, including the product goals, are misaligned with current or future consumer demand, resulting in our failure to invest in or pursue another opportunity that generates significant financial returns or leads to greater shareholder value.",
+      "ticker": "TSLA",
+      "topic": "greater shareholder value"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          337
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "product goals"
+      ],
+      "position": 0,
+      "sentence_id": "0001628280-26-003952:37:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "There is a risk that the technologies and initiatives associated with the 2025 CEO Performance Award, including the product goals, are misaligned with current or future consumer demand, resulting in our failure to invest in or pursue another opportunity that generates significant financial returns or leads to greater shareholder value.",
+      "ticker": "TSLA",
+      "topic": "product goal"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "CEO Performance Award"
+      ],
+      "position": 1,
+      "sentence_id": "0001628280-26-003952:37:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "If the 2025 CEO Performance Award inadvertently directs our focus and resources toward specific technologies that are misaligned with market preferences, or such preferences evolve unfavorably, or customer demand for these innovations does not materialize as anticipated, we may miss opportunities better aligned with other needs.",
+      "ticker": "TSLA",
+      "topic": "ceo performance award"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "customer demand"
+      ],
+      "position": 1,
+      "sentence_id": "0001628280-26-003952:37:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "If the 2025 CEO Performance Award inadvertently directs our focus and resources toward specific technologies that are misaligned with market preferences, or such preferences evolve unfavorably, or customer demand for these innovations does not materialize as anticipated, we may miss opportunities better aligned with other needs.",
+      "ticker": "TSLA",
+      "topic": "customer demand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "market preferences"
+      ],
+      "position": 1,
+      "sentence_id": "0001628280-26-003952:37:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "If the 2025 CEO Performance Award inadvertently directs our focus and resources toward specific technologies that are misaligned with market preferences, or such preferences evolve unfavorably, or customer demand for these innovations does not materialize as anticipated, we may miss opportunities better aligned with other needs.",
+      "ticker": "TSLA",
+      "topic": "market preference"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          330
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "specific technologies"
+      ],
+      "position": 1,
+      "sentence_id": "0001628280-26-003952:37:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "If the 2025 CEO Performance Award inadvertently directs our focus and resources toward specific technologies that are misaligned with market preferences, or such preferences evolve unfavorably, or customer demand for these innovations does not materialize as anticipated, we may miss opportunities better aligned with other needs.",
+      "ticker": "TSLA",
+      "topic": "specific technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          247
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "CEO Performance Award"
+      ],
+      "position": 2,
+      "sentence_id": "0001628280-26-003952:37:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "In particular, the product goals may not be indicative of the types of products or services that would, in the long run, generate financial returns necessary to justify the significant market capitalization goals of the 2025 CEO Performance Award.",
+      "ticker": "TSLA",
+      "topic": "ceo performance award"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          247
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "long run"
+      ],
+      "position": 2,
+      "sentence_id": "0001628280-26-003952:37:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "In particular, the product goals may not be indicative of the types of products or services that would, in the long run, generate financial returns necessary to justify the significant market capitalization goals of the 2025 CEO Performance Award.",
+      "ticker": "TSLA",
+      "topic": "long run"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          247
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "market capitalization goals"
+      ],
+      "position": 2,
+      "sentence_id": "0001628280-26-003952:37:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "In particular, the product goals may not be indicative of the types of products or services that would, in the long run, generate financial returns necessary to justify the significant market capitalization goals of the 2025 CEO Performance Award.",
+      "ticker": "TSLA",
+      "topic": "market capitalization goal"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          247
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "product goals"
+      ],
+      "position": 2,
+      "sentence_id": "0001628280-26-003952:37:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "In particular, the product goals may not be indicative of the types of products or services that would, in the long run, generate financial returns necessary to justify the significant market capitalization goals of the 2025 CEO Performance Award.",
+      "ticker": "TSLA",
+      "topic": "product goal"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          243
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "Elon Musk"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-003952:37:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "The product goals were designed to incentivize Elon Musk to devote time and energy to development of these products and services, as these products and services are directionally consistent with Mr. Musk’s vision for the future of our company.",
+      "ticker": "TSLA",
+      "topic": "elon musk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          243
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "product goals"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-003952:37:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "The product goals were designed to incentivize Elon Musk to devote time and energy to development of these products and services, as these products and services are directionally consistent with Mr. Musk’s vision for the future of our company.",
+      "ticker": "TSLA",
+      "topic": "product goal"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          292
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "long development timelines"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-003952:37:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our investments in these technologies and initiatives, including those underlying the product goals, frequently involve long development timelines and substantial capital, and there is no assurance that these investments will deliver the expected business, financial or reputational benefits.",
+      "ticker": "TSLA",
+      "topic": "long development timeline"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          292
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "product goals"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-003952:37:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our investments in these technologies and initiatives, including those underlying the product goals, frequently involve long development timelines and substantial capital, and there is no assurance that these investments will deliver the expected business, financial or reputational benefits.",
+      "ticker": "TSLA",
+      "topic": "product goal"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          292
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "reputational benefits"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-003952:37:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our investments in these technologies and initiatives, including those underlying the product goals, frequently involve long development timelines and substantial capital, and there is no assurance that these investments will deliver the expected business, financial or reputational benefits.",
+      "ticker": "TSLA",
+      "topic": "reputational benefit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          292
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "substantial capital"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-003952:37:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our investments in these technologies and initiatives, including those underlying the product goals, frequently involve long development timelines and substantial capital, and there is no assurance that these investments will deliver the expected business, financial or reputational benefits.",
+      "ticker": "TSLA",
+      "topic": "substantial capital"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "CEO Performance Award"
+      ],
+      "position": 5,
+      "sentence_id": "0001628280-26-003952:37:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result, misalignment of consumer demand and the technologies and initiatives associated with the 2025 CEO Performance Award, including the product goals, may impair our ability to realize returns on such investments and could lead to strategic misalignment, underperformance or write-downs of related assets, all of which could have a negative impact on our financial performance and stock price.",
+      "ticker": "TSLA",
+      "topic": "ceo performance award"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "consumer demand"
+      ],
+      "position": 5,
+      "sentence_id": "0001628280-26-003952:37:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result, misalignment of consumer demand and the technologies and initiatives associated with the 2025 CEO Performance Award, including the product goals, may impair our ability to realize returns on such investments and could lead to strategic misalignment, underperformance or write-downs of related assets, all of which could have a negative impact on our financial performance and stock price.",
+      "ticker": "TSLA",
+      "topic": "consumer demand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "product goals"
+      ],
+      "position": 5,
+      "sentence_id": "0001628280-26-003952:37:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result, misalignment of consumer demand and the technologies and initiatives associated with the 2025 CEO Performance Award, including the product goals, may impair our ability to realize returns on such investments and could lead to strategic misalignment, underperformance or write-downs of related assets, all of which could have a negative impact on our financial performance and stock price.",
+      "ticker": "TSLA",
+      "topic": "product goal"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "strategic misalignment"
+      ],
+      "position": 5,
+      "sentence_id": "0001628280-26-003952:37:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result, misalignment of consumer demand and the technologies and initiatives associated with the 2025 CEO Performance Award, including the product goals, may impair our ability to realize returns on such investments and could lead to strategic misalignment, underperformance or write-downs of related assets, all of which could have a negative impact on our financial performance and stock price.",
+      "ticker": "TSLA",
+      "topic": "strategic misalignment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "4d16055e814616e1",
+      "matched_terms": [
+        "write-downs"
+      ],
+      "position": 5,
+      "sentence_id": "0001628280-26-003952:37:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result, misalignment of consumer demand and the technologies and initiatives associated with the 2025 CEO Performance Award, including the product goals, may impair our ability to realize returns on such investments and could lead to strategic misalignment, underperformance or write-downs of related assets, all of which could have a negative impact on our financial performance and stock price.",
+      "ticker": "TSLA",
+      "topic": "write down"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          126
+        ]
+      ],
+      "change_id": "e41171605360ee4d",
+      "matched_terms": [
+        "CEO Performance Award"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-003952:38:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Mr. Musk may also sell a portion of his shares in order to satisfy tax obligations relating to the 2018 CEO Performance Award.",
+      "ticker": "TSLA",
+      "topic": "ceo performance award"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          126
+        ]
+      ],
+      "change_id": "e41171605360ee4d",
+      "matched_terms": [
+        "tax obligations"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-003952:38:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Mr. Musk may also sell a portion of his shares in order to satisfy tax obligations relating to the 2018 CEO Performance Award.",
+      "ticker": "TSLA",
+      "topic": "tax obligation"
+    },
+    {
+      "added_spans": [
+        [
+          46,
+          78
+        ]
+      ],
+      "change_id": "881d59868716b51c",
+      "matched_terms": [
+        "geopolitical conflicts"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-003952:28:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We may be impacted by natural disasters, wars and other geopolitical conflicts, health epidemics, weather conditions, the long-term effects of climate change, power outages or other events outside of our control.",
+      "ticker": "TSLA",
+      "topic": "geopolitical conflict"
+    },
+    {
+      "added_spans": [
+        [
+          86,
+          115
+        ],
+        [
+          120,
+          180
+        ]
+      ],
+      "change_id": "881d59868716b51c",
+      "matched_terms": [
+        "geopolitical conflicts"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-003952:28:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "If major disasters such as earthquakes, floods or other climate-related events occur, geopolitical conflicts impact our ability to access certain facilities or supply chain, or our information system or communication breaks down or operates improperly, our headquarters and production facilities may be seriously damaged, or we may have to stop or delay production and shipment of our products.",
+      "ticker": "TSLA",
+      "topic": "geopolitical conflict"
+    },
+    {
+      "added_spans": [
+        [
+          86,
+          115
+        ],
+        [
+          120,
+          180
+        ]
+      ],
+      "change_id": "881d59868716b51c",
+      "matched_terms": [
+        "supply chain"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-003952:28:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "If major disasters such as earthquakes, floods or other climate-related events occur, geopolitical conflicts impact our ability to access certain facilities or supply chain, or our information system or communication breaks down or operates improperly, our headquarters and production facilities may be seriously damaged, or we may have to stop or delay production and shipment of our products.",
+      "ticker": "TSLA",
+      "topic": "supply chain"
+    }
+  ],
+  "total_changes": 42
+}

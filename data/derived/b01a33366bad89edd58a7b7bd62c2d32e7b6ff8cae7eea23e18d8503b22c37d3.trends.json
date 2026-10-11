@@ -1,0 +1,665 @@
+{
+  "analysis_id": "b01a33366bad89edd58a7b7bd62c2d32e7b6ff8cae7eea23e18d8503b22c37d3",
+  "by_change_type": {
+    "expanded": 0,
+    "largely_unchanged": 35,
+    "materially_reworded": 1,
+    "new": 0,
+    "reduced": 0,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 2,
+      "added_words": 44,
+      "categories": [
+        "liquidity",
+        "litigation"
+      ],
+      "change_id": "e498f090fd0f75c5",
+      "change_type": "materially_reworded",
+      "modified_sentences": 2,
+      "modified_words": 37,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 32,
+      "short_title": "Our role as guarantor, as well as other contractual obligations"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "litigation"
+      ],
+      "change_id": "3931461a3ccca540",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 14,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "Mastercard Foundation’s substantial stock ownership, and restrictions on its sales"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "foreign_exchange"
+      ],
+      "change_id": "6fd6a6fc37862671",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "Adverse currency fluctuations and foreign exchange controls"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 27,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "abdc677a6d4e8dff",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 42,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Information security incidents or account data compromise events"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "competition"
+      ],
+      "change_id": "08b76dd68874e2c3",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Provisions in our organizational documents and Delaware"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "180000aab987fc85",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We could be subject to adverse changes in tax"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "1c0b20cec055fee8",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 10,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Rapid and significant technological developments and changes"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "2281235f74bd38fc",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Exclusive/near exclusive relationships certain customers have with our competitors"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "28d256e1fe528c7f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Lack of visibility of our brand in our products"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "2d8afb57ae05893f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 34,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Global economic, political, financial and societal events or conditions"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation",
+        "regulation"
+      ],
+      "change_id": "405da4e5371883a0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 1,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Business and Operations"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "4aaad907afe33c83",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Limitations on our ability to restrict merchant surcharging could materially"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "4ab76099110faca6",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 19,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Preferential or protective government actions related to domestic payment services"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 16,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "4f8996bea22cdedf",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 32,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business significantly depends on the continued success"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "4fb9d3a1a0243310",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Increased activity with respect to interchange rates"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 30,
+      "categories": [
+        "regulation",
+        "litigation"
+      ],
+      "change_id": "59a22db9065e2255",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Negative brand perception may materially"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "60c8855cecbffa18",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Operating a real-time account-based payments network presents risks"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 29,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "664f17cac2db65ab",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Disintermediation from stakeholders both within"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "6f6b1b27dce58831",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Regulations that directly or indirectly apply to Mastercard"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "702ee63794914e6c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 5,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Continued intense pricing pressure may materially"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "75fb45f0ddd1fc95",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 5,
+      "modified_words": 53,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may not be able to attract"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "7b5dbfd2e556f357",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 19,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Environmental, social and governance matters and related stakeholder reaction"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition",
+        "regulation"
+      ],
+      "change_id": "89c4a94a1c91afe1",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Working with new customers and end users"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "a14cf778ddab2522",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Consolidation amongst our customers could materially"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "a6edc2a09440ec35",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Merchants’ continued focus on acceptance costs"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "bd9cb888904c83c0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 32,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Liabilities or business limitations resulting from litigation could materially"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "customer_concentration",
+        "competition"
+      ],
+      "change_id": "bf6ab4e15768ba9c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Losing a significant portion of business from one"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "c45e2ca994654af9",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 15,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Issuer and Acquirer Practices Legislation and Regulation"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate",
+        "cybersecurity"
+      ],
+      "change_id": "c61641624b685138",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 16,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Service disruptions that cause us to be unable to process"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "ca0725d1cb0f37f8",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Substantial and intense competition worldwide in the global payments industry"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "cb8ecabee2989ac2",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Class A Common Stock and Governance Structure"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "dbc5055eaea5c473",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 10,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our efforts to enter into acquisitions, strategic investments"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 29,
+      "categories": [
+        "regulation",
+        "artificial_intelligence"
+      ],
+      "change_id": "dd1e824c253660cf",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 9,
+      "modified_words": 76,
+      "removed_sentences": 1,
+      "removed_words": 30,
+      "score": 0,
+      "short_title": "Regulation and enforcement of privacy, data, AI, information security"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "fddfd0e630aa4472",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 14,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our work with governments exposes us to risks"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "geopolitical"
+      ],
+      "change_id": "fdf6440ce710e0bd",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Russia’s invasion of Ukraine"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "fe1fbd7b648127cf",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Global regulatory and legislative activity related to the payments industry"
+    }
+  ],
+  "cik": "0001141391",
+  "company_name": "Mastercard Inc",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0001141391-26-000013",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/1141391/000114139126000013/ma-20251231.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0001141391-25-000011",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/1141391/000114139125000011/ma-20241231.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "MA",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "e498f090fd0f75c5",
+      "matched_terms": [
+        "Brazil"
+      ],
+      "position": 12,
+      "sentence_id": "0001141391-26-000013:33:6",
+      "source": "entity",
+      "status": "added",
+      "text": "In addition, Brazil recently enacted regulation requiring PSOs in Brazil (including Mastercard and Visa) to extend their responsibility for the financial and settlement integrity of payments to merchants.",
+      "ticker": "MA",
+      "topic": "Brazil"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "e498f090fd0f75c5",
+      "matched_terms": [
+        "Visa"
+      ],
+      "position": 12,
+      "sentence_id": "0001141391-26-000013:33:6",
+      "source": "entity",
+      "status": "added",
+      "text": "In addition, Brazil recently enacted regulation requiring PSOs in Brazil (including Mastercard and Visa) to extend their responsibility for the financial and settlement integrity of payments to merchants.",
+      "ticker": "MA",
+      "topic": "Visa"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "e498f090fd0f75c5",
+      "matched_terms": [
+        "settlement integrity"
+      ],
+      "position": 12,
+      "sentence_id": "0001141391-26-000013:33:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, Brazil recently enacted regulation requiring PSOs in Brazil (including Mastercard and Visa) to extend their responsibility for the financial and settlement integrity of payments to merchants.",
+      "ticker": "MA",
+      "topic": "settlement integrity"
+    },
+    {
+      "added_spans": [
+        [
+          6,
+          20
+        ],
+        [
+          71,
+          75
+        ],
+        [
+          90,
+          128
+        ],
+        [
+          132,
+          136
+        ]
+      ],
+      "change_id": "e498f090fd0f75c5",
+      "matched_terms": [
+        "similar approaches"
+      ],
+      "position": 14,
+      "sentence_id": "0001141391-26-000013:33:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As we continue to be subject to increased regulation across the globe, more jurisdictions may enact similar approaches from time to time.",
+      "ticker": "MA",
+      "topic": "similar approach"
+    }
+  ],
+  "total_changes": 36
+}

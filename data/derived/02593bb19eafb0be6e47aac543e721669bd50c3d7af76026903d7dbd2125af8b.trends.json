@@ -1,0 +1,2266 @@
+{
+  "analysis_id": "02593bb19eafb0be6e47aac543e721669bd50c3d7af76026903d7dbd2125af8b",
+  "by_change_type": {
+    "expanded": 2,
+    "largely_unchanged": 28,
+    "materially_reworded": 0,
+    "new": 2,
+    "reduced": 0,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 9,
+      "added_words": 255,
+      "categories": [
+        "supply_chain",
+        "regulation"
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 38,
+      "short_title": "Pharmacy benefit managers and other supply chain intermediaries exert significant"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 76,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "86509b282aefd868",
+      "change_type": "expanded",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 33,
+      "short_title": "Laws and regulations affecting government benefit programs"
+    },
+    {
+      "added_sentences": 7,
+      "added_words": 237,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "change_type": "expanded",
+      "modified_sentences": 9,
+      "modified_words": 122,
+      "removed_sentences": 1,
+      "removed_words": 23,
+      "score": 33,
+      "short_title": "AbbVie is subject to cost-containment efforts and pricing pressures"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 133,
+      "categories": [
+        "supply_chain",
+        "geopolitical"
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 30,
+      "short_title": "Trade restrictions, tariffs, and other changes in global trade policy"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "113549e46641f98d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 8,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 10,
+      "short_title": "AbbVie’s balances of intangible assets, including developed product rights"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property",
+        "competition"
+      ],
+      "change_id": "8025997173041359",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 7,
+      "removed_sentences": 2,
+      "removed_words": 41,
+      "score": 5,
+      "short_title": "The expiration or loss of patent protection and licenses"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "2693d5d04ddee8ba",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Significant safety or efficacy issues could arise for AbbVie's products"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "supply_chain"
+      ],
+      "change_id": "272466c3ffb823c3",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Certain aspects of AbbVie’s operations are highly dependent upon third"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "28c0b4e6eebcaa4f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "AbbVie cannot guarantee the timing, amount"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "2b634b1ed1af9a9f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "AbbVie is subject to governmental regulations"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition",
+        "intellectual_property"
+      ],
+      "change_id": "430aea0249e9c1f6",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "AbbVie's research and development efforts"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "43d0f751e75790de",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "AbbVie is subject to product liability claims and other lawsuits"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "4894822421ee1558",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "AbbVie has debt obligations that could adversely affect its business"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "49ec52492d1c91c8",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The illegal distribution and sale by third parties of counterfeit"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "supply_chain"
+      ],
+      "change_id": "5698422a11014349",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Biologics carry unique risks and uncertainties"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "593cbc3cb6e188c8",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "CAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "5b2b4060173be4c0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Failure to attract, develop and retain highly qualified personnel"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 21,
+      "categories": [
+        "cybersecurity",
+        "artificial_intelligence"
+      ],
+      "change_id": "5e753c83ef1baa29",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 1,
+      "removed_words": 23,
+      "score": 0,
+      "short_title": "AbbVie depends on information technology and a failure"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "605ee4ad8f01c775",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 6,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "New products and technological advances by AbbVie's competitors"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "65aa813bb3d7f622",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Other factors can have a material adverse effect on AbbVie's"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "6e76f057cf00d51e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "A third party's intellectual property"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "81405d15f3c0705f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "AbbVie uses raw materials and components in its pharmaceutical"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "liquidity"
+      ],
+      "change_id": "9c2841ed270ba9ac",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "AbbVie may acquire other businesses, license rights to technologies"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "b2eb7ff9b9ab71bf",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "AbbVie is dependent on wholesale distributors for distribution"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "b3d8c0135cf7c922",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "AbbVie may need additional financing in the future to meet"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "c1c8b8c9d79b7d14",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The manufacture of many of AbbVie's products is a highly"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "d854dcb151ec5c9b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 6,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The international nature of AbbVie's business subjects it to additional"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "e306a285ac2c5e0a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "AbbVie's major products could lose patent protection earlier than expected"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "supply_chain"
+      ],
+      "change_id": "e9cb757eefe132ba",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If AbbVie does not effectively and profitably commercialize its products"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "f7f6cefd4f5e6af5",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "An AbbVie stockholder's percentage of ownership in AbbVie"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "fc4bd8f12d95cd56",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Certain provisions in AbbVie's amended and restated certificate of incorporation"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "ff03832263b66bd2",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "A portion of AbbVie's near-term pharmaceutical pipeline relies on collaborations"
+    }
+  ],
+  "cik": "0001551152",
+  "company_name": "AbbVie Inc.",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0001551152-26-000008",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/1551152/000155115226000008/abbv-20251231.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0001551152-25-000020",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/1551152/000155115225000020/abbv-20241231.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "ABBV",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          0,
+          209
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "patient access"
+      ],
+      "position": 0,
+      "sentence_id": "0001551152-26-000008:5:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Pharmacy benefit managers and other supply chain intermediaries exert significant influence over pricing and patient access to our products, which could adversely affect our revenues and results of operations.",
+      "ticker": "ABBV",
+      "topic": "patient access"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          209
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "Pharmacy benefit managers"
+      ],
+      "position": 0,
+      "sentence_id": "0001551152-26-000008:5:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Pharmacy benefit managers and other supply chain intermediaries exert significant influence over pricing and patient access to our products, which could adversely affect our revenues and results of operations.",
+      "ticker": "ABBV",
+      "topic": "pharmacy benefit manager"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          209
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "supply chain intermediaries"
+      ],
+      "position": 0,
+      "sentence_id": "0001551152-26-000008:5:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Pharmacy benefit managers and other supply chain intermediaries exert significant influence over pricing and patient access to our products, which could adversely affect our revenues and results of operations.",
+      "ticker": "ABBV",
+      "topic": "supply chain intermediary"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          223
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "formulary placement"
+      ],
+      "position": 1,
+      "sentence_id": "0001551152-26-000008:5:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Consolidation and vertical integration among PBMs, managed care organizations and other supply chain intermediaries has increased their purchasing power and ability to influence formulary placement and reimbursement levels.",
+      "ticker": "ABBV",
+      "topic": "formulary placement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          223
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "purchasing power"
+      ],
+      "position": 1,
+      "sentence_id": "0001551152-26-000008:5:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Consolidation and vertical integration among PBMs, managed care organizations and other supply chain intermediaries has increased their purchasing power and ability to influence formulary placement and reimbursement levels.",
+      "ticker": "ABBV",
+      "topic": "purchasing power"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          223
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "reimbursement levels"
+      ],
+      "position": 1,
+      "sentence_id": "0001551152-26-000008:5:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Consolidation and vertical integration among PBMs, managed care organizations and other supply chain intermediaries has increased their purchasing power and ability to influence formulary placement and reimbursement levels.",
+      "ticker": "ABBV",
+      "topic": "reimbursement level"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          223
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "supply chain intermediaries"
+      ],
+      "position": 1,
+      "sentence_id": "0001551152-26-000008:5:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Consolidation and vertical integration among PBMs, managed care organizations and other supply chain intermediaries has increased their purchasing power and ability to influence formulary placement and reimbursement levels.",
+      "ticker": "ABBV",
+      "topic": "supply chain intermediary"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          223
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "vertical integration"
+      ],
+      "position": 1,
+      "sentence_id": "0001551152-26-000008:5:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Consolidation and vertical integration among PBMs, managed care organizations and other supply chain intermediaries has increased their purchasing power and ability to influence formulary placement and reimbursement levels.",
+      "ticker": "ABBV",
+      "topic": "vertical integration"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          211
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "government programs"
+      ],
+      "position": 2,
+      "sentence_id": "0001551152-26-000008:5:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "A limited number of these entities negotiate pricing, rebates and patient access terms on behalf of health plans and government programs that cover a significant portion of insured patients in the United States.",
+      "ticker": "ABBV",
+      "topic": "government program"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          211
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "health plans"
+      ],
+      "position": 2,
+      "sentence_id": "0001551152-26-000008:5:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "A limited number of these entities negotiate pricing, rebates and patient access terms on behalf of health plans and government programs that cover a significant portion of insured patients in the United States.",
+      "ticker": "ABBV",
+      "topic": "health plan"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          211
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "insured patients"
+      ],
+      "position": 2,
+      "sentence_id": "0001551152-26-000008:5:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "A limited number of these entities negotiate pricing, rebates and patient access terms on behalf of health plans and government programs that cover a significant portion of insured patients in the United States.",
+      "ticker": "ABBV",
+      "topic": "insured patient"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          211
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "patient access terms"
+      ],
+      "position": 2,
+      "sentence_id": "0001551152-26-000008:5:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "A limited number of these entities negotiate pricing, rebates and patient access terms on behalf of health plans and government programs that cover a significant portion of insured patients in the United States.",
+      "ticker": "ABBV",
+      "topic": "patient access term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          211
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "United States"
+      ],
+      "position": 2,
+      "sentence_id": "0001551152-26-000008:5:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "A limited number of these entities negotiate pricing, rebates and patient access terms on behalf of health plans and government programs that cover a significant portion of insured patients in the United States.",
+      "ticker": "ABBV",
+      "topic": "united states"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          335
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "competing therapies"
+      ],
+      "position": 3,
+      "sentence_id": "0001551152-26-000008:5:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "These entities employ formulary management and utilization tools, including formulary exclusions, step therapy requirements, prior authorization protocols and tiered placement decisions, that could limit or delay patient access to our products, potentially increase patient cost-sharing and/or shift utilization to competing therapies.",
+      "ticker": "ABBV",
+      "topic": "competing therapy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          335
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "formulary exclusions"
+      ],
+      "position": 3,
+      "sentence_id": "0001551152-26-000008:5:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "These entities employ formulary management and utilization tools, including formulary exclusions, step therapy requirements, prior authorization protocols and tiered placement decisions, that could limit or delay patient access to our products, potentially increase patient cost-sharing and/or shift utilization to competing therapies.",
+      "ticker": "ABBV",
+      "topic": "formulary exclusion"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          335
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "patient access"
+      ],
+      "position": 3,
+      "sentence_id": "0001551152-26-000008:5:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "These entities employ formulary management and utilization tools, including formulary exclusions, step therapy requirements, prior authorization protocols and tiered placement decisions, that could limit or delay patient access to our products, potentially increase patient cost-sharing and/or shift utilization to competing therapies.",
+      "ticker": "ABBV",
+      "topic": "patient access"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          335
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "prior authorization protocols"
+      ],
+      "position": 3,
+      "sentence_id": "0001551152-26-000008:5:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "These entities employ formulary management and utilization tools, including formulary exclusions, step therapy requirements, prior authorization protocols and tiered placement decisions, that could limit or delay patient access to our products, potentially increase patient cost-sharing and/or shift utilization to competing therapies.",
+      "ticker": "ABBV",
+      "topic": "prior authorization protocol"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          335
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "step therapy requirements"
+      ],
+      "position": 3,
+      "sentence_id": "0001551152-26-000008:5:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "These entities employ formulary management and utilization tools, including formulary exclusions, step therapy requirements, prior authorization protocols and tiered placement decisions, that could limit or delay patient access to our products, potentially increase patient cost-sharing and/or shift utilization to competing therapies.",
+      "ticker": "ABBV",
+      "topic": "step therapy requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          335
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "tiered placement decisions"
+      ],
+      "position": 3,
+      "sentence_id": "0001551152-26-000008:5:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "These entities employ formulary management and utilization tools, including formulary exclusions, step therapy requirements, prior authorization protocols and tiered placement decisions, that could limit or delay patient access to our products, potentially increase patient cost-sharing and/or shift utilization to competing therapies.",
+      "ticker": "ABBV",
+      "topic": "tiered placement decision"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          150
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "increased utilization management restrictions"
+      ],
+      "position": 4,
+      "sentence_id": "0001551152-26-000008:5:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Unfavorable formulary decisions and increased utilization management restrictions could reduce prescription volumes and adversely affect our revenues.",
+      "ticker": "ABBV",
+      "topic": "increased utilization management restriction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          150
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "prescription volumes"
+      ],
+      "position": 4,
+      "sentence_id": "0001551152-26-000008:5:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Unfavorable formulary decisions and increased utilization management restrictions could reduce prescription volumes and adversely affect our revenues.",
+      "ticker": "ABBV",
+      "topic": "prescription volume"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          150
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "Unfavorable formulary decisions"
+      ],
+      "position": 4,
+      "sentence_id": "0001551152-26-000008:5:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Unfavorable formulary decisions and increased utilization management restrictions could reduce prescription volumes and adversely affect our revenues.",
+      "ticker": "ABBV",
+      "topic": "unfavorable formulary decision"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          182
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "advance notice"
+      ],
+      "position": 5,
+      "sentence_id": "0001551152-26-000008:5:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further changes in formulary placement or access restrictions implemented by these intermediaries could occur with limited advance notice and may be difficult to predict or mitigate.",
+      "ticker": "ABBV",
+      "topic": "advance notice"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          194
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "enforcement actions"
+      ],
+      "position": 6,
+      "sentence_id": "0001551152-26-000008:5:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "PBM business practices, rebate structures and pricing arrangements are also subject to change as a result of enforcement actions, regulatory settlements, legislation or other government actions.",
+      "ticker": "ABBV",
+      "topic": "enforcement action"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          194
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "government actions"
+      ],
+      "position": 6,
+      "sentence_id": "0001551152-26-000008:5:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "PBM business practices, rebate structures and pricing arrangements are also subject to change as a result of enforcement actions, regulatory settlements, legislation or other government actions.",
+      "ticker": "ABBV",
+      "topic": "government action"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          194
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "PBM business practices"
+      ],
+      "position": 6,
+      "sentence_id": "0001551152-26-000008:5:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "PBM business practices, rebate structures and pricing arrangements are also subject to change as a result of enforcement actions, regulatory settlements, legislation or other government actions.",
+      "ticker": "ABBV",
+      "topic": "pbm business practice"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          194
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "pricing arrangements"
+      ],
+      "position": 6,
+      "sentence_id": "0001551152-26-000008:5:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "PBM business practices, rebate structures and pricing arrangements are also subject to change as a result of enforcement actions, regulatory settlements, legislation or other government actions.",
+      "ticker": "ABBV",
+      "topic": "pricing arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          194
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "rebate structures"
+      ],
+      "position": 6,
+      "sentence_id": "0001551152-26-000008:5:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "PBM business practices, rebate structures and pricing arrangements are also subject to change as a result of enforcement actions, regulatory settlements, legislation or other government actions.",
+      "ticker": "ABBV",
+      "topic": "rebate structure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          194
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "regulatory settlements"
+      ],
+      "position": 6,
+      "sentence_id": "0001551152-26-000008:5:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "PBM business practices, rebate structures and pricing arrangements are also subject to change as a result of enforcement actions, regulatory settlements, legislation or other government actions.",
+      "ticker": "ABBV",
+      "topic": "regulatory settlement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          239
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "contractual arrangements"
+      ],
+      "position": 7,
+      "sentence_id": "0001551152-26-000008:5:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Government-mandated changes to PBM rebate methodologies, formulary design or pricing transparency practices could affect our contractual arrangements with PBMs, alter manufacturer-PBM economic relationships or shift costs to manufacturers.",
+      "ticker": "ABBV",
+      "topic": "contractual arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          239
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "Government-mandated changes"
+      ],
+      "position": 7,
+      "sentence_id": "0001551152-26-000008:5:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Government-mandated changes to PBM rebate methodologies, formulary design or pricing transparency practices could affect our contractual arrangements with PBMs, alter manufacturer-PBM economic relationships or shift costs to manufacturers.",
+      "ticker": "ABBV",
+      "topic": "government mandated change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          239
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "manufacturer-PBM economic relationships"
+      ],
+      "position": 7,
+      "sentence_id": "0001551152-26-000008:5:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Government-mandated changes to PBM rebate methodologies, formulary design or pricing transparency practices could affect our contractual arrangements with PBMs, alter manufacturer-PBM economic relationships or shift costs to manufacturers.",
+      "ticker": "ABBV",
+      "topic": "manufacturer pbm economic relationship"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          239
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "PBM rebate methodologies"
+      ],
+      "position": 7,
+      "sentence_id": "0001551152-26-000008:5:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Government-mandated changes to PBM rebate methodologies, formulary design or pricing transparency practices could affect our contractual arrangements with PBMs, alter manufacturer-PBM economic relationships or shift costs to manufacturers.",
+      "ticker": "ABBV",
+      "topic": "pbm rebate methodology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          239
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "shift costs"
+      ],
+      "position": 7,
+      "sentence_id": "0001551152-26-000008:5:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Government-mandated changes to PBM rebate methodologies, formulary design or pricing transparency practices could affect our contractual arrangements with PBMs, alter manufacturer-PBM economic relationships or shift costs to manufacturers.",
+      "ticker": "ABBV",
+      "topic": "shift cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          198
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "administrative fees"
+      ],
+      "position": 8,
+      "sentence_id": "0001551152-26-000008:5:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, these entities may negotiate higher or additional rebates, discounts, administrative fees or other price concessions that could adversely affect our revenues and results of operations.",
+      "ticker": "ABBV",
+      "topic": "administrative fee"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          198
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "higher or additional rebates"
+      ],
+      "position": 8,
+      "sentence_id": "0001551152-26-000008:5:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, these entities may negotiate higher or additional rebates, discounts, administrative fees or other price concessions that could adversely affect our revenues and results of operations.",
+      "ticker": "ABBV",
+      "topic": "higher or additional rebate"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          198
+        ]
+      ],
+      "change_id": "631cbf2b2f449f23",
+      "matched_terms": [
+        "price concessions"
+      ],
+      "position": 8,
+      "sentence_id": "0001551152-26-000008:5:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, these entities may negotiate higher or additional rebates, discounts, administrative fees or other price concessions that could adversely affect our revenues and results of operations.",
+      "ticker": "ABBV",
+      "topic": "price concession"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          231
+        ]
+      ],
+      "change_id": "86509b282aefd868",
+      "matched_terms": [
+        "covered entities"
+      ],
+      "position": 6,
+      "sentence_id": "0001551152-26-000008:16:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "The 340B Drug Pricing Program requires participating manufacturers to offer discounts to covered entities and growth in entities claiming entitlement to 340B pricing has increased the portion of our sales subject to such discounts.",
+      "ticker": "ABBV",
+      "topic": "covered entity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          151
+        ]
+      ],
+      "change_id": "86509b282aefd868",
+      "matched_terms": [
+        "enforcement actions"
+      ],
+      "position": 7,
+      "sentence_id": "0001551152-26-000008:16:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Manufacturer policies designed to improve program integrity have been subject to enforcement actions and legal challenges under federal and state laws.",
+      "ticker": "ABBV",
+      "topic": "enforcement action"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          151
+        ]
+      ],
+      "change_id": "86509b282aefd868",
+      "matched_terms": [
+        "federal and state laws"
+      ],
+      "position": 7,
+      "sentence_id": "0001551152-26-000008:16:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Manufacturer policies designed to improve program integrity have been subject to enforcement actions and legal challenges under federal and state laws.",
+      "ticker": "ABBV",
+      "topic": "federal and state law"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          151
+        ]
+      ],
+      "change_id": "86509b282aefd868",
+      "matched_terms": [
+        "legal challenges"
+      ],
+      "position": 7,
+      "sentence_id": "0001551152-26-000008:16:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Manufacturer policies designed to improve program integrity have been subject to enforcement actions and legal challenges under federal and state laws.",
+      "ticker": "ABBV",
+      "topic": "legal challenge"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          151
+        ]
+      ],
+      "change_id": "86509b282aefd868",
+      "matched_terms": [
+        "Manufacturer policies"
+      ],
+      "position": 7,
+      "sentence_id": "0001551152-26-000008:16:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Manufacturer policies designed to improve program integrity have been subject to enforcement actions and legal challenges under federal and state laws.",
+      "ticker": "ABBV",
+      "topic": "manufacturer policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          151
+        ]
+      ],
+      "change_id": "86509b282aefd868",
+      "matched_terms": [
+        "program integrity"
+      ],
+      "position": 7,
+      "sentence_id": "0001551152-26-000008:16:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Manufacturer policies designed to improve program integrity have been subject to enforcement actions and legal challenges under federal and state laws.",
+      "ticker": "ABBV",
+      "topic": "program integrity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          334
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "MFN"
+      ],
+      "position": 31,
+      "sentence_id": "0001551152-26-000008:4:15",
+      "source": "entity",
+      "status": "added",
+      "text": "In addition to the pricing mechanisms established under the IRA, governments and other payers may pursue or implement additional approaches intended to reduce pharmaceutical costs, including arrangements or frameworks that reference international prices, most-favored-nation (MFN) concepts, or other comparative pricing methodologies.",
+      "ticker": "ABBV",
+      "topic": "MFN"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          334
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "pharmaceutical costs"
+      ],
+      "position": 31,
+      "sentence_id": "0001551152-26-000008:4:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition to the pricing mechanisms established under the IRA, governments and other payers may pursue or implement additional approaches intended to reduce pharmaceutical costs, including arrangements or frameworks that reference international prices, most-favored-nation (MFN) concepts, or other comparative pricing methodologies.",
+      "ticker": "ABBV",
+      "topic": "pharmaceutical cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          334
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "pricing mechanisms"
+      ],
+      "position": 31,
+      "sentence_id": "0001551152-26-000008:4:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition to the pricing mechanisms established under the IRA, governments and other payers may pursue or implement additional approaches intended to reduce pharmaceutical costs, including arrangements or frameworks that reference international prices, most-favored-nation (MFN) concepts, or other comparative pricing methodologies.",
+      "ticker": "ABBV",
+      "topic": "pricing mechanism"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          199
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "administrative action"
+      ],
+      "position": 32,
+      "sentence_id": "0001551152-26-000008:4:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "Such approaches may be implemented through legislation, regulation, administrative action, negotiated arrangements, or other means, and their scope, structure, and application may continue to evolve.",
+      "ticker": "ABBV",
+      "topic": "administrative action"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          199
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "negotiated arrangements"
+      ],
+      "position": 32,
+      "sentence_id": "0001551152-26-000008:4:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "Such approaches may be implemented through legislation, regulation, administrative action, negotiated arrangements, or other means, and their scope, structure, and application may continue to evolve.",
+      "ticker": "ABBV",
+      "topic": "negotiated arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          303
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "tariffs"
+      ],
+      "position": 33,
+      "sentence_id": "0001551152-26-000008:4:17",
+      "source": "lexicon",
+      "status": "added",
+      "text": "In January 2026, AbbVie entered into a voluntary agreement with the United States government to provide certain pricing concessions and U.S.-based research and development and capital investments in exchange for exemptions from tariffs and future pricing mandates during the three-year agreement period.",
+      "ticker": "ABBV",
+      "topic": "Tariffs"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          303
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "capital investments"
+      ],
+      "position": 33,
+      "sentence_id": "0001551152-26-000008:4:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "In January 2026, AbbVie entered into a voluntary agreement with the United States government to provide certain pricing concessions and U.S.-based research and development and capital investments in exchange for exemptions from tariffs and future pricing mandates during the three-year agreement period.",
+      "ticker": "ABBV",
+      "topic": "capital investment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          303
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "pricing concessions"
+      ],
+      "position": 33,
+      "sentence_id": "0001551152-26-000008:4:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "In January 2026, AbbVie entered into a voluntary agreement with the United States government to provide certain pricing concessions and U.S.-based research and development and capital investments in exchange for exemptions from tariffs and future pricing mandates during the three-year agreement period.",
+      "ticker": "ABBV",
+      "topic": "pricing concession"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          303
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "United States government"
+      ],
+      "position": 33,
+      "sentence_id": "0001551152-26-000008:4:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "In January 2026, AbbVie entered into a voluntary agreement with the United States government to provide certain pricing concessions and U.S.-based research and development and capital investments in exchange for exemptions from tariffs and future pricing mandates during the three-year agreement period.",
+      "ticker": "ABBV",
+      "topic": "united states government"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          303
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "voluntary agreement"
+      ],
+      "position": 33,
+      "sentence_id": "0001551152-26-000008:4:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "In January 2026, AbbVie entered into a voluntary agreement with the United States government to provide certain pricing concessions and U.S.-based research and development and capital investments in exchange for exemptions from tariffs and future pricing mandates during the three-year agreement period.",
+      "ticker": "ABBV",
+      "topic": "voluntary agreement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          187
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "commercial performance"
+      ],
+      "position": 34,
+      "sentence_id": "0001551152-26-000008:4:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, our pricing concessions and expansion of direct-to-patient offerings may subject AbbVie to new pricing or reimbursement policies that could affect our commercial performance.",
+      "ticker": "ABBV",
+      "topic": "commercial performance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          187
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "direct-to-patient offerings"
+      ],
+      "position": 34,
+      "sentence_id": "0001551152-26-000008:4:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, our pricing concessions and expansion of direct-to-patient offerings may subject AbbVie to new pricing or reimbursement policies that could affect our commercial performance.",
+      "ticker": "ABBV",
+      "topic": "direct to patient offering"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          187
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "pricing concessions"
+      ],
+      "position": 34,
+      "sentence_id": "0001551152-26-000008:4:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, our pricing concessions and expansion of direct-to-patient offerings may subject AbbVie to new pricing or reimbursement policies that could affect our commercial performance.",
+      "ticker": "ABBV",
+      "topic": "pricing concession"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          187
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "pricing or reimbursement policies"
+      ],
+      "position": 34,
+      "sentence_id": "0001551152-26-000008:4:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, our pricing concessions and expansion of direct-to-patient offerings may subject AbbVie to new pricing or reimbursement policies that could affect our commercial performance.",
+      "ticker": "ABBV",
+      "topic": "pricing or reimbursement policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "MFN"
+      ],
+      "position": 35,
+      "sentence_id": "0001551152-26-000008:4:19",
+      "source": "entity",
+      "status": "added",
+      "text": "Where pricing arrangements incorporate MFN, reference pricing, or similar concepts, AbbVie’s realized pricing, revenues, or commercial flexibility could be affected by factors outside of AbbVie’s control, including changes in applicable policies, methodologies, guidance, or related pricing regimes, as well as interactions with other governmental or private-sector pricing and reimbursement programs.",
+      "ticker": "ABBV",
+      "topic": "MFN"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "commercial flexibility"
+      ],
+      "position": 35,
+      "sentence_id": "0001551152-26-000008:4:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "Where pricing arrangements incorporate MFN, reference pricing, or similar concepts, AbbVie’s realized pricing, revenues, or commercial flexibility could be affected by factors outside of AbbVie’s control, including changes in applicable policies, methodologies, guidance, or related pricing regimes, as well as interactions with other governmental or private-sector pricing and reimbursement programs.",
+      "ticker": "ABBV",
+      "topic": "commercial flexibility"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "pricing arrangements"
+      ],
+      "position": 35,
+      "sentence_id": "0001551152-26-000008:4:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "Where pricing arrangements incorporate MFN, reference pricing, or similar concepts, AbbVie’s realized pricing, revenues, or commercial flexibility could be affected by factors outside of AbbVie’s control, including changes in applicable policies, methodologies, guidance, or related pricing regimes, as well as interactions with other governmental or private-sector pricing and reimbursement programs.",
+      "ticker": "ABBV",
+      "topic": "pricing arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "pricing regimes"
+      ],
+      "position": 35,
+      "sentence_id": "0001551152-26-000008:4:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "Where pricing arrangements incorporate MFN, reference pricing, or similar concepts, AbbVie’s realized pricing, revenues, or commercial flexibility could be affected by factors outside of AbbVie’s control, including changes in applicable policies, methodologies, guidance, or related pricing regimes, as well as interactions with other governmental or private-sector pricing and reimbursement programs.",
+      "ticker": "ABBV",
+      "topic": "pricing regime"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "reference pricing"
+      ],
+      "position": 35,
+      "sentence_id": "0001551152-26-000008:4:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "Where pricing arrangements incorporate MFN, reference pricing, or similar concepts, AbbVie’s realized pricing, revenues, or commercial flexibility could be affected by factors outside of AbbVie’s control, including changes in applicable policies, methodologies, guidance, or related pricing regimes, as well as interactions with other governmental or private-sector pricing and reimbursement programs.",
+      "ticker": "ABBV",
+      "topic": "reference pricing"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "reimbursement programs"
+      ],
+      "position": 35,
+      "sentence_id": "0001551152-26-000008:4:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "Where pricing arrangements incorporate MFN, reference pricing, or similar concepts, AbbVie’s realized pricing, revenues, or commercial flexibility could be affected by factors outside of AbbVie’s control, including changes in applicable policies, methodologies, guidance, or related pricing regimes, as well as interactions with other governmental or private-sector pricing and reimbursement programs.",
+      "ticker": "ABBV",
+      "topic": "reimbursement program"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "similar concepts"
+      ],
+      "position": 35,
+      "sentence_id": "0001551152-26-000008:4:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "Where pricing arrangements incorporate MFN, reference pricing, or similar concepts, AbbVie’s realized pricing, revenues, or commercial flexibility could be affected by factors outside of AbbVie’s control, including changes in applicable policies, methodologies, guidance, or related pricing regimes, as well as interactions with other governmental or private-sector pricing and reimbursement programs.",
+      "ticker": "ABBV",
+      "topic": "similar concept"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          114
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "pricing expectations"
+      ],
+      "position": 36,
+      "sentence_id": "0001551152-26-000008:4:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Such arrangements could also influence pricing expectations or negotiations in other markets or with other payers.",
+      "ticker": "ABBV",
+      "topic": "pricing expectation"
+    },
+    {
+      "added_spans": [
+        [
+          212,
+          285
+        ],
+        [
+          329,
+          397
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "formulary restrictions"
+      ],
+      "position": 40,
+      "sentence_id": "0001551152-26-000008:4:22",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The potential for continuing changes to the health care system in the United States and the increased purchasing power of entities that negotiate on behalf of Medicare, Medicaid and private sector beneficiaries, including pharmacy benefit managers (PBMs) and managed care organizations may result in additional pricing pressures and formulary restrictions that limit patient access to our products.",
+      "ticker": "ABBV",
+      "topic": "formulary restriction"
+    },
+    {
+      "added_spans": [
+        [
+          212,
+          285
+        ],
+        [
+          329,
+          397
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "managed care organizations"
+      ],
+      "position": 40,
+      "sentence_id": "0001551152-26-000008:4:22",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The potential for continuing changes to the health care system in the United States and the increased purchasing power of entities that negotiate on behalf of Medicare, Medicaid and private sector beneficiaries, including pharmacy benefit managers (PBMs) and managed care organizations may result in additional pricing pressures and formulary restrictions that limit patient access to our products.",
+      "ticker": "ABBV",
+      "topic": "managed care organization"
+    },
+    {
+      "added_spans": [
+        [
+          212,
+          285
+        ],
+        [
+          329,
+          397
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "pharmacy benefit managers"
+      ],
+      "position": 40,
+      "sentence_id": "0001551152-26-000008:4:22",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The potential for continuing changes to the health care system in the United States and the increased purchasing power of entities that negotiate on behalf of Medicare, Medicaid and private sector beneficiaries, including pharmacy benefit managers (PBMs) and managed care organizations may result in additional pricing pressures and formulary restrictions that limit patient access to our products.",
+      "ticker": "ABBV",
+      "topic": "pharmacy benefit manager"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          250
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "PBM"
+      ],
+      "position": 41,
+      "sentence_id": "0001551152-26-000008:4:23",
+      "source": "entity",
+      "status": "added",
+      "text": "For further discussion of PBM formulary practices and their impact on pricing and patient access, see \"Pharmacy benefit managers and other supply chain intermediaries exert significant influence over pricing and patient access to our products\" below.",
+      "ticker": "ABBV",
+      "topic": "PBM"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          250
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "PBM formulary practices"
+      ],
+      "position": 41,
+      "sentence_id": "0001551152-26-000008:4:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "For further discussion of PBM formulary practices and their impact on pricing and patient access, see \"Pharmacy benefit managers and other supply chain intermediaries exert significant influence over pricing and patient access to our products\" below.",
+      "ticker": "ABBV",
+      "topic": "pbm formulary practice"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          250
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "Pharmacy benefit managers"
+      ],
+      "position": 41,
+      "sentence_id": "0001551152-26-000008:4:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "For further discussion of PBM formulary practices and their impact on pricing and patient access, see \"Pharmacy benefit managers and other supply chain intermediaries exert significant influence over pricing and patient access to our products\" below.",
+      "ticker": "ABBV",
+      "topic": "pharmacy benefit manager"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          250
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "supply chain intermediaries"
+      ],
+      "position": 41,
+      "sentence_id": "0001551152-26-000008:4:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "For further discussion of PBM formulary practices and their impact on pricing and patient access, see \"Pharmacy benefit managers and other supply chain intermediaries exert significant influence over pricing and patient access to our products\" below.",
+      "ticker": "ABBV",
+      "topic": "supply chain intermediary"
+    },
+    {
+      "added_spans": [
+        [
+          37,
+          44
+        ],
+        [
+          166,
+          180
+        ],
+        [
+          248,
+          274
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "price concessions"
+      ],
+      "position": 53,
+      "sentence_id": "0001551152-26-000008:4:29",
+      "source": "phrase",
+      "status": "modified",
+      "text": "AbbVie cannot predict with certainty whether additional government initiatives to contain health care costs or other factors could lead to new or modified regulatory or contractual requirements that include higher or incremental rebates, discounts or other price concessions.",
+      "ticker": "ABBV",
+      "topic": "price concession"
+    },
+    {
+      "added_spans": [
+        [
+          90,
+          135
+        ]
+      ],
+      "change_id": "ce7e54b3f587f79e",
+      "matched_terms": [
+        "managed care organizations"
+      ],
+      "position": 55,
+      "sentence_id": "0001551152-26-000008:4:30",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Other rebate and discount programs arise from contractual agreements with private payers, including PBMs and managed care organizations.",
+      "ticker": "ABBV",
+      "topic": "managed care organization"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "tariffs"
+      ],
+      "position": 0,
+      "sentence_id": "0001551152-26-000008:8:0",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Trade restrictions, tariffs, and other changes in global trade policy could increase costs, disrupt supply chains, and adversely affect AbbVie’s business and results of operations.",
+      "ticker": "ABBV",
+      "topic": "Tariffs"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "disrupt supply chains"
+      ],
+      "position": 0,
+      "sentence_id": "0001551152-26-000008:8:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Trade restrictions, tariffs, and other changes in global trade policy could increase costs, disrupt supply chains, and adversely affect AbbVie’s business and results of operations.",
+      "ticker": "ABBV",
+      "topic": "disrupt supply chain"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "global trade policy"
+      ],
+      "position": 0,
+      "sentence_id": "0001551152-26-000008:8:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Trade restrictions, tariffs, and other changes in global trade policy could increase costs, disrupt supply chains, and adversely affect AbbVie’s business and results of operations.",
+      "ticker": "ABBV",
+      "topic": "global trade policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "Trade restrictions"
+      ],
+      "position": 0,
+      "sentence_id": "0001551152-26-000008:8:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Trade restrictions, tariffs, and other changes in global trade policy could increase costs, disrupt supply chains, and adversely affect AbbVie’s business and results of operations.",
+      "ticker": "ABBV",
+      "topic": "trade restriction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          236
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "active pharmaceutical ingredients"
+      ],
+      "position": 1,
+      "sentence_id": "0001551152-26-000008:8:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "AbbVie operates in a global environment and relies on complex international supply chains for the development, manufacture, and distribution of its products, including the sourcing of active pharmaceutical ingredients and key materials.",
+      "ticker": "ABBV",
+      "topic": "active pharmaceutical ingredient"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          236
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "complex international supply chains"
+      ],
+      "position": 1,
+      "sentence_id": "0001551152-26-000008:8:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "AbbVie operates in a global environment and relies on complex international supply chains for the development, manufacture, and distribution of its products, including the sourcing of active pharmaceutical ingredients and key materials.",
+      "ticker": "ABBV",
+      "topic": "complex international supply chain"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          236
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "global environment"
+      ],
+      "position": 1,
+      "sentence_id": "0001551152-26-000008:8:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "AbbVie operates in a global environment and relies on complex international supply chains for the development, manufacture, and distribution of its products, including the sourcing of active pharmaceutical ingredients and key materials.",
+      "ticker": "ABBV",
+      "topic": "global environment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          283
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "tariffs"
+      ],
+      "position": 2,
+      "sentence_id": "0001551152-26-000008:8:2",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Changes in global trade policy, including the potential imposition of import or export tariffs, trade restrictions, or other measures affecting pharmaceutical products or related inputs, could increase manufacturing and procurement costs, reduce margins or disrupt supply continuity.",
+      "ticker": "ABBV",
+      "topic": "Tariffs"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          283
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "disrupt supply continuity"
+      ],
+      "position": 2,
+      "sentence_id": "0001551152-26-000008:8:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in global trade policy, including the potential imposition of import or export tariffs, trade restrictions, or other measures affecting pharmaceutical products or related inputs, could increase manufacturing and procurement costs, reduce margins or disrupt supply continuity.",
+      "ticker": "ABBV",
+      "topic": "disrupt supply continuity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          283
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "global trade policy"
+      ],
+      "position": 2,
+      "sentence_id": "0001551152-26-000008:8:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in global trade policy, including the potential imposition of import or export tariffs, trade restrictions, or other measures affecting pharmaceutical products or related inputs, could increase manufacturing and procurement costs, reduce margins or disrupt supply continuity.",
+      "ticker": "ABBV",
+      "topic": "global trade policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          283
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "manufacturing and procurement costs"
+      ],
+      "position": 2,
+      "sentence_id": "0001551152-26-000008:8:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in global trade policy, including the potential imposition of import or export tariffs, trade restrictions, or other measures affecting pharmaceutical products or related inputs, could increase manufacturing and procurement costs, reduce margins or disrupt supply continuity.",
+      "ticker": "ABBV",
+      "topic": "manufacturing and procurement cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          283
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "pharmaceutical products"
+      ],
+      "position": 2,
+      "sentence_id": "0001551152-26-000008:8:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in global trade policy, including the potential imposition of import or export tariffs, trade restrictions, or other measures affecting pharmaceutical products or related inputs, could increase manufacturing and procurement costs, reduce margins or disrupt supply continuity.",
+      "ticker": "ABBV",
+      "topic": "pharmaceutical product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          283
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "trade restrictions"
+      ],
+      "position": 2,
+      "sentence_id": "0001551152-26-000008:8:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes in global trade policy, including the potential imposition of import or export tariffs, trade restrictions, or other measures affecting pharmaceutical products or related inputs, could increase manufacturing and procurement costs, reduce margins or disrupt supply continuity.",
+      "ticker": "ABBV",
+      "topic": "trade restriction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          281
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "alternative sourcing arrangements"
+      ],
+      "position": 3,
+      "sentence_id": "0001551152-26-000008:8:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "If AbbVie is unable to substantially mitigate or offset increased costs or disruptions resulting from such measures through pricing adjustments, operational changes, or alternative sourcing arrangements, it may have an adverse effect on AbbVie’s business and results of operations.",
+      "ticker": "ABBV",
+      "topic": "alternative sourcing arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          281
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "increased costs"
+      ],
+      "position": 3,
+      "sentence_id": "0001551152-26-000008:8:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "If AbbVie is unable to substantially mitigate or offset increased costs or disruptions resulting from such measures through pricing adjustments, operational changes, or alternative sourcing arrangements, it may have an adverse effect on AbbVie’s business and results of operations.",
+      "ticker": "ABBV",
+      "topic": "increased cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          281
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "operational changes"
+      ],
+      "position": 3,
+      "sentence_id": "0001551152-26-000008:8:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "If AbbVie is unable to substantially mitigate or offset increased costs or disruptions resulting from such measures through pricing adjustments, operational changes, or alternative sourcing arrangements, it may have an adverse effect on AbbVie’s business and results of operations.",
+      "ticker": "ABBV",
+      "topic": "operational change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          281
+        ]
+      ],
+      "change_id": "5ffa1a2b6d8195b2",
+      "matched_terms": [
+        "pricing adjustments"
+      ],
+      "position": 3,
+      "sentence_id": "0001551152-26-000008:8:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "If AbbVie is unable to substantially mitigate or offset increased costs or disruptions resulting from such measures through pricing adjustments, operational changes, or alternative sourcing arrangements, it may have an adverse effect on AbbVie’s business and results of operations.",
+      "ticker": "ABBV",
+      "topic": "pricing adjustment"
+    }
+  ],
+  "total_changes": 32
+}

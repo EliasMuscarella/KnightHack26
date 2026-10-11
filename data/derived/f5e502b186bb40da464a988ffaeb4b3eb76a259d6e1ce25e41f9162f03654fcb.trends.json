@@ -1,0 +1,1731 @@
+{
+  "analysis_id": "f5e502b186bb40da464a988ffaeb4b3eb76a259d6e1ce25e41f9162f03654fcb",
+  "by_change_type": {
+    "expanded": 4,
+    "largely_unchanged": 41,
+    "materially_reworded": 1,
+    "new": 0,
+    "reduced": 0,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 2,
+      "added_words": 104,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "change_type": "expanded",
+      "modified_sentences": 5,
+      "modified_words": 62,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 37,
+      "short_title": "We are currently, and expect to be…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 25,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "63fa4511923830e6",
+      "change_type": "materially_reworded",
+      "modified_sentences": 2,
+      "modified_words": 37,
+      "removed_sentences": 1,
+      "removed_words": 40,
+      "score": 28,
+      "short_title": "Given our levels of share-based compensation, our…"
+    },
+    {
+      "added_sentences": 6,
+      "added_words": 158,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "change_type": "expanded",
+      "modified_sentences": 4,
+      "modified_words": 52,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 24,
+      "short_title": "We incur significant expenses in operating our…"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 122,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "change_type": "expanded",
+      "modified_sentences": 8,
+      "modified_words": 145,
+      "removed_sentences": 1,
+      "removed_words": 17,
+      "score": 23,
+      "short_title": "We may not be successful in our…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 31,
+      "categories": [
+        "labor",
+        "litigation"
+      ],
+      "change_id": "52d36844525ff3b2",
+      "change_type": "expanded",
+      "modified_sentences": 5,
+      "modified_words": 31,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 15,
+      "short_title": "We may not be able to continue…"
+    },
+    {
+      "added_sentences": 7,
+      "added_words": 153,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "c192cae79e81dc9e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 18,
+      "modified_words": 300,
+      "removed_sentences": 4,
+      "removed_words": 212,
+      "score": 12,
+      "short_title": "Actions by governments that restrict access to…"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 105,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "fc1e8fb604011a48",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 10,
+      "removed_sentences": 1,
+      "removed_words": 21,
+      "score": 5,
+      "short_title": "Real or perceived inaccuracies in our community…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation",
+        "competition"
+      ],
+      "change_id": "fd6a56709cdbabd0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 6,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "The trading price of our Class A…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "225900988b9c7ff9",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 9,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Compliance with our FTC consent order, the…"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 79,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "9c56235151ed87e9",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 7,
+      "modified_words": 65,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "We generate substantially all of our revenue…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 68,
+      "categories": [
+        "regulation",
+        "litigation"
+      ],
+      "change_id": "dd76b9ecb44f0b4b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 49,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "We may incur liability as a result…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "0f23a0747240f2f7",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 11,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our financial results will fluctuate from quarter…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "120f29821be13875",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we are unable to protect our…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "13917fa9f3eba407",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are subject to the risk of…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "25b6a16cfc7cbd19",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The dual class structure of our common…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "26003526dae30683",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 41,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Intentional misuse of our services and user…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 33,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "2992350d105735a9",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 32,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We have had, and may in the…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "3aa4ea564a7398cb",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We cannot guarantee that our share repurchase…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain",
+        "macroeconomic"
+      ],
+      "change_id": "3fa82389eb1c1b60",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We face inventory risk with respect to…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "459f465d4b024df8",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We face design, manufacturing, and supply chain…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "49b0532555a50064",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 24,
+      "removed_sentences": 1,
+      "removed_words": 30,
+      "score": 0,
+      "short_title": "If we fail to retain existing users…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 1,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "4d79d0d3909d71ad",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 1,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We have significant international operations, which subject…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition",
+        "artificial_intelligence"
+      ],
+      "change_id": "5abb72cd1f0db7f6",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 8,
+      "removed_sentences": 1,
+      "removed_words": 10,
+      "score": 0,
+      "short_title": "We may not be successful in our…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 35,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "5d0458b5c18e83dd",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 21,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Unfavorable media coverage negatively affects our business"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 37,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "6a4369497ef97806",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 16,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are involved in numerous class action…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "6f7bd968d7461dbe",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 10,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We plan to continue to make acquisitions…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "762c0d70e82d1983",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We cannot assure you that we will…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "litigation"
+      ],
+      "change_id": "79191bf52a4ed829",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 16,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We have been and remain subject to…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "7baf8d88c4e69018",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may not be able to successfully…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain",
+        "regulation"
+      ],
+      "change_id": "849f496ffcc2bb38",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 93,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We have experienced, and could experience in…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "8b5d519291dd9d07",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We make product and investment decisions that…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "940a3e64d1fd1daa",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 19,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our new products and changes to existing…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "945756d5da2b451f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business is dependent on our ability…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "a8f7fbb741e10b59",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our status as a \"controlled company\" could…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 34,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "aae0d8f0caa0056b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 55,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The loss of one or more of…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "b2c1a10884718177",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our CEO has control over key decision…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "b9810c78d9d6f92a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 32,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business is highly competitive. Competition presents…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 85,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "b9e158e2d5152eee",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 18,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Security breaches, improper access to or disclosure…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 50,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "bdb8ce0fbd56c98a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 43,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Changes in tax laws or tax rulings…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "c45d755e75b6e8ab",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "There can be no assurance that we…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition",
+        "cybersecurity"
+      ],
+      "change_id": "c6664e5d4edc2ed0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our user growth, engagement, and monetization on…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "d2b46f893625a00d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If our goodwill or intangible assets become…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "d585675beb534b88",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 6,
+      "removed_sentences": 2,
+      "removed_words": 47,
+      "score": 0,
+      "short_title": "Payment-related activities may subject us to additional…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "artificial_intelligence",
+        "regulation"
+      ],
+      "change_id": "dbe95f8fa878d16a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 23,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we are not able to maintain…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation",
+        "regulation"
+      ],
+      "change_id": "dd045fc6f1b8b439",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Delaware law and provisions in our certificate…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 32,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "e495c61d5976bd75",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 24,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our products and internal systems rely on…"
+    }
+  ],
+  "cik": "0001326801",
+  "company_name": "Meta Platforms, Inc.",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0001628280-26-003942",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0001326801-25-000017",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "META",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          286,
+          366
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "AI outputs"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-003942:41:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Companies in the internet, technology, and media industries own large numbers of patents, copyrights, trademarks, and trade secrets, and frequently enter into litigation based on allegations of infringement, misappropriation, or other violations of intellectual property or other rights, including in novel areas such as those relating to AI training and AI outputs.",
+      "ticker": "META",
+      "topic": "ai output"
+    },
+    {
+      "added_spans": [
+        [
+          286,
+          366
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "AI training"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-003942:41:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Companies in the internet, technology, and media industries own large numbers of patents, copyrights, trademarks, and trade secrets, and frequently enter into litigation based on allegations of infringement, misappropriation, or other violations of intellectual property or other rights, including in novel areas such as those relating to AI training and AI outputs.",
+      "ticker": "META",
+      "topic": "ai training"
+    },
+    {
+      "added_spans": [
+        [
+          286,
+          366
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "novel areas"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-003942:41:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Companies in the internet, technology, and media industries own large numbers of patents, copyrights, trademarks, and trade secrets, and frequently enter into litigation based on allegations of infringement, misappropriation, or other violations of intellectual property or other rights, including in novel areas such as those relating to AI training and AI outputs.",
+      "ticker": "META",
+      "topic": "novel area"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          444
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "Canada"
+      ],
+      "position": 12,
+      "sentence_id": "0001628280-26-003942:41:6",
+      "source": "entity",
+      "status": "added",
+      "text": "For example, we and other companies are, and expect to continue to be, the subject of litigation in the United States, Europe, Canada, and elsewhere alleging copyright infringement in connection with the acquisition, distribution, and use of copyrighted materials for AI training as well as potential reproduction of copyrighted materials in AI outputs, including cases addressing the applicability of the fair use defense in the United States.",
+      "ticker": "META",
+      "topic": "Canada"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          444
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "Europe"
+      ],
+      "position": 12,
+      "sentence_id": "0001628280-26-003942:41:6",
+      "source": "entity",
+      "status": "added",
+      "text": "For example, we and other companies are, and expect to continue to be, the subject of litigation in the United States, Europe, Canada, and elsewhere alleging copyright infringement in connection with the acquisition, distribution, and use of copyrighted materials for AI training as well as potential reproduction of copyrighted materials in AI outputs, including cases addressing the applicability of the fair use defense in the United States.",
+      "ticker": "META",
+      "topic": "Europe"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          444
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "AI outputs"
+      ],
+      "position": 12,
+      "sentence_id": "0001628280-26-003942:41:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we and other companies are, and expect to continue to be, the subject of litigation in the United States, Europe, Canada, and elsewhere alleging copyright infringement in connection with the acquisition, distribution, and use of copyrighted materials for AI training as well as potential reproduction of copyrighted materials in AI outputs, including cases addressing the applicability of the fair use defense in the United States.",
+      "ticker": "META",
+      "topic": "ai output"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          444
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "AI training"
+      ],
+      "position": 12,
+      "sentence_id": "0001628280-26-003942:41:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we and other companies are, and expect to continue to be, the subject of litigation in the United States, Europe, Canada, and elsewhere alleging copyright infringement in connection with the acquisition, distribution, and use of copyrighted materials for AI training as well as potential reproduction of copyrighted materials in AI outputs, including cases addressing the applicability of the fair use defense in the United States.",
+      "ticker": "META",
+      "topic": "ai training"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          444
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "copyright infringement"
+      ],
+      "position": 12,
+      "sentence_id": "0001628280-26-003942:41:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we and other companies are, and expect to continue to be, the subject of litigation in the United States, Europe, Canada, and elsewhere alleging copyright infringement in connection with the acquisition, distribution, and use of copyrighted materials for AI training as well as potential reproduction of copyrighted materials in AI outputs, including cases addressing the applicability of the fair use defense in the United States.",
+      "ticker": "META",
+      "topic": "copyright infringement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          444
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "copyrighted materials"
+      ],
+      "position": 12,
+      "sentence_id": "0001628280-26-003942:41:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we and other companies are, and expect to continue to be, the subject of litigation in the United States, Europe, Canada, and elsewhere alleging copyright infringement in connection with the acquisition, distribution, and use of copyrighted materials for AI training as well as potential reproduction of copyrighted materials in AI outputs, including cases addressing the applicability of the fair use defense in the United States.",
+      "ticker": "META",
+      "topic": "copyrighted material"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          444
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "fair use defense"
+      ],
+      "position": 12,
+      "sentence_id": "0001628280-26-003942:41:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we and other companies are, and expect to continue to be, the subject of litigation in the United States, Europe, Canada, and elsewhere alleging copyright infringement in connection with the acquisition, distribution, and use of copyrighted materials for AI training as well as potential reproduction of copyrighted materials in AI outputs, including cases addressing the applicability of the fair use defense in the United States.",
+      "ticker": "META",
+      "topic": "fair use defense"
+    },
+    {
+      "added_spans": [
+        [
+          147,
+          222
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "copyright holders"
+      ],
+      "position": 22,
+      "sentence_id": "0001628280-26-003942:41:11",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The terms of such a settlement or judgment may require us to change or cease some or all of our operations or pay substantial amounts to the other parties, including statutory damages to large numbers of copyright holders.",
+      "ticker": "META",
+      "topic": "copyright holder"
+    },
+    {
+      "added_spans": [
+        [
+          147,
+          222
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "statutory damages"
+      ],
+      "position": 22,
+      "sentence_id": "0001628280-26-003942:41:11",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The terms of such a settlement or judgment may require us to change or cease some or all of our operations or pay substantial amounts to the other parties, including statutory damages to large numbers of copyright holders.",
+      "ticker": "META",
+      "topic": "statutory damage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "AI models"
+      ],
+      "position": 23,
+      "sentence_id": "0001628280-26-003942:41:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "For certain jurisdictions, including the United States, statutory damages for copyright liability are calculated on a per work basis, which may result in substantial damages, particularly given the large volumes of data required to train AI models.",
+      "ticker": "META",
+      "topic": "ai model"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "copyright liability"
+      ],
+      "position": 23,
+      "sentence_id": "0001628280-26-003942:41:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "For certain jurisdictions, including the United States, statutory damages for copyright liability are calculated on a per work basis, which may result in substantial damages, particularly given the large volumes of data required to train AI models.",
+      "ticker": "META",
+      "topic": "copyright liability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "large volumes"
+      ],
+      "position": 23,
+      "sentence_id": "0001628280-26-003942:41:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "For certain jurisdictions, including the United States, statutory damages for copyright liability are calculated on a per work basis, which may result in substantial damages, particularly given the large volumes of data required to train AI models.",
+      "ticker": "META",
+      "topic": "large volume"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "statutory damages"
+      ],
+      "position": 23,
+      "sentence_id": "0001628280-26-003942:41:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "For certain jurisdictions, including the United States, statutory damages for copyright liability are calculated on a per work basis, which may result in substantial damages, particularly given the large volumes of data required to train AI models.",
+      "ticker": "META",
+      "topic": "statutory damage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "4b373e1be309ec6c",
+      "matched_terms": [
+        "substantial damages"
+      ],
+      "position": 23,
+      "sentence_id": "0001628280-26-003942:41:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "For certain jurisdictions, including the United States, statutory damages for copyright liability are calculated on a per work basis, which may result in substantial damages, particularly given the large volumes of data required to train AI models.",
+      "ticker": "META",
+      "topic": "substantial damage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          166
+        ]
+      ],
+      "change_id": "63fa4511923830e6",
+      "matched_terms": [
+        "OBBBA",
+        "Minimum Tax",
+        "Corporate Alternative Minimum Tax"
+      ],
+      "position": 7,
+      "sentence_id": "0001628280-26-003942:26:3",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Following the enactment of OBBBA, excess tax benefits from share-based compensation may not be realizable as a result of the Corporate Alternative Minimum Tax (CAMT).",
+      "ticker": "META",
+      "topic": "Taxes"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          22
+        ],
+        [
+          35,
+          62
+        ],
+        [
+          122,
+          160
+        ],
+        [
+          165,
+          170
+        ]
+      ],
+      "change_id": "63fa4511923830e6",
+      "matched_terms": [
+        "CAMT system"
+      ],
+      "position": 13,
+      "sentence_id": "0001628280-26-003942:26:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In future periods, the tax effects of share-based compensation are dependent on our stock price, which we do not control, the CAMT system, and future changes in tax laws.",
+      "ticker": "META",
+      "topic": "camt system"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          335
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "advertising tools"
+      ],
+      "position": 8,
+      "sentence_id": "0001628280-26-003942:13:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have made significant investments in AI initiatives, including investments in infrastructure and headcount, including specialized technical personnel, to support our efforts to enhance our products, features, and advertising tools, as well as to develop and train our AI models, and expect to continue to increase these investments.",
+      "ticker": "META",
+      "topic": "advertising tool"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          335
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "AI initiatives"
+      ],
+      "position": 8,
+      "sentence_id": "0001628280-26-003942:13:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have made significant investments in AI initiatives, including investments in infrastructure and headcount, including specialized technical personnel, to support our efforts to enhance our products, features, and advertising tools, as well as to develop and train our AI models, and expect to continue to increase these investments.",
+      "ticker": "META",
+      "topic": "ai initiative"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          335
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "AI models"
+      ],
+      "position": 8,
+      "sentence_id": "0001628280-26-003942:13:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have made significant investments in AI initiatives, including investments in infrastructure and headcount, including specialized technical personnel, to support our efforts to enhance our products, features, and advertising tools, as well as to develop and train our AI models, and expect to continue to increase these investments.",
+      "ticker": "META",
+      "topic": "ai model"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          335
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "specialized technical personnel"
+      ],
+      "position": 8,
+      "sentence_id": "0001628280-26-003942:13:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have made significant investments in AI initiatives, including investments in infrastructure and headcount, including specialized technical personnel, to support our efforts to enhance our products, features, and advertising tools, as well as to develop and train our AI models, and expect to continue to increase these investments.",
+      "ticker": "META",
+      "topic": "specialized technical personnel"
+    },
+    {
+      "added_spans": [
+        [
+          111,
+          123
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "Horizon"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-003942:13:5",
+      "source": "entity",
+      "status": "modified",
+      "text": "We are also continuing to increase our investments in new platforms and technologies, including as part of our VR, Horizon, and wearables efforts.",
+      "ticker": "META",
+      "topic": "Horizon"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          120
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "sufficient profits"
+      ],
+      "position": 17,
+      "sentence_id": "0001628280-26-003942:13:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to support these investments is dependent on generating sufficient profits from other areas of our business.",
+      "ticker": "META",
+      "topic": "sufficient profit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "corporate purposes"
+      ],
+      "position": 18,
+      "sentence_id": "0001628280-26-003942:13:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "From time to time we may also seek to raise additional capital through debt, equity, or other financing arrangements to support our business operations, strategic initiatives, or other corporate purposes.",
+      "ticker": "META",
+      "topic": "corporate purpose"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "financing arrangements"
+      ],
+      "position": 18,
+      "sentence_id": "0001628280-26-003942:13:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "From time to time we may also seek to raise additional capital through debt, equity, or other financing arrangements to support our business operations, strategic initiatives, or other corporate purposes.",
+      "ticker": "META",
+      "topic": "financing arrangement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          204
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "strategic initiatives"
+      ],
+      "position": 18,
+      "sentence_id": "0001628280-26-003942:13:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "From time to time we may also seek to raise additional capital through debt, equity, or other financing arrangements to support our business operations, strategic initiatives, or other corporate purposes.",
+      "ticker": "META",
+      "topic": "strategic initiative"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          66
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "favorable terms"
+      ],
+      "position": 19,
+      "sentence_id": "0001628280-26-003942:13:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Such financings may not be available on favorable terms or at all.",
+      "ticker": "META",
+      "topic": "favorable term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          191
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "equity securities results"
+      ],
+      "position": 20,
+      "sentence_id": "0001628280-26-003942:13:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "The incurrence of additional debt also results in increased fixed obligations and interest expense, while the issuance of additional equity securities results in dilution to our stockholders.",
+      "ticker": "META",
+      "topic": "equity security result"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          191
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "increased fixed obligations"
+      ],
+      "position": 20,
+      "sentence_id": "0001628280-26-003942:13:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "The incurrence of additional debt also results in increased fixed obligations and interest expense, while the issuance of additional equity securities results in dilution to our stockholders.",
+      "ticker": "META",
+      "topic": "increased fixed obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          191
+        ]
+      ],
+      "change_id": "9b2342a58cbe6acc",
+      "matched_terms": [
+        "interest expense"
+      ],
+      "position": 20,
+      "sentence_id": "0001628280-26-003942:13:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "The incurrence of additional debt also results in increased fixed obligations and interest expense, while the issuance of additional equity securities results in dilution to our stockholders.",
+      "ticker": "META",
+      "topic": "interest expense"
+    },
+    {
+      "added_spans": [
+        [
+          81,
+          102
+        ],
+        [
+          289,
+          308
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "products liability"
+      ],
+      "position": 11,
+      "sentence_id": "0001628280-26-003942:4:5",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For example, our AI-related efforts, particularly those related to generative AI and superintelligence, subject us to risks related to harmful or illegal content, accuracy, misinformation and deepfakes (including related to elections), bias, discrimination, toxicity, consumer protection, products liability, intellectual property infringement or misappropriation, defamation, data privacy, cybersecurity, and sanctions and export controls, among others.",
+      "ticker": "META",
+      "topic": "product liability"
+    },
+    {
+      "added_spans": [
+        [
+          96,
+          111
+        ],
+        [
+          295,
+          335
+        ],
+        [
+          345,
+          362
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "societal harms"
+      ],
+      "position": 15,
+      "sentence_id": "0001628280-26-003942:4:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, we are subject to the risks of new or enhanced governmental or regulatory scrutiny and enforcement, litigation, or other legal liability, ethical concerns, negative consumer perceptions as to automation and AI, activities that threaten people's safety or well-being on- or offline, including with respect to younger users, or other societal harms or complications that could adversely affect our business, reputation, or financial results.",
+      "ticker": "META",
+      "topic": "societal harm"
+    },
+    {
+      "added_spans": [
+        [
+          96,
+          111
+        ],
+        [
+          295,
+          335
+        ],
+        [
+          345,
+          362
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "younger users"
+      ],
+      "position": 15,
+      "sentence_id": "0001628280-26-003942:4:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, we are subject to the risks of new or enhanced governmental or regulatory scrutiny and enforcement, litigation, or other legal liability, ethical concerns, negative consumer perceptions as to automation and AI, activities that threaten people's safety or well-being on- or offline, including with respect to younger users, or other societal harms or complications that could adversely affect our business, reputation, or financial results.",
+      "ticker": "META",
+      "topic": "younger user"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          202
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "AI and AI chatbots"
+      ],
+      "position": 16,
+      "sentence_id": "0001628280-26-003942:4:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we have been the subject of media and government scrutiny relating to AI and AI chatbots, including inquiries and investigations by the FTC, members of Congress and state attorneys general.",
+      "ticker": "META",
+      "topic": "ai and ai chatbot"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          202
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "media and government scrutiny"
+      ],
+      "position": 16,
+      "sentence_id": "0001628280-26-003942:4:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we have been the subject of media and government scrutiny relating to AI and AI chatbots, including inquiries and investigations by the FTC, members of Congress and state attorneys general.",
+      "ticker": "META",
+      "topic": "medium and government scrutiny"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          202
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "state attorneys"
+      ],
+      "position": 16,
+      "sentence_id": "0001628280-26-003942:4:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, we have been the subject of media and government scrutiny relating to AI and AI chatbots, including inquiries and investigations by the FTC, members of Congress and state attorneys general.",
+      "ticker": "META",
+      "topic": "state attorney"
+    },
+    {
+      "added_spans": [
+        [
+          84,
+          326
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "competitive talent market"
+      ],
+      "position": 29,
+      "sentence_id": "0001628280-26-003942:4:14",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our AI initiatives also depend on our access to data to effectively train our models, which is subject to risks related to the availability or costs of data, regulatory or other legal developments, or other factors, as well as our ability to attract and retain specialized personnel in a limited and competitive talent market.",
+      "ticker": "META",
+      "topic": "competitive talent market"
+    },
+    {
+      "added_spans": [
+        [
+          84,
+          326
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "specialized personnel"
+      ],
+      "position": 29,
+      "sentence_id": "0001628280-26-003942:4:14",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our AI initiatives also depend on our access to data to effectively train our models, which is subject to risks related to the availability or costs of data, regulatory or other legal developments, or other factors, as well as our ability to attract and retain specialized personnel in a limited and competitive talent market.",
+      "ticker": "META",
+      "topic": "specialized personnel"
+    },
+    {
+      "added_spans": [
+        [
+          374,
+          399
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "societal harms"
+      ],
+      "position": 37,
+      "sentence_id": "0001628280-26-003942:4:18",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As such, we cannot guarantee that third parties will not use such AI technologies for improper purposes, including through the dissemination of illegal, inaccurate, defamatory or harmful content, intellectual property infringement or misappropriation, furthering bias or discrimination, cybersecurity attacks including spear phishing attacks, data privacy violations, other societal harms, including activities that threaten people's safety or well-being on- or offline, or to develop competing technologies.",
+      "ticker": "META",
+      "topic": "societal harm"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          148
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "market acceptance"
+      ],
+      "position": 44,
+      "sentence_id": "0001628280-26-003942:4:22",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, AI may not develop in accordance with our expectations, and market acceptance of features, products, or services we build is uncertain.",
+      "ticker": "META",
+      "topic": "market acceptance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          214
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "market landscape"
+      ],
+      "position": 45,
+      "sentence_id": "0001628280-26-003942:4:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "We regularly evaluate our product roadmaps and make significant changes as our understanding of the technological challenges and market landscape of AI, as well as our product ideas and designs, continue to evolve.",
+      "ticker": "META",
+      "topic": "market landscape"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          214
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "product ideas"
+      ],
+      "position": 45,
+      "sentence_id": "0001628280-26-003942:4:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "We regularly evaluate our product roadmaps and make significant changes as our understanding of the technological challenges and market landscape of AI, as well as our product ideas and designs, continue to evolve.",
+      "ticker": "META",
+      "topic": "product idea"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          214
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "product roadmaps"
+      ],
+      "position": 45,
+      "sentence_id": "0001628280-26-003942:4:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "We regularly evaluate our product roadmaps and make significant changes as our understanding of the technological challenges and market landscape of AI, as well as our product ideas and designs, continue to evolve.",
+      "ticker": "META",
+      "topic": "product roadmap"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          214
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "technological challenges"
+      ],
+      "position": 45,
+      "sentence_id": "0001628280-26-003942:4:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "We regularly evaluate our product roadmaps and make significant changes as our understanding of the technological challenges and market landscape of AI, as well as our product ideas and designs, continue to evolve.",
+      "ticker": "META",
+      "topic": "technological challenge"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "AI strategy"
+      ],
+      "position": 46,
+      "sentence_id": "0001628280-26-003942:4:24",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result of these or other factors, our AI strategy and investments may not be successful in the foreseeable future, or at all, which could adversely affect our business, reputation, or financial results.",
+      "ticker": "META",
+      "topic": "ai strategy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          207
+        ]
+      ],
+      "change_id": "e3514cbaf9f56dca",
+      "matched_terms": [
+        "foreseeable future"
+      ],
+      "position": 46,
+      "sentence_id": "0001628280-26-003942:4:24",
+      "source": "phrase",
+      "status": "added",
+      "text": "As a result of these or other factors, our AI strategy and investments may not be successful in the foreseeable future, or at all, which could adversely affect our business, reputation, or financial results.",
+      "ticker": "META",
+      "topic": "foreseeable future"
+    },
+    {
+      "added_spans": [
+        [
+          62,
+          133
+        ]
+      ],
+      "change_id": "52d36844525ff3b2",
+      "matched_terms": [
+        "engaging third-party content"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-003942:8:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "We have made and are continuing to make investments to enable creators to contribute engaging third-party content to our platform and developers to build, grow, and monetize applications that integrate with our products.",
+      "ticker": "META",
+      "topic": "engaging third party content"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          188
+        ]
+      ],
+      "change_id": "52d36844525ff3b2",
+      "matched_terms": [
+        "creative content"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-003942:8:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "From time to time we make product changes and offer tools to promote creative content on our platform, but we may not be successful in obtaining or attracting engaging third-party content.",
+      "ticker": "META",
+      "topic": "creative content"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          188
+        ]
+      ],
+      "change_id": "52d36844525ff3b2",
+      "matched_terms": [
+        "engaging third-party content"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-003942:8:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "From time to time we make product changes and offer tools to promote creative content on our platform, but we may not be successful in obtaining or attracting engaging third-party content.",
+      "ticker": "META",
+      "topic": "engaging third party content"
+    }
+  ],
+  "total_changes": 46
+}

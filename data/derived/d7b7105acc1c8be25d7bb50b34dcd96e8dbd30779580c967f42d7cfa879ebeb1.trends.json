@@ -1,0 +1,3049 @@
+{
+  "analysis_id": "d7b7105acc1c8be25d7bb50b34dcd96e8dbd30779580c967f42d7cfa879ebeb1",
+  "by_change_type": {
+    "expanded": 7,
+    "largely_unchanged": 8,
+    "materially_reworded": 1,
+    "new": 0,
+    "reduced": 0,
+    "removed": 0
+  },
+  "category_activity": [
+    {
+      "added_sentences": 10,
+      "added_words": 269,
+      "categories": [
+        "geopolitical"
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "change_type": "expanded",
+      "modified_sentences": 11,
+      "modified_words": 193,
+      "removed_sentences": 2,
+      "removed_words": 53,
+      "score": 44,
+      "short_title": "Our global operations subject us to risks"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 48,
+      "categories": [
+        "supply_chain",
+        "geopolitical"
+      ],
+      "change_id": "0ab557474e533176",
+      "change_type": "expanded",
+      "modified_sentences": 9,
+      "modified_words": 64,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 43,
+      "short_title": "Reliance on third-party relationships and outsourcing arrangements"
+    },
+    {
+      "added_sentences": 10,
+      "added_words": 373,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "02b328ad57114800",
+      "change_type": "expanded",
+      "modified_sentences": 14,
+      "modified_words": 139,
+      "removed_sentences": 2,
+      "removed_words": 67,
+      "score": 42,
+      "short_title": "Our business is subject to government price controls"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 50,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "change_type": "expanded",
+      "modified_sentences": 8,
+      "modified_words": 109,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 37,
+      "short_title": "Our long-term success depends on intellectual property protection"
+    },
+    {
+      "added_sentences": 17,
+      "added_words": 256,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "change_type": "materially_reworded",
+      "modified_sentences": 11,
+      "modified_words": 212,
+      "removed_sentences": 5,
+      "removed_words": 128,
+      "score": 28,
+      "short_title": "Manufacturing, quality, or supply chain difficulties, disruptions, or shortages"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 114,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "fca4a78146790754",
+      "change_type": "expanded",
+      "modified_sentences": 14,
+      "modified_words": 149,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 19,
+      "short_title": "We and our products face intense competition, and such competition"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 94,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "311be7a3b615e63f",
+      "change_type": "expanded",
+      "modified_sentences": 9,
+      "modified_words": 62,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 15,
+      "short_title": "Our use of artificial intelligence (AI) or other emerging technologies"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 70,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "d2d81c3991449b7c",
+      "change_type": "expanded",
+      "modified_sentences": 1,
+      "modified_words": 6,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 15,
+      "short_title": "We are subject to evolving and complex tax"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 39,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "0432d179c7fd63a0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 11,
+      "modified_words": 89,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 14,
+      "short_title": "We derive a significant percentage of our total revenue"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 31,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "9fedc86189fcbbbf",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 7,
+      "modified_words": 66,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "We depend on products with intellectual property protection for most"
+    },
+    {
+      "added_sentences": 5,
+      "added_words": 122,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "a442736898c48904",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 14,
+      "modified_words": 94,
+      "removed_sentences": 2,
+      "removed_words": 56,
+      "score": 4,
+      "short_title": "Regulatory compliance problems could be damaging to the company"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 27,
+      "categories": [
+        "foreign_exchange"
+      ],
+      "change_id": "0a14d46da7dda562",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 18,
+      "removed_sentences": 1,
+      "removed_words": 16,
+      "score": 0,
+      "short_title": "Changes in foreign currency rates, interest rate risks"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 27,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "3a6951cdc5c75760",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 11,
+      "modified_words": 55,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Failure, inadequacy, breach of, or unauthorized access"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 20,
+      "categories": [
+        "regulation",
+        "intellectual_property"
+      ],
+      "change_id": "41f8ae20b135d607",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 12,
+      "modified_words": 82,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Pharmaceutical research and development is very costly and highly uncertain"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 21,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "5c9a6cc2ce705b86",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 7,
+      "modified_words": 83,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are party to litigation and investigations"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "d7d77121fc7464b0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Pharmaceutical products can develop safety or efficacy concerns"
+    }
+  ],
+  "cik": "0000059478",
+  "company_name": "ELI LILLY & Co",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0000059478-26-000013",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000013/lly-20251231.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0000059478-25-000067",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947825000067/lly-20241231.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [
+    {
+      "change_id": "fc5eb8552f381b25",
+      "company_name": "ELI LILLY & Co",
+      "new_sentence_id": "0000059478-26-000013:11:13",
+      "new_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          19,
+          39
+        ],
+        [
+          47,
+          118
+        ],
+        [
+          125,
+          257
+        ],
+        [
+          293,
+          414
+        ]
+      ],
+      "new_text": "Moreover, tensions between the U.S. and China, which have already led to a series of tariffs and sanctions, as well as other business restrictions, could further escalate based on additional trade restrictions, retaliation thereto, or otherwise, which could significantly impact our business, including by increasing scrutiny of, or restrictions on, market access, operations, and business development transactions.",
+      "old_sentence_id": "0000059478-25-000067:11:12",
+      "old_spans": [
+        [
+          0,
+          15
+        ],
+        [
+          25,
+          86
+        ],
+        [
+          94,
+          96
+        ],
+        [
+          103,
+          157
+        ]
+      ],
+      "old_text": "If geopolitical tensions were to increase and disrupt our operations in, or related to, China or other major international geographies, such disruption would significantly impact our business.",
+      "score": 44,
+      "short_title": "Our global operations subject us to risks",
+      "ticker": "LLY"
+    },
+    {
+      "change_id": "0ab557474e533176",
+      "company_name": "ELI LILLY & Co",
+      "new_sentence_id": "0000059478-26-000013:9:7",
+      "new_spans": [
+        [
+          15,
+          52
+        ]
+      ],
+      "new_text": "U.S. officials have enacted and continue to consider legislation or other actions that are intended to limit supply chain reliance on China, including the BIOSECURE Act.",
+      "old_sentence_id": "0000059478-25-000067:9:7",
+      "old_spans": [
+        [
+          15,
+          43
+        ]
+      ],
+      "old_text": "U.S. officials are increasingly considering legislation or other actions that are intended to limit supply chain reliance on China, including the BIOSECURE Act.",
+      "score": 43,
+      "short_title": "Reliance on third-party relationships and outsourcing arrangements",
+      "ticker": "LLY"
+    }
+  ],
+  "ticker": "LLY",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          0,
+          66
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "global operations"
+      ],
+      "position": 1,
+      "sentence_id": "0000059478-26-000013:11:0",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our global operations subject us to risks, including as related to uneven economic growth or downturns, international trade, and other global disruptions, geopolitical tensions, or disputes.",
+      "ticker": "LLY",
+      "topic": "global operation"
+    },
+    {
+      "added_spans": [
+        [
+          71,
+          102
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "specific markets"
+      ],
+      "position": 3,
+      "sentence_id": "0000059478-26-000013:11:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Economic slowdowns could lead to decreased utilization of our products globally or in specific markets, affecting our sales.",
+      "ticker": "LLY",
+      "topic": "specific market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "complex supply chain"
+      ],
+      "position": 14,
+      "sentence_id": "0000059478-26-000013:11:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our global operations and complex supply chain expose us to legislation and regulatory action in or regarding foreign jurisdictions as well as geopolitical and other cross-border risks.",
+      "ticker": "LLY",
+      "topic": "complex supply chain"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "foreign jurisdictions"
+      ],
+      "position": 14,
+      "sentence_id": "0000059478-26-000013:11:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our global operations and complex supply chain expose us to legislation and regulatory action in or regarding foreign jurisdictions as well as geopolitical and other cross-border risks.",
+      "ticker": "LLY",
+      "topic": "foreign jurisdiction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "global operations"
+      ],
+      "position": 14,
+      "sentence_id": "0000059478-26-000013:11:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our global operations and complex supply chain expose us to legislation and regulatory action in or regarding foreign jurisdictions as well as geopolitical and other cross-border risks.",
+      "ticker": "LLY",
+      "topic": "global operation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          185
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "regulatory action"
+      ],
+      "position": 14,
+      "sentence_id": "0000059478-26-000013:11:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our global operations and complex supply chain expose us to legislation and regulatory action in or regarding foreign jurisdictions as well as geopolitical and other cross-border risks.",
+      "ticker": "LLY",
+      "topic": "regulatory action"
+    },
+    {
+      "added_spans": [
+        [
+          48,
+          64
+        ],
+        [
+          76,
+          81
+        ],
+        [
+          169,
+          268
+        ],
+        [
+          602,
+          693
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "transfer pricing"
+      ],
+      "position": 16,
+      "sentence_id": "0000059478-26-000013:11:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Trade and other global disputes, interruptions, and developments, including those related to tariffs, trade protection measures, import or export licensing requirements or disagreements with authorities regarding tariff classifications, transfer pricing, or valuations, the imposition of trade sanctions or similar restrictions by the U.S. or other governments, international tension and conflicts, as well as economic stagnation, cost inflation, strains on global transportation, manufacturing, and labor markets, and public health outbreaks, epidemics, or pandemics affect our ability to do business and, in some cases, result in financial, operational, legal, business, or reputational harm.",
+      "ticker": "LLY",
+      "topic": "transfer pricing"
+    },
+    {
+      "added_spans": [
+        [
+          67,
+          70
+        ],
+        [
+          136,
+          174
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "supply disruptions"
+      ],
+      "position": 18,
+      "sentence_id": "0000059478-26-000013:11:9",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Among other risks, the use of tariffs and other trade restrictions may increase costs, impact clinical trials or sales of our products, result in supply disruptions or delays, or otherwise complicate aspects of our business.",
+      "ticker": "LLY",
+      "topic": "supply disruption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          19,
+          39
+        ],
+        [
+          47,
+          118
+        ],
+        [
+          125,
+          257
+        ],
+        [
+          293,
+          414
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "business development transactions"
+      ],
+      "position": 26,
+      "sentence_id": "0000059478-26-000013:11:13",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Moreover, tensions between the U.S. and China, which have already led to a series of tariffs and sanctions, as well as other business restrictions, could further escalate based on additional trade restrictions, retaliation thereto, or otherwise, which could significantly impact our business, including by increasing scrutiny of, or restrictions on, market access, operations, and business development transactions.",
+      "ticker": "LLY",
+      "topic": "business development transaction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          19,
+          39
+        ],
+        [
+          47,
+          118
+        ],
+        [
+          125,
+          257
+        ],
+        [
+          293,
+          414
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "increasing scrutiny"
+      ],
+      "position": 26,
+      "sentence_id": "0000059478-26-000013:11:13",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Moreover, tensions between the U.S. and China, which have already led to a series of tariffs and sanctions, as well as other business restrictions, could further escalate based on additional trade restrictions, retaliation thereto, or otherwise, which could significantly impact our business, including by increasing scrutiny of, or restrictions on, market access, operations, and business development transactions.",
+      "ticker": "LLY",
+      "topic": "increasing scrutiny"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          19,
+          39
+        ],
+        [
+          47,
+          118
+        ],
+        [
+          125,
+          257
+        ],
+        [
+          293,
+          414
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "market access"
+      ],
+      "position": 26,
+      "sentence_id": "0000059478-26-000013:11:13",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Moreover, tensions between the U.S. and China, which have already led to a series of tariffs and sanctions, as well as other business restrictions, could further escalate based on additional trade restrictions, retaliation thereto, or otherwise, which could significantly impact our business, including by increasing scrutiny of, or restrictions on, market access, operations, and business development transactions.",
+      "ticker": "LLY",
+      "topic": "market access"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          143
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "precise impact"
+      ],
+      "position": 29,
+      "sentence_id": "0000059478-26-000013:11:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "The precise impact of tariffs, trade protection measures, and other restrictions may depend on their ultimate scope, timing, and other factors.",
+      "ticker": "LLY",
+      "topic": "precise impact"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          143
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "ultimate scope"
+      ],
+      "position": 29,
+      "sentence_id": "0000059478-26-000013:11:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "The precise impact of tariffs, trade protection measures, and other restrictions may depend on their ultimate scope, timing, and other factors.",
+      "ticker": "LLY",
+      "topic": "ultimate scope"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          158
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "supply disruptions"
+      ],
+      "position": 30,
+      "sentence_id": "0000059478-26-000013:11:16",
+      "source": "phrase",
+      "status": "added",
+      "text": "If enacted, additional restrictions could result in supply disruptions or delays, further increase costs, or otherwise have a negative impact on our business.",
+      "ticker": "LLY",
+      "topic": "supply disruption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          186
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "increased costs"
+      ],
+      "position": 31,
+      "sentence_id": "0000059478-26-000013:11:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Given the nature of pharmaceutical regulation and commercialization, we may not be able to offset the burden of increased costs from tariffs and related impacts to any meaningful degree.",
+      "ticker": "LLY",
+      "topic": "increased cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          186
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "meaningful degree"
+      ],
+      "position": 31,
+      "sentence_id": "0000059478-26-000013:11:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Given the nature of pharmaceutical regulation and commercialization, we may not be able to offset the burden of increased costs from tariffs and related impacts to any meaningful degree.",
+      "ticker": "LLY",
+      "topic": "meaningful degree"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          186
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "pharmaceutical regulation"
+      ],
+      "position": 31,
+      "sentence_id": "0000059478-26-000013:11:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "Given the nature of pharmaceutical regulation and commercialization, we may not be able to offset the burden of increased costs from tariffs and related impacts to any meaningful degree.",
+      "ticker": "LLY",
+      "topic": "pharmaceutical regulation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          109
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "international markets"
+      ],
+      "position": 32,
+      "sentence_id": "0000059478-26-000013:11:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "In most international markets, we operate in an environment of government-mandated cost-containment programs.",
+      "ticker": "LLY",
+      "topic": "international market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          188
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "Japan"
+      ],
+      "position": 33,
+      "sentence_id": "0000059478-26-000013:11:19",
+      "source": "entity",
+      "status": "added",
+      "text": "In some markets, including the EU, Japan, and China, governments have significant power as large single payors to regulate prices and access criteria or impose other means of cost control.",
+      "ticker": "LLY",
+      "topic": "Japan"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          188
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "access criteria"
+      ],
+      "position": 33,
+      "sentence_id": "0000059478-26-000013:11:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "In some markets, including the EU, Japan, and China, governments have significant power as large single payors to regulate prices and access criteria or impose other means of cost control.",
+      "ticker": "LLY",
+      "topic": "access criterion"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          188
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "cost control"
+      ],
+      "position": 33,
+      "sentence_id": "0000059478-26-000013:11:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "In some markets, including the EU, Japan, and China, governments have significant power as large single payors to regulate prices and access criteria or impose other means of cost control.",
+      "ticker": "LLY",
+      "topic": "cost control"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          188
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "large single payors"
+      ],
+      "position": 33,
+      "sentence_id": "0000059478-26-000013:11:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "In some markets, including the EU, Japan, and China, governments have significant power as large single payors to regulate prices and access criteria or impose other means of cost control.",
+      "ticker": "LLY",
+      "topic": "large single payor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          272
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "domestic pharmaceutical pricing"
+      ],
+      "position": 40,
+      "sentence_id": "0000059478-26-000013:11:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our arrangements with the U.S. government and broader U.S. policy efforts to align domestic pharmaceutical pricing with international benchmarks may further pressure international payers, and the outcome of competing U.S. and international pricing objectives is uncertain.",
+      "ticker": "LLY",
+      "topic": "domestic pharmaceutical pricing"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          272
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "international benchmarks"
+      ],
+      "position": 40,
+      "sentence_id": "0000059478-26-000013:11:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our arrangements with the U.S. government and broader U.S. policy efforts to align domestic pharmaceutical pricing with international benchmarks may further pressure international payers, and the outcome of competing U.S. and international pricing objectives is uncertain.",
+      "ticker": "LLY",
+      "topic": "international benchmark"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          272
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "international payers"
+      ],
+      "position": 40,
+      "sentence_id": "0000059478-26-000013:11:23",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our arrangements with the U.S. government and broader U.S. policy efforts to align domestic pharmaceutical pricing with international benchmarks may further pressure international payers, and the outcome of competing U.S. and international pricing objectives is uncertain.",
+      "ticker": "LLY",
+      "topic": "international payer"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          316
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "government price controls"
+      ],
+      "position": 41,
+      "sentence_id": "0000059478-26-000013:11:24",
+      "source": "phrase",
+      "status": "added",
+      "text": "See Item 1A, \"Risk Factors—Risks Related to Our Business and Industry—Our business is subject to government price controls and other public and private restrictions on pricing, reimbursement, and access for our drugs, which could have a material adverse effect on our results of operations, reputation, or business.\"",
+      "ticker": "LLY",
+      "topic": "government price control"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          316
+        ]
+      ],
+      "change_id": "fc5eb8552f381b25",
+      "matched_terms": [
+        "public and private restrictions"
+      ],
+      "position": 41,
+      "sentence_id": "0000059478-26-000013:11:24",
+      "source": "phrase",
+      "status": "added",
+      "text": "See Item 1A, \"Risk Factors—Risks Related to Our Business and Industry—Our business is subject to government price controls and other public and private restrictions on pricing, reimbursement, and access for our drugs, which could have a material adverse effect on our results of operations, reputation, or business.\"",
+      "ticker": "LLY",
+      "topic": "public and private restriction"
+    },
+    {
+      "added_spans": [
+        [
+          133,
+          178
+        ],
+        [
+          288,
+          301
+        ]
+      ],
+      "change_id": "0ab557474e533176",
+      "matched_terms": [
+        "contract laboratories"
+      ],
+      "position": 5,
+      "sentence_id": "0000059478-26-000013:9:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As examples, we outsource the day-to-day management and oversight of some of our clinical trials to contract research organizations, some product testing to contract laboratories, certain active ingredient manufacturing, finishing operations, device or component production and assembly, and packaging to contract manufacturing organizations, and the distribution of our products through logistics providers.",
+      "ticker": "LLY",
+      "topic": "contract laboratory"
+    },
+    {
+      "added_spans": [
+        [
+          133,
+          178
+        ],
+        [
+          288,
+          301
+        ]
+      ],
+      "change_id": "0ab557474e533176",
+      "matched_terms": [
+        "product testing"
+      ],
+      "position": 5,
+      "sentence_id": "0000059478-26-000013:9:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "As examples, we outsource the day-to-day management and oversight of some of our clinical trials to contract research organizations, some product testing to contract laboratories, certain active ingredient manufacturing, finishing operations, device or component production and assembly, and packaging to contract manufacturing organizations, and the distribution of our products through logistics providers.",
+      "ticker": "LLY",
+      "topic": "product testing"
+    },
+    {
+      "added_spans": [
+        [
+          71,
+          109
+        ],
+        [
+          185,
+          271
+        ]
+      ],
+      "change_id": "0ab557474e533176",
+      "matched_terms": [
+        "artificial intelligence vendors"
+      ],
+      "position": 7,
+      "sentence_id": "0000059478-26-000013:9:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "To support anticipated demand for our current and prospective products and further other business initiatives, we have expanded relationships with contract manufacturing organizations, entities supporting consumer directed access channels, artificial intelligence vendors, and other third parties in recent periods.",
+      "ticker": "LLY",
+      "topic": "artificial intelligence vendor"
+    },
+    {
+      "added_spans": [
+        [
+          71,
+          109
+        ],
+        [
+          185,
+          271
+        ]
+      ],
+      "change_id": "0ab557474e533176",
+      "matched_terms": [
+        "business initiatives"
+      ],
+      "position": 7,
+      "sentence_id": "0000059478-26-000013:9:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "To support anticipated demand for our current and prospective products and further other business initiatives, we have expanded relationships with contract manufacturing organizations, entities supporting consumer directed access channels, artificial intelligence vendors, and other third parties in recent periods.",
+      "ticker": "LLY",
+      "topic": "business initiative"
+    },
+    {
+      "added_spans": [
+        [
+          71,
+          109
+        ],
+        [
+          185,
+          271
+        ]
+      ],
+      "change_id": "0ab557474e533176",
+      "matched_terms": [
+        "consumer directed access channels"
+      ],
+      "position": 7,
+      "sentence_id": "0000059478-26-000013:9:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "To support anticipated demand for our current and prospective products and further other business initiatives, we have expanded relationships with contract manufacturing organizations, entities supporting consumer directed access channels, artificial intelligence vendors, and other third parties in recent periods.",
+      "ticker": "LLY",
+      "topic": "consumer directed access channel"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          193
+        ]
+      ],
+      "change_id": "0ab557474e533176",
+      "matched_terms": [
+        "sanctions"
+      ],
+      "position": 16,
+      "sentence_id": "0000059478-26-000013:9:8",
+      "source": "lexicon",
+      "status": "added",
+      "text": "In addition, historically, geopolitical tensions between the U.S. and China have led to the imposition of tariffs, sanctions, and certain other business restrictions between the U.S. and China.",
+      "ticker": "LLY",
+      "topic": "Sanctions"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          193
+        ]
+      ],
+      "change_id": "0ab557474e533176",
+      "matched_terms": [
+        "business restrictions"
+      ],
+      "position": 16,
+      "sentence_id": "0000059478-26-000013:9:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, historically, geopolitical tensions between the U.S. and China have led to the imposition of tariffs, sanctions, and certain other business restrictions between the U.S. and China.",
+      "ticker": "LLY",
+      "topic": "business restriction"
+    },
+    {
+      "added_spans": [
+        [
+          75,
+          141
+        ]
+      ],
+      "change_id": "0ab557474e533176",
+      "matched_terms": [
+        "global operations"
+      ],
+      "position": 23,
+      "sentence_id": "0000059478-26-000013:9:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "See Item 1A, \"Risk Factors—Risks Related to Doing Business Internationally—Our global operations subject us to risks, including as related to uneven economic growth or downturns, international trade, and other global disruptions, geopolitical tensions, or disputes\" for additional information.",
+      "ticker": "LLY",
+      "topic": "global operation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "Medicaid"
+      ],
+      "position": 12,
+      "sentence_id": "0000059478-26-000013:2:6",
+      "source": "entity",
+      "status": "added",
+      "text": "In November 2025, we announced preliminary voluntary agreements with the U.S. government in which, among other arrangements, we agreed to implement measures to lower Medicaid and certain other drug prices for U.S. patients and to launch new medicines with a more balanced pricing approach across developed nations.",
+      "ticker": "LLY",
+      "topic": "Medicaid"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "balanced pricing approach"
+      ],
+      "position": 12,
+      "sentence_id": "0000059478-26-000013:2:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "In November 2025, we announced preliminary voluntary agreements with the U.S. government in which, among other arrangements, we agreed to implement measures to lower Medicaid and certain other drug prices for U.S. patients and to launch new medicines with a more balanced pricing approach across developed nations.",
+      "ticker": "LLY",
+      "topic": "balanced pricing approach"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "developed nations"
+      ],
+      "position": 12,
+      "sentence_id": "0000059478-26-000013:2:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "In November 2025, we announced preliminary voluntary agreements with the U.S. government in which, among other arrangements, we agreed to implement measures to lower Medicaid and certain other drug prices for U.S. patients and to launch new medicines with a more balanced pricing approach across developed nations.",
+      "ticker": "LLY",
+      "topic": "developed nation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "drug prices"
+      ],
+      "position": 12,
+      "sentence_id": "0000059478-26-000013:2:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "In November 2025, we announced preliminary voluntary agreements with the U.S. government in which, among other arrangements, we agreed to implement measures to lower Medicaid and certain other drug prices for U.S. patients and to launch new medicines with a more balanced pricing approach across developed nations.",
+      "ticker": "LLY",
+      "topic": "drug price"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          314
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "preliminary voluntary agreements"
+      ],
+      "position": 12,
+      "sentence_id": "0000059478-26-000013:2:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "In November 2025, we announced preliminary voluntary agreements with the U.S. government in which, among other arrangements, we agreed to implement measures to lower Medicaid and certain other drug prices for U.S. patients and to launch new medicines with a more balanced pricing approach across developed nations.",
+      "ticker": "LLY",
+      "topic": "preliminary voluntary agreement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          229
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "definitive agreements"
+      ],
+      "position": 13,
+      "sentence_id": "0000059478-26-000013:2:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "We face risks and uncertainty associated with these arrangements and negotiating the definitive agreements, including potential delays and the possibility of unfavorable terms related to pricing, access, and other key objectives.",
+      "ticker": "LLY",
+      "topic": "definitive agreement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          229
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "unfavorable terms"
+      ],
+      "position": 13,
+      "sentence_id": "0000059478-26-000013:2:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "We face risks and uncertainty associated with these arrangements and negotiating the definitive agreements, including potential delays and the possibility of unfavorable terms related to pricing, access, and other key objectives.",
+      "ticker": "LLY",
+      "topic": "unfavorable term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          256
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "expanded access"
+      ],
+      "position": 14,
+      "sentence_id": "0000059478-26-000013:2:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Among other risks, we may fail to adequately capitalize on the additional U.S. access to our obesity medicines resulting from these agreements, particularly if the revenues generated from such expanded access are insufficient to offset pricing concessions.",
+      "ticker": "LLY",
+      "topic": "expanded access"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          256
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "obesity medicines"
+      ],
+      "position": 14,
+      "sentence_id": "0000059478-26-000013:2:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Among other risks, we may fail to adequately capitalize on the additional U.S. access to our obesity medicines resulting from these agreements, particularly if the revenues generated from such expanded access are insufficient to offset pricing concessions.",
+      "ticker": "LLY",
+      "topic": "obesity medicine"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          256
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "pricing concessions"
+      ],
+      "position": 14,
+      "sentence_id": "0000059478-26-000013:2:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Among other risks, we may fail to adequately capitalize on the additional U.S. access to our obesity medicines resulting from these agreements, particularly if the revenues generated from such expanded access are insufficient to offset pricing concessions.",
+      "ticker": "LLY",
+      "topic": "pricing concession"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          410
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "competitive positioning"
+      ],
+      "position": 15,
+      "sentence_id": "0000059478-26-000013:2:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, the outcome of these arrangements and broader U.S. policy efforts to align domestic pharmaceutical pricing with international benchmarks from countries with competing healthcare cost containment priorities is uncertain and could negatively impact our pricing strategies, product demand or access, or competitive positioning across global markets, and may result in reduced revenue in certain markets.",
+      "ticker": "LLY",
+      "topic": "competitive positioning"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          410
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "domestic pharmaceutical pricing"
+      ],
+      "position": 15,
+      "sentence_id": "0000059478-26-000013:2:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, the outcome of these arrangements and broader U.S. policy efforts to align domestic pharmaceutical pricing with international benchmarks from countries with competing healthcare cost containment priorities is uncertain and could negatively impact our pricing strategies, product demand or access, or competitive positioning across global markets, and may result in reduced revenue in certain markets.",
+      "ticker": "LLY",
+      "topic": "domestic pharmaceutical pricing"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          410
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "global markets"
+      ],
+      "position": 15,
+      "sentence_id": "0000059478-26-000013:2:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, the outcome of these arrangements and broader U.S. policy efforts to align domestic pharmaceutical pricing with international benchmarks from countries with competing healthcare cost containment priorities is uncertain and could negatively impact our pricing strategies, product demand or access, or competitive positioning across global markets, and may result in reduced revenue in certain markets.",
+      "ticker": "LLY",
+      "topic": "global market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          410
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "international benchmarks"
+      ],
+      "position": 15,
+      "sentence_id": "0000059478-26-000013:2:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, the outcome of these arrangements and broader U.S. policy efforts to align domestic pharmaceutical pricing with international benchmarks from countries with competing healthcare cost containment priorities is uncertain and could negatively impact our pricing strategies, product demand or access, or competitive positioning across global markets, and may result in reduced revenue in certain markets.",
+      "ticker": "LLY",
+      "topic": "international benchmark"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          410
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "pricing strategies"
+      ],
+      "position": 15,
+      "sentence_id": "0000059478-26-000013:2:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, the outcome of these arrangements and broader U.S. policy efforts to align domestic pharmaceutical pricing with international benchmarks from countries with competing healthcare cost containment priorities is uncertain and could negatively impact our pricing strategies, product demand or access, or competitive positioning across global markets, and may result in reduced revenue in certain markets.",
+      "ticker": "LLY",
+      "topic": "pricing strategy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          410
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "product demand"
+      ],
+      "position": 15,
+      "sentence_id": "0000059478-26-000013:2:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, the outcome of these arrangements and broader U.S. policy efforts to align domestic pharmaceutical pricing with international benchmarks from countries with competing healthcare cost containment priorities is uncertain and could negatively impact our pricing strategies, product demand or access, or competitive positioning across global markets, and may result in reduced revenue in certain markets.",
+      "ticker": "LLY",
+      "topic": "product demand"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          410
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "reduced revenue"
+      ],
+      "position": 15,
+      "sentence_id": "0000059478-26-000013:2:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Moreover, the outcome of these arrangements and broader U.S. policy efforts to align domestic pharmaceutical pricing with international benchmarks from countries with competing healthcare cost containment priorities is uncertain and could negatively impact our pricing strategies, product demand or access, or competitive positioning across global markets, and may result in reduced revenue in certain markets.",
+      "ticker": "LLY",
+      "topic": "reduced revenue"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          120
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "important factor"
+      ],
+      "position": 16,
+      "sentence_id": "0000059478-26-000013:2:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "In general, securing and growing access for our obesity medicines is an important factor in the success of our business.",
+      "ticker": "LLY",
+      "topic": "important factor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          120
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "obesity medicines"
+      ],
+      "position": 16,
+      "sentence_id": "0000059478-26-000013:2:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "In general, securing and growing access for our obesity medicines is an important factor in the success of our business.",
+      "ticker": "LLY",
+      "topic": "obesity medicine"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "international markets"
+      ],
+      "position": 17,
+      "sentence_id": "0000059478-26-000013:2:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Among other considerations, payers in various international markets do not currently provide coverage for obesity medicines for weight loss indications, requiring patient self-pay.",
+      "ticker": "LLY",
+      "topic": "international market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "obesity medicines"
+      ],
+      "position": 17,
+      "sentence_id": "0000059478-26-000013:2:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Among other considerations, payers in various international markets do not currently provide coverage for obesity medicines for weight loss indications, requiring patient self-pay.",
+      "ticker": "LLY",
+      "topic": "obesity medicine"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "patient self-pay"
+      ],
+      "position": 17,
+      "sentence_id": "0000059478-26-000013:2:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Among other considerations, payers in various international markets do not currently provide coverage for obesity medicines for weight loss indications, requiring patient self-pay.",
+      "ticker": "LLY",
+      "topic": "patient self pay"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          180
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "weight loss indications"
+      ],
+      "position": 17,
+      "sentence_id": "0000059478-26-000013:2:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Among other considerations, payers in various international markets do not currently provide coverage for obesity medicines for weight loss indications, requiring patient self-pay.",
+      "ticker": "LLY",
+      "topic": "weight loss indication"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          259
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "LillyDirect"
+      ],
+      "position": 18,
+      "sentence_id": "0000059478-26-000013:2:12",
+      "source": "entity",
+      "status": "added",
+      "text": "In addition, patient self-pay sales through LillyDirect represented a growing portion of our business in 2025, and we have launched, and continue to explore, new partnerships and tools, including through LillyDirect, to further expand access to our medicines.",
+      "ticker": "LLY",
+      "topic": "LillyDirect"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          259
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "growing portion"
+      ],
+      "position": 18,
+      "sentence_id": "0000059478-26-000013:2:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, patient self-pay sales through LillyDirect represented a growing portion of our business in 2025, and we have launched, and continue to explore, new partnerships and tools, including through LillyDirect, to further expand access to our medicines.",
+      "ticker": "LLY",
+      "topic": "growing portion"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          259
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "patient self-pay sales"
+      ],
+      "position": 18,
+      "sentence_id": "0000059478-26-000013:2:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, patient self-pay sales through LillyDirect represented a growing portion of our business in 2025, and we have launched, and continue to explore, new partnerships and tools, including through LillyDirect, to further expand access to our medicines.",
+      "ticker": "LLY",
+      "topic": "patient self pay sale"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          415
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "cash-pay markets"
+      ],
+      "position": 19,
+      "sentence_id": "0000059478-26-000013:2:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our financial results and prospects are subject to risks related to the level and pace of patient participation in cash-pay markets, which may be influenced by pricing, economic conditions, and competitive offerings, as well as regulatory or other actions that could restrict our ability to benefit from such markets, and uncertainty regarding our ability to secure reimbursement coverage in such markets over time.",
+      "ticker": "LLY",
+      "topic": "cash pay market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          415
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "competitive offerings"
+      ],
+      "position": 19,
+      "sentence_id": "0000059478-26-000013:2:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our financial results and prospects are subject to risks related to the level and pace of patient participation in cash-pay markets, which may be influenced by pricing, economic conditions, and competitive offerings, as well as regulatory or other actions that could restrict our ability to benefit from such markets, and uncertainty regarding our ability to secure reimbursement coverage in such markets over time.",
+      "ticker": "LLY",
+      "topic": "competitive offering"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          415
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "economic conditions"
+      ],
+      "position": 19,
+      "sentence_id": "0000059478-26-000013:2:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our financial results and prospects are subject to risks related to the level and pace of patient participation in cash-pay markets, which may be influenced by pricing, economic conditions, and competitive offerings, as well as regulatory or other actions that could restrict our ability to benefit from such markets, and uncertainty regarding our ability to secure reimbursement coverage in such markets over time.",
+      "ticker": "LLY",
+      "topic": "economic condition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          415
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "patient participation"
+      ],
+      "position": 19,
+      "sentence_id": "0000059478-26-000013:2:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our financial results and prospects are subject to risks related to the level and pace of patient participation in cash-pay markets, which may be influenced by pricing, economic conditions, and competitive offerings, as well as regulatory or other actions that could restrict our ability to benefit from such markets, and uncertainty regarding our ability to secure reimbursement coverage in such markets over time.",
+      "ticker": "LLY",
+      "topic": "patient participation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          415
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "reimbursement coverage"
+      ],
+      "position": 19,
+      "sentence_id": "0000059478-26-000013:2:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our financial results and prospects are subject to risks related to the level and pace of patient participation in cash-pay markets, which may be influenced by pricing, economic conditions, and competitive offerings, as well as regulatory or other actions that could restrict our ability to benefit from such markets, and uncertainty regarding our ability to secure reimbursement coverage in such markets over time.",
+      "ticker": "LLY",
+      "topic": "reimbursement coverage"
+    },
+    {
+      "added_spans": [
+        [
+          140,
+          163
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "state attorneys"
+      ],
+      "position": 21,
+      "sentence_id": "0000059478-26-000013:2:14",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Additional policies, regulations, legislation, or enforcement, including because of the regulatory priorities of the U.S. executive branch, state attorneys general, and regulatory authorities worldwide, could adversely impact our business and consolidated results of operations.",
+      "ticker": "LLY",
+      "topic": "state attorney"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          134
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "Trulicity"
+      ],
+      "position": 25,
+      "sentence_id": "0000059478-26-000013:2:16",
+      "source": "entity",
+      "status": "added",
+      "text": "In January 2026, HHS selected Trulicity and Verzenio as additional medicines subject to government-set prices to be effective in 2028.",
+      "ticker": "LLY",
+      "topic": "Trulicity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          83
+        ],
+        [
+          92,
+          230
+        ],
+        [
+          252,
+          298
+        ],
+        [
+          302,
+          307
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "Continued expansion"
+      ],
+      "position": 33,
+      "sentence_id": "0000059478-26-000013:2:20",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Continued expansion of the 340B program and growth of entities claiming entitlement to 340B pricing, including in ways that may be inconsistent with the statutory scheme and through state laws that purport to mandate 340B sales to contract pharmacies, impact our revenue on an increasing percentage of sales.",
+      "ticker": "LLY",
+      "topic": "continued expansion"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          83
+        ],
+        [
+          92,
+          230
+        ],
+        [
+          252,
+          298
+        ],
+        [
+          302,
+          307
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "increasing percentage"
+      ],
+      "position": 33,
+      "sentence_id": "0000059478-26-000013:2:20",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Continued expansion of the 340B program and growth of entities claiming entitlement to 340B pricing, including in ways that may be inconsistent with the statutory scheme and through state laws that purport to mandate 340B sales to contract pharmacies, impact our revenue on an increasing percentage of sales.",
+      "ticker": "LLY",
+      "topic": "increasing percentage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          83
+        ],
+        [
+          92,
+          230
+        ],
+        [
+          252,
+          298
+        ],
+        [
+          302,
+          307
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "statutory scheme"
+      ],
+      "position": 33,
+      "sentence_id": "0000059478-26-000013:2:20",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Continued expansion of the 340B program and growth of entities claiming entitlement to 340B pricing, including in ways that may be inconsistent with the statutory scheme and through state laws that purport to mandate 340B sales to contract pharmacies, impact our revenue on an increasing percentage of sales.",
+      "ticker": "LLY",
+      "topic": "statutory scheme"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          229
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "Medicaid"
+      ],
+      "position": 35,
+      "sentence_id": "0000059478-26-000013:2:21",
+      "source": "entity",
+      "status": "added",
+      "text": "Changes to the calculation of rebates under the Medicaid program could also increase our Medicaid rebate obligations and decrease the prices charged to 340B covered entities, which could have a significant impact on our business.",
+      "ticker": "LLY",
+      "topic": "Medicaid"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          229
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "Medicaid program"
+      ],
+      "position": 35,
+      "sentence_id": "0000059478-26-000013:2:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes to the calculation of rebates under the Medicaid program could also increase our Medicaid rebate obligations and decrease the prices charged to 340B covered entities, which could have a significant impact on our business.",
+      "ticker": "LLY",
+      "topic": "medicaid program"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          229
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "Medicaid rebate obligations"
+      ],
+      "position": 35,
+      "sentence_id": "0000059478-26-000013:2:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "Changes to the calculation of rebates under the Medicaid program could also increase our Medicaid rebate obligations and decrease the prices charged to 340B covered entities, which could have a significant impact on our business.",
+      "ticker": "LLY",
+      "topic": "medicaid rebate obligation"
+    },
+    {
+      "added_spans": [
+        [
+          111,
+          148
+        ]
+      ],
+      "change_id": "02b328ad57114800",
+      "matched_terms": [
+        "private actors"
+      ],
+      "position": 45,
+      "sentence_id": "0000059478-26-000013:2:26",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Calculation methodologies are inherently subjective and subject to review and challenge by government agencies and, in some cases, by private actors.",
+      "ticker": "LLY",
+      "topic": "private actor"
+    },
+    {
+      "added_spans": [
+        [
+          13,
+          73
+        ],
+        [
+          99,
+          121
+        ],
+        [
+          176,
+          198
+        ],
+        [
+          297,
+          304
+        ]
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "matched_terms": [
+        "Council"
+      ],
+      "position": 11,
+      "sentence_id": "0000059478-26-000013:6:5",
+      "source": "entity",
+      "status": "modified",
+      "text": "For example, an agreement-in-principle announced in December 2025 between the European Commission, Council and Parliament to revise the EU's general pharmaceutical legislation would make conditional the length of certain pharmaceutical intellectual property incentives, including by reductions in maximum data protection periods.",
+      "ticker": "LLY",
+      "topic": "Council"
+    },
+    {
+      "added_spans": [
+        [
+          13,
+          73
+        ],
+        [
+          99,
+          121
+        ],
+        [
+          176,
+          198
+        ],
+        [
+          297,
+          304
+        ]
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "matched_terms": [
+        "Parliament"
+      ],
+      "position": 11,
+      "sentence_id": "0000059478-26-000013:6:5",
+      "source": "entity",
+      "status": "modified",
+      "text": "For example, an agreement-in-principle announced in December 2025 between the European Commission, Council and Parliament to revise the EU's general pharmaceutical legislation would make conditional the length of certain pharmaceutical intellectual property incentives, including by reductions in maximum data protection periods.",
+      "ticker": "LLY",
+      "topic": "Parliament"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          376
+        ]
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "matched_terms": [
+        "domestic competitors"
+      ],
+      "position": 40,
+      "sentence_id": "0000059478-26-000013:6:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Intellectual property threats across international markets include policies which favor domestic competitors or are otherwise disadvantageous to our products, challenges to our patents’ validity in foreign courts, and government policies that force technology transfer or undermine or nullify patent protections under the guise of health emergencies or other public interests.",
+      "ticker": "LLY",
+      "topic": "domestic competitor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          376
+        ]
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "matched_terms": [
+        "foreign courts"
+      ],
+      "position": 40,
+      "sentence_id": "0000059478-26-000013:6:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Intellectual property threats across international markets include policies which favor domestic competitors or are otherwise disadvantageous to our products, challenges to our patents’ validity in foreign courts, and government policies that force technology transfer or undermine or nullify patent protections under the guise of health emergencies or other public interests.",
+      "ticker": "LLY",
+      "topic": "foreign court"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          376
+        ]
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "matched_terms": [
+        "government policies"
+      ],
+      "position": 40,
+      "sentence_id": "0000059478-26-000013:6:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Intellectual property threats across international markets include policies which favor domestic competitors or are otherwise disadvantageous to our products, challenges to our patents’ validity in foreign courts, and government policies that force technology transfer or undermine or nullify patent protections under the guise of health emergencies or other public interests.",
+      "ticker": "LLY",
+      "topic": "government policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          376
+        ]
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "matched_terms": [
+        "health emergencies"
+      ],
+      "position": 40,
+      "sentence_id": "0000059478-26-000013:6:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Intellectual property threats across international markets include policies which favor domestic competitors or are otherwise disadvantageous to our products, challenges to our patents’ validity in foreign courts, and government policies that force technology transfer or undermine or nullify patent protections under the guise of health emergencies or other public interests.",
+      "ticker": "LLY",
+      "topic": "health emergency"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          376
+        ]
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "matched_terms": [
+        "Intellectual property threats"
+      ],
+      "position": 40,
+      "sentence_id": "0000059478-26-000013:6:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Intellectual property threats across international markets include policies which favor domestic competitors or are otherwise disadvantageous to our products, challenges to our patents’ validity in foreign courts, and government policies that force technology transfer or undermine or nullify patent protections under the guise of health emergencies or other public interests.",
+      "ticker": "LLY",
+      "topic": "intellectual property threat"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          376
+        ]
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "matched_terms": [
+        "international markets"
+      ],
+      "position": 40,
+      "sentence_id": "0000059478-26-000013:6:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Intellectual property threats across international markets include policies which favor domestic competitors or are otherwise disadvantageous to our products, challenges to our patents’ validity in foreign courts, and government policies that force technology transfer or undermine or nullify patent protections under the guise of health emergencies or other public interests.",
+      "ticker": "LLY",
+      "topic": "international market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          376
+        ]
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "matched_terms": [
+        "patents’ validity"
+      ],
+      "position": 40,
+      "sentence_id": "0000059478-26-000013:6:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Intellectual property threats across international markets include policies which favor domestic competitors or are otherwise disadvantageous to our products, challenges to our patents’ validity in foreign courts, and government policies that force technology transfer or undermine or nullify patent protections under the guise of health emergencies or other public interests.",
+      "ticker": "LLY",
+      "topic": "patent validity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          376
+        ]
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "matched_terms": [
+        "public interests"
+      ],
+      "position": 40,
+      "sentence_id": "0000059478-26-000013:6:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Intellectual property threats across international markets include policies which favor domestic competitors or are otherwise disadvantageous to our products, challenges to our patents’ validity in foreign courts, and government policies that force technology transfer or undermine or nullify patent protections under the guise of health emergencies or other public interests.",
+      "ticker": "LLY",
+      "topic": "public interest"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          376
+        ]
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "matched_terms": [
+        "technology transfer"
+      ],
+      "position": 40,
+      "sentence_id": "0000059478-26-000013:6:20",
+      "source": "phrase",
+      "status": "added",
+      "text": "Intellectual property threats across international markets include policies which favor domestic competitors or are otherwise disadvantageous to our products, challenges to our patents’ validity in foreign courts, and government policies that force technology transfer or undermine or nullify patent protections under the guise of health emergencies or other public interests.",
+      "ticker": "LLY",
+      "topic": "technology transfer"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          281,
+          385
+        ]
+      ],
+      "change_id": "8e15fdc47e4c0893",
+      "matched_terms": [
+        "generic or counterfeit products"
+      ],
+      "position": 42,
+      "sentence_id": "0000059478-26-000013:6:21",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Furthermore, intellectual property protection in certain jurisdictions is weak and we face heightened risks to our intellectual property rights in these jurisdictions, including competition with generic or counterfeit versions of our products at or relatively shortly after launch as well as the risk of diversion of generic or counterfeit products from these jurisdictions into others.",
+      "ticker": "LLY",
+      "topic": "generic or counterfeit product"
+    },
+    {
+      "added_spans": [
+        [
+          118,
+          144
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "negative outcomes"
+      ],
+      "position": 1,
+      "sentence_id": "0000059478-26-000013:8:0",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Manufacturing, quality, or supply chain difficulties, disruptions, or shortages could lead to product supply problems or other negative outcomes.",
+      "ticker": "LLY",
+      "topic": "negative outcome"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          154
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "contracted supply chain activity"
+      ],
+      "position": 6,
+      "sentence_id": "0000059478-26-000013:8:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Supply chain difficulties, disruptions or shortages may arise from our or contracted supply chain activity as well as from external environmental factors.",
+      "ticker": "LLY",
+      "topic": "contracted supply chain activity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          154
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "external environmental factors"
+      ],
+      "position": 6,
+      "sentence_id": "0000059478-26-000013:8:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Supply chain difficulties, disruptions or shortages may arise from our or contracted supply chain activity as well as from external environmental factors.",
+      "ticker": "LLY",
+      "topic": "external environmental factor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          100
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "supply capacity"
+      ],
+      "position": 7,
+      "sentence_id": "0000059478-26-000013:8:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Variability in demand and supply for our products can also challenge supply capacity and resiliency.",
+      "ticker": "LLY",
+      "topic": "supply capacity"
+    },
+    {
+      "added_spans": [
+        [
+          13,
+          20
+        ],
+        [
+          31,
+          47
+        ],
+        [
+          229,
+          244
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "chain activities"
+      ],
+      "position": 10,
+      "sentence_id": "0000059478-26-000013:8:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Difficulties related to supply chain activities have resulted and may in the future result in delays and disruptions in the manufacturing, distribution, and sale of our products and/or product shortages, leading to lost revenue, increased costs, reduced market opportunities, and the possibility of additional market entrants.",
+      "ticker": "LLY",
+      "topic": "chain activity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          25
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "iii) labor deficiencies"
+      ],
+      "position": 18,
+      "sentence_id": "0000059478-26-000013:8:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "(iii) labor deficiencies;",
+      "ticker": "LLY",
+      "topic": "iii labor deficiency"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "timely or compliant manner"
+      ],
+      "position": 20,
+      "sentence_id": "0000059478-26-000013:8:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "(v) issues related to contractors and suppliers, including the failure, inability, or refusal of a supplier or contract manufacturer to supply contracted quantities in a timely or compliant manner or at all, increases in demand on a supplier with constrained capacity, contractual disputes with our suppliers and contract manufacturers, and vertical integration by competitors within our supply chain.",
+      "ticker": "LLY",
+      "topic": "timely or compliant manner"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          401
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "v) issues"
+      ],
+      "position": 20,
+      "sentence_id": "0000059478-26-000013:8:13",
+      "source": "phrase",
+      "status": "added",
+      "text": "(v) issues related to contractors and suppliers, including the failure, inability, or refusal of a supplier or contract manufacturer to supply contracted quantities in a timely or compliant manner or at all, increases in demand on a supplier with constrained capacity, contractual disputes with our suppliers and contract manufacturers, and vertical integration by competitors within our supply chain.",
+      "ticker": "LLY",
+      "topic": "v issue"
+    },
+    {
+      "added_spans": [
+        [
+          12,
+          25
+        ],
+        [
+          74,
+          98
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "tariffs"
+      ],
+      "position": 22,
+      "sentence_id": "0000059478-26-000013:8:14",
+      "source": "lexicon",
+      "status": "modified",
+      "text": "Regional or single-source dependencies may in some cases accentuate risks and costs (e.g., tariffs) related to manufacturing and supply.",
+      "ticker": "LLY",
+      "topic": "Tariffs"
+    },
+    {
+      "added_spans": [
+        [
+          231,
+          297
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "global operations"
+      ],
+      "position": 28,
+      "sentence_id": "0000059478-26-000013:8:17",
+      "source": "phrase",
+      "status": "modified",
+      "text": "See, Item 1A, \"Risk Factors—Risks Related to Our Operations—Reliance on third-party relationships and outsourcing arrangements could adversely affect our business,\" and \"Risk Factors—Risks Related to Doing Business Internationally—Our global operations subject us to risks, including as related to uneven economic growth or downturns, international trade, and other global disruptions, geopolitical tensions, or disputes\" for more details.",
+      "ticker": "LLY",
+      "topic": "global operation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          303
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "External environmental factors"
+      ],
+      "position": 30,
+      "sentence_id": "0000059478-26-000013:8:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "External environmental factors have also caused, and in the future may cause, delays in, and/or increase costs related to, distribution of our medicines, the construction or other acquisition of additional manufacturing capacity, procurement activity, and supplier or contract manufacturer arrangements.",
+      "ticker": "LLY",
+      "topic": "external environmental factor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          47
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "external environmental factors"
+      ],
+      "position": 31,
+      "sentence_id": "0000059478-26-000013:8:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "Relevant external environmental factors include",
+      "ticker": "LLY",
+      "topic": "external environmental factor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          12
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "tariffs"
+      ],
+      "position": 32,
+      "sentence_id": "0000059478-26-000013:8:20",
+      "source": "lexicon",
+      "status": "added",
+      "text": "(i) tariffs,",
+      "ticker": "LLY",
+      "topic": "Tariffs"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          28
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "iii) labor market dynamics"
+      ],
+      "position": 34,
+      "sentence_id": "0000059478-26-000013:8:22",
+      "source": "phrase",
+      "status": "added",
+      "text": "(iii) labor market dynamics;",
+      "ticker": "LLY",
+      "topic": "iii labor market dynamic"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          53
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "v) public health outbreaks"
+      ],
+      "position": 36,
+      "sentence_id": "0000059478-26-000013:8:24",
+      "source": "phrase",
+      "status": "added",
+      "text": "(v) public health outbreaks, epidemics, or pandemics;",
+      "ticker": "LLY",
+      "topic": "v public health outbreak"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          56
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "vi) periods"
+      ],
+      "position": 37,
+      "sentence_id": "0000059478-26-000013:8:25",
+      "source": "phrase",
+      "status": "added",
+      "text": "(vi) periods of uneven economic growth or downturns; and",
+      "ticker": "LLY",
+      "topic": "vi period"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          90
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "vii) the emergence"
+      ],
+      "position": 38,
+      "sentence_id": "0000059478-26-000013:8:26",
+      "source": "phrase",
+      "status": "added",
+      "text": "(vii) the emergence or escalation of, or responses to international tension and conflicts.",
+      "ticker": "LLY",
+      "topic": "vii the emergence"
+    },
+    {
+      "added_spans": [
+        [
+          12,
+          39
+        ],
+        [
+          381,
+          416
+        ]
+      ],
+      "change_id": "33c2cb8376f1b04b",
+      "matched_terms": [
+        "supply imbalances"
+      ],
+      "position": 49,
+      "sentence_id": "0000059478-26-000013:8:30",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Conversely, overestimation of demand or events that limit demand for our products or anticipated demand for product candidates would undermine our ability to realize the full benefit of significant capital expenditures that we have incurred, and expect to continue to incur, to augment manufacturing capacity, may render built or in process manufacturing capacity unnecessary, may result in supply imbalances, or may subject us to contractual payment obligations, which may be significant.",
+      "ticker": "LLY",
+      "topic": "supply imbalance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          308
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "China"
+      ],
+      "position": 2,
+      "sentence_id": "0000059478-26-000013:1:1",
+      "source": "lexicon",
+      "status": "added",
+      "text": "We compete with a large number of multinational pharmaceutical companies, biotechnology companies, and generic pharmaceutical companies and face intensifying competition worldwide, including from China and other markets where research and development capabilities have expanded and accelerated significantly.",
+      "ticker": "LLY",
+      "topic": "China"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          308
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "research and development capabilities"
+      ],
+      "position": 2,
+      "sentence_id": "0000059478-26-000013:1:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "We compete with a large number of multinational pharmaceutical companies, biotechnology companies, and generic pharmaceutical companies and face intensifying competition worldwide, including from China and other markets where research and development capabilities have expanded and accelerated significantly.",
+      "ticker": "LLY",
+      "topic": "research and development capability"
+    },
+    {
+      "added_spans": [
+        [
+          278,
+          299
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "price competition"
+      ],
+      "position": 8,
+      "sentence_id": "0000059478-26-000013:1:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Our product revenues and prospects are adversely affected by patient access issues, the introduction by competitors of branded products that are first to market, have better marketplace access, have greater brand recognition, or are perceived as superior by the marketplace, by price competition, by generic or biosimilar versions of our branded products, and by generic or biosimilar versions of other products in the same therapeutic class as our branded products.",
+      "ticker": "LLY",
+      "topic": "price competition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          230
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "competitive aspects"
+      ],
+      "position": 13,
+      "sentence_id": "0000059478-26-000013:1:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Technological innovation has amplified and we expect will continue to amplify competitive aspects of our business, including by enabling additional participation in and breadth of drug discovery and new healthcare delivery models.",
+      "ticker": "LLY",
+      "topic": "competitive aspect"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          230
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "drug discovery"
+      ],
+      "position": 13,
+      "sentence_id": "0000059478-26-000013:1:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Technological innovation has amplified and we expect will continue to amplify competitive aspects of our business, including by enabling additional participation in and breadth of drug discovery and new healthcare delivery models.",
+      "ticker": "LLY",
+      "topic": "drug discovery"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          230
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "healthcare delivery models"
+      ],
+      "position": 13,
+      "sentence_id": "0000059478-26-000013:1:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Technological innovation has amplified and we expect will continue to amplify competitive aspects of our business, including by enabling additional participation in and breadth of drug discovery and new healthcare delivery models.",
+      "ticker": "LLY",
+      "topic": "healthcare delivery model"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          230
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "Technological innovation"
+      ],
+      "position": 13,
+      "sentence_id": "0000059478-26-000013:1:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "Technological innovation has amplified and we expect will continue to amplify competitive aspects of our business, including by enabling additional participation in and breadth of drug discovery and new healthcare delivery models.",
+      "ticker": "LLY",
+      "topic": "technological innovation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          129
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "Business practices"
+      ],
+      "position": 14,
+      "sentence_id": "0000059478-26-000013:1:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Business practices or commercial capabilities that we deploy in light of these or other market dynamics may not prove sufficient.",
+      "ticker": "LLY",
+      "topic": "business practice"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          129
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "commercial capabilities"
+      ],
+      "position": 14,
+      "sentence_id": "0000059478-26-000013:1:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Business practices or commercial capabilities that we deploy in light of these or other market dynamics may not prove sufficient.",
+      "ticker": "LLY",
+      "topic": "commercial capability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          129
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "market dynamics"
+      ],
+      "position": 14,
+      "sentence_id": "0000059478-26-000013:1:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Business practices or commercial capabilities that we deploy in light of these or other market dynamics may not prove sufficient.",
+      "ticker": "LLY",
+      "topic": "market dynamic"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          218
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "compliant market participants"
+      ],
+      "position": 31,
+      "sentence_id": "0000059478-26-000013:1:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition to patient safety concerns, improper commercialization and dispensation practices by these actors may inappropriately condition consumer expectations or otherwise disadvantage compliant market participants.",
+      "ticker": "LLY",
+      "topic": "compliant market participant"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          218
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "consumer expectations"
+      ],
+      "position": 31,
+      "sentence_id": "0000059478-26-000013:1:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition to patient safety concerns, improper commercialization and dispensation practices by these actors may inappropriately condition consumer expectations or otherwise disadvantage compliant market participants.",
+      "ticker": "LLY",
+      "topic": "consumer expectation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          218
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "patient safety concerns"
+      ],
+      "position": 31,
+      "sentence_id": "0000059478-26-000013:1:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition to patient safety concerns, improper commercialization and dispensation practices by these actors may inappropriately condition consumer expectations or otherwise disadvantage compliant market participants.",
+      "ticker": "LLY",
+      "topic": "patient safety concern"
+    },
+    {
+      "added_spans": [
+        [
+          3,
+          113
+        ],
+        [
+          126,
+          144
+        ],
+        [
+          149,
+          156
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "rapid development"
+      ],
+      "position": 43,
+      "sentence_id": "0000059478-26-000013:1:23",
+      "source": "phrase",
+      "status": "modified",
+      "text": "To capitalize on the rapid development of next-generation technologies and otherwise effectively compete, we must continue to enhance skill sets and develop our workforce, both in and outside the U.S.",
+      "ticker": "LLY",
+      "topic": "rapid development"
+    },
+    {
+      "added_spans": [
+        [
+          3,
+          113
+        ],
+        [
+          126,
+          144
+        ],
+        [
+          149,
+          156
+        ]
+      ],
+      "change_id": "fca4a78146790754",
+      "matched_terms": [
+        "skill sets"
+      ],
+      "position": 43,
+      "sentence_id": "0000059478-26-000013:1:23",
+      "source": "phrase",
+      "status": "modified",
+      "text": "To capitalize on the rapid development of next-generation technologies and otherwise effectively compete, we must continue to enhance skill sets and develop our workforce, both in and outside the U.S.",
+      "ticker": "LLY",
+      "topic": "skill set"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          171
+        ]
+      ],
+      "change_id": "311be7a3b615e63f",
+      "matched_terms": [
+        "AI technology"
+      ],
+      "position": 4,
+      "sentence_id": "0000059478-26-000013:10:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have also entered into, and may continue to enter into, partnerships and collaborations relating to the use of AI technology to aid in drug discovery and other efforts.",
+      "ticker": "LLY",
+      "topic": "ai technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          171
+        ]
+      ],
+      "change_id": "311be7a3b615e63f",
+      "matched_terms": [
+        "drug discovery"
+      ],
+      "position": 4,
+      "sentence_id": "0000059478-26-000013:10:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have also entered into, and may continue to enter into, partnerships and collaborations relating to the use of AI technology to aid in drug discovery and other efforts.",
+      "ticker": "LLY",
+      "topic": "drug discovery"
+    },
+    {
+      "added_spans": [
+        [
+          14,
+          37
+        ],
+        [
+          122,
+          133
+        ]
+      ],
+      "change_id": "311be7a3b615e63f",
+      "matched_terms": [
+        "continued expansion"
+      ],
+      "position": 21,
+      "sentence_id": "0000059478-26-000013:10:11",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The emergence and continued expansion of AI and other technologies may exacerbate other risks, including those related to competition, regulation, litigation, compliance issues, ethical concerns, confidentiality, and data privacy or security.",
+      "ticker": "LLY",
+      "topic": "continued expansion"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          159
+        ]
+      ],
+      "change_id": "311be7a3b615e63f",
+      "matched_terms": [
+        "competitive dynamics"
+      ],
+      "position": 22,
+      "sentence_id": "0000059478-26-000013:10:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI may enable new competitors in drug discovery and enhance the capabilities of existing competitors, thereby broadening and intensifying competitive dynamics.",
+      "ticker": "LLY",
+      "topic": "competitive dynamic"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          159
+        ]
+      ],
+      "change_id": "311be7a3b615e63f",
+      "matched_terms": [
+        "drug discovery"
+      ],
+      "position": 22,
+      "sentence_id": "0000059478-26-000013:10:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI may enable new competitors in drug discovery and enhance the capabilities of existing competitors, thereby broadening and intensifying competitive dynamics.",
+      "ticker": "LLY",
+      "topic": "drug discovery"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          159
+        ]
+      ],
+      "change_id": "311be7a3b615e63f",
+      "matched_terms": [
+        "existing competitors"
+      ],
+      "position": 22,
+      "sentence_id": "0000059478-26-000013:10:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "AI may enable new competitors in drug discovery and enhance the capabilities of existing competitors, thereby broadening and intensifying competitive dynamics.",
+      "ticker": "LLY",
+      "topic": "existing competitor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          44
+        ],
+        [
+          90,
+          108
+        ],
+        [
+          173,
+          229
+        ],
+        [
+          233,
+          254
+        ]
+      ],
+      "change_id": "311be7a3b615e63f",
+      "matched_terms": [
+        "AI-based software"
+      ],
+      "position": 24,
+      "sentence_id": "0000059478-26-000013:10:13",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, developing laws and regulations related to AI or other emerging technologies create uncertainty, may require significant resources to adjust business practices for compliance, and in some cases, may limit our ability to use AI-based software.",
+      "ticker": "LLY",
+      "topic": "ai based software"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          98
+        ]
+      ],
+      "change_id": "d2d81c3991449b7c",
+      "matched_terms": [
+        "Inherent uncertainties"
+      ],
+      "position": 4,
+      "sentence_id": "0000059478-26-000013:14:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "Inherent uncertainties exist in estimates of many tax positions due to the complexity of tax laws.",
+      "ticker": "LLY",
+      "topic": "inherent uncertainty"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          98
+        ]
+      ],
+      "change_id": "d2d81c3991449b7c",
+      "matched_terms": [
+        "tax positions"
+      ],
+      "position": 4,
+      "sentence_id": "0000059478-26-000013:14:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "Inherent uncertainties exist in estimates of many tax positions due to the complexity of tax laws.",
+      "ticker": "LLY",
+      "topic": "tax position"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          333
+        ]
+      ],
+      "change_id": "d2d81c3991449b7c",
+      "matched_terms": [
+        "given period"
+      ],
+      "position": 9,
+      "sentence_id": "0000059478-26-000013:14:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Given the uncertainty of positions that could be taken by taxing authorities during the examinations of our tax returns, the ultimate outcome of any tax matters may result in liabilities that are greater than amounts accrued in our estimates for uncertain tax positions and could affect our results of operations in any given period.",
+      "ticker": "LLY",
+      "topic": "given period"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          333
+        ]
+      ],
+      "change_id": "d2d81c3991449b7c",
+      "matched_terms": [
+        "ultimate outcome"
+      ],
+      "position": 9,
+      "sentence_id": "0000059478-26-000013:14:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Given the uncertainty of positions that could be taken by taxing authorities during the examinations of our tax returns, the ultimate outcome of any tax matters may result in liabilities that are greater than amounts accrued in our estimates for uncertain tax positions and could affect our results of operations in any given period.",
+      "ticker": "LLY",
+      "topic": "ultimate outcome"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          333
+        ]
+      ],
+      "change_id": "d2d81c3991449b7c",
+      "matched_terms": [
+        "uncertain tax positions"
+      ],
+      "position": 9,
+      "sentence_id": "0000059478-26-000013:14:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Given the uncertainty of positions that could be taken by taxing authorities during the examinations of our tax returns, the ultimate outcome of any tax matters may result in liabilities that are greater than amounts accrued in our estimates for uncertain tax positions and could affect our results of operations in any given period.",
+      "ticker": "LLY",
+      "topic": "uncertain tax position"
+    }
+  ],
+  "total_changes": 16
+}

@@ -1,0 +1,3164 @@
+{
+  "analysis_id": "489c7414b68dd95985fd77c039fdaa3ab6d9bc3e37f3d6c67629feb5452aced9",
+  "by_change_type": {
+    "expanded": 2,
+    "largely_unchanged": 41,
+    "materially_reworded": 2,
+    "new": 1,
+    "reduced": 1,
+    "removed": 1
+  },
+  "category_activity": [
+    {
+      "added_sentences": 15,
+      "added_words": 426,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "change_type": "materially_reworded",
+      "modified_sentences": 7,
+      "modified_words": 286,
+      "removed_sentences": 13,
+      "removed_words": 324,
+      "score": 52,
+      "short_title": "Changes in our tax rates or exposure…"
+    },
+    {
+      "added_sentences": 7,
+      "added_words": 299,
+      "categories": [
+        "other"
+      ],
+      "change_id": "186e47ace348329e",
+      "change_type": "new",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 44,
+      "short_title": "Our ability to use net operating loss…"
+    },
+    {
+      "added_sentences": 8,
+      "added_words": 228,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "change_type": "expanded",
+      "modified_sentences": 15,
+      "modified_words": 249,
+      "removed_sentences": 3,
+      "removed_words": 73,
+      "score": 37,
+      "short_title": "The laws and regulations concerning data privacy…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 14,
+      "categories": [
+        "competition",
+        "supply_chain"
+      ],
+      "change_id": "b8a62063f1fe1533",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 8,
+      "modified_words": 38,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 30,
+      "short_title": "Our business is subject to our ability…"
+    },
+    {
+      "added_sentences": 6,
+      "added_words": 236,
+      "categories": [
+        "artificial_intelligence"
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "change_type": "materially_reworded",
+      "modified_sentences": 5,
+      "modified_words": 168,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 29,
+      "short_title": "The development, use, and incorporation of artificial…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "28ec6f2564d2a08e",
+      "change_type": "removed",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 8,
+      "removed_words": 174,
+      "score": 26,
+      "short_title": "If the use of mobile devices as…"
+    },
+    {
+      "added_sentences": 12,
+      "added_words": 279,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "change_type": "expanded",
+      "modified_sentences": 3,
+      "modified_words": 11,
+      "removed_sentences": 1,
+      "removed_words": 19,
+      "score": 23,
+      "short_title": "The increasing importance of digital sales and…"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 89,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "7130478ec3da71b1",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 5,
+      "modified_words": 86,
+      "removed_sentences": 2,
+      "removed_words": 57,
+      "score": 22,
+      "short_title": "We face risks from our international operations"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "cb3084480a09152a",
+      "change_type": "reduced",
+      "modified_sentences": 4,
+      "modified_words": 28,
+      "removed_sentences": 2,
+      "removed_words": 44,
+      "score": 16,
+      "short_title": "Increased competition for limited promotional support from…"
+    },
+    {
+      "added_sentences": 6,
+      "added_words": 171,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "fbecd8e99b729d9e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 6,
+      "modified_words": 86,
+      "removed_sentences": 6,
+      "removed_words": 260,
+      "score": 12,
+      "short_title": "Our business and products are subject to…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "a500a85ed17e9ebf",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 18,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 10,
+      "short_title": "We are dependent on the future success…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "e955727b0a880bbe",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 9,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 10,
+      "short_title": "We have a significant amount of outstanding…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "foreign_exchange"
+      ],
+      "change_id": "0bbfc591a7d3bf42",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 13,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 9,
+      "short_title": "We are subject to risks and uncertainties…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 40,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "359bce0e08f6ecff",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 3,
+      "modified_words": 66,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "If we acquire or invest in other…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "customer_concentration",
+        "competition"
+      ],
+      "change_id": "637dc57a025f0fe1",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 38,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "A limited number of customers account for…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "e0649954580d8b5b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 20,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 5,
+      "short_title": "Additional issuances or sales of equity securities…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "0eeee6826ce2bba3",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 5,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Catastrophic events and climate change may have…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 80,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "4300073c42061055",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 14,
+      "modified_words": 122,
+      "removed_sentences": 1,
+      "removed_words": 36,
+      "score": 4,
+      "short_title": "We rely on complex information technology systems…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 25,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "5e6b6c0b91fdf986",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 108,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "The interactive entertainment software industry is highly competitive"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "8117613316d1b282",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 5,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "We may be adversely affected by the…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "e9d78312d7e9264f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 8,
+      "modified_words": 131,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 4,
+      "short_title": "Our business could be adversely affected if…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "0c7f760ed8c3f150",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 1,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We depend on servers and Internet bandwidth…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "liquidity"
+      ],
+      "change_id": "19e23877cea47334",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Delaware law, our charter documents, and provisions…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "2d2576fa4a019282",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are and may become involved in…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "324c0745296af780",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The inability of our products to achieve…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition",
+        "artificial_intelligence"
+      ],
+      "change_id": "33dfefbb4cc5b664",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 12,
+      "removed_sentences": 1,
+      "removed_words": 9,
+      "score": 0,
+      "short_title": "We are subject to product development risks…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "3a56472fa7104f46",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Price protection granted to our customers and…"
+    },
+    {
+      "added_sentences": 3,
+      "added_words": 113,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "3d30d6b91fd2eb99",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 6,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We cannot publish our titles without the…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "other"
+      ],
+      "change_id": "4be043b14ca14198",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our software is susceptible to errors, which…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "52abc9fce6695b9e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business may be harmed if our…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "6067604da4177209",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we infringe on or are alleged…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation",
+        "foreign_exchange"
+      ],
+      "change_id": "617790ba31e6f142",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 1,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Some of our players may make sales…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "65cf98bdeed6e0bd",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Content policies adopted by retailers, consumer opposition…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "66231a8b8e419215",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 3,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Declines in consumer spending and other adverse…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "6853b25883d05a5d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our ability to acquire and maintain licenses…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "7f9115d1722891c0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "If we are unable to protect the…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "80bfe79181e7f5d2",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We depend on our key management and…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation",
+        "regulation"
+      ],
+      "change_id": "833a8e0891049087",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We submit our products for rating by…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity",
+        "litigation"
+      ],
+      "change_id": "8f6648be58bac9c7",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our reported financial results could be adversely…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "9517d41b90e4694d",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Attracting, managing and retaining our talent is…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property",
+        "cybersecurity"
+      ],
+      "change_id": "a0336ba1a40bf2ad",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We use open-source software in connection with…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation",
+        "regulation"
+      ],
+      "change_id": "a4644cec771f0ff8",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our results of operations or reputation may…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "ab3b97492c822a0a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 9,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Companies and governmental agencies may restrict access…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "c9247d392660a02e",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We may experience declines or fluctuations in…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "climate"
+      ],
+      "change_id": "f32e01a6f9f316a4",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "We are subject to risks related to…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "f4fab530244f1e7c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 2,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The value of our virtual items is…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation",
+        "intellectual_property"
+      ],
+      "change_id": "f88f347ebefbff3f",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our business is partly dependent on our…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "intellectual_property",
+        "supply_chain"
+      ],
+      "change_id": "faa9b9c7bc3eb514",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "Our quarterly and annual operating results are…"
+    }
+  ],
+  "cik": "0000946581",
+  "company_name": "TAKE TWO INTERACTIVE SOFTWARE INC",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0001628280-26-037434",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/946581/000162828026037434/ttwo-20260331.htm",
+  "new_fiscal_year": 2026,
+  "old_accession": "0001628280-25-026694",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/946581/000162828025026694/ttwo-20250331.htm",
+  "old_fiscal_year": 2025,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "TTWO",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          283,
+          308
+        ],
+        [
+          313,
+          600
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "production tax credits"
+      ],
+      "position": 13,
+      "sentence_id": "0001628280-26-037434:37:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Further, our effective tax rate or tax payable could be adversely affected by a variety of factors, including changes in the business, the mix and level of earnings between countries with differing statutory tax rates, changes in the realizability of deferred tax assets, changes in the availability of local tax incentives and production tax credits, changes in legislation that could scale back or eliminate tax credits for software development (which have benefitted our results in the past and whose benefits could be lessened or eliminated through such legislation in the future), changes in tax elections, and changes in applicable tax laws.",
+      "ticker": "TTWO",
+      "topic": "production tax credit"
+    },
+    {
+      "added_spans": [
+        [
+          283,
+          308
+        ],
+        [
+          313,
+          600
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "tax credits"
+      ],
+      "position": 13,
+      "sentence_id": "0001628280-26-037434:37:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Further, our effective tax rate or tax payable could be adversely affected by a variety of factors, including changes in the business, the mix and level of earnings between countries with differing statutory tax rates, changes in the realizability of deferred tax assets, changes in the availability of local tax incentives and production tax credits, changes in legislation that could scale back or eliminate tax credits for software development (which have benefitted our results in the past and whose benefits could be lessened or eliminated through such legislation in the future), changes in tax elections, and changes in applicable tax laws.",
+      "ticker": "TTWO",
+      "topic": "tax credit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          77
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "Big Beautiful Bill Act"
+      ],
+      "position": 22,
+      "sentence_id": "0001628280-26-037434:37:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "On July 4, 2025, the One Big Beautiful Bill Act (\"OBBB\") was signed into law.",
+      "ticker": "TTWO",
+      "topic": "big beautiful bill act"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ],
+        [
+          160,
+          161
+        ],
+        [
+          165,
+          419
+        ],
+        [
+          442,
+          539
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "Global Intangible"
+      ],
+      "position": 24,
+      "sentence_id": "0001628280-26-037434:37:12",
+      "source": "entity",
+      "status": "modified",
+      "text": "OBBB includes significant provisions, including but not limited to (1) permanent extension of certain expiring provisions of the Tax Cuts and Jobs Act of 2017 (\"TCJA\"), (2) modifications to the international provisions relating to Base Erosion Anti Abuse Act (\"BEAT\"), Global Intangible Low-Tax Income (\"GILTI\") and Foreign Derived Deduction Eligible Income (\"FDDEI\"), (3) permanent reinstatement deduction for domestic research expenditures and 100% bonus depreciation for certain qualified property, and (4) modifications to tax credits.",
+      "ticker": "TTWO",
+      "topic": "Global Intangible"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ],
+        [
+          160,
+          161
+        ],
+        [
+          165,
+          419
+        ],
+        [
+          442,
+          539
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "OBBB"
+      ],
+      "position": 24,
+      "sentence_id": "0001628280-26-037434:37:12",
+      "source": "entity",
+      "status": "modified",
+      "text": "OBBB includes significant provisions, including but not limited to (1) permanent extension of certain expiring provisions of the Tax Cuts and Jobs Act of 2017 (\"TCJA\"), (2) modifications to the international provisions relating to Base Erosion Anti Abuse Act (\"BEAT\"), Global Intangible Low-Tax Income (\"GILTI\") and Foreign Derived Deduction Eligible Income (\"FDDEI\"), (3) permanent reinstatement deduction for domestic research expenditures and 100% bonus depreciation for certain qualified property, and (4) modifications to tax credits.",
+      "ticker": "TTWO",
+      "topic": "OBBB"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ],
+        [
+          160,
+          161
+        ],
+        [
+          165,
+          419
+        ],
+        [
+          442,
+          539
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "bonus depreciation"
+      ],
+      "position": 24,
+      "sentence_id": "0001628280-26-037434:37:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "OBBB includes significant provisions, including but not limited to (1) permanent extension of certain expiring provisions of the Tax Cuts and Jobs Act of 2017 (\"TCJA\"), (2) modifications to the international provisions relating to Base Erosion Anti Abuse Act (\"BEAT\"), Global Intangible Low-Tax Income (\"GILTI\") and Foreign Derived Deduction Eligible Income (\"FDDEI\"), (3) permanent reinstatement deduction for domestic research expenditures and 100% bonus depreciation for certain qualified property, and (4) modifications to tax credits.",
+      "ticker": "TTWO",
+      "topic": "bonus depreciation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ],
+        [
+          160,
+          161
+        ],
+        [
+          165,
+          419
+        ],
+        [
+          442,
+          539
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "expiring provisions"
+      ],
+      "position": 24,
+      "sentence_id": "0001628280-26-037434:37:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "OBBB includes significant provisions, including but not limited to (1) permanent extension of certain expiring provisions of the Tax Cuts and Jobs Act of 2017 (\"TCJA\"), (2) modifications to the international provisions relating to Base Erosion Anti Abuse Act (\"BEAT\"), Global Intangible Low-Tax Income (\"GILTI\") and Foreign Derived Deduction Eligible Income (\"FDDEI\"), (3) permanent reinstatement deduction for domestic research expenditures and 100% bonus depreciation for certain qualified property, and (4) modifications to tax credits.",
+      "ticker": "TTWO",
+      "topic": "expiring provision"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ],
+        [
+          160,
+          161
+        ],
+        [
+          165,
+          419
+        ],
+        [
+          442,
+          539
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "international provisions"
+      ],
+      "position": 24,
+      "sentence_id": "0001628280-26-037434:37:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "OBBB includes significant provisions, including but not limited to (1) permanent extension of certain expiring provisions of the Tax Cuts and Jobs Act of 2017 (\"TCJA\"), (2) modifications to the international provisions relating to Base Erosion Anti Abuse Act (\"BEAT\"), Global Intangible Low-Tax Income (\"GILTI\") and Foreign Derived Deduction Eligible Income (\"FDDEI\"), (3) permanent reinstatement deduction for domestic research expenditures and 100% bonus depreciation for certain qualified property, and (4) modifications to tax credits.",
+      "ticker": "TTWO",
+      "topic": "international provision"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ],
+        [
+          160,
+          161
+        ],
+        [
+          165,
+          419
+        ],
+        [
+          442,
+          539
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "permanent reinstatement deduction"
+      ],
+      "position": 24,
+      "sentence_id": "0001628280-26-037434:37:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "OBBB includes significant provisions, including but not limited to (1) permanent extension of certain expiring provisions of the Tax Cuts and Jobs Act of 2017 (\"TCJA\"), (2) modifications to the international provisions relating to Base Erosion Anti Abuse Act (\"BEAT\"), Global Intangible Low-Tax Income (\"GILTI\") and Foreign Derived Deduction Eligible Income (\"FDDEI\"), (3) permanent reinstatement deduction for domestic research expenditures and 100% bonus depreciation for certain qualified property, and (4) modifications to tax credits.",
+      "ticker": "TTWO",
+      "topic": "permanent reinstatement deduction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ],
+        [
+          160,
+          161
+        ],
+        [
+          165,
+          419
+        ],
+        [
+          442,
+          539
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "qualified property"
+      ],
+      "position": 24,
+      "sentence_id": "0001628280-26-037434:37:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "OBBB includes significant provisions, including but not limited to (1) permanent extension of certain expiring provisions of the Tax Cuts and Jobs Act of 2017 (\"TCJA\"), (2) modifications to the international provisions relating to Base Erosion Anti Abuse Act (\"BEAT\"), Global Intangible Low-Tax Income (\"GILTI\") and Foreign Derived Deduction Eligible Income (\"FDDEI\"), (3) permanent reinstatement deduction for domestic research expenditures and 100% bonus depreciation for certain qualified property, and (4) modifications to tax credits.",
+      "ticker": "TTWO",
+      "topic": "qualified property"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          128
+        ],
+        [
+          160,
+          161
+        ],
+        [
+          165,
+          419
+        ],
+        [
+          442,
+          539
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "tax credits"
+      ],
+      "position": 24,
+      "sentence_id": "0001628280-26-037434:37:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "OBBB includes significant provisions, including but not limited to (1) permanent extension of certain expiring provisions of the Tax Cuts and Jobs Act of 2017 (\"TCJA\"), (2) modifications to the international provisions relating to Base Erosion Anti Abuse Act (\"BEAT\"), Global Intangible Low-Tax Income (\"GILTI\") and Foreign Derived Deduction Eligible Income (\"FDDEI\"), (3) permanent reinstatement deduction for domestic research expenditures and 100% bonus depreciation for certain qualified property, and (4) modifications to tax credits.",
+      "ticker": "TTWO",
+      "topic": "tax credit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          121
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "OBBB"
+      ],
+      "position": 27,
+      "sentence_id": "0001628280-26-037434:37:14",
+      "source": "entity",
+      "status": "added",
+      "text": "We have estimated the accounting for income tax effects of the OBBB, which reduced our estimated U.S. cash tax liability.",
+      "ticker": "TTWO",
+      "topic": "OBBB"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          121
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "income tax effects"
+      ],
+      "position": 27,
+      "sentence_id": "0001628280-26-037434:37:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have estimated the accounting for income tax effects of the OBBB, which reduced our estimated U.S. cash tax liability.",
+      "ticker": "TTWO",
+      "topic": "income tax effect"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          197
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "OBBB"
+      ],
+      "position": 37,
+      "sentence_id": "0001628280-26-037434:37:18",
+      "source": "entity",
+      "status": "added",
+      "text": "The new tax law is complex and additional interpretive guidance may be issued that could affect the interpretations and assumptions we have made, as well as actions we may take as a result of OBBB.",
+      "ticker": "TTWO",
+      "topic": "OBBB"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          197
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "tax law"
+      ],
+      "position": 37,
+      "sentence_id": "0001628280-26-037434:37:18",
+      "source": "phrase",
+      "status": "added",
+      "text": "The new tax law is complex and additional interpretive guidance may be issued that could affect the interpretations and assumptions we have made, as well as actions we may take as a result of OBBB.",
+      "ticker": "TTWO",
+      "topic": "tax law"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          191
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "administrative guidance"
+      ],
+      "position": 69,
+      "sentence_id": "0001628280-26-037434:37:34",
+      "source": "phrase",
+      "status": "added",
+      "text": "On January 5, 2026, the OECD released new administrative guidance outlining a \"side-by-side\" arrangement following agreement on key elements by the OECD/G20 Inclusive Framework on Pillar Two.",
+      "ticker": "TTWO",
+      "topic": "administrative guidance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          357
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "Simplified Effective Tax Rate Safe Harbor"
+      ],
+      "position": 70,
+      "sentence_id": "0001628280-26-037434:37:35",
+      "source": "entity",
+      "status": "added",
+      "text": "It provides new safe harbors for U.S. multinational companies which would exempt U.S.-parented groups from two of the three Pillar Two top up taxes, extend the current Transitional Country-by-Country Reporting Safe Harbor by one year through the end of our fiscal year ending March 31, 2028, and make the Simplified Effective Tax Rate Safe Harbor permanent.",
+      "ticker": "TTWO",
+      "topic": "Simplified Effective Tax Rate Safe Harbor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          357
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "safe harbors"
+      ],
+      "position": 70,
+      "sentence_id": "0001628280-26-037434:37:35",
+      "source": "phrase",
+      "status": "added",
+      "text": "It provides new safe harbors for U.S. multinational companies which would exempt U.S.-parented groups from two of the three Pillar Two top up taxes, extend the current Transitional Country-by-Country Reporting Safe Harbor by one year through the end of our fiscal year ending March 31, 2028, and make the Simplified Effective Tax Rate Safe Harbor permanent.",
+      "ticker": "TTWO",
+      "topic": "safe harbor"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          219
+        ]
+      ],
+      "change_id": "99ea8c56a7e50136",
+      "matched_terms": [
+        "tax law"
+      ],
+      "position": 71,
+      "sentence_id": "0001628280-26-037434:37:36",
+      "source": "phrase",
+      "status": "added",
+      "text": "The tax law is complex and additional interpretive guidance may be issued that could affect the interpretations and assumptions we have made, as well as actions we may take as a result of additional Pillar Two guidance.",
+      "ticker": "TTWO",
+      "topic": "tax law"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          266
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "Internal Revenue Code Sections"
+      ],
+      "position": 0,
+      "sentence_id": "0001628280-26-037434:38:0",
+      "source": "entity",
+      "status": "added",
+      "text": "Our ability to use net operating loss and tax credit carryforwards to reduce future years' taxes could be substantially limited under Internal Revenue Code Sections 382 and 383 if we experience an ownership change as defined in the Internal Revenue Code Section 382.",
+      "ticker": "TTWO",
+      "topic": "Internal Revenue Code Sections"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          266
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "Internal Revenue Code Section"
+      ],
+      "position": 0,
+      "sentence_id": "0001628280-26-037434:38:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to use net operating loss and tax credit carryforwards to reduce future years' taxes could be substantially limited under Internal Revenue Code Sections 382 and 383 if we experience an ownership change as defined in the Internal Revenue Code Section 382.",
+      "ticker": "TTWO",
+      "topic": "internal revenue code section"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          266
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "net operating loss"
+      ],
+      "position": 0,
+      "sentence_id": "0001628280-26-037434:38:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to use net operating loss and tax credit carryforwards to reduce future years' taxes could be substantially limited under Internal Revenue Code Sections 382 and 383 if we experience an ownership change as defined in the Internal Revenue Code Section 382.",
+      "ticker": "TTWO",
+      "topic": "net operating loss"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          266
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "ownership change"
+      ],
+      "position": 0,
+      "sentence_id": "0001628280-26-037434:38:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to use net operating loss and tax credit carryforwards to reduce future years' taxes could be substantially limited under Internal Revenue Code Sections 382 and 383 if we experience an ownership change as defined in the Internal Revenue Code Section 382.",
+      "ticker": "TTWO",
+      "topic": "ownership change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          266
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "tax credit carryforwards"
+      ],
+      "position": 0,
+      "sentence_id": "0001628280-26-037434:38:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to use net operating loss and tax credit carryforwards to reduce future years' taxes could be substantially limited under Internal Revenue Code Sections 382 and 383 if we experience an ownership change as defined in the Internal Revenue Code Section 382.",
+      "ticker": "TTWO",
+      "topic": "tax credit carryforward"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          266
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "years' taxes"
+      ],
+      "position": 0,
+      "sentence_id": "0001628280-26-037434:38:0",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our ability to use net operating loss and tax credit carryforwards to reduce future years' taxes could be substantially limited under Internal Revenue Code Sections 382 and 383 if we experience an ownership change as defined in the Internal Revenue Code Section 382.",
+      "ticker": "TTWO",
+      "topic": "year taxis"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "Internal Revenue Code"
+      ],
+      "position": 1,
+      "sentence_id": "0001628280-26-037434:38:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Section 382 of the Internal Revenue Code contains rules that limit the ability of a company to use its net operating loss and tax credit carryforwards in years after an ownership change, which is generally defined as any change in ownership of more than 50% of its stock over a three-year testing period.",
+      "ticker": "TTWO",
+      "topic": "internal revenue code"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "net operating loss"
+      ],
+      "position": 1,
+      "sentence_id": "0001628280-26-037434:38:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Section 382 of the Internal Revenue Code contains rules that limit the ability of a company to use its net operating loss and tax credit carryforwards in years after an ownership change, which is generally defined as any change in ownership of more than 50% of its stock over a three-year testing period.",
+      "ticker": "TTWO",
+      "topic": "net operating loss"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "ownership change"
+      ],
+      "position": 1,
+      "sentence_id": "0001628280-26-037434:38:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Section 382 of the Internal Revenue Code contains rules that limit the ability of a company to use its net operating loss and tax credit carryforwards in years after an ownership change, which is generally defined as any change in ownership of more than 50% of its stock over a three-year testing period.",
+      "ticker": "TTWO",
+      "topic": "ownership change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          304
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "tax credit carryforwards"
+      ],
+      "position": 1,
+      "sentence_id": "0001628280-26-037434:38:1",
+      "source": "phrase",
+      "status": "added",
+      "text": "Section 382 of the Internal Revenue Code contains rules that limit the ability of a company to use its net operating loss and tax credit carryforwards in years after an ownership change, which is generally defined as any change in ownership of more than 50% of its stock over a three-year testing period.",
+      "ticker": "TTWO",
+      "topic": "tax credit carryforward"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          232
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "ownership changes"
+      ],
+      "position": 2,
+      "sentence_id": "0001628280-26-037434:38:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "These rules generally operate by focusing on ownership changes among stockholders owning directly or indirectly 5% or more of the stock of a company and/or any change in ownership arising from a new issuance of stock by the company.",
+      "ticker": "TTWO",
+      "topic": "ownership change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          348
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "cumulative ownership changes"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-037434:38:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "If, as a result of future transactions involving our common stock, including purchases or sales of stock by 5% stockholders, we undergo cumulative ownership changes which exceed 50% over the testing period, our ability to use our net operating loss and tax credit carryforwards would be subject to additional limitations under Sections 382 and 383.",
+      "ticker": "TTWO",
+      "topic": "cumulative ownership change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          348
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "net operating loss"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-037434:38:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "If, as a result of future transactions involving our common stock, including purchases or sales of stock by 5% stockholders, we undergo cumulative ownership changes which exceed 50% over the testing period, our ability to use our net operating loss and tax credit carryforwards would be subject to additional limitations under Sections 382 and 383.",
+      "ticker": "TTWO",
+      "topic": "net operating loss"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          348
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "tax credit carryforwards"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-037434:38:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "If, as a result of future transactions involving our common stock, including purchases or sales of stock by 5% stockholders, we undergo cumulative ownership changes which exceed 50% over the testing period, our ability to use our net operating loss and tax credit carryforwards would be subject to additional limitations under Sections 382 and 383.",
+      "ticker": "TTWO",
+      "topic": "tax credit carryforward"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          348
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "testing period"
+      ],
+      "position": 3,
+      "sentence_id": "0001628280-26-037434:38:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "If, as a result of future transactions involving our common stock, including purchases or sales of stock by 5% stockholders, we undergo cumulative ownership changes which exceed 50% over the testing period, our ability to use our net operating loss and tax credit carryforwards would be subject to additional limitations under Sections 382 and 383.",
+      "ticker": "TTWO",
+      "topic": "testing period"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          286
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "annual taxable income limitation"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-037434:38:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Generally, if an ownership change occurs, the annual taxable income limitation on the use of net operating loss and tax credit carryforwards is equal to the product of the applicable long-term tax-exempt rate and the value of the company's stock immediately before the ownership change.",
+      "ticker": "TTWO",
+      "topic": "annual taxable income limitation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          286
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "net operating loss"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-037434:38:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Generally, if an ownership change occurs, the annual taxable income limitation on the use of net operating loss and tax credit carryforwards is equal to the product of the applicable long-term tax-exempt rate and the value of the company's stock immediately before the ownership change.",
+      "ticker": "TTWO",
+      "topic": "net operating loss"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          286
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "ownership change"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-037434:38:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Generally, if an ownership change occurs, the annual taxable income limitation on the use of net operating loss and tax credit carryforwards is equal to the product of the applicable long-term tax-exempt rate and the value of the company's stock immediately before the ownership change.",
+      "ticker": "TTWO",
+      "topic": "ownership change"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          286
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "tax credit carryforwards"
+      ],
+      "position": 4,
+      "sentence_id": "0001628280-26-037434:38:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Generally, if an ownership change occurs, the annual taxable income limitation on the use of net operating loss and tax credit carryforwards is equal to the product of the applicable long-term tax-exempt rate and the value of the company's stock immediately before the ownership change.",
+      "ticker": "TTWO",
+      "topic": "tax credit carryforward"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          153
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "net operating loss"
+      ],
+      "position": 5,
+      "sentence_id": "0001628280-26-037434:38:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Depending on the resulting limitation, a portion of our net operating loss and tax credit carryforwards could expire before we would be able to use them.",
+      "ticker": "TTWO",
+      "topic": "net operating loss"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          153
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "resulting limitation"
+      ],
+      "position": 5,
+      "sentence_id": "0001628280-26-037434:38:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Depending on the resulting limitation, a portion of our net operating loss and tax credit carryforwards could expire before we would be able to use them.",
+      "ticker": "TTWO",
+      "topic": "resulting limitation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          153
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "tax credit carryforwards"
+      ],
+      "position": 5,
+      "sentence_id": "0001628280-26-037434:38:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Depending on the resulting limitation, a portion of our net operating loss and tax credit carryforwards could expire before we would be able to use them.",
+      "ticker": "TTWO",
+      "topic": "tax credit carryforward"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          227
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "net operating losses"
+      ],
+      "position": 6,
+      "sentence_id": "0001628280-26-037434:38:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our inability to fully utilize any net operating losses or tax credit carryforwards to reduce the tax liability in the future could have a material and negative affect on our future financial position and results of operations.",
+      "ticker": "TTWO",
+      "topic": "net operating loss"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          227
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "tax credit carryforwards"
+      ],
+      "position": 6,
+      "sentence_id": "0001628280-26-037434:38:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our inability to fully utilize any net operating losses or tax credit carryforwards to reduce the tax liability in the future could have a material and negative affect on our future financial position and results of operations.",
+      "ticker": "TTWO",
+      "topic": "tax credit carryforward"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          227
+        ]
+      ],
+      "change_id": "186e47ace348329e",
+      "matched_terms": [
+        "tax liability"
+      ],
+      "position": 6,
+      "sentence_id": "0001628280-26-037434:38:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our inability to fully utilize any net operating losses or tax credit carryforwards to reduce the tax liability in the future could have a material and negative affect on our future financial position and results of operations.",
+      "ticker": "TTWO",
+      "topic": "tax liability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          454
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "Switzerland"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-037434:33:4",
+      "source": "entity",
+      "status": "added",
+      "text": "To the extent personal information is transferred from the E.U., U.K., or Switzerland across borders, we use legally valid transfer mechanisms such as standard contractual clauses and adequacy decisions; however, such mechanisms have been subject to legal scrutiny and may face additional challenges or regulatory guidance in the future, which could require us to implement different or additional measures and face increased compliance burdens and cost.",
+      "ticker": "TTWO",
+      "topic": "Switzerland"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          454
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "adequacy decisions"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-037434:33:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "To the extent personal information is transferred from the E.U., U.K., or Switzerland across borders, we use legally valid transfer mechanisms such as standard contractual clauses and adequacy decisions; however, such mechanisms have been subject to legal scrutiny and may face additional challenges or regulatory guidance in the future, which could require us to implement different or additional measures and face increased compliance burdens and cost.",
+      "ticker": "TTWO",
+      "topic": "adequacy decision"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          454
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "different or additional measures"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-037434:33:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "To the extent personal information is transferred from the E.U., U.K., or Switzerland across borders, we use legally valid transfer mechanisms such as standard contractual clauses and adequacy decisions; however, such mechanisms have been subject to legal scrutiny and may face additional challenges or regulatory guidance in the future, which could require us to implement different or additional measures and face increased compliance burdens and cost.",
+      "ticker": "TTWO",
+      "topic": "different or additional measure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          454
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "increased compliance burdens"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-037434:33:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "To the extent personal information is transferred from the E.U., U.K., or Switzerland across borders, we use legally valid transfer mechanisms such as standard contractual clauses and adequacy decisions; however, such mechanisms have been subject to legal scrutiny and may face additional challenges or regulatory guidance in the future, which could require us to implement different or additional measures and face increased compliance burdens and cost.",
+      "ticker": "TTWO",
+      "topic": "increased compliance burden"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          454
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "legal scrutiny"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-037434:33:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "To the extent personal information is transferred from the E.U., U.K., or Switzerland across borders, we use legally valid transfer mechanisms such as standard contractual clauses and adequacy decisions; however, such mechanisms have been subject to legal scrutiny and may face additional challenges or regulatory guidance in the future, which could require us to implement different or additional measures and face increased compliance burdens and cost.",
+      "ticker": "TTWO",
+      "topic": "legal scrutiny"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          454
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "legally valid transfer mechanisms"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-037434:33:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "To the extent personal information is transferred from the E.U., U.K., or Switzerland across borders, we use legally valid transfer mechanisms such as standard contractual clauses and adequacy decisions; however, such mechanisms have been subject to legal scrutiny and may face additional challenges or regulatory guidance in the future, which could require us to implement different or additional measures and face increased compliance burdens and cost.",
+      "ticker": "TTWO",
+      "topic": "legally valid transfer mechanism"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          454
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "regulatory guidance"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-037434:33:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "To the extent personal information is transferred from the E.U., U.K., or Switzerland across borders, we use legally valid transfer mechanisms such as standard contractual clauses and adequacy decisions; however, such mechanisms have been subject to legal scrutiny and may face additional challenges or regulatory guidance in the future, which could require us to implement different or additional measures and face increased compliance burdens and cost.",
+      "ticker": "TTWO",
+      "topic": "regulatory guidance"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          454
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "standard contractual clauses"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-037434:33:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "To the extent personal information is transferred from the E.U., U.K., or Switzerland across borders, we use legally valid transfer mechanisms such as standard contractual clauses and adequacy decisions; however, such mechanisms have been subject to legal scrutiny and may face additional challenges or regulatory guidance in the future, which could require us to implement different or additional measures and face increased compliance burdens and cost.",
+      "ticker": "TTWO",
+      "topic": "standard contractual clause"
+    },
+    {
+      "added_spans": [
+        [
+          128,
+          146
+        ],
+        [
+          165,
+          265
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "service providers"
+      ],
+      "position": 19,
+      "sentence_id": "0001628280-26-037434:33:9",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Noncompliance with the DSA could result in fines of up to 6% of annual global revenues, which are in addition to the ability of service recipients to lodge lawsuits against service providers in respect of any damage or loss suffered as result of such noncompliance.",
+      "ticker": "TTWO",
+      "topic": "service provider"
+    },
+    {
+      "added_spans": [
+        [
+          128,
+          146
+        ],
+        [
+          165,
+          265
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "service recipients"
+      ],
+      "position": 19,
+      "sentence_id": "0001628280-26-037434:33:9",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Noncompliance with the DSA could result in fines of up to 6% of annual global revenues, which are in addition to the ability of service recipients to lodge lawsuits against service providers in respect of any damage or loss suffered as result of such noncompliance.",
+      "ticker": "TTWO",
+      "topic": "service recipient"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          141
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "Australia"
+      ],
+      "position": 20,
+      "sentence_id": "0001628280-26-037434:33:10",
+      "source": "entity",
+      "status": "added",
+      "text": "Similar online safety laws have been introduced in Australia, the U.K., and Brazil, all of which include significant fines for noncompliance.",
+      "ticker": "TTWO",
+      "topic": "Australia"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          141
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "Brazil"
+      ],
+      "position": 20,
+      "sentence_id": "0001628280-26-037434:33:10",
+      "source": "entity",
+      "status": "added",
+      "text": "Similar online safety laws have been introduced in Australia, the U.K., and Brazil, all of which include significant fines for noncompliance.",
+      "ticker": "TTWO",
+      "topic": "Brazil"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          141
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "Similar online safety laws"
+      ],
+      "position": 20,
+      "sentence_id": "0001628280-26-037434:33:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Similar online safety laws have been introduced in Australia, the U.K., and Brazil, all of which include significant fines for noncompliance.",
+      "ticker": "TTWO",
+      "topic": "similar online safety law"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          82
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "COPPA Rule"
+      ],
+      "position": 35,
+      "sentence_id": "0001628280-26-037434:33:18",
+      "source": "entity",
+      "status": "added",
+      "text": "The FTC's most recent amendments to the COPPA Rule became effective in April 2026.",
+      "ticker": "TTWO",
+      "topic": "COPPA Rule"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          138
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "covered personal information"
+      ],
+      "position": 36,
+      "sentence_id": "0001628280-26-037434:33:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "These amendments expand the definition of covered personal information and impose new data retention and information security obligations.",
+      "ticker": "TTWO",
+      "topic": "covered personal information"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          138
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "data retention"
+      ],
+      "position": 36,
+      "sentence_id": "0001628280-26-037434:33:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "These amendments expand the definition of covered personal information and impose new data retention and information security obligations.",
+      "ticker": "TTWO",
+      "topic": "data retention"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          138
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "information security obligations"
+      ],
+      "position": 36,
+      "sentence_id": "0001628280-26-037434:33:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "These amendments expand the definition of covered personal information and impose new data retention and information security obligations.",
+      "ticker": "TTWO",
+      "topic": "information security obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "age-verification obligations"
+      ],
+      "position": 45,
+      "sentence_id": "0001628280-26-037434:33:25",
+      "source": "phrase",
+      "status": "added",
+      "text": "Many states have focused recent regulatory efforts on children's and teens' privacy, with various state laws in place or taking effect in 2026 on issues including parental consent, age-verification obligations, and app store accountability.",
+      "ticker": "TTWO",
+      "topic": "age verification obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "app store accountability"
+      ],
+      "position": 45,
+      "sentence_id": "0001628280-26-037434:33:25",
+      "source": "phrase",
+      "status": "added",
+      "text": "Many states have focused recent regulatory efforts on children's and teens' privacy, with various state laws in place or taking effect in 2026 on issues including parental consent, age-verification obligations, and app store accountability.",
+      "ticker": "TTWO",
+      "topic": "app store accountability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "parental consent"
+      ],
+      "position": 45,
+      "sentence_id": "0001628280-26-037434:33:25",
+      "source": "phrase",
+      "status": "added",
+      "text": "Many states have focused recent regulatory efforts on children's and teens' privacy, with various state laws in place or taking effect in 2026 on issues including parental consent, age-verification obligations, and app store accountability.",
+      "ticker": "TTWO",
+      "topic": "parental consent"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "recent regulatory efforts"
+      ],
+      "position": 45,
+      "sentence_id": "0001628280-26-037434:33:25",
+      "source": "phrase",
+      "status": "added",
+      "text": "Many states have focused recent regulatory efforts on children's and teens' privacy, with various state laws in place or taking effect in 2026 on issues including parental consent, age-verification obligations, and app store accountability.",
+      "ticker": "TTWO",
+      "topic": "recent regulatory effort"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          240
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "state laws"
+      ],
+      "position": 45,
+      "sentence_id": "0001628280-26-037434:33:25",
+      "source": "phrase",
+      "status": "added",
+      "text": "Many states have focused recent regulatory efforts on children's and teens' privacy, with various state laws in place or taking effect in 2026 on issues including parental consent, age-verification obligations, and app store accountability.",
+      "ticker": "TTWO",
+      "topic": "state law"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          18
+        ],
+        [
+          131,
+          208
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "loot boxes"
+      ],
+      "position": 83,
+      "sentence_id": "0001628280-26-037434:33:44",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Similarly, changes in current laws or regulations or the imposition of new laws and regulations in the U.S. or elsewhere regarding in-game currencies, loot boxes and other in-game items, features or mechanics may lessen the growth of the interactive entertainment industry and impair our business, financial condition, and operating results.",
+      "ticker": "TTWO",
+      "topic": "loot box"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          254
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "Brazil"
+      ],
+      "position": 95,
+      "sentence_id": "0001628280-26-037434:33:50",
+      "source": "entity",
+      "status": "added",
+      "text": "Further, Brazil has recently introduced new regulations to prohibit the availability of paid random digital items to players under the age of 18 and other jurisdictions such as Spain and Portugal are actively considering introducing similar restrictions.",
+      "ticker": "TTWO",
+      "topic": "Brazil"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          254
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "Portugal"
+      ],
+      "position": 95,
+      "sentence_id": "0001628280-26-037434:33:50",
+      "source": "entity",
+      "status": "added",
+      "text": "Further, Brazil has recently introduced new regulations to prohibit the availability of paid random digital items to players under the age of 18 and other jurisdictions such as Spain and Portugal are actively considering introducing similar restrictions.",
+      "ticker": "TTWO",
+      "topic": "Portugal"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          254
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "Spain"
+      ],
+      "position": 95,
+      "sentence_id": "0001628280-26-037434:33:50",
+      "source": "entity",
+      "status": "added",
+      "text": "Further, Brazil has recently introduced new regulations to prohibit the availability of paid random digital items to players under the age of 18 and other jurisdictions such as Spain and Portugal are actively considering introducing similar restrictions.",
+      "ticker": "TTWO",
+      "topic": "Spain"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          254
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "paid random digital items"
+      ],
+      "position": 95,
+      "sentence_id": "0001628280-26-037434:33:50",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, Brazil has recently introduced new regulations to prohibit the availability of paid random digital items to players under the age of 18 and other jurisdictions such as Spain and Portugal are actively considering introducing similar restrictions.",
+      "ticker": "TTWO",
+      "topic": "paid random digital item"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          254
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "similar restrictions"
+      ],
+      "position": 95,
+      "sentence_id": "0001628280-26-037434:33:50",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, Brazil has recently introduced new regulations to prohibit the availability of paid random digital items to players under the age of 18 and other jurisdictions such as Spain and Portugal are actively considering introducing similar restrictions.",
+      "ticker": "TTWO",
+      "topic": "similar restriction"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          95
+        ]
+      ],
+      "change_id": "69cfe07b0b6f8df2",
+      "matched_terms": [
+        "similar prohibitions"
+      ],
+      "position": 97,
+      "sentence_id": "0001628280-26-037434:33:51",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Should additional jurisdictions introduce similar prohibitions on random digital item mechanics, we might be required to alter some of our games to address these additional requirements or seek licenses, authorizations, or approvals from relevant regulators, the granting of which may be dependent on us meeting certain capital and other requirements, and we may be subject to additional regulation and oversight, such as reporting to regulators, all of which could significantly increase our operating costs.",
+      "ticker": "TTWO",
+      "topic": "similar prohibition"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          172
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "AI regulatory landscape"
+      ],
+      "position": 8,
+      "sentence_id": "0001628280-26-037434:5:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "The AI regulatory landscape is evolving, and we may be required to dedicate additional operational and financial resources to ensure compliance with new legal requirements.",
+      "ticker": "TTWO",
+      "topic": "ai regulatory landscape"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          172
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "legal requirements"
+      ],
+      "position": 8,
+      "sentence_id": "0001628280-26-037434:5:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "The AI regulatory landscape is evolving, and we may be required to dedicate additional operational and financial resources to ensure compliance with new legal requirements.",
+      "ticker": "TTWO",
+      "topic": "legal requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          172
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "operational and financial resources"
+      ],
+      "position": 8,
+      "sentence_id": "0001628280-26-037434:5:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "The AI regulatory landscape is evolving, and we may be required to dedicate additional operational and financial resources to ensure compliance with new legal requirements.",
+      "ticker": "TTWO",
+      "topic": "operational and financial resource"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          267
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "likely delay"
+      ],
+      "position": 9,
+      "sentence_id": "0001628280-26-037434:5:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "For instance, the European Union (\"E.U.\") Artificial Intelligence Act entered into force in August 2024, with some provisions becoming enforceable between February 2025 and August 2027, subject to a likely delay of the Act's high-risk enforcement until December 2027.",
+      "ticker": "TTWO",
+      "topic": "likely delay"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          219
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "AI laws"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-037434:5:6",
+      "source": "lexicon",
+      "status": "added",
+      "text": "In the U.S., some states have enacted general purpose AI laws, while others have enacted use-case specific AI laws; other states may enact similar laws in the future, which will add complexity to our compliance efforts.",
+      "ticker": "TTWO",
+      "topic": "AI regulation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          219
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "compliance efforts"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-037434:5:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "In the U.S., some states have enacted general purpose AI laws, while others have enacted use-case specific AI laws; other states may enact similar laws in the future, which will add complexity to our compliance efforts.",
+      "ticker": "TTWO",
+      "topic": "compliance effort"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          219
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "similar laws"
+      ],
+      "position": 10,
+      "sentence_id": "0001628280-26-037434:5:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "In the U.S., some states have enacted general purpose AI laws, while others have enacted use-case specific AI laws; other states may enact similar laws in the future, which will add complexity to our compliance efforts.",
+      "ticker": "TTWO",
+      "topic": "similar law"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          206
+        ],
+        [
+          219,
+          220
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "personal information"
+      ],
+      "position": 12,
+      "sentence_id": "0001628280-26-037434:5:7",
+      "source": "phrase",
+      "status": "modified",
+      "text": "This uncertainty may require additional investments in oversight and the development of protections and safeguards to ensure compliance, including to the extent any personal information is processed by such technologies.",
+      "ticker": "TTWO",
+      "topic": "personal information"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          459
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "AI providers"
+      ],
+      "position": 14,
+      "sentence_id": "0001628280-26-037434:5:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, our employees, contractors, vendors, or other partners may use AI tools in ways that are inconsistent with our policies or expectations, including by entering confidential, proprietary, personal, or regulated information into third-party AI services, and some AI providers may have limited operating histories or governance processes, any of which could compromise our information, expose us to legal or regulatory claims, or harm our reputation.",
+      "ticker": "TTWO",
+      "topic": "ai provider"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          459
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "AI tools"
+      ],
+      "position": 14,
+      "sentence_id": "0001628280-26-037434:5:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, our employees, contractors, vendors, or other partners may use AI tools in ways that are inconsistent with our policies or expectations, including by entering confidential, proprietary, personal, or regulated information into third-party AI services, and some AI providers may have limited operating histories or governance processes, any of which could compromise our information, expose us to legal or regulatory claims, or harm our reputation.",
+      "ticker": "TTWO",
+      "topic": "ai tool"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          459
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "governance processes"
+      ],
+      "position": 14,
+      "sentence_id": "0001628280-26-037434:5:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, our employees, contractors, vendors, or other partners may use AI tools in ways that are inconsistent with our policies or expectations, including by entering confidential, proprietary, personal, or regulated information into third-party AI services, and some AI providers may have limited operating histories or governance processes, any of which could compromise our information, expose us to legal or regulatory claims, or harm our reputation.",
+      "ticker": "TTWO",
+      "topic": "governance process"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          459
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "legal or regulatory claims"
+      ],
+      "position": 14,
+      "sentence_id": "0001628280-26-037434:5:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, our employees, contractors, vendors, or other partners may use AI tools in ways that are inconsistent with our policies or expectations, including by entering confidential, proprietary, personal, or regulated information into third-party AI services, and some AI providers may have limited operating histories or governance processes, any of which could compromise our information, expose us to legal or regulatory claims, or harm our reputation.",
+      "ticker": "TTWO",
+      "topic": "legal or regulatory claim"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          459
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "operating histories"
+      ],
+      "position": 14,
+      "sentence_id": "0001628280-26-037434:5:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, our employees, contractors, vendors, or other partners may use AI tools in ways that are inconsistent with our policies or expectations, including by entering confidential, proprietary, personal, or regulated information into third-party AI services, and some AI providers may have limited operating histories or governance processes, any of which could compromise our information, expose us to legal or regulatory claims, or harm our reputation.",
+      "ticker": "TTWO",
+      "topic": "operating history"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          327
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "AI tools"
+      ],
+      "position": 15,
+      "sentence_id": "0001628280-26-037434:5:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, the data sets used to train the underlying models may be flawed, the AI tools may function in an unexpected manner, or generate biased, incorrect, or inappropriate content, which could negatively impact the performance or perception of our products and brand, incur regulatory scrutiny, or impose legal liability.",
+      "ticker": "TTWO",
+      "topic": "ai tool"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          327
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "data sets"
+      ],
+      "position": 15,
+      "sentence_id": "0001628280-26-037434:5:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, the data sets used to train the underlying models may be flawed, the AI tools may function in an unexpected manner, or generate biased, incorrect, or inappropriate content, which could negatively impact the performance or perception of our products and brand, incur regulatory scrutiny, or impose legal liability.",
+      "ticker": "TTWO",
+      "topic": "data set"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          327
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "incur regulatory scrutiny"
+      ],
+      "position": 15,
+      "sentence_id": "0001628280-26-037434:5:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, the data sets used to train the underlying models may be flawed, the AI tools may function in an unexpected manner, or generate biased, incorrect, or inappropriate content, which could negatively impact the performance or perception of our products and brand, incur regulatory scrutiny, or impose legal liability.",
+      "ticker": "TTWO",
+      "topic": "incur regulatory scrutiny"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          327
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "legal liability"
+      ],
+      "position": 15,
+      "sentence_id": "0001628280-26-037434:5:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, the data sets used to train the underlying models may be flawed, the AI tools may function in an unexpected manner, or generate biased, incorrect, or inappropriate content, which could negatively impact the performance or perception of our products and brand, incur regulatory scrutiny, or impose legal liability.",
+      "ticker": "TTWO",
+      "topic": "legal liability"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          327
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "underlying models"
+      ],
+      "position": 15,
+      "sentence_id": "0001628280-26-037434:5:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, the data sets used to train the underlying models may be flawed, the AI tools may function in an unexpected manner, or generate biased, incorrect, or inappropriate content, which could negatively impact the performance or perception of our products and brand, incur regulatory scrutiny, or impose legal liability.",
+      "ticker": "TTWO",
+      "topic": "underlying model"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          327
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "unexpected manner"
+      ],
+      "position": 15,
+      "sentence_id": "0001628280-26-037434:5:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, the data sets used to train the underlying models may be flawed, the AI tools may function in an unexpected manner, or generate biased, incorrect, or inappropriate content, which could negatively impact the performance or perception of our products and brand, incur regulatory scrutiny, or impose legal liability.",
+      "ticker": "TTWO",
+      "topic": "unexpected manner"
+    },
+    {
+      "added_spans": [
+        [
+          304,
+          305
+        ],
+        [
+          350,
+          420
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "AI-generated assets"
+      ],
+      "position": 17,
+      "sentence_id": "0001628280-26-037434:5:11",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Further, intellectual property ownership surrounding AI technologies has not been fully addressed by U.S. courts or other federal or state laws or regulations, and the use or adoption of third-party AI technologies into our products and services may result in exposure to claims of copyright infringement, other intellectual property misappropriation, or uncertainty regarding copyright ownership of AI-generated assets.",
+      "ticker": "TTWO",
+      "topic": "ai generated asset"
+    },
+    {
+      "added_spans": [
+        [
+          304,
+          305
+        ],
+        [
+          350,
+          420
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "copyright ownership"
+      ],
+      "position": 17,
+      "sentence_id": "0001628280-26-037434:5:11",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Further, intellectual property ownership surrounding AI technologies has not been fully addressed by U.S. courts or other federal or state laws or regulations, and the use or adoption of third-party AI technologies into our products and services may result in exposure to claims of copyright infringement, other intellectual property misappropriation, or uncertainty regarding copyright ownership of AI-generated assets.",
+      "ticker": "TTWO",
+      "topic": "copyright ownership"
+    },
+    {
+      "added_spans": [
+        [
+          173,
+          209
+        ],
+        [
+          213,
+          287
+        ],
+        [
+          296,
+          411
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "consumer demand"
+      ],
+      "position": 19,
+      "sentence_id": "0001628280-26-037434:5:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "While the impact of AI on our industry is still emerging and uncertain, to the extent our competitors successfully implement AI technologies into their products or services more effectively or efficiently than we do, are able to imitate or compete more easily with our products, or if we fail to anticipate and respond to changing industry standards or consumer demand, or experience delays in integrating these technologies into our operations, we may face significant risks to our competitive position, financial performance, and long-term growth prospects.",
+      "ticker": "TTWO",
+      "topic": "consumer demand"
+    },
+    {
+      "added_spans": [
+        [
+          173,
+          209
+        ],
+        [
+          213,
+          287
+        ],
+        [
+          296,
+          411
+        ]
+      ],
+      "change_id": "4bfdb1d4cd947f23",
+      "matched_terms": [
+        "industry standards"
+      ],
+      "position": 19,
+      "sentence_id": "0001628280-26-037434:5:12",
+      "source": "phrase",
+      "status": "modified",
+      "text": "While the impact of AI on our industry is still emerging and uncertain, to the extent our competitors successfully implement AI technologies into their products or services more effectively or efficiently than we do, are able to imitate or compete more easily with our products, or if we fail to anticipate and respond to changing industry standards or consumer demand, or experience delays in integrating these technologies into our operations, we may face significant risks to our competitive position, financial performance, and long-term growth prospects.",
+      "ticker": "TTWO",
+      "topic": "industry standard"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          68
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "increased percentage"
+      ],
+      "position": 72,
+      "sentence_id": "0001628280-26-037434:15:36",
+      "source": "phrase",
+      "status": "added",
+      "text": "An increased percentage of our operations consists of mobile gaming.",
+      "ticker": "TTWO",
+      "topic": "increased percentage"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          68
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "mobile gaming"
+      ],
+      "position": 72,
+      "sentence_id": "0001628280-26-037434:15:36",
+      "source": "phrase",
+      "status": "added",
+      "text": "An increased percentage of our operations consists of mobile gaming.",
+      "ticker": "TTWO",
+      "topic": "mobile gaming"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          141
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "mobile Internet-enabled devices"
+      ],
+      "position": 73,
+      "sentence_id": "0001628280-26-037434:15:37",
+      "source": "phrase",
+      "status": "added",
+      "text": "The number of people using mobile Internet-enabled devices has increased dramatically over time, and we expect that this trend will continue.",
+      "ticker": "TTWO",
+      "topic": "mobile internet enabled device"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          108
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "mobile market"
+      ],
+      "position": 74,
+      "sentence_id": "0001628280-26-037434:15:38",
+      "source": "phrase",
+      "status": "added",
+      "text": "However, the mobile market, particularly the market for mobile games, may not grow in the way we anticipate.",
+      "ticker": "TTWO",
+      "topic": "mobile market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          108
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "particularly the market"
+      ],
+      "position": 74,
+      "sentence_id": "0001628280-26-037434:15:38",
+      "source": "phrase",
+      "status": "added",
+      "text": "However, the mobile market, particularly the market for mobile games, may not grow in the way we anticipate.",
+      "ticker": "TTWO",
+      "topic": "particularly the market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          103
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "continued growth"
+      ],
+      "position": 75,
+      "sentence_id": "0001628280-26-037434:15:39",
+      "source": "phrase",
+      "status": "added",
+      "text": "Our future success is substantially dependent upon the continued growth of the market for mobile games.",
+      "ticker": "TTWO",
+      "topic": "continued growth"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          232
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "available decline"
+      ],
+      "position": 77,
+      "sentence_id": "0001628280-26-037434:15:41",
+      "source": "phrase",
+      "status": "added",
+      "text": "If the mobile devices on which our games are available decline in popularity or become obsolete faster than anticipated, we could experience a decline in revenue and may not achieve the anticipated return on our development efforts.",
+      "ticker": "TTWO",
+      "topic": "available decline"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          232
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "development efforts"
+      ],
+      "position": 77,
+      "sentence_id": "0001628280-26-037434:15:41",
+      "source": "phrase",
+      "status": "added",
+      "text": "If the mobile devices on which our games are available decline in popularity or become obsolete faster than anticipated, we could experience a decline in revenue and may not achieve the anticipated return on our development efforts.",
+      "ticker": "TTWO",
+      "topic": "development effort"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          165
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "mobile market"
+      ],
+      "position": 78,
+      "sentence_id": "0001628280-26-037434:15:42",
+      "source": "phrase",
+      "status": "added",
+      "text": "Any such declines in the growth of the mobile market or in the use of mobile devices for games could harm our business, financial condition or results of operations.",
+      "ticker": "TTWO",
+      "topic": "mobile market"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          165
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "Video Privacy Protection Act"
+      ],
+      "position": 103,
+      "sentence_id": "0001628280-26-037434:15:55",
+      "source": "entity",
+      "status": "added",
+      "text": "Further, the U.S. federal Video Privacy Protection Act (\"VPPA\") and some U.S. states' wiretapping type laws may pose litigation risk for online businesses like ours.",
+      "ticker": "TTWO",
+      "topic": "Video Privacy Protection Act"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          165
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "litigation risk"
+      ],
+      "position": 103,
+      "sentence_id": "0001628280-26-037434:15:55",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the U.S. federal Video Privacy Protection Act (\"VPPA\") and some U.S. states' wiretapping type laws may pose litigation risk for online businesses like ours.",
+      "ticker": "TTWO",
+      "topic": "litigation risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          165
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "online businesses"
+      ],
+      "position": 103,
+      "sentence_id": "0001628280-26-037434:15:55",
+      "source": "phrase",
+      "status": "added",
+      "text": "Further, the U.S. federal Video Privacy Protection Act (\"VPPA\") and some U.S. states' wiretapping type laws may pose litigation risk for online businesses like ours.",
+      "ticker": "TTWO",
+      "topic": "online business"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "California Invasion of Privacy Act"
+      ],
+      "position": 104,
+      "sentence_id": "0001628280-26-037434:15:56",
+      "source": "entity",
+      "status": "added",
+      "text": "For instance, in recent years, plaintiffs' lawyers have asserted claims under the VPPA or the California Invasion of Privacy Act (\"CIPA\"), alleging that certain online activities and data collection via cookies and similar tracking technologies violate the law.",
+      "ticker": "TTWO",
+      "topic": "California Invasion of Privacy Act"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "California Invasion"
+      ],
+      "position": 104,
+      "sentence_id": "0001628280-26-037434:15:56",
+      "source": "phrase",
+      "status": "added",
+      "text": "For instance, in recent years, plaintiffs' lawyers have asserted claims under the VPPA or the California Invasion of Privacy Act (\"CIPA\"), alleging that certain online activities and data collection via cookies and similar tracking technologies violate the law.",
+      "ticker": "TTWO",
+      "topic": "california invasion"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "data collection"
+      ],
+      "position": 104,
+      "sentence_id": "0001628280-26-037434:15:56",
+      "source": "phrase",
+      "status": "added",
+      "text": "For instance, in recent years, plaintiffs' lawyers have asserted claims under the VPPA or the California Invasion of Privacy Act (\"CIPA\"), alleging that certain online activities and data collection via cookies and similar tracking technologies violate the law.",
+      "ticker": "TTWO",
+      "topic": "data collection"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "online activities"
+      ],
+      "position": 104,
+      "sentence_id": "0001628280-26-037434:15:56",
+      "source": "phrase",
+      "status": "added",
+      "text": "For instance, in recent years, plaintiffs' lawyers have asserted claims under the VPPA or the California Invasion of Privacy Act (\"CIPA\"), alleging that certain online activities and data collection via cookies and similar tracking technologies violate the law.",
+      "ticker": "TTWO",
+      "topic": "online activity"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "plaintiffs' lawyers"
+      ],
+      "position": 104,
+      "sentence_id": "0001628280-26-037434:15:56",
+      "source": "phrase",
+      "status": "added",
+      "text": "For instance, in recent years, plaintiffs' lawyers have asserted claims under the VPPA or the California Invasion of Privacy Act (\"CIPA\"), alleging that certain online activities and data collection via cookies and similar tracking technologies violate the law.",
+      "ticker": "TTWO",
+      "topic": "plaintiff lawyer"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "Privacy Act"
+      ],
+      "position": 104,
+      "sentence_id": "0001628280-26-037434:15:56",
+      "source": "phrase",
+      "status": "added",
+      "text": "For instance, in recent years, plaintiffs' lawyers have asserted claims under the VPPA or the California Invasion of Privacy Act (\"CIPA\"), alleging that certain online activities and data collection via cookies and similar tracking technologies violate the law.",
+      "ticker": "TTWO",
+      "topic": "privacy act"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          261
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "similar tracking technologies"
+      ],
+      "position": 104,
+      "sentence_id": "0001628280-26-037434:15:56",
+      "source": "phrase",
+      "status": "added",
+      "text": "For instance, in recent years, plaintiffs' lawyers have asserted claims under the VPPA or the California Invasion of Privacy Act (\"CIPA\"), alleging that certain online activities and data collection via cookies and similar tracking technologies violate the law.",
+      "ticker": "TTWO",
+      "topic": "similar tracking technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          108
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "illegal eavesdropping"
+      ],
+      "position": 105,
+      "sentence_id": "0001628280-26-037434:15:57",
+      "source": "phrase",
+      "status": "added",
+      "text": "Some courts have found that such practices, without proper opt-in consent, constitute illegal eavesdropping.",
+      "ticker": "TTWO",
+      "topic": "illegal eavesdropping"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          108
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "proper opt-in consent"
+      ],
+      "position": 105,
+      "sentence_id": "0001628280-26-037434:15:57",
+      "source": "phrase",
+      "status": "added",
+      "text": "Some courts have found that such practices, without proper opt-in consent, constitute illegal eavesdropping.",
+      "ticker": "TTWO",
+      "topic": "proper opt in consent"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          237
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "compliance costs"
+      ],
+      "position": 106,
+      "sentence_id": "0001628280-26-037434:15:58",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have defended our practices in response to these types of claims and may be required to respond to or defend against similar claims, which may divert resources, increase compliance costs, and negatively impact our financial condition.",
+      "ticker": "TTWO",
+      "topic": "compliance cost"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          237
+        ]
+      ],
+      "change_id": "e9a8de586ec673f7",
+      "matched_terms": [
+        "similar claims"
+      ],
+      "position": 106,
+      "sentence_id": "0001628280-26-037434:15:58",
+      "source": "phrase",
+      "status": "added",
+      "text": "We have defended our practices in response to these types of claims and may be required to respond to or defend against similar claims, which may divert resources, increase compliance costs, and negatively impact our financial condition.",
+      "ticker": "TTWO",
+      "topic": "similar claim"
+    }
+  ],
+  "total_changes": 48
+}

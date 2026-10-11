@@ -1,0 +1,2513 @@
+{
+  "analysis_id": "2102fd9a354e6c4907f7c73b5fc6f5d0d5bbaff75b2e41943ed2a7c8f760bd2e",
+  "by_change_type": {
+    "expanded": 5,
+    "largely_unchanged": 9,
+    "materially_reworded": 8,
+    "new": 0,
+    "reduced": 5,
+    "removed": 1
+  },
+  "category_activity": [
+    {
+      "added_sentences": 9,
+      "added_words": 257,
+      "categories": [
+        "litigation",
+        "regulation"
+      ],
+      "change_id": "9f07868507890f8c",
+      "change_type": "expanded",
+      "modified_sentences": 11,
+      "modified_words": 129,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 47,
+      "short_title": "The technology industry, including, in some instances…"
+    },
+    {
+      "added_sentences": 8,
+      "added_words": 270,
+      "categories": [
+        "supply_chain",
+        "geopolitical"
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "change_type": "expanded",
+      "modified_sentences": 9,
+      "modified_words": 191,
+      "removed_sentences": 2,
+      "removed_words": 48,
+      "score": 37,
+      "short_title": "The Company’s business can be impacted by…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "5e69fd94790b4f3f",
+      "change_type": "materially_reworded",
+      "modified_sentences": 5,
+      "modified_words": 75,
+      "removed_sentences": 2,
+      "removed_words": 59,
+      "score": 36,
+      "short_title": "The Company depends on the performance of…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 68,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "9c818b121bdfed8c",
+      "change_type": "materially_reworded",
+      "modified_sentences": 4,
+      "modified_words": 242,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 33,
+      "short_title": "To remain competitive and stimulate customer demand…"
+    },
+    {
+      "added_sentences": 2,
+      "added_words": 59,
+      "categories": [
+        "labor"
+      ],
+      "change_id": "f3489ea43c2d7c2d",
+      "change_type": "expanded",
+      "modified_sentences": 3,
+      "modified_words": 50,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 33,
+      "short_title": "The Company’s success depends largely on the…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "bb29dff53444fe06",
+      "change_type": "materially_reworded",
+      "modified_sentences": 5,
+      "modified_words": 280,
+      "removed_sentences": 2,
+      "removed_words": 29,
+      "score": 31,
+      "short_title": "Varied stakeholder expectations about social and other…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 63,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "e35c8e4c612d7d41",
+      "change_type": "materially_reworded",
+      "modified_sentences": 6,
+      "modified_words": 58,
+      "removed_sentences": 2,
+      "removed_words": 93,
+      "score": 28,
+      "short_title": "The Company is subject to complex and…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "c9c79ab3093b2041",
+      "change_type": "reduced",
+      "modified_sentences": 4,
+      "modified_words": 125,
+      "removed_sentences": 7,
+      "removed_words": 260,
+      "score": 26,
+      "short_title": "The Company’s future performance depends in part…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "d006730befbf7840",
+      "change_type": "removed",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 3,
+      "removed_words": 97,
+      "score": 26,
+      "short_title": "The Company’s retail stores are subject to…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 49,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "08d66de4463156b6",
+      "change_type": "materially_reworded",
+      "modified_sentences": 4,
+      "modified_words": 168,
+      "removed_sentences": 4,
+      "removed_words": 140,
+      "score": 25,
+      "short_title": "Future operating results depend upon the Company’s…"
+    },
+    {
+      "added_sentences": 8,
+      "added_words": 188,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "6e7acf9aa50b23fb",
+      "change_type": "materially_reworded",
+      "modified_sentences": 7,
+      "modified_words": 178,
+      "removed_sentences": 7,
+      "removed_words": 147,
+      "score": 25,
+      "short_title": "Global markets for the Company’s products and…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "foreign_exchange"
+      ],
+      "change_id": "acf7025cebf3eea9",
+      "change_type": "reduced",
+      "modified_sentences": 5,
+      "modified_words": 66,
+      "removed_sentences": 4,
+      "removed_words": 107,
+      "score": 24,
+      "short_title": "The Company’s net sales and gross margins…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 46,
+      "categories": [
+        "intellectual_property"
+      ],
+      "change_id": "6e91f8b4efb996b9",
+      "change_type": "materially_reworded",
+      "modified_sentences": 5,
+      "modified_words": 94,
+      "removed_sentences": 1,
+      "removed_words": 19,
+      "score": 20,
+      "short_title": "The Company relies on access to third-party…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 27,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "change_type": "materially_reworded",
+      "modified_sentences": 11,
+      "modified_words": 264,
+      "removed_sentences": 1,
+      "removed_words": 41,
+      "score": 20,
+      "short_title": "The Company’s business is subject to a…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "competition"
+      ],
+      "change_id": "3638bcc922d09d2a",
+      "change_type": "reduced",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 3,
+      "removed_words": 59,
+      "score": 16,
+      "short_title": "Failure to obtain or create digital content…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 37,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "89bf7dac651b8bb1",
+      "change_type": "reduced",
+      "modified_sentences": 3,
+      "modified_words": 43,
+      "removed_sentences": 5,
+      "removed_words": 194,
+      "score": 16,
+      "short_title": "The Company depends on component and product…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "56a542d073cdca3e",
+      "change_type": "expanded",
+      "modified_sentences": 5,
+      "modified_words": 48,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 15,
+      "short_title": "Investment in new business strategies, commercial relationships…"
+    },
+    {
+      "added_sentences": 4,
+      "added_words": 144,
+      "categories": [
+        "litigation"
+      ],
+      "change_id": "c23bd2d6a194fceb",
+      "change_type": "expanded",
+      "modified_sentences": 7,
+      "modified_words": 157,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 15,
+      "short_title": "The Company’s business, results of operations and…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 14,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "876847844c558c67",
+      "change_type": "reduced",
+      "modified_sentences": 4,
+      "modified_words": 66,
+      "removed_sentences": 2,
+      "removed_words": 44,
+      "score": 10,
+      "short_title": "The Company is exposed to the risk…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "credit"
+      ],
+      "change_id": "08f6ff3083a1137a",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 4,
+      "modified_words": 61,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company is exposed to credit risk…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "supply_chain"
+      ],
+      "change_id": "57c6f364608b51a0",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 55,
+      "removed_sentences": 1,
+      "removed_words": 18,
+      "score": 0,
+      "short_title": "The Company’s products and services may be…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "foreign_exchange"
+      ],
+      "change_id": "660955d420e7133c",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 0,
+      "modified_words": 0,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company’s financial performance is subject to…"
+    },
+    {
+      "added_sentences": 1,
+      "added_words": 17,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "73f184e8b0162c0b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 5,
+      "modified_words": 57,
+      "removed_sentences": 1,
+      "removed_words": 40,
+      "score": 0,
+      "short_title": "Losses or unauthorized access to or releases…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity"
+      ],
+      "change_id": "8ebf026e60fa97f4",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company is exposed to credit risk…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "macroeconomic"
+      ],
+      "change_id": "ab8f66997aeaef3b",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 49,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company’s operations and performance depend significantly…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "regulation"
+      ],
+      "change_id": "c1f7d2a5b5855ad2",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 2,
+      "modified_words": 18,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company is subject to changes in…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "cybersecurity"
+      ],
+      "change_id": "ebda85215ccb87e2",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 4,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The Company’s business and reputation are impacted…"
+    },
+    {
+      "added_sentences": 0,
+      "added_words": 0,
+      "categories": [
+        "liquidity",
+        "labor"
+      ],
+      "change_id": "fd4ab729312a7019",
+      "change_type": "largely_unchanged",
+      "modified_sentences": 1,
+      "modified_words": 1,
+      "removed_sentences": 0,
+      "removed_words": 0,
+      "score": 0,
+      "short_title": "The price of the Company’s stock is…"
+    }
+  ],
+  "cik": "0000320193",
+  "company_name": "Apple Inc.",
+  "derivation": "1.2.2+topics1",
+  "new_accession": "0000320193-25-000079",
+  "new_edgar_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+  "new_fiscal_year": 2025,
+  "old_accession": "0000320193-24-000123",
+  "old_edgar_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+  "old_fiscal_year": 2024,
+  "phrase_model": "spacy/en_core_web_sm@3.8.0+spacy@3.8.16:noun_chunks",
+  "potential_to_actual": [],
+  "ticker": "AAPL",
+  "topic_mentions": [
+    {
+      "added_spans": [
+        [
+          24,
+          25
+        ],
+        [
+          218,
+          351
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "court order"
+      ],
+      "position": 7,
+      "sentence_id": "0000320193-25-000079:19:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For example, in the U.S., the Company has implemented changes to how developers communicate with consumers within apps on the U.S. storefront of the iOS and iPadOS App Store regarding alternative purchasing mechanisms and is currently subject to a court order preventing it from imposing any commission or fee on certain purchases that consumers make.",
+      "ticker": "AAPL",
+      "topic": "court order"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          238
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "competition-related laws"
+      ],
+      "position": 8,
+      "sentence_id": "0000320193-25-000079:19:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Globally, several jurisdictions have adopted, or may in the future adopt, competition-related laws and regulations imposing wide-ranging obligations on technology companies and significant limitations on businesses, including the Company.",
+      "ticker": "AAPL",
+      "topic": "competition related law"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          238
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "technology companies"
+      ],
+      "position": 8,
+      "sentence_id": "0000320193-25-000079:19:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Globally, several jurisdictions have adopted, or may in the future adopt, competition-related laws and regulations imposing wide-ranging obligations on technology companies and significant limitations on businesses, including the Company.",
+      "ticker": "AAPL",
+      "topic": "technology company"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          238
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "wide-ranging obligations"
+      ],
+      "position": 8,
+      "sentence_id": "0000320193-25-000079:19:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Globally, several jurisdictions have adopted, or may in the future adopt, competition-related laws and regulations imposing wide-ranging obligations on technology companies and significant limitations on businesses, including the Company.",
+      "ticker": "AAPL",
+      "topic": "wide ranging obligation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          16
+        ],
+        [
+          89,
+          90
+        ],
+        [
+          132,
+          154
+        ],
+        [
+          157,
+          159
+        ],
+        [
+          412,
+          446
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "application programming interfaces"
+      ],
+      "position": 10,
+      "sentence_id": "0000320193-25-000079:19:5",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For example, the Company has implemented changes to iOS, iPadOS, the App Store and Safari® in the EU as it seeks to comply with the Digital Markets Act (“DMA”), including new business terms and alternative fee structures for iOS and iPadOS apps, alternative methods of distribution for iOS and iPadOS apps, alternative payment processing for apps across the Company’s operating systems, and additional tools and application programming interfaces for developers.",
+      "ticker": "AAPL",
+      "topic": "application programming interface"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          16
+        ],
+        [
+          89,
+          90
+        ],
+        [
+          132,
+          154
+        ],
+        [
+          157,
+          159
+        ],
+        [
+          412,
+          446
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "Digital Markets Act"
+      ],
+      "position": 10,
+      "sentence_id": "0000320193-25-000079:19:5",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For example, the Company has implemented changes to iOS, iPadOS, the App Store and Safari® in the EU as it seeks to comply with the Digital Markets Act (“DMA”), including new business terms and alternative fee structures for iOS and iPadOS apps, alternative methods of distribution for iOS and iPadOS apps, alternative payment processing for apps across the Company’s operating systems, and additional tools and application programming interfaces for developers.",
+      "ticker": "AAPL",
+      "topic": "digital markets act"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "D.C. District Court"
+      ],
+      "position": 33,
+      "sentence_id": "0000320193-25-000079:19:18",
+      "source": "entity",
+      "status": "added",
+      "text": "In connection with this finding, on September 2, 2025, the U.S. District Court for the District of Columbia (“D.C. District Court”) ordered certain remedies.",
+      "ticker": "AAPL",
+      "topic": "D.C. District Court"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "District of Columbia"
+      ],
+      "position": 33,
+      "sentence_id": "0000320193-25-000079:19:18",
+      "source": "entity",
+      "status": "added",
+      "text": "In connection with this finding, on September 2, 2025, the U.S. District Court for the District of Columbia (“D.C. District Court”) ordered certain remedies.",
+      "ticker": "AAPL",
+      "topic": "District of Columbia"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          157
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "U.S. District Court"
+      ],
+      "position": 33,
+      "sentence_id": "0000320193-25-000079:19:18",
+      "source": "entity",
+      "status": "added",
+      "text": "In connection with this finding, on September 2, 2025, the U.S. District Court for the District of Columbia (“D.C. District Court”) ordered certain remedies.",
+      "ticker": "AAPL",
+      "topic": "U.S. District Court"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          236
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "D.C. District Court"
+      ],
+      "position": 34,
+      "sentence_id": "0000320193-25-000079:19:19",
+      "source": "entity",
+      "status": "added",
+      "text": "The court’s order is subject to further proceedings before the D.C. District Court, which may result in changes to the interpretation or application of the remedies ordered by the court, as well as new or changed remedies being ordered.",
+      "ticker": "AAPL",
+      "topic": "D.C. District Court"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          236
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "changed remedies"
+      ],
+      "position": 34,
+      "sentence_id": "0000320193-25-000079:19:19",
+      "source": "phrase",
+      "status": "added",
+      "text": "The court’s order is subject to further proceedings before the D.C. District Court, which may result in changes to the interpretation or application of the remedies ordered by the court, as well as new or changed remedies being ordered.",
+      "ticker": "AAPL",
+      "topic": "changed remedy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          212
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "Company commercial terms"
+      ],
+      "position": 36,
+      "sentence_id": "0000320193-25-000079:19:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "A reversal of the order on appeal could result in imposition of certain remedies initially proposed by the DOJ, such as those prohibiting Google from offering the Company commercial terms for search distribution.",
+      "ticker": "AAPL",
+      "topic": "company commercial term"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          212
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "search distribution"
+      ],
+      "position": 36,
+      "sentence_id": "0000320193-25-000079:19:21",
+      "source": "phrase",
+      "status": "added",
+      "text": "A reversal of the order on appeal could result in imposition of certain remedies initially proposed by the DOJ, such as those prohibiting Google from offering the Company commercial terms for search distribution.",
+      "ticker": "AAPL",
+      "topic": "search distribution"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          318
+        ]
+      ],
+      "change_id": "9f07868507890f8c",
+      "matched_terms": [
+        "lower profit margins"
+      ],
+      "position": 42,
+      "sentence_id": "0000320193-25-000079:19:25",
+      "source": "phrase",
+      "status": "added",
+      "text": "Such changes in business practices can also otherwise adversely affect the experience for users of the Company’s products and services, and result in harm to the Company’s reputation, loss of competitive advantage, poor market acceptance, reduced demand for products and services, lost sales, and lower profit margins.",
+      "ticker": "AAPL",
+      "topic": "lower profit margin"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          172
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "rare earths"
+      ],
+      "position": 11,
+      "sentence_id": "0000320193-25-000079:1:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Restrictive measures can increase the cost or limit the availability of the Company’s products and the components and rare earths and other raw materials that go into them.",
+      "ticker": "AAPL",
+      "topic": "rare earth"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          333
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "negative consumer sentiment"
+      ],
+      "position": 16,
+      "sentence_id": "0000320193-25-000079:1:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Trade and other international disputes can also have an adverse impact on the overall macroeconomic environment and result in shifts and reductions in consumer spending and negative consumer sentiment for the Company’s products and services, all of which can further adversely affect the Company’s business and results of operations.",
+      "ticker": "AAPL",
+      "topic": "negative consumer sentiment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          333
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "overall macroeconomic environment"
+      ],
+      "position": 16,
+      "sentence_id": "0000320193-25-000079:1:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "Trade and other international disputes can also have an adverse impact on the overall macroeconomic environment and result in shifts and reductions in consumer spending and negative consumer sentiment for the Company’s products and services, all of which can further adversely affect the Company’s business and results of operations.",
+      "ticker": "AAPL",
+      "topic": "overall macroeconomic environment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          248
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "second quarter"
+      ],
+      "position": 20,
+      "sentence_id": "0000320193-25-000079:1:11",
+      "source": "phrase",
+      "status": "added",
+      "text": "Beginning in the second quarter of 2025, new tariffs were announced on imports to the U.S. (“U.S. Tariffs”), including additional tariffs on imports from China, India, Japan, South Korea, Taiwan, Vietnam and the European Union (“EU”), among others.",
+      "ticker": "AAPL",
+      "topic": "second quarter"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          145
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "retaliatory measures"
+      ],
+      "position": 21,
+      "sentence_id": "0000320193-25-000079:1:12",
+      "source": "phrase",
+      "status": "added",
+      "text": "In response, several countries have imposed, or threatened to impose, reciprocal tariffs on imports from the U.S. and other retaliatory measures.",
+      "ticker": "AAPL",
+      "topic": "retaliatory measure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          323
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "U.S. Department of Commerce"
+      ],
+      "position": 24,
+      "sentence_id": "0000320193-25-000079:1:14",
+      "source": "entity",
+      "status": "added",
+      "text": "For example, the U.S. Department of Commerce has initiated an investigation under Section 232 of the Trade Expansion Act of 1962, as amended, into, among other things, imports of semiconductors, semiconductor manufacturing equipment, and their derivative products, including downstream products that contain semiconductors.",
+      "ticker": "AAPL",
+      "topic": "U.S. Department of Commerce"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          323
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "derivative products"
+      ],
+      "position": 24,
+      "sentence_id": "0000320193-25-000079:1:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, the U.S. Department of Commerce has initiated an investigation under Section 232 of the Trade Expansion Act of 1962, as amended, into, among other things, imports of semiconductors, semiconductor manufacturing equipment, and their derivative products, including downstream products that contain semiconductors.",
+      "ticker": "AAPL",
+      "topic": "derivative product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          323
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "downstream products"
+      ],
+      "position": 24,
+      "sentence_id": "0000320193-25-000079:1:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, the U.S. Department of Commerce has initiated an investigation under Section 232 of the Trade Expansion Act of 1962, as amended, into, among other things, imports of semiconductors, semiconductor manufacturing equipment, and their derivative products, including downstream products that contain semiconductors.",
+      "ticker": "AAPL",
+      "topic": "downstream product"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          323
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "semiconductor manufacturing equipment"
+      ],
+      "position": 24,
+      "sentence_id": "0000320193-25-000079:1:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, the U.S. Department of Commerce has initiated an investigation under Section 232 of the Trade Expansion Act of 1962, as amended, into, among other things, imports of semiconductors, semiconductor manufacturing equipment, and their derivative products, including downstream products that contain semiconductors.",
+      "ticker": "AAPL",
+      "topic": "semiconductor manufacturing equipment"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          323
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "Trade Expansion Act"
+      ],
+      "position": 24,
+      "sentence_id": "0000320193-25-000079:1:14",
+      "source": "phrase",
+      "status": "added",
+      "text": "For example, the U.S. Department of Commerce has initiated an investigation under Section 232 of the Trade Expansion Act of 1962, as amended, into, among other things, imports of semiconductors, semiconductor manufacturing equipment, and their derivative products, including downstream products that contain semiconductors.",
+      "ticker": "AAPL",
+      "topic": "trade expansion act"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          324
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "overall magnitude"
+      ],
+      "position": 25,
+      "sentence_id": "0000320193-25-000079:1:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "The ultimate impact remains uncertain and will depend on several factors, including whether additional or incremental U.S. Tariffs or other measures are announced or imposed, to what extent other countries implement tariffs or other retaliatory measures in response, and the overall magnitude and duration of these measures.",
+      "ticker": "AAPL",
+      "topic": "overall magnitude"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          324
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "retaliatory measures"
+      ],
+      "position": 25,
+      "sentence_id": "0000320193-25-000079:1:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "The ultimate impact remains uncertain and will depend on several factors, including whether additional or incremental U.S. Tariffs or other measures are announced or imposed, to what extent other countries implement tariffs or other retaliatory measures in response, and the overall magnitude and duration of these measures.",
+      "ticker": "AAPL",
+      "topic": "retaliatory measure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          324
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "ultimate impact"
+      ],
+      "position": 25,
+      "sentence_id": "0000320193-25-000079:1:15",
+      "source": "phrase",
+      "status": "added",
+      "text": "The ultimate impact remains uncertain and will depend on several factors, including whether additional or incremental U.S. Tariffs or other measures are announced or imposed, to what extent other countries implement tariffs or other retaliatory measures in response, and the overall magnitude and duration of these measures.",
+      "ticker": "AAPL",
+      "topic": "ultimate impact"
+    },
+    {
+      "added_spans": [
+        [
+          32,
+          47
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "retail stores"
+      ],
+      "position": 29,
+      "sentence_id": "0000320193-25-000079:1:17",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Many of the Company’s operations, retail stores and facilities, as well as critical business operations of the Company’s suppliers and contract manufacturers, are in locations that are prone to earthquakes and other natural disasters.",
+      "ticker": "AAPL",
+      "topic": "retail store"
+    },
+    {
+      "added_spans": [
+        [
+          56,
+          71
+        ]
+      ],
+      "change_id": "f62ab814bf6c23c5",
+      "matched_terms": [
+        "retail stores"
+      ],
+      "position": 33,
+      "sentence_id": "0000320193-25-000079:1:19",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, the Company’s and its suppliers’ operations, retail stores and facilities are subject to the risk of interruption by fire, power shortages, nuclear power plant accidents and other industrial accidents, terrorist attacks and other hostile acts, ransomware and other cybersecurity attacks, labor disputes, public health issues and other events beyond the Company’s control.",
+      "ticker": "AAPL",
+      "topic": "retail store"
+    },
+    {
+      "added_spans": [
+        [
+          214,
+          290
+        ]
+      ],
+      "change_id": "5e69fd94790b4f3f",
+      "matched_terms": [
+        "digital marketing assets"
+      ],
+      "position": 9,
+      "sentence_id": "0000320193-25-000079:12:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The Company has invested and will continue to invest in programs to enhance reseller sales, including staffing selected resellers’ stores with Company employees and contractors, improving product placement displays, and developing and making digital marketing assets available to resellers.",
+      "ticker": "AAPL",
+      "topic": "digital marketing asset"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          82
+        ],
+        [
+          348,
+          480
+        ]
+      ],
+      "change_id": "5e69fd94790b4f3f",
+      "matched_terms": [
+        "purchasing preferences"
+      ],
+      "position": 13,
+      "sentence_id": "0000320193-25-000079:12:5",
+      "source": "phrase",
+      "status": "modified",
+      "text": "For example, the purchasing preferences and behaviors of consumers may change, the financial condition of resellers could weaken, resellers could stop distributing the Company’s products, or uncertainty regarding demand for some or all of the Company’s products could cause resellers to reduce their ordering and marketing of the Company’s products, all of which could materially adversely impact the Company’s business, results of operations, financial condition and stock price.",
+      "ticker": "AAPL",
+      "topic": "purchasing preference"
+    },
+    {
+      "added_spans": [
+        [
+          313,
+          383
+        ]
+      ],
+      "change_id": "9c818b121bdfed8c",
+      "matched_terms": [
+        "market access"
+      ],
+      "position": 3,
+      "sentence_id": "0000320193-25-000079:3:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Due to the highly volatile and competitive nature of the markets and industries in which the Company competes, the Company must continually introduce new products, services and technologies, enhance existing products and services, effectively stimulate customer demand for new and upgraded products and services, navigate global regulatory requirements and barriers to market access, and successfully manage the transition to these new and upgraded products and services.",
+      "ticker": "AAPL",
+      "topic": "market access"
+    },
+    {
+      "added_spans": [
+        [
+          313,
+          383
+        ]
+      ],
+      "change_id": "9c818b121bdfed8c",
+      "matched_terms": [
+        "navigate global regulatory requirements"
+      ],
+      "position": 3,
+      "sentence_id": "0000320193-25-000079:3:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Due to the highly volatile and competitive nature of the markets and industries in which the Company competes, the Company must continually introduce new products, services and technologies, enhance existing products and services, effectively stimulate customer demand for new and upgraded products and services, navigate global regulatory requirements and barriers to market access, and successfully manage the transition to these new and upgraded products and services.",
+      "ticker": "AAPL",
+      "topic": "navigate global regulatory requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          312
+        ]
+      ],
+      "change_id": "9c818b121bdfed8c",
+      "matched_terms": [
+        "highly skilled personnel"
+      ],
+      "position": 4,
+      "sentence_id": "0000320193-25-000079:3:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The success of new product and service introductions depends on a number of factors, including the Company’s ability to recruit and retain highly skilled personnel to execute on its strategic initiatives, and the timely and successful development and market acceptance of new products, services and technologies.",
+      "ticker": "AAPL",
+      "topic": "highly skilled personnel"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          312
+        ]
+      ],
+      "change_id": "9c818b121bdfed8c",
+      "matched_terms": [
+        "strategic initiatives"
+      ],
+      "position": 4,
+      "sentence_id": "0000320193-25-000079:3:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The success of new product and service introductions depends on a number of factors, including the Company’s ability to recruit and retain highly skilled personnel to execute on its strategic initiatives, and the timely and successful development and market acceptance of new products, services and technologies.",
+      "ticker": "AAPL",
+      "topic": "strategic initiative"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          158
+        ]
+      ],
+      "change_id": "9c818b121bdfed8c",
+      "matched_terms": [
+        "quality issues"
+      ],
+      "position": 7,
+      "sentence_id": "0000320193-25-000079:3:4",
+      "source": "phrase",
+      "status": "added",
+      "text": "Additionally, quality issues or other defects or deficiencies can adversely affect the success of new product and service introductions and market acceptance.",
+      "ticker": "AAPL",
+      "topic": "quality issue"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          193
+        ]
+      ],
+      "change_id": "f3489ea43c2d7c2d",
+      "matched_terms": [
+        "competitive compensation"
+      ],
+      "position": 6,
+      "sentence_id": "0000320193-25-000079:11:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Periods of intense competition for talent in particular fields can lead to increased costs as the Company seeks to offer competitive compensation to recruit and retain highly skilled employees.",
+      "ticker": "AAPL",
+      "topic": "competitive compensation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          193
+        ]
+      ],
+      "change_id": "f3489ea43c2d7c2d",
+      "matched_terms": [
+        "increased costs"
+      ],
+      "position": 6,
+      "sentence_id": "0000320193-25-000079:11:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "Periods of intense competition for talent in particular fields can lead to increased costs as the Company seeks to offer competitive compensation to recruit and retain highly skilled employees.",
+      "ticker": "AAPL",
+      "topic": "increased cost"
+    },
+    {
+      "added_spans": [
+        [
+          82,
+          178
+        ]
+      ],
+      "change_id": "f3489ea43c2d7c2d",
+      "matched_terms": [
+        "strategic initiatives"
+      ],
+      "position": 8,
+      "sentence_id": "0000320193-25-000079:11:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition to competition for talent, workforce dynamics are constantly evolving and the Company must navigate changes effectively in order to achieve its strategic initiatives.",
+      "ticker": "AAPL",
+      "topic": "strategic initiative"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          217
+        ]
+      ],
+      "change_id": "f3489ea43c2d7c2d",
+      "matched_terms": [
+        "export controls"
+      ],
+      "position": 9,
+      "sentence_id": "0000320193-25-000079:11:5",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Laws and regulations, including immigration, labor and employment laws and export controls, among others, can materially adversely affect the Company’s ability to recruit and retain a highly skilled, global workforce.",
+      "ticker": "AAPL",
+      "topic": "Export controls"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          217
+        ]
+      ],
+      "change_id": "f3489ea43c2d7c2d",
+      "matched_terms": [
+        "immigration"
+      ],
+      "position": 9,
+      "sentence_id": "0000320193-25-000079:11:5",
+      "source": "lexicon",
+      "status": "added",
+      "text": "Laws and regulations, including immigration, labor and employment laws and export controls, among others, can materially adversely affect the Company’s ability to recruit and retain a highly skilled, global workforce.",
+      "ticker": "AAPL",
+      "topic": "Immigration policy"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          217
+        ]
+      ],
+      "change_id": "f3489ea43c2d7c2d",
+      "matched_terms": [
+        "highly skilled, global workforce"
+      ],
+      "position": 9,
+      "sentence_id": "0000320193-25-000079:11:5",
+      "source": "phrase",
+      "status": "added",
+      "text": "Laws and regulations, including immigration, labor and employment laws and export controls, among others, can materially adversely affect the Company’s ability to recruit and retain a highly skilled, global workforce.",
+      "ticker": "AAPL",
+      "topic": "highly skilled global workforce"
+    },
+    {
+      "added_spans": [
+        [
+          24,
+          35
+        ],
+        [
+          71,
+          98
+        ],
+        [
+          160,
+          273
+        ],
+        [
+          284,
+          345
+        ]
+      ],
+      "change_id": "f3489ea43c2d7c2d",
+      "matched_terms": [
+        "regulatory requirements"
+      ],
+      "position": 11,
+      "sentence_id": "0000320193-25-000079:11:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "If the Company does not effectively manage changing workforce dynamics and regulatory requirements, it could materially adversely affect the Company’s culture, operational flexibility, strategy and costs, all of which can materially adversely affect the Company’s business, reputation, results of operations, financial condition and stock price.",
+      "ticker": "AAPL",
+      "topic": "regulatory requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          31
+        ],
+        [
+          93,
+          161
+        ],
+        [
+          168,
+          209
+        ]
+      ],
+      "change_id": "bb29dff53444fe06",
+      "matched_terms": [
+        "differing expectations"
+      ],
+      "position": 3,
+      "sentence_id": "0000320193-25-000079:18:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Various stakeholders, including governments, regulators, investors, employees, customers and others, have differing expectations about a wide range of social and other issues related to the Company’s business.",
+      "ticker": "AAPL",
+      "topic": "differing expectation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          31
+        ],
+        [
+          93,
+          161
+        ],
+        [
+          168,
+          209
+        ]
+      ],
+      "change_id": "bb29dff53444fe06",
+      "matched_terms": [
+        "wide range"
+      ],
+      "position": 3,
+      "sentence_id": "0000320193-25-000079:18:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Various stakeholders, including governments, regulators, investors, employees, customers and others, have differing expectations about a wide range of social and other issues related to the Company’s business.",
+      "ticker": "AAPL",
+      "topic": "wide range"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          3
+        ],
+        [
+          39,
+          111
+        ],
+        [
+          161,
+          174
+        ],
+        [
+          184,
+          190
+        ]
+      ],
+      "change_id": "bb29dff53444fe06",
+      "matched_terms": [
+        "environmental and societal impact"
+      ],
+      "position": 5,
+      "sentence_id": "0000320193-25-000079:18:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The Company makes statements about its values, including the environmental and societal impact of its business, through various reports, information provided on the Company’s website, and in press statements and other communications.",
+      "ticker": "AAPL",
+      "topic": "environmental and societal impact"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          301
+        ],
+        [
+          331,
+          480
+        ],
+        [
+          492,
+          501
+        ]
+      ],
+      "change_id": "bb29dff53444fe06",
+      "matched_terms": [
+        "executive orders"
+      ],
+      "position": 11,
+      "sentence_id": "0000320193-25-000079:18:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Efforts by the Company to advance its business and values, or achieve its goals and further its initiatives, or to align with stakeholders’ expectations, or comply with evolving, varied and at times conflicting federal, state and international laws, executive orders, regulations and standards, or any failure or perceived failure to do so, can result in adverse reactions by consumers and other stakeholders, including the commencement of legal and regulatory proceedings against the Company, and can materially adversely affect the Company’s business, reputation, results of operations, financial condition and stock price.",
+      "ticker": "AAPL",
+      "topic": "executive order"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          301
+        ],
+        [
+          331,
+          480
+        ],
+        [
+          492,
+          501
+        ]
+      ],
+      "change_id": "bb29dff53444fe06",
+      "matched_terms": [
+        "stakeholders’ expectations"
+      ],
+      "position": 11,
+      "sentence_id": "0000320193-25-000079:18:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Efforts by the Company to advance its business and values, or achieve its goals and further its initiatives, or to align with stakeholders’ expectations, or comply with evolving, varied and at times conflicting federal, state and international laws, executive orders, regulations and standards, or any failure or perceived failure to do so, can result in adverse reactions by consumers and other stakeholders, including the commencement of legal and regulatory proceedings against the Company, and can materially adversely affect the Company’s business, reputation, results of operations, financial condition and stock price.",
+      "ticker": "AAPL",
+      "topic": "stakeholder expectation"
+    },
+    {
+      "added_spans": [
+        [
+          89,
+          98
+        ],
+        [
+          178,
+          210
+        ],
+        [
+          793,
+          811
+        ]
+      ],
+      "change_id": "e35c8e4c612d7d41",
+      "matched_terms": [
+        "national security"
+      ],
+      "position": 3,
+      "sentence_id": "0000320193-25-000079:17:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The Company’s global operations are subject to complex and changing laws and regulations worldwide on subjects including antitrust; privacy, data security and data localization; online safety; age verification; consumer protection; advertising, sales, billing and e-commerce; financial services and technology; product liability; intellectual property ownership and infringement; digital platforms; machine learning and artificial intelligence; internet, telecommunications and mobile communications; media, television, film and digital content; availability of third-party software applications and services; labor and employment; anticorruption; import, export and trade; foreign exchange controls and cash repatriation restrictions; anti–money laundering; foreign ownership and investment; national security; tax; and environmental, health and safety, including electronic waste, recycling, product design and climate change.",
+      "ticker": "AAPL",
+      "topic": "national security"
+    },
+    {
+      "added_spans": [
+        [
+          89,
+          98
+        ],
+        [
+          178,
+          210
+        ],
+        [
+          793,
+          811
+        ]
+      ],
+      "change_id": "e35c8e4c612d7d41",
+      "matched_terms": [
+        "online safety"
+      ],
+      "position": 3,
+      "sentence_id": "0000320193-25-000079:17:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The Company’s global operations are subject to complex and changing laws and regulations worldwide on subjects including antitrust; privacy, data security and data localization; online safety; age verification; consumer protection; advertising, sales, billing and e-commerce; financial services and technology; product liability; intellectual property ownership and infringement; digital platforms; machine learning and artificial intelligence; internet, telecommunications and mobile communications; media, television, film and digital content; availability of third-party software applications and services; labor and employment; anticorruption; import, export and trade; foreign exchange controls and cash repatriation restrictions; anti–money laundering; foreign ownership and investment; national security; tax; and environmental, health and safety, including electronic waste, recycling, product design and climate change.",
+      "ticker": "AAPL",
+      "topic": "online safety"
+    },
+    {
+      "added_spans": [
+        [
+          21,
+          22
+        ],
+        [
+          34,
+          92
+        ]
+      ],
+      "change_id": "e35c8e4c612d7d41",
+      "matched_terms": [
+        "enforcement priorities"
+      ],
+      "position": 7,
+      "sentence_id": "0000320193-25-000079:17:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "New and changing laws, regulations, executive orders, directives, and enforcement priorities can adversely affect the Company’s business by increasing the Company’s costs, limiting the Company’s ability to offer a product, service or feature to customers, imposing changes to the design of the Company’s products and services, impacting customer demand for the Company’s products and services, and requiring changes to the Company’s business or supply chain.",
+      "ticker": "AAPL",
+      "topic": "enforcement priority"
+    },
+    {
+      "added_spans": [
+        [
+          21,
+          22
+        ],
+        [
+          34,
+          92
+        ]
+      ],
+      "change_id": "e35c8e4c612d7d41",
+      "matched_terms": [
+        "executive orders"
+      ],
+      "position": 7,
+      "sentence_id": "0000320193-25-000079:17:3",
+      "source": "phrase",
+      "status": "modified",
+      "text": "New and changing laws, regulations, executive orders, directives, and enforcement priorities can adversely affect the Company’s business by increasing the Company’s costs, limiting the Company’s ability to offer a product, service or feature to customers, imposing changes to the design of the Company’s products and services, impacting customer demand for the Company’s products and services, and requiring changes to the Company’s business or supply chain.",
+      "ticker": "AAPL",
+      "topic": "executive order"
+    },
+    {
+      "added_spans": [
+        [
+          21,
+          22
+        ],
+        [
+          34,
+          92
+        ]
+      ],
+      "change_id": "e35c8e4c612d7d41",
+      "matched_terms": [
+        "enforcement priorities"
+      ],
+      "position": 9,
+      "sentence_id": "0000320193-25-000079:17:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "New and changing laws, regulations, executive orders, directives, and enforcement priorities can also create uncertainty about how such laws and regulations will be interpreted and applied.",
+      "ticker": "AAPL",
+      "topic": "enforcement priority"
+    },
+    {
+      "added_spans": [
+        [
+          21,
+          22
+        ],
+        [
+          34,
+          92
+        ]
+      ],
+      "change_id": "e35c8e4c612d7d41",
+      "matched_terms": [
+        "executive orders"
+      ],
+      "position": 9,
+      "sentence_id": "0000320193-25-000079:17:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "New and changing laws, regulations, executive orders, directives, and enforcement priorities can also create uncertainty about how such laws and regulations will be interpreted and applied.",
+      "ticker": "AAPL",
+      "topic": "executive order"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          466
+        ]
+      ],
+      "change_id": "e35c8e4c612d7d41",
+      "matched_terms": [
+        "enforcement priorities"
+      ],
+      "position": 14,
+      "sentence_id": "0000320193-25-000079:17:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Risks and costs related to new and changing laws, regulations, executive orders, directives, and enforcement priorities increase as the Company’s products and services are introduced into specialized applications, including health and financial services, or as the Company expands the use of technologies, such as machine learning and artificial intelligence features, and must navigate new legal, regulatory and ethical considerations relating to such technologies.",
+      "ticker": "AAPL",
+      "topic": "enforcement priority"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          466
+        ]
+      ],
+      "change_id": "e35c8e4c612d7d41",
+      "matched_terms": [
+        "executive orders"
+      ],
+      "position": 14,
+      "sentence_id": "0000320193-25-000079:17:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "Risks and costs related to new and changing laws, regulations, executive orders, directives, and enforcement priorities increase as the Company’s products and services are introduced into specialized applications, including health and financial services, or as the Company expands the use of technologies, such as machine learning and artificial intelligence features, and must navigate new legal, regulatory and ethical considerations relating to such technologies.",
+      "ticker": "AAPL",
+      "topic": "executive order"
+    },
+    {
+      "added_spans": [
+        [
+          21,
+          25
+        ],
+        [
+          38,
+          101
+        ],
+        [
+          128,
+          141
+        ],
+        [
+          151,
+          186
+        ],
+        [
+          192,
+          321
+        ],
+        [
+          331,
+          332
+        ]
+      ],
+      "change_id": "c9c79ab3093b2041",
+      "matched_terms": [
+        "perceived benefits"
+      ],
+      "position": 9,
+      "sentence_id": "0000320193-25-000079:9:4",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The Company believes that third-party developer support depends on the perceived benefits of creating software and services for the Company’s products compared to competitors’ platforms, such as Android for smartphones and tablets, Windows for personal computers and tablets, and PlayStation, Nintendo and Xbox for gaming platforms.",
+      "ticker": "AAPL",
+      "topic": "perceived benefit"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          297
+        ]
+      ],
+      "change_id": "08d66de4463156b6",
+      "matched_terms": [
+        "timely manner"
+      ],
+      "position": 17,
+      "sentence_id": "0000320193-25-000079:5:7",
+      "source": "phrase",
+      "status": "added",
+      "text": "The Company may not be able to extend or renew agreements for the supply of components on similar terms, or at all, and may not be successful in obtaining sufficient quantities from its suppliers in a timely manner, or in identifying and obtaining sufficient quantities from an alternative source.",
+      "ticker": "AAPL",
+      "topic": "timely manner"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          139
+        ]
+      ],
+      "change_id": "6e7acf9aa50b23fb",
+      "matched_terms": [
+        "effective protection"
+      ],
+      "position": 14,
+      "sentence_id": "0000320193-25-000079:2:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "The Company’s ability to compete successfully also depends on the effective protection and enforcement of its intellectual property rights.",
+      "ticker": "AAPL",
+      "topic": "effective protection"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          139
+        ]
+      ],
+      "change_id": "6e7acf9aa50b23fb",
+      "matched_terms": [
+        "intellectual property rights"
+      ],
+      "position": 14,
+      "sentence_id": "0000320193-25-000079:2:8",
+      "source": "phrase",
+      "status": "added",
+      "text": "The Company’s ability to compete successfully also depends on the effective protection and enforcement of its intellectual property rights.",
+      "ticker": "AAPL",
+      "topic": "intellectual property right"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "6e7acf9aa50b23fb",
+      "matched_terms": [
+        "government investigations"
+      ],
+      "position": 15,
+      "sentence_id": "0000320193-25-000079:2:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Regulatory requirements, government investigations and litigation can force the Company to withdraw from, or modify its products and services for, certain countries and limit its ability to derive value from, or to enjoin others from using, its intellectual property rights.",
+      "ticker": "AAPL",
+      "topic": "government investigation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "6e7acf9aa50b23fb",
+      "matched_terms": [
+        "intellectual property rights"
+      ],
+      "position": 15,
+      "sentence_id": "0000320193-25-000079:2:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Regulatory requirements, government investigations and litigation can force the Company to withdraw from, or modify its products and services for, certain countries and limit its ability to derive value from, or to enjoin others from using, its intellectual property rights.",
+      "ticker": "AAPL",
+      "topic": "intellectual property right"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          274
+        ]
+      ],
+      "change_id": "6e7acf9aa50b23fb",
+      "matched_terms": [
+        "Regulatory requirements"
+      ],
+      "position": 15,
+      "sentence_id": "0000320193-25-000079:2:9",
+      "source": "phrase",
+      "status": "added",
+      "text": "Regulatory requirements, government investigations and litigation can force the Company to withdraw from, or modify its products and services for, certain countries and limit its ability to derive value from, or to enjoin others from using, its intellectual property rights.",
+      "ticker": "AAPL",
+      "topic": "regulatory requirement"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          184
+        ]
+      ],
+      "change_id": "6e7acf9aa50b23fb",
+      "matched_terms": [
+        "competitive solutions"
+      ],
+      "position": 29,
+      "sentence_id": "0000320193-25-000079:2:17",
+      "source": "phrase",
+      "status": "added",
+      "text": "In addition, the Company faces significant competition as competitors imitate the Company’s product features and applications within their products to offer more competitive solutions.",
+      "ticker": "AAPL",
+      "topic": "competitive solution"
+    },
+    {
+      "added_spans": [
+        [
+          14,
+          27
+        ],
+        [
+          966,
+          1113
+        ]
+      ],
+      "change_id": "acf7025cebf3eea9",
+      "matched_terms": [
+        "tariffs"
+      ],
+      "position": 6,
+      "sentence_id": "0000320193-25-000079:21:2",
+      "source": "lexicon",
+      "status": "modified",
+      "text": "The Company’s net sales and gross margins are subject to volatility and downward pressure due to a variety of factors, including: continued industry-wide global product pricing pressures and product pricing actions that the Company may take in response to such pressures; increased competition; the Company’s ability to effectively stimulate demand for certain of its products and services; compressed product life cycles; supply shortages; potential increases in the cost of components, outside manufacturing services, and developing, acquiring and delivering content for the Company’s services; the Company’s ability to manage product quality and warranty costs effectively; shifts in the mix of products and services, or in the geographic, currency or channel mix, including to the extent that regulatory changes require the Company to modify its product and service offerings; fluctuations in foreign exchange rates; inflation and other macroeconomic pressures; the imposition of new or increased tariffs and other trade restrictions, their overall magnitude and duration, and retaliatory actions in response; and the introduction of new products or services, including new products or services with lower profit margins.",
+      "ticker": "AAPL",
+      "topic": "Tariffs"
+    },
+    {
+      "added_spans": [
+        [
+          14,
+          27
+        ],
+        [
+          966,
+          1113
+        ]
+      ],
+      "change_id": "acf7025cebf3eea9",
+      "matched_terms": [
+        "overall magnitude"
+      ],
+      "position": 6,
+      "sentence_id": "0000320193-25-000079:21:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The Company’s net sales and gross margins are subject to volatility and downward pressure due to a variety of factors, including: continued industry-wide global product pricing pressures and product pricing actions that the Company may take in response to such pressures; increased competition; the Company’s ability to effectively stimulate demand for certain of its products and services; compressed product life cycles; supply shortages; potential increases in the cost of components, outside manufacturing services, and developing, acquiring and delivering content for the Company’s services; the Company’s ability to manage product quality and warranty costs effectively; shifts in the mix of products and services, or in the geographic, currency or channel mix, including to the extent that regulatory changes require the Company to modify its product and service offerings; fluctuations in foreign exchange rates; inflation and other macroeconomic pressures; the imposition of new or increased tariffs and other trade restrictions, their overall magnitude and duration, and retaliatory actions in response; and the introduction of new products or services, including new products or services with lower profit margins.",
+      "ticker": "AAPL",
+      "topic": "overall magnitude"
+    },
+    {
+      "added_spans": [
+        [
+          14,
+          27
+        ],
+        [
+          966,
+          1113
+        ]
+      ],
+      "change_id": "acf7025cebf3eea9",
+      "matched_terms": [
+        "retaliatory actions"
+      ],
+      "position": 6,
+      "sentence_id": "0000320193-25-000079:21:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The Company’s net sales and gross margins are subject to volatility and downward pressure due to a variety of factors, including: continued industry-wide global product pricing pressures and product pricing actions that the Company may take in response to such pressures; increased competition; the Company’s ability to effectively stimulate demand for certain of its products and services; compressed product life cycles; supply shortages; potential increases in the cost of components, outside manufacturing services, and developing, acquiring and delivering content for the Company’s services; the Company’s ability to manage product quality and warranty costs effectively; shifts in the mix of products and services, or in the geographic, currency or channel mix, including to the extent that regulatory changes require the Company to modify its product and service offerings; fluctuations in foreign exchange rates; inflation and other macroeconomic pressures; the imposition of new or increased tariffs and other trade restrictions, their overall magnitude and duration, and retaliatory actions in response; and the introduction of new products or services, including new products or services with lower profit margins.",
+      "ticker": "AAPL",
+      "topic": "retaliatory action"
+    },
+    {
+      "added_spans": [
+        [
+          14,
+          27
+        ],
+        [
+          966,
+          1113
+        ]
+      ],
+      "change_id": "acf7025cebf3eea9",
+      "matched_terms": [
+        "trade restrictions"
+      ],
+      "position": 6,
+      "sentence_id": "0000320193-25-000079:21:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The Company’s net sales and gross margins are subject to volatility and downward pressure due to a variety of factors, including: continued industry-wide global product pricing pressures and product pricing actions that the Company may take in response to such pressures; increased competition; the Company’s ability to effectively stimulate demand for certain of its products and services; compressed product life cycles; supply shortages; potential increases in the cost of components, outside manufacturing services, and developing, acquiring and delivering content for the Company’s services; the Company’s ability to manage product quality and warranty costs effectively; shifts in the mix of products and services, or in the geographic, currency or channel mix, including to the extent that regulatory changes require the Company to modify its product and service offerings; fluctuations in foreign exchange rates; inflation and other macroeconomic pressures; the imposition of new or increased tariffs and other trade restrictions, their overall magnitude and duration, and retaliatory actions in response; and the introduction of new products or services, including new products or services with lower profit margins.",
+      "ticker": "AAPL",
+      "topic": "trade restriction"
+    },
+    {
+      "added_spans": [
+        [
+          152,
+          173
+        ],
+        [
+          209,
+          248
+        ],
+        [
+          286,
+          303
+        ]
+      ],
+      "change_id": "6e91f8b4efb996b9",
+      "matched_terms": [
+        "intellectual property rights generation"
+      ],
+      "position": 5,
+      "sentence_id": "0000320193-25-000079:8:2",
+      "source": "phrase",
+      "status": "modified",
+      "text": "In addition, because of technological changes in the industries in which the Company currently competes or in the future may compete, current extensive intellectual property coverage and the rapid rate of new intellectual property rights generation, the Company’s products and services may be alleged to infringe existing intellectual property rights of others.",
+      "ticker": "AAPL",
+      "topic": "intellectual property right generation"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          311
+        ]
+      ],
+      "change_id": "6e91f8b4efb996b9",
+      "matched_terms": [
+        "artificial intelligence"
+      ],
+      "position": 6,
+      "sentence_id": "0000320193-25-000079:8:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "This risk may be exacerbated by the use of new and emerging technologies, including machine learning and artificial intelligence, which can involve, among other things, the acquisition and use of copyrighted materials for training as well as the potential reproduction of copyrighted materials in their outputs.",
+      "ticker": "AAPL",
+      "topic": "artificial intelligence"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          311
+        ]
+      ],
+      "change_id": "6e91f8b4efb996b9",
+      "matched_terms": [
+        "copyrighted materials"
+      ],
+      "position": 6,
+      "sentence_id": "0000320193-25-000079:8:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "This risk may be exacerbated by the use of new and emerging technologies, including machine learning and artificial intelligence, which can involve, among other things, the acquisition and use of copyrighted materials for training as well as the potential reproduction of copyrighted materials in their outputs.",
+      "ticker": "AAPL",
+      "topic": "copyrighted material"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          311
+        ]
+      ],
+      "change_id": "6e91f8b4efb996b9",
+      "matched_terms": [
+        "emerging technologies"
+      ],
+      "position": 6,
+      "sentence_id": "0000320193-25-000079:8:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "This risk may be exacerbated by the use of new and emerging technologies, including machine learning and artificial intelligence, which can involve, among other things, the acquisition and use of copyrighted materials for training as well as the potential reproduction of copyrighted materials in their outputs.",
+      "ticker": "AAPL",
+      "topic": "emerging technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          311
+        ]
+      ],
+      "change_id": "6e91f8b4efb996b9",
+      "matched_terms": [
+        "machine learning"
+      ],
+      "position": 6,
+      "sentence_id": "0000320193-25-000079:8:3",
+      "source": "phrase",
+      "status": "added",
+      "text": "This risk may be exacerbated by the use of new and emerging technologies, including machine learning and artificial intelligence, which can involve, among other things, the acquisition and use of copyrighted materials for training as well as the potential reproduction of copyrighted materials in their outputs.",
+      "ticker": "AAPL",
+      "topic": "machine learning"
+    },
+    {
+      "added_spans": [
+        [
+          280,
+          379
+        ],
+        [
+          404,
+          415
+        ],
+        [
+          437,
+          438
+        ],
+        [
+          459,
+          475
+        ]
+      ],
+      "change_id": "6e91f8b4efb996b9",
+      "matched_terms": [
+        "licensing costs"
+      ],
+      "position": 13,
+      "sentence_id": "0000320193-25-000079:8:6",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Failure to obtain the right to use third-party intellectual property, or to use such intellectual property on commercially reasonable terms, can require the Company to modify certain products, services or features or preclude the Company from selling certain products or services and expose the Company to significant licensing costs, all of which can materially adversely affect the Company’s business, reputation, results of operations, financial condition and stock price.",
+      "ticker": "AAPL",
+      "topic": "licensing cost"
+    },
+    {
+      "added_spans": [
+        [
+          12,
+          32
+        ],
+        [
+          200,
+          201
+        ],
+        [
+          214,
+          232
+        ]
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "matched_terms": [
+        "perceived failure"
+      ],
+      "position": 17,
+      "sentence_id": "0000320193-25-000079:20:8",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Any failure or perceived failure by the Company to comply with these public statements or with federal, state or international privacy or data protection laws and regulations could result in inquiries, proceedings and penalties from governmental entities or others.",
+      "ticker": "AAPL",
+      "topic": "perceived failure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          56
+        ]
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "matched_terms": [
+        "perceived failure"
+      ],
+      "position": 19,
+      "sentence_id": "0000320193-25-000079:20:9",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Such a failure or perceived failure could also result in reputational impacts, ongoing audit requirements and significant legal liability.",
+      "ticker": "AAPL",
+      "topic": "perceived failure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          195
+        ]
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "matched_terms": [
+        "artificial intelligence features"
+      ],
+      "position": 20,
+      "sentence_id": "0000320193-25-000079:20:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "The risks of inadvertent disclosure of personal data can increase with the introduction of new and complex technologies, such as artificial intelligence features, further exacerbating such risks.",
+      "ticker": "AAPL",
+      "topic": "artificial intelligence feature"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          195
+        ]
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "matched_terms": [
+        "complex technologies"
+      ],
+      "position": 20,
+      "sentence_id": "0000320193-25-000079:20:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "The risks of inadvertent disclosure of personal data can increase with the introduction of new and complex technologies, such as artificial intelligence features, further exacerbating such risks.",
+      "ticker": "AAPL",
+      "topic": "complex technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          195
+        ]
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "matched_terms": [
+        "inadvertent disclosure"
+      ],
+      "position": 20,
+      "sentence_id": "0000320193-25-000079:20:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "The risks of inadvertent disclosure of personal data can increase with the introduction of new and complex technologies, such as artificial intelligence features, further exacerbating such risks.",
+      "ticker": "AAPL",
+      "topic": "inadvertent disclosure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          195
+        ]
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "matched_terms": [
+        "personal data"
+      ],
+      "position": 20,
+      "sentence_id": "0000320193-25-000079:20:10",
+      "source": "phrase",
+      "status": "added",
+      "text": "The risks of inadvertent disclosure of personal data can increase with the introduction of new and complex technologies, such as artificial intelligence features, further exacerbating such risks.",
+      "ticker": "AAPL",
+      "topic": "personal data"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          31,
+          166
+        ]
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "matched_terms": [
+        "changing laws"
+      ],
+      "position": 28,
+      "sentence_id": "0000320193-25-000079:20:14",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The Company is also subject to new and changing laws and regulations regarding online safety, including enhanced protections for minors and mandatory age verification requirements.",
+      "ticker": "AAPL",
+      "topic": "changing law"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          31,
+          166
+        ]
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "matched_terms": [
+        "enhanced protections"
+      ],
+      "position": 28,
+      "sentence_id": "0000320193-25-000079:20:14",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The Company is also subject to new and changing laws and regulations regarding online safety, including enhanced protections for minors and mandatory age verification requirements.",
+      "ticker": "AAPL",
+      "topic": "enhanced protection"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          31,
+          166
+        ]
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "matched_terms": [
+        "online safety"
+      ],
+      "position": 28,
+      "sentence_id": "0000320193-25-000079:20:14",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The Company is also subject to new and changing laws and regulations regarding online safety, including enhanced protections for minors and mandatory age verification requirements.",
+      "ticker": "AAPL",
+      "topic": "online safety"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          101
+        ],
+        [
+          114,
+          274
+        ],
+        [
+          281,
+          322
+        ],
+        [
+          329,
+          366
+        ],
+        [
+          391,
+          410
+        ],
+        [
+          438,
+          450
+        ]
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "matched_terms": [
+        "complex compliance measures"
+      ],
+      "position": 31,
+      "sentence_id": "0000320193-25-000079:20:15",
+      "source": "phrase",
+      "status": "modified",
+      "text": "These laws and regulations can increase regulatory risks by requiring complex compliance measures and significant modifications to the Company’s products, services and operations, and may lead to operational disruptions, heightened privacy and data security risks, increased costs and potential liability and fines, all of which can have a material adverse impact on the Company’s business, financial condition, results of operations and stock price.",
+      "ticker": "AAPL",
+      "topic": "complex compliance measure"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          101
+        ],
+        [
+          114,
+          274
+        ],
+        [
+          281,
+          322
+        ],
+        [
+          329,
+          366
+        ],
+        [
+          391,
+          410
+        ],
+        [
+          438,
+          450
+        ]
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "matched_terms": [
+        "operational disruptions"
+      ],
+      "position": 31,
+      "sentence_id": "0000320193-25-000079:20:15",
+      "source": "phrase",
+      "status": "modified",
+      "text": "These laws and regulations can increase regulatory risks by requiring complex compliance measures and significant modifications to the Company’s products, services and operations, and may lead to operational disruptions, heightened privacy and data security risks, increased costs and potential liability and fines, all of which can have a material adverse impact on the Company’s business, financial condition, results of operations and stock price.",
+      "ticker": "AAPL",
+      "topic": "operational disruption"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          101
+        ],
+        [
+          114,
+          274
+        ],
+        [
+          281,
+          322
+        ],
+        [
+          329,
+          366
+        ],
+        [
+          391,
+          410
+        ],
+        [
+          438,
+          450
+        ]
+      ],
+      "change_id": "f7888b6bd8cf139e",
+      "matched_terms": [
+        "regulatory risks"
+      ],
+      "position": 31,
+      "sentence_id": "0000320193-25-000079:20:15",
+      "source": "phrase",
+      "status": "modified",
+      "text": "These laws and regulations can increase regulatory risks by requiring complex compliance measures and significant modifications to the Company’s products, services and operations, and may lead to operational disruptions, heightened privacy and data security risks, increased costs and potential liability and fines, all of which can have a material adverse impact on the Company’s business, financial condition, results of operations and stock price.",
+      "ticker": "AAPL",
+      "topic": "regulatory risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          235
+        ]
+      ],
+      "change_id": "89bf7dac651b8bb1",
+      "matched_terms": [
+        "single-source partners"
+      ],
+      "position": 4,
+      "sentence_id": "0000320193-25-000079:4:2",
+      "source": "phrase",
+      "status": "added",
+      "text": "The Company relies on single-source partners in the U.S., Asia and Europe to supply and manufacture many components, and on partners primarily located in Asia, for final assembly of substantially all of the Company’s hardware products.",
+      "ticker": "AAPL",
+      "topic": "single source partner"
+    },
+    {
+      "added_spans": [
+        [
+          37,
+          63
+        ],
+        [
+          168,
+          169
+        ]
+      ],
+      "change_id": "56a542d073cdca3e",
+      "matched_terms": [
+        "commercial relationships"
+      ],
+      "position": 1,
+      "sentence_id": "0000320193-25-000079:15:0",
+      "source": "phrase",
+      "status": "modified",
+      "text": "Investment in new business strategies, commercial relationships and acquisitions could disrupt the Company’s ongoing business, present risks not originally contemplated, and materially adversely affect the Company’s business, reputation, results of operations and financial condition.",
+      "ticker": "AAPL",
+      "topic": "commercial relationship"
+    },
+    {
+      "added_spans": [
+        [
+          82,
+          112
+        ]
+      ],
+      "change_id": "56a542d073cdca3e",
+      "matched_terms": [
+        "commercial relationships"
+      ],
+      "position": 3,
+      "sentence_id": "0000320193-25-000079:15:1",
+      "source": "phrase",
+      "status": "modified",
+      "text": "The Company has invested, and in the future may invest, in new business strategies, commercial relationships and acquisitions.",
+      "ticker": "AAPL",
+      "topic": "commercial relationship"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          4
+        ],
+        [
+          17,
+          58
+        ],
+        [
+          179,
+          241
+        ]
+      ],
+      "change_id": "56a542d073cdca3e",
+      "matched_terms": [
+        "counterparty"
+      ],
+      "position": 7,
+      "sentence_id": "0000320193-25-000079:15:3",
+      "source": "lexicon",
+      "status": "modified",
+      "text": "Some transactions, including investments and acquisitions, are exposed to additional risks, including failing to obtain required regulatory approvals on a timely basis or at all, a counterparty’s failure to perform or deliver as anticipated, or the imposition of onerous conditions that could delay or prevent the Company from completing a transaction or otherwise limit the Company’s ability to fully realize the anticipated benefits of a transaction.",
+      "ticker": "AAPL",
+      "topic": "Counterparty and credit risk"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          233
+        ]
+      ],
+      "change_id": "c23bd2d6a194fceb",
+      "matched_terms": [
+        "artificial intelligence"
+      ],
+      "position": 12,
+      "sentence_id": "0000320193-25-000079:16:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "These risks, and the risks of novel claims being attempted, may be exacerbated as new and emerging technologies, including machine learning and artificial intelligence, are further integrated into the Company’s products and services.",
+      "ticker": "AAPL",
+      "topic": "artificial intelligence"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          233
+        ]
+      ],
+      "change_id": "c23bd2d6a194fceb",
+      "matched_terms": [
+        "emerging technologies"
+      ],
+      "position": 12,
+      "sentence_id": "0000320193-25-000079:16:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "These risks, and the risks of novel claims being attempted, may be exacerbated as new and emerging technologies, including machine learning and artificial intelligence, are further integrated into the Company’s products and services.",
+      "ticker": "AAPL",
+      "topic": "emerging technology"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          233
+        ]
+      ],
+      "change_id": "c23bd2d6a194fceb",
+      "matched_terms": [
+        "machine learning"
+      ],
+      "position": 12,
+      "sentence_id": "0000320193-25-000079:16:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "These risks, and the risks of novel claims being attempted, may be exacerbated as new and emerging technologies, including machine learning and artificial intelligence, are further integrated into the Company’s products and services.",
+      "ticker": "AAPL",
+      "topic": "machine learning"
+    },
+    {
+      "added_spans": [
+        [
+          0,
+          233
+        ]
+      ],
+      "change_id": "c23bd2d6a194fceb",
+      "matched_terms": [
+        "novel claims"
+      ],
+      "position": 12,
+      "sentence_id": "0000320193-25-000079:16:6",
+      "source": "phrase",
+      "status": "added",
+      "text": "These risks, and the risks of novel claims being attempted, may be exacerbated as new and emerging technologies, including machine learning and artificial intelligence, are further integrated into the Company’s products and services.",
+      "ticker": "AAPL",
+      "topic": "novel claim"
+    }
+  ],
+  "total_changes": 28
+}
