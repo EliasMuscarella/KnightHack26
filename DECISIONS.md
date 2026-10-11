@@ -691,3 +691,69 @@ _D-030 to D-032 were first recorded as D-026 to D-028 on Oct 10 and were lost in
 - Not done: the reports carry no sector data, so "category" presets wait for SIC codes from the EDGAR
   submissions JSON; the questions are templates (an LLM version run through the citation validator is the
   natural next step); a long selection still spills sections onto extra sheets.
+
+## D-034 Logo fetch script
+
+- What: `scripts/fetch_logos.py` (dev-time, run by hand when companies join the library) finds, downloads,
+  sanitizes and registers genuine logos. The app still never fetches a logo at runtime: files live in
+  `web/public/logos/`, the manifest in the `// BEGIN GENERATED` block of `web/src/lib/logos.ts`, sources in
+  the generated table of `web/public/logos/SOURCES.md` (ticker, company, Wikidata QID, Commons file page,
+  license with Artist/Credit, property). Output is sorted by ticker and a re-run is idempotent.
+- Lookup by CIK, never by name: Wikidata search `haswbstatement:P5531=<cik>` (10-digit padded form, then
+  unpadded), and the item's own P5531 must match before it is used; several confirmed items = skipped.
+  "Small logo or icon" (P8972) first (square marks align best), else "logo image" (P154). Values with an
+  end date (P582, former logos) and deprecated values are never used; then preferred rank, then the latest
+  start date. Only `image/svg+xml` up to 400 KB; a PNG/JPEG candidate is skipped with a reason and the next
+  candidate tried. Companies with no CIK on Wikidata (BY, and SF's hand-added file) keep what they have.
+- Network: a hardcoded allowlist checked before every request and on every redirect hop
+  (`follow_redirects=False`, manual hops): `https://www.wikidata.org`, `https://commons.wikimedia.org`,
+  `https://upload.wikimedia.org`, `http://localhost:8000` (company list; falls back to
+  `data/published/*.json`). No URL comes from input; `--tickers` values must match `^[A-Z.\-]{1,6}$`. A
+  generic UA naming the project only (no personal detail), one request at a time at about 1/s, `maxlag=5`,
+  backoff on 429/503/maxlag honoring Retry-After. Raw API responses and downloads are cached under
+  `data/cache/logos/` (gitignored); `--dry-run` writes nothing, not even the cache.
+- Sanitizer (fail closed): reject any file containing `<!DOCTYPE`/`<!ENTITY` before parsing; parse with
+  ElementTree (comments and PIs discarded); rebuild from an element allowlist (svg, g, path, rect, circle,
+  ellipse, line, polyline, polygon, defs, linearGradient, radialGradient, stop, clipPath, mask, use, text,
+  tspan) and an attribute allowlist (geometry, presentation, gradient attributes, `id`, `viewBox`).
+  Dropped: script, foreignObject, image, a, animation elements, style, title/desc/metadata, editor
+  namespaces, every `on*` attribute, any `href` that is not an internal `#id` (only on use/gradients),
+  `url()` other than `url(#id)`, and style values with escapes, `@`, `javascript`, `expression` or `data:`.
+  A `<style>` sheet is inlined into `style` attributes (cascade order kept) only when it is plain `.class`,
+  `tag` or `#id` rules; anything else (at-rules, combinators), and any unknown element (filter, pattern,
+  symbol), refuses the logo. The output is re-parsed and grepped once more before it is written. A missing
+  viewBox is derived from absolute width/height; width/height are removed so the file scales; coordinates
+  are not rounded. Each of the 12 new files was rendered against its Commons original in Chrome:
+  identical apart from at most 110 anti-aliased edge pixels in 300,000.
+- Shape: "mark" when the viewBox is at most 1.6:1, else "wordmark" (Mastercard's circles, 1.62:1, count as
+  a wordmark; the shape only changes the padding). An existing logo is replaced only with `--force`, or
+  when a wordmark can be swapped for that company's genuine square P8972 icon; swaps are reported. None
+  happened in the first run (CRWD and NVDA have no P8972).
+- Tile: every logo and the monogram share one 1.75:1 tile per size step, sm 70x40 (library cards,
+  briefing picker), md 91x52 (report header), lg 112x64; marks centered with even padding, wordmarks
+  scaled to the width with less vertical padding. Company names now start at the same x on every card.
+  Chosen from screenshots: 63x36 left CrowdStrike and NVIDIA unreadable. Known limit: a 10.7:1 wordmark
+  (Johnson & Johnson) is recognizable but not readable at sm.
+- Byline Bancorp (BY) has no Wikidata item with its CIK and no SVG on Commons, so its logo is a hand-added PNG:
+  the circle mark cropped from the official logo image the team supplied (99 x 99 px, white background). PNG logos
+  are listed in `RASTER_LOGOS` in `logos.ts` (served as `/logos/{TICKER}.png`), checked by `logos.test.ts` (real
+  PNG, listed, no SVG twin), and never replaced by `scripts/fetch_logos.py`. No logo is traced or redrawn.
+
+## D-035 Home hero specimen: rotating real before/after examples
+
+- The right half of the home hero is a card that cycles through five real before/after sentences, one per kind
+  of highlight (potential became actual, new figure, newly named, new risk, dropped risk), so a first visit shows
+  what RiskDiff marks. It replaces the single static example that sat below the hero.
+- Selection is deterministic (`web/src/lib/specimen.ts`): per kind, rank by the parent change's score, then ticker,
+  then position; pass over a company that already has a slide while another company has a candidate; never the same
+  risk factor twice; skip fixtures; skip sentences over 240 characters (every slide is then the same height and no
+  slide needs a "Show full sentence" control); a before/after pair must have an alignment similarity of at least
+  0.7 on both sides, so two loosely paired sentences are never shown as one edit.
+- Each slide plays once, in order: last year's sentence, the strike on removed words, this year's sentence, the
+  highlighter drawn over new words (CSS only, `.specimen-slide` in globals.css; no typewriter effect). All slides sit
+  in one grid cell, so the card never changes size; inactive slides are invisible, `inert` and `aria-hidden`.
+- Motion rules: auto-advance every 7 s; it stops while the pointer or focus is inside and when the visitor presses
+  Pause; with prefers-reduced-motion nothing animates, nothing advances and there is no Pause button (the dots
+  still work). Slide 1 is server-rendered.
+- Every sentence is verbatim from a filing with the diff's own marks; the card links each slide to its change page.
+  `getHero` / `pickHero` (lib/hero.ts) are no longer used by the home page and are kept with their tests.

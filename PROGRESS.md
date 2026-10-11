@@ -135,6 +135,8 @@ client; the one-time steps for the team are in docs/REPORT.md §11 and README "S
 | FE4 | Merge with UX13 | done | five conflicts resolved keeping both sides; pushed to `main` |
 | FE5 | Heatmap contrast (light) | done | D-030; every cell number >= 4.5:1 in both themes, checked by math and in Chrome by a second, independent agent |
 | FE6 | Disclosure Briefing (tab, picker, preview, PDF) | built, awaiting local test | D-033; `/briefing`, `/briefing/print`, `GET /api/briefing.pdf` (playwright-core 1.63.0 + installed Chrome); 1 company 4 pages, 3 companies 5, 8 companies 9; 68 web unit tests |
+| FE7 | Logo fetch script + uniform logo tiles | built, awaiting local test | D-034; `scripts/fetch_logos.py` (Wikidata by CIK, P8972 then P154, Commons SVG, allowlisted hosts, fail-closed sanitizer); 12 new logos, BY keeps the monogram; one 1.75:1 tile for logos and monograms; 82 pytest cases in `tests/test_fetch_logos.py` |
+| FE8 | Home hero specimen (rotating before/after) | built, awaiting local test | D-035; `HeroSpecimen.tsx`, `lib/specimen.ts` (79 web unit tests); replaces the static hero example |
 
 Open, found in a browser review of both themes (not fixed):
 - NVDA and SF still need the re-run below (preamble ranked as a New risk, "z ECCNs" fragment, older prompt).

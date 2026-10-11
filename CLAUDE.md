@@ -82,7 +82,7 @@ the version. Published `analysis_id` = sha256(old accession, new accession,
 * same inputs + same versions → byte-identical published JSON and identical `analysis_id`
 * the contract (`pipeline/schema.py`) is the single source of truth for data shape; regenerate TS types after any change
 * SEC fair access: send `SEC_USER_AGENT` on every request, stay under 5 requests/second, cache everything, never re-download a cached filing
-* outbound HTTP only to an allowlist: `www.sec.gov`, `data.sec.gov`, Hugging Face endpoints, (if used) the Gemini API, and `finnhub.io` for the home-page ticker tape only (API process, fixed symbol list, never part of an analysis) — no user-controlled URLs (no SSRF)
+* outbound HTTP only to an allowlist: `www.sec.gov`, `data.sec.gov`, Hugging Face endpoints, (if used) the Gemini API, and `finnhub.io` for the home-page ticker tape only (API process, fixed symbol list, never part of an analysis); the dev-only `scripts/fetch_logos.py` may also reach `www.wikidata.org`, `commons.wikimedia.org` and `upload.wikimedia.org` (run by hand, never by the app; D-034) — no user-controlled URLs (no SSRF)
 * validate ticker input with a strict pattern (`^[A-Z.\-]{1,6}$` after uppercasing) on both client and server
 * render filing text as text, never via `dangerouslySetInnerHTML` or raw HTML injection
 * secrets only via environment variables, never in code, logs, frontend bundles, or git

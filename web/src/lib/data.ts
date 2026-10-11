@@ -10,6 +10,8 @@ import { cache } from "react";
 
 import type { Comparison } from "@/types/comparison";
 import { pickHero, type HeroPick } from "@/lib/hero";
+import { displayName } from "@/lib/names";
+import { pickSpecimens, type Specimen } from "@/lib/specimen";
 import {
   ApiUnreachableError,
   getComparisonFromApi,
@@ -344,4 +346,17 @@ export const getHero = cache(async (): Promise<HeroPick | null> => {
     if (c) comparisons.push(c);
   }
   return pickHero(comparisons);
+});
+
+/**
+ * The home hero's rotating before/after examples: one real change per kind of highlight across the
+ * local published reports (lib/specimen.ts), with display names. Fixture data is never used.
+ */
+export const getSpecimens = cache(async (): Promise<Specimen[]> => {
+  const comparisons: Comparison[] = [];
+  for (const entry of await listPublishedEntries()) {
+    const c = await readPublishedFile(entry);
+    if (c) comparisons.push(c);
+  }
+  return pickSpecimens(comparisons).map((x) => ({ ...x, company: displayName(x.company) || x.ticker }));
 });

@@ -447,6 +447,19 @@ summary {
   animation: rd-draw 450ms 120ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
+/* The hero specimen plays in order: last year's sentence, the strike, this year's sentence, the marker. */
+@keyframes rd-strike {
+  from { text-decoration-color: transparent; }
+  to { text-decoration-color: var(--color-strike); }
+}
+@keyframes rd-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.specimen-slide.draw-marks .strike { animation: rd-strike 300ms 500ms ease-out both; }
+.specimen-slide.draw-marks .specimen-new { animation: rd-reveal 350ms 850ms ease-out both; }
+.specimen-slide.draw-marks .hl { animation-delay: 1250ms; }
+
 /* Home page market-price tape: the list is rendered twice and the track slides by one copy
    (-50%), so the loop is seamless. Duration comes from --tape-duration (about 3.2s per quote). */
 @keyframes rd-tape {
@@ -473,7 +486,9 @@ summary {
   .animate-pulse { animation: none; }
   .page-enter,
   details[open] > :not(summary),
-  .draw-marks .hl { animation: none; }
+  .draw-marks .hl,
+  .specimen-slide.draw-marks .strike,
+  .specimen-slide.draw-marks .specimen-new { animation: none; }
   a, button, summary, .nav-link::after, details > summary [aria-hidden="true"] { transition: none; }
   /* The tape stands still: one copy of the list in a horizontally scrollable row. */
   .tape-track { animation: none; }

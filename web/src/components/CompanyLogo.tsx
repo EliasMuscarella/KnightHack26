@@ -1,13 +1,29 @@
 import Image from "next/image";
 
-import { logoFor } from "@/lib/logos";
+import { logoFor, type LogoShape } from "@/lib/logos";
 import { TICKER_PATTERN } from "@/lib/ticker";
 
 type Size = "sm" | "md" | "lg";
 
-/** Tile height in px; marks are square, wordmarks get a 3:1 tile. */
-const HEIGHT: Record<Size, number> = { sm: 32, md: 40, lg: 56 };
-const PADDING: Record<Size, number> = { sm: 5, md: 6, lg: 9 };
+/**
+ * One tile per size step for every company: square marks, wide wordmarks and the monogram all
+ * share it, so the company name next to the tile starts at the same x on every card and header.
+ * 1.75:1 keeps square marks from floating in a long empty box while leaving wordmarks wide enough
+ * to read (D-034).
+ */
+const TILE: Record<Size, { width: number; height: number }> = {
+  sm: { width: 70, height: 40 },
+  md: { width: 91, height: 52 },
+  lg: { width: 112, height: 64 },
+};
+
+/** Inner padding [vertical, horizontal] in px: marks sit centered with air around them; wordmarks
+ * use more of the height and are scaled down to the tile width. */
+const PADDING: Record<Size, Record<LogoShape, [number, number]>> = {
+  sm: { mark: [7, 7], wordmark: [4, 5] },
+  md: { mark: [9, 9], wordmark: [6, 6] },
+  lg: { mark: [11, 11], wordmark: [7, 8] },
+};
 
 /**
  * A company's bundled logo on a light rounded tile, or a ticker monogram when no logo is bundled.
@@ -30,21 +46,20 @@ export function CompanyLogo({
   const upper = typeof ticker === "string" ? ticker.trim().toUpperCase() : "";
   const valid = TICKER_PATTERN.test(upper);
   const logo = valid ? logoFor(upper) : null;
-  const height = HEIGHT[size];
+  const { width, height } = TILE[size];
 
   if (logo) {
-    const width = logo.shape === "wordmark" ? height * 3 : height;
-    const pad = PADDING[size];
+    const [padY, padX] = PADDING[size][logo.shape];
     return (
       <span
         className={`inline-flex shrink-0 items-center justify-center rounded-md border border-line bg-white ${className}`}
-        style={{ width, height, padding: pad }}
+        style={{ width, height, padding: `${padY}px ${padX}px` }}
       >
         <Image
           src={logo.src}
           alt={`${name?.trim() || upper} logo`}
-          width={width - pad * 2}
-          height={height - pad * 2}
+          width={width - padX * 2}
+          height={height - padY * 2}
           unoptimized
           className="h-full w-full object-contain"
         />
@@ -58,8 +73,8 @@ export function CompanyLogo({
   return (
     <span
       aria-hidden="true"
-      className={`inline-flex shrink-0 items-center justify-center rounded-md border border-line bg-sunken px-1.5 font-medium tabular-nums tracking-tight text-ink ${text} ${className}`}
-      style={{ minWidth: height, height }}
+      className={`inline-flex shrink-0 items-center justify-center overflow-hidden rounded-md border border-line bg-sunken px-1 font-medium tabular-nums tracking-tight text-ink ${text} ${className}`}
+      style={{ width, height }}
     >
       {label}
     </span>
