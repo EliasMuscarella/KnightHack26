@@ -474,8 +474,9 @@ summary {
   width: max-content;
   animation: rd-tape var(--tape-duration, 120s) linear infinite;
 }
-.tape-viewport:hover .tape-track,
-.tape-viewport:focus-within .tape-track {
+/* Keeps moving under the mouse; pauses only for keyboard focus (a mouse click on the
+   focusable viewport is not :focus-visible, so clicking does not stop it either). */
+.tape-viewport:focus-visible .tape-track {
   animation-play-state: paused;
 }
 

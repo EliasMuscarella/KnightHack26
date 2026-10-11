@@ -7,7 +7,7 @@
  *
  * Direction uses DESIGN.md's value-neutral families (blue up, orange down, secondary ink flat),
  * never green/red, and every colored change also carries a sign and an arrow. Motion is a
- * CSS-only marquee (globals.css, .tape-*): paused on hover and on keyboard focus; under
+ * CSS-only marquee (globals.css, .tape-*): keeps moving on hover, paused on keyboard focus; under
  * prefers-reduced-motion it is a still, horizontally scrollable row.
  */
 import { useEffect, useState, type CSSProperties } from "react";
