@@ -13,10 +13,10 @@ from pathlib import Path
 import pytest
 
 from pipeline.config import Settings
-from pipeline.llm import SHORT_TITLE_SYSTEM, LLMClient
+from pipeline.llm import MAX_ATTEMPTS, SHORT_TITLE_SYSTEM, LLMClient
 from pipeline.rubric import QUESTIONS
 from pipeline.run import format_timings, run_pipeline
-from pipeline.stages_final import llm_concurrency
+from pipeline.stages_final import llm_concurrency, validated_short_title
 
 _SID = re.compile(r"^\[([^\]]+)\] ", re.M)
 
@@ -126,3 +126,142 @@ def test_stage_timings_cover_every_stage(tmp_path, monkeypatch):
     assert list(ctx.stage_seconds) == names
     table = format_timings(ctx)
     assert "llm" in table and "calls)" in table and "total" in table
+
+
+# ---------- short-titles batch overlapped with stage 7 ----------
+
+_TITLE_STOP = frozenset(
+    "a an the of to and or in on for with by our we us its their is are may could might be not".split()
+)
+
+
+def _fake_title(heading: str) -> str:
+    words = [
+        w.strip(".,")
+        for w in heading.removeprefix("FIXTURE: ").split()
+        if w.strip(".,").lower() not in _TITLE_STOP
+    ]
+    return " ".join(words[:3]).capitalize() + " topic"
+
+
+class SleepyClient(FakeClient):
+    """Every call (interpretation or short-titles batch) sleeps `delay`; records when each ran."""
+
+    def __init__(
+        self,
+        delay: float = 0.3,
+        titles_fail: bool = False,
+        title_delay: float | None = None,
+        cancel: threading.Event | None = None,
+    ):
+        super().__init__(cancel_after=1 if cancel else None, cancel=cancel)
+        self.delay = delay
+        self.title_delay = delay if title_delay is None else title_delay
+        self.titles_fail = titles_fail
+        self.title_calls = 0
+        self.spans: dict[str, list[tuple[float, float]]] = {"interp": [], "titles": []}
+
+    def complete(self, system: str, user: str) -> str:
+        kind = "titles" if system == SHORT_TITLE_SYSTEM else "interp"
+        t0 = time.perf_counter()
+        try:
+            time.sleep(self.delay if kind == "interp" else self.title_delay)
+            if kind == "interp":
+                return super().complete(system, user)
+            with self.lock:
+                self.title_calls += 1
+            if self.titles_fail:
+                raise RuntimeError("provider down")
+            rows = [ln.split("\t", 1) for ln in user.split("HEADINGS:\n", 1)[1].splitlines()]
+            return json.dumps(
+                {"titles": [{"change_id": c, "short_title": _fake_title(h)} for c, h in rows]}
+            )
+        finally:
+            with self.lock:
+                self.spans[kind].append((t0, time.perf_counter()))
+
+
+def _title_cache_files(data_dir: Path) -> list[Path]:
+    root = data_dir / "cache" / "stages" / "llm"
+    if not root.exists():
+        return []
+    return [p for p in root.glob("*.json") if "titles" in json.loads(p.read_text())]
+
+
+def _published(ctx) -> tuple[str, dict]:
+    text = Path(ctx.outputs["published_path"]).read_text()
+    return text, json.loads(text)
+
+
+def test_short_titles_overlap_interpretation_calls(tmp_path, monkeypatch):
+    delay = 0.3
+    # sequential reference: interpretations first (--until-stage 7 sends no title batch), then
+    # a full run where everything else is cached, so the batch is made alone in stage 8
+    warm = SleepyClient(delay)
+    _run(tmp_path / "seq", warm, monkeypatch, 16, until_stage=7)
+    assert warm.title_calls == 0 and warm.calls >= 2
+    seq = SleepyClient(delay)
+    ctx_seq = _run(tmp_path / "seq", seq, monkeypatch, 16)
+    assert seq.calls == 0 and seq.title_calls == 1
+
+    par = SleepyClient(delay)
+    ctx_par = _run(tmp_path / "par", par, monkeypatch, 16)
+    assert par.title_calls == 1 and par.calls == warm.calls
+    ((t0, t1),) = par.spans["titles"]
+    assert any(a < t1 and t0 < b for a, b in par.spans["interp"])  # ran at the same time
+    wall = ctx_par.stage_seconds["llm"] + ctx_par.stage_seconds["publish"]
+    assert delay <= wall < 1.75 * delay, wall  # about one sleep, not two
+
+    text_seq, data = _published(ctx_seq)
+    text_par, _ = _published(ctx_par)
+    assert text_seq == text_par
+    fakes = {_fake_title(c["title"]) for c in data["changes"]}
+    assert any(c["short_title"] in fakes for c in data["changes"])  # LLM titles were used
+    assert len(_title_cache_files(tmp_path / "par")) == 1
+
+
+def test_short_titles_failure_does_not_change_interpretations(tmp_path, monkeypatch):
+    ok, bad = SleepyClient(0.01), SleepyClient(0.01, titles_fail=True)
+    _, good = _published(_run(tmp_path / "ok", ok, monkeypatch, 4))
+    _, failed = _published(_run(tmp_path / "bad", bad, monkeypatch, 4))
+    assert bad.title_calls == MAX_ATTEMPTS  # tried during stage 7 only, not again in stage 8
+    assert _title_cache_files(tmp_path / "bad") == []
+    assert [c["interpretation"] for c in failed["changes"]] == [
+        c["interpretation"] for c in good["changes"]
+    ]
+    assert any(c["interpretation"]["status"] == "ok" for c in failed["changes"])
+    name = failed["company"]["name"]
+    for c in failed["changes"]:
+        assert c["short_title"] == validated_short_title(c["title"], None, name)
+
+
+def test_cached_short_titles_are_reused_without_a_call(tmp_path, monkeypatch):
+    first = SleepyClient(0.01)
+    text1, _ = _published(_run(tmp_path, first, monkeypatch, 4))
+    assert first.title_calls == 1
+    # drop the interpretation rows only: stage 7 calls again and finds the batch in the cache
+    llm_dir = tmp_path / "cache" / "stages" / "llm"
+    titles = _title_cache_files(tmp_path)
+    for p in llm_dir.glob("*.json"):
+        if p not in titles:
+            p.unlink()
+    second = SleepyClient(0.01)
+    text2, _ = _published(_run(tmp_path, second, monkeypatch, 4))
+    assert second.calls == first.calls and second.title_calls == 0
+    # everything cached: no pool at all, stage 8 reads the batch from the cache
+    third = SleepyClient(0.01)
+    text3, _ = _published(_run(tmp_path, third, monkeypatch, 4))
+    assert third.calls == 0 and third.title_calls == 0
+    assert text1 == text2 == text3
+
+
+def test_cancel_while_short_titles_in_flight(tmp_path, monkeypatch):
+    from pipeline.errors import PipelineError
+
+    cancel = threading.Event()
+    fake = SleepyClient(0.01, title_delay=3.0, cancel=cancel)
+    t0 = time.perf_counter()
+    with pytest.raises(PipelineError, match="cancelled"):
+        _run(tmp_path, fake, monkeypatch, 4, cancel=cancel)
+    assert time.perf_counter() - t0 < 2.5  # did not wait for the in-flight batch
+    assert _title_cache_files(tmp_path) == []

@@ -575,3 +575,43 @@ Data and process:
   at first paint. The "system" icon is gone; the only way back to following the OS is clearing site data.
 - DESIGN.md "Dark mode" updated to match: the toggle "flips light/dark; it follows the OS until first used".
 - Reverse: restore the 3-state cycle in `web/src/components/ThemeToggle.tsx`.
+
+## D-029 Short-titles batch overlapped with stage 7 (P2)
+
+P1's decisions (parallel stage-7 calls, cache I/O on the calling thread, cancel polled every 0.5 s) were
+committed as D-024 in 49ea521; that number was reused by the integrity session in a merge, so the text
+is only in git history. This entry builds on it.
+
+- The short-titles batch (one LLM call, stage 8) depends only on the headings and the client, so stage 7
+  now looks it up and, on a cache miss, sends it while the interpretation calls run. Same cache key,
+  prompt, `STAGE_VERSION` and caching rule (only a non-None raw result is cached; `--refresh-llm` skips the
+  lookup); `short_titles_for` uses that result (`ctx.outputs["short_titles_prefetch"]`, matched by key)
+  instead of calling again. A failed batch (None) is not retried in stage 8: the number of attempts is
+  unchanged (`MAX_ATTEMPTS`) and the result is the heading fallback, as before.
+- Only when stage 7 sends calls anyway (client live, at least one uncached change) and the run goes on
+  to stage 8. Otherwise (no client, nothing to do, every change cached) stage 8 computes the titles
+  synchronously exactly as before. `--until-stage 7` sends no title batch: that flag warms the
+  interpretation cache, and a title call there would be an extra provider request for output stage 7
+  never uses.
+- The batch runs on its own single-thread executor, not as a +1 worker in the interpretation pool: a
+  shared pool's extra thread picks up interpretation calls once the batch is done, which broke the
+  `RISKDIFF_LLM_CONCURRENCY=1` guarantee (measured: two interpretation calls in flight). Interpretation
+  calls stay capped at the setting; at most one request is in flight beyond it.
+- Cache reads and writes for the batch stay on the main thread; the worker only calls the provider and
+  never raises (`_short_titles_call` returns None on any exception). It is awaited after the
+  interpretation results with the same 0.5 s cancel polling; on cancel or error both executors are shut
+  down with `cancel_futures=True` without waiting, and the batch result is discarded uncached.
+- A run that later aborts on `llm_errors` has now already sent (and cached) the title batch. Its key does
+  not depend on interpretation results, so a re-run reuses it; nothing is published from the aborted run.
+- Output: identical except `code_fingerprint` and therefore `analysis_id`, which hash the source of every
+  `pipeline/*.py` (D-016), so no edit to `stages_final.py` can keep them. Measured on FIXTUR: an offline
+  replay from the same cache under the old and new code differs only in those two fields; a fake-client
+  run (0.2 s per call, 9 interpretation calls at 6 at a time) took 0.62 s → 0.42 s for stages 7+8, also
+  identical except those two fields. Stage 7's timing now includes the title batch; stage 8's no longer
+  does.
+- Seen while testing, not changed (behavior kept on purpose): (1) when stage 7 replays every change from
+  cache without probing, `llm_client` stays None and stage 8 publishes the heading fallback titles even if
+  LLM titles are cached, so a replay differs from the live run that cached them whenever the LLM titles
+  passed validation; (2) a live Qwen2.5-72B batch on FIXTUR returned an object that validated as
+  `{"titles": []}` (`RawShortTitles` accepts any object, `titles` defaults to empty), which was cached, so
+  every title is the heading fallback until `--refresh-llm`.
