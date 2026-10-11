@@ -1,0 +1,602 @@
+/*
+ * Disclosure Briefing document (components/briefing/BriefingDocument.tsx). Imported by
+ * app/briefing/layout.tsx only. Every selector sits under `.briefing`, except @page and the few
+ * rules that hide the site chrome on the bare print route (html.briefing-print / html:has(...)).
+ *
+ * Type: nothing below 10.5pt (= 14px, DESIGN.md's floor); body and captions 10.5pt, serif quotes
+ * 11pt, headings 13 to 20pt. Weights 400 and 500; 600 for the title only.
+ */
+
+@page {
+  size: letter;
+  margin: 16mm 14mm 18mm;
+}
+
+/*
+ * The paper is always light, in both themes: this is a printed page, and a PDF must look the same
+ * whatever theme the screen was in. Light values copied from the @theme block in globals.css; the
+ * Tailwind utilities used inside the document (badge tints, bar fills) read these variables.
+ */
+.briefing {
+  color-scheme: light;
+  --color-ink: #14213d;
+  --color-ink-secondary: #3e4a5f;
+  --color-ink-muted: #627187;
+  --color-line: #d9dfe7;
+  --color-paper: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-sunken: #eef1f5;
+  --color-more-strong-fg: #174a85;
+  --color-more-strong-bg: #dce8f7;
+  --color-more-fg: #2c64a8;
+  --color-more-bg: #e6effa;
+  --color-less-strong-fg: #96420f;
+  --color-less-strong-bg: #f8e3d6;
+  --color-less-fg: #a64b18;
+  --color-less-mid: #d08a5a;
+  --color-less-bg: #fbede3;
+  --color-rewrite-fg: #14213d;
+  --color-rewrite-bg: #e6e9ef;
+  --color-rewrite-mid: #8a95a8;
+  --color-actual-fg: #7a4b00;
+  --color-actual-bg: #fcefc7;
+  --color-signal-fg: #14213d;
+  --color-signal-bg: #eef1f5;
+  --color-highlighter: #ffd95a;
+  --color-strike: #b5541c;
+  --color-accent: #174a85;
+}
+
+/* ---------- The sheet (screen) ---------- */
+
+.briefing {
+  box-sizing: border-box;
+  max-width: 8.5in;
+  margin: 32px auto 48px;
+  padding: 16mm 14mm 18mm;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 10.5pt;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+
+/* A faint full-width rule where each forced page break will fall. */
+.briefing .bf-page + .bf-page {
+  margin: 16mm -14mm 0;
+  padding: 16mm 14mm 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.briefing p,
+.briefing ul,
+.briefing ol {
+  margin: 0;
+}
+
+/* ---------- Running header ---------- */
+
+.briefing .bf-runhead {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 4px;
+  margin-bottom: 9px;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-ink-secondary);
+}
+.briefing .bf-runhead-brand {
+  font-weight: 500;
+  color: var(--color-ink);
+  margin-right: 10px;
+}
+
+/* ---------- Type ---------- */
+
+.briefing .bf-title {
+  font-size: 20pt;
+  line-height: 1.15;
+  font-weight: 600;
+  margin: 0;
+}
+.briefing .bf-prepared {
+  margin-top: 2px;
+  font-size: 11pt;
+  color: var(--color-ink-secondary);
+}
+.briefing .bf-subtitle {
+  margin-top: 3px;
+  color: var(--color-ink-secondary);
+}
+.briefing .bf-titleblock > * + .bf-secondary {
+  margin-top: 6px;
+}
+.briefing .bf-h2 {
+  font-size: 13pt;
+  line-height: 1.3;
+  font-weight: 500;
+  margin: 0;
+}
+.briefing .bf-h3 {
+  font-size: 10.5pt;
+  line-height: 1.35;
+  font-weight: 500;
+  margin: 0;
+}
+.briefing .bf-subline {
+  margin-top: 2px;
+  color: var(--color-ink-secondary);
+}
+.briefing .bf-strong {
+  font-weight: 500;
+  color: var(--color-ink);
+}
+.briefing .bf-secondary {
+  color: var(--color-ink-secondary);
+}
+.briefing .bf-block {
+  display: block;
+}
+.briefing .bf-nowrap {
+  white-space: nowrap;
+}
+.briefing .bf-mono {
+  font-family: var(--font-mono);
+  font-size: 10.5pt;
+}
+.briefing .bf-caption,
+.briefing .bf-quiet {
+  margin-top: 4px;
+  color: var(--color-ink-secondary);
+}
+.briefing .bf-quiet {
+  margin-top: 0;
+}
+.briefing .bf-span2 {
+  grid-column: 1 / -1;
+}
+
+/* ---------- Sections ---------- */
+
+.briefing .bf-section {
+  margin-top: 12px;
+}
+.briefing .bf-section > .bf-h2 + *,
+.briefing .bf-section > .bf-h2row + *,
+.briefing .bf-section > .bf-subline + * {
+  margin-top: 5px;
+}
+.briefing .bf-h2row,
+.briefing .bf-h3row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+.briefing .bf-h3row {
+  margin-bottom: 8px;
+}
+.briefing .bf-grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 22px;
+  align-items: start;
+}
+
+/* ---------- Badges ---------- */
+
+.briefing .bf-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-size: 10.5pt;
+  line-height: 1.15;
+  font-weight: 500;
+  white-space: nowrap;
+  vertical-align: 0;
+}
+
+/* ---------- Stat tiles ---------- */
+
+.briefing .bf-tiles {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr) minmax(0, 1.3fr) minmax(0, 1.2fr);
+  margin-top: 12px;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.briefing .bf-tile {
+  padding: 7px 10px;
+}
+.briefing .bf-tile:first-child {
+  padding-left: 0;
+}
+.briefing .bf-tile + .bf-tile {
+  border-left: 1px solid var(--color-line);
+}
+.briefing .bf-tile-value {
+  white-space: nowrap;
+  font-size: 16pt;
+  line-height: 1.15;
+  font-weight: 500;
+  font-variant-numeric: proportional-nums;
+  color: var(--color-ink);
+}
+.briefing .bf-tile-caption {
+  margin-top: 2px;
+  line-height: 1.25;
+  color: var(--color-ink-secondary);
+}
+
+/* ---------- Read these first ---------- */
+
+.briefing .bf-readfirst {
+  list-style: none;
+  padding: 0;
+}
+.briefing .bf-readfirst-row {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 6px;
+  padding: 2px 0;
+  border-top: 1px solid var(--color-line);
+}
+.briefing .bf-readfirst-row:last-child {
+  border-bottom: 1px solid var(--color-line);
+}
+.briefing .bf-readfirst-n {
+  font-weight: 500;
+  color: var(--color-ink-secondary);
+}
+
+/* ---------- Tables ---------- */
+
+.briefing .bf-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.briefing .bf-table th,
+.briefing .bf-table td {
+  padding: 3px 8px;
+  line-height: 1.25;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-line);
+  font-weight: 400;
+}
+.briefing .bf-table th:first-child,
+.briefing .bf-table td:first-child {
+  padding-left: 0;
+}
+.briefing .bf-table th:last-child,
+.briefing .bf-table td:last-child {
+  padding-right: 0;
+}
+.briefing .bf-table thead th {
+  white-space: nowrap;
+  color: var(--color-ink-secondary);
+  vertical-align: bottom;
+  border-bottom-color: var(--color-ink-secondary);
+}
+.briefing .bf-table tbody th {
+  color: var(--color-ink);
+}
+.briefing .bf-table .is-num {
+  text-align: right;
+  white-space: nowrap;
+}
+.briefing .bf-table .is-center {
+  text-align: center;
+}
+.briefing .bf-cell-sub {
+  display: block;
+  line-height: 1.25;
+  color: var(--color-ink-secondary);
+}
+.briefing .bf-coverage tbody th {
+  white-space: nowrap;
+}
+.briefing .bf-coverage tbody th,
+.briefing .bf-coverage tbody td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.briefing .bf-coverage td:nth-child(3) {
+  width: 100%;
+}
+.briefing .bf-delta {
+  margin-left: 6px;
+  color: var(--color-ink-secondary);
+}
+.briefing .bf-questions th {
+  width: 18%;
+  font-weight: 500;
+  vertical-align: top;
+}
+.briefing .bf-questions td {
+  vertical-align: top;
+}
+.briefing .bf-questions th,
+.briefing .bf-questions td,
+.briefing .bf-audit tbody th,
+.briefing .bf-audit td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.briefing .bf-audit tbody th {
+  font-weight: 500;
+}
+.briefing .bf-audit tbody th,
+.briefing .bf-audit td {
+  white-space: nowrap;
+}
+
+/* ---------- Change mix bar and legend ---------- */
+
+.briefing .bf-mix {
+  display: flex;
+  gap: 2px;
+  height: 10px;
+  width: 100%;
+  min-width: 120px;
+}
+.briefing .bf-mix-seg {
+  display: block;
+  min-width: 3px;
+  height: 100%;
+}
+.briefing .bf-mix-seg:first-child {
+  border-radius: 2px 0 0 2px;
+}
+.briefing .bf-mix-seg:last-child {
+  border-radius: 0 2px 2px 0;
+}
+.briefing .bf-mix-seg:only-child {
+  border-radius: 2px;
+}
+.briefing .bf-legend {
+  break-before: avoid;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 6px;
+  color: var(--color-ink-secondary);
+}
+.briefing .bf-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.briefing .bf-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+/* Essentially unchanged: the line color, faint, with a hairline so it reads on white. */
+.briefing .bf-mix-seg.is-faint,
+.briefing .bf-swatch.is-faint {
+  background: var(--color-line);
+}
+
+/* ---------- Topic matrix ---------- */
+
+.briefing .bf-matrix th[scope="col"] {
+  white-space: normal;
+  font-size: 10.5pt;
+  line-height: 1.2;
+}
+.briefing .bf-matrix tbody th {
+  white-space: nowrap;
+}
+.briefing .bf-matrix td,
+.briefing .bf-matrix tbody th {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.briefing .bf-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  vertical-align: middle;
+}
+
+/* ---------- Quotes, cards, evidence ---------- */
+
+.briefing .bf-quote {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 11pt;
+  line-height: 1.32;
+  color: var(--color-ink);
+}
+.briefing .bf-quote.is-old {
+  color: var(--color-ink-muted);
+}
+.briefing .bf-card {
+  border-left: 3px solid;
+  padding: 2px 0 2px 12px;
+}
+.briefing .bf-cardtitle {
+  margin: 0 0 3px;
+}
+.briefing .bf-evhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+.briefing .bf-evlink {
+  flex: none;
+  white-space: nowrap;
+}
+.briefing .bf-pair {
+  padding: 6px 0 7px;
+  border-top: 1px solid var(--color-line);
+}
+.briefing .bf-section > .bf-pair:last-child {
+  border-bottom: 1px solid var(--color-line);
+}
+.briefing .bf-pair > .bf-evhead + * {
+  margin-top: 5px;
+}
+.briefing .bf-pair-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.briefing .bf-pair-cols .bf-quote {
+  padding-left: 10px;
+  border-left: 2px solid var(--color-ink);
+}
+.briefing .bf-pair-cols .bf-quote.is-old {
+  border-left-color: var(--color-ink-muted);
+}
+.briefing .bf-collabel {
+  margin-bottom: 2px;
+  color: var(--color-ink-secondary);
+}
+.briefing .bf-seclink {
+  color: var(--color-accent);
+}
+.briefing .bf-fixturelink {
+  color: var(--color-ink-muted);
+  cursor: not-allowed;
+}
+
+.briefing .bf-risklist {
+  list-style: none;
+  padding: 0;
+}
+.briefing .bf-risklist li {
+  padding: 2px 0;
+  border-top: 1px solid var(--color-line);
+}
+.briefing .bf-risklist li:last-child {
+  border-bottom: 1px solid var(--color-line);
+}
+.briefing .bf-risklist + .bf-secondary {
+  margin-top: 4px;
+  break-before: avoid;
+}
+
+/* ---------- Strips, boxes, notes ---------- */
+
+.briefing .bf-strip {
+  margin-top: 6px;
+  padding: 4px 10px;
+  background: var(--color-sunken);
+  border-radius: 6px;
+}
+.briefing .bf-box {
+  margin-top: 6px;
+  padding: 4px 10px;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+}
+.briefing .bf-bullets {
+  list-style: disc;
+  padding-left: 1.1em;
+  margin-top: 3px;
+}
+.briefing .bf-bullets li + li {
+  margin-top: 2px;
+}
+.briefing .bf-notes {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+  color: var(--color-ink-secondary);
+}
+.briefing .bf-notes li + li {
+  margin-top: 3px;
+}
+.briefing .bf-meta {
+  margin-top: 8px;
+  color: var(--color-ink-secondary);
+}
+.briefing .bf-disclaimer {
+  margin-top: 28px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-ink);
+}
+
+/* ---------- The bare print route: no site header, footer or page padding ---------- */
+
+html.briefing-print body > header,
+html.briefing-print body > footer,
+html.briefing-print body > a[href="#main"],
+html:has(main[data-briefing-ready]) body > header,
+html:has(main[data-briefing-ready]) body > footer,
+html:has(main[data-briefing-ready]) body > a[href="#main"] {
+  display: none;
+}
+html.briefing-print .page-enter,
+html:has(main[data-briefing-ready]) .page-enter {
+  animation: none;
+}
+main[data-briefing-empty] .briefing-empty {
+  max-width: 8.5in;
+  margin: 48px auto;
+  padding: 0 14mm;
+}
+
+/* ---------- Print ---------- */
+
+@media print {
+  html:has(.briefing) body > header {
+    display: none;
+  }
+  html:has(.briefing),
+  html:has(.briefing) body {
+    background: #ffffff;
+  }
+  .briefing {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .briefing,
+  .briefing * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .briefing .bf-page + .bf-page {
+    break-before: page;
+    margin: 0;
+    padding: 0;
+    border-top: 0;
+  }
+  .briefing .bf-card,
+  .briefing .bf-pair,
+  .briefing .bf-tile,
+  .briefing .bf-tiles,
+  .briefing .bf-box,
+  .briefing .bf-strip,
+  .briefing .bf-readfirst-row,
+  .briefing .bf-risklist li,
+  .briefing .bf-keep,
+  .briefing tr {
+    break-inside: avoid;
+  }
+  .briefing .bf-h2,
+  .briefing .bf-h2row,
+  .briefing .bf-h3row,
+  .briefing .bf-subline,
+  .briefing thead {
+    break-after: avoid;
+  }
+  .briefing .bf-disclaimer {
+    display: none;
+  }
+  .briefing a {
+    color: var(--color-accent);
+  }
+}

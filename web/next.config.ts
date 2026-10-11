@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   // Do not let `next dev` write AGENTS.md into the repo.
   agentRules: false,
+  // The briefing PDF route drives a local Chromium; playwright-core must not be bundled.
+  serverExternalPackages: ["playwright-core"],
   turbopack: {
     rules: {
       "*.css": {

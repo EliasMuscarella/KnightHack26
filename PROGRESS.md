@@ -129,11 +129,12 @@ client; the one-time steps for the team are in docs/REPORT.md §11 and README "S
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| FE1 | Dark mode + theme toggle | done | D-028; same token names under `[data-theme="dark"]`, system/light/dark toggle, no flash before paint |
-| FE2 | Company logos | done | D-027; genuine SVGs for AAPL, AMZN, NVDA, SF, CRWD in `web/public/logos/` (sources in `SOURCES.md`), monogram for every other ticker |
+| FE1 | Dark mode + theme toggle | done | D-032; same token names under `[data-theme="dark"]`, system/light/dark toggle, no flash before paint |
+| FE2 | Company logos | done | D-031; genuine SVGs for AAPL, AMZN, NVDA, SF, CRWD in `web/public/logos/` (sources in `SOURCES.md`), monogram for every other ticker |
 | FE3 | Market-style polish | done | identity rows, filing strip, stat rows on cards, table-aligned change list; no green/red, no arrows |
 | FE4 | Merge with UX13 | done | five conflicts resolved keeping both sides; pushed to `main` |
-| FE5 | Heatmap contrast (light) | done | D-026; every cell number >= 4.5:1 in both themes, checked by math and in Chrome by a second, independent agent |
+| FE5 | Heatmap contrast (light) | done | D-030; every cell number >= 4.5:1 in both themes, checked by math and in Chrome by a second, independent agent |
+| FE6 | Disclosure Briefing (tab, picker, preview, PDF) | built, awaiting local test | D-033; `/briefing`, `/briefing/print`, `GET /api/briefing.pdf` (playwright-core 1.63.0 + installed Chrome); 1 company 4 pages, 3 companies 5, 8 companies 9; 68 web unit tests |
 
 Open, found in a browser review of both themes (not fixed):
 - NVDA and SF still need the re-run below (preamble ranked as a New risk, "z ECCNs" fragment, older prompt).

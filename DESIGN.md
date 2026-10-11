@@ -130,7 +130,7 @@ follows `data-theme`. Text on filled controls uses `on-accent` / `on-ink`, never
 | `heat-more` / `heat-less` / `heat-rewrite` | `#3266A6` / `#9A5225` / `#5A697F` | ink text >= 4.58 at every intensity (4.80 / 4.77 / 4.58 at full strength) |
 
 Light-theme heat tones (`:root`): `heat-more` / `heat-less` / `heat-rewrite` = `#4E8BDC` / `#CE713A` / `#848B93`,
-navy ink (`#14213D`) >= 4.60 at every intensity (4.60 / 4.60 / 4.64 at full strength; D-026). The orange sits at
+navy ink (`#14213D`) >= 4.60 at every intensity (4.60 / 4.60 / 4.64 at full strength; D-030). The orange sits at
 the limit, so any change to a heat tone must be re-measured.
 
 Heatmap cells keep one text color per theme at every intensity, `heat-text`: navy ink in light, light ink in
@@ -189,3 +189,11 @@ WCAG AA contrast for all text (measured: ink on paper 14.9:1, secondary on paper
 focus (3px `more-strong-fg` outline); color is never the only carrier of meaning (every colored element
 also has a word or a number); numbers in charts are available in tooltips and to screen readers;
 reduced motion is respected.
+
+### Print (Disclosure Briefing)
+
+The briefing (`web/src/components/briefing/`, D-033) is the one printed surface. US Letter; nothing below
+10.5pt, which is 14px on screen; body leading 1.25. The paper is light in both themes, so `.briefing`
+re-declares the light palette in `briefing.css` (with the logo tile, the only place tokens are restated).
+Direction colors and the highlighter keep their meanings; "→" appears only inside data labels
+("FY2024 → FY2025", "Potential → Actual"). The PDF renderer adds the running footer (disclaimer, "n / N").
