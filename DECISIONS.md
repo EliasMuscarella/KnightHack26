@@ -615,3 +615,79 @@ is only in git history. This entry builds on it.
   passed validation; (2) a live Qwen2.5-72B batch on FIXTUR returned an object that validated as
   `{"titles": []}` (`RawShortTitles` accepts any object, `titles` defaults to empty), which was cached, so
   every title is the heading fallback until `--refresh-llm`.
+
+_D-030 to D-032 were first recorded as D-026 to D-028 on Oct 10 and were lost in a later merge of `main`; they are restored here unchanged under free numbers._
+
+## D-030 Light-mode heatmap contrast
+
+- Resolves the heatmap gap listed in D-032 (dark mode) (the `ink-muted` on `sunken` gap there is unchanged). Before: light
+  cells flipped from navy to white text past 0.55 intensity, and just past the flip white text measured 2.30 to
+  2.55:1 on blue and orange cells and 3.82 to 4.02:1 on the navy rewrite cells. No single flip point could pass
+  everywhere (best possible worst case about 4.0:1).
+- Fix: light heat tones are now mid tones whose full-strength color still carries navy text, and light mode
+  always uses navy text, like dark mode's single light text color. The 0.55 flip and `heat-text-strong` are
+  removed. `heat-more` `#2C64A8` -> `#4E8BDC`, `heat-less` `#B5541C` -> `#CE713A`, `heat-rewrite` `#14213D` ->
+  `#848B93` (slate gray, matching the legend's "Gray"). `cellIntensity()` (0.15 to 1) and the dark values are
+  unchanged.
+- Measured with a script that parses `globals.css` and composites `color-mix(in srgb, tone p%, transparent)`
+  over the page (p from 0.15 to 1.00 in 0.01 steps plus the legend's 0.4/0.6/0.9, on paper and surface). Worst
+  case is at full strength: light 4.60 (blue), 4.60 (orange), 4.64 (gray); dark unchanged at 4.80, 4.77, 4.58.
+- Distinguishability (CIEDE2000 over paper, same intensity), light: at 0.4 blue/orange 26.6, blue/gray 11.1,
+  orange/gray 16.9; at 0.9 43.2, 16.8, 28.2 (before: blue/navy-rewrite 9.9 at 0.4; dark blue/gray is 7.3).
+  Magnitude: each light tone spans about 2.8:1 in luminance from 0.15 to 1.0 (dE00 25 to 33), close to dark
+  mode's 2.5 to 2.9:1. The darkest light cell is lighter than before, so the light heatmap has less range than
+  the old navy-to-white one, but the number in each cell carries the exact count.
+
+## D-031 Company logos
+
+- Logos for the published tickers (AAPL, AMZN, NVDA, CRWD, SF) are genuine Wikimedia Commons SVGs, downloaded
+  once, sanitized, and served from `web/public/logos/` (sources in `web/public/logos/SOURCES.md`). Tickers not
+  in the manifest `web/src/lib/logos.ts` get a token-colored monogram and never request an image. The logo
+  tile is white in every theme (brand marks are drawn for a light background); the monogram uses tokens only.
+
+## D-032 Dark mode
+
+- Dark mode is class-based: `data-theme="light" | "dark"` on `<html>`, set before paint by a fixed inline script
+  in `web/src/app/layout.tsx` (stored choice in localStorage `riskdiff-theme`, else `prefers-color-scheme`).
+  Default is "system"; "system" is stored as no key. Every storage read/write is in try/catch; if storage is
+  blocked the choice lasts for the page only. No-JS visitors get the light theme.
+- The dark palette redefines the existing token names (DESIGN.md "Dark mode"); every text/background pair was
+  measured with a WCAG script, all >= 4.5:1. New tokens: `on-accent`, `on-ink` (replace `text-white` on filled
+  controls) and `heat-*` (Trends heatmap tones and cell text, read via `var()`).
+- The highlighter in dark mode is a deep amber (`#5E4B12`) under light ink, not the bright yellow: a bright
+  marker would need dark text, and the glyph tops above the stroke would then sit dark on dark.
+- Known pre-existing light-mode gaps left unchanged (out of scope, not a dark-mode need): heatmap cell text
+  near the 0.55 intensity flip drops to about 2.3 to 3.8:1, and `ink-muted` on `sunken` is 4.4:1.
+
+## D-033 Disclosure Briefing: a printable PDF for one or more companies
+
+- What: a "Briefing" tab (`/briefing`). Pick up to 20 library companies (the cap was 12 until the library passed 12), an optional title and a
+  "Prepared for" line; the selection lives in the URL (`?tickers=NVDA,AAPL`), so a briefing is a
+  shareable link. The page previews the document; `GET /api/briefing.pdf` renders it with the installed
+  Chrome through `playwright-core` (pinned 1.63.0, the version already used for tests, so no browser
+  download) and the Print action opens the bare `/briefing/print` route for the browser's own Save as PDF.
+- Content is a pure function of the selected comparisons plus the trends payload
+  (`web/src/lib/briefing/build.ts`): every quote is a `sentence_index` sentence with the diff's own spans;
+  every number comes from the reports; the only interpretive sentences are each change's first
+  citation-validated LLM claim (`supportSource: "validated_claim"`) or neutral text built from data.
+  Questions for management are templates anchored to one risk factor each. Themes and the matrix are the
+  trends topics post-filtered to the selection before counting (keyword matches, and the document says so).
+  The briefing id is sha256 over the sorted analysis ids and `BRIEFING_TEMPLATE_VERSION`; the same inputs
+  give the same document apart from `generatedAt`.
+- "Read these first" ranking: up to 2 potential-became-actual items by change score, up to 2 new figures
+  with a parsed value (dollars first, larger first), up to 2 spreading topics (newly added by >= 3
+  companies, or >= 2 when 2 to 4 are selected), one quiet item (0 meaningful changes or <= 10% changed),
+  then new risks to fill to 5; one item per risk factor. Figure highlights with no parsed value and no digit
+  in their sentence are skipped everywhere (the AAPL report carries two such highlights).
+- Print: US Letter, nothing below 10.5pt (14px on screen), the paper light in both themes (the light palette
+  is re-declared on `.briefing`), a footer with the disclaimer and "n / N" page numbers added by the PDF
+  renderer, tagged PDF. Measured on the local library: 1 company 4 pages, 3 companies 5 pages, 8 companies
+  9 pages; each section starts on its own page and spills only between cards.
+- Security: tickers validated on the client and the server, at most 20; the URL Chromium opens is built only
+  from validated values on a loopback origin (or `RISKDIFF_WEB_ORIGIN`); one render at a time with a 45 s
+  budget; errors are short JSON without stack traces.
+- Also in this change: `names.ts` house styles for CrowdStrike, Take-Two Interactive and Eli Lilly, and a
+  dropped suffix no longer leaves a dangling "&".
+- Not done: the reports carry no sector data, so "category" presets wait for SIC codes from the EDGAR
+  submissions JSON; the questions are templates (an LLM version run through the citation validator is the
+  natural next step); a long selection still spills sections onto extra sheets.
