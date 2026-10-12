@@ -1,27 +1,107 @@
 # RiskDiff
 
-**GitHub Diff for SEC filings.** RiskDiff compares Item 1A (Risk Factors) between a company's two
-most recent 10-K filings and shows exactly what management added, removed, expanded, or reworded,
-with every claim cited to the original filing text.
+**RiskDiff is the `git diff` for 10-K filings.**
+
+RiskDiff is a tool that finds how the risks of a company have changed year over year according to its two
+most recently published 10k reports. RiskDiff uses AI to group and rank the importance of these changes,
+but all changes are cited directly from the original 10k report to ensure that all information is correct
+and grounded in the truth of the 10-K. RiskDiff is an analysis tool to speed up the process of analyzing a 10-K,
+not an interpretation tool.
+
+Every public company files a 10-K each fiscal year. These documents can be anywhere from 100 to 300 pages
+long, written in very esoteric language that most investors and analysts may not fully understand. 
+In a company's 10-K, it lays out its risk factors. These risk factors may change slightly year over year,
+but it is within these risk factors that meaningful insight can be extracted. The process of analyzing them can 
+be long and tedious for investors. It's often the few sentences that are slightly reworded that are the most important.
+RiskDiff aims to expedite this process by highlighting every change to investors, organizing risks by how meaningful these
+changes are, and grouping the type of risk.
+
+RiskDiff grounds all findings in the truth of the 10k. Due to the highly regulated nature of Wall Street and the risks
+associated with allowing AI to interpret financial documents that would influence investment decisions, RiskDiff
+does not advise investment decisions. RiskDiff is a tool that finds how the risks of a company change year
+over year according to its two most recently published 10k reports. RiskDiff uses AI to group and rank the
+importance of these changes, but all changes are cited directly from the original 10k report to ensure that
+all information is correct.
 
 > Not investment advice. RiskDiff shows changes in disclosed risk language, not changes in actual risk.
 
-See `CLAUDE.md` for architecture and run commands, `docs/REPORT.md` for the demo script and current
-status, `EVAL.md` for evaluation numbers, and `DEMO.md` for the demo dataset.
+## The Value of 10-k Risk Factor Analysis
+Lauren Cohen of Harvard Business School ran a study focused specifically on companies' risk factors year over year.
+They found that portfolios that would short companies with more changes in their risk factors and buy the ones that
+did not change as much would produce 188 basis points of alpha (over 22% per year)(Cohen 2019). While correlation does
+not mean causation, there are possibly meaningful signals that investors can discover.
 
-Status: the pipeline, API and UI work end to end. Real reports for NVIDIA (FY2025 → FY2026) and
-Stifel Financial (FY2024 → FY2025) are committed in `data/published/`; they predate the current
-pipeline version, so `uv run python scripts/refresh_stale.py` re-runs them (needs `SEC_USER_AGENT`
-and `HF_TOKEN` in `.env`). Build history and review notes: `docs/REPORT.md`.
+## Demo
+https://www.youtube.com/watch?v=y2S0cWPg8sA
 
-Quick start:
+> **Deployment:** during the hackathon RiskDiff ran at **RiskDiff.compare**, with the frontend on
+> Vercel and the backend on Vultr. The site is no longer live; see Quick start to run it locally.
+
+## How It Works
+Type in a ticker. RiskDiff pulls the company's two most recent 10-Ks from the SEC, splits Risk
+Factors into individual risks, matches each one to last year's version (even if it was reworded or
+moved), and labels it: **new, dropped, expanded, scaled back, major update, or unchanged.** Every
+change is shown word for word next to last year's version, so nothing is taken out of context.
+Deterministic code decides what changed and ranks it with a transparent point system; AI only
+answers narrow yes/no questions and writes short explanations, and every claim must cite the exact
+sentence in the filing or it is thrown out.
+
+- **Potential → Actual:** risks that went from "could happen" last year to "did happen" this year.
+- **New figures and names:** for example, NVIDIA's $4.5 billion charge, which wasn't in last year's filing.
+- **Readable diffs:** new words highlighted, removed words struck through, side by side or inline.
+- **Proof:** every quote links to the SEC filing with the exact sentence highlighted.
+- **Trends:** the topics the most companies newly added this year, across the whole library.
+- **Briefing:** pick up to 20 companies and get a printable briefing with an audit trail of the filings used.
+
+## Quick start
+
+**Prerequisites:** Git, Python 3.12 with [uv](https://docs.astral.sh/uv/), and Node.js 20+.
+
+### 1. Clone the repo
 
 ```bash
-cp .env.example .env      # fill in SEC_USER_AGENT and HF_TOKEN
-uv sync
-uv run python -m pipeline.run NVDA
-cd web && npm install && npm run dev
+git clone https://github.com/EliasMuscarella/KnightHack26.git
+cd KnightHack26
 ```
+
+### 2. Set up your environment variables
+
+```bash
+cp .env.example .env
+```
+
+Open `.env` and fill in the keys below. The reports already in `data/published/` load without any
+keys; the required ones are needed to analyze new companies.
+
+| Key | Required? | What it's for |
+|---|---|---|
+| `SEC_USER_AGENT` | **Required** | The SEC requires a name and email on every request, e.g. `RiskDiff Jane Doe jane@example.com`. Without it, filings can't be fetched. |
+| `HF_TOKEN` | **Required** | Hugging Face token for downloading the embedding model and for the AI explanations. Free at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens). |
+| `GEMINI_API_KEY` | Optional | Backup AI provider if Hugging Face is unavailable. |
+| `FINNHUB_API_KEY` | Optional | Home-page stock ticker tape. Hidden without it. |
+| `DATABRICKS_HOST`, `DATABRICKS_TOKEN`, `DATABRICKS_WAREHOUSE_ID` | Optional | Shared report library across machines (see *Shared report library* below). |
+
+The frontend needs no secrets. It talks to the backend at `http://localhost:8000` by default
+(`NEXT_PUBLIC_API_URL` in `web/.env.example`).
+
+### 3. Start the backend (terminal 1)
+
+```bash
+uv sync
+uv run uvicorn api.main:app --port 8000
+```
+
+### 4. Start the frontend (terminal 2)
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
+### 5. Open the app
+
+Go to **http://localhost:3000**.
 
 Development data: the synthetic FIXTURE company (`contract/fixtures/`) is hidden in normal use.
 Set `RISKDIFF_SHOW_FIXTURE=1` (frontend) and `RISKDIFF_ALLOW_FIXTURE=1` (API) to work on the
@@ -38,53 +118,66 @@ source of truth: it is uploaded byte-for-byte to a Unity Catalog Volume, and thr
 of each highlight's two sentences, so the Trends page can draw the same strike and highlighter
 from the shared store as from a local file).
 
-**One-time setup (one person, about ten minutes)**
+## Architecture
 
-1. Databricks workspace with Unity Catalog, a catalog named `riskdiff` (or set `DATABRICKS_CATALOG`),
-   and a SQL warehouse (serverless is fine). Copy the warehouse id from *Connection details*.
-2. A personal access token (*User settings → Developer → Access tokens*).
-3. In `.env`: `DATABRICKS_HOST`, `DATABRICKS_TOKEN`, `DATABRICKS_WAREHOUSE_ID` (optional
-   `DATABRICKS_CATALOG`, `DATABRICKS_SCHEMA`, `DATABRICKS_VOLUME`; see `.env.example`).
-4. `uv run python scripts/databricks_setup.py` creates the schema, the Volume and the tables
-   (`CREATE … IF NOT EXISTS`; running it again changes nothing). On a workspace set up before
-   the span columns existed it adds them to `highlights` with `ALTER TABLE … ADD COLUMNS`, only
-   when `DESCRIBE TABLE` shows them missing; then `uv run python scripts/sync_to_databricks.py`
-   re-publishes nothing (same analysis ids) and `uv run python scripts/derive_trends.py`
-   backfills the trend tables.
-5. `uv run python scripts/sync_to_databricks.py` uploads the reports already in `data/published/`.
+A staged Python pipeline turns two filings into one published JSON report; a FastAPI server
+serves the reports; a Next.js app renders them.
 
-Every other teammate only needs steps 2–3 with their own token.
-
-**Day to day**
-
-* `uv run python -m pipeline.run AAPL` publishes locally as before, then to the library
-  (`--no-remote` skips that). Within a minute AAPL appears in everyone's report library; the
-  first view on another machine pulls the JSON from the Volume, verifies it against the contract
-  and its `analysis_id`, saves it under `data/published/` and serves it from there afterwards.
-* The home page lists the library with who published each report and when; the footer shows
-  "Shared library: connected" or "offline, showing reports on this computer". `/trends` shows
-  what moved across companies, in plain English.
-* Nothing requires Databricks: with the variables unset the app is exactly the local app; with
-  them set but the workspace unreachable, local reports keep loading and `GET /store/health`
-  says `offline`. A report that is already on disk is never fetched again.
-
-**Guarantees:** the token is read only by the Python API and pipeline (never by `web/`, never
-logged); the only outbound host added to the allowlist is the configured workspace; all SQL is
-parameterized with table names from code constants; re-publishing the same analysis is a no-op
-(rows are keyed by `analysis_id`, writes are `MERGE`s); a new analysis for the same filings
-becomes the new current report and the old rows are kept; the tables can always be rebuilt from
-the Volume with the sync script.
-
-## Design system and frontend checks
-
-`DESIGN.md` is binding for everything under `web/`: fonts (Public Sans, Source Serif 4 for filing text), the
-14/15/17/22/32/44 type scale, neutrals, the direction-of-change colors (blue = more disclosure language,
-orange = less, ink = rewritten, amber = potential became actual), the highlighter for new words, and a
-checkable list of don'ts. Frontend checks:
-
-```bash
-cd web && npm run typecheck && npm run lint && npm run build
-cd web && npm run test:unit        # display-name cleaner, deterministic hero pick, short titles, trends math (node --test)
+```
+ticker ─► 0 sec_fetch ─► 1 extract ─► 2 segment ─► 3 embed ─► 4 match
+          (EDGAR)        (Item 1A)    (risks +      (bge-m3     (Hungarian on
+                                       sentences)    vectors)    1 − similarity)
+                                                                      │
+publish ◄─ 8 score ◄─ 7 llm ◄─ 6 signals ◄─ 5 diff ◄──────────────────┘
+(JSON)     (fixed     (rubric   (potential→   (sentence alignment,
+            points)    + notes,  actual,       word spans,
+                       cited)    figures,      change type)
+                                 names)
 ```
 
-`uv run pytest` runs the same unit tests through `tests/test_web_units.py`.
+## Data Pipeline
+
+| Stage | Module | What it does |
+|---|---|---|
+| 0 | `pipeline/sec_fetch.py` | Ticker → CIK → the two latest original 10-Ks from EDGAR, cached on disk (SEC fair-access rules) |
+| 1 | `pipeline/extract.py` | Finds the real Item 1A, skipping the table-of-contents entry, and stops at 1B/1C/2 |
+| 2 | `pipeline/segment.py` | Splits Risk Factors into risk blocks (heading + body) and sentences with stable ids |
+| 3 | `pipeline/embed.py` | Embeds each risk locally with sentence-transformers |
+| 4 | `pipeline/match.py` | Pairs each risk with last year's version, even if reworded or moved |
+| 5 | `pipeline/diff.py` | Aligns sentences, computes word-level additions/removals, assigns the change type |
+| 6 | `pipeline/signals.py` | Rule-based checks: potential → actual wording, new figures, new names, category |
+| 7 | `pipeline/llm.py` + `validate.py` | AI answers narrow yes/no rubric questions and writes short notes; uncited claims are dropped |
+| 8 | `pipeline/score.py` + `publish.py` | Fixed-point score with a sentence-cited breakdown; writes `data/published/{TICKER}_{oldFY}_{newFY}.json` |
+
+**Matching.** Each risk's similarity combines heading (0.4) and body (0.6) embeddings. Risks are
+paired one-to-one by solving
+
+$$\min_{\pi} \sum_i \big(1 - \text{sim}(r_i^{\text{old}}, r_{\pi(i)}^{\text{new}})\big)$$
+
+with `scipy.optimize.linear_sum_assignment`. Pairs below the match threshold are rejected, so an
+unpaired old risk is *dropped* and an unpaired new risk is *new*.
+
+**Code decides, AI explains.** What changed and how much it matters are computed by deterministic
+code. Each change earns fixed points from `pipeline/rubric.py` (a new risk is worth 30, an expanded
+one 15); a cited "yes" from the AI on a rubric question adds fixed points too, and every point is
+shown with the sentence that justifies it. Every quote is word for word and links to the exact
+sentence on sec.gov.
+
+**Reproducible by design.** Each stage is a pure function of its inputs and a `STAGE_VERSION`;
+its cache key is a hash of both. A report's `analysis_id` hashes the two accession numbers, the
+pipeline and rubric versions, the model ids and the prompt text, so the same filings and the same
+code always produce byte-identical JSON.
+
+**Data contract.** `pipeline/schema.py` (Pydantic) defines the report shape.
+`scripts/regen_contract.py` exports it to `contract/comparison.schema.json` and generates
+`web/src/types/comparison.ts`, so the backend and frontend can't drift apart.
+
+**Serving.**
+
+- `api/main.py` (FastAPI): `GET /companies`, `GET /comparison/{ticker}`, `GET /trends`,
+  `POST /analyze` (live run with progress over SSE, one at a time), `GET /ticker-tape`.
+- `web/` (Next.js + TypeScript + Tailwind): the company diff view (`/c/[ticker]`), Trends
+  (`/trends`), Briefing (`/briefing`, a printable multi-company report) and Methodology.
+- `pipeline/store/`: optional Databricks library that shares published reports across machines
+  (see *Shared report library* above).
+- `pipeline/trends/`: aggregates new topics and changed sentences across every company in the library.
